@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:jms="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/"
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"
+	name="WebSphereJMSActivationSpecificationUnit template">
+	<was:unit.wasJMSActivationSpecificationUnit
+		name="WebSphereDefaultMessagingJMSActivationSpecification"
+		configurationUnit="true" conceptual="true">
+		<was:capability.wasJMSActivationSpecification
+			name="WebSphereDefaultMessagingJMSActivationSpecification"
+			linkType="any" />
+		<core:requirement mutable="true"
+			name="WebSphereConfigurationContainer"
+			displayName="WebSphereConfigurationContainer"
+			dmoType="was:WasConfigurationContainer" linkType="hosting" />
+    <core:requirement displayName="Destination" name="destination" dmoType="jms:JMSDestination" linkType="dependency">
+      <constraint:constraint.or name="choice">
+        <constraint:constraint.type name="queue" dmoType="was:WasDefaultMessagingQueueDestination"/>
+        <constraint:constraint.type name="topic" dmoType="was:WasDefaultMessagingTopicDestination"/>
+      </constraint:constraint.or>
+    </core:requirement>
+		<!--<core:requirement mutable = "true" use="optional" name = "J2CAuthenticationEntry" displayName = "Authentication" dmoType = "was:WASJ2CAuthenticationDataEntry" linkType ="dependency"/>-->
+	</was:unit.wasJMSActivationSpecificationUnit>
+</core:topology>

@@ -1,0 +1,25 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="NonUIPluginManifestTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String nonUIBundleId=(String)args.get(2); %>
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: <%=nonUIBundleId%>; singleton:=true
+Bundle-Version: 1.0.0.qualified
+Bundle-ClassPath: .
+Bundle-Activator: <%=modelPackage%>.Activator
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: <%=modelPackage%>,
+ <%=modelPackage%>.impl,
+ <%=modelPackage%>.provider,
+ <%=modelPackage%>.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ com.ibm.ccl.soa.deploy.core;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.ecore.edit;visibility:=reexport
+Eclipse-LazyStart: true

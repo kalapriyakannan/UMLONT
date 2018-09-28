@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension-point id="bindings" name="%bindings.label"
+		schema="schema/bindings.exsd" />
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.j2ee.J2eePackage"
+			genModel="models/schemas/j2ee.genmodel" />
+	</extension>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.j2ee.provider.J2eeItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.provider.J2EEModuleUnitProvider"
+			description="%archiveUnitProvider.description"
+			name="%archiveUnitProvider.label">
+			<inputEnablement>
+				<and>
+					<instanceof
+						value="org.eclipse.core.resources.IFile" />
+					<test
+						property="com.ibm.ccl.soa.deploy.j2ee.isSupportedArchive"
+						forcePluginActivation="true" />
+				</and>
+			</inputEnablement>
+			<outputEnablement>
+				<or>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EarModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EjbModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.JarModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.AppClientModule" />
+				</or>
+			</outputEnablement>
+		</unitProvider>
+
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.filter.WebModuleFilter"
+			description="%WebModuleFilter.description"
+			name="%WebModuleFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.filter.EjbModuleFilter"
+			description="%EjbModuleFilter.description"
+			name="%EjbModuleFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.EjbModule" />
+			</inputEnablement>
+		</unitFilter>
+
+	</extension>
+
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.j2ee.ArchiveTypePropertyTester"
+			type="org.eclipse.core.resources.IFile"
+			namespace="com.ibm.ccl.soa.deploy.j2ee"
+			properties="isSupportedArchive"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.provider.ArchiveTypePropertyTester">
+		</propertyTester>
+
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.j2ee.PropertiesFilePropertyTester"
+			type="org.eclipse.core.resources.IFile"
+			namespace="com.ibm.ccl.soa.deploy.j2ee" properties="isPropertiesFile"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.provider.PropertiesFilePropertyTester">
+		</propertyTester>
+		
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.j2ee.FacetProjectPropertyTester"
+			type="org.eclipse.core.runtime.IAdaptable"
+			namespace="com.ibm.ccl.soa.deploy.j2ee"
+			properties="memberOfFacetProject"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.provider.FacetProjectPropertyTester">
+		</propertyTester>
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.j2ee.domain"
+			name="%extension.j2eeDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.validator.J2EEDomainValidator" />
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.WebModuleCapabilityProvider"
+				description="%webModuleCapabilityProvider.description"
+				name="%webModuleCapabilityProvider.label">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.EJBModuleCapabilityProvider"
+				description="%ejbModuleCapabilityProvider.description"
+				name="%ejbModuleCapabilityProvider.label">
+				<inputEnablement>
+					<instanceof value="org.eclipse.jst.j2ee.ejb.EJBJar" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EjbModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.EARModuleCapabilityProvider"
+				description="%earModuleCapabilityProvider.description"
+				name="%earModuleCapabilityProvider.label">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.application.Application" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EarModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.JCAModuleCapabilityProvider"
+				description="%jcaModuleCapabilityProvider.description"
+				name="%jcaModuleCapabilityProvider.label">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.jca.Connector" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.JCAModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.AppClientCapabilityProvider"
+				description="%appClientModuleCapabilityProvider.description"
+				name="%appClientModuleCapabilityProvider.label">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.client.ApplicationClient" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.AppClientModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.EntityServiceProvider"
+				name="com.ibm.ccl.soa.deploy.j2ee.entityServiceCapabilityProvider">
+				<inputEnablement>
+					<or>
+						<instanceof
+							value="org.eclipse.jst.j2ee.ejb.EJBJar" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.client.ApplicationClient" />
+					</or>
+				</inputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.SessionServiceProvider"
+				name="com.ibm.ccl.soa.deploy.j2ee.sessionServiceCapabilityProvider">
+				<inputEnablement>
+					<or>
+						<instanceof
+							value="org.eclipse.jst.j2ee.ejb.EJBJar" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.client.ApplicationClient" />
+					</or>
+				</inputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.ServletServiceProvider"
+				name="com.ibm.ccl.soa.deploy.web.servletsCapabilityProvider">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.WebServiceProvider"
+				name="com.ibm.ccl.soa.deploy.web.webServicesCapabilityProvider">
+				<inputEnablement>
+					<instanceof
+						value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+				</inputEnablement>
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+				</outputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.DatasourceProvider"
+				name="com.ibm.ccl.soa.deploy.web.dataSourceCapabilityProvider">
+				<inputEnablement>
+					<or>
+						<instanceof
+							value="org.eclipse.jst.j2ee.ejb.EJBJar" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.common.JNDIEnvRefsGroup" />
+					</or>
+				</inputEnablement>
+			</capabilityProvider>
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.SecurityRoleProvider"
+				name="com.ibm.ccl.soa.deploy.j2ee.SecurityRoleProvider">
+				<inputEnablement>
+					<or>
+						<instanceof
+							value="org.eclipse.jst.j2ee.ejb.EJBJar" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.webapplication.WebApp" />
+						<instanceof
+							value="org.eclipse.jst.j2ee.application.Application" />
+					</or>
+				</inputEnablement>
+			</capabilityProvider>
+   <capabilityProvider
+         class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.BundleCapabilityProvider"
+         name="com.ibm.ccl.soa.deploy.j2ee.BundleCapabilityProvider">
+      <inputEnablement>
+         <or>
+					<and>
+						<instanceof
+							value="org.eclipse.jdt.core.IJavaProject" />
+						<or>
+							<test forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.ear" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.web" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.ejb" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.connector" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.appclient" forcePluginActivation="true" />
+							<test forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.java" />
+						</or>
+					</and>
+					<and>
+						<instanceof
+							value="org.eclipse.core.resources.IProject" />
+						<or>
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.web" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.ear" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.ejb" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.connector" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.appclient" forcePluginActivation="true" />
+							<test forcePluginActivation="true"
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.java" />
+						</or>
+					</and>
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.WARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.RARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.ApplicationClientFile" />
+     <instanceof
+           value="org.eclipse.jst.j2ee.commonarchivecore.internal.Archive">
+     </instanceof>
+         </or>
+      </inputEnablement>
+   </capabilityProvider>
+   <capabilityProvider
+         class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.JRECapabilityProvider"
+         name="com.ibm.ccl.soa.deploy.j2ee.JRECapabilityProvider">
+      <inputEnablement>
+         <or>
+            <and>
+               <instanceof
+                     value="org.eclipse.jdt.core.IJavaProject">
+               </instanceof>
+               <or>
+                  <test
+                        forcePluginActivation="true"
+                        property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+                        value="jst.java">
+                  </test>
+               </or>
+            </and>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IProject">
+               </instanceof>
+               <or>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.wst.common.project.facet.core.projectFacet"
+                        value="jst.java">
+                  </test>
+               </or>
+            </and>
+            <instanceof
+                  value="org.eclipse.jst.j2ee.commonarchivecore.internal.Archive">
+            </instanceof>
+         </or>
+      </inputEnablement>
+   </capabilityProvider>
+   <capabilityProvider
+         class="com.ibm.ccl.soa.deploy.j2ee.internal.capability.provider.OSCapabilityProvider"
+         name="com.ibm.ccl.soa.deploy.j2ee.OSCapabilityProvider">
+      <inputEnablement>
+         <or>
+            <and>
+               <instanceof
+                     value="org.eclipse.jdt.core.IJavaProject">
+               </instanceof>
+               <or>
+                  <test
+                        forcePluginActivation="true"
+                        property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+                        value="jst.java">
+                  </test>
+               </or>
+            </and>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IProject">
+               </instanceof>
+               <or>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.wst.common.project.facet.core.projectFacet"
+                        value="jst.java">
+                  </test>
+               </or>
+            </and>
+            <instanceof
+                  value="org.eclipse.jst.j2ee.commonarchivecore.internal.Archive">
+            </instanceof>
+         </or>
+      </inputEnablement>
+   </capabilityProvider>
+			<resourceType id="j2ee.WebComponent.infra" name="Web Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/webComponent.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%web.WebComponent.Description" label="%web.WebComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/pal/WebComponent_16.gif"
+				largeIcon="icons/pal/WebComponent_20.gif"
+				resourceTypeId="j2ee.WebComponent.infra">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.WebComponent.conceptual"
+				name="Web Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/webComponentC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%web.WebComponent.Description" label="%web.WebComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/pal/WebComponent_16.gif"
+				largeIcon="icons/pal/WebComponent_20.gif"
+				resourceTypeId="j2ee.WebComponent.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.EJBComponent.infra" name="EJB Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/ejbComponent.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.EJBComponent.Description" label="%j2ee.EJBComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/EjbModule.gif"
+				largeIcon="icons/full/obj16/EjbModule.gif"
+				resourceTypeId="j2ee.EJBComponent.infra">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.EJBComponent.conceptual"
+				name="EJB Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/ejbComponentC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.EJBComponent.Description" label="%j2ee.EJBComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/EjbModule.gif"
+				largeIcon="icons/full/obj16/EjbModule.gif"
+				resourceTypeId="j2ee.EJBComponent.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.EARComponent.infra" name="EAR Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/earComponent.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.EARComponent.Description" label="%j2ee.EARComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/EarModule.gif"
+				largeIcon="icons/full/obj16/EarModule.gif"
+				resourceTypeId="j2ee.EARComponent.infra">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.EARComponent.conceptual"
+				name="EAR Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/earComponentC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.EARComponent.Description" label="%j2ee.EARComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/EarModule.gif"
+				largeIcon="icons/full/obj16/EarModule.gif"
+				resourceTypeId="j2ee.EARComponent.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.UtilityComponent.infra"
+				name="Utility Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/utilityComponent.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.UtilityComponent.Description"
+				label="%j2ee.UtilityComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/JarModule.gif"
+				largeIcon="icons/full/obj16/JarModule.gif"
+				resourceTypeId="j2ee.UtilityComponent.infra">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.UtilityComponent.conceptual"
+				name="Utility Component"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/utilityComponentC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%j2ee.UtilityComponent.Description"
+				label="%j2ee.UtilityComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/full/obj16/JarModule.gif"
+				largeIcon="icons/full/obj16/JarModule.gif"
+				resourceTypeId="j2ee.UtilityComponent.conceptual">
+			</resourceTypeUIBinding>
+
+			<resourceType id="web.WebService" name="%WebService.Label"
+				eclass="WebService">
+			</resourceType>
+			<resourceTypeUIBinding description="%WebService.Description"
+				enablePalette="false" label="%WebService.Label"
+				largeIcon="icons/dgm/service_web_dgm.gif"
+				resourceTypeId="web.WebService"
+				smallIcon="icons/dgm/service_web_dgm.gif">
+			</resourceTypeUIBinding>
+			<resourceType id="web.URLService" name="%URLService.Label"
+				eclass="URLService">
+			</resourceType>
+			<resourceTypeUIBinding description="%URLService.Description"
+				label="%URLService.Label" enablePalette="false"
+				largeIcon="icons/dgm/service_url_dgm.gif"
+				resourceTypeId="web.URLService"
+				smallIcon="icons/dgm/service_url_dgm.gif">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.EntityService"
+				name="%EntityService.Label" eclass="EntityService">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%EntityService.Description"
+				label="%EntityService.Label" enablePalette="false"
+				largeIcon="icons/pal/service_ejb_entity.gif"
+				resourceTypeId="j2ee.EntityService"
+				smallIcon="icons/pal/service_ejb_entity.gif">
+			</resourceTypeUIBinding>
+			<resourceType id="j2ee.SessionService"
+				name="%SessionService.Label" eclass="SessionService">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%SessionService.Description"
+				label="%SessionService.Label" enablePalette="false"
+				largeIcon="icons/pal/service_ejb_session.gif"
+				resourceTypeId="j2ee.SessionService"
+				smallIcon="icons/pal/service_ejb_session.gif">
+			</resourceTypeUIBinding>
+			
+			<resourceType
+	        	id="j2ee.J2eeServer.conceptual"
+	            name="%j2ee.J2eeServer.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/j2eeServer.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%j2ee.J2eeServer.Desc"
+	            label="%j2ee.J2eeServer.Label"
+			    path="/applicationToolDrawer/j2eeServers"	
+				largeIcon="icons/pal/J2Ee-Server_Pal20.gif"
+				smallIcon="icons/pal/J2Ee-Server_Pal16.gif"
+             	resourceTypeId="j2ee.J2eeServer.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType
+	        	id="j2ee.J2ee14Server.conceptual"
+	            name="%j2ee.J2ee14Server.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/j2eeServer14.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%j2ee.J2eeServer.Desc"
+	            label="%j2ee.J2ee14Server.Label"
+			    path="/applicationToolDrawer/j2eeServers"	
+				largeIcon="icons/pal/J2Ee-Server_Pal20.gif"
+				smallIcon="icons/pal/J2Ee-Server_Pal16.gif"
+             	resourceTypeId="j2ee.J2ee14Server.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType
+	        	id="j2ee.J2ee13Server.conceptual"
+	            name="%j2ee.J2ee13Server.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/templates/j2eeServer13.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%j2ee.J2eeServer.Desc"
+	            label="%j2ee.J2ee13Server.Label"
+			    path="/applicationToolDrawer/j2eeServers"	
+				largeIcon="icons/pal/J2Ee-Server_Pal20.gif"
+				smallIcon="icons/pal/J2Ee-Server_Pal16.gif"
+             	resourceTypeId="j2ee.J2ee13Server.conceptual">
+			</resourceTypeUIBinding>
+		</domain>
+	</extension>
+
+	<extension
+		point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator id="JndiNameDependencyLinkResolution"
+			name="%jndiNameDependencyLinkResolution.label"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.validator.resolution.JndiNameDependencyLinkResolutionGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.dependencyLinkEndpointTypeMismatch" />
+			</enablement>
+		</resolutionGenerator>
+	</extension>
+	<extension
+		point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+		<adapterFactory
+			className="com.ibm.ccl.soa.deploy.j2ee.provider.J2eeItemProviderAdapterFactory"
+			functionGroupID="com.ibm.ccl.soa.deploy.j2ee"
+			id="com.ibm.ccl.soa.deploy.j2ee.provider.J2eeItemProviderAdapterFactory"
+			packageURI="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" />
+	</extension>
+
+	<!-- SAF interface provider -->
+	<!-- for Java -->
+	<extension point="com.ibm.ccl.soa.deploy.saf.handlers"
+		id="handlers" name="%javaHandlersName">
+		<interfaceHandler name="%javaInterfaceHandlerName"
+			description="%javaInterfaceHandlerDescription" 
+			largeIcon="icons/full/obj16/JavaInterface.gif"
+			smallIcon="icons/full/obj16/JavaInterface.gif"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.handlers.JavaInterfaceHandler"
+			type="com.ibm.ccl.soa.deploy.j2ee.JavaInterface">
+			<enablement>
+				<or>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.internal.handlers.util.TypeInfo">
+					</instanceof>
+					<instanceof value="org.eclipse.jdt.core.IType">
+					</instanceof>
+				</or>
+			</enablement>
+		</interfaceHandler>
+		<!-- for WSDL -->
+		<interfaceHandler name="%wsdlInterfaceHandlerName"
+			description="%wsdlInterfaceHandlerDescription"  
+			largeIcon="icons/full/obj16/WSDLInterface.gif"
+			smallIcon="icons/full/obj16/WSDLInterface.gif"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.handlers.WSDLInterfaceHandler"
+			type="com.ibm.ccl.soa.deploy.j2ee.WSDLInterface">
+			<enablement>
+				<and>
+					<instanceof
+						value="org.eclipse.core.resources.IFile">
+					</instanceof>
+					<test property="org.eclipse.core.resources.extension" value="wsdl" />
+				</and>
+			</enablement>
+		</interfaceHandler>
+		<!-- for URL -->
+		<interfaceHandler name="%urlInterfaceHandlerName"
+			description="%urlInterfaceHandlerDescription"  
+			largeIcon="icons/full/obj16/URLInterface.gif"
+			smallIcon="icons/full/obj16/URLInterface.gif"
+			class="com.ibm.ccl.soa.deploy.j2ee.internal.handlers.URLInterfaceHandler"
+			type="com.ibm.ccl.soa.deploy.j2ee.URLInterface">
+		</interfaceHandler>
+		<service
+        etype="URLService"
+        name="%URLService.Label"
+        package="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+        smallIcon="icons/full/obj16/URLService.gif"
+        type="com.ibm.ccl.soa.deploy.j2ee.URLService">
+		</service>
+		<service
+        etype="EntityService"
+        name="%EntityService.Label"
+        package="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+        smallIcon="icons/full/obj16/EntityService.gif"
+        type="com.ibm.ccl.soa.deploy.j2ee.EntityService">
+		</service>
+		<service
+        etype="SessionService"
+        name="%SessionService.Label"
+        package="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+        smallIcon="icons/full/obj16/SessionService.gif"
+        type="com.ibm.ccl.soa.deploy.j2ee.SessionService">
+		</service>
+		<service
+        etype="WebService"
+        name="%WebService.Label"
+        package="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+        smallIcon="icons/full/obj16/WebService.gif"
+        type="com.ibm.ccl.soa.deploy.j2ee.WebService">
+		</service>
+		<handlerBinding>
+			<interface
+				type="com.ibm.ccl.soa.deploy.j2ee.URLInterface">
+			</interface>
+			<serviceType
+				type="com.ibm.ccl.soa.deploy.j2ee.URLService">
+			</serviceType>
+		</handlerBinding>
+		<handlerBinding>
+			<interface
+				type="com.ibm.ccl.soa.deploy.j2ee.WSDLInterface">
+			</interface>
+			<serviceType
+				type="com.ibm.ccl.soa.deploy.j2ee.WebService">
+			</serviceType>
+		</handlerBinding>
+		<handlerBinding>
+			<interface
+				type="com.ibm.ccl.soa.deploy.j2ee.JavaInterface">
+			</interface>
+			<serviceType
+				type="com.ibm.ccl.soa.deploy.j2ee.SessionService">
+			</serviceType>
+		</handlerBinding>
+		<handlerBinding>
+			<interface
+				type="com.ibm.ccl.soa.deploy.j2ee.JavaInterface">
+			</interface>
+			<serviceType
+				type="com.ibm.ccl.soa.deploy.j2ee.EntityService">
+			</serviceType>
+		</handlerBinding>
+	</extension>
+
+
+	<!-- Business Application Decorator Semantic -->
+	<extension id="com.ibm.ccl.soa.deploy.j2ee.topology"
+		name="%j2eeTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<typeContent>
+				<include
+					pattern="com.ibm.ccl.soa.deploy.j2ee.WebComponent" />
+				<include
+					pattern="com.ibm.ccl.soa.deploy.j2ee.EJBComponent" />
+				<include
+					pattern="com.ibm.ccl.soa.deploy.j2ee.EARComponent" />
+				<include
+					pattern="com.ibm.ccl.soa.deploy.j2ee.UtilityComponent" />
+			</typeContent>
+		</decoratorSemanticPatternBinding>
+
+	</extension>
+	
+	
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.j2ee">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee/models/schemas/j2eeDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>	
+	
+</plugin>

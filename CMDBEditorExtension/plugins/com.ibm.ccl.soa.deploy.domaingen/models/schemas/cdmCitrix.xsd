@@ -1,0 +1,283 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmcitrix/1.0.0/"
+	xmlns:cdmCitrix="http://www.ibm.com/ccl/soa/deploy/cdmcitrix/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmCitrixRoot"
+	ecore:name="cdmCitrix"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmcitrix"
+	ecore:nsPrefix="cdmCitrix">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.citrixAccountAuthority" substitutionGroup="core:capability" type="cdmCitrix:CitrixAccountAuthority"/>
+	<complexType name="CitrixAccountAuthority">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="AuthorityType" type="string" />
+				<attribute name="AuthorityName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixAccountAuthorityUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixAccountAuthorityUnit"/>
+	<complexType name="CitrixAccountAuthorityUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixApplication" substitutionGroup="core:capability" type="cdmCitrix:CitrixApplication"/>
+	<complexType name="CitrixApplication">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModule">
+				<attribute name="Level" type="int" />
+				<attribute name="EnableApp" type="boolean" />
+				<attribute name="DefaultWindowScale" type="int" />
+				<attribute name="BrowserName" type="string" />
+				<attribute name="DefaultEncryption" type="int" />
+				<attribute name="DefaultWindowHeight" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="DefaultWindowType" type="int" />
+				<attribute name="Release" type="int" />
+				<attribute name="DefaultWindowWidth" type="int" />
+				<attribute name="DefaultWorkDir" type="string" />
+				<attribute name="PNFolder" type="int" />
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="ApplicationID" type="long" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="DesktopIntegrate" type="int" />
+				<attribute name="DefaultSoundType" type="int" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="DefaultWindowColor" type="int" />
+				<attribute name="PublishingFlags" type="int" />
+				<attribute name="MFAttributes" type="int" />
+				<attribute name="PNAttributes" type="int" />
+				<attribute name="DefaultInitProg" type="string" />
+				<attribute name="ReadOnly" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixApplicationUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixApplicationUnit"/>
+	<complexType name="CitrixApplicationUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixGroup" substitutionGroup="core:capability" type="cdmCitrix:CitrixGroup"/>
+	<complexType name="CitrixGroup">
+		<complexContent>
+			<extension base="cdmBase:Collection">
+				<attribute name="AccountType" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixGroupUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixGroupUnit"/>
+	<complexType name="CitrixGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:CollectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixLicensePool" substitutionGroup="core:capability" type="cdmCitrix:CitrixLicensePool"/>
+	<complexType name="CitrixLicensePool">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="InUseCount" type="int" />
+				<attribute name="VendorString" type="string" />
+				<attribute name="FloatOk" type="boolean" />
+				<attribute name="Level" type="int" />
+				<attribute name="HostID" type="string" />
+				<attribute name="Overdraft" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="PLDFullName" type="string" />
+				<attribute name="PooledAvailable" type="int" />
+				<attribute name="UserBased" type="int" />
+				<attribute name="Release" type="int" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="Platforms" type="string" />
+				<attribute name="HostBased" type="int" />
+				<attribute name="PLD" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="DupGroup" type="int" />
+				<attribute name="Count" type="int" />
+				<attribute name="LicenseType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixLicensePoolUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixLicensePoolUnit"/>
+	<complexType name="CitrixLicensePoolUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixFarm" substitutionGroup="core:capability" type="cdmCitrix:CitrixFarm"/>
+	<complexType name="CitrixFarm">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="DiscardRedundantGraphics" type="boolean" />
+				<attribute name="DSDriver" type="string" />
+				<attribute name="AlternateCachingMethod" type="boolean" />
+				<attribute name="SNMPThresholdExceededTrap" type="boolean" />
+				<attribute name="DisableClientLocalTimeEstimation" type="boolean" />
+				<attribute name="EnableDNSAddressResolution" type="boolean" />
+				<attribute name="DSODBC" type="string" />
+				<attribute name="VideoBufferSizeICA" type="int" />
+				<attribute name="MaxConnectionsPerUser" type="int" />
+				<attribute name="DegradationBias" type="string" />
+				<attribute name="LogAutoReconnectAttempts" type="boolean" />
+				<attribute name="FarmName" type="string" />
+				<attribute name="SNMPLogoffTrap" type="boolean" />
+				<attribute name="LogOverLimitDenials" type="boolean" />
+				<attribute name="RASRespondToClientBroadcast" type="boolean" />
+				<attribute name="EnableSNMPAgent" type="boolean" />
+				<attribute name="UseClientLocalTime" type="boolean" />
+				<attribute name="SNMPThresholdValue" type="int" />
+				<attribute name="EnableAutoClientReconnect" type="boolean" />
+				<attribute name="DCRespondToClientBroadcast" type="boolean" />
+				<attribute name="SNMPDisconnectTrap" type="boolean" />
+				<attribute name="LegacyICADisplayCompatibleMode" type="boolean" />
+				<attribute name="LegacyMFServerCompatibleMode" type="boolean" />
+				<attribute name="NotifyDegradation" type="boolean" />
+				<attribute name="SNMPLogonTrap" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixFarmUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixFarmUnit"/>
+	<complexType name="CitrixFarmUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixLicense" substitutionGroup="core:capability" type="cdmCitrix:CitrixLicense"/>
+	<complexType name="CitrixLicense">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Level" type="int" />
+				<attribute name="Overdraft" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="PLDFullName" type="string" />
+				<attribute name="SerialNumber" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="ExpirationDate" type="long" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="PLD" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="Count" type="int" />
+				<attribute name="LicenseType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixLicenseUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixLicenseUnit"/>
+	<complexType name="CitrixLicenseUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixUser" substitutionGroup="core:capability" type="cdmCitrix:CitrixUser"/>
+	<complexType name="CitrixUser">
+		<complexContent>
+			<extension base="cdmBase:Account">
+				<attribute name="AccountType" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixUserUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixUserUnit"/>
+	<complexType name="CitrixUserUnit">
+		<complexContent>
+			<extension base="cdmBase:AccountUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixFolder" substitutionGroup="core:capability" type="cdmCitrix:CitrixFolder"/>
+	<complexType name="CitrixFolder">
+		<complexContent>
+			<extension base="cdmBase:HomogeneousCollection">
+				<attribute name="FolderName" type="string" />
+				<attribute name="FolderDN" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixFolderUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixFolderUnit"/>
+	<complexType name="CitrixFolderUnit">
+		<complexContent>
+			<extension base="cdmBase:HomogeneousCollectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixServerFolder" substitutionGroup="core:capability" type="cdmCitrix:CitrixServerFolder"/>
+	<complexType name="CitrixServerFolder">
+		<complexContent>
+			<extension base="cdmCitrix:CitrixFolder">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixServerFolderUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixServerFolderUnit"/>
+	<complexType name="CitrixServerFolderUnit">
+		<complexContent>
+			<extension base="cdmCitrix:CitrixFolderUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixAppFolder" substitutionGroup="core:capability" type="cdmCitrix:CitrixAppFolder"/>
+	<complexType name="CitrixAppFolder">
+		<complexContent>
+			<extension base="cdmCitrix:CitrixFolder">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixAppFolderUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixAppFolderUnit"/>
+	<complexType name="CitrixAppFolderUnit">
+		<complexContent>
+			<extension base="cdmCitrix:CitrixFolderUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixZone" substitutionGroup="core:capability" type="cdmCitrix:CitrixZone"/>
+	<complexType name="CitrixZone">
+		<complexContent>
+			<extension base="cdmBase:Collection">
+				<attribute name="NumServersInZone" type="int" />
+				<attribute name="ZoneName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixZoneUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixZoneUnit"/>
+	<complexType name="CitrixZoneUnit">
+		<complexContent>
+			<extension base="cdmBase:CollectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.citrixServer" substitutionGroup="core:capability" type="cdmCitrix:CitrixServer"/>
+	<complexType name="CitrixServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="ServerType" type="int" />
+				<attribute name="LoginsEnabled" type="boolean" />
+				<attribute name="InstallDate" type="long" />
+				<attribute name="MFWinProductCode" type="string" />
+				<attribute name="IsFarmServer" type="boolean" />
+				<attribute name="ReleaseLevel" type="string" />
+				<attribute name="ZoneRanking" type="string" />
+				<attribute name="FeatureReleaseLevel" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.citrixServerUnit" substitutionGroup="core:unit" type="cdmCitrix:CitrixServerUnit"/>
+	<complexType name="CitrixServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

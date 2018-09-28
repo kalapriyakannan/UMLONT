@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/OperatingSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/SoftwarePatch.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.unix.Unix">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.OperatingSystem">
+        <xsd:sequence>
+          <xsd:element name="architecture" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="kernelBitSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="OSDistribution" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="libcName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="libcVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="virtualAddressCacheSize" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="calloutTableSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxProcesses" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxProcessesPerUser" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxUsers" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxProcessesPerUID" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxOpenFilesPerProcess" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxStdioStreamsPerProcess" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxPIDValue" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxPasswordLen" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxLoginNameLen" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxGroupsPerUser" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="systemMemPageSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="numPhysicalMemPages" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="numPhysicalMemFreePages" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportRealtimeSignals" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="clockTicksPerSecond" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxQueuedSignals" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportAsyncIO" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxQueuedAsyncIORequests" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxAsyncIOPriorityDecrease" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportPOSIXThreads" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxOpenMsgQueueDescriptorsPerProcess" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxMsgPrioritiesSupported" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxTimersPerProcess" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportFsync" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="processMemLocking" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportRangeMemLocking" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportMemProtection" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportMsgPassing" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportProcessScheduling" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportSharedMemObjects" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="patchesInstalled" type="coll:com.collation.platform.model.topology.sys.SoftwarePatch" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

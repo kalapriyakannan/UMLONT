@@ -1,0 +1,722 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Topology Import Design</title>
+<link rel="Stylesheet" type="text/css" media="all"
+	href="http://dev.eclipse.org/default_style.css">
+
+</head>
+<body>
+<p><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->Describes
+the ability to import existing topologies into the current topology<a
+	name="top"></a><span style=""><span class="MsoHyperlink"><span
+	style="color: windowtext; text-decoration: none;">
+<p></p>
+</span></span></span></p>
+<h1 style="text-align: center;" align="center"><span style="">SOA
+Deploy Topology Import</span></h1>
+<span style=""></span>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td>
+			<p>This document describes the implementation and usage approach
+			for supporting the ability to import an existing topology into
+			another topology.<span style="">&nbsp; </span>This allows sections of
+			a topology, for instance the data center infrastructure, to be
+			modeled separately from the applications that are to be deployed on a
+			data center.&nbsp;&nbsp; Then, a third topology could then be used
+			that imports the application and infrastructure topologies, and
+			specifieds the assocications (links) between them.<br>
+			</p>
+			<p>For clarification, this design of topology import is not
+			supporting the concept of "topology composition".&nbsp; Composition
+			is regarded as the actual inclusion of units, links, etc. from
+			another topology into a composite topology.&nbsp; With topology
+			import, the units are not copied into the importing topology, but are
+			visible as link sources and targets.&nbsp; The units and links in an
+			imported topology will be <span style="font-weight: bold;">read-only</span>
+			and not modifiable without opening that topology directly.&nbsp; Any
+			changes that are made that involve an imported topology, such as link
+			or unit creation, validation error markers, etc. must all be
+			serialized in the importing topology.&nbsp; <br>
+			</p>
+			<p>Semantically, much of the behavior surrounding topology import
+			will mirror that used by imports of java classes.<br>
+			</p>
+			<p>The document will focus on the following primary areas of
+			design:<br>
+			</p>
+			<ul>
+				<li>Core model changes</li>
+				<li>Core API support</li>
+				<li>Topology namespace support<br>
+				</li>
+				<li>Resource management</li>
+				<li>UI support</li>
+				<li>Validation rules, decorator semantic issues<br>
+				</li>
+			</ul>
+			<ul>
+			<li>
+			<a href="https://radical.raleigh.ibm.com/rad/34182.html">M5 Concept Document </a> and <a href="https://trumpet.raleigh.ibm.com/jazz/service/%7Bdefault%7D/com.ibm.team.workitem.WorkItem/144">M5 Milestone Item 144</a>.
+			</li>
+			<li>
+			<a href="https://radical.raleigh.ibm.com/designdocs/docs/SCA%20Tools/qn20451/Draft/Daniel%20Berg/Deploy%20Tools/24988.html?branch=1&amp;language=1">M4 Concept Document</a> and <a href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12198">M4 Milestone Item 12198</a>.
+			</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">M5 Model Additions[<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td>Explicit Contract element: <b>contract.explicit</b>
+			</td>
+			
+Model the Explicit Contract
+The Explicit Contract should allow the definition top level Capabilities and Requirements, which are backed by Capabilities and Requirements in the Topology. 
+
+For example:
+<pre>
+&lt;contract.explicit&gt;
+ &lt;linkable&gt;
+    &lt;unit.exported name="ConfigurableUnit1" path="/Unit1"&gt; 
+      &lt;capability.exported name="PublishedCapability1" path="/Unit1/Capability1" /&gt; 
+      &lt;requirement.exported name="PublishedRequirement1" path="/Unit1/Requirement1" /&gt; 
+    &lt;/unit.exported&gt;
+ &lt;/linkable&gt;  
+ &lt;configurable&gt;
+    &lt;unit.exported name="ConfigurableUnit1" path="/Unit2"&gt; 
+      &lt;capability.exported name="PublishedCapability1" path="/Unit2/Capability1" /&gt; 
+      &lt;requirement.exported name="PublishedRequirement1" path="/Unit2/Requirement1" /&gt; 
+      &lt;property select="#attr" /&gt;
+      &lt;property select="#attr2" /&gt;
+      &lt;constraint.xx reference="#attr2" .. &gt;
+        ..
+      &lt;/constraint&gt;
+      &lt;constraint.xx reference="PublishedRequirement1" .. &gt;
+        ..
+      &lt;/constraint&gt; 
+    &lt;/unit.exported &gt; 
+ &lt;/configurable&gt;
+&lt;/contract.explicit&gt;
+</pre>	
+<p>New API in ConfigurationContract: </p>
+
+<p>
+<pre>
+	/**
+	 * Declare the given object in the contract and indicate whether the given
+	 * object should be configurable.
+	 * 
+	 * @param source
+	 * @param publishedName
+	 * @param configurable
+	 */
+	public void export(DeployModelObject source, String publishedName,
+			boolean configurable);
+
+	/**
+	 * Declare the given object in the contract and indicate whether the given
+	 * object should be configurable.
+	 * 
+	 * @param source
+	 * @param publishedName
+	 * @param feature
+	 * @param configurable
+	 */
+	public void export(DeployModelObject source, String publishedName,
+			EStructuralFeature feature);
+
+	/**
+	 * Declare a property with the given name in the contract. Clients may refer
+	 * to the variable using "$propertyname" in their attribute values.
+	 * 
+	 * @param propertyName
+	 */
+	public void exportProperty(String propertyName);
+</pre>
+</p>
+		
+		</tr>
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Usage Scenario [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td>The following is a typical usage scenario that describes the
+			functionality of topology import.<br>
+			<ol>
+				<li>User creates Topology "Top_Infra" containing units and
+				links, with a specified namespace and project location.<br>
+				</li>
+				<li>User creates Topology "Top_App" contianing units and links,
+				with a specified namespace and project location.</li>
+				<li>"Top_Infra" and "Top_App" are closed.</li>
+				<li>User creates Topology "Top_Deploy", located in a different
+				namespace and project.</li>
+				<li>The user drags "Top_Infra" from the navigator on the editor
+				for "Top_Deploy"</li>
+				<ol>
+					<li>The namespace of "top_infra" is read (from model or
+					derived from package location?)</li>
+					<li>An model entry for "importedTopologies" is added to
+					"Top_Deploy".&nbsp; "com.the.namespace.Top_Infra"</li>
+					<li>Top_Infra is loaded and read<br>
+					</li>
+					<li>The units/links of "Top_Infra" are visible in the
+					"Top_Deploy", but are not editable.</li>
+				</ol>
+				<li>Repeat step 5 for "Top_App"</li>
+				<li>User creates a link with source in "Top_App" and the target
+				in "Top_Infra"</li>
+				<ol>
+					<li>Link source is stored in URI format as
+					"com.the.namespace.Top_Infra#Unit1"</li>
+					<li>Link target is stored in URI format at
+					"com.the.namespace.Top_Infra#Unit1"</li>
+					<li>Link element is stored in "Top_deploy" at the top-level</li>
+				</ol>
+				<li>A unit is created in "Top_Deploy", and links the unit to a
+				unit in "Top_Infra"</li>
+				<ol>
+					<li>The unit and link are created in "Top_deploy"<br>
+					</li>
+				</ol>
+				<li>The navigator children for "Top_Deploy" reflect the child
+				topolgies.</li>
+				<li>If an imported topology is deleted, and the importing
+				topology is reopened, an error will appear (and the imported
+				topology reference should be marked with a validation error?).<br>
+				</li>
+			</ol>
+			<p style="margin-left: -13.1pt;"><span
+				style="font-size: 10pt; font-family: Arial;">
+			<p>&nbsp;</p>
+			</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Core Model Changes [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td>This section describes the core model elements that facilitate the 
+			contract support.&nbsp; 
+			<ol>
+				<li>top-level &lt;import /&gt; element. (Topology -0..*-> Imports)</li>
+				<ul>
+					<li>Serves as the placeholder where the topologies that have been imported are referenced and configured.</li>
+					<li>The element references the imported Topology explicitly using URI paths.</li>
+					<li>The element contains an InstanceConfiguration where configured 
+						state associated with the imported Topology is stored.</li>
+				</ul>
+				<li>"namespace" attribute to &lt;topology&gt; element.</li>
+				<ul>
+					<li>Required to properly resolve imported topologies</li>
+					<li>Similar to a "package" statement in a java file.<br>
+					</li>
+				</ul>
+				<li>top-level element references to dependencyLink and unitLink to
+				&lt;topology&gt; element.</li>
+				<ul>					
+					<li>top level links as well as nested links (under Unit/Requirement)</li>
+				</ul>
+				<li>Optional - establish consistency between source and target
+				fields of a link.&nbsp; <br>
+				</li>
+				<ul>
+					<li>Currently source and target are elements on the
+					DependencyLink type, and attributes on the UnitLink type.</li>
+					<li>Find out if there is a reason for this, and the impact of
+					making them both attributes.&nbsp; Will consult with Rainforest
+					team prior to making this change.</li>
+				</ul>
+			</ol>
+			<ul>
+			</ul> 
+			</td>
+		</tr>
+
+		<tr>
+			<td style="vertical-align: top; background-color: rgb(0, 128, 192);"><b><span
+				style="font-size: 10pt; font-family: Arial; color: white;">&nbsp;&nbsp;
+			Path, namespace, URI, and link resolution changes [<a
+				href="package.html#top"><span style="color: lightblue;">Top</span></a>]</span></b></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;"><br>
+			<span style="font-weight: bold;">Link resolution</span><br>
+			<br>
+			The URI string to store an imported topology is proposed to have the
+			following structure:<br>
+			<br>
+			<div style="margin-left: 40px;"><span
+				style="font-weight: bold; font-family: courier;">com.ibm.namespace.MyTopology</span><br>
+			</div>
+			<br>
+			Where "com.ibm.namespace" is the imported topology's namepsace, and
+			"MyTopology" is the name of the topology.<br>
+			<br>
+			Link resolution is supported for cross-topology linkages. For example, the 
+			target of a dependency link would be:<br>
+			<br>
+			<div style="margin-left: 40px;"><span
+				style="font-weight: bold; font-family: courier;">com.ibm.namespace.MyTopology:/Unit1/Capability1</span><br>
+			</div>
+			<br> 
+			<br> 
+			<span style="font-style: italic;"></span><span
+				style="font-style: italic;"></span><br>
+			<span style="font-weight: bold;">Namespace management</span><br>
+			<br>
+			To faciliate the lookup of an imported topology, the proposal here is
+			to treat an imported topology much like an imported Java class
+			file.&nbsp; As stated above, the path for an imported object will
+			prepend the topology's namespace and name.&nbsp; However, this is not
+			enough to guarantee uniqueness, as multiple projects may contain the
+			same namespace.&nbsp; Short of a full-fledged classpath mechanism for
+			topology lookup, the proposal is to use the following basic logic to
+			locate the appropriate topology for import:<br>
+			<ol>
+				<li>Look for the topology with the given name and namespace in
+				the current project.</li>
+				<li>Look for the topology with the given name and namespace in
+				the current project's referenced projects.</li>
+				<li>If there is a conflict, first one in wins.&nbsp; <span
+					style="font-style: italic;">M4 only, maybe future have
+				better resolution.</span><br>
+				</li>
+			</ol>
+			<br>
+			Changes will be required in the <span style="font-weight: bold;">NamespaceCore
+			</span>class to provide an API that returns a topology given a project, a
+			topology namespace, and a topology name.&nbsp; <br>
+			<br>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top; background-color: rgb(0, 128, 192);"><b><span
+				style="font-size: 10pt; font-family: Arial; color: white;">&nbsp;&nbsp;
+			UI Requirements [<a href="package.html#top"><span
+				style="color: lightblue;">Top</span></a>]</span></b></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">There are several user
+			interface requirements that should be considered as part of the
+			solution for importing topologies.&nbsp; This list is just an initial
+			set of changes that are required, and most of the details will need
+			to be deferred to the underlying implementors.<br>
+			<ol>
+				<li>The topology creation wizard should be modified to set the
+				value of the namespace in the topology in the new attribute.</li>
+				<ul>
+					<li>Appropriate validation errors should be created when a
+					topology is in a location that differs from its namespace.</li>
+					<li>We should now force the user to specify a name (no longer
+					provide a default).</li>
+				</ul>
+				<li>An action should be created to import an existing topology
+				to a current topology.&nbsp; This action can be invoked via:</li>
+				<ul>
+					<li>Drag and drop of a topology file from the navigator onto
+					the editor.&nbsp; (Seconday M4 path)</li>
+					<li>Import context menu on topology resource in navigator.
+					(Primary M4 path)<br>
+					</li>
+					<li>Import context menu on editor&nbsp; (post M4)<br>
+					</li>
+					<li>Updates from the creation wizard to select topologies to
+					import. (post M4)</li>
+				</ul>
+				<li>An action to "un-import" a topology will also have to be
+				enabled.&nbsp; This action will:</li>
+				<ul>
+					<li>Be invoked by selecting some indicator on the editor of
+					the imported topologies.</li>
+					<li>Clear out the imported topology representation on the
+					diagram.</li>
+					<li>Remove the import entry from the topology file.</li>
+					<li>What should happen to links that were created to imported
+					units, capabilities?&nbsp; We will mark run validation and mark
+					them as invalid, as opposed to trying to back out/delete anything
+					that may have been created cross-topology.<span
+						style="font-style: italic;"></span><br>
+					</li>
+				</ul>
+				<li>When a topology is imported, the units, links, etc. in the
+				imported topology should be displayed in the importing
+				topology.&nbsp; <br>
+				</li>
+				<ul>
+					<li>It should be visually apparent in some manner which units
+					are imported vs. in the current topology.</li>
+					<li>The imported topology will be read-only.<br>
+					</li>
+					<li>Details around this will be left to John, Kirk, and the
+					usability team.</li>
+					<li><span style="font-style: italic;">Do we want to see
+					everything?&nbsp; maybe not&nbsp; How to hide certain pieces of an
+					imported topology?</span></li>
+					<li><span style="font-style: italic;">Content-assist
+					option?&nbsp; Help with link creation in future?<br>
+					</span></li>
+					<li><span style="font-style: italic;">Have a collapsed
+					node that represents an imported topology, user can click on it to
+					open it and see all the units within it if they need to set link
+					targets?</span></li>
+					<li><span style="font-style: italic;">Somehow use
+					groups in semantic model to leverage the existing function in the
+					UI?&nbsp; This may be a nice short-term solution if we are going to
+					redo in M5 anyway.&nbsp; Better this than to have John rewrite all
+					this function.<br>
+					</span></li>
+				</ul>
+				<li>The UI-driven command that currently drives link creation
+				against the current unit in the topology will have to be modified
+				somehow such that if the link is to be created in an imported
+				topology, it should instead be created with fully qualified source
+				and target URIs in the importing topology at the top level.</li>
+				<ul>
+					<li>Unit creation would fall into this category.&nbsp;<span
+						style="font-style: italic;"> </span></li>
+				</ul>
+				<li>Imported topologies should be visible in the navigator
+				under the importing topology.</li>
+				<ul>
+					<li>Should not be able to expand it, as you can with a regular
+					topology.<br>
+					</li>
+				</ul>
+			</ol>
+			<br>
+			<br>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Resource Management Requirements [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td style="vertical-align: top;">
+		<p>Importing a topology has several reprecussions to the existing
+		frameworks and API. In particular, the validation framework relies
+		heavily on the model having all values set; no dynamic derivation is
+		currently possible.</p>
+		<p>Units may also now be referenced by links in at least three
+		different locations; the Unit itself, the containing Topology, and the
+		referencing Topology.</p>
+		<p>Three requirements must be solved by this portion of the
+		design:
+		<ul>
+			<li>Source and target of links must be resolvable</li>
+			<li>Configurable points in an imported topology requires that
+			state be maintained in the referencing topology.</li>
+			<li>The links of a unit must be resolvable in the context of the
+			referencing topology.</li>
+		</ul>
+		</p>
+		<p>The final solution has the following characteristics:
+		<ul>
+			<li>
+			<p>A formalized ConfigurationContract-InstanceConfiguration
+			relationship will be maintained between Referenced-Referencing
+			Topologies. A Topology may define a ConfigurationContract, which
+			exposes elements from the Topology that may be referenced by links
+			(as either the source or target), or be further configured (e.g., the
+			hostname of a Db2Instance). When imported, a Topology's Contract will
+			be consulted to establish what Units may be referenced and
+			configured. The values for configured state will be maintained
+			locally in an InstanceConfiguration. This relationship is represented
+			below:</p>
+			</li>
+			</ul>
+			</td>
+	</tr>
+	</table>
+<table width="500">
+	<tr>
+		<td style="vertical-align: top;">		
+			<img border="0" src="Config-Contract.gif"  >
+</td>
+	</tr>
+	</table>
+<table width="500">
+	<tr>
+		<td style="vertical-align: top;">		
+		<ul>
+			<li>
+			<p>The ConfigurationContract should be substitutable, with one 
+			ConfigurationContract declared per Topology. By default, the 
+			ConfigurationContract will default to the IdentityContract, where
+			all elements of the model are exposed to be directly referenced by
+			links, and any <i>Incomplete</i> elements may be configured. 
+			The structure of the base ConfigurationContract may look something like
+			the following:
+			</p>
+			<pre>
+	&lt;contract.topology <i>abstract = true</i>&gt;
+	&lt;/contract.topology&gt;				
+			</pre>
+			The IdentityContract may look like the following: 
+			<pre>
+	&lt;contract.identity /&gt;
+			</pre> 
+			<p>
+				The API contract of ConfigurationContract must expose 
+				methods necessary to check permissions:
+				<ul>
+					<li><code><b>boolean</b> mayReferenceByLink(<b>DeployModelOjbect</b> dmo)</code></li>
+					<li><code><b>boolean</b> mayConfigure(<b>DeployModelOjbect</b> dmo)</code></li>
+				</ul>
+			</p>
+			</li>
+<li>
+			<p>The InstanceConfiguration should identify the object being 
+			customized (Unit/Capability/Requirement), the relevant field, and 
+			then the customized value. The customized value may have a a complex
+			structure, so the configuration structure must be able to persist an 
+			<b>xsd:any</b> type. The persisted structure may look something like the
+			following:
+			<pre>
+&lt;config.topology 
+	name="{relative based on imports}"&gt;
+	&lt;config.set path=".."&gt;	(Post M4)
+		&lt;any&gt;
+	&lt;/config.set&gt;
+	&lt;config.add ..&gt; ? Needed? (Post M4)
+	&lt;/config.add&gt; 
+&lt;/config.topology&gt;				
+				</pre>
+			</p>
+			</li>			
+		</ul>
+	</td>
+	</tr>
+	</table>
+<table width="500">
+	<tr>
+		<td style="vertical-align: top;">		
+		<ul>
+			<li>
+			<p>
+			Sequence diagram of how a Proxy is resolved: </p>
+		<img border="0" src="ResolovingUnitsFromImports.gif" >	
+			</li>
+			<li>
+			<p>
+			Sequence diagram of how a hosting links are resolved:</p>
+		<img border="0" src="ResolovingLinks.gif"  >	
+			</li>
+		</ul>
+	</td>
+	</tr>
+	</table>
+
+<table width="500">
+	<tr>
+		<td style="vertical-align: top;">		
+		<ul>
+			<li>
+			<p>As validators are extended to understand the notion of
+			<i>Incomplete</i>, based on something like the Decoration Semantic, we
+			should expose Quick Fixes to expose the "Incomplete" Unit in the
+			ConfigurationContract, preventing further Warnings/Errors on it.
+			</li>
+			<li>When accessed from a referenc<b>ing</b> Topology, Units will
+			be wrapped in the <code>java.lang.reflect.Proxy</code> type, allowing
+			the interception of method invocations for getters and setters, to
+			circumvent the modification of the original, read-only, Unit loaded
+			in the referenc<b>ed</b> Topology. However, the modified and
+			persisted state will be saved in the InstanceConfiguration maintained
+			for that particular referenc<b>ed</b>Topology.
+			</p>
+			<p><b>Note:</b> The <b>Proxy</b> type uses generated bytecodes in
+			the JVM, and is eligible for JVM optimizations like other Java
+			classes compiled from source.</p>
+			</li>
+			
+			<li>
+			<p><b>Impact to Namespace API/Semantics</b>
+				<ul>
+					<li>Need project-level validator to look for conflicts within the 
+					same project (Topologies must be uniquely named per 
+					namespace, enforced across multiple Topology source folders). 
+					</li>
+				</ul>	
+			</p>
+			</li>
+			<li>
+			<p><b>Impact to Model</b>
+				<ul>
+					<li>Change Topology.getImport() to getImport<b>s</b>().
+					</li>
+					<li>New Types and Elements to support ConfigurationContract and InstanceConfiguration (described above)</li>
+					<li>Remove <code>Import.getLocation/setLocation()</code>; (<i>Under discussion</i>)</li>
+				</ul>	
+			</p>
+			</li>
+			<li>
+				<p>Storing markers could also be handled at the Proxy level, allowing a 
+				referenc<b>ing</b> Topology to maintain local validations and resolutions 
+				transparently.</p>
+			</li>
+		</ul>
+		</p>
+		<p>The similarities of this approach to a templatized Topology are
+		obvious, so the requirements for flushing out the details of how
+		Contracts/InstanceConfigurations are stored and persisted should be
+		determined by the requirements of both Topology Imports and Topology
+		Templates.</p>
+		<p>The following sequence diagram demonstrates the flow taken by the architecture
+		to resolve a referenced Unit. 
+		</td>
+	</tr>
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Validation Rules [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">
+
+			<p>It may desired to define some special validation rules around
+			imported topologies, such that only specific errors show up in
+			imported units.</p>
+			<p><b>UPDATE FOR PROXY DESIGN</b></p>
+			<p>Similarly, some thought is required around the notion of
+			decorator semantics.&nbsp; Since each topology may have a different
+			decorator semantic defined, a unit type in an imported topology may
+			be out of scope (semantic-wise) for the importing topology.</p>
+
+			<p>More discussion is required in this area.</p>
+			<p>To scope this solution for M4, it is proposed here that no
+			additional validation or decorator semantic rules be added, and the
+			decorator semantic of the current (importing) topology continues to
+			drive the content.</p>
+			<span style="font-style: italic;">Also, if a new link results
+			in a validation marker, even on a unit in an imported topology, the
+			resource markers need to be serialized in the importing
+			topology.&nbsp; This will require some changes in the validation
+			rules, and the "current" topology will need to be passed around most
+			likely.</span><br>
+			<br>
+			<br>
+			</td>
+		</tr>
+
+
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing Requrements [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tbody>
+		<tr>
+			<td>To test the functionality around topology import, JUnit(s)
+			will be required that test the following:<br>
+			<ul>
+				<li>Setting the namespace attribute on a topology</li>
+				<li>Importing a topology into a topology</li>
+				<ul>
+					<li>import action</li>
+					<li>multi-resource scribbler<br>
+					</li>
+				</ul>
+				<li>Creating cross-topology links</li>
+				<ul>
+					<li>dependency, hosting, group<br>
+					</li>
+				</ul>
+				<li>Creating intra-topology links (legacy)</li>
+				<li>topology lookup APIs (namespace)</li>
+				<li>Unimport a topology<br>
+				</li>
+				<li>.....<br>
+				</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Chad Holliday</b> <i>(chadh{at}us.ibm.com)</i>.
+
+
+
+
+		
+		<p><i>Copyright (c) 2007 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table border="0" cellpadding="0">
+	<tbody>
+		<tr style="">
+			<td>
+			<p><b><span
+				style="font-size: 10pt; font-family: Arial; color: white;">[<a
+				href="overview-summary.html"><span style="color: lightblue;">Index</span></a>]
+			[<a href="#top"><span style="color: lightblue;">Top</span></a>]</span></b><b><span
+				style="font-size: 10pt; font-family: Arial;">
+			<p></p>
+			</span></b></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

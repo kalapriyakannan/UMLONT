@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/DatabaseServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/net/BindAddress.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/sybase/SybaseDevice.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/sybase/SybaseConfigValue.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/sybase/SybaseEngineProcess.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/sybase/SybaseDatabase.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/sybase/SybaseServerProcess.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.sybase.SybaseServer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.db.DatabaseServer">
+        <xsd:sequence>
+          <xsd:element name="configValues" type="coll:com.collation.platform.model.topology.app.db.sybase.SybaseConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="serverProcesses" type="coll:com.collation.platform.model.topology.app.db.sybase.SybaseServerProcess" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="engineProcesses" type="coll:com.collation.platform.model.topology.app.db.sybase.SybaseEngineProcess" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="fullVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="databases" type="coll:com.collation.platform.model.topology.app.db.sybase.SybaseDatabase" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="devices" type="coll:com.collation.platform.model.topology.app.db.sybase.SybaseDevice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="bindAddresses" type="coll:com.collation.platform.model.topology.net.BindAddress" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

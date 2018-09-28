@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+name="deploymanager template">
+   <core:annotation context="topology_root">
+      <core:detail key="root1" value="WebSphere5DeploymentManagerUnit"/>   
+   </core:annotation>
+   
+  <was:unit.wasDeploymentManagerUnit name="WebSphere5DeploymentManagerUnit">
+    <was:capability.wasDeploymentManager name="WebSphere deployment Manager" displayName="WebSphere deployment Manager" linkType="any"/>
+    <os:capability.portConsumer name="Port Consumer" displayName="Port Consumer" linkType="any"/>      
+    
+    <core:requirement displayName="Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+		<constraint:constraint.equals name="dmgr" attributeName="profileType" value="dmgr"/>
+		<constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="5.1"/>
+    </core:requirement>
+    
+   <!-- <core:requirement mutable="true" name="Hosting_on_OperatingSystem" displayName="Hosted on a OS" dmoType="os:OperatingSystem" linkType="hosting"/>  -->  
+        
+   <core:link.hosting name="ports" target="/portConfiguration"/>
+
+  </was:unit.wasDeploymentManagerUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true">
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="cell_discovery_address" name="cell_discovery_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="cell_discovery_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9350" portName="dcs_unicast_address" transportLayerProtocol="TCP">		
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+     <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+     <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">      
+               <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+ 
+  <!-- MK 8/8/2006 replaced all of the below PortConfigUnits with the single one above
+  <os:unit.portConfigUnit displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  
+	
+  <os:unit.portConfigUnit displayName="CELL_DISCOVERY_ADDRESS" name="CELL_DISCOVERY_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="CELL_DISCOVERY_ADDRESS" name="CELL_DISCOVERY_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="DCS_UNICAST_ADDRESS" name="DCS_UNICAST_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="DCS_UNICAST_ADDRESS" name="DCS_UNICAST_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="ORB_LISTENER_ADDRESS" name="ORB_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="ORB_LISTENER_ADDRESS" name="ORB_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="SOAP_CONNECTOR_ADDRESS" name="SOAP_CONNECTOR_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="SOAP_CONNECTOR_ADDRESS" name="SOAP_CONNECTOR_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="WC_adminhost" name="WC_adminhost" configurationUnit="true">
+    <os:capability.port displayName="WC_adminhost" name="WC_adminhost" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+
+  <os:unit.portConfigUnit displayName="WC_adminhost_secure" name="WC_adminhost_secure" configurationUnit="true">
+    <os:capability.port displayName="WC_adminhost_secure" name="WC_adminhost_secure" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  			
+-->
+</core:topology>

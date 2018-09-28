@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" 
+
+name="SLES 10 Template">
+  <core:annotation context="topology_root">
+     <core:detail key="root1" value="SLES10"/>   
+  </core:annotation>
+  <os:unit.linuxOperatingSystemUnit name="SLES10" conceptual="false">
+    <os:capability.suseLinuxOperatingSystem name="SLES10" displayName="SLES 10" linkType="any" os.type="Linux" os.distribution="SLES" os.version="10"/>
+	<os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false" />      
+    </os:capability.unixDirectory>
+    <virtualization:capability.xenHypervisor displayName="Xen" name="Xen" linkType="any"/>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals name="cpuArchitecture" displayName="cpuArchitecture" attributeName="cpuArchitecture"  value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="SUSELinuxHostsRoot" target="/root"/>    
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxLocalUser name="root" configurationUnit="true" conceptual="false">
+    <os:capability.suseLinuxLocalUser displayName="root" name="SUSELinuxLocalUser" linkType="dependency" userId="root" >
+      <core:attributeMetaData attributeName="userPassword" encrypted="true" />      
+    </os:capability.suseLinuxLocalUser>
+    <core:requirement displayName="SUSELinux Operating System" mutable="true" name="SUSELinuxOperatingSystem" dmoType="os:SUSELinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType"  value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint" />      
+    </core:requirement>
+  </os:unit.linuxLocalUser>       
+</core:topology>

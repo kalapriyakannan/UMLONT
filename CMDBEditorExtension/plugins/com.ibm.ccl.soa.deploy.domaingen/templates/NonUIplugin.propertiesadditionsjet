@@ -1,0 +1,12 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="NonUIPluginPropertiesAdditionsTemplate" %>
+<% List args=(List) argument; %>
+<% String ucModelPackagePrefix=(String)args.get(0); %>
+<% String lcModelPackagePrefix=(String)args.get(1); %>
+
+extension.<%=lcModelPackagePrefix%>Domain=<%=ucModelPackagePrefix%> domain
+
+<% for (int i=2; i<args.size(); ++i) { %>
+<%=lcModelPackagePrefix%><%=args.get(i)%>Tool.Label=<%=args.get(i)%>
+<%=lcModelPackagePrefix%><%=args.get(i)%>Tool.Description=<%=args.get(i)%>
+
+<% } %>

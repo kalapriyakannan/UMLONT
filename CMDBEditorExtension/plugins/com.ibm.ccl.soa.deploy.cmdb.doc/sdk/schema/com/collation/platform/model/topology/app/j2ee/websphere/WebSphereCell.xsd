@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEDomain.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereCluster.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/ComputerSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereGlobalSecuritySettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereDeploymentManager.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereNode.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/ConfigFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalContent.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereVariable.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereSharedLibrary.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereVirtualHost.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereCell">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEDomain">
+        <xsd:sequence>
+          <xsd:element name="configFile" type="coll:com.collation.platform.model.topology.app.ConfigFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="configContents" type="coll:com.collation.platform.model.topology.core.LogicalContent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="type" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="nodes" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereNode" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="host" type="coll:com.collation.platform.model.topology.sys.ComputerSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="rootDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="virtualHosts" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereVirtualHost" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="deploymentManager" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereDeploymentManager" nillable="true" minOccurs="0"/>
+          <xsd:element name="globalSecuritySettings" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereGlobalSecuritySettings" nillable="true" minOccurs="0"/>
+          <xsd:element name="variables" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereVariable" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="clusters" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereCluster" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="discoveryProtocol" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="libraries" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereSharedLibrary" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

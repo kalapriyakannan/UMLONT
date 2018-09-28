@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../../schemas/genericsoftware/genericsoftware.xsd#/ ../../schemas/core.xsd#/ ../../schemas/model/Ecore.xsd#/ ../../schemas/business.xsd#/"
+    outputs="../core.ecore#/ ../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/ genericsoftware.ecore#/"
+    topToBottom="true">
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33"
+      outputs="../core.ecore#//StringToStringEntry">
+    <nested inputs="../../schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33/XSDAttributeUse"
+        outputs="../core.ecore#//StringToStringEntry/key"/>
+    <nested inputs="../../schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33/XSDAttributeUse=1"
+        outputs="../core.ecore#//StringToStringEntry/value"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32"
+      outputs="../core.ecore#//Annotation">
+    <nested inputs="../../schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Annotation/any"/>
+    <nested inputs="../../schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Annotation/details"/>
+    <nested inputs="../../schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="../core.ecore#//Annotation/context"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//annotation;XSDElementDeclaration=27" outputs="../core.ecore#//DeployCoreRoot/annotation"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//boolean;XSDSimpleTypeDefinition=8"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1"
+      outputs="../core.ecore#//AttributeMetaData">
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../core.ecore#//AttributeMetaData/attributeName"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../core.ecore#//AttributeMetaData/description"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=3"
+        outputs="../core.ecore#//AttributeMetaData/encrypted"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=4"
+        outputs="../core.ecore#//AttributeMetaData/encryptionRequired"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=2"
+        outputs="../core.ecore#//AttributeMetaData/mutable"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=5"
+        outputs="../core.ecore#//AttributeMetaData/optional"/>
+    <nested inputs="../../schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=6"
+        outputs="../core.ecore#//AttributeMetaData/parameter"/>
+  </nested>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//anyType;XSDComplexTypeDefinition=27"
+      outputs="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EJavaObject;XSDSimpleTypeDefinition=22"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EString;XSDSimpleTypeDefinition=30"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/key"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/value"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/details"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/contents"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/references"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/source"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/eAnnotations"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+    <nested inputs="../../schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EJavaClass;XSDSimpleTypeDefinition=21"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaClass"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EBooleanObject;XSDSimpleTypeDefinition=3"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EBoolean;XSDSimpleTypeDefinition=2"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=42"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EIntegerObject;XSDSimpleTypeDefinition=20"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EInt;XSDSimpleTypeDefinition=19"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=2"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/defaultValue"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClass"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClassName"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType/serializable"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2"
+      outputs="../core.ecore#//ExtendedAttribute">
+    <nested inputs="../../schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//ExtendedAttribute/data"/>
+    <nested inputs="../../schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../core.ecore#//ExtendedAttribute/name"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Constraint;XSDComplexTypeDefinition=4"
+      outputs="../core.ecore#//Constraint"/>
+  <nested inputs="../../schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=2"
+      outputs="../core.ecore#//DeployModelObject/description"/>
+  <nested inputs="../../schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse"
+      outputs="../core.ecore#//DeployModelObject/displayName"/>
+  <nested inputs="../../schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=1"
+      outputs="../core.ecore#//DeployModelObject/name"/>
+  <nested inputs="../../schemas/core.xsd#//IStatus;XSDSimpleTypeDefinition=11" outputs="../core.ecore#//IStatus"/>
+  <nested inputs="../../schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19"
+      outputs="../core.ecore#//Stereotype">
+    <nested inputs="../../schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse"
+        outputs="../core.ecore#//Stereotype/keyword"/>
+    <nested inputs="../../schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse=1"
+        outputs="../core.ecore#//Stereotype/profile"/>
+    <nested inputs="../../schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse=2"
+        outputs="../core.ecore#//Stereotype/required"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//VersionString;XSDSimpleTypeDefinition=7"
+      outputs="../core.ecore#//VersionString"/>
+  <nested inputs="../../schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../core.ecore#//Capability/buildVersion"/>
+  <nested inputs="../../schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6"
+      outputs="../core.ecore#//CapabilityLinkTypes">
+    <nested inputs="../../schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet"
+        outputs="../core.ecore#//CapabilityLinkTypes/hosting"/>
+    <nested inputs="../../schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//CapabilityLinkTypes/dependency"/>
+    <nested inputs="../../schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//CapabilityLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../core.ecore#//Capability/origin"/>
+  <nested inputs="../../schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20"
+      outputs="../core.ecore#//Capability">
+    <nested inputs="../../schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Capability/stereotypes"/>
+    <nested inputs="../../schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="../core.ecore#//Capability/linkType"/>
+  </nested>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=23"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="../../schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23"
+      outputs="../core.ecore#//DeployLink">
+    <nested inputs="../../schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23/XSDAttributeUse=1"
+        outputs="../core.ecore#//DeployLink/sourceURI"/>
+    <nested inputs="../../schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23/XSDAttributeUse"
+        outputs="../core.ecore#//DeployLink/targetURI"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//DependencyLink;XSDComplexTypeDefinition=24"
+      outputs="../core.ecore#//DependencyLink"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=24"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
+  <nested inputs="../../schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5"
+      outputs="../core.ecore#//RequirementLinkTypes">
+    <nested inputs="../../schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet"
+        outputs="../core.ecore#//RequirementLinkTypes/hosting"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//RequirementLinkTypes/dependency"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//RequirementLinkTypes/member"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=3"
+        outputs="../core.ecore#//RequirementLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4"
+      outputs="../core.ecore#//RequirementUsage">
+    <nested inputs="../../schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet"
+        outputs="../core.ecore#//RequirementUsage/required"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//RequirementUsage/optional"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//RequirementUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=6"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=2"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=4"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/many"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=5"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/required"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=3"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EParameter;XSDComplexTypeDefinition=13"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/changeable"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValue"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=6"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/transient"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=5"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/unsettable"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/volatile"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/eAttributeType"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/iD"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/container"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=3"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=4"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eReferenceType"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=2"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/resolveProxies"/>
+  </nested>
+  <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2"
+      outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass">
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eStructuralFeatures"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=3"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllAttributes"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=7"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllContainments"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=8"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllOperations"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=4"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllReferences"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=9"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllStructuralFeatures"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=10"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllSuperTypes"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=6"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=11"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eIDAttribute"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=5"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eReferences"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
+    <nested inputs="../../schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/interface"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3"
+      outputs="../core.ecore#//RequirementExpressionUsage">
+    <nested inputs="../../schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet"
+        outputs="../core.ecore#//RequirementExpressionUsage/required"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//RequirementExpressionUsage/optional"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//RequirementExpressionUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22"
+      outputs="../core.ecore#//RequirementExpression">
+    <nested inputs="../../schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="../core.ecore#//RequirementExpression/attributeName"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=2"
+        outputs="../core.ecore#//RequirementExpression/interpreter"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=1"
+        outputs="../core.ecore#//RequirementExpression/use"/>
+    <nested inputs="../../schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=3"
+        outputs="../core.ecore#//RequirementExpression/value"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21"
+      outputs="../core.ecore#//Requirement">
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Requirement/dependencyLinkGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Requirement/link"/>
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=2"
+        outputs="../core.ecore#//Requirement/dmoType"/>
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=3"
+        outputs="../core.ecore#//Requirement/extends"/>
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse"
+        outputs="../core.ecore#//Requirement/linkType"/>
+    <nested inputs="../../schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=1"
+        outputs="../core.ecore#//Requirement/use"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//UnitLink;XSDComplexTypeDefinition=25" outputs="../core.ecore#//UnitLink"/>
+  <nested inputs="../../schemas/core.xsd#//ConstraintLink;XSDComplexTypeDefinition=26"
+      outputs="../core.ecore#//ConstraintLink"/>
+  <nested inputs="../../schemas/core.xsd#//RealizationLink;XSDComplexTypeDefinition=27"
+      outputs="../core.ecore#//RealizationLink"/>
+  <nested inputs="../../schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../core.ecore#//Unit/buildVersion"/>
+  <nested inputs="../../schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1"
+      outputs="../core.ecore#//InstallState">
+    <nested inputs="../../schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="../core.ecore#//InstallState/installed"/>
+    <nested inputs="../../schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//InstallState/notInstalled"/>
+    <nested inputs="../../schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//InstallState/unknown"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../core.ecore#//Unit/origin"/>
+  <nested inputs="../../schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2"
+      outputs="../core.ecore#//PublishIntent">
+    <nested inputs="../../schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet"
+        outputs="../core.ecore#//PublishIntent/publish"/>
+    <nested inputs="../../schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//PublishIntent/doNotPublish"/>
+    <nested inputs="../../schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//PublishIntent/unknown"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//HostingLink;XSDComplexTypeDefinition=30"
+      outputs="../core.ecore#//HostingLink"/>
+  <nested inputs="../../schemas/core.xsd#//MemberLink;XSDComplexTypeDefinition=31"
+      outputs="../core.ecore#//MemberLink"/>
+  <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15" outputs="../core.ecore#//Unit">
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Unit/capabilityGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Unit/capabilities"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Unit/requirementGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Unit/requirements"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//Unit/unitLinksGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//Unit/unitLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//Unit/constraintLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../core.ecore#//Unit/realizationLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="../core.ecore#//Unit/stereotypes"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../core.ecore#//Unit/conceptual"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../core.ecore#//Unit/configurationUnit"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../core.ecore#//Unit/goalInstallState"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../core.ecore#//Unit/initInstallState"/>
+    <nested inputs="../../schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../core.ecore#//Unit/publishIntent"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Property;XSDComplexTypeDefinition=10" outputs="../core.ecore#//Property">
+    <nested inputs="../../schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse=1"
+        outputs="../core.ecore#//Property/name"/>
+    <nested inputs="../../schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse"
+        outputs="../core.ecore#//Property/select"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14"
+      outputs="../core.ecore#//Augmentation">
+    <nested inputs="../../schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Augmentation/additions"/>
+    <nested inputs="../../schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../core.ecore#//Augmentation/feature"/>
+    <nested inputs="../../schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../core.ecore#//Augmentation/select"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13"
+      outputs="../core.ecore#//Instantiation">
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Instantiation/configuredCapabilityGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Instantiation/configuredCapabilities"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Instantiation/configuredRequirementsGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Instantiation/configuredRequirements"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//Instantiation/configuredProperties"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//Instantiation/augmentationGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//Instantiation/augmentations"/>
+    <nested inputs="../../schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDAttributeUse"
+        outputs="../core.ecore#//Instantiation/referenced"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12"
+      outputs="../core.ecore#//InstanceConfiguration">
+    <nested inputs="../../schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//InstanceConfiguration/instantiations"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Import;XSDComplexTypeDefinition=6" outputs="../core.ecore#//Import">
+    <nested inputs="../../schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Import/instanceConfiguration"/>
+    <nested inputs="../../schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="../core.ecore#//Import/namespace"/>
+    <nested inputs="../../schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="../core.ecore#//Import/pattern"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//ConfigurationContract;XSDComplexTypeDefinition=7"
+      outputs="../core.ecore#//ConfigurationContract"/>
+  <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3" outputs="../core.ecore#//Topology">
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Topology/unitGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Topology/units"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Topology/unitLinksGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//Topology/unitLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//Topology/constraintLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//Topology/dependencyLinkGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//Topology/dependencyLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../core.ecore#//Topology/realizationLinks"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="../core.ecore#//Topology/imports"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../core.ecore#//Topology/configurationContractGroup"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../core.ecore#//Topology/configurationContract"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../core.ecore#//Topology/decoratorSemantic"/>
+    <nested inputs="../../schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../core.ecore#//Topology/namespace"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition"
+      outputs="../core.ecore#//DeployModelObject">
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//DeployModelObject/annotations"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//DeployModelObject/attributeMetaData"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//DeployModelObject/extendedAttributes"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//DeployModelObject/artifactGroup"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//DeployModelObject/artifacts"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../core.ecore#//DeployModelObject/constraintGroup"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../core.ecore#//DeployModelObject/constraints"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../core.ecore#//DeployModelObject/mutable"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Artifact;XSDComplexTypeDefinition=16" outputs="../core.ecore#//Artifact"/>
+  <nested inputs="../../schemas/core.xsd#//artifact;XSDElementDeclaration=12" outputs="../core.ecore#//DeployCoreRoot/artifact"/>
+  <nested inputs="../../schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18"
+      outputs="../core.ecore#//FileArtifact">
+    <nested inputs="../../schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//FileArtifact/fileURIs"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//artifact.file;XSDElementDeclaration=14"
+      outputs="../core.ecore#//DeployCoreRoot/artifactFile"/>
+  <nested inputs="../../schemas/core.xsd#//BaseComponentUnit;XSDComplexTypeDefinition=5"
+      outputs="../core.ecore#//BaseComponentUnit"/>
+  <nested inputs="../../schemas/core.xsd#//baseComponent;XSDElementDeclaration=3"
+      outputs="../core.ecore#//DeployCoreRoot/baseComponent"/>
+  <nested inputs="../../schemas/core.xsd#//unit;XSDElementDeclaration=11" outputs="../core.ecore#//DeployCoreRoot/unit"/>
+  <nested inputs="../../schemas/core.xsd#//capability;XSDElementDeclaration=16" outputs="../core.ecore#//DeployCoreRoot/capability"/>
+  <nested inputs="../../schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34"
+      outputs="../core.ecore#//BundleCapability">
+    <nested inputs="../../schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34/XSDAttributeUse"
+        outputs="../core.ecore#//BundleCapability/id"/>
+    <nested inputs="../../schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34/XSDAttributeUse=1"
+        outputs="../core.ecore#//BundleCapability/version"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//capability.bundle;XSDElementDeclaration=28"
+      outputs="../core.ecore#//DeployCoreRoot/capabilityBundle"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//integer;XSDSimpleTypeDefinition=38"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+  <nested inputs="../../schemas/core.xsd#//PortType;XSDSimpleTypeDefinition=10" outputs="../core.ecore#//PortType"/>
+  <nested inputs="../../schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29"
+      outputs="../core.ecore#//CommunicationCapability">
+    <nested inputs="../../schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29/XSDAttributeUse"
+        outputs="../core.ecore#//CommunicationCapability/applicationLayerProtocol"/>
+    <nested inputs="../../schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29/XSDAttributeUse=1"
+        outputs="../core.ecore#//CommunicationCapability/port"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//capability.communication;XSDElementDeclaration=24"
+      outputs="../core.ecore#//DeployCoreRoot/capabilityCommunication"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3"
+      outputs="genericsoftware.ecore#//SoftwareInstall">
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse=4"
+        outputs="genericsoftware.ecore#//SoftwareInstall/executableName"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse=3"
+        outputs="genericsoftware.ecore#//SoftwareInstall/installDate"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="genericsoftware.ecore#//SoftwareInstall/installedLocation"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="genericsoftware.ecore#//SoftwareInstall/productId"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse=2"
+        outputs="genericsoftware.ecore#//SoftwareInstall/productName"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstall;XSDComplexTypeDefinition=3/XSDAttributeUse=5"
+        outputs="genericsoftware.ecore#//SoftwareInstall/publisher"/>
+  </nested>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//capability.softwareInstall;XSDElementDeclaration=3"
+      outputs="genericsoftware.ecore#//GenericsoftwareRoot/capabilitySoftwareInstall"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwarePatch;XSDComplexTypeDefinition=1"
+      outputs="genericsoftware.ecore#//SoftwarePatch">
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwarePatch;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="genericsoftware.ecore#//SoftwarePatch/installDate"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwarePatch;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="genericsoftware.ecore#//SoftwarePatch/patchID"/>
+  </nested>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//capability.softwarePatch;XSDElementDeclaration=1"
+      outputs="genericsoftware.ecore#//GenericsoftwareRoot/capabilitySoftwarePatch"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition"
+      outputs="genericsoftware.ecore#//Version">
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="genericsoftware.ecore#//Version/buildLevel"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="genericsoftware.ecore#//Version/level"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="genericsoftware.ecore#//Version/majorVersion"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse=3"
+        outputs="genericsoftware.ecore#//Version/modifier"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse=4"
+        outputs="genericsoftware.ecore#//Version/release"/>
+    <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//Version;XSDComplexTypeDefinition/XSDAttributeUse=5"
+        outputs="genericsoftware.ecore#//Version/versionString"/>
+  </nested>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//capability.version;XSDElementDeclaration"
+      outputs="genericsoftware.ecore#//GenericsoftwareRoot/capabilityVersion"/>
+  <nested inputs="../../schemas/core.xsd#//config.topology;XSDElementDeclaration=9"
+      outputs="../core.ecore#//DeployCoreRoot/configTopology"/>
+  <nested inputs="../../schemas/core.xsd#//constraint;XSDElementDeclaration=2" outputs="../core.ecore#//DeployCoreRoot/constraint"/>
+  <nested inputs="../../schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9" outputs="../core.ecore#//Exported">
+    <nested inputs="../../schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=3"
+        outputs="../core.ecore#//Exported/configurable"/>
+    <nested inputs="../../schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=2"
+        outputs="../core.ecore#//Exported/linkable"/>
+    <nested inputs="../../schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../core.ecore#//Exported/name"/>
+    <nested inputs="../../schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=1"
+        outputs="../core.ecore#//Exported/path"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11"
+      outputs="../core.ecore#//ExportedUnit">
+    <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//ExportedUnit/exportedCapabilities"/>
+    <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//ExportedUnit/exportedRequirements"/>
+    <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../core.ecore#//ExportedUnit/exportedProperties"/>
+    <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//ExportedUnit/constraintGroup"/>
+    <nested inputs="../../schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../core.ecore#//ExportedUnit/augmentedConstraints"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition" outputs="../core.ecore#//Visibility">
+    <nested inputs="../../schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../core.ecore#//Visibility/private"/>
+    <nested inputs="../../schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="../core.ecore#//Visibility/public"/>
+    <nested inputs="../../schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="../core.ecore#//Visibility/publicEditable"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8"
+      outputs="../core.ecore#//ExplicitContract">
+    <nested inputs="../../schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//ExplicitContract/exportedUnits"/>
+    <nested inputs="../../schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../core.ecore#//ExplicitContract/properties"/>
+    <nested inputs="../../schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse=1"
+        outputs="../core.ecore#//ExplicitContract/defaultConceptualPolicy"/>
+    <nested inputs="../../schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse"
+        outputs="../core.ecore#//ExplicitContract/defaultPolicy"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//contract.explicit;XSDElementDeclaration=6"
+      outputs="../core.ecore#//DeployCoreRoot/contractExplicit"/>
+  <nested inputs="../../schemas/core.xsd#//contract.topology;XSDElementDeclaration=5"
+      outputs="../core.ecore#//DeployCoreRoot/contractTopology"/>
+  <nested inputs="../../schemas/core.xsd#//deployModelObject;XSDElementDeclaration"
+      outputs="../core.ecore#//DeployCoreRoot/deployModelObject"/>
+  <nested inputs="../../schemas/core.xsd#//import;XSDElementDeclaration=4" outputs="../core.ecore#//DeployCoreRoot/import"/>
+  <nested inputs="../../schemas/core.xsd#//instantiation;XSDElementDeclaration=10"
+      outputs="../core.ecore#//DeployCoreRoot/instantiation"/>
+  <nested inputs="../../schemas/business.xsd#//Interface;XSDComplexTypeDefinition"
+      outputs="../core.ecore#//Interface"/>
+  <nested inputs="../../schemas/business.xsd#//interface;XSDElementDeclaration" outputs="../core.ecore#//DeployCoreRoot/interface"/>
+  <nested inputs="../../schemas/core.xsd#//link.constraint;XSDElementDeclaration=22"
+      outputs="../core.ecore#//DeployCoreRoot/linkConstraint"/>
+  <nested inputs="../../schemas/core.xsd#//link.dependency;XSDElementDeclaration=20"
+      outputs="../core.ecore#//DeployCoreRoot/linkDependency"/>
+  <nested inputs="../../schemas/core.xsd#//link.deploy;XSDElementDeclaration=19" outputs="../core.ecore#//DeployCoreRoot/linkDeploy"/>
+  <nested inputs="../../schemas/core.xsd#//link.hosting;XSDElementDeclaration=25"
+      outputs="../core.ecore#//DeployCoreRoot/linkHosting"/>
+  <nested inputs="../../schemas/core.xsd#//link.unit;XSDElementDeclaration=21" outputs="../core.ecore#//DeployCoreRoot/linkUnit"/>
+  <nested inputs="../../schemas/core.xsd#//link.member;XSDElementDeclaration=26" outputs="../core.ecore#//DeployCoreRoot/linkMember"/>
+  <nested inputs="../../schemas/core.xsd#//link.realization;XSDElementDeclaration=23"
+      outputs="../core.ecore#//DeployCoreRoot/linkRealization"/>
+  <nested inputs="../../schemas/core.xsd#//property;XSDElementDeclaration=8" outputs="../core.ecore#//DeployCoreRoot/property"/>
+  <nested inputs="../../schemas/business.xsd#//ServiceRange;XSDSimpleTypeDefinition=1"
+      outputs="../core.ecore#//ServiceRange"/>
+  <nested inputs="../../schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2"
+      outputs="../core.ecore#//Reference">
+    <nested inputs="../../schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Reference/interfaceGroup"/>
+    <nested inputs="../../schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Reference/interface"/>
+    <nested inputs="../../schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../core.ecore#//Reference/range"/>
+  </nested>
+  <nested inputs="../../schemas/business.xsd#//reference;XSDElementDeclaration=2"
+      outputs="../core.ecore#//DeployCoreRoot/reference"/>
+  <nested inputs="../../schemas/core.xsd#//requirement;XSDElementDeclaration=17" outputs="../core.ecore#//DeployCoreRoot/requirement"/>
+  <nested inputs="../../schemas/core.xsd#//req_expr;XSDElementDeclaration=18" outputs="../core.ecore#//DeployCoreRoot/reqExpr"/>
+  <nested inputs="../../schemas/business.xsd#//ServiceVersion;XSDSimpleTypeDefinition"
+      outputs="../core.ecore#//ServiceVersion"/>
+  <nested inputs="../../schemas/business.xsd#//Service;XSDComplexTypeDefinition=1"
+      outputs="../core.ecore#//Service">
+    <nested inputs="../../schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Service/interfaceGroup"/>
+    <nested inputs="../../schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//Service/interface"/>
+    <nested inputs="../../schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../core.ecore#//Service/protocol"/>
+    <nested inputs="../../schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../core.ecore#//Service/version"/>
+  </nested>
+  <nested inputs="../../schemas/business.xsd#//service;XSDElementDeclaration=1" outputs="../core.ecore#//DeployCoreRoot/service"/>
+  <nested inputs="../../schemas/business.xsd#//SoftwareComponent;XSDComplexTypeDefinition=3"
+      outputs="../core.ecore#//SoftwareComponent"/>
+  <nested inputs="../../schemas/business.xsd#//softwareComponent;XSDElementDeclaration=3"
+      outputs="../core.ecore#//DeployCoreRoot/softwareComponent"/>
+  <nested inputs="../../schemas/core.xsd#//stereotype;XSDElementDeclaration=15" outputs="../core.ecore#//DeployCoreRoot/stereotype"/>
+  <nested inputs="../../schemas/core.xsd#//topology;XSDElementDeclaration=1" outputs="../core.ecore#//DeployCoreRoot/topology"/>
+  <nested inputs="../../schemas/core.xsd#//ConceptualNode;XSDComplexTypeDefinition=17"
+      outputs="../core.ecore#//ConceptualNode"/>
+  <nested inputs="../../schemas/core.xsd#//unit.ConceptualNode;XSDElementDeclaration=13"
+      outputs="../core.ecore#//DeployCoreRoot/unitConceptualNode"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwareInstallUnit;XSDComplexTypeDefinition=4"
+      outputs="genericsoftware.ecore#//SoftwareInstallUnit"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//unit.softwareInstallUnit;XSDElementDeclaration=4"
+      outputs="genericsoftware.ecore#//GenericsoftwareRoot/unitSoftwareInstallUnit"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//SoftwarePatchUnit;XSDComplexTypeDefinition=2"
+      outputs="genericsoftware.ecore#//SoftwarePatchUnit"/>
+  <nested inputs="../../schemas/genericsoftware/genericsoftware.xsd#//unit.softwarePatchUnit;XSDElementDeclaration=2"
+      outputs="genericsoftware.ecore#//GenericsoftwareRoot/unitSoftwarePatchUnit"/>
+  <nested inputs="../../schemas/core.xsd#//visibility;XSDElementDeclaration=7" outputs="../core.ecore#//DeployCoreRoot/visibility"/>
+  <nested inputs="../../schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28"
+      outputs="../core.ecore#//DeployModelObjectSet">
+    <nested inputs="../../schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//DeployModelObjectSet/deployModelObjectGroup"/>
+    <nested inputs="../../schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../core.ecore#//DeployModelObjectSet/deployModelObject"/>
+  </nested>
+  <nested inputs="../../schemas/core.xsd#//GenericVersionString;XSDSimpleTypeDefinition=8"
+      outputs="../core.ecore#//GenericVersionString"/>
+  <nested inputs="../../schemas/core.xsd#//VersionRange;XSDSimpleTypeDefinition=9"
+      outputs="../core.ecore#//VersionRange"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

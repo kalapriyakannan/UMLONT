@@ -1,0 +1,690 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmnet/1.0.0/"
+	xmlns:cdmNet="http://www.ibm.com/ccl/soa/deploy/cdmnet/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmNetRoot"
+	ecore:name="cdmNet"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmnet"
+	ecore:nsPrefix="cdmNet">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.acl" substitutionGroup="core:capability" type="cdmNet:Acl"/>
+	<complexType name="Acl">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="AclIndex" type="int" />
+				<attribute name="AclName" type="string" />
+				<attribute name="AclStatus" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aclUnit" substitutionGroup="core:unit" type="cdmNet:AclUnit"/>
+	<complexType name="AclUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipRoute" substitutionGroup="core:capability" type="cdmNet:IpRoute"/>
+	<complexType name="IpRoute">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Protocol" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipRouteUnit" substitutionGroup="core:unit" type="cdmNet:IpRouteUnit"/>
+	<complexType name="IpRouteUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.netBIOSProtocolEndpoint" substitutionGroup="core:capability" type="cdmNet:NetBIOSProtocolEndpoint"/>
+	<complexType name="NetBIOSProtocolEndpoint">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpoint">
+				<attribute name="NodeName" type="string" />
+				<attribute name="ScopeID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.netBIOSProtocolEndpointUnit" substitutionGroup="core:unit" type="cdmNet:NetBIOSProtocolEndpointUnit"/>
+	<complexType name="NetBIOSProtocolEndpointUnit">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.udpPort" substitutionGroup="core:capability" type="cdmNet:UdpPort"/>
+	<complexType name="UdpPort">
+		<complexContent>
+			<extension base="cdmNet:TransportEndpoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.udpPortUnit" substitutionGroup="core:unit" type="cdmNet:UdpPortUnit"/>
+	<complexType name="UdpPortUnit">
+		<complexContent>
+			<extension base="cdmNet:TransportEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.segment" substitutionGroup="core:capability" type="cdmNet:Segment"/>
+	<complexType name="Segment">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MTU" type="int" />
+				<attribute name="Layer1Type" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.segmentUnit" substitutionGroup="core:unit" type="cdmNet:SegmentUnit"/>
+	<complexType name="SegmentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipInterface" substitutionGroup="core:capability" type="cdmNet:IpInterface"/>
+	<complexType name="IpInterface">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PortList" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipInterfaceUnit" substitutionGroup="core:unit" type="cdmNet:IpInterfaceUnit"/>
+	<complexType name="IpInterfaceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipNetwork" substitutionGroup="core:capability" type="cdmNet:IpNetwork"/>
+	<complexType name="IpNetwork">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Netmask" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="SubnetAddress" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipNetworkUnit" substitutionGroup="core:unit" type="cdmNet:IpNetworkUnit"/>
+	<complexType name="IpNetworkUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipV4Address" substitutionGroup="core:capability" type="cdmNet:IpV4Address"/>
+	<complexType name="IpV4Address">
+		<complexContent>
+			<extension base="cdmNet:IpAddress">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipV4AddressUnit" substitutionGroup="core:unit" type="cdmNet:IpV4AddressUnit"/>
+	<complexType name="IpV4AddressUnit">
+		<complexContent>
+			<extension base="cdmNet:IpAddressUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipAddress" substitutionGroup="core:capability" type="cdmNet:IpAddress"/>
+	<complexType name="IpAddress">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DotNotation" type="string" />
+				<attribute name="AddressSpace" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipAddressUnit" substitutionGroup="core:unit" type="cdmNet:IpAddressUnit"/>
+	<complexType name="IpAddressUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.firewall" substitutionGroup="core:capability" type="cdmNet:Firewall"/>
+	<complexType name="Firewall">
+		<complexContent>
+			<extension base="cdmNet:VipFunction">
+				<attribute name="FwMinor" type="int" />
+				<attribute name="FwMajor" type="int" />
+				<attribute name="FwProduct" type="string" />
+				<attribute name="FwFilterName" type="string" />
+				<attribute name="FwModuleState" type="string" />
+				<attribute name="FwVersionInfo" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.firewallUnit" substitutionGroup="core:unit" type="cdmNet:FirewallUnit"/>
+	<complexType name="FirewallUnit">
+		<complexContent>
+			<extension base="cdmNet:VipFunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vlan" substitutionGroup="core:capability" type="cdmNet:Vlan"/>
+	<complexType name="Vlan">
+		<complexContent>
+			<extension base="cdmNet:Bridge">
+				<attribute name="MgmtDomainName" type="string" />
+				<attribute name="VlanId" type="int" />
+				<attribute name="VlanName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vlanUnit" substitutionGroup="core:unit" type="cdmNet:VlanUnit"/>
+	<complexType name="VlanUnit">
+		<complexContent>
+			<extension base="cdmNet:BridgeUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.router" substitutionGroup="core:capability" type="cdmNet:Router"/>
+	<complexType name="Router">
+		<complexContent>
+			<extension base="cdmBase:Function">
+				<attribute name="Forwarding" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.routerUnit" substitutionGroup="core:unit" type="cdmNet:RouterUnit"/>
+	<complexType name="RouterUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPRealServer" substitutionGroup="core:capability" type="cdmNet:BigIPRealServer"/>
+	<complexType name="BigIPRealServer">
+		<complexContent>
+			<extension base="cdmNet:RealServer">
+				<attribute name="MemberPriority" type="int" />
+				<attribute name="RealServerGroupName" type="string" />
+				<attribute name="MemberRatio" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPRealServerUnit" substitutionGroup="core:unit" type="cdmNet:BigIPRealServerUnit"/>
+	<complexType name="BigIPRealServerUnit">
+		<complexContent>
+			<extension base="cdmNet:RealServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.tcpPort" substitutionGroup="core:capability" type="cdmNet:TcpPort"/>
+	<complexType name="TcpPort">
+		<complexContent>
+			<extension base="cdmNet:TransportEndpoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.tcpPortUnit" substitutionGroup="core:unit" type="cdmNet:TcpPortUnit"/>
+	<complexType name="TcpPortUnit">
+		<complexContent>
+			<extension base="cdmNet:TransportEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipV6Address" substitutionGroup="core:capability" type="cdmNet:IpV6Address"/>
+	<complexType name="IpV6Address">
+		<complexContent>
+			<extension base="cdmNet:IpAddress">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipV6AddressUnit" substitutionGroup="core:unit" type="cdmNet:IpV6AddressUnit"/>
+	<complexType name="IpV6AddressUnit">
+		<complexContent>
+			<extension base="cdmNet:IpAddressUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.realServerGroup" substitutionGroup="core:capability" type="cdmNet:RealServerGroup"/>
+	<complexType name="RealServerGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="LoadBalancingAlgorithm" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.realServerGroupUnit" substitutionGroup="core:unit" type="cdmNet:RealServerGroupUnit"/>
+	<complexType name="RealServerGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bridge" substitutionGroup="core:capability" type="cdmNet:Bridge"/>
+	<complexType name="Bridge">
+		<complexContent>
+			<extension base="cdmBase:Function">
+				<attribute name="BridgeId" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bridgeUnit" substitutionGroup="core:unit" type="cdmNet:BridgeUnit"/>
+	<complexType name="BridgeUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPVlan" substitutionGroup="core:capability" type="cdmNet:BigIPVlan"/>
+	<complexType name="BigIPVlan">
+		<complexContent>
+			<extension base="cdmNet:Vlan">
+				<attribute name="AllowProxyARP" type="boolean" />
+				<attribute name="SnatAutomapEnabled" type="boolean" />
+				<attribute name="PortLockDown" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPVlanUnit" substitutionGroup="core:unit" type="cdmNet:BigIPVlanUnit"/>
+	<complexType name="BigIPVlanUnit">
+		<complexContent>
+			<extension base="cdmNet:VlanUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.rule" substitutionGroup="core:capability" type="cdmNet:Rule"/>
+	<complexType name="Rule">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DestEndingPort" type="int" />
+				<attribute name="SrcEndingPort" type="int" />
+				<attribute name="IntfName" type="string" />
+				<attribute name="IntfIndex" type="int" />
+				<attribute name="SrcStartingPort" type="int" />
+				<attribute name="ServiceName" type="string" />
+				<attribute name="IpProtocol" type="int" />
+				<attribute name="Direction" type="string" />
+				<attribute name="RuleIndex" type="int" />
+				<attribute name="DirectionIndex" type="int" />
+				<attribute name="TypeOfService" type="int" />
+				<attribute name="RuleAction" type="string" />
+				<attribute name="DestStartingPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ruleUnit" substitutionGroup="core:unit" type="cdmNet:RuleUnit"/>
+	<complexType name="RuleUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualService" substitutionGroup="core:capability" type="cdmNet:VirtualService"/>
+	<complexType name="VirtualService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="VirtualPort" type="int" />
+				<attribute name="VirtualPortType" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.virtualServiceUnit" substitutionGroup="core:unit" type="cdmNet:VirtualServiceUnit"/>
+	<complexType name="VirtualServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.customBindAddress" substitutionGroup="core:capability" type="cdmNet:CustomBindAddress"/>
+	<complexType name="CustomBindAddress">
+		<complexContent>
+			<extension base="cdmNet:BindAddress">
+				<attribute name="CustomPath" type="string" />
+				<attribute name="CustomType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.customBindAddressUnit" substitutionGroup="core:unit" type="cdmNet:CustomBindAddressUnit"/>
+	<complexType name="CustomBindAddressUnit">
+		<complexContent>
+			<extension base="cdmNet:BindAddressUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPRealServerGroup" substitutionGroup="core:capability" type="cdmNet:BigIPRealServerGroup"/>
+	<complexType name="BigIPRealServerGroup">
+		<complexContent>
+			<extension base="cdmNet:RealServerGroup">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPRealServerGroupUnit" substitutionGroup="core:unit" type="cdmNet:BigIPRealServerGroupUnit"/>
+	<complexType name="BigIPRealServerGroupUnit">
+		<complexContent>
+			<extension base="cdmNet:RealServerGroupUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vip" substitutionGroup="core:capability" type="cdmNet:Vip"/>
+	<complexType name="Vip">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vipUnit" substitutionGroup="core:unit" type="cdmNet:VipUnit"/>
+	<complexType name="VipUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.protocolEndpoint" substitutionGroup="core:capability" type="cdmNet:ProtocolEndpoint"/>
+	<complexType name="ProtocolEndpoint">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.protocolEndpointUnit" substitutionGroup="core:unit" type="cdmNet:ProtocolEndpointUnit"/>
+	<complexType name="ProtocolEndpointUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.transport" substitutionGroup="core:capability" type="cdmNet:Transport"/>
+	<complexType name="Transport">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.transportUnit" substitutionGroup="core:unit" type="cdmNet:TransportUnit"/>
+	<complexType name="TransportUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aclFunction" substitutionGroup="core:capability" type="cdmNet:AclFunction"/>
+	<complexType name="AclFunction">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aclFunctionUnit" substitutionGroup="core:unit" type="cdmNet:AclFunctionUnit"/>
+	<complexType name="AclFunctionUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.realServer" substitutionGroup="core:capability" type="cdmNet:RealServer"/>
+	<complexType name="RealServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="LoadBalancingWeight" type="int" />
+				<attribute name="RealPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.realServerUnit" substitutionGroup="core:unit" type="cdmNet:RealServerUnit"/>
+	<complexType name="RealServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.loadBalancer" substitutionGroup="core:capability" type="cdmNet:LoadBalancer"/>
+	<complexType name="LoadBalancer">
+		<complexContent>
+			<extension base="cdmNet:VipFunction">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.loadBalancerUnit" substitutionGroup="core:unit" type="cdmNet:LoadBalancerUnit"/>
+	<complexType name="LoadBalancerUnit">
+		<complexContent>
+			<extension base="cdmNet:VipFunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vipFunction" substitutionGroup="core:capability" type="cdmNet:VipFunction"/>
+	<complexType name="VipFunction">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vipFunctionUnit" substitutionGroup="core:unit" type="cdmNet:VipFunctionUnit"/>
+	<complexType name="VipFunctionUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.l2Interface" substitutionGroup="core:capability" type="cdmNet:L2Interface"/>
+	<complexType name="L2Interface">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Private" type="boolean" />
+				<attribute name="Mtu" type="int" />
+				<attribute name="Index" type="int" />
+				<attribute name="Speed" type="long" />
+				<attribute name="AutoNegotiation" type="boolean" />
+				<attribute name="Duplex" type="int" />
+				<attribute name="Promiscuous" type="boolean" />
+				<attribute name="Encapsulation" type="string" />
+				<attribute name="HwAddress" type="string" />
+				<attribute name="CdpRef" type="string" />
+				<attribute name="Broadcast" type="boolean" />
+				<attribute name="Loopback" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.l2InterfaceUnit" substitutionGroup="core:unit" type="cdmNet:L2InterfaceUnit"/>
+	<complexType name="L2InterfaceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bindAddress" substitutionGroup="core:capability" type="cdmNet:BindAddress"/>
+	<complexType name="BindAddress">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Path" type="string" />
+				<attribute name="PortNumber" type="int" />
+				<attribute name="Type" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bindAddressUnit" substitutionGroup="core:unit" type="cdmNet:BindAddressUnit"/>
+	<complexType name="BindAddressUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vlanInterface" substitutionGroup="core:capability" type="cdmNet:VlanInterface"/>
+	<complexType name="VlanInterface">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="TrunkInterface" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vlanInterfaceUnit" substitutionGroup="core:unit" type="cdmNet:VlanInterfaceUnit"/>
+	<complexType name="VlanInterfaceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.networkService" substitutionGroup="core:capability" type="cdmNet:NetworkService"/>
+	<complexType name="NetworkService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ServiceName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.networkServiceUnit" substitutionGroup="core:unit" type="cdmNet:NetworkServiceUnit"/>
+	<complexType name="NetworkServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fqdn" substitutionGroup="core:capability" type="cdmNet:Fqdn"/>
+	<complexType name="Fqdn">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Fqdn" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fqdnUnit" substitutionGroup="core:unit" type="cdmNet:FqdnUnit"/>
+	<complexType name="FqdnUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPVip" substitutionGroup="core:capability" type="cdmNet:BigIPVip"/>
+	<complexType name="BigIPVip">
+		<complexContent>
+			<extension base="cdmNet:Vip">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPVipUnit" substitutionGroup="core:unit" type="cdmNet:BigIPVipUnit"/>
+	<complexType name="BigIPVipUnit">
+		<complexContent>
+			<extension base="cdmNet:VipUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sPXProtocolEndpoint" substitutionGroup="core:capability" type="cdmNet:SPXProtocolEndpoint"/>
+	<complexType name="SPXProtocolEndpoint">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpoint">
+				<attribute name="NetworkNumber" type="string" />
+				<attribute name="NodeNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sPXProtocolEndpointUnit" substitutionGroup="core:unit" type="cdmNet:SPXProtocolEndpointUnit"/>
+	<complexType name="SPXProtocolEndpointUnit">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.transportEndpoint" substitutionGroup="core:capability" type="cdmNet:TransportEndpoint"/>
+	<complexType name="TransportEndpoint">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PortNumber" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.transportEndpointUnit" substitutionGroup="core:unit" type="cdmNet:TransportEndpointUnit"/>
+	<complexType name="TransportEndpointUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.logicalConnection" substitutionGroup="core:capability" type="cdmNet:LogicalConnection"/>
+	<complexType name="LogicalConnection">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ToIp" type="string" />
+				<attribute name="FromIp" type="string" />
+				<attribute name="FromPort" type="int" />
+				<attribute name="ToPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.logicalConnectionUnit" substitutionGroup="core:unit" type="cdmNet:LogicalConnectionUnit"/>
+	<complexType name="LogicalConnectionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.tcpConnection" substitutionGroup="core:capability" type="cdmNet:TcpConnection"/>
+	<complexType name="TcpConnection">
+		<complexContent>
+			<extension base="cdmNet:Transport">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.tcpConnectionUnit" substitutionGroup="core:unit" type="cdmNet:TcpConnectionUnit"/>
+	<complexType name="TcpConnectionUnit">
+		<complexContent>
+			<extension base="cdmNet:TransportUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPVipFunction" substitutionGroup="core:capability" type="cdmNet:BigIPVipFunction"/>
+	<complexType name="BigIPVipFunction">
+		<complexContent>
+			<extension base="cdmNet:VipFunction">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPVipFunctionUnit" substitutionGroup="core:unit" type="cdmNet:BigIPVipFunctionUnit"/>
+	<complexType name="BigIPVipFunctionUnit">
+		<complexContent>
+			<extension base="cdmNet:VipFunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sNAProtocolEndpoint" substitutionGroup="core:capability" type="cdmNet:SNAProtocolEndpoint"/>
+	<complexType name="SNAProtocolEndpoint">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpoint">
+				<attribute name="NAUName" type="string" />
+				<attribute name="NetID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sNAProtocolEndpointUnit" substitutionGroup="core:unit" type="cdmNet:SNAProtocolEndpointUnit"/>
+	<complexType name="SNAProtocolEndpointUnit">
+		<complexContent>
+			<extension base="cdmNet:ProtocolEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.bigIPVirtualService" substitutionGroup="core:capability" type="cdmNet:BigIPVirtualService"/>
+	<complexType name="BigIPVirtualService">
+		<complexContent>
+			<extension base="cdmNet:VirtualService">
+				<attribute name="VirtualServiceMaxConn" type="int" />
+				<attribute name="VirtualServiceTransalatePortEnabled" type="boolean" />
+				<attribute name="MayUseProxy" type="boolean" />
+				<attribute name="Rule" type="string" />
+				<attribute name="VirtualServiceTransalateAddressEnabled" type="boolean" />
+				<attribute name="ForwardingEnabled" type="boolean" />
+				<attribute name="PoolName" type="string" />
+				<attribute name="VirtualServiceARPEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.bigIPVirtualServiceUnit" substitutionGroup="core:unit" type="cdmNet:BigIPVirtualServiceUnit"/>
+	<complexType name="BigIPVirtualServiceUnit">
+		<complexContent>
+			<extension base="cdmNet:VirtualServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

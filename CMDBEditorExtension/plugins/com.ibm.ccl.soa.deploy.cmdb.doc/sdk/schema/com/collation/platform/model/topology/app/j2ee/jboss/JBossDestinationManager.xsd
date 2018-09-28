@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossDestination.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEDomain.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossMessageCache.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.jboss.JBossDestinationManager">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="messageCache" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossMessageCache" nillable="true" minOccurs="0"/>
+          <xsd:element name="JBossDestinations" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossDestination" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.j2ee.J2EEDomain" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

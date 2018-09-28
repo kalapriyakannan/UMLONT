@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:uml="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/" ecore:documentRoot="UMLDeployRoot" ecore:name="uml" ecore:nsPrefix="uml" ecore:package="com.ibm.ccl.soa.deploy.uml" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+	<!-- Units -->
+
+	<element name="unit.umlInterfaceUnit" substitutionGroup="base:unit" type="uml:UMLInterfaceUnit">
+		<annotation>
+			<documentation>
+				This is a unit that is Zephyr representation of a UML interface.
+			</documentation>
+		</annotation>
+	</element>
+	<complexType name="UMLInterfaceUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.umlPackageUnit" substitutionGroup="base:unit" type="uml:UMLPackageUnit">
+		<annotation>
+			<documentation>
+				This is a unit that is Zephyr representation of a UML package.
+			</documentation>
+		</annotation>
+	</element>
+	<complexType name="UMLPackageUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.umlActorUnit" substitutionGroup="base:baseComponent" type="uml:UMLActorUnit">
+		<annotation>
+			<documentation>
+				This is a unit that is Zephyr representation of a UML actor.
+			</documentation>
+		</annotation>
+	</element>
+	<complexType name="UMLActorUnit">
+		<complexContent>
+			<extension base="base:BaseComponentUnit">
+			</extension>
+		</complexContent>
+	</complexType>
+	
+
+	<complexType abstract="true" name="UMLElementCapability">
+		<annotation>
+			<documentation>
+				UML Element capability
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:BundleCapability">		
+				<attribute default="public" name="umlVisibilityKind" type="uml:UMLVisibilityKind"/>	
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.umlComponent" substitutionGroup="base:capability" type="uml:UMLComponent"/>
+	<complexType name="UMLComponent">
+		<annotation>
+			<documentation>
+				UML Component capability
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="uml:UMLElementCapability">	
+				<attribute default="false" name="leaf" type="boolean"/>		
+				<attribute default="false" name="abstract" type="boolean"/>	
+			</extension>	
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.umlInterface" substitutionGroup="base:capability" type="uml:UMLInterface"/>
+	<complexType name="UMLInterface">
+		<annotation>
+			<documentation>
+				UML Interface capability
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="uml:UMLElementCapability">
+				<attribute default="false" name="leaf" type="boolean"/>		
+				<attribute default="false" name="abstract" type="boolean"/>	
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.umlActor" substitutionGroup="base:capability" type="uml:UMLActor"/>
+	<complexType name="UMLActor">
+		<annotation>
+			<documentation>
+				UML Actor capability
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="uml:UMLElementCapability">
+				<attribute default="false" name="leaf" type="boolean"/>		
+				<attribute default="false" name="abstract" type="boolean"/>	
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.umlPackageCap" substitutionGroup="base:capability" type="uml:UMLPackageCap"/>
+	<complexType name="UMLPackageCap">
+		<annotation>
+			<documentation>
+				UML Package capability
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="uml:UMLElementCapability">
+				<attribute default="false" name="canonical" type="boolean"/>			
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--  UML Visibility Kind -->
+	<simpleType name="UMLVisibilityKind">		
+		<annotation>
+			<documentation>
+				This represents the visibility of Zephyr UML elements.
+			</documentation>
+		</annotation>   
+		<restriction base="string">
+			<enumeration value="public"/>
+			<enumeration value="protected"/>
+			<enumeration value="private"/>
+			<enumeration value="package"/>
+			<enumeration value="undefined"/>
+		</restriction>
+	</simpleType>
+	
+	<!--               -->
+	<!-- UML Element Artifact -->
+	<!--               -->
+	<element name="artifact.umlElement" substitutionGroup="base:artifact" type="uml:UMLElementArtifact"/>
+	<complexType name="UMLElementArtifact">
+		<annotation>
+			<documentation>
+				An artifact that represents a file resource.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Artifact">
+				<attribute name="resourceURI" type="string"/>		
+				<attribute name="qualifiedName" type="string"/>	
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--  UML Interaction constraint -->
+	<element name="constraint.umlInteraction" substitutionGroup="base:constraint" type="uml:UMLInteractionConstraint"/>
+	<complexType name="UMLInteractionConstraint">
+    	<annotation>
+			<documentation>
+				Idenitifies associated UML interaction resources. 
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="base:Constraint">
+				<attribute name="resourceURI" type="string"/>
+				<attribute name="interactionQName" type="string"/>	
+          	</extension>
+        </complexContent>
+    </complexType>
+</schema>

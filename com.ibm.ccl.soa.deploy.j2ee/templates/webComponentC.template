@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	name="Web Component Template">
+  <j2ee:component.web name="WebComponent" displayName="Web Component" initInstallState="not_installed" publishIntent="publish" conceptual="true">
+    <j2ee:capability.webModule name="WebComponent0" displayName="Web Component" contextRoot="" id="WebComponent" version="1.0" linkType="dependency"/>
+    <core:requirement name="Hosting Requirement" linkType="hosting" use="required">
+      <constraint:constraint.type displayName="servletService_22" name="servletService_22" dmoType="j2ee:ServletContainer">
+        <constraint:constraint.version displayName="VersionSpecification" name="VersionSpecification" attributeName="containerVersion" value="2.2+"/>
+      </constraint:constraint.type>
+      <constraint:constraint.type displayName="jspService_11" name="jspService_11" dmoType="j2ee:JSPContainer">
+        <constraint:constraint.version displayName="VersionSpecification" name="VersionSpecification" attributeName="containerVersion" value="1.1+"/>
+      </constraint:constraint.type>
+    </core:requirement>
+    <core:requirement displayName="Utility Jar Components" name="ContainedUtilityJarComponents" dmoType="j2ee:JarModule" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+  </j2ee:component.web>
+</core:topology>
+

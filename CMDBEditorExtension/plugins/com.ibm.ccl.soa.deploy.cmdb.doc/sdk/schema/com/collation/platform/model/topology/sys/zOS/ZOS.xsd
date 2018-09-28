@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/OperatingSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/process/OrganizationalEntity.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/StorageVolume.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/zOS/Sysplex.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.zOS.ZOS">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.OperatingSystem">
+        <xsd:sequence>
+          <xsd:element name="IPLParmDataset" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IPLTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="JESNode" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="netidSSCP" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMFID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="primaryJES" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysResVolume" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="processingCapacity" type="xsd:float" nillable="true" minOccurs="0"/>
+          <xsd:element name="processCapacityUnits" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="owner" type="coll:com.collation.platform.model.topology.process.OrganizationalEntity" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibSCHED" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCEEPRM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dynamicEXIT" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIKJTSO" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibMSTJCL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dynamicAPF" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="netID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIFAPRD" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEAOPT" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCOMMND" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IPLParmVolume" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="securityPackage" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEAPAK" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCSVRTL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibSMFPRM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEASYM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCLOCK" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IODFVolume" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibLNKLST" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEALPA" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibDEVSUP" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEASYS" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEAAPF" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCOUPLE" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibGRSRNL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibSPXPRM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibVATLST" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="fmid" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="masterCatalogVolume" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dynamicLNKLST" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IODFTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEAFIX" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibMembers" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibLOAD" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IODFEDT" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCUNUNI" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IPLParmMember" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibs" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibDIAG" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IPLParmDevice" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibCONSOL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibLPALST" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEFSSN" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibGRSCNF" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIGDSMS" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibEXIT" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIEASVC" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dynamicLNKLSTName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibPROG" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibALLOC" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="masterCatalogDataset" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IODFDataset" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSCP" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibIECIOS" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="parmlibBPXPRM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="storageVolume" type="coll:com.collation.platform.model.topology.dev.StorageVolume" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="sysplex" type="coll:com.collation.platform.model.topology.sys.zOS.Sysplex" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

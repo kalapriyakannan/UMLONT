@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Conceptual Node API Package</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<p>A namespace is a convient method of organizing topologies and their elements.</p>
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">Topology Namespace  Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="711">
+		<p></p>
+		<p>The NamespaceFragment
+		is an object that represents a physical location of a topology within an eclipse workspace. There is a need to be able to organize Topologies within a workspace. It is the purpose of the Namespace api to provide a similar ability as the package structure of java classes within an application. The NamespaceFragment represents a particular physical location within a workspace which is slightly different than the package semantics of a java class. In a java package the actual physical location is not known like it is in our NamespaceFragment. In a java package it is possible to have two files reside in the same package but be located in two physicaly different locations on the filesystem, but if two Topologies are said to reside in the same NamespaceFragment then they would reside in the same physical location within the workspace. As a future enchancement I would like to see the namespace api treated as a first class citizen within the Topology core api. I would like to see the introduction of an Namespace object that would represent the semantic grouping of Topologies within a given workspace without any implications toward the physical location of the Topologies the same way that java packages work for java classes today. I believe that this will become more necessary if Topology objects begin to support &quot;imported&quot; or &quot;referenced&quot; Topology Units. A unique identifier utilizing a Namespace as the prefix for the unique identifier for a Topology Unit within a Topology would be greatly beneficial in effeciently locating such &quot;imported&quot; Topology Units. </p>
+		<p>In the following initial design we will discuss:</p>
+		<UL>
+			<LI>The NamespaceFragment definition.</LI>
+			<LI>The purpose of NamespaceFragmentRoot.</LI>
+			<LI>How to access the Namespace API with NamespaceCore.</LI>
+			<li>NamespaceFragment API Class Diagram.</li>
+
+		</UL>
+		<B>Bugzilla item</B> for this review: <A
+			href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11503">11503</A><BR><BR>
+		</td>
+	</tr>
+</table>
+
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">NamespaceFragment  Definition [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="715">
+		<p>	</p>
+		<p>A NamespaceFragment represents a physical location within a workspace. NamespaceFragments are &quot;backed&quot; by IResource objects. In the case of a NamespaceFragment, this underlying IResource object will always be a instance of IFolder. The NamespaceFragment object gives access to this resource through it's api getCorrespondingResource() but be aware the the value returned is an instance of IResource from the eclipse resource api and represents a handle to a resource on the file system and as such does not garuntee the existence or availability of such a resource.</p>
+		<p>All NamespaceFragments provide api to obtain the NamespaceFragmentRoot that it belongs to. All NamespaceFragments must be a descendent of a NamespaceFragmentRoot. For more information on NamespaceFragmentRoots see the  definition below.</p>
+		</td>
+	</tr>
+</table><br><table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">NamespaceFragmentRoot Definition [<a style="color: lightblue;" href="#top">Top</a>]</font>
+		<td>
+		
+		</td>	
+</table>
+<table>
+	<tr>
+		<td width="721"><p> A NamespaceFragmentRoot is used as a container for NamespaceFragment and Topology objects within a workspace. All NamespaceFragment and Topology objects should be contained within a NamespaceFragmentRoot. For the purpose of deployment tooling the NamespaceFragmentRoot provides a convient way for the tools to &quot;know&quot; when to treat certain files and folders as deployment artifacts rather than as regular files and folders contained within the workspace. </p>
+		<p>The underlying resources for NamespaceFragmentRoot objects are
+		tracked on a per project basis by the TopologyNamespaceRootIndex
+		class. There are a couple of ways in which a new topology namespace root can be added to the index for a project. </p>
+		<p>If a new Topology file is created within the workspace a class
+		called the ModelFileIndexer ( which can be obtained through the
+		DeployCorePlugin class ) is notified of it's creation through it's
+		resource change listener. The model file indexer maintains a list
+		classes that have registered their interest in being notified of the
+		creation of new topology model files to the workspace. During startup
+		of the deploy core plugin a class called NamespaceRootIndexer
+		registers it's interest with the ModelFileIndexer. The
+		NamespaceRootIndexer maintains an index of NamespaceRootIndex classes
+		that are keyed off of Project names ( one per project ). The
+		NamespaceRootIndexer will notify the NamespaceRootIndex class for the
+		project that a new topology file was created in or create a new
+		instance of NamespaceRootIndex if one does not already exist for a
+		project. The NamespaceRootIndex will determine if a
+		NamespaceFragmentRoot already exists for a given IResource and avoid
+		creating a new NamespaceFragmentRoot if so, or add the IResource to
+		it's index if no NamespaceFragmentRoot can be found along the passed
+		in IResource's path.</p>
+		<p>When a new instance of NamespaceRootIndex is created it will attempt to locate a file within the filesystem of the project it was created for called &quot;.topologyroots&quot;. If such a file exists the NamespaceRootIndex class will attempt to read the file ( properties file ) and parse out the values defined within it. The topologyroots file is a simple way of persisting the location of topology roots within a project between workspace restarts. It is a simple properties file that defines project relative paths within a project that should be represented as NamespaceFragmentRoots. The structure of the properties file is simple. Each property defined within it has the prefix &quot;root.path.&quot; with the last segment being a unique integer zero based and increasing in numerical order. The value of each property is the simple project relative path to a folder within the project. </p>
+		<p>i.e. root.path.0=topologies/src</p>
+		<p></p>
+		<p></p></td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">NamespaceCore [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table></a><table border="0">
+	<tbody>
+		<tr>
+			<td width="724">How do we access the NamespaceFragment API? Through the NamespaceCore static class. The NamespaceCore static class provides static methods that allow us to obtain the NamespaceFragmentRoot objects for a particular project within the workspace. Once you have a handle to the NamespaceFragmentRoot objects you can perform most of the operation that you want directly from the NamespaceFragmentRoot class, however some convience methods are available on the NamespaceCore class to allow for ease of use without having to go to the NamespaceFragmentRoot object.<br>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<a name="top">
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">NamespaceFragment API Class   Diagram [<a
+			style="color: lightblue;" href="#top">Top</a>]</font></th>
+	</tr>
+</table>
+
+</a>
+<table border="0">
+	<tbody>
+		<tr>
+			<td width="727"><img border="0" src="NamespaceModel.gif" width="890"
+				height="587"></td>
+		</tr>
+	</tbody>
+</table>
+<a name="top">
+
+
+
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font></th>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>author</b> <i>(tpouyer@us.ibm.com)</i>.
+		</p>
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+</a>
+</BODY>
+</HTML>

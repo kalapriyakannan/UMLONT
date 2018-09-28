@@ -1,0 +1,2264 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmsys/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:cdmSys="http://www.ibm.com/ccl/soa/deploy/cdmsys/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmSysRoot"
+	ecore:name="cdmSys"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmsys"
+	ecore:nsPrefix="cdmSys">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.ciscoPixComputerSystem" substitutionGroup="core:capability" type="cdmSys:CiscoPixComputerSystem"/>
+	<complexType name="CiscoPixComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ciscoPixComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:CiscoPixComputerSystemUnit"/>
+	<complexType name="CiscoPixComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.controlSoftware" substitutionGroup="core:capability" type="cdmSys:ControlSoftware"/>
+	<complexType name="ControlSoftware">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.controlSoftwareUnit" substitutionGroup="core:unit" type="cdmSys:ControlSoftwareUnit"/>
+	<complexType name="ControlSoftwareUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxKernelDriver" substitutionGroup="core:capability" type="cdmSys:LinuxKernelDriver"/>
+	<complexType name="LinuxKernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.linuxKernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:LinuxKernelDriverUnit"/>
+	<complexType name="LinuxKernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.solarisPatch" substitutionGroup="core:capability" type="cdmSys:SolarisPatch"/>
+	<complexType name="SolarisPatch">
+		<complexContent>
+			<extension base="cdmSys:SoftwarePatch">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisPatchUnit" substitutionGroup="core:unit" type="cdmSys:SolarisPatchUnit"/>
+	<complexType name="SolarisPatchUnit">
+		<complexContent>
+			<extension base="cdmSys:SoftwarePatchUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hpUx" substitutionGroup="core:capability" type="cdmSys:HpUx"/>
+	<complexType name="HpUx">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hpUxUnit" substitutionGroup="core:unit" type="cdmSys:HpUxUnit"/>
+	<complexType name="HpUxUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.macOS" substitutionGroup="core:capability" type="cdmSys:MacOS"/>
+	<complexType name="MacOS">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.macOSUnit" substitutionGroup="core:unit" type="cdmSys:MacOSUnit"/>
+	<complexType name="MacOSUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aixUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:AixUnitaryComputerSystem"/>
+	<complexType name="AixUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aixUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:AixUnitaryComputerSystemUnit"/>
+	<complexType name="AixUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.snmpSystemGroup" substitutionGroup="core:capability" type="cdmSys:SnmpSystemGroup"/>
+	<complexType name="SnmpSystemGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SysName" type="string" />
+				<attribute name="SysContact" type="string" />
+				<attribute name="SysObjectId" type="string" />
+				<attribute name="SysDescr" type="string" />
+				<attribute name="SysLocation" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.snmpSystemGroupUnit" substitutionGroup="core:unit" type="cdmSys:SnmpSystemGroupUnit"/>
+	<complexType name="SnmpSystemGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dos" substitutionGroup="core:capability" type="cdmSys:Dos"/>
+	<complexType name="Dos">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dosUnit" substitutionGroup="core:unit" type="cdmSys:DosUnit"/>
+	<complexType name="DosUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.javaRuntimeProcess" substitutionGroup="core:capability" type="cdmSys:JavaRuntimeProcess"/>
+	<complexType name="JavaRuntimeProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+				<attribute name="ClassPath" type="string" />
+				<attribute name="StackSize" type="int" />
+				<attribute name="InitialHeapSize" type="int" />
+				<attribute name="JVMVersion" type="int" />
+				<attribute name="JavaClassName" type="string" />
+				<attribute name="HotSpotEnabled" type="boolean" />
+				<attribute name="MaxHeapSize" type="int" />
+				<attribute name="IncrementalGCEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.javaRuntimeProcessUnit" substitutionGroup="core:unit" type="cdmSys:JavaRuntimeProcessUnit"/>
+	<complexType name="JavaRuntimeProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.operatingSystem" substitutionGroup="core:capability" type="cdmSys:OperatingSystem"/>
+	<complexType name="OperatingSystem">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="OSConfidence" type="int" />
+				<attribute name="FQDN" type="string" />
+				<attribute name="KernelArchitecture" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="BootTime" type="long" />
+				<attribute name="CurrentTime" type="long" />
+				<attribute name="Charset" type="string" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="OSMode" type="string" />
+				<attribute name="KernelVersion" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="VirtualMemorySize" type="long" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Locale" type="string" />
+				<attribute name="OSName" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="SystemGuid" type="string" />
+				<attribute name="OSVersion" type="string" />
+				<attribute name="OsId" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.operatingSystemUnit" substitutionGroup="core:unit" type="cdmSys:OperatingSystemUnit"/>
+	<complexType name="OperatingSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.openVmsFileSystem" substitutionGroup="core:capability" type="cdmSys:OpenVmsFileSystem"/>
+	<complexType name="OpenVmsFileSystem">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.openVmsFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:OpenVmsFileSystemUnit"/>
+	<complexType name="OpenVmsFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cICSRegion" substitutionGroup="core:capability" type="cdmSys:CICSRegion"/>
+	<complexType name="CICSRegion">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="Level" type="int" />
+				<attribute name="ProgramsChecksum" type="string" />
+				<attribute name="ACBName" type="string" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="GRName" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="NetID" type="string" />
+				<attribute name="JobName" type="string" />
+				<attribute name="SIT" type="string" />
+				<attribute name="SITOverrides" type="string" />
+				<attribute name="ApplID" type="string" />
+				<attribute name="TransactionsChecksum" type="string" />
+				<attribute name="FilesChecksum" type="string" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="Modifier" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cICSRegionUnit" substitutionGroup="core:unit" type="cdmSys:CICSRegionUnit"/>
+	<complexType name="CICSRegionUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hMC" substitutionGroup="core:capability" type="cdmSys:HMC"/>
+	<complexType name="HMC">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hMCUnit" substitutionGroup="core:unit" type="cdmSys:HMCUnit"/>
+	<complexType name="HMCUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareESX" substitutionGroup="core:capability" type="cdmSys:VmwareESX"/>
+	<complexType name="VmwareESX">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vmwareESXUnit" substitutionGroup="core:unit" type="cdmSys:VmwareESXUnit"/>
+	<complexType name="VmwareESXUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zReportFile" substitutionGroup="core:capability" type="cdmSys:ZReportFile"/>
+	<complexType name="ZReportFile">
+		<complexContent>
+			<extension base="cdmBase:ConfigFile">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zReportFileUnit" substitutionGroup="core:unit" type="cdmSys:ZReportFileUnit"/>
+	<complexType name="ZReportFileUnit">
+		<complexContent>
+			<extension base="cdmBase:ConfigFileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hpUxKernelDriver" substitutionGroup="core:capability" type="cdmSys:HpUxKernelDriver"/>
+	<complexType name="HpUxKernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hpUxKernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:HpUxKernelDriverUnit"/>
+	<complexType name="HpUxKernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.systemController" substitutionGroup="core:capability" type="cdmSys:SystemController"/>
+	<complexType name="SystemController">
+		<complexContent>
+			<extension base="cdmSys:Management">
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="ControllerRole" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.systemControllerUnit" substitutionGroup="core:unit" type="cdmSys:SystemControllerUnit"/>
+	<complexType name="SystemControllerUnit">
+		<complexContent>
+			<extension base="cdmSys:ManagementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fileSystemService" substitutionGroup="core:capability" type="cdmSys:FileSystemService"/>
+	<complexType name="FileSystemService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemServiceUnit" substitutionGroup="core:unit" type="cdmSys:FileSystemServiceUnit"/>
+	<complexType name="FileSystemServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dNSLookup" substitutionGroup="core:capability" type="cdmSys:DNSLookup"/>
+	<complexType name="DNSLookup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dNSLookupUnit" substitutionGroup="core:unit" type="cdmSys:DNSLookupUnit"/>
+	<complexType name="DNSLookupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.solarisPackage" substitutionGroup="core:capability" type="cdmSys:SolarisPackage"/>
+	<complexType name="SolarisPackage">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisPackageUnit" substitutionGroup="core:unit" type="cdmSys:SolarisPackageUnit"/>
+	<complexType name="SolarisPackageUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.printer" substitutionGroup="core:capability" type="cdmSys:Printer"/>
+	<complexType name="Printer">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.printerUnit" substitutionGroup="core:unit" type="cdmSys:PrinterUnit"/>
+	<complexType name="PrinterUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.lDAPService" substitutionGroup="core:capability" type="cdmSys:LDAPService"/>
+	<complexType name="LDAPService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+				<attribute name="LDAPVersion" type="string" />
+				<attribute name="TotalConnections" type="int" />
+				<attribute name="Threads" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.lDAPServiceUnit" substitutionGroup="core:unit" type="cdmSys:LDAPServiceUnit"/>
+	<complexType name="LDAPServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dynamicSystemDomain" substitutionGroup="core:capability" type="cdmSys:DynamicSystemDomain"/>
+	<complexType name="DynamicSystemDomain">
+		<complexContent>
+			<extension base="cdmSys:SunFireComputerSystem">
+				<attribute name="NumAvailableCPUs" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dynamicSystemDomainUnit" substitutionGroup="core:unit" type="cdmSys:DynamicSystemDomainUnit"/>
+	<complexType name="DynamicSystemDomainUnit">
+		<complexContent>
+			<extension base="cdmSys:SunFireComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cICSFile" substitutionGroup="core:capability" type="cdmSys:CICSFile"/>
+	<complexType name="CICSFile">
+		<complexContent>
+			<extension base="cdmBase:DataFile">
+				<attribute name="Datasets" type="string" />
+				<attribute name="DDName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cICSFileUnit" substitutionGroup="core:unit" type="cdmSys:CICSFileUnit"/>
+	<complexType name="CICSFileUnit">
+		<complexContent>
+			<extension base="cdmBase:DataFileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iMSTransaction" substitutionGroup="core:capability" type="cdmSys:IMSTransaction"/>
+	<complexType name="IMSTransaction">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iMSTransactionUnit" substitutionGroup="core:unit" type="cdmSys:IMSTransactionUnit"/>
+	<complexType name="IMSTransactionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zSeriesComputerSystem" substitutionGroup="core:capability" type="cdmSys:ZSeriesComputerSystem"/>
+	<complexType name="ZSeriesComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+				<attribute name="ModelID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zSeriesComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:ZSeriesComputerSystemUnit"/>
+	<complexType name="ZSeriesComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsService" substitutionGroup="core:capability" type="cdmSys:WindowsService"/>
+	<complexType name="WindowsService">
+		<complexContent>
+			<extension base="cdmSys:SoftwareService">
+				<attribute name="DesktopInteract" type="boolean" />
+				<attribute name="CanBePaused" type="boolean" />
+				<attribute name="ServiceSpecificCode" type="int" />
+				<attribute name="ServiceName" type="string" />
+				<attribute name="ErrorControl" type="string" />
+				<attribute name="OperatingState" type="string" />
+				<attribute name="ProcessId" type="int" />
+				<attribute name="PathName" type="string" />
+				<attribute name="CanBeStopped" type="boolean" />
+				<attribute name="ServiceType" type="string" />
+				<attribute name="Account" type="string" />
+				<attribute name="StartMode" type="string" />
+				<attribute name="Started" type="boolean" />
+				<attribute name="ExitCode" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.windowsServiceUnit" substitutionGroup="core:unit" type="cdmSys:WindowsServiceUnit"/>
+	<complexType name="WindowsServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:SoftwareServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.businessSystem" substitutionGroup="core:capability" type="cdmSys:BusinessSystem"/>
+	<complexType name="BusinessSystem">
+		<complexContent>
+			<extension base="cdmSys:ITSystem">
+				<attribute name="BusinessPriority" type="int" />
+				<attribute name="BusinessRole" type="string" />
+				<attribute name="BusinessImpact" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.businessSystemUnit" substitutionGroup="core:unit" type="cdmSys:BusinessSystemUnit"/>
+	<complexType name="BusinessSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ITSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nFSSAP" substitutionGroup="core:capability" type="cdmSys:NFSSAP"/>
+	<complexType name="NFSSAP">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nFSSAPUnit" substitutionGroup="core:unit" type="cdmSys:NFSSAPUnit"/>
+	<complexType name="NFSSAPUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMBExport" substitutionGroup="core:capability" type="cdmSys:SMBExport"/>
+	<complexType name="SMBExport">
+		<complexContent>
+			<extension base="cdmSys:FileSystemExport">
+				<attribute name="Path" type="string" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMBExportUnit" substitutionGroup="core:unit" type="cdmSys:SMBExportUnit"/>
+	<complexType name="SMBExportUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemExportUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.netware" substitutionGroup="core:capability" type="cdmSys:Netware"/>
+	<complexType name="Netware">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.netwareUnit" substitutionGroup="core:unit" type="cdmSys:NetwareUnit"/>
+	<complexType name="NetwareUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dB2DataSharingGroup" substitutionGroup="core:capability" type="cdmSys:DB2DataSharingGroup"/>
+	<complexType name="DB2DataSharingGroup">
+		<complexContent>
+			<extension base="cdmSys:SysplexGroup">
+				<attribute name="GroupAttachName" type="string" />
+				<attribute name="SysTableSpaceMaxAlteredTs" type="long" />
+				<attribute name="SysDatabaseMaxAlteredTs" type="long" />
+				<attribute name="SysIndexesMaxAlteredTs" type="long" />
+				<attribute name="SysColumnsMaxAlteredTs" type="long" />
+				<attribute name="SysTableMaxAlteredTs" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dB2DataSharingGroupUnit" substitutionGroup="core:unit" type="cdmSys:DB2DataSharingGroupUnit"/>
+	<complexType name="DB2DataSharingGroupUnit">
+		<complexContent>
+			<extension base="cdmSys:SysplexGroupUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cPU" substitutionGroup="core:capability" type="cdmSys:CPU"/>
+	<complexType name="CPU">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="NumCPUs" type="int" />
+				<attribute name="CPUDiesInstalled" type="int" />
+				<attribute name="ExternalCache" type="int" />
+				<attribute name="Level" type="int" />
+				<attribute name="CPUCoresInstalled" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="CPUDiesEnabled" type="int" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="CPUSpeed" type="long" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="CPUType" type="string" />
+				<attribute name="CPUCoresEnabled" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="IdentifyingNumber" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cPUUnit" substitutionGroup="core:unit" type="cdmSys:CPUUnit"/>
+	<complexType name="CPUUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.i5UserProfile" substitutionGroup="core:capability" type="cdmSys:I5UserProfile"/>
+	<complexType name="I5UserProfile">
+		<complexContent>
+			<extension base="cdmSys:I5Profile">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.i5UserProfileUnit" substitutionGroup="core:unit" type="cdmSys:I5UserProfileUnit"/>
+	<complexType name="I5UserProfileUnit">
+		<complexContent>
+			<extension base="cdmSys:I5ProfileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sysplex" substitutionGroup="core:capability" type="cdmSys:Sysplex"/>
+	<complexType name="Sysplex">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sysplexUnit" substitutionGroup="core:unit" type="cdmSys:SysplexUnit"/>
+	<complexType name="SysplexUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aix" substitutionGroup="core:capability" type="cdmSys:Aix"/>
+	<complexType name="Aix">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aixUnit" substitutionGroup="core:unit" type="cdmSys:AixUnit"/>
+	<complexType name="AixUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iMSProgram" substitutionGroup="core:capability" type="cdmSys:IMSProgram"/>
+	<complexType name="IMSProgram">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iMSProgramUnit" substitutionGroup="core:unit" type="cdmSys:IMSProgramUnit"/>
+	<complexType name="IMSProgramUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.veritasStorageService" substitutionGroup="core:capability" type="cdmSys:VeritasStorageService"/>
+	<complexType name="VeritasStorageService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.veritasStorageServiceUnit" substitutionGroup="core:unit" type="cdmSys:VeritasStorageServiceUnit"/>
+	<complexType name="VeritasStorageServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.service" substitutionGroup="core:capability" type="cdmSys:Service"/>
+	<complexType name="Service">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ProductVersion" type="string" />
+				<attribute name="ProductName" type="string" />
+				<attribute name="VendorName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.serviceUnit" substitutionGroup="core:unit" type="cdmSys:ServiceUnit"/>
+	<complexType name="ServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iMSSysplexGroup" substitutionGroup="core:capability" type="cdmSys:IMSSysplexGroup"/>
+	<complexType name="IMSSysplexGroup">
+		<complexContent>
+			<extension base="cdmSys:SysplexGroup">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iMSSysplexGroupUnit" substitutionGroup="core:unit" type="cdmSys:IMSSysplexGroupUnit"/>
+	<complexType name="IMSSysplexGroupUnit">
+		<complexContent>
+			<extension base="cdmSys:SysplexGroupUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMTPSAP" substitutionGroup="core:capability" type="cdmSys:SMTPSAP"/>
+	<complexType name="SMTPSAP">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMTPSAPUnit" substitutionGroup="core:unit" type="cdmSys:SMTPSAPUnit"/>
+	<complexType name="SMTPSAPUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sunSPARCVirtualComputerSystem" substitutionGroup="core:capability" type="cdmSys:SunSPARCVirtualComputerSystem"/>
+	<complexType name="SunSPARCVirtualComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:VirtualComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sunSPARCVirtualComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:SunSPARCVirtualComputerSystemUnit"/>
+	<complexType name="SunSPARCVirtualComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:VirtualComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareService" substitutionGroup="core:capability" type="cdmSys:SoftwareService"/>
+	<complexType name="SoftwareService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Path" type="string" />
+				<attribute name="Size" type="long" />
+				<attribute name="Date" type="long" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SoftwareVersion" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareServiceUnit" substitutionGroup="core:unit" type="cdmSys:SoftwareServiceUnit"/>
+	<complexType name="SoftwareServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.systemPComputerSystem" substitutionGroup="core:capability" type="cdmSys:SystemPComputerSystem"/>
+	<complexType name="SystemPComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+				<attribute name="HardwarePlatform" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.systemPComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:SystemPComputerSystemUnit"/>
+	<complexType name="SystemPComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dNSResolveEntry" substitutionGroup="core:capability" type="cdmSys:DNSResolveEntry"/>
+	<complexType name="DNSResolveEntry">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ServerIp" type="string" />
+				<attribute name="SearchOrder" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dNSResolveEntryUnit" substitutionGroup="core:unit" type="cdmSys:DNSResolveEntryUnit"/>
+	<complexType name="DNSResolveEntryUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.tru64KernelDriver" substitutionGroup="core:capability" type="cdmSys:Tru64KernelDriver"/>
+	<complexType name="Tru64KernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.tru64KernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:Tru64KernelDriverUnit"/>
+	<complexType name="Tru64KernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericService" substitutionGroup="core:capability" type="cdmSys:GenericService"/>
+	<complexType name="GenericService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+				<attribute name="GenericType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericServiceUnit" substitutionGroup="core:unit" type="cdmSys:GenericServiceUnit"/>
+	<complexType name="GenericServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.darwinUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:DarwinUnitaryComputerSystem"/>
+	<complexType name="DarwinUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.darwinUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:DarwinUnitaryComputerSystemUnit"/>
+	<complexType name="DarwinUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unix" substitutionGroup="core:capability" type="cdmSys:Unix"/>
+	<complexType name="Unix">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+				<attribute name="SupportAsyncIO" type="boolean" />
+				<attribute name="NumPhysicalMemPages" type="int" />
+				<attribute name="OSDistribution" type="string" />
+				<attribute name="SupportRealtimeSignals" type="boolean" />
+				<attribute name="MaxLoginNameLen" type="int" />
+				<attribute name="MaxQueuedAsyncIORequests" type="int" />
+				<attribute name="SupportMemProtection" type="boolean" />
+				<attribute name="LibcName" type="string" />
+				<attribute name="MaxPasswordLen" type="int" />
+				<attribute name="SupportProcessScheduling" type="boolean" />
+				<attribute name="LibcVersion" type="string" />
+				<attribute name="SupportRangeMemLocking" type="boolean" />
+				<attribute name="KernelBitSize" type="int" />
+				<attribute name="MaxOpenFilesPerProcess" type="int" />
+				<attribute name="MaxStdioStreamsPerProcess" type="int" />
+				<attribute name="MaxQueuedSignals" type="int" />
+				<attribute name="MaxUsers" type="int" />
+				<attribute name="SupportPOSIXThreads" type="boolean" />
+				<attribute name="MaxGroupsPerUser" type="int" />
+				<attribute name="VirtualAddressCacheSize" type="long" />
+				<attribute name="MaxProcessesPerUID" type="int" />
+				<attribute name="MaxProcesses" type="int" />
+				<attribute name="MaxAsyncIOPriorityDecrease" type="int" />
+				<attribute name="SupportMsgPassing" type="boolean" />
+				<attribute name="CalloutTableSize" type="int" />
+				<attribute name="MaxProcessesPerUser" type="int" />
+				<attribute name="SystemMemPageSize" type="int" />
+				<attribute name="MaxTimersPerProcess" type="int" />
+				<attribute name="ClockTicksPerSecond" type="int" />
+				<attribute name="ProcessMemLocking" type="boolean" />
+				<attribute name="SupportSharedMemObjects" type="boolean" />
+				<attribute name="NumPhysicalMemFreePages" type="int" />
+				<attribute name="MaxPIDValue" type="int" />
+				<attribute name="SupportFsync" type="boolean" />
+				<attribute name="MaxMsgPrioritiesSupported" type="int" />
+				<attribute name="MaxOpenMsgQueueDescriptorsPerProcess" type="int" />
+				<attribute name="Architecture" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.unixUnit" substitutionGroup="core:unit" type="cdmSys:UnixUnit"/>
+	<complexType name="UnixUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.lDAPSAP" substitutionGroup="core:capability" type="cdmSys:LDAPSAP"/>
+	<complexType name="LDAPSAP">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPoint">
+				<attribute name="LDAPVersion" type="string" />
+				<attribute name="TotalConnections" type="int" />
+				<attribute name="Threads" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.lDAPSAPUnit" substitutionGroup="core:unit" type="cdmSys:LDAPSAPUnit"/>
+	<complexType name="LDAPSAPUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sunSPARCUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:SunSPARCUnitaryComputerSystem"/>
+	<complexType name="SunSPARCUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sunSPARCUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:SunSPARCUnitaryComputerSystemUnit"/>
+	<complexType name="SunSPARCUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.activeDirectory" substitutionGroup="core:capability" type="cdmSys:ActiveDirectory"/>
+	<complexType name="ActiveDirectory">
+		<complexContent>
+			<extension base="cdmSys:LDAPService">
+				<attribute name="MaxResultSetSize" type="int" />
+				<attribute name="MaxConnIdleTime" type="int" />
+				<attribute name="SchemaVersion" type="int" />
+				<attribute name="MaxPoolThreads" type="int" />
+				<attribute name="MaxValRange" type="int" />
+				<attribute name="MaxTempTableSize" type="int" />
+				<attribute name="ServiceXML" type="string" />
+				<attribute name="MaxConnections" type="int" />
+				<attribute name="MaxQueryDuration" type="int" />
+				<attribute name="WorkingDirectory" type="string" />
+				<attribute name="InitRecvTimeout" type="int" />
+				<attribute name="MaxDatagramRecv" type="int" />
+				<attribute name="MaxNotificationPerConn" type="int" />
+				<attribute name="MaxPageSize" type="int" />
+				<attribute name="MaxReceiveBuffer" type="int" />
+				<attribute name="RootDomain" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.activeDirectoryUnit" substitutionGroup="core:unit" type="cdmSys:ActiveDirectoryUnit"/>
+	<complexType name="ActiveDirectoryUnit">
+		<complexContent>
+			<extension base="cdmSys:LDAPServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMBService" substitutionGroup="core:capability" type="cdmSys:SMBService"/>
+	<complexType name="SMBService">
+		<complexContent>
+			<extension base="cdmSys:FileSystemService">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMBServiceUnit" substitutionGroup="core:unit" type="cdmSys:SMBServiceUnit"/>
+	<complexType name="SMBServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hpUxUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:HpUxUnitaryComputerSystem"/>
+	<complexType name="HpUxUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hpUxUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:HpUxUnitaryComputerSystemUnit"/>
+	<complexType name="HpUxUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.solarisFileSystem" substitutionGroup="core:capability" type="cdmSys:SolarisFileSystem"/>
+	<complexType name="SolarisFileSystem">
+		<complexContent>
+			<extension base="cdmSys:UnixFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:SolarisFileSystemUnit"/>
+	<complexType name="SolarisFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nFSService" substitutionGroup="core:capability" type="cdmSys:NFSService"/>
+	<complexType name="NFSService">
+		<complexContent>
+			<extension base="cdmSys:FileSystemService">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nFSServiceUnit" substitutionGroup="core:unit" type="cdmSys:NFSServiceUnit"/>
+	<complexType name="NFSServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.i5OSSoftwareComponent" substitutionGroup="core:capability" type="cdmSys:I5OSSoftwareComponent"/>
+	<complexType name="I5OSSoftwareComponent">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponent">
+				<attribute name="Feature" type="string" />
+				<attribute name="Option" type="string" />
+				<attribute name="Release" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.i5OSSoftwareComponentUnit" substitutionGroup="core:unit" type="cdmSys:I5OSSoftwareComponentUnit"/>
+	<complexType name="I5OSSoftwareComponentUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericComputerSystem" substitutionGroup="core:capability" type="cdmSys:GenericComputerSystem"/>
+	<complexType name="GenericComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+				<attribute name="GenericType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:GenericComputerSystemUnit"/>
+	<complexType name="GenericComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericFirewall" substitutionGroup="core:capability" type="cdmSys:GenericFirewall"/>
+	<complexType name="GenericFirewall">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericFirewallUnit" substitutionGroup="core:unit" type="cdmSys:GenericFirewallUnit"/>
+	<complexType name="GenericFirewallUnit">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.i5GroupProfile" substitutionGroup="core:capability" type="cdmSys:I5GroupProfile"/>
+	<complexType name="I5GroupProfile">
+		<complexContent>
+			<extension base="cdmSys:I5Profile">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.i5GroupProfileUnit" substitutionGroup="core:unit" type="cdmSys:I5GroupProfileUnit"/>
+	<complexType name="I5GroupProfileUnit">
+		<complexContent>
+			<extension base="cdmSys:I5ProfileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zCouplingFacility" substitutionGroup="core:capability" type="cdmSys:ZCouplingFacility"/>
+	<complexType name="ZCouplingFacility">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zCouplingFacilityUnit" substitutionGroup="core:unit" type="cdmSys:ZCouplingFacilityUnit"/>
+	<complexType name="ZCouplingFacilityUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.netwareUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:NetwareUnitaryComputerSystem"/>
+	<complexType name="NetwareUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.netwareUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:NetwareUnitaryComputerSystemUnit"/>
+	<complexType name="NetwareUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.freeBSD" substitutionGroup="core:capability" type="cdmSys:FreeBSD"/>
+	<complexType name="FreeBSD">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.freeBSDUnit" substitutionGroup="core:unit" type="cdmSys:FreeBSDUnit"/>
+	<complexType name="FreeBSDUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fileSystemExport" substitutionGroup="core:capability" type="cdmSys:FileSystemExport"/>
+	<complexType name="FileSystemExport">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemExportUnit" substitutionGroup="core:unit" type="cdmSys:FileSystemExportUnit"/>
+	<complexType name="FileSystemExportUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.processFileSystemMapping" substitutionGroup="core:capability" type="cdmSys:ProcessFileSystemMapping"/>
+	<complexType name="ProcessFileSystemMapping">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.processFileSystemMappingUnit" substitutionGroup="core:unit" type="cdmSys:ProcessFileSystemMappingUnit"/>
+	<complexType name="ProcessFileSystemMappingUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dosUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:DosUnitaryComputerSystem"/>
+	<complexType name="DosUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dosUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:DosUnitaryComputerSystemUnit"/>
+	<complexType name="DosUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipso" substitutionGroup="core:capability" type="cdmSys:ipso"/>
+	<complexType name="ipso">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipsoUnit" substitutionGroup="core:unit" type="cdmSys:ipsoUnit"/>
+	<complexType name="ipsoUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.lPAR" substitutionGroup="core:capability" type="cdmSys:LPAR"/>
+	<complexType name="LPAR">
+		<complexContent>
+			<extension base="cdmSys:ZSeriesComputerSystem">
+				<attribute name="LPARID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.lPARUnit" substitutionGroup="core:unit" type="cdmSys:LPARUnit"/>
+	<complexType name="LPARUnit">
+		<complexContent>
+			<extension base="cdmSys:ZSeriesComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.directory" substitutionGroup="core:capability" type="cdmSys:Directory"/>
+	<complexType name="Directory">
+		<complexContent>
+			<extension base="cdmBase:FileSystemContent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.directoryUnit" substitutionGroup="core:unit" type="cdmSys:DirectoryUnit"/>
+	<complexType name="DirectoryUnit">
+		<complexContent>
+			<extension base="cdmBase:FileSystemContentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sysplexGroup" substitutionGroup="core:capability" type="cdmSys:SysplexGroup"/>
+	<complexType name="SysplexGroup">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="GroupFunction" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sysplexGroupUnit" substitutionGroup="core:unit" type="cdmSys:SysplexGroupUnit"/>
+	<complexType name="SysplexGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iMSDatabase" substitutionGroup="core:capability" type="cdmSys:IMSDatabase"/>
+	<complexType name="IMSDatabase">
+		<complexContent>
+			<extension base="cdmBase:Database">
+				<attribute name="IMSDatabaseType" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iMSDatabaseUnit" substitutionGroup="core:unit" type="cdmSys:IMSDatabaseUnit"/>
+	<complexType name="IMSDatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linux" substitutionGroup="core:capability" type="cdmSys:Linux"/>
+	<complexType name="Linux">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.linuxUnit" substitutionGroup="core:unit" type="cdmSys:LinuxUnit"/>
+	<complexType name="LinuxUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.computerSystemCluster" substitutionGroup="core:capability" type="cdmSys:ComputerSystemCluster"/>
+	<complexType name="ComputerSystemCluster">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="LoadBalancer" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.computerSystemClusterUnit" substitutionGroup="core:unit" type="cdmSys:ComputerSystemClusterUnit"/>
+	<complexType name="ComputerSystemClusterUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sunFireComputerSystem" substitutionGroup="core:capability" type="cdmSys:SunFireComputerSystem"/>
+	<complexType name="SunFireComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+				<attribute name="NumSystemBoards" type="int" />
+				<attribute name="NumIOBoards" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sunFireComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:SunFireComputerSystemUnit"/>
+	<complexType name="SunFireComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dB2Subsystem" substitutionGroup="core:capability" type="cdmSys:DB2Subsystem"/>
+	<complexType name="DB2Subsystem">
+		<complexContent>
+			<extension base="cdmBase:Db2Server">
+				<attribute name="SysColumnsMaxAlteredTs" type="long" />
+				<attribute name="SysTableSpaceMaxalteredTs" type="long" />
+				<attribute name="Release" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="SubsystemName" type="string" />
+				<attribute name="SysTablesMaxAlteredTS" type="long" />
+				<attribute name="SysDatabaseMaxAlteredTs" type="long" />
+				<attribute name="SysIndexesMaxAlteredTs" type="long" />
+				<attribute name="CommandPrefixName" type="string" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="ControllingAddressSpace" type="string" />
+				<attribute name="Modifier" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dB2SubsystemUnit" substitutionGroup="core:unit" type="cdmSys:DB2SubsystemUnit"/>
+	<complexType name="DB2SubsystemUnit">
+		<complexContent>
+			<extension base="cdmBase:Db2ServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zLinux" substitutionGroup="core:capability" type="cdmSys:ZLinux"/>
+	<complexType name="ZLinux">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zLinuxUnit" substitutionGroup="core:unit" type="cdmSys:ZLinuxUnit"/>
+	<complexType name="ZLinuxUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.memory" substitutionGroup="core:capability" type="cdmSys:Memory"/>
+	<complexType name="Memory">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="BaseAddress" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="MemorySize" type="long" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.memoryUnit" substitutionGroup="core:unit" type="cdmSys:MemoryUnit"/>
+	<complexType name="MemoryUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.serviceGroup" substitutionGroup="core:capability" type="cdmSys:ServiceGroup"/>
+	<complexType name="ServiceGroup">
+		<complexContent>
+			<extension base="cdmSys:ITSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.serviceGroupUnit" substitutionGroup="core:unit" type="cdmSys:ServiceGroupUnit"/>
+	<complexType name="ServiceGroupUnit">
+		<complexContent>
+			<extension base="cdmSys:ITSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericSwitch" substitutionGroup="core:capability" type="cdmSys:GenericSwitch"/>
+	<complexType name="GenericSwitch">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericSwitchUnit" substitutionGroup="core:unit" type="cdmSys:GenericSwitchUnit"/>
+	<complexType name="GenericSwitchUnit">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iTSystem" substitutionGroup="core:capability" type="cdmSys:ITSystem"/>
+	<complexType name="ITSystem">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="URL" type="string" />
+				<attribute name="Contact" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iTSystemUnit" substitutionGroup="core:unit" type="cdmSys:ITSystemUnit"/>
+	<complexType name="ITSystemUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.darwin" substitutionGroup="core:capability" type="cdmSys:Darwin"/>
+	<complexType name="Darwin">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.darwinUnit" substitutionGroup="core:unit" type="cdmSys:DarwinUnit"/>
+	<complexType name="DarwinUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualComputerSystem" substitutionGroup="core:capability" type="cdmSys:VirtualComputerSystem"/>
+	<complexType name="VirtualComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.virtualComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:VirtualComputerSystemUnit"/>
+	<complexType name="VirtualComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxRPM" substitutionGroup="core:capability" type="cdmSys:LinuxRPM"/>
+	<complexType name="LinuxRPM">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.linuxRPMUnit" substitutionGroup="core:unit" type="cdmSys:LinuxRPMUnit"/>
+	<complexType name="LinuxRPMUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.solarisKernelDriver" substitutionGroup="core:capability" type="cdmSys:SolarisKernelDriver"/>
+	<complexType name="SolarisKernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisKernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:SolarisKernelDriverUnit"/>
+	<complexType name="SolarisKernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwarePatch" substitutionGroup="core:capability" type="cdmSys:SoftwarePatch"/>
+	<complexType name="SoftwarePatch">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwarePatchUnit" substitutionGroup="core:unit" type="cdmSys:SoftwarePatchUnit"/>
+	<complexType name="SoftwarePatchUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.computerSystem" substitutionGroup="core:capability" type="cdmSys:ComputerSystem"/>
+	<complexType name="ComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="NumCPUs" type="int" />
+				<attribute name="CPUDiesInstalled" type="int" />
+				<attribute name="PrimaryMACAddress" type="string" />
+				<attribute name="ProcessCapacityUnits" type="int" />
+				<attribute name="CPUCoresInstalled" type="int" />
+				<attribute name="AutoStart" type="boolean" />
+				<attribute name="CPUSpeed" type="long" />
+				<attribute name="IsVMIDanLPAR" type="boolean" />
+				<attribute name="CPUCoresEnabled" type="int" />
+				<attribute name="Fqdn" type="string" />
+				<attribute name="SystemBoardUUID" type="string" />
+				<attribute name="ProcessingCapacity" type="float" />
+				<attribute name="SystemId" type="string" />
+				<attribute name="VMID" type="string" />
+				<attribute name="MemorySize" type="long" />
+				<attribute name="CdpDeviceId" type="string" />
+				<attribute name="ROMVersion" type="string" />
+				<attribute name="CPUDiesEnabled" type="int" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="Virtual" type="boolean" />
+				<attribute name="SerialNumber" type="string" />
+				<attribute name="Signature" type="string" />
+				<attribute name="CPUType" type="string" />
+				<attribute name="Architecture" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="Model" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.computerSystemUnit" substitutionGroup="core:unit" type="cdmSys:ComputerSystemUnit"/>
+	<complexType name="ComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMBSAP" substitutionGroup="core:capability" type="cdmSys:SMBSAP"/>
+	<complexType name="SMBSAP">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMBSAPUnit" substitutionGroup="core:unit" type="cdmSys:SMBSAPUnit"/>
+	<complexType name="SMBSAPUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:UnitaryComputerSystem"/>
+	<complexType name="UnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.unitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:UnitaryComputerSystemUnit"/>
+	<complexType name="UnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:ComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.remoteFileSystem" substitutionGroup="core:capability" type="cdmSys:RemoteFileSystem"/>
+	<complexType name="RemoteFileSystem">
+		<complexContent>
+			<extension base="cdmSys:FileSystem">
+				<attribute name="ServerName" type="string" />
+				<attribute name="ExportName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.remoteFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:RemoteFileSystemUnit"/>
+	<complexType name="RemoteFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.namingContext" substitutionGroup="core:capability" type="cdmSys:NamingContext"/>
+	<complexType name="NamingContext">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Index" type="int" />
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.namingContextUnit" substitutionGroup="core:unit" type="cdmSys:NamingContextUnit"/>
+	<complexType name="NamingContextUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.openVms" substitutionGroup="core:capability" type="cdmSys:OpenVms"/>
+	<complexType name="OpenVms">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.openVmsUnit" substitutionGroup="core:unit" type="cdmSys:OpenVmsUnit"/>
+	<complexType name="OpenVmsUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsOperatingSystem" substitutionGroup="core:capability" type="cdmSys:WindowsOperatingSystem"/>
+	<complexType name="WindowsOperatingSystem">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.windowsOperatingSystemUnit" substitutionGroup="core:unit" type="cdmSys:WindowsOperatingSystemUnit"/>
+	<complexType name="WindowsOperatingSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cICSProgram" substitutionGroup="core:capability" type="cdmSys:CICSProgram"/>
+	<complexType name="CICSProgram">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cICSProgramUnit" substitutionGroup="core:unit" type="cdmSys:CICSProgramUnit"/>
+	<complexType name="CICSProgramUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.macOSKernelDriver" substitutionGroup="core:capability" type="cdmSys:MacOSKernelDriver"/>
+	<complexType name="MacOSKernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.macOSKernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:MacOSKernelDriverUnit"/>
+	<complexType name="MacOSKernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cIMSystem" substitutionGroup="core:capability" type="cdmSys:CIMSystem"/>
+	<complexType name="CIMSystem">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cIMSystemUnit" substitutionGroup="core:unit" type="cdmSys:CIMSystemUnit"/>
+	<complexType name="CIMSystemUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.kernelDriver" substitutionGroup="core:capability" type="cdmSys:KernelDriver"/>
+	<complexType name="KernelDriver">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.kernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:KernelDriverUnit"/>
+	<complexType name="KernelDriverUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fileSystem" substitutionGroup="core:capability" type="cdmSys:FileSystem"/>
+	<complexType name="FileSystem">
+		<complexContent>
+			<extension base="cdmSys:CIMSystem">
+				<attribute name="AvailableSpace" type="long" />
+				<attribute name="MountPoint" type="string" />
+				<attribute name="Capacity" type="long" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemUnit" substitutionGroup="core:unit" type="cdmSys:FileSystemUnit"/>
+	<complexType name="FileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:CIMSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMBFileSystem" substitutionGroup="core:capability" type="cdmSys:SMBFileSystem"/>
+	<complexType name="SMBFileSystem">
+		<complexContent>
+			<extension base="cdmSys:RemoteFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMBFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:SMBFileSystemUnit"/>
+	<complexType name="SMBFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:RemoteFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.freeBSDUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:FreeBSDUnitaryComputerSystem"/>
+	<complexType name="FreeBSDUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.freeBSDUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:FreeBSDUnitaryComputerSystemUnit"/>
+	<complexType name="FreeBSDUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:VmwareUnitaryComputerSystem"/>
+	<complexType name="VmwareUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+				<attribute name="CurrentMemoryForAllVMs" type="long" />
+				<attribute name="ServiceConsoleMemorySize" type="long" />
+				<attribute name="SwapMemorySize" type="long" />
+				<attribute name="MaxVMMemorySize" type="long" />
+				<attribute name="AvailableMemoryForAllVMs" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vmwareUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:VmwareUnitaryComputerSystemUnit"/>
+	<complexType name="VmwareUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQSubsystem" substitutionGroup="core:capability" type="cdmSys:MQSubsystem"/>
+	<complexType name="MQSubsystem">
+		<complexContent>
+			<extension base="cdmBase:MQQueueManager">
+				<attribute name="Level" type="int" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="SubsystemName" type="string" />
+				<attribute name="CommandPrefixName" type="string" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="ControllingAddressSpace" type="string" />
+				<attribute name="Modifier" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQSubsystemUnit" substitutionGroup="core:unit" type="cdmSys:MQSubsystemUnit"/>
+	<complexType name="MQSubsystemUnit">
+		<complexContent>
+			<extension base="cdmBase:MQQueueManagerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericRouter" substitutionGroup="core:capability" type="cdmSys:GenericRouter"/>
+	<complexType name="GenericRouter">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericRouterUnit" substitutionGroup="core:unit" type="cdmSys:GenericRouterUnit"/>
+	<complexType name="GenericRouterUnit">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dNSSAP" substitutionGroup="core:capability" type="cdmSys:DNSSAP"/>
+	<complexType name="DNSSAP">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPoint">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dNSSAPUnit" substitutionGroup="core:unit" type="cdmSys:DNSSAPUnit"/>
+	<complexType name="DNSSAPUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceAccessPointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.i5Profile" substitutionGroup="core:capability" type="cdmSys:I5Profile"/>
+	<complexType name="I5Profile">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="InitialProgram" type="string" />
+				<attribute name="SpecialAuthority" type="string" />
+				<attribute name="ProfileName" type="string" />
+				<attribute name="LimitCapabilities" type="int" />
+				<attribute name="InitialMenu" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.i5ProfileUnit" substitutionGroup="core:unit" type="cdmSys:I5ProfileUnit"/>
+	<complexType name="I5ProfileUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cICSTransaction" substitutionGroup="core:capability" type="cdmSys:CICSTransaction"/>
+	<complexType name="CICSTransaction">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cICSTransactionUnit" substitutionGroup="core:unit" type="cdmSys:CICSTransactionUnit"/>
+	<complexType name="CICSTransactionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:LinuxUnitaryComputerSystem"/>
+	<complexType name="LinuxUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.linuxUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:LinuxUnitaryComputerSystemUnit"/>
+	<complexType name="LinuxUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericLoadBalancer" substitutionGroup="core:capability" type="cdmSys:GenericLoadBalancer"/>
+	<complexType name="GenericLoadBalancer">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericLoadBalancerUnit" substitutionGroup="core:unit" type="cdmSys:GenericLoadBalancerUnit"/>
+	<complexType name="GenericLoadBalancerUnit">
+		<complexContent>
+			<extension base="cdmSys:GenericComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zOS" substitutionGroup="core:capability" type="cdmSys:ZOS"/>
+	<complexType name="ZOS">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+				<attribute name="ParmlibCEEPRM" type="string" />
+				<attribute name="ParmlibDIAG" type="string" />
+				<attribute name="ParmlibCOMMND" type="string" />
+				<attribute name="ParmlibLPALST" type="string" />
+				<attribute name="NetidSSCP" type="string" />
+				<attribute name="IPLParmDevice" type="string" />
+				<attribute name="IPLParmVolume" type="string" />
+				<attribute name="ParmlibGRSCNF" type="string" />
+				<attribute name="ParmlibIEALPA" type="string" />
+				<attribute name="Parmlibs" type="string" />
+				<attribute name="ParmlibCOUPLE" type="string" />
+				<attribute name="ParmlibIFAPRD" type="string" />
+				<attribute name="DynamicLNKLSTName" type="string" />
+				<attribute name="ParmlibIEASYS" type="string" />
+				<attribute name="ParmlibIGDSMS" type="string" />
+				<attribute name="PrimaryJES" type="string" />
+				<attribute name="ParmlibSCHED" type="string" />
+				<attribute name="ParmlibBPXPRM" type="string" />
+				<attribute name="IPLParmDataset" type="string" />
+				<attribute name="ParmlibIEASYM" type="string" />
+				<attribute name="MasterCatalogDataset" type="string" />
+				<attribute name="IODFEDT" type="string" />
+				<attribute name="SSCP" type="string" />
+				<attribute name="SMFID" type="string" />
+				<attribute name="ParmlibVATLST" type="string" />
+				<attribute name="JESNode" type="string" />
+				<attribute name="ParmlibIEAPAK" type="string" />
+				<attribute name="ParmlibIEASVC" type="string" />
+				<attribute name="ParmlibEXIT" type="string" />
+				<attribute name="ParmlibMembers" type="string" />
+				<attribute name="ParmlibPROG" type="string" />
+				<attribute name="ParmlibIEAFIX" type="string" />
+				<attribute name="ParmlibLOAD" type="string" />
+				<attribute name="ParmlibIEAAPF" type="string" />
+				<attribute name="ParmlibCUNUNI" type="string" />
+				<attribute name="ParmlibGRSRNL" type="string" />
+				<attribute name="ParmlibSPXPRM" type="string" />
+				<attribute name="IODFVolume" type="string" />
+				<attribute name="ProcessCapacityUnits" type="int" />
+				<attribute name="DynamicAPF" type="string" />
+				<attribute name="ParmlibIKJTSO" type="string" />
+				<attribute name="DynamicEXIT" type="string" />
+				<attribute name="ParmlibMSTJCL" type="string" />
+				<attribute name="NetID" type="string" />
+				<attribute name="ParmlibLNKLST" type="string" />
+				<attribute name="ParmlibCSVRTL" type="string" />
+				<attribute name="ProcessingCapacity" type="float" />
+				<attribute name="SecurityPackage" type="int" />
+				<attribute name="ParmlibIEAOPT" type="string" />
+				<attribute name="ParmlibIECIOS" type="string" />
+				<attribute name="IPLTime" type="long" />
+				<attribute name="ParmlibCLOCK" type="string" />
+				<attribute name="DynamicLNKLST" type="string" />
+				<attribute name="IODFTime" type="long" />
+				<attribute name="ParmlibCONSOL" type="string" />
+				<attribute name="ParmlibDEVSUP" type="string" />
+				<attribute name="ParmlibIEFSSN" type="string" />
+				<attribute name="ParmlibALLOC" type="string" />
+				<attribute name="IODFDataset" type="string" />
+				<attribute name="Fmid" type="string" />
+				<attribute name="IPLParmMember" type="string" />
+				<attribute name="MasterCatalogVolume" type="string" />
+				<attribute name="ParmlibSMFPRM" type="string" />
+				<attribute name="SysResVolume" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zOSUnit" substitutionGroup="core:unit" type="cdmSys:ZOSUnit"/>
+	<complexType name="ZOSUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.localFileSystem" substitutionGroup="core:capability" type="cdmSys:LocalFileSystem"/>
+	<complexType name="LocalFileSystem">
+		<complexContent>
+			<extension base="cdmSys:FileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.localFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:LocalFileSystemUnit"/>
+	<complexType name="LocalFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPSOUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:IPSOUnitaryComputerSystem"/>
+	<complexType name="IPSOUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPSOUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:IPSOUnitaryComputerSystemUnit"/>
+	<complexType name="IPSOUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixFileSystem" substitutionGroup="core:capability" type="cdmSys:UnixFileSystem"/>
+	<complexType name="UnixFileSystem">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.unixFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:UnixFileSystemUnit"/>
+	<complexType name="UnixFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zVMGuest" substitutionGroup="core:capability" type="cdmSys:ZVMGuest"/>
+	<complexType name="ZVMGuest">
+		<complexContent>
+			<extension base="cdmSys:LPAR">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zVMGuestUnit" substitutionGroup="core:unit" type="cdmSys:ZVMGuestUnit"/>
+	<complexType name="ZVMGuestUnit">
+		<complexContent>
+			<extension base="cdmSys:LPARUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.solaris" substitutionGroup="core:capability" type="cdmSys:Solaris"/>
+	<complexType name="Solaris">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisUnit" substitutionGroup="core:unit" type="cdmSys:SolarisUnit"/>
+	<complexType name="SolarisUnit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.management" substitutionGroup="core:capability" type="cdmSys:Management"/>
+	<complexType name="Management">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.managementUnit" substitutionGroup="core:unit" type="cdmSys:ManagementUnit"/>
+	<complexType name="ManagementUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nFSFileSystem" substitutionGroup="core:capability" type="cdmSys:NFSFileSystem"/>
+	<complexType name="NFSFileSystem">
+		<complexContent>
+			<extension base="cdmSys:RemoteFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nFSFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:NFSFileSystemUnit"/>
+	<complexType name="NFSFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:RemoteFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vIOS" substitutionGroup="core:capability" type="cdmSys:VIOS"/>
+	<complexType name="VIOS">
+		<complexContent>
+			<extension base="cdmBase:Function">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.vIOSUnit" substitutionGroup="core:unit" type="cdmSys:VIOSUnit"/>
+	<complexType name="VIOSUnit">
+		<complexContent>
+			<extension base="cdmBase:FunctionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsFileSystem" substitutionGroup="core:capability" type="cdmSys:WindowsFileSystem"/>
+	<complexType name="WindowsFileSystem">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.windowsFileSystemUnit" substitutionGroup="core:unit" type="cdmSys:WindowsFileSystemUnit"/>
+	<complexType name="WindowsFileSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:LocalFileSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.i5OperatingSystem" substitutionGroup="core:capability" type="cdmSys:I5OperatingSystem"/>
+	<complexType name="I5OperatingSystem">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+				<attribute name="SysValQRMTSIGN" type="int" />
+				<attribute name="SysValQADLACTJ" type="int" />
+				<attribute name="SysValQLOCALE" type="string" />
+				<attribute name="SysValQIPLSTS" type="int" />
+				<attribute name="SysValQSPCENV" type="string" />
+				<attribute name="SysValQCCSID" type="int" />
+				<attribute name="SysValQSTRUPPGM" type="string" />
+				<attribute name="SysValQMAXACTLVL" type="int" />
+				<attribute name="SysValQSRLNBR" type="string" />
+				<attribute name="SysValQIPLTYPE" type="int" />
+				<attribute name="SysValQABNORMSW" type="int" />
+				<attribute name="SysValQPWDVLDPGM" type="string" />
+				<attribute name="SysValQBASPOOL" type="int" />
+				<attribute name="SysValQModel" type="string" />
+				<attribute name="SysValQRMTIPL" type="boolean" />
+				<attribute name="SysValQBASACTLVL" type="int" />
+				<attribute name="SysValQCONSOLE" type="string" />
+				<attribute name="SysValQLANGID" type="string" />
+				<attribute name="SysValQPWDLVL" type="int" />
+				<attribute name="SysValQPWRRSTIPL" type="boolean" />
+				<attribute name="SysValQDYNPTYSCD" type="boolean" />
+				<attribute name="SysValQAUDCTL" type="string" />
+				<attribute name="SysValQMAXJOB" type="int" />
+				<attribute name="SysValQSECURITY" type="int" />
+				<attribute name="SysValQACTJOB" type="int" />
+				<attribute name="SysValQMCHPOOL" type="int" />
+				<attribute name="SysValQDEVRCYACN" type="int" />
+				<attribute name="SysValQDYNPTYADJ" type="boolean" />
+				<attribute name="SysValQPWDEXPITV" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.i5OperatingSystemUnit" substitutionGroup="core:unit" type="cdmSys:I5OperatingSystemUnit"/>
+	<complexType name="I5OperatingSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsComputerSystem" substitutionGroup="core:capability" type="cdmSys:WindowsComputerSystem"/>
+	<complexType name="WindowsComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+				<attribute name="ServerFlags" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.windowsComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:WindowsComputerSystemUnit"/>
+	<complexType name="WindowsComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMTPService" substitutionGroup="core:capability" type="cdmSys:SMTPService"/>
+	<complexType name="SMTPService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMTPServiceUnit" substitutionGroup="core:unit" type="cdmSys:SMTPServiceUnit"/>
+	<complexType name="SMTPServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iMSSubsystem" substitutionGroup="core:capability" type="cdmSys:IMSSubsystem"/>
+	<complexType name="IMSSubsystem">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="Level" type="int" />
+				<attribute name="ProgramsChecksum" type="string" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="IRLMGroupName" type="string" />
+				<attribute name="IMSPlexGroupName" type="string" />
+				<attribute name="CQSGroupName" type="string" />
+				<attribute name="TransactionsChecksum" type="string" />
+				<attribute name="IMSSubsysType" type="int" />
+				<attribute name="CommandPrefixName" type="string" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="ControllingAddressSpace" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="DatabasesChecksum" type="string" />
+				<attribute name="Subsystemname" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iMSSubsystemUnit" substitutionGroup="core:unit" type="cdmSys:IMSSubsystemUnit"/>
+	<complexType name="IMSSubsystemUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aixKernelDriver" substitutionGroup="core:capability" type="cdmSys:AixKernelDriver"/>
+	<complexType name="AixKernelDriver">
+		<complexContent>
+			<extension base="cdmSys:KernelDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aixKernelDriverUnit" substitutionGroup="core:unit" type="cdmSys:AixKernelDriverUnit"/>
+	<complexType name="AixKernelDriverUnit">
+		<complexContent>
+			<extension base="cdmSys:KernelDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixProcess" substitutionGroup="core:capability" type="cdmSys:UnixProcess"/>
+	<complexType name="UnixProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.unixProcessUnit" substitutionGroup="core:unit" type="cdmSys:UnixProcessUnit"/>
+	<complexType name="UnixProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zVM" substitutionGroup="core:capability" type="cdmSys:ZVM"/>
+	<complexType name="ZVM">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zVMUnit" substitutionGroup="core:unit" type="cdmSys:ZVMUnit"/>
+	<complexType name="ZVMUnit">
+		<complexContent>
+			<extension base="cdmSys:OperatingSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dNSService" substitutionGroup="core:capability" type="cdmSys:DNSService"/>
+	<complexType name="DNSService">
+		<complexContent>
+			<extension base="cdmSys:Service">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dNSServiceUnit" substitutionGroup="core:unit" type="cdmSys:DNSServiceUnit"/>
+	<complexType name="DNSServiceUnit">
+		<complexContent>
+			<extension base="cdmSys:ServiceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.addressSpace" substitutionGroup="core:capability" type="cdmSys:AddressSpace"/>
+	<complexType name="AddressSpace">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+				<attribute name="PgmParm" type="string" />
+				<attribute name="JobUserid" type="string" />
+				<attribute name="JobType" type="int" />
+				<attribute name="JobFunction" type="string" />
+				<attribute name="Allocations" type="string" />
+				<attribute name="JobName" type="string" />
+				<attribute name="StepName" type="string" />
+				<attribute name="Pgm" type="string" />
+				<attribute name="ProcStep" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.addressSpaceUnit" substitutionGroup="core:unit" type="cdmSys:AddressSpaceUnit"/>
+	<complexType name="AddressSpaceUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iVM" substitutionGroup="core:capability" type="cdmSys:IVM"/>
+	<complexType name="IVM">
+		<complexContent>
+			<extension base="cdmSys:VIOS">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iVMUnit" substitutionGroup="core:unit" type="cdmSys:IVMUnit"/>
+	<complexType name="IVMUnit">
+		<complexContent>
+			<extension base="cdmSys:VIOSUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.openVmsUnitaryComputerSystem" substitutionGroup="core:capability" type="cdmSys:OpenVmsUnitaryComputerSystem"/>
+	<complexType name="OpenVmsUnitaryComputerSystem">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystem">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.openVmsUnitaryComputerSystemUnit" substitutionGroup="core:unit" type="cdmSys:OpenVmsUnitaryComputerSystemUnit"/>
+	<complexType name="OpenVmsUnitaryComputerSystemUnit">
+		<complexContent>
+			<extension base="cdmSys:UnitaryComputerSystemUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.tru64" substitutionGroup="core:capability" type="cdmSys:Tru64"/>
+	<complexType name="Tru64">
+		<complexContent>
+			<extension base="cdmSys:Unix">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.tru64Unit" substitutionGroup="core:unit" type="cdmSys:Tru64Unit"/>
+	<complexType name="Tru64Unit">
+		<complexContent>
+			<extension base="cdmSys:UnixUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.serviceAccessPoint" substitutionGroup="core:capability" type="cdmSys:ServiceAccessPoint"/>
+	<complexType name="ServiceAccessPoint">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ProductVersion" type="string" />
+				<attribute name="ProductName" type="string" />
+				<attribute name="VendorName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.serviceAccessPointUnit" substitutionGroup="core:unit" type="cdmSys:ServiceAccessPointUnit"/>
+	<complexType name="ServiceAccessPointUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.printerQueue" substitutionGroup="core:capability" type="cdmSys:PrinterQueue"/>
+	<complexType name="PrinterQueue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="QueueName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.printerQueueUnit" substitutionGroup="core:unit" type="cdmSys:PrinterQueueUnit"/>
+	<complexType name="PrinterQueueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nFSExport" substitutionGroup="core:capability" type="cdmSys:NFSExport"/>
+	<complexType name="NFSExport">
+		<complexContent>
+			<extension base="cdmSys:FileSystemExport">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nFSExportUnit" substitutionGroup="core:unit" type="cdmSys:NFSExportUnit"/>
+	<complexType name="NFSExportUnit">
+		<complexContent>
+			<extension base="cdmSys:FileSystemExportUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/SoftwareInstallation.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQQueueManager.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQApiExit.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.messaging.mq.MQInstallation">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.SoftwareInstallation">
+        <xsd:sequence>
+          <xsd:element name="logWriteIntegrity" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logTypeEnumeration" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="queueManagers" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQQueueManager" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="exit" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQApiExit" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="buildType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dataPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientExitsDefaultPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientExitsDefaultPath64" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="convEBCDICNewline" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logDefaultPath" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

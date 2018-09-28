@@ -1,0 +1,521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Business Application Domain</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The Business Application Domain defines extensions into the IBM SOA
+Modeling Platform to model the relationships among business modules like
+J2EE Web Applications, Enterprise Java Beans (EJB), and Databases.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"
+	href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512">
+<h1 ALIGN="CENTER">Java EE Domain Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="725">
+		<p>The Java EE Domain defines the concepts and abstractions Java
+		Enterprise Edition (EE) applications and their containers.</p>
+		<!--  Leave this paragraph  -->
+		<p>In this document, concepts are enclosed by italics (<i>like
+		this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements
+		in the schemas are enclosed in angle brackets(&lt;likethis /&gt;).</p>
+		<p><a
+			href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11566">M3
+		Design Review Lineitem</a></p>
+		<p></p>
+		<p><a
+			href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12203">M4
+		Design Review Lineitem</a></p>
+		<p></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Java EE Components [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="727">
+		<p><i>Java EE Components</i> represent the standard application
+		components supported by Java EE, including Enterprise Applications,
+		Application Clients, Enterprise Java Bean Modules, Web modules, and
+		Java Connection Architecture modules. Each <i>Java EE Component</i>
+		specializes the Business Application Domain's <i>SoftwareComponent</i>.
+		</p>
+		<p>Each <i>Java EE Component</i> describes technology specific <i>Services</i>,
+		and declares <i>References</i> which may or may not be technology
+		specific.</p>
+
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Service Logic Agreements [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>For M3, two basic components will be defined that describe EJB
+		modules and Web modules.</p>
+		<img border="0" src="JEEComponents.jpg">
+		<p>Each of these <i>Java EE Components</i> declares Services that
+		are specific to its technology, such as <i>service.ejb</i> for <i>EJBComponent</i>
+		or <i>service.url</i> for <i>WebComponent</i>.</p>
+		<img border="0" src="JavaEEServices.jpg">
+		<p>Business Model Alignment</p>
+		<table cellpadding="10" border="1" cellspacing="0">
+			<thead>
+			<td align="center">
+			<p><strong>Current</strong></p>
+			</td>
+			<td align="center">
+			<p><strong>Proposed</strong></p>
+			</td>
+			</thead>
+			<tr>
+				<td colspan="2" bgcolor="lightgreen" align="center">
+				<p><strong>Web</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="47%"><strong>unit.webModule</strong></td>
+				<td width="53%"><strong>component.web</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>j2ee:WebModule</strong> <br />
+				extends <br />
+				<strong>core:Unit</strong></td>
+				<td width="335"><strong>j2ee:WebModule</strong> <br />
+				extends <br />
+				<strong>business:SoftwareComponent</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>capability.webModule</strong></td>
+				<td width="335"><strong>capability.webModule</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>j2ee:WebModuleCapability</strong></td>
+				<td width="335"><strong>j2ee:WebModuleCapability</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:URLInterface</strong> <br />
+				extends <br />
+				<strong>business:Interface</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:WSDLInterface</strong> <br />
+				extends <br />
+				<strong>business:Interface</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>service.servlet</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:URLService</strong> <br />
+				extends <br />
+				<strong>business:Service</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>service.ws</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:WebService</strong> <br />
+				extends <br />
+				<strong>business:Service</strong></td>
+			</tr>
+		</table>
+		<br/>
+		<p>In the case of Java EE Web Modules, the following services will
+		be derived by the relevant <code>CapabilityProvider</code>s:</p>
+		<table cellpadding="10" cellspacing="0" border="1">
+			<thead>
+			<td align="center">
+			<p><strong>Java EE construct</strong></p>
+			</td>
+			<td align="center">
+			<p><strong>Model representation</strong></p>
+			</td>
+			</thead>
+			<tr>
+				<td>Servlet + Servlet Mapping {web.xml}</td>
+				<td><strong>service.servlet</strong><br /> 
+				with an <strong>interface.url</strong></td>
+			</tr>
+			<tr>
+				<td>Axis Web Service {web.xml/*.wsdd} [M3]</td>
+				<td><strong>service.ws</strong> <br /> 
+				with an <strong>interface.wsdl</strong><br />
+				(service.ws.axis?)</td>
+			</tr>
+			<tr>
+				<td>JSR-109 Web Service {web.xml/*.wsdd} [Post M3]</td>
+				<td><strong>service.ws</strong> <br /> 
+				with an <strong>interface.wsdl</strong>	<br />
+				(service.ws.jee?)</td>
+			</tr>
+			<tr>
+				<td>JSR-109 Web Service Reference (webservicesclient.xml)</td>
+				<td><strong>reference</strong> <br /> with an <strong>interface.wsdl</strong>
+				service.ws.axis?</td>
+			</tr>
+		</table>
+		<table cellpadding="10">
+			<tr>
+				<td>
+					<p>Examples: </p>
+					
+					<ul>
+						<li><strong>service.servlet</strong><br/>
+							<table>
+								<tr>
+									<td bgcolor="lightgrey"> 
+<pre>	
+&lt;j2eeDeploy:service.servlet
+          name="HelloWorld" version="1.0.0"
+          displayName="HelloWorld" mutable="false"
+          description="A simple HelloWorld Servlet"&gt; 
+      &lt;core:interface xsi:type="j2eeDeploy:URLInterface"&gt;
+      &lt;paramName&gt;personsName&lt;/paramName&gt;
+      &lt;/core:interface&gt;
+      &lt;j2eeDeploy:urlPattern&gt;/HelloWorld&lt;/j2eeDeploy:urlPattern&gt;
+&lt;/j2eeDeploy:service.servlet&gt;
+</pre>			 
+									</td>
+								</tr>
+							</table>
+						</li>
+					</ul>
+					<p>The following new <code>CapabilityProvider</code>s will be
+					defined:</p>
+					<ul>
+						<li><code>ServletCapabilityProvider</code>: Produces <strong>service.servlet</strong>.</li>
+						<li><code>AxisWebServiceCapabilityProvider</code>: Produces <strong>service.ws</strong>.</li>
+						<li><code>JSR109WebServiceCapabilityProvider</code>: Produces <strong>service.ws</strong>.</li>						
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<br/>
+		<table cellpadding="10" cellspacing="0" border="1">
+			<thead>
+			<td align="center">
+			<p><strong>Current</strong></p>
+			</td>
+			<td align="center">
+			<p><strong>Proposed</strong></p>
+			</td>
+			</thead>
+			<tr>
+				<td colspan="2" bgcolor="lightgreen" align="center">
+				<p><strong>EJB (M4)</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="47%"><strong>unit.ejbModule</strong></td>
+				<td width="53%"><strong>component.ejb</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>j2ee:EjbModule</strong> <br />
+				extends <br />
+				<strong>core:Unit</strong></td>
+				<td width="335"><strong>j2ee:EjbModule</strong> <br />
+				extends <br />
+				<strong>business:SoftwareComponent</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>capability.ejbModule</strong></td>
+				<td width="335"><strong>capability.ejbModule</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>j2ee:EJBModuleCapability</strong></td>
+				<td width="335"><strong>j2ee:EJBModuleCapability</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:EJBHomeInterface</strong><br>extends<br><strong>j2ee:JavaInterface</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:EJBRemoteInterface</strong><br>extends<br><strong>j2ee:JavaInterface</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:EJBLocalInterface</strong><br>extends<br><strong>j2ee:JavaInterface</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:EJBLocalHomeInterface</strong><br>extends<br><strong>j2ee:JavaInterface</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>service.sessionbean</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:SessionEJBService</strong><br>extends<br><strong>business:Service</td></strong>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>service.entitybean</strong></td>
+			</tr>
+			<tr>
+				<td width="292"><strong>(none)</strong></td>
+				<td width="335"><strong>j2ee:EntityEJBService</strong><br>extends<br><strong>business:Service</strong>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<p>In the case of Java EE EJB Modules, the following services will
+		be derived by the relevant <code>CapabilityProvider</code>s:</p>
+		<table cellpadding="10" cellspacing="0" border="1">
+			<thead>
+			<td align="center">
+			<p><strong>Java EE construct</strong></p>
+			</td>
+			<td align="center">
+			<p><strong>Model representation</strong></p>
+			</td>
+			</thead>
+			<tr>
+				<td width="151">CMP EJB w/ Local Interface [M4]</td>
+				<td width="221"><strong>service.entitybean</strong><br /> 
+				with an <strong>interface.ejblocal</strong><br>and<br><strong>interface.ejblocalhome</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">CMP EJB w/ Remote Interface [M4]</td>
+				<td width="221"><strong>service.entitybean</strong> <br /> 
+				with an <strong>interface.ejbhome</strong><br />and<br><strong>interface.ejbremote
+				</td>
+			</tr>
+			<tr>
+				<td width="151">BMP EJB w/ Local Interface [M4]</td>
+				<td width="221"><strong>service.entitybean</strong> <br /> 
+				with an <strong>interface.ejblocal</strong>	<br />and<br><strong>interface.ejblocalhome</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">BMP EJB w/ Remote Interface [M4]</td>
+				<td width="221"><strong>service.entitybean</strong> <br /> with an <strong>interface.ejbhome</strong>
+				<br>and <br><strong>interface.ejbremote</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">SLSB EJB w/ Local Interface [M4]</td>
+				<td width="221"><strong>service.sessionbean</strong><br>with an<br><strong>interface.ejblocal</strong><br>and <br><strong>interface.ejblocalhome</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">SLSB EJB w/ Remote Interface [M4]</td>
+				<td width="221"><strong>service.sessionbean</strong><br>with an<br><strong>interface.ejbhome</strong><br>and<br><strong>interface.ejbremote</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">SFSB EJB w/ Local Interface [M4]</td>
+				<td width="221"><strong>service.sessionbean</strong><br>with an<br><strong>interface.ejblocal</strong><br>and<br><strong>interface.ejblocalhome</strong>
+				</td>
+			</tr>
+			<tr>
+				<td width="151">SFSB EJB w/ Remote Interface [M4]</td>
+				<td width="221"><strong>service.sessionbean</strong><br>with an<br><strong>interface.ejbhome</strong><br>and<br><strong>interface.ejbremote</strong>
+				</td>
+			</tr>
+		</table>
+		<table cellpadding="10">
+			<tr>
+				<td>
+					<p>Examples: </p>
+					
+					<ul>
+						<li><strong>service.entitybean</strong><br/>
+							<table>
+								<tr>
+									<td bgcolor="lightgrey"> 
+<pre>	
+&lt;j2eeDeploy:service.sessionbean
+          name="HelloWorld" version="1.0.0"
+          displayName="HelloWorld" mutable="false"
+          description="A simple HelloWorld Stateless Session Bean"&gt; 
+      &lt;core:interface.java xsi:type="j2eeDeploy:EJBHomeInterface"&gt;
+      	&lt;interface&gt;com.acme.HelloWorldHome&lt;/paramName&gt;
+      &lt;/core:interface.java&gt;
+      &lt;core:interface.java xsi:type="j2eeDeploy:EJBRemoteInterface"&gt;
+      	&lt;interface&gt;com.acme.HelloWorldRemote&lt;/paramName&gt;
+      &lt;/core:interface.java&gt;
+      &lt;j2eeDeploy:type&gt;stateless&lt;/j2eeDeploy:type&gt;
+&lt;/j2eeDeploy:service.sessionbean&gt;
+</pre>			 
+									</td>
+								</tr>
+							</table>
+						</li>
+					</ul>
+					<p>The following <code>CapabilityProvider</code>s will be
+					responsible for providing the EJB services support:</p>
+					<ul>
+						<li><code>EJBModuleCapabilityProvider</code>: Produces <strong>service.entitybean</strong>.</li>
+						<li><code>EJBModuleCapabilityProvider</code>: Produces <strong>service.sessionbean</strong>.</li>						
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table cellpadding="10" cellspacing="0" border="1">
+			<a name="top0"
+				href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512">
+			</a>
+			<thead>
+				<td align="center"><p><strong>Current</strong></p>
+				</td>
+				<td align="center">
+				<p><strong>Proposed</strong></p>
+				</td>
+			</thead>
+			<tr>
+				<td colspan="2" bgcolor="lightgreen" align="center">
+				<p><strong>JDBC &amp; DataSource Support(M4)</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="47%"></td>
+				<td width="53%"></td>
+			</tr>
+			<tr>
+				<td width="292"></td>
+				<td width="335"></td>
+			</tr>
+			<a></a>
+		</table>
+
+		<br>
+		<table cellpadding="10" cellspacing="0" border="1">
+			<a name="top1"
+				href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512">
+			<a name="top00"
+				href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512">
+			</a> </a>
+			<thead>
+				<td align="center">
+				<p><strong>Current</strong></p>
+				</td>
+				<td align="center">
+				<p><strong>Proposed</strong></p>
+				</td>
+			</thead>
+			<tr>
+				<td colspan="2" bgcolor="lightgreen" align="center">
+				<p><strong>Utility Jar Support(M4)</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="47%"></td>
+				<td width="53%"></td>
+			</tr>
+			<tr>
+				<td width="292"></td>
+				<td width="335"></td>
+			</tr>
+			<a></a>
+			<a></a>
+		</table>
+		<br>
+		<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Bundle Dependency Contracts [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td> 
+		<p>Each <i>Java EE Component</i> describes a bundle of code as an isolateable unit 
+		that can be built, included, or referenced in a build process. Each component exposes 
+		a <i>Bundle Capability</i> which can be referenced to express packaging and 
+		compilation dependencies. These <i>Bundle Capabilities</i> are linked with 
+		<i>DependencyLinks</i>, and do not express a decision about whether the 
+		two <i>Components</i> will be co-located, packaged together or one enclosed 
+		in the other. A separate build model must make decisions regarding build order 
+		and packaging for deployment.
+		</p>
+		<p>For <i>WebModule</i>, the existing <i>J2EEWebModuleCapability</i> will 
+		satisfy the purpose of the more abstract <i>BundleCapability</i>. If a common
+		base type is added, then <i>J2EEWebModuleCapability</i> will extend <i>BundleCapability</i>.
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing Requrements [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The Java EE Domain API will be tested by verifying the
+		following:</p>
+		<ul>
+			<li>A Service and Reference match if the Reference defines a
+			compatible Interface with the Service.</li>
+			<li>A SoftwareComponent should be accessible from the palette or
+			for any Java EE Module.</li>
+		</ul>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Michael D. Elder</b> <i>(mdelder{at}us.ibm.com)</i>.
+
+		
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

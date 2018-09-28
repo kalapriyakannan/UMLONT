@@ -1,0 +1,1024 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmmessaging/1.0.0/"
+	xmlns:cdmMessaging="http://www.ibm.com/ccl/soa/deploy/cdmmessaging/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmMessagingRoot"
+	ecore:name="cdmMessaging"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmmessaging"
+	ecore:nsPrefix="cdmMessaging">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.mQRemoteQueue" substitutionGroup="core:capability" type="cdmMessaging:MQRemoteQueue"/>
+	<complexType name="MQRemoteQueue">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueue">
+				<attribute name="RemoteQueueMgrName" type="string" />
+				<attribute name="TransmissionQueue" type="string" />
+				<attribute name="RemoteName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQRemoteQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:MQRemoteQueueUnit"/>
+	<complexType name="MQRemoteQueueUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQServerChannel" substitutionGroup="core:capability" type="cdmMessaging:MQServerChannel"/>
+	<complexType name="MQServerChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+				<attribute name="LocalCommunicationaddress" type="string" />
+				<attribute name="DataConversion" type="boolean" />
+				<attribute name="LongRetryCount" type="int" />
+				<attribute name="ModeName" type="string" />
+				<attribute name="ShortRetryCount" type="int" />
+				<attribute name="ShortRetryTimer" type="int" />
+				<attribute name="LongRetryTimer" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQServerChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQServerChannelUnit"/>
+	<complexType name="MQServerChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQProcess" substitutionGroup="core:capability" type="cdmMessaging:MQProcess"/>
+	<complexType name="MQProcess">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="ApplicationID" type="string" />
+				<attribute name="UserData" type="string" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="EnvironmentData" type="string" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="ApplicationType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQProcessUnit" substitutionGroup="core:unit" type="cdmMessaging:MQProcessUnit"/>
+	<complexType name="MQProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQQueueSharingGroup" substitutionGroup="core:capability" type="cdmMessaging:MQQueueSharingGroup"/>
+	<complexType name="MQQueueSharingGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQQueueSharingGroupUnit" substitutionGroup="core:unit" type="cdmMessaging:MQQueueSharingGroupUnit"/>
+	<complexType name="MQQueueSharingGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeProtocolVirtualServer" substitutionGroup="core:capability" type="cdmMessaging:ExchangeProtocolVirtualServer"/>
+	<complexType name="ExchangeProtocolVirtualServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="GlobalStop" type="boolean" />
+				<attribute name="VirtualServerName" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="GlobalActionsSupported" type="boolean" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="ProtocolName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeProtocolVirtualServerUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeProtocolVirtualServerUnit"/>
+	<complexType name="ExchangeProtocolVirtualServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeLink" substitutionGroup="core:capability" type="cdmMessaging:ExchangeLink"/>
+	<complexType name="ExchangeLink">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ActionThaw" type="boolean" />
+				<attribute name="ActionFreeze" type="boolean" />
+				<attribute name="ProtocolName" type="string" />
+				<attribute name="LinkID" type="string" />
+				<attribute name="ActionKick" type="boolean" />
+				<attribute name="LinkName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeLinkUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeLinkUnit"/>
+	<complexType name="ExchangeLinkUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQNameList" substitutionGroup="core:capability" type="cdmMessaging:MQNameList"/>
+	<complexType name="MQNameList">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="Values" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQNameListUnit" substitutionGroup="core:unit" type="cdmMessaging:MQNameListUnit"/>
+	<complexType name="MQNameListUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeDSAccessDomainController" substitutionGroup="core:capability" type="cdmMessaging:ExchangeDSAccessDomainController"/>
+	<complexType name="ExchangeDSAccessDomainController">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DomainControllerName" type="string" />
+				<attribute name="ConfigurationType" type="int" />
+				<attribute name="LDAPPort" type="long" />
+				<attribute name="Type" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeDSAccessDomainControllerUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeDSAccessDomainControllerUnit"/>
+	<complexType name="ExchangeDSAccessDomainControllerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQReceiverChannel" substitutionGroup="core:capability" type="cdmMessaging:MQReceiverChannel"/>
+	<complexType name="MQReceiverChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+				<attribute name="PutAuthority" type="int" />
+				<attribute name="DataConversion" type="boolean" />
+				<attribute name="MessageRetryExitName" type="string" />
+				<attribute name="LocalCommunicationAddress" type="string" />
+				<attribute name="ShortRetryCount" type="int" />
+				<attribute name="MessageRetryExitUserData" type="string" />
+				<attribute name="LongRetryTimer" type="int" />
+				<attribute name="MessageRetryCount" type="long" />
+				<attribute name="LongRetryCount" type="int" />
+				<attribute name="BatchHeartbeatInterval" type="long" />
+				<attribute name="MessageRetryInterval" type="long" />
+				<attribute name="ShortRetryTimer" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQReceiverChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQReceiverChannelUnit"/>
+	<complexType name="MQReceiverChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeMailbox" substitutionGroup="core:capability" type="cdmMessaging:ExchangeMailbox"/>
+	<complexType name="ExchangeMailbox">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MailboxDisplayName" type="string" />
+				<attribute name="ActiveDirectoryGUID" type="string" />
+				<attribute name="LegacyDN" type="string" />
+				<attribute name="StorageLimitInfo" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeMailboxUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeMailboxUnit"/>
+	<complexType name="ExchangeMailboxUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQListener" substitutionGroup="core:capability" type="cdmMessaging:MQListener"/>
+	<complexType name="MQListener">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Control" type="string" />
+				<attribute name="System" type="boolean" />
+				<attribute name="StartTime" type="long" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Backlog" type="int" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQListenerUnit" substitutionGroup="core:unit" type="cdmMessaging:MQListenerUnit"/>
+	<complexType name="MQListenerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQStorageClass" substitutionGroup="core:capability" type="cdmMessaging:MQStorageClass"/>
+	<complexType name="MQStorageClass">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQStorageClassUnit" substitutionGroup="core:unit" type="cdmMessaging:MQStorageClassUnit"/>
+	<complexType name="MQStorageClassUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQNetBIOSListener" substitutionGroup="core:capability" type="cdmMessaging:MQNetBIOSListener"/>
+	<complexType name="MQNetBIOSListener">
+		<complexContent>
+			<extension base="cdmMessaging:MQListener">
+				<attribute name="Adapter" type="int" />
+				<attribute name="LocalName" type="string" />
+				<attribute name="CommandsNum" type="int" />
+				<attribute name="SessionsNum" type="int" />
+				<attribute name="NamesNum" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQNetBIOSListenerUnit" substitutionGroup="core:unit" type="cdmMessaging:MQNetBIOSListenerUnit"/>
+	<complexType name="MQNetBIOSListenerUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQListenerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQSPXListener" substitutionGroup="core:capability" type="cdmMessaging:MQSPXListener"/>
+	<complexType name="MQSPXListener">
+		<complexContent>
+			<extension base="cdmMessaging:MQListener">
+				<attribute name="Socket" type="int" />
+				<attribute name="KeepAlive" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQSPXListenerUnit" substitutionGroup="core:unit" type="cdmMessaging:MQSPXListenerUnit"/>
+	<complexType name="MQSPXListenerUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQListenerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQBufferPool" substitutionGroup="core:capability" type="cdmMessaging:MQBufferPool"/>
+	<complexType name="MQBufferPool">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="ID" type="int" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Number" type="int" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQBufferPoolUnit" substitutionGroup="core:unit" type="cdmMessaging:MQBufferPoolUnit"/>
+	<complexType name="MQBufferPoolUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeServer" substitutionGroup="core:capability" type="cdmMessaging:ExchangeServer"/>
+	<complexType name="ExchangeServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="Level" type="int" />
+				<attribute name="MessageTrackingEnabled" type="boolean" />
+				<attribute name="FrontEndServer" type="boolean" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="MTADataPath" type="string" />
+				<attribute name="Release" type="int" />
+				<attribute name="CreationTime" type="long" />
+				<attribute name="ActiveDirectoryGUID" type="string" />
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="SubjectLoggingEnabled" type="boolean" />
+				<attribute name="MessageTrackingLogFileLifetime" type="int" />
+				<attribute name="MonitoringEnabled" type="boolean" />
+				<attribute name="MessageTrackingLogFilePath" type="string" />
+				<attribute name="ActiveDirectoryDomainName" type="string" />
+				<attribute name="ServerType" type="int" />
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="AdministrativeNote" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeServerUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeServerUnit"/>
+	<complexType name="ExchangeServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeQueue" substitutionGroup="core:capability" type="cdmMessaging:ExchangeQueue"/>
+	<complexType name="ExchangeQueue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="CanEnumAll" type="boolean" />
+				<attribute name="QueueName" type="string" />
+				<attribute name="QueueID" type="string" />
+				<attribute name="ProtocolName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeQueueUnit"/>
+	<complexType name="ExchangeQueueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQInstallation" substitutionGroup="core:capability" type="cdmMessaging:MQInstallation"/>
+	<complexType name="MQInstallation">
+		<complexContent>
+			<extension base="cdmBase:SoftwareInstallation">
+				<attribute name="ClientExitsDefaultPath64" type="string" />
+				<attribute name="ClientExitsDefaultPath" type="string" />
+				<attribute name="DataPath" type="string" />
+				<attribute name="ConvEBCDICNewline" type="int" />
+				<attribute name="LogDefaultPath" type="string" />
+				<attribute name="LogTypeEnumeration" type="string" />
+				<attribute name="LogWriteIntegrity" type="int" />
+				<attribute name="BuildType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQInstallationUnit" substitutionGroup="core:unit" type="cdmMessaging:MQInstallationUnit"/>
+	<complexType name="MQInstallationUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareInstallationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQServerConnectionChannel" substitutionGroup="core:capability" type="cdmMessaging:MQServerConnectionChannel"/>
+	<complexType name="MQServerConnectionChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQServerConnectionChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQServerConnectionChannelUnit"/>
+	<complexType name="MQServerConnectionChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQService" substitutionGroup="core:capability" type="cdmMessaging:MQService"/>
+	<complexType name="MQService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Control" type="int" />
+				<attribute name="StartArgs" type="string" />
+				<attribute name="System" type="boolean" />
+				<attribute name="StdOut" type="string" />
+				<attribute name="StartCommand" type="string" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Type" type="string" />
+				<attribute name="StopCommand" type="string" />
+				<attribute name="StdErr" type="string" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="StopArgs" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQServiceUnit" substitutionGroup="core:unit" type="cdmMessaging:MQServiceUnit"/>
+	<complexType name="MQServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangePublicFolder" substitutionGroup="core:capability" type="cdmMessaging:ExchangePublicFolder"/>
+	<complexType name="ExchangePublicFolder">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MaximumItemSize" type="long" />
+				<attribute name="ProhibitPostLimit" type="long" />
+				<attribute name="PerUserReadDisabled" type="boolean" />
+				<attribute name="StorageLimitStyle" type="int" />
+				<attribute name="ReplicationStyle" type="int" />
+				<attribute name="PublicFolderName" type="string" />
+				<attribute name="CreationTime" type="long" />
+				<attribute name="WarningLimit" type="long" />
+				<attribute name="AddressBookName" type="string" />
+				<attribute name="TargetAddress" type="string" />
+				<attribute name="NormalFolder" type="boolean" />
+				<attribute name="DeletedItemLifetime" type="int" />
+				<attribute name="URL" type="string" />
+				<attribute name="ADProxyPath" type="string" />
+				<attribute name="HasLocalReplica" type="boolean" />
+				<attribute name="SecureInSite" type="boolean" />
+				<attribute name="Path" type="string" />
+				<attribute name="MailEnabled" type="boolean" />
+				<attribute name="FolderComment" type="string" />
+				<attribute name="AdministrativeNote" type="string" />
+				<attribute name="FriendlyURL" type="string" />
+				<attribute name="SearchFolder" type="boolean" />
+				<attribute name="UsePublicStoreDeletedLifetime" type="boolean" />
+				<attribute name="PublishInAddressBook" type="boolean" />
+				<attribute name="ReplicaAgeLimit" type="int" />
+				<attribute name="UsePublicStoreAgeLimits" type="boolean" />
+				<attribute name="ReplicationMessagePriority" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangePublicFolderUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangePublicFolderUnit"/>
+	<complexType name="ExchangePublicFolderUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeConnector" substitutionGroup="core:capability" type="cdmMessaging:ExchangeConnector"/>
+	<complexType name="ExchangeConnector">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ActiveDirectoryGUID" type="string" />
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="ConnectorName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeConnectorUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeConnectorUnit"/>
+	<complexType name="ExchangeConnectorUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeFolderTree" substitutionGroup="core:capability" type="cdmMessaging:ExchangeFolderTree"/>
+	<complexType name="ExchangeFolderTree">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ActiveDirectoryGUID" type="string" />
+				<attribute name="FolderTreeName" type="string" />
+				<attribute name="AdministrativeNote" type="string" />
+				<attribute name="RootFolderURL" type="string" />
+				<attribute name="CreationTime" type="long" />
+				<attribute name="MAPIFolderTree" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeFolderTreeUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeFolderTreeUnit"/>
+	<complexType name="ExchangeFolderTreeUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQClusterReceiverChannel" substitutionGroup="core:capability" type="cdmMessaging:MQClusterReceiverChannel"/>
+	<complexType name="MQClusterReceiverChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQReceiverChannel">
+				<attribute name="CLWLChannelWeight" type="string" />
+				<attribute name="CLWLChannelPriority" type="string" />
+				<attribute name="CLWLChannelRank" type="string" />
+				<attribute name="ClusterNameList" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQClusterReceiverChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQClusterReceiverChannelUnit"/>
+	<complexType name="MQClusterReceiverChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQReceiverChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQChannel" substitutionGroup="core:capability" type="cdmMessaging:MQChannel"/>
+	<complexType name="MQChannel">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SendExitName" type="string" />
+				<attribute name="ReceiveExitName" type="string" />
+				<attribute name="KeepAliveInterval" type="long" />
+				<attribute name="SendExitUserData" type="string" />
+				<attribute name="MCAName" type="string" />
+				<attribute name="SSLPeer" type="string" />
+				<attribute name="TransmissionQueue" type="string" />
+				<attribute name="ReceiveExitUserData" type="string" />
+				<attribute name="HeaderCompression" type="int" />
+				<attribute name="MessageRetryTimer" type="long" />
+				<attribute name="ShortRetry" type="long" />
+				<attribute name="QueueSharingGroupDisposition" type="string" />
+				<attribute name="MessageRetryUserData" type="string" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="BatchInterval" type="long" />
+				<attribute name="MessageCompression" type="int" />
+				<attribute name="System" type="boolean" />
+				<attribute name="NonPersistentMessageSpeed" type="int" />
+				<attribute name="ConnectionName" type="string" />
+				<attribute name="MessageExitUserData" type="string" />
+				<attribute name="ChannelMonitoring" type="int" />
+				<attribute name="BatchSize" type="long" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="SequenceNumberWrap" type="boolean" />
+				<attribute name="MCAUserId" type="string" />
+				<attribute name="MCAType" type="int" />
+				<attribute name="SSLCipherSpecification" type="string" />
+				<attribute name="HeartbeatInterval" type="long" />
+				<attribute name="SecurityExitName" type="string" />
+				<attribute name="DisconnectInterval" type="long" />
+				<attribute name="SecurityExitUserData" type="string" />
+				<attribute name="MessageExitName" type="string" />
+				<attribute name="SSLClientAuthentication" type="boolean" />
+				<attribute name="UserID" type="string" />
+				<attribute name="MaxMessageLength" type="long" />
+				<attribute name="MessageRetry" type="long" />
+				<attribute name="ChannelStatistics" type="int" />
+				<attribute name="MCAUserIdentifier" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQChannelUnit"/>
+	<complexType name="MQChannelUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQAliasQueue" substitutionGroup="core:capability" type="cdmMessaging:MQAliasQueue"/>
+	<complexType name="MQAliasQueue">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueue">
+				<attribute name="Get" type="boolean" />
+				<attribute name="TargetQueue" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQAliasQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:MQAliasQueueUnit"/>
+	<complexType name="MQAliasQueueUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQCluster" substitutionGroup="core:capability" type="cdmMessaging:MQCluster"/>
+	<complexType name="MQCluster">
+		<complexContent>
+			<extension base="cdmBase:Collection">
+				<attribute name="System" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQClusterUnit" substitutionGroup="core:unit" type="cdmMessaging:MQClusterUnit"/>
+	<complexType name="MQClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:CollectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQClusterSenderChannel" substitutionGroup="core:capability" type="cdmMessaging:MQClusterSenderChannel"/>
+	<complexType name="MQClusterSenderChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQSenderChannel">
+				<attribute name="CLWLChannelWeight" type="string" />
+				<attribute name="CLWLChannelPriority" type="string" />
+				<attribute name="CLWLChannelRank" type="string" />
+				<attribute name="ClusterNameList" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQClusterSenderChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQClusterSenderChannelUnit"/>
+	<complexType name="MQClusterSenderChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQSenderChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQApiExit" substitutionGroup="core:capability" type="cdmMessaging:MQApiExit"/>
+	<complexType name="MQApiExit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="Sequence" type="int" />
+				<attribute name="Function" type="string" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Data" type="string" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQApiExitUnit" substitutionGroup="core:unit" type="cdmMessaging:MQApiExitUnit"/>
+	<complexType name="MQApiExitUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQServiceComponent" substitutionGroup="core:capability" type="cdmMessaging:MQServiceComponent"/>
+	<complexType name="MQServiceComponent">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponent">
+				<attribute name="System" type="boolean" />
+				<attribute name="ComponentDataSize" type="int" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQServiceComponentUnit" substitutionGroup="core:unit" type="cdmMessaging:MQServiceComponentUnit"/>
+	<complexType name="MQServiceComponentUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQSenderChannel" substitutionGroup="core:capability" type="cdmMessaging:MQSenderChannel"/>
+	<complexType name="MQSenderChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+				<attribute name="DataConversion" type="boolean" />
+				<attribute name="LongRetryCount" type="int" />
+				<attribute name="BatchHeartbeatInterval" type="long" />
+				<attribute name="ModeName" type="string" />
+				<attribute name="LocalCommunicationAddress" type="string" />
+				<attribute name="ShortRetryCount" type="int" />
+				<attribute name="ShortRetryTimer" type="int" />
+				<attribute name="LongRetryTimer" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQSenderChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQSenderChannelUnit"/>
+	<complexType name="MQSenderChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQTCPListener" substitutionGroup="core:capability" type="cdmMessaging:MQTCPListener"/>
+	<complexType name="MQTCPListener">
+		<complexContent>
+			<extension base="cdmMessaging:MQListener">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQTCPListenerUnit" substitutionGroup="core:unit" type="cdmMessaging:MQTCPListenerUnit"/>
+	<complexType name="MQTCPListenerUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQListenerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQRequesterChannel" substitutionGroup="core:capability" type="cdmMessaging:MQRequesterChannel"/>
+	<complexType name="MQRequesterChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+				<attribute name="PutAuthority" type="int" />
+				<attribute name="MessageRetryCount" type="long" />
+				<attribute name="MessageRetryExitName" type="string" />
+				<attribute name="LocalCommunicationAddress" type="string" />
+				<attribute name="MessageRetryInterval" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQRequesterChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQRequesterChannelUnit"/>
+	<complexType name="MQRequesterChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQPageSet" substitutionGroup="core:capability" type="cdmMessaging:MQPageSet"/>
+	<complexType name="MQPageSet">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="PSID" type="int" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Dataset" type="string" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQPageSetUnit" substitutionGroup="core:unit" type="cdmMessaging:MQPageSetUnit"/>
+	<complexType name="MQPageSetUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQApiExitTemplates" substitutionGroup="core:capability" type="cdmMessaging:MQApiExitTemplates"/>
+	<complexType name="MQApiExitTemplates">
+		<complexContent>
+			<extension base="cdmMessaging:MQApiExit">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQApiExitTemplatesUnit" substitutionGroup="core:unit" type="cdmMessaging:MQApiExitTemplatesUnit"/>
+	<complexType name="MQApiExitTemplatesUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQApiExitUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeAdministrativeGroup" substitutionGroup="core:capability" type="cdmMessaging:ExchangeAdministrativeGroup"/>
+	<complexType name="ExchangeAdministrativeGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="AdministrativeGroupName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeAdministrativeGroupUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeAdministrativeGroupUnit"/>
+	<complexType name="ExchangeAdministrativeGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQApiExitCommons" substitutionGroup="core:capability" type="cdmMessaging:MQApiExitCommons"/>
+	<complexType name="MQApiExitCommons">
+		<complexContent>
+			<extension base="cdmMessaging:MQApiExit">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQApiExitCommonsUnit" substitutionGroup="core:unit" type="cdmMessaging:MQApiExitCommonsUnit"/>
+	<complexType name="MQApiExitCommonsUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQApiExitUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQLocalQueue" substitutionGroup="core:capability" type="cdmMessaging:MQLocalQueue"/>
+	<complexType name="MQLocalQueue">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueue">
+				<attribute name="ClusterWorkloadUseQueue" type="string" />
+				<attribute name="MaxQueueDepth" type="int" />
+				<attribute name="CFSTRUCT" type="string" />
+				<attribute name="TriggerType" type="int" />
+				<attribute name="Get" type="boolean" />
+				<attribute name="InitiationQueue" type="string" />
+				<attribute name="TriggerDepth" type="long" />
+				<attribute name="TriggerControl" type="boolean" />
+				<attribute name="TransmissionUsage" type="int" />
+				<attribute name="MaxMessageLength" type="int" />
+				<attribute name="DefinitionType" type="int" />
+				<attribute name="TriggerData" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQLocalQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:MQLocalQueueUnit"/>
+	<complexType name="MQLocalQueueUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeScheduleInterval" substitutionGroup="core:capability" type="cdmMessaging:ExchangeScheduleInterval"/>
+	<complexType name="ExchangeScheduleInterval">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="EndDayOfWeek" type="int" />
+				<attribute name="EndTimeZone" type="int" />
+				<attribute name="StartDayOfWeek" type="int" />
+				<attribute name="StartMinute" type="int" />
+				<attribute name="StartTimeZone" type="int" />
+				<attribute name="EndHour" type="int" />
+				<attribute name="StartHour" type="int" />
+				<attribute name="EndMinute" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeScheduleIntervalUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeScheduleIntervalUnit"/>
+	<complexType name="ExchangeScheduleIntervalUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQClientConnectionChannel" substitutionGroup="core:capability" type="cdmMessaging:MQClientConnectionChannel"/>
+	<complexType name="MQClientConnectionChannel">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannel">
+				<attribute name="ModeName" type="string" />
+				<attribute name="LocalCommunicationAddress" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQClientConnectionChannelUnit" substitutionGroup="core:unit" type="cdmMessaging:MQClientConnectionChannelUnit"/>
+	<complexType name="MQClientConnectionChannelUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQChannelUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQSNAListener" substitutionGroup="core:capability" type="cdmMessaging:MQSNAListener"/>
+	<complexType name="MQSNAListener">
+		<complexContent>
+			<extension base="cdmMessaging:MQListener">
+				<attribute name="TPName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQSNAListenerUnit" substitutionGroup="core:unit" type="cdmMessaging:MQSNAListenerUnit"/>
+	<complexType name="MQSNAListenerUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQListenerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQQueue" substitutionGroup="core:capability" type="cdmMessaging:MQQueue"/>
+	<complexType name="MQQueue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Put" type="boolean" />
+				<attribute name="DefaultPersistence" type="int" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="QSGDISP" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:MQQueueUnit"/>
+	<complexType name="MQQueueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQModelQueue" substitutionGroup="core:capability" type="cdmMessaging:MQModelQueue"/>
+	<complexType name="MQModelQueue">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueue">
+				<attribute name="CFSTRUCT" type="string" />
+				<attribute name="TriggerType" type="int" />
+				<attribute name="Get" type="boolean" />
+				<attribute name="InitiationQueue" type="string" />
+				<attribute name="TriggerDepth" type="long" />
+				<attribute name="TriggerControl" type="boolean" />
+				<attribute name="TransmissionUsage" type="int" />
+				<attribute name="DefinitionType" type="int" />
+				<attribute name="TriggerData" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQModelQueueUnit" substitutionGroup="core:unit" type="cdmMessaging:MQModelQueueUnit"/>
+	<complexType name="MQModelQueueUnit">
+		<complexContent>
+			<extension base="cdmMessaging:MQQueueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangePublicFolderStore" substitutionGroup="core:capability" type="cdmMessaging:ExchangePublicFolderStore"/>
+	<complexType name="ExchangePublicFolderStore">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="StreamingDatabaseName" type="string" />
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="PublicFolderStoreName" type="string" />
+				<attribute name="DatabasePath" type="string" />
+				<attribute name="DatabaseName" type="string" />
+				<attribute name="StreamingDatabasePath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangePublicFolderStoreUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangePublicFolderStoreUnit"/>
+	<complexType name="ExchangePublicFolderStoreUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQInstallableService" substitutionGroup="core:capability" type="cdmMessaging:MQInstallableService"/>
+	<complexType name="MQInstallableService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="EntryPoints" type="int" />
+				<attribute name="System" type="boolean" />
+				<attribute name="SecurityPolicy" type="string" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQInstallableServiceUnit" substitutionGroup="core:unit" type="cdmMessaging:MQInstallableServiceUnit"/>
+	<complexType name="MQInstallableServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQApiExitLocal" substitutionGroup="core:capability" type="cdmMessaging:MQApiExitLocal"/>
+	<complexType name="MQApiExitLocal">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Sequence" type="int" />
+				<attribute name="Function" type="string" />
+				<attribute name="Data" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQApiExitLocalUnit" substitutionGroup="core:unit" type="cdmMessaging:MQApiExitLocalUnit"/>
+	<complexType name="MQApiExitLocalUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeMailboxStore" substitutionGroup="core:capability" type="cdmMessaging:ExchangeMailboxStore"/>
+	<complexType name="ExchangeMailboxStore">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="StreamingDatabaseName" type="string" />
+				<attribute name="MailboxStoreName" type="string" />
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="DatabasePath" type="string" />
+				<attribute name="StreamingDatabasePath" type="string" />
+				<attribute name="DatabaseName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeMailboxStoreUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeMailboxStoreUnit"/>
+	<complexType name="ExchangeMailboxStoreUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQAuthInfo" substitutionGroup="core:capability" type="cdmMessaging:MQAuthInfo"/>
+	<complexType name="MQAuthInfo">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="System" type="boolean" />
+				<attribute name="UserName" type="string" />
+				<attribute name="LDAPServerName" type="string" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="Type" type="string" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQAuthInfoUnit" substitutionGroup="core:unit" type="cdmMessaging:MQAuthInfoUnit"/>
+	<complexType name="MQAuthInfoUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeStorageGroup" substitutionGroup="core:capability" type="cdmMessaging:ExchangeStorageGroup"/>
+	<complexType name="ExchangeStorageGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="StorageGroupName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeStorageGroupUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeStorageGroupUnit"/>
+	<complexType name="ExchangeStorageGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.exchangeRoutingGroup" substitutionGroup="core:capability" type="cdmMessaging:ExchangeRoutingGroup"/>
+	<complexType name="ExchangeRoutingGroup">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DistinguishedName" type="string" />
+				<attribute name="RoutingGroupName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.exchangeRoutingGroupUnit" substitutionGroup="core:unit" type="cdmMessaging:ExchangeRoutingGroupUnit"/>
+	<complexType name="ExchangeRoutingGroupUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

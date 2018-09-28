@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="virtualization"
+    nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/" nsPrefix="virtualization">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;    The Topology Definition Model (TDM) defines a core set of concepts to describe&#xD;&#xA;&#x9;&#x9;    Enterprise Architectures from the Software Applications down to the hardware &#xD;&#xA;&#x9;&#x9;    requirements. The model is inherently extensible, allowing technology specific&#xD;&#xA;&#x9;&#x9;    domains to define their own types. At a high level, the model is orgainzed into&#xD;&#xA;&#x9;&#x9;    {@link Topology topologies}, which contain {@link Unit}s. A Unit contain &#xD;&#xA;&#x9;&#x9;    {@link Capability capabilities}, {@Requirement requirements}, and four types &#xD;&#xA;&#x9;&#x9;    of links ({@link DependencyLink  dependency links}, {@link HostingLink  hosting links},&#xD;&#xA;&#x9;&#x9;    {@link ConstraintLink  constraint links}, {@link MemberLink  member links}. In &#xD;&#xA;&#x9;&#x9;    addition, the model defines the notion of {@link Constraint constraints} which &#xD;&#xA;&#x9;&#x9;    can be added to Units or Contraint Links in order to describe requirements on &#xD;&#xA;&#x9;&#x9;    target application or environment. &#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;An object that can be part of a deployable module.  See {@link FileArtifact}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="DesiredSnapshotStateType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DesiredSnapshotStateType"/>
+    </eAnnotations>
+    <eLiterals name="unknown">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="No change to snapshot state necessary"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="active" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Snapshot active"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="revert" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Virtual machine should be reverted to this snapshot"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DesiredSnapshotStateTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DesiredSnapshotStateType:Object"/>
+      <details key="baseType" value="DesiredSnapshotStateType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hypervisor" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;This capability or subclasses of it may be provided by {@link Unit}s that can host virtual machines.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>The attributes are optional and if set, may be used for matching.&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>This capability corresponds to the OVF Platform_Type in an OVF environment xml&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Hypervisor"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualDiskDef" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link DiskUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualDiskDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualDiskDefUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualDiskDefUnit represents the specification for a virtual disk&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>VirtualDiskDefUnit may have a {@link DependencyLink} to the TODO Disk that it specifies.&lt;/p>&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;hosted by Units with a {@link VirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualDiskDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualDiskSnapshot" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VirtualDiskSnapshotUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualDiskSnapshot"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualDiskSnapshotUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualDiskSnapshotUnit represents a snapshot of a virtual disk on a virtual server&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualDiskSnapshotUnit are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VirtualServerSnapshot} capability on a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualServerSnapshotUnit}. They are hosted by Units with a {@link VirtualServerSnapshot}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualDiskSnapshotUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualEthernetNICDef" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link EthernetNICDefUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualEthernetNICDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="macAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MAC address"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="macAddress"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtualConnectionType"
+        eType="#//VirtualNetworkConnectionType" defaultValueLiteral="bridged" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Enumeration: bridged (default), nat, host-only, custom"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="virtualConnectionType"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualEthernetNICDefUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualEthernetNICDefUnit represents the specification for a virtual ethernet network interface&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;controller&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>VirtualEthernetNICDefUnit may have a {@link DependencyLink} to the L2Interface that it specifies.&lt;/p>&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualEthernetNICDefUnits are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;hosted by Units with a {@link VirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualEthernetNICDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualImage" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VirtualImages hold meta details of the image file on behalf of a {@link VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualImage doesn't hold the details of the {@link Server} the VirtualImageUnit models, such as&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;memory size or processor type. These details are contained in the {@link VirtualServerDef}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;capability&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualImage"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdWithVMTool" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="createdWithVMTool"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateCreated" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="dateCreated"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateLastModified" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="dateLastModified"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notes" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="notes"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="owner" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="owner"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualImageCollection" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VirtualImageCollectionUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualImageCollection"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collectionId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;an identifying string for the collection of virtual machine images&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="collectionId"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualImageCollectionUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualImageCollectionUnit represents a group of {@link VirtualImageUnit}s.&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualImageCollectionUnits are by convention non-configuration {@link Unit}s and may contain [0.*]&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;member {@link VirtualImageUnit}s&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualImageCollectionUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualImageSnapshotContainer" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VirtualImageUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualImageSnapshotContainer"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualImageUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualImageUnit represents a single potential virtual server. It usually contains a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VirtualImage} capability describing the image and TODO capabilities describing the {@link Server} being&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;modeled.&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>VirtualImageUnits usually contain an {@link Artifact} representing the image file.&lt;/p>&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualImageUnits are by convention configuration {@link Unit}s and have a {@link Requirement} for&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;the {@link Hypervisor} capability on a {@link OperatingSystemUnit}. They are hosted by Units with a&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{@link Hypervisor} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;A VirtualImageUnit MAY host domain specific {@link PortUnit}s that model compositions it can be&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;programmed to enter.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;A VirtualImageUnit is said to be INSTALLED if it is 'running' or 'paused'. A VirtualImageUnit is&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;said to be UNINSTALLED if its host doesn't know of it, or if 'stopped'.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualImageUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualizationRoot">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value=""/>
+      <details key="kind" value="mixed"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mixed" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":mixed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xMLNSPrefixMap" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xmlns:prefix"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xSISchemaLocation" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xsi:schemaLocation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityHypervisor" upperBound="-2"
+        eType="#//Hypervisor" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.hypervisor"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualDiskDef"
+        upperBound="-2" eType="#//VirtualDiskDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualDiskDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualDiskSnapshot"
+        upperBound="-2" eType="#//VirtualDiskSnapshot" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualDiskSnapshot"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualEthernetNICDef"
+        upperBound="-2" eType="#//VirtualEthernetNICDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualEthernetNICDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualImage"
+        upperBound="-2" eType="#//VirtualImage" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualImage"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualImageCollection"
+        upperBound="-2" eType="#//VirtualImageCollection" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualImageCollection"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualImageSnapshotContainer"
+        upperBound="-2" eType="#//VirtualImageSnapshotContainer" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualImageSnapshotContainer"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualServerDef"
+        upperBound="-2" eType="#//VirtualServerDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualServerDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVirtualServerSnapshot"
+        upperBound="-2" eType="#//VirtualServerSnapshot" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.virtualServerSnapshot"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareESX" upperBound="-2"
+        eType="#//VMwareESX" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareESX"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareHypervisor"
+        upperBound="-2" eType="#//VMwareHypervisor" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareHypervisor"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualDiskDef"
+        upperBound="-2" eType="#//VMwareVirtualDiskDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualDiskDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualDiskSnapshot"
+        upperBound="-2" eType="#//VMwareVirtualDiskSnapshot" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualDiskSnapshot"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualEthernetNICDef"
+        upperBound="-2" eType="#//VMwareVirtualEthernetNICDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualEthernetNICDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualIDEDiskDef"
+        upperBound="-2" eType="#//VMwareVirtualIDEDiskDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualIDEDiskDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualImage"
+        upperBound="-2" eType="#//VMwareVirtualImage" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualImage"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualImageSnapshotContainer"
+        upperBound="-2" eType="#//VMwareVirtualImageSnapshotContainer" volatile="true"
+        transient="true" derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualImageSnapshotContainer"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualSCSIDiskDef"
+        upperBound="-2" eType="#//VMwareVirtualSCSIDiskDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualSCSIDiskDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualServerDef"
+        upperBound="-2" eType="#//VMwareVirtualServerDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualServerDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVmwareVirtualServerSnapshot"
+        upperBound="-2" eType="#//VMwareVirtualServerSnapshot" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.vmwareVirtualServerSnapshot"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityXenHypervisor"
+        upperBound="-2" eType="#//XenHypervisor" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.xenHypervisor"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityXenVirtualDiskDef"
+        upperBound="-2" eType="#//XenVirtualDiskDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.xenVirtualDiskDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityXenVirtualEthernetNICDef"
+        upperBound="-2" eType="#//XenVirtualEthernetNICDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.xenVirtualEthernetNICDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityXenVirtualImage"
+        upperBound="-2" eType="#//XenVirtualImage" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.xenVirtualImage"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityXenVirtualServerDef"
+        upperBound="-2" eType="#//XenVirtualServerDef" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="capability.xenVirtualServerDef"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#capability"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualDiskDefUnit"
+        upperBound="-2" eType="#//VirtualDiskDefUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualDiskDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualDiskSnapshotUnit"
+        upperBound="-2" eType="#//VirtualDiskSnapshotUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualDiskSnapshotUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualEthernetNICDefUnit"
+        upperBound="-2" eType="#//VirtualEthernetNICDefUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualEthernetNICDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualImageCollectionUnit"
+        upperBound="-2" eType="#//VirtualImageCollectionUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualImageCollectionUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualImageUnit" upperBound="-2"
+        eType="#//VirtualImageUnit" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualImageUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVirtualServerSnapshotUnit"
+        upperBound="-2" eType="#//VirtualServerSnapshotUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.virtualServerSnapshotUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareESXUnit" upperBound="-2"
+        eType="#//VMwareESXUnit" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareESXUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareVirtualDiskDefUnit"
+        upperBound="-2" eType="#//VMwareVirtualDiskDefUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareVirtualDiskDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareVirtualDiskSnapshotUnit"
+        upperBound="-2" eType="#//VMwareVirtualDiskSnapshotUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareVirtualDiskSnapshotUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareVirtualEthernetNICDefUnit"
+        upperBound="-2" eType="#//VMwareVirtualEthernetNICDefUnit" volatile="true"
+        transient="true" derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareVirtualEthernetNICDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareVirtualImageUnit"
+        upperBound="-2" eType="#//VMwareVirtualImageUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareVirtualImageUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitVmwareVirtualServerSnapshotUnit"
+        upperBound="-2" eType="#//VMwareVirtualServerSnapshotUnit" volatile="true"
+        transient="true" derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.vmwareVirtualServerSnapshotUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitXenVirtualDiskDefUnit"
+        upperBound="-2" eType="#//XenVirtualDiskDefUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.xenVirtualDiskDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitXenVirtualEthernetNICDefUnit"
+        upperBound="-2" eType="#//XenVirtualEthernetNICDefUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.xenVirtualEthernetNICDefUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitXenVirtualImageUnit"
+        upperBound="-2" eType="#//XenVirtualImageUnit" volatile="true" transient="true"
+        derived="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="unit.xenVirtualImageUnit"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="affiliation" value="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/#unit"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VirtualNetworkConnectionType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualNetworkConnectionType"/>
+    </eAnnotations>
+    <eLiterals name="bridged"/>
+    <eLiterals name="nat" value="1"/>
+    <eLiterals name="hostOnly" value="2" literal="host-only"/>
+    <eLiterals name="custom" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VirtualNetworkConnectionTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualNetworkConnectionType:Object"/>
+      <details key="baseType" value="VirtualNetworkConnectionType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualServerDef" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VirtualServerDefs hold details for the virtual machine itself on behalf of a {@link VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualServerDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//UnsignedLong">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Memory size, in 1024 byte units"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="memorySize"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vcpus" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//UnsignedLong">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Number of virtual CPUs as seen by a hosted multi-cpu-capable operating system.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="vcpus"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtualHWFamily" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;The virtual system type. When set, this should use the same format as the VirtualSystemType&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;field in an OVF descriptor. It uniquely identifies the family of virtual hardware that is&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;required. Multiple families can be specified with comma separation. For example, a family&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;identifier could be vmx-4 for VMware's 4th generation virtual hardware or xen-3 for Xen's&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;3rd generation virtual hardware.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="virtualHWFamily"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualServerSnapshot" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VirtualServerSnapshotUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualServerSnapshot"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualServerSnapshotUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VirtualServerSnapshotUnit represents a snapshot of a virtual machine&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VirtualServerSnapshotUnit are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;hosted by Units with a {@link VirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VirtualServerSnapshotUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareESX" eSuperTypes="../../../com.ibm.ccl.soa.deploy.os/models/ecore/os.ecore#//OperatingSystem">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VMwareESX represents a VMware ESX instance's details on behalf of a {@link VMwareESXUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>A peer VMwareHypervisor capability indicates the hypervisor nature of VMware ESX&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareESX"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareESXUnit" eSuperTypes="../../../com.ibm.ccl.soa.deploy.os/models/ecore/os.ecore#//OperatingSystemUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareESXUnit represents a single VMware ESX installation. It extends {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;OperatingSystemUnit}. A VMwareESXUnit provides a {@link VMwareESX} capability and a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VMwareHypervisor} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareESXUnit is hosted directly on a physical (intel architecture) server.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareESXUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareHypervisor" eSuperTypes="#//Hypervisor">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;This capability may be provided by {@link Unit}s that can host VMware virtual machines images.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareHypervisor"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmwareProduct" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optional name of the VMware product, e.g. ESX Server"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="vmwareProduct"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmwareVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optional version number of the VMware product, e.g. 1.0.3"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="vmwareVersion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VMwareSCSIControllerType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareSCSIControllerType"/>
+    </eAnnotations>
+    <eLiterals name="buslogic"/>
+    <eLiterals name="lsilogic" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VMwareSCSIControllerTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareSCSIControllerType:Object"/>
+      <details key="baseType" value="VMwareSCSIControllerType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualDiskDef" eSuperTypes="#//VirtualDiskDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link DiskUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualDiskDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autodetect" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="autodetect"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceType" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;cdrom-raw&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="deviceType"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diskMode" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Disk mode (persistent, etc)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="diskMode"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Path to vmdk, e.g. &quot;RLELAS4.vmdk&quot; or &quot;RHELAS4-000001.vmdk&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="fileName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="present" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indicates whether this disk is present in the virtual machine"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="present"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startConnected" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Set for CD-ROM only. Indicates whether CD-ROM is connected at startup.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="startConnected"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualDiskDefUnit" eSuperTypes="#//VirtualDiskDefUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareVirtualDiskDefUnit represents the specification for a VMware virtual disk&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VMwareVirtualImage} capability on a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualImageUnit}. They are hosted by Units with a {@link VMwareVirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualDiskDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualDiskSnapshot" eSuperTypes="#//VirtualDiskSnapshot">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VMwareVirtualDiskSnapshotUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualDiskSnapshot"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diskFileName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;e.g. &quot;Windows Server 2003 Standard Edition.vmdk&quot; or &quot;Windows Server 2003 Standard&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Edition-000001.vmdk&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="diskFileName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diskNum" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;0&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="diskNum"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="snapshotDiskFileName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;The name of the file that maintains the disk deltas from the base disk file named by&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;attribute &quot;diskFileName&quot; e.g. &quot;Windows Server 2003 Standard Edition-000001.vmdk&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="snapshotDiskFileName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualDiskSnapshotUnit" eSuperTypes="#//VirtualDiskSnapshotUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareVirtualDiskSnapshotUnit represents a snapshot of a VMware virtual disk on a VMware virtual&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;server&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualDiskSnapshotUnits are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VMwareVirtualServerSnapshot} capability on a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualServerSnapshotUnit}. They are hosted by Units with a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualServerSnapshot} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualDiskSnapshotUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualEthernetNICDef" eSuperTypes="#//VirtualEthernetNICDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link EthernetNICDefUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualEthernetNICDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualEthernetNICDefUnit" eSuperTypes="#//VirtualEthernetNICDefUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareVirtualEthernetNICDefUnit represents the specification for a VMware virtual ethernet network&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;interface controller&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualEthernetNICDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualIDEDiskDef" eSuperTypes="#//VMwareVirtualDiskDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link DiskUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualIDEDiskDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualImage" eSuperTypes="#//VirtualImage">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VMwareVirtualImages hold meta details of the image file on behalf of a {@link VMwareVirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualImage doesn't hold the details of the {@link Server} the VMwareVirtualImageUnit models,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;such as memory size or processor type. These details are contained in the {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualServerDef} capability&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualImage"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The configuration file for this image."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="configVersion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmxFile" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The vmx (configuration) file for this image."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="vmxFile"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualImageSnapshotContainer"
+      eSuperTypes="#//VirtualImageSnapshotContainer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VMwareVirtualImageUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualImageSnapshotContainer"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSnapshotUid" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The UID of the current snapshot"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="currentSnapshotUid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastSnapshotUid" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;1&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="lastSnapshotUid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numSnapshots" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indicates how many snapshots are available for this image."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="numSnapshots"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualImageUnit" eSuperTypes="#//VirtualImageUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMWareVirtualImageUnit represents a single potential VMware virtual machine. It extends {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualImageUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualSCSIDiskDef" eSuperTypes="#//VMwareVirtualDiskDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link DiskUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualSCSIDiskDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="controllerNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="number of the SCSI controller (e.g. 0, 1, 2)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="controllerNumber"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="controllerType" eType="#//VMwareSCSIControllerType"
+        defaultValueLiteral="buslogic" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&quot;lsilogic&quot; or &quot;buslogic&quot; enumeration"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="controllerType"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="number of the SCSI device (e.g. 0, 1, 2)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="deviceNumber"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualServerDef" eSuperTypes="#//VirtualServerDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VMwareVirtualImage holds details in addition to the attributes on VirtualServerDef, of the image file on&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;behalf of a {@link VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualServerDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guestOS" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Guest operating system"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="guestOS"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtualHWVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VMware virtual hardware version, e.g. &quot;4&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="virtualHWVersion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualServerSnapshot" eSuperTypes="#//VirtualServerSnapshot">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link VMwareVirtualServerSnapshotUnit}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualServerSnapshot"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createTimeHigh" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;High order 32 bits of 64-bit value microseconds since January 1, 1970. e.g. &quot;281325&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="createTimeHigh"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createTimeLow" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Low order 32 bits of 64-bit value microseconds since January 1, 1970. e.g. &quot;-2028843496&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="createTimeLow"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="current" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indicates whether this snapshot the current snapshot."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="current"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="desiredSnapshotState" eType="#//DesiredSnapshotStateType"
+        defaultValueLiteral="unknown" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;May be used to indicate that the virtual machine should be restored to this snapshot.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="desiredSnapshotState"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filename" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;windows server 2003 standard edition-Snapshot2.vmsn&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="filename"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numDisks" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;1&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="numDisks"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parentSnapshotUid" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;1&quot;, or null if no parent snapshot."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="parentSnapshotUid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="snapshotType" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;1&quot;, or &quot;0&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="snapshotType"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uid" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="e.g. &quot;2&quot;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="uid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VMwareVirtualServerSnapshotUnit" eSuperTypes="#//VirtualServerSnapshotUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A VMwareVirtualServerSnapshotUnit represents a snapshot of a VMware virtual machine&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualServerSnapshotUnit are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link VMwareVirtualImage} capability on a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;VMwareVirtualImageUnit}. They are hosted by Units with a {@link VMwareVirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VMwareVirtualServerSnapshotUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenHypervisor" eSuperTypes="#//Hypervisor">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;This capability may be provided by {@link Unit}s that can host Xen virtual machines images.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenHypervisor"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="xenVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optional version of the Xen hypervisor, e.g. 3.0"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xenVersion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualDiskDef" eSuperTypes="#//VirtualDiskDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link DiskUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualDiskDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backendDev" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;The backend device for this virtual disk. Can be of form &quot;phys:device&quot; or&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;file://path/to/file&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="backendDev"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="frontendDev" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;How the device should appear in the guest domain. The device can be in symbolic form, as in&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;xvda&quot;, or &quot;sda7&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="frontendDev"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;The access mode for the device. There are 2 valid options, r (read-only), w (read/write)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="mode"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualDiskDefUnit" eSuperTypes="#//VirtualDiskDefUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A XenVirtualDiskDefUnit represents the specification for a Xen virtual disk&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;XenVirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;HostingRequirement} for the {@link XenVirtualImage} capability on a {@link XenVirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;They are hosted by Units with a {@link XenVirtualImage} capability.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualDiskDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualEthernetNICDef" eSuperTypes="#//VirtualEthernetNICDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This capability is provided by {@link EthernetNICDefUnits}s."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualEthernetNICDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkBridge" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The network bridge to be used for this device."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="networkBridge"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualEthernetNICDefUnit" eSuperTypes="#//VirtualEthernetNICDefUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A XenVirtualEthernetNICDefUnit represents the specification for a Xen virtual ethernet network interface&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;controller&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualEthernetNICDefUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualImage" eSuperTypes="#//VirtualImage">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;XenVirtualImages hold meta details of the image file on behalf of a {@link XenVirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;p>&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;XenVirtualImage doesn't hold the details of the {@link Server} the XenVirtualImageUnit models, such&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;as memory size or processor type. These details are contained in the {@link XenVirtualServerDef}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;capability&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/p>&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualImage"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainConfigFile" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The configuration file for this image."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="domainConfigFile"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A unique name for the Xen domain."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="domainName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualImageUnit" eSuperTypes="#//VirtualImageUnit">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;A XenVirtualImageUnit represents a single potential Xen virtual machine. It extends {@link&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualImageUnit"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XenVirtualServerDef" eSuperTypes="#//VirtualServerDef">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;XenVirtualImage holds details in addition to the attributes on VirtualServerDef, of the image file on&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;behalf of a {@link VirtualImageUnit}.&#xD;&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="XenVirtualServerDef"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

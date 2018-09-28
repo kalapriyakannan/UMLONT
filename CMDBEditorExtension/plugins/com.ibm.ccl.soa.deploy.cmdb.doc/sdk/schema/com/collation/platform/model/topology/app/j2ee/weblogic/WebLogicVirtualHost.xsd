@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/web/WebVirtualHost.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicVirtualHost">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.web.WebVirtualHost">
+        <xsd:sequence>
+          <xsd:element name="HTTPSKeepAliveSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="keepAliveSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logFileBufferKBytes" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logFileFlushSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logFileFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="logFileName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="logRotationPeriodMins" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logRotationTimeBegin" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="logRotationType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxLogFileSizeKBytes" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxPostSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxPostTimeSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="postTimeoutSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="writeChunkBytes" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusteringEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="debugEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="eventsEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="keepAliveEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="loggingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sendServerHeaderEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="singleSingonDisabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="WAPEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

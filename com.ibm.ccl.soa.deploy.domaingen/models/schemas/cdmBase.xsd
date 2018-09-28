@@ -1,0 +1,589 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmBaseRoot"
+	ecore:name="cdmBase"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmbase"
+	ecore:nsPrefix="cdmBase">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<element name="capability.function" substitutionGroup="core:capability" type="cdmBase:Function"/>
+	<complexType name="Function">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.functionUnit" substitutionGroup="core:unit" type="cdmBase:FunctionUnit"/>
+	<complexType name="FunctionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.logicalContent" substitutionGroup="core:capability" type="cdmBase:LogicalContent"/>
+	<complexType name="LogicalContent">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="URI" type="string" />
+				<attribute name="ContentType" type="string" />
+				<attribute name="Content" type="string" />
+				<attribute name="FixedPath" type="string" />
+				<attribute name="Checksum" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.logicalContentUnit" substitutionGroup="core:unit" type="cdmBase:LogicalContentUnit"/>
+	<complexType name="LogicalContentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.managedSystemElement" substitutionGroup="core:capability" type="cdmBase:ManagedSystemElement"/>
+	<complexType name="ManagedSystemElement">
+		<complexContent>
+			<extension base="cdmBase:ManagedElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.managedSystemElementUnit" substitutionGroup="core:unit" type="cdmBase:ManagedSystemElementUnit"/>
+	<complexType name="ManagedSystemElementUnit">
+		<complexContent>
+			<extension base="cdmBase:ManagedElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.account" substitutionGroup="core:capability" type="cdmBase:Account"/>
+	<complexType name="Account">
+		<complexContent>
+			<extension base="cdmBase:OrganizationalEntity">
+				<attribute name="AccountName" type="string" />
+				<attribute name="ShortName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.accountUnit" substitutionGroup="core:unit" type="cdmBase:AccountUnit"/>
+	<complexType name="AccountUnit">
+		<complexContent>
+			<extension base="cdmBase:OrganizationalEntityUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.logicalElement" substitutionGroup="core:capability" type="cdmBase:LogicalElement"/>
+	<complexType name="LogicalElement">
+		<complexContent>
+			<extension base="cdmBase:ManagedSystemElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.logicalElementUnit" substitutionGroup="core:unit" type="cdmBase:LogicalElementUnit"/>
+	<complexType name="LogicalElementUnit">
+		<complexContent>
+			<extension base="cdmBase:ManagedSystemElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.database" substitutionGroup="core:capability" type="cdmBase:Database"/>
+	<complexType name="Database">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.databaseUnit" substitutionGroup="core:unit" type="cdmBase:DatabaseUnit"/>
+	<complexType name="DatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.homogeneousCollection" substitutionGroup="core:capability" type="cdmBase:HomogeneousCollection"/>
+	<complexType name="HomogeneousCollection">
+		<complexContent>
+			<extension base="cdmBase:Collection">
+				<attribute name="MemberType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.homogeneousCollectionUnit" substitutionGroup="core:unit" type="cdmBase:HomogeneousCollectionUnit"/>
+	<complexType name="HomogeneousCollectionUnit">
+		<complexContent>
+			<extension base="cdmBase:CollectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.managedElement" substitutionGroup="core:capability" type="cdmBase:ManagedElement"/>
+	<complexType name="ManagedElement">
+		<complexContent>
+			<extension base="cdmBase:ModelObject">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.managedElementUnit" substitutionGroup="core:unit" type="cdmBase:ManagedElementUnit"/>
+	<complexType name="ManagedElementUnit">
+		<complexContent>
+			<extension base="cdmBase:ModelObjectUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.appServerCluster" substitutionGroup="core:capability" type="cdmBase:AppServerCluster"/>
+	<complexType name="AppServerCluster">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Port" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.appServerClusterUnit" substitutionGroup="core:unit" type="cdmBase:AppServerClusterUnit"/>
+	<complexType name="AppServerClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalElement" substitutionGroup="core:capability" type="cdmBase:PhysicalElement"/>
+	<complexType name="PhysicalElement">
+		<complexContent>
+			<extension base="cdmBase:ManagedSystemElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalElementUnit" substitutionGroup="core:unit" type="cdmBase:PhysicalElementUnit"/>
+	<complexType name="PhysicalElementUnit">
+		<complexContent>
+			<extension base="cdmBase:ManagedSystemElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webVirtualHost" substitutionGroup="core:capability" type="cdmBase:WebVirtualHost"/>
+	<complexType name="WebVirtualHost">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ServerName" type="string" />
+				<attribute name="DefaultWebServer" type="boolean" />
+				<attribute name="DocumentRoot" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webVirtualHostUnit" substitutionGroup="core:unit" type="cdmBase:WebVirtualHostUnit"/>
+	<complexType name="WebVirtualHostUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.collection" substitutionGroup="core:capability" type="cdmBase:Collection"/>
+	<complexType name="Collection">
+		<complexContent>
+			<extension base="cdmBase:ManagedElement">
+				<attribute name="Active" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.collectionUnit" substitutionGroup="core:unit" type="cdmBase:CollectionUnit"/>
+	<complexType name="CollectionUnit">
+		<complexContent>
+			<extension base="cdmBase:ManagedElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareComponent" substitutionGroup="core:capability" type="cdmBase:SoftwareComponent"/>
+	<complexType name="SoftwareComponent">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Group" type="string" />
+				<attribute name="InstalledDate" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="SoftwareVersion" type="string" />
+				<attribute name="ExecutableName" type="string" />
+				<attribute name="Publisher" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareComponentUnit" substitutionGroup="core:unit" type="cdmBase:SoftwareComponentUnit"/>
+	<complexType name="SoftwareComponentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.organizationalEntity" substitutionGroup="core:capability" type="cdmBase:OrganizationalEntity"/>
+	<complexType name="OrganizationalEntity">
+		<complexContent>
+			<extension base="cdmBase:ManagedElement">
+				<attribute name="NAICSCode" type="string" />
+				<attribute name="URL" type="string" />
+				<attribute name="DUNSNumber" type="string" />
+				<attribute name="MobilePhone" type="string" />
+				<attribute name="Email" type="string" />
+				<attribute name="ISICCode" type="string" />
+				<attribute name="Title" type="string" />
+				<attribute name="NAPCSCode" type="string" />
+				<attribute name="BusinessCategory" type="string" />
+				<attribute name="Note" type="string" />
+				<attribute name="EntityName" type="string" />
+				<attribute name="Fax" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="GlobalName" type="string" />
+				<attribute name="CAGECode" type="string" />
+				<attribute name="WorkPhone" type="string" />
+				<attribute name="SICCode" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.organizationalEntityUnit" substitutionGroup="core:unit" type="cdmBase:OrganizationalEntityUnit"/>
+	<complexType name="OrganizationalEntityUnit">
+		<complexContent>
+			<extension base="cdmBase:ManagedElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.appServer" substitutionGroup="core:capability" type="cdmBase:AppServer"/>
+	<complexType name="AppServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="KeyName" type="string" />
+				<attribute name="ProductVersion" type="string" />
+				<attribute name="ProductName" type="string" />
+				<attribute name="VendorName" type="string" />
+				<attribute name="ExecutableName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.appServerUnit" substitutionGroup="core:unit" type="cdmBase:AppServerUnit"/>
+	<complexType name="AppServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareModule" substitutionGroup="core:capability" type="cdmBase:SoftwareModule"/>
+	<complexType name="SoftwareModule">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="FileName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareModuleUnit" substitutionGroup="core:unit" type="cdmBase:SoftwareModuleUnit"/>
+	<complexType name="SoftwareModuleUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareInstallation" substitutionGroup="core:capability" type="cdmBase:SoftwareInstallation"/>
+	<complexType name="SoftwareInstallation">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MajorVersion" type="int" />
+				<attribute name="ProductId" type="string" />
+				<attribute name="InstalledLocation" type="string" />
+				<attribute name="VersionString" type="string" />
+				<attribute name="Level" type="int" />
+				<attribute name="Modifier" type="int" />
+				<attribute name="ProductName" type="string" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="ManufacturerName" type="string" />
+				<attribute name="Release" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareInstallationUnit" substitutionGroup="core:unit" type="cdmBase:SoftwareInstallationUnit"/>
+	<complexType name="SoftwareInstallationUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fileSystemContent" substitutionGroup="core:capability" type="cdmBase:FileSystemContent"/>
+	<complexType name="FileSystemContent">
+		<complexContent>
+			<extension base="cdmBase:LogicalContent">
+				<attribute name="Size" type="long" />
+				<attribute name="Group" type="string" />
+				<attribute name="Permissions" type="string" />
+				<attribute name="LastModified" type="long" />
+				<attribute name="Owner" type="string" />
+				<attribute name="RealFile" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemContentUnit" substitutionGroup="core:unit" type="cdmBase:FileSystemContentUnit"/>
+	<complexType name="FileSystemContentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalContentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.databaseServer" substitutionGroup="core:capability" type="cdmBase:DatabaseServer"/>
+	<complexType name="DatabaseServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="Home" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.databaseServerUnit" substitutionGroup="core:unit" type="cdmBase:DatabaseServerUnit"/>
+	<complexType name="DatabaseServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.mQQueueManager" substitutionGroup="core:capability" type="cdmBase:MQQueueManager"/>
+	<complexType name="MQQueueManager">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="RepositoryNameList" type="string" />
+				<attribute name="ClusterWorkloadUseQueue" type="string" />
+				<attribute name="DefautlQueue" type="boolean" />
+				<attribute name="ExitsDefaultPath" type="string" />
+				<attribute name="DataPath" type="string" />
+				<attribute name="QueueManagerStatus" type="int" />
+				<attribute name="ChannelAutoDefinition" type="boolean" />
+				<attribute name="StartCommandServer" type="boolean" />
+				<attribute name="ExitsDefaultPath64" type="string" />
+				<attribute name="Default" type="boolean" />
+				<attribute name="LogWriteIntegrity" type="int" />
+				<attribute name="System" type="boolean" />
+				<attribute name="RepositoryType" type="string" />
+				<attribute name="StartChannelInitiator" type="boolean" />
+				<attribute name="IsValid" type="boolean" />
+				<attribute name="SSLKeyRepository" type="string" />
+				<attribute name="DeadLetterQueue" type="string" />
+				<attribute name="TriggerInterval" type="long" />
+				<attribute name="MaxMessageLength" type="long" />
+				<attribute name="Repository" type="string" />
+				<attribute name="QueueManagerIdentifier" type="string" />
+				<attribute name="LogDefaultPath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.mQQueueManagerUnit" substitutionGroup="core:unit" type="cdmBase:MQQueueManagerUnit"/>
+	<complexType name="MQQueueManagerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.modelObject" substitutionGroup="core:capability" type="cdmBase:ModelObject"/>
+	<complexType name="ModelObject">
+		<complexContent>
+			<extension base="core:Capability">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.modelObjectUnit" substitutionGroup="core:unit" type="cdmBase:ModelObjectUnit"/>
+	<complexType name="ModelObjectUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.configFile" substitutionGroup="core:capability" type="cdmBase:ConfigFile"/>
+	<complexType name="ConfigFile">
+		<complexContent>
+			<extension base="cdmBase:DataFile">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.configFileUnit" substitutionGroup="core:unit" type="cdmBase:ConfigFileUnit"/>
+	<complexType name="ConfigFileUnit">
+		<complexContent>
+			<extension base="cdmBase:DataFileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Server" substitutionGroup="core:capability" type="cdmBase:Db2Server"/>
+	<complexType name="Db2Server">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServer">
+				<attribute name="NodeName" type="string" />
+				<attribute name="Protocol" type="string" />
+				<attribute name="Level" type="string" />
+				<attribute name="LevelId" type="string" />
+				<attribute name="BuildLevel" type="string" />
+				<attribute name="Port" type="int" />
+				<attribute name="PTF" type="string" />
+				<attribute name="ProductId" type="string" />
+				<attribute name="ProtocolParams" type="string" />
+				<attribute name="Comment" type="string" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2ServerUnit" substitutionGroup="core:unit" type="cdmBase:Db2ServerUnit"/>
+	<complexType name="Db2ServerUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sSLSettings" substitutionGroup="core:capability" type="cdmBase:SSLSettings"/>
+	<complexType name="SSLSettings">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SslPort" type="int" />
+				<attribute name="CipherSuite" type="string" />
+				<attribute name="SslEnabled" type="boolean" />
+				<attribute name="SessionCacheTimeout" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sSLSettingsUnit" substitutionGroup="core:unit" type="cdmBase:SSLSettingsUnit"/>
+	<complexType name="SSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dataFile" substitutionGroup="core:capability" type="cdmBase:DataFile"/>
+	<complexType name="DataFile">
+		<complexContent>
+			<extension base="cdmBase:FileSystemContent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dataFileUnit" substitutionGroup="core:unit" type="cdmBase:DataFileUnit"/>
+	<complexType name="DataFileUnit">
+		<complexContent>
+			<extension base="cdmBase:FileSystemContentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareContainer" substitutionGroup="core:capability" type="cdmBase:SoftwareContainer"/>
+	<complexType name="SoftwareContainer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareContainerUnit" substitutionGroup="core:unit" type="cdmBase:SoftwareContainerUnit"/>
+	<complexType name="SoftwareContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.runtimeProcess" substitutionGroup="core:capability" type="cdmBase:RuntimeProcess"/>
+	<complexType name="RuntimeProcess">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="CmdLine" type="string" />
+				<attribute name="CWD" type="string" />
+				<attribute name="Unattached" type="boolean" />
+				<attribute name="UID" type="int" />
+				<attribute name="PPID" type="long" />
+				<attribute name="PID" type="long" />
+				<attribute name="FileDescriptorLimit" type="int" />
+				<attribute name="Env" type="string" />
+				<attribute name="User" type="string" />
+				<attribute name="Command" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.runtimeProcessUnit" substitutionGroup="core:unit" type="cdmBase:RuntimeProcessUnit"/>
+	<complexType name="RuntimeProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.softwareResource" substitutionGroup="core:capability" type="cdmBase:SoftwareResource"/>
+	<complexType name="SoftwareResource">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareResourceUnit" substitutionGroup="core:unit" type="cdmBase:SoftwareResourceUnit"/>
+	<complexType name="SoftwareResourceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webContainer" substitutionGroup="core:capability" type="cdmBase:WebContainer"/>
+	<complexType name="WebContainer">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainer">
+				<attribute name="ServerRoot" type="string" />
+				<attribute name="User" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webContainerUnit" substitutionGroup="core:unit" type="cdmBase:WebContainerUnit"/>
+	<complexType name="WebContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.siteInfo" substitutionGroup="core:capability" type="cdmBase:SiteInfo"/>
+	<complexType name="SiteInfo">
+		<complexContent>
+			<extension base="cdmBase:Geography">
+				<attribute name="StateOrProvince" type="string" />
+				<attribute name="StreetAddress" type="string" />
+				<attribute name="PostalCode" type="string" />
+				<attribute name="Room" type="string" />
+				<attribute name="Floor" type="string" />
+				<attribute name="City" type="string" />
+				<attribute name="Note" type="string" />
+				<attribute name="SiteName" type="string" />
+				<attribute name="SiteNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.siteInfoUnit" substitutionGroup="core:unit" type="cdmBase:SiteInfoUnit"/>
+	<complexType name="SiteInfoUnit">
+		<complexContent>
+			<extension base="cdmBase:GeographyUnit"/>
+		</complexContent>
+	</complexType>
+	
+
+	<element name="capability.geography" substitutionGroup="core:capability" type="cdmBase:Geography"/>
+	<complexType name="Geography">
+		<complexContent>
+			<extension base="cdmBase:PhysicalLocation">
+				<attribute name="RackPosition" type="string" />
+				<attribute name="Country" type="string" />
+				<attribute name="Row" type="string" />
+				<attribute name="RegionNumber" type="string" />
+				<attribute name="YCoordinate" type="string" />
+				<attribute name="XCoordinate" type="string" />
+				<attribute name="RegionName" type="string" />
+				<attribute name="Altitude" type="float" />
+				<attribute name="Aisle" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.geographyUnit" substitutionGroup="core:unit" type="cdmBase:GeographyUnit"/>
+	<complexType name="GeographyUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalLocationUnit"/>
+		</complexContent>
+	</complexType>	
+	
+
+	<element name="capability.physicalLocation" substitutionGroup="core:capability" type="cdmBase:PhysicalLocation"/>
+	<complexType name="PhysicalLocation">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalLocationUnit" substitutionGroup="core:unit" type="cdmBase:PhysicalLocationUnit"/>
+	<complexType name="PhysicalLocationUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>	
+
+</schema>

@@ -1,0 +1,554 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Core Deploy Topology Matching</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+Core domain matching and related interfaces.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">Core Domain Matching Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+Core domain matching provides the default matching behavior described below.  
+Matching is an extensible interface that provides information about whether 
+or not links between <a href="../../DeployModelObject.html">DeployModelObjects</a> 
+can be created.  Further, if multiple links can be created, the matching 
+service provides a list of the possible links.
+</p>
+<p>
+The matching service is part of the <a href="../DeployValidatorService.html">deploy 
+validator service</a>.  Matching can be delegated to domain matchers defined 
+in a <a href="../DomainValidator.html">domain validator</a>.
+</p>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Dependency Link Matching
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+A <a href="../../DependencyLink.html">dependency link</a> is a link between a
+<a href="../../Requirement.html">requirement</a> on one 
+<a href="../../Unit.html">unit</a> to a satisfying 
+<a href="../../Capability.html">capability</a> on another 
+<a href="../../Unit.html">unit</a>.
+The default matching behavior is to allow a match between a
+<a href="../../Requirement.html">requirement</a> and a 
+<a href="../../Capability.html">capability</a>
+if:
+</p>
+<ul>
+	<li>The <a href="../../RequirementLinkTypes.html">requirement link type</a> is 'dependency'
+		and the <a href="../../CapabilityLinkTypes.html">capability link type</a> is 
+		'dependency' or 'any'.
+	<li>The EClass of the capability is a super type of Requirement#getDmoType().</li>
+	<li>If Capability#isMutable() is false, then all 
+		<a href="../../RequirementExpression.html">requirement expressions</a> must be
+		satisfied </li>
+	<li>If Capability#isMutable() is true, then all
+		<a href="../../RequirementExpression.html">requirement expressions</a> that 
+		reference immutable attributes.</li>
+</ul>
+<p>
+The default matching behavior is to allow a match between a <a href="../../Unit.html">unit</a>
+and another <a href="../../Unit.html">unit</a> if there is at least one
+<a href="../../Requirement.html">requirement</a> on the source <a href="../../Unit.html">unit</a>
+that is satisfied by a <a href="../../Capability.html">capability</a> on the target
+<a href="../../Unit.html">unit</a>.
+</p>
+<p>
+Finally, if a target unit is a group or hosts configuration units, the default 
+dependency link matching allows for queries that search for target units among the 
+group members and hosted configuration units. This search can be done rescursively.
+</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Hosting Link Matching
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+A <a href="../../HostingLink.html">hosting link</a> is a link between a
+<a href="../../Unit.html">host unit</a> and a <a href="../../Unit.html">hosted unit</a>.
+The default hosting link matching behavior is to allow a match if all of
+the host provides capabilities that satisfy all of the hostees
+hosting requirements.
+</p>
+<p>
+If a <a href="../../Unit.html">host unit</a> is a group or hosts configuration 
+units, the default hosting link matching allows for queries that search 
+for host units among the group members and hosted configuration units. 
+This search can be done rescursively.
+</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Member Link Matching
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+A <a href="../../MemberLink.html">member link</a> is a link between a
+<a href="../../Unit.html">group unit</a> and a 
+<a href="../../Unit.html">member unit</a>.
+The default member link matching behavior is to allow a match if:
+</p>
+<ul>
+	<li>The group (source) unit has a <a href="../../RequirementLinkType.html">requirement 
+		link type</a> of 'member'.</li>
+	<li>The EClass type of the member (target) unit is a super type 
+		of Requirement#getDmoType()</li>
+	<li>If the <a href="../../Requirement.html">requirement</a> has a 
+		<a href="../../RequirementExpression.html">requirement expression</a>, then this 
+		<a href="../../RequirementExpression.html">requirement expression</a> uses an 
+		<a href="../expression/OutCardinality.html">OutCardinality</a> 
+		<a href="../expression/IRequirementExpressionInterpreter.html">interpreter</a>.</li>
+	<li>The cardinality implied by the <a href="../expression/OutCardinality.html">OutCardinality</a> 
+		interpreter is satisfied.</li>
+	<li>If the target unit has any requirements with a 
+		<a href="../../RequirementLinkType.html">requirement link type</a> of 
+			'member', then:
+		<ul>
+			<li>there is one such that Requirement#getDmoType()
+				is a sub type of the source EClass.</li>
+			<li>If this requirement has a <a href="../../RequirementExpression.html">requirement 
+				expression</a>, it uses an <a href="../expression/InCardinality.html">InCardinality</a> 
+				<a href="../expression/IRequirementExpressionInterpreter.html">interpreter</a>
+				and the cardinality implied by the 
+				<a href="../expression/IRequirementExpressionInterpreter.html">interpreter</a> 
+				is satisfied.</li>
+		</ul>
+	</li>
+</ul>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Logical Link Matching
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+A <a href="../../LogicalLink.html">logical link</a> is a link between a
+source <a href="../../DeployModelObject.html">DeployModelObject</a> and a 
+target <a href="../../DeployModelObject.html">DeployModelObject</a>.
+The default logical link matching behavior is to disallow all logical
+links.
+</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Realization Link Matching
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+A <a href="../../RealizationLink.html">realization link</a> is a link between two
+<a href="../../DeployModelObject.html">objects</a> of the same type. 
+It expresses how a conceptual
+<a href="../../DeployModelObject.html">object</a> is related to another object that
+realizes it.  In practice, <a href="../../RealizationLink.html">realization links</a>
+can only exist between <a href="../../Unit.html">units</a>, 
+<a href="../../Capability.html">capabilities</a> and 
+<a href="../../Requirement.html">requirements</a>.
+<a href="../../RealizaitonLink.html">Realization links</a> between
+<a href="../../Capability.html">capabilities</a> and 
+<a href="../../Requirement.html">requirements</a> are valid only when there is a 
+<a href="../../RealizaitonLink.html">realization</a> link between the containing
+<a href="../../Unit.html">units</a>. In this case, they are required only when there is ambiguity in the 
+mapping between capabilities or requirements.  
+Because it is necessary in some cases, we should add the 
+links in all cases.
+</p>
+
+<p>
+Realization links will be stored only at the topology level.
+</p>
+
+<p>
+Currently, the validation rules (below) do not consider meta data (except where explicitly
+mentioned).
+</p>
+
+<p>
+<a href="../../Unit.html">units</a> of type <a href="../../ConceptualNode.html">ConceptualNode</a>
+are an exception.  See <a href="#ConceptualNodeRules">below</a> for the exception case.
+</p>
+
+<p>
+By default, a <a href="../../RealizationLink.html">realization link</a> from a 
+<a href="../../Unit.html">unit</a> <i>C</i> 
+to a <a href="../../Unit.html">unit</a> <i>U</i> is valid if:
+</p>
+<ol>
+	<li>
+		<i>C</i>is conceptual; that is <tt>C.isConceptual()</tt> is <tt>true</tt>; and
+	</li>
+	<li>
+		The type of <i>U</i> is a subtype of <i>C</i>; and
+	</li>
+	<li><a name="capabilityMatch"></a>
+		For each <a href="../../Capability.html">capability</a> <i>c</i> 
+		on <i>C</i> there exists at least one
+		<a href="../../Capability.html">capability</a> <i>d</i> on <i>U</i> 
+		that matches according to the following rules:
+		<ol>
+			<li>
+			The type of <i>d</i> is a subtype of the type of <i>c</i>; and
+			</li>
+			<li>
+			For every (extended) attribute on capability <i>c</i> of <i>C</i>, 
+			there exists a unique corresponding (extended) <i>a'</i> attribute 
+			(of <i>d</i>) which matches <i>a</i> according to the following rules:
+			<ol>
+				<li>
+				The attribute names are the same; and
+				</li>
+				<li>
+				the value of attribute <i>a</i> is null or
+				it equals the value of attribute <i>a'</i>.
+				</li>
+			</ol>
+			</li>
+		</ol>
+		and
+	</li>
+	<li>
+	For any two distinct <a href="../../Capability.html">capabilities</a> 
+	<i>c</i> and <i>c'</i> on <i>C</i> 
+	there are distinct <a href="../../Capability.html">capabilities</a> 
+	<i>d</i> and <i>d'</i> on <i>U</i> 
+	such that <i>c</i> matches <i>d</i> and <i>c'</i> matches <i>d'</i> as above.
+	</li>
+	<li><a name="requirementMatch></a>
+	For each <a href="../../Requirement.html">requirement</a> <i>r</i> on <i>C</i> 
+	there exists at least one matching <a href="../../Requirement.html">requirement</a>
+	<i>s</i> on <i>U</i> according to the following matching rules:
+		<ol>
+			<li>
+			The <tt>dmoType</tt> of <i>s</i> is a subtype of 
+			the <tt>dmoType</tt> of <i>r</i>; and
+			</li>
+			<li>
+			For each <a href="../../RequirementExpression.html">requirement 
+			expression</a> <i>e</i> on <i>r</i> there exists a matching 
+			<a href="../../RequirementExpression.html">requirement expression</a>
+			<i>f</i> on <i>s</i> according to the following rules:
+				<ol>
+					<li>
+					"attributeName" matches exactly; and 
+					</li>
+					<li>
+					"interpreter" matches exactly; and 
+					</li>
+					<li>
+					"value" matches exactly.
+					</li>
+				</ol>
+				and
+			</li>
+			<li>
+			For any two distinct <a href="../../RequirementExpression.html">requirement expressions</a> 
+			<i>e</i> and <i>e'</i> on <i>r</i> there are two distinct 
+			<a href="../../RequirementExpression.html">requirement expressions</a> 
+			<i>f</i> and <i>f'</i> on <i>s</i> such that <i>e</i> matches 
+			<i>f</i> and <i>e'</i> matches <i>f'</i>.
+			</li>
+		</ol>
+		and
+	</li>
+	<li>
+	For any two distinct <a href="../../Requirement.html">requirements</a> 
+	<i>r</i> and <i>r'</i> on <i>C</i> there are distinct 
+	<a href="../../Requirement.html">requirements</a> 
+	<i>s</i> and <i>s'</i> on <i>U</i> such that <i>r</i> matches <i>s</i> and <i>r'</i> matches <i>s'</i>; and
+	</li>
+	<li>
+	For each <a href="../../ExtendedAttribute.html">extended attribute</a>
+	<i>a</i> on <i>C</i> there exists an 
+	<a href="../../ExtendedAttribute.html">extended attribute</a> 
+	<i>a'</i> on <i>U</i> that matches according to 
+	the rules above (3.2); and
+	</li>
+	<li>
+	If <a href="../../Unit.html">unit</a> <i>C</i> is hosted by 
+	<a href="../../Unit.html">unit</a> <i>D</i>, then
+		<ol>
+			<li>
+			<a href="#definitions"><i>FinalRealization(D)</i></a> is not equal to 
+			<a href="#definitions"><i>FinalRealization(C)</i></a>; 
+			i.e., <i>C</i> is not <i>D</i>; and
+			</li>
+			<li>
+			<a href="#definitions"><i>FinalRealization(C)</i></a> is not in 
+			<a href="#definitions"><i>HostsR(D)</i></a>; 
+			i.e., <i>D</i> is not hosted on <i>C</i>; and
+			</li>
+			<li>
+			<a href="#definitions"><i>HostsR(C)</i></a> can contain at most one non-conceptual 
+			<a href="../../Unit.html">unit</a>; i.e., there is at most one host.
+			</li>
+		</ol>
+	and
+	</li>
+	<li>
+	For all <a href="../../Unit.html">units</a> <i>D</i> such that 
+	<i>C</i> hosts <a href="../../Unit.html">unit</a> <i>D</i>, then
+		<ol>
+			<li>
+			<a href="#definitions"><i>FinalRealization(D)</i></a> is not equal to 
+			<a href="#definitions"><i>FinalRealization(C)</i></a>;
+			i.e., <i>C</i> is not <i>D</i>; and 
+			</li>
+			<li>
+			<a href="#definitions"><i>FinalRealization(D)</i></a> is not in 
+			<a href="#definitions"><i>HostsR(C)</i></a>;
+			i.e., <i>C</i> is not hosted on <i>D</i>; and
+			</li>
+			<li>
+			<a href="#definitions"><i>HostsR(D)</i></a> can contain at most one non-conceptual 
+			<a href="../../Unit.html">unit</a>; 
+			i.e., <i>C</i> is hosted by at most 1 <a href="../../Unit.html">unit</a>.
+			</li>
+		</ol>
+	and
+	</li>
+	<li>
+	For every <a href="../../Requirement.html">requirement</a> <i>r</i> on <i>C</i> 
+	such that <tt>r.getLink()</tt> is not empty, then
+	<a href="#definitions"><i>TargetsR(r)</i></a> can contain at most one 
+	<a href="../../Capability.html">capability</a> on a non-conceptual <a href="../../Unit.html">unit</a>;
+	and
+	</li>
+	<li>
+	For every <a href="../../Capability.html">capability</a> <i>c</i> on <i>C</i> 
+	such that there is an <i>r</i> that depends on <i>c</i>;
+	i.e., there is a <a href="../../DependencyLink.html">dependency link</a> 
+	from <i>r</i> to <i>c</i>, then
+	<a href="#definitions"><i>TargetsR(r)</i></a> can contain at most one 
+	<a href="../../Capability.html">capability</a> 
+	on a non-conceptual <a href="../../Unit.html">unit</a>; and
+	</li>
+	<li>
+			<a href="#definitions"><i>FinalRealization(C)</i></a> is not in 
+			<a href="#definitions"><i>GroupsR(C)</i></a>; 
+			i.e., <i>C</i> cannot be contained in itself; and
+			</li>
+			<li>
+			<a href="#definitions"><i>FinalRealization(C)</i></a> is not in 
+			<a href="#definitions"><i>MembersR(C)</i></a>; 
+			i.e., <i>C</i> cannot contain itself; and
+			</li>
+			<li>
+			The non-conceptual members of <a href="#definitions"><i>GroupsR(C)</i></a> satisfy the 
+			<a href="../../validator/expression/InCardinality.html">InCardinality</a>
+			requirements on unit <i>C</i>; and
+			</li>
+			<li>
+			The non-conceptual members of <a href="#definitions"><i>MembersR(C)</i></a> satisify the 
+			<a href="../../validator/expression/OutCardinality.html">OutCardinality</a>
+			requirements on unit <i>C</i>.
+	</li>
+</ol>
+
+<p>
+By default, a <a href="../../RealizationLink.html">realization link</a> from a 
+<a href="../../Capability.html">capability</a> <i>c</i> 
+to another <a href="../../Capability.html">capability</a> <i>d</i> is valid if:
+	<ol>
+		<li>
+		There is a <a href="../../RealizationLink.html">realization link</a> from the
+		<a href="../../Unit.html">unit</a> containing <i>c</i> to the 
+		<a href="../../Unit.html">unit</a> containing <i>d</i>; and 
+		</li>
+		<li>
+		<i>c</i> and <i>d</i> match according <a href="#capabilityMatch">rule 3</a> above.
+		</li>
+	</ol>
+</p>
+
+<p>
+By default, a <a href="../../RealizationLink.html">realization link</a> from a 
+<a href="../../Requirement.html">requirement</a> <i>r</i> 
+to another <a href="../../Requirement.html">requirement</a> <i>s</i> is valid if:
+	<ol>
+		<li>
+		There is a <a href="../../RealizationLink.html">realization link</a> from the
+		<a href="../../Unit.html">unit</a> containing <i>r</i> to the 
+		<a href="../../Unit.html">unit</a> containing <i>s</i>; and 
+		</li>
+		<li>
+		<i>r</i> and <i>s</i> match according <a href="#requirementMatch">rule 5</a> above.
+		</li>
+	</ol>
+</p>
+
+<p>
+The above rules use the following <a name="definitions">definitions</a>.
+</p>
+
+<p>
+Let <i>C</i> be a <a href="../../Unit.html">unit</a> and
+<i>realization(C)</i> be the target of a 
+<a href="../../RealizationLink.html">realization link</a> from <i>C</i>.
+</p>
+<p>
+Define the realization set of <i>C</i> to be:
+<blockquote>
+<b><i>Realizations(C)</i></b> =
+<i>{C, realization(C), realization(realization(C), ...}</i>.
+</blockquote>
+and <b><i>FinalRealization(C)</i></b> to be the 
+<a href="../../Unit.html">unit</a> <i>F</i> in <i>Realizations(C)</i> 
+such that <i>F</i> has no realization.
+</p>
+<img src="Realizations.gif"></img>
+<p>
+Let <i>host(C)</i> as the <a href="../../Unit.html">unit</a> hosting <i>C</i>;
+that is, the source of a <a href="../../HostingLink.html">HostingLink</a> 
+whose target is <i>C</i>.
+Define the  realizations of hosts(C) as:
+<blockquote>
+<b><i>HostsR(C)</i></b> = &cup;<i>Realizations(host(R))</i> where <i>R</i> 
+is in <i>Realizations(C)</i>.
+</blockquote>
+<img src="Hosts.gif"></img>
+</p>
+
+<p>
+Let <i>r</i> be a <a href="../../Requirement.html">requirement</a> of 
+<a href="../../Unit.html">unit</a> <i>C</i> and 
+<b><i>realization(r)</i></b> be the matching requirement or <i>realization(C)</i>.
+</p>
+<p>
+Define the realization set of <i>r</i> to be:
+<blockquote>
+<b><i>Realizations(r)</i></b> =
+<i>{r, realization(r), realization(realization(r), ...}</i>.
+</blockquote>
+and <b><i>FinalRealization(r)</i></b> to be the 
+<a href="../../Requirement.html">requirement</a> <i>s</i> in <i>Realizations(r)</i> 
+such that <i>s</i> has no realization.
+</p>
+<p>
+Let <i>target(r)</i> to be the target <a href="../../Capability.html">capability</a> 
+of <tt>r.getLink()</tt>.
+Define the realizations of  targets(r) as:
+<blockquote>
+<b><i>TargetsR(r)</i></b> = &cup;<i>Realizations(target(s))</i> where <i>s</i> 
+is in <i>Realizations(r)</i>.
+</blockquote>
+</p>
+
+<p>
+Let <i>S</i> be a set of <a href="../../Unit.html">units</a>.
+</p>
+<p> 
+Define the realizations set of <i>S</i> to be the realizations of the set's members;
+that is, 
+<blockquote>
+<b><i>Realizations(S)</i></b> = &cup;<i>Realizations(M)</i> where <i>M</i> is in <i>S</i>.
+</blockquote>
+</p>
+<p>
+Let <i>groups(C)</i> be the set of groups of which <i>C</i> is a member.
+Define the realizations of groups(C) as:
+<blockquote>
+<b><i>GroupsR(C)</i></b> = &cup;<i>Realizations(groups(U))</i> where <i>U</i> 
+in <i>Realizations(C)</i>. 
+</blockquote>
+That is, the set of all groups (and their realizations) that contain <i>C</i> 
+(or a realization of <i>C</i>) as a member.
+</p>
+<p>
+If <i>C</i> is a group, let <i>members(C)</i> to be the set of members of <i>C</i>.
+Define the realizations of members(C) as:
+<blockquote>
+<b><i>MembersR(C)</i></b> = &cup;<i>Realizations(members(U))</i> where <i>U</i> 
+is in <i>Realizations(C)</i>.
+</blockquote>
+That is, the set of all <a href="../../Unit.html">units</a> 
+(and their realizations) in group <i>C</i>.
+</p>
+<p>
+See also this <a href="Realization%20Link%20Validation%20Rules.ppt">PowerPoint presentation</a> for a more 
+detailed presentation and explanation of the rules.
+</p>
+
+<p><a name="ConceptualNodeExceptions"></a>
+<a href="../../ConceptualNode.html">Conceptual nodes</a> are treated as an exception.
+A <a href="../../ConceptualNode.html">conceptual node</a> allows any other unit 
+to be hosted on it regardless of its hosting requirements.
+To realize a <a href="../../ConceptualNode.html">conceptual node</a>, 
+the hosting requirements of all hostees must be satisified by the target unit.
+</p>
+<p>
+Furthermore, if nothing is hosted on the conceptual node, it can be realized by any
+unit.
+</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Michael H Kalantar</b> <i>(kalantar{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

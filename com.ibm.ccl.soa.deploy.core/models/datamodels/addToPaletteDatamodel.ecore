@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="AddToPaletteDataModel">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.core.datamodels"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.core.internal.datamodels"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AddToPaletteDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="AddToPalette datamodel is used to capture dynamicType.xml information.&#xD;&#xA;The datamodel will be used in dialog and creation wizard.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="name of palette entry"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Description of palette entry"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stack" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Position of entry"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Icon for palette entry&#xD;&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="addToPalette" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Indication to create a template"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topology" eType="#//Topology">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Topology for topology constraint&#xD;&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="ecore:EClass operations.ecore#//UnitArray">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Units to be added to the palette"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topologyVUri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Associated Topologyv file used to copy notational metadata"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="captureVisuals" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Should capture notational values in topologyV"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableCaptureVisuals" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Should capture notational values in topologyV"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Topology" instanceClassName="com.ibm.ccl.soa.deploy.core.Topology"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitArray" instanceClassName="com.ibm.ccl.soa.deploy.core.Unit[]"/>
+</ecore:EPackage>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicMachine.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/net/BindAddress.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicEJBContainer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicCluster.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicWebContainer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicSSLSettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/AppProtocol.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicServer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEServer">
+        <xsd:sequence>
+          <xsd:element name="machine" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicMachine" nillable="true" minOccurs="0"/>
+          <xsd:element name="cluster" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicCluster" nillable="true" minOccurs="0"/>
+          <xsd:element name="webContainer" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicWebContainer" nillable="true" minOccurs="0"/>
+          <xsd:element name="EJBContainer" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicEJBContainer" nillable="true" minOccurs="0"/>
+          <xsd:element name="completeHTTPMessageTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="completeIIOPMessageTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="completeT3MessageTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultProtocol" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultSecureProtocol" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="idleIIOPConnectionTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxHTTPMessageSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxIIOPMessageSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxT3MessageSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSL" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicSSLSettings" nillable="true" minOccurs="0"/>
+          <xsd:element name="stdoutSeverityLevel" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="threadPoolPercentSocketReaders" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="validProtocols" type="coll:com.collation.platform.model.topology.app.AppProtocol" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="instrumentStackTraceEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="logRemoteExceptionsEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="nativeIOEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="reverseDNSAllowed" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="stdoutDebugEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="stdoutEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="adminBindAddress" type="coll:com.collation.platform.model.topology.net.BindAddress" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusterWeight" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultIIOPPassword" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultIIOPUser" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultTGIOPPassword" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultTGIOPUser" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="expectedToRun" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="externalDNSName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="extraRmicOptions" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="helpPageURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="interfaceAddress" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaCompiler" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaCompilerPostClassPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaCompilerPreClassPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="JDBCLogFileName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="bindAddress" type="coll:com.collation.platform.model.topology.net.BindAddress" nillable="true" minOccurs="0"/>
+          <xsd:element name="listenDelaySecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="listenThreadStartDelaySecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="loginTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="loginTimeoutMillis" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="preferredSecondaryGroup" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicationGroup" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="rootDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="txLogFilePrefix" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="tunnelingClientPingSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="tunnelingClientTimeoutSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="verboseEJBDeploymentEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="workspaceShowUserKeysOnly" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="ZACPublishRoot" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="domainLogEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTTPDEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="IIOPEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="j2EE12OnlyModeEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="j2EE13WarningEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="JDBCLoggingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="JMSDefaultConnectionFactoriesEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="TGIOPEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="tunnelingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="ZACEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

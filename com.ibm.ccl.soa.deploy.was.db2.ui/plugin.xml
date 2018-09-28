@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.6 2007/07/06 19:09:35 kalantar Exp $
+-->
+
+<plugin>
+	
+	<!-- resolution generators -->
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">   
+		<resolutionGenerator
+	    		id="ConfigureJ2eeModuleAccessToDatabaseResolutionGenerator"
+	    		name="%ConfigureJ2eeModuleAccessToDatabaseResolutionGenerator"
+        		class="com.ibm.ccl.soa.deploy.was.db2.ui.eartodb.resolution.ConfigureJ2eeModuleAccessToDatabaseResolutionGenerator">
+      		<enablement>
+         		<instanceof value="com.ibm.ccl.soa.deploy.was.db2.validator.status.DatasourceSatisfactionStatus"/> 
+	        	<test
+              		property="com.ibm.ccl.soa.deploy.core.problemType"
+              		value="com.ibm.ccl.soa.deploy.was.db2.earToDbLogicalLinkNotImplementedButCan"/>
+      		</enablement>
+     	</resolutionGenerator>
+	</extension>
+
+</plugin>

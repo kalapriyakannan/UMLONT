@@ -1,0 +1,629 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="package_files/filelist.xml">
+<link rel=Edit-Time-Data href="package_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>SOA Core Data Models</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>IBM</o:Author>
+  <o:LastAuthor>IBM</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>0</o:TotalTime>
+  <o:Created>2006-11-27T16:20:00Z</o:Created>
+  <o:LastSaved>2006-11-27T16:20:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>670</o:Words>
+  <o:Characters>3819</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>31</o:Lines>
+  <o:Paragraphs>8</o:Paragraphs>
+  <o:CharactersWithSpaces>4481</o:CharactersWithSpaces>
+  <o:Version>10.6811</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:21.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:10.5pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Arial;
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	color:#8080FF;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:670522509;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2105468004 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><![if mso 9]>
+<style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+</style>
+<![endif]><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in;margin-left:
+8.5pt;margin-top:14.2pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>The SOA
+Deploy Business Application Topology domain of the SOA Deployment Editor allows
+architects to ability to abstractly layout their business application
+deployment. <a name=top><o:p></o:p></a></span></p>
+
+<h1 align=center style='text-align:center'><span style='mso-bookmark:top'>SOA
+Deploy Business Application Topology Visualization</span></h1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>SOA Deployment Business Application Topology Domain [<a
+  href="../_deploytoolsHEAD/com.ibm.ccl.soa.core/designs/com/ibm/ccl/soa/core/datamodels/overview-summary.html"><span
+  style='color:lightblue'>Index</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<span style='mso-bookmark:top'></span>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The SOA Deployment Business Application Topology (BAT) is an extension
+  domain of the SOA Deployment Editor which will allow Deployment Architects to
+  abstractly layout their business components for deployment. This document
+  will focus on the implementation of the visualization components of the
+  modeling elements used in the BAT domain.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Visualization Overview [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The diagram below shows the highlights of the visualization elements used
+  in the BAT domain. This diagram is preliminary as are the figures which will
+  be replaced by professionally rendered graphics as they become available. </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+   coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+   filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" alt="" style='width:426.75pt;
+   height:167.25pt'>
+   <v:imagedata src="package_files/image001.png" o:href="file:///C:\Documents%20and%20Settings\Administrator\Local%20Settings\Temp\SolidDocuments\SolidCapture\captureclip20.png"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=569 height=223
+  src="package_files/image002.jpg" v:shapes="_x0000_i1025"><![endif]></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Visualization Elements [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>The
+  visualization elements required by the BAT domain are in fact provided by
+  both the BAT domain and the Deployment Editor core plugin. The following
+  tables shows what these elements are and from whence they are provided.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:11.0pt;font-family:Arial'>From the Deployment Editor core
+  plugin:<o:p></o:p></span></b></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Yellow rectangle<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>ConceptualNodeEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+  <ul style='margin-top:0in' type=disc>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>This will be a new tool in
+       the palette and will be a type of Group<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>Hosting on a Conceptual Node
+       will be shown the same way that membership is shown with groups &#8211;
+       by containment<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>A lollipop will always exist
+       below this figure and a link will always be allowed between any two
+       conceptual nodes<o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Thin link<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>DependencyLink<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Requirement/Service will be
+  created when link is drawn (see below)<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Thin red rectangle<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>FireWallEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Future<o:p></o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Thick link<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>CommunicationLink<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Future<o:p></o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Cloud<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>ExternalEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Future<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:11.0pt;font-family:Arial'>From the Business Application
+  Topology:<o:p></o:p></span></b></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Blue/magenta rectangle<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>ComponentEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: <o:p></o:p></span></b></p>
+  <ul style='margin-top:0in' type=disc>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>This will be a new generic
+       Component tool in the palette. Some mechanism can be provided to set the
+       component type (SCA module, J2EE EAR, WAR, etc.) when dropped in the
+       canvas&#8212;or we can create a dropdown list in the palette of
+       different types &#8211; UX will decide.<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>An icon will indicate if the
+       component is implemented (exists).<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>A Component can be hosted on
+       any Conceptual Node (the same way a unit can be a member of any generic
+       group)<o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Red ball<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>ServiceEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>See Service and Requirement
+  Editing below<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Figure: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>Green Arrow<b style='mso-bidi-font-weight:
+  normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>EditPart: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>RequirementEditPart<b
+  style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+  <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:10.0pt;font-family:Arial'>Notes: </span></b><span
+  style='font-size:10.0pt;font-family:Arial'>See Service and Requirement
+  Editing below<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>The
+  Deployment Architect adds these figures to the diagram from the palette. The
+  palette tools will be filtered based on the context with which the architect
+  created the topology.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Service and Requirement Editing [<a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>The
+  Component figure is populated along its border with its services and
+  requirements so that each requirement/service can be individually edited and
+  linked. These Service and Requirement nubs can be added to a component figure
+  using a context menu or a popup toolbar. They can also be individually
+  deleted by selecting and deleting.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>Upon the
+  creation of a new service or requirement, a dialog opens that allows the user
+  to define the service/requirement interface including the technology type (EJB,
+  Web Service, SCA, etc.). This dialog also allows a user to define the binding
+  types which will be used when the application is deployed.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:black'>Reuse of the SOA Core
+  SAF Framework<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial;color:black;mso-bidi-font-weight:
+  bold'>The SOA Assembly Framework (SAF) from the SOA Core Tools Project will
+  be used in the development of the service/requirement dialog and
+  implementation handler. Since the SAF was developed using a different model,
+  it can&#8217;t be used &#8220;as-is&#8221;, however its two plugins will be
+  added to the deploy project and adapted to work with the deploy model.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial;color:black'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This documentation is maintained by <b>John Swanke</b> <i>(jswanke{at}us.ibm.com)</i>.
+  </p>
+  <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>[<a
+  href="../_deploytoolsHEAD/com.ibm.ccl.soa.core/designs/com/ibm/ccl/soa/core/datamodels/overview-summary.html"><span
+  style='color:lightblue'>Index</span></a>] [<a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

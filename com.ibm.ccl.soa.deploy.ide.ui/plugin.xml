@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<!-- configure the resource explorer with this plugin's content -->
+
+
+	<!-- <extension  
+		point="org.eclipse.ui.navigator.navigatorContent">
+		<commonSorter
+		class="org.eclipse.wst.rdb.core.internal.ui.services.ExplorerSorterProvider"
+		id="com.ibm.ccl.soa.deploy.ide.ui.navigator.resourceexplorer.rdb.navigatorContent.sorter">
+		<parentExpression>
+		<or>
+		<instanceof
+		value="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IVirtualNode" />
+		<instanceof
+		value="org.eclipse.wst.rdb.internal.models.sql.schema.SQLObject" />
+		<instanceof
+		value="org.eclipse.core.resources.IWorkspaceRoot" />
+		</or>
+		</parentExpression>
+		</commonSorter>
+		</extension> -->
+
+	<!-- tell the common navigator plugin which view it lives in -->
+
+	<!-- Pop-up Menus -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<!-- Menu for Deleting an existing Server -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.deleteServer2">
+			<action label="%rdb.server.ui.actions.delete"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/delete.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.DeleteServerAction"
+				menubarPath="additions" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.deleteServer2">
+			</action>
+			<visibility>
+				<objectClass
+					name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+				</objectClass>
+			</visibility>
+		</viewerContribution>
+		<!-- Navigation of Dependencies Menu -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.navigateDependency2">
+			<action label="%rdb.server.ui.actions.navigate"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.DependencyNavigation"
+				menubarPath="additions" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.navigateDependency2">
+			</action>
+			<visibility>
+				<or>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.schema.Dependency">
+					</objectClass>
+				</or>
+			</visibility>
+		</viewerContribution>
+		<!-- Start New Connection Wizard -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.addNewConnection2">
+			<action label="%rdb.server.ui.actions.connect"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/connection.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.AddConnectionAction"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.addNewConnection2">
+			</action>
+			<visibility>
+				<objectClass
+					name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IKnownConnectionNode">
+				</objectClass>
+			</visibility>
+		</viewerContribution>
+
+		<!-- Menu for connecting to an existing Server -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.connectServers2">
+			<action label="%rdb.server.ui.explorer.reconnect_server"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/connect.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.ConnectServerAction"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.connectServer2">
+			</action>
+			<visibility>
+				<and>
+					<objectClass
+						name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+					</objectClass>
+					<objectState name="isConnected" value="false">
+					</objectState>
+				</and>
+			</visibility>
+		</viewerContribution>
+		<!-- Menu for Disconnecting an existing Server -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.disconnectServers2">
+			<action label="%rdb.server.ui.actions.disconnect"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/disconnect_server.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.DisconnectServerAction"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.disconnectServer2">
+			</action>
+			<visibility>
+				<and>
+					<objectClass
+						name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+					</objectClass>
+					<objectState name="isConnected" value="true">
+					</objectState>
+				</and>
+			</visibility>
+		</viewerContribution>
+		<!-- Menu for caching an existing connection -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.cachingConnection2">
+			<action label="%rdb.server.ui.actions.updateofflineitems"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/cachedConnection.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.UpdateOfflineItems"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.updateOfflineItems2">
+			</action>
+			<visibility>
+				<and>
+					<objectClass
+						name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+					</objectClass>
+					<objectState name="isConnected" value="true">
+					</objectState>
+					<objectState name="isOffline" value="false">
+					</objectState>
+				</and>
+			</visibility>
+		</viewerContribution>
+		<!-- Menu for connecting to the cache -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.workoffline2">
+			<action label="%rdb.server.ui.actions.workoffline"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/connectcache.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.WorkOffline"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.workOffline2">
+			</action>
+			<visibility>
+				<and>
+					<objectClass
+						name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+					</objectClass>
+					<objectState name="isConnected" value="false">
+					</objectState>
+				</and>
+			</visibility>
+		</viewerContribution>
+		<!-- Menu for editing an existing connection -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.editConnection2">
+			<action label="%rdb.server.ui.actions.editconnection"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/edit_server.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.EditConnectionAction"
+				menubarPath="connection" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.internal.ui.explorer.editConnection2">
+			</action>
+			<visibility>
+				<or>
+					<and>
+						<objectClass
+							name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IConnectionNode">
+						</objectClass>
+						<objectState name="isOffline" value="false">
+						</objectState>
+					</and>
+					<and>
+						<objectClass
+							name="org.eclipse.wst.rdb.internal.models.sql.tables.Table">
+						</objectClass>
+					</and>
+					<objectState name="isConnected" value="false">
+					</objectState>
+				</or>
+			</visibility>
+		</viewerContribution>
+
+	</extension>
+
+	<!-- Sample Content Menu -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus2">
+			<menu label="%rdb.server.ui.actions.data" path="additions"
+				id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.data2">
+				<separator name="dataGroup"></separator>
+			</menu>
+			<action label="%rdb.server.ui.actions.samplecontents"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/sampleContents.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.SampleContentsAction"
+				menubarPath="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.data2/dataGroup"
+				enablesFor="1"
+				id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.sampleContentsAction2">
+				<enablement>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.core.rte.ICatalogObject" />
+				</enablement>
+			</action>
+			<visibility>
+				<or>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.tables.Table">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.tables.Column">
+					</objectClass>
+				</or>
+			</visibility>
+		</viewerContribution>
+		<!-- Refresh Menu -->
+		<viewerContribution
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"
+			id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.refresh2">
+			<action label="%rdb.server.ui.actions.refresh"
+				icon="platform:/plugin/org.eclipse.wst.rdb.core.ui/icons/refresh.gif"
+				class="org.eclipse.wst.rdb.server.internal.ui.explorer.actions.popup.RefreshAction"
+				menubarPath="additions" enablesFor="1"
+				id="org.eclipse.wst.rdb.server.ui.explorer.popupMenus.refresh2">
+			</action>
+			<visibility>
+				<or>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.schema.Database">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.schema.Schema">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.tables.Table">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.schema.Sequence">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.datatypes.UserDefinedType">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.internal.models.sql.routines.Procedure">
+					</objectClass>
+					<objectClass
+						name="org.eclipse.wst.rdb.core.internal.ui.explorer.virtual.IVirtualNode">
+					</objectClass>
+				</or>
+			</visibility>
+		</viewerContribution>
+	</extension>
+
+	<!--Database-->
+
+
+
+
+
+
+	<extension
+		id="com.ibm.ccl.soa.deploy.core.ui.operations.CreateDeploymentTopologyOperation"
+		point="org.eclipse.wst.common.frameworks.OperationExtension">
+		<operationExtension
+			id="com.ibm.ccl.soa.deploy.core.ui.operations.CreateDeploymentTopologyOperation"
+			postOperationClass="com.ibm.ccl.soa.deploy.ide.ui.operation.RCTDiscoveryOperation" />
+	</extension>
+	<extension
+		id="com.ibm.ccl.soa.deploy.ide.ui.operation.RCTDiscoveryOperation"
+		point="org.eclipse.wst.common.frameworks.OperationExtension">
+		<operationExtension
+			id="com.ibm.ccl.soa.deploy.ide.ui.operation.RCTDiscoveryOperation"
+			postOperationClass="com.ibm.ccl.soa.deploy.ide.ui.operation.RCTGroupOperation" />
+	</extension>
+	<extension
+		id="com.ibm.ccl.soa.deploy.ide.ui.wizards.DeployTopologyCreationWizardExtensionGroup"
+		name="com.ibm.ccl.soa.deploy.ide.ui.wizards.DeployTopologyCreationWizardExtensionGroup"
+		point="org.eclipse.wst.common.frameworks.ui.wizardPageGroup">
+		<wizardPageGroup allowsExtendedPagesAfter="false"
+			pageGroupID="com.ibm.ccl.soa.deploy.ide.ui.wizards.DeployTopologyCreationWizardExtensionPageGroup"
+			wizardID="com.ibm.ccl.soa.deploy.core.ui.operations.CreateComposedDeploymentTopologyProvider">
+			<factory
+				className="com.ibm.ccl.soa.deploy.ide.ui.wizard.DeployTopologyCreationWizardExtensionFactory" />
+		</wizardPageGroup>
+	</extension>
+
+	<!-- Discovery Datamodel extensions  -->
+	<extension
+		point="org.eclipse.wst.common.frameworks.DataModelProviderExtension">
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.ide.ui.operation.RCTCreateTopologyExtensionProvider"
+			id="RCTCreateTopologyExtensionModel" />
+	</extension>
+
+
+	<!-- Discovery Asset function  -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution
+			id="com.ibm.ccl.soa.deploy.ide.ui.resourceExplorer.discoverAction.Contribution"
+			targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator">
+			<action
+				class="com.ibm.ccl.soa.deploy.ide.ui.actions.OpenDiscoveryAssetAction"
+				id="com.ibm.ccl.soa.deploy.ide.ui.resourceExplorer.discoverAction.Contribution"
+				label="%asset.discovery.action.name" menubarPath="additions"
+				enablesFor="1">
+			</action>
+		</viewerContribution>
+	</extension>
+
+
+	<!-- *************************************************************** -->
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.ide.domain"
+			name="%idedomain.label"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/">
+		</domain>
+	</extension>
+	
+	<extension point="org.eclipse.ui.commands">
+	  <category
+        id="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+        name="%zephyr.refactorings.command.category.name">
+	  </category>
+	  <command
+	        categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+	        id="com.ibm.ccl.soa.deploy.core.refactoring.copy"
+	        name="%zephyr.refactorings.command.copy.name">
+	  </command>
+	  <command
+	        categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+	        id="com.ibm.ccl.soa.deploy.core.refactoring.paste"
+	        name="%zephyr.refactorings.command.paste.name">
+	  </command>
+	  <command
+	        categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+	        id="com.ibm.ccl.soa.deploy.core.refactoring.delete"
+	        name="%zephyr.refactorings.command.delete.name">
+	  </command>
+	  <command
+	        categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+	        id="com.ibm.ccl.soa.deploy.core.refactoring.move"
+	        name="%zephyr.refactorings.command.move.name">
+	  </command>
+	  <command
+	        categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.refactoring.commands"
+	        id="com.ibm.ccl.soa.deploy.core.refactoring.rename"
+	        name="%zephyr.refactorings.command.rename.name">
+	  </command>
+		
+	</extension>
+	
+<extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="com.ibm.ccl.soa.deploy.ide.ui.refactoring.handlers.CopyHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.copy">
+       <enabledWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.alwaysFalse" />
+          </or>
+       </enabledWhen>
+    </handler>
+    <handler
+          class="com.ibm.ccl.soa.deploy.ide.ui.refactoring.handlers.PasteHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.paste">
+       <enabledWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.alwaysFalse" />
+          </or>
+       </enabledWhen>
+    </handler>
+    <handler
+          class="org.eclipse.ltk.internal.ui.refactoring.actions.DeleteResourcesHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.delete">
+       <enabledWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyModelContent" />
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramContent" />
+          </or>
+       </enabledWhen>
+    </handler>
+    <handler
+          class="com.ibm.ccl.soa.deploy.ide.ui.refactoring.handlers.MoveUnitsRefactoringHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.move">
+       <enabledWhen>
+          <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+       </enabledWhen>
+    </handler>
+    <handler
+          class="org.eclipse.ltk.internal.ui.refactoring.actions.RenameResourceHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.rename">
+       <enabledWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+          </or>
+       </enabledWhen>
+    </handler>
+    <handler
+          class="com.ibm.ccl.soa.deploy.ide.ui.refactoring.handlers.RenameTopologyNamespaceRefactoringHandler"
+          commandId="com.ibm.ccl.soa.deploy.core.refactoring.rename">
+       <enabledWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+          </or>
+       </enabledWhen>
+       <activeWhen>
+          <or>
+             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+          </or>
+       </activeWhen>
+    </handler>
+ </extension>
+ 
+ <extension
+       point="org.eclipse.ui.menus">
+	<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=group.edit">       <!-- // Disabling Copy / Paste in Project Explorer Context Menu until supported
+       <command
+        commandId="com.ibm.ccl.soa.deploy.core.refactoring.copy"
+        disabledIcon="icons/full/dtool16/copy_edit.gif"
+        icon="icons/full/etool16/copy_edit.gif"
+        id="com.ibm.ccl.soa.deploy.core.refactoring.copy.menucontribution">
+           <visibleWhen checkEnabled="false">
+			   <or>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyModelContent" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramContent" />
+			   </or>
+			</visibleWhen>
+		</command>
+		<command
+        commandId="com.ibm.ccl.soa.deploy.core.refactoring.paste"
+        disabledIcon="icons/full/dtool16/paste_edit.gif"
+        icon="icons/full/etool16/paste_edit.gif"
+        id="com.ibm.ccl.soa.deploy.core.refactoring.paste.menucontribution">
+			<visibleWhen checkEnabled="false">
+			   <or>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyModelContent" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramContent" />
+			   </or>
+			</visibleWhen>
+		</command>
+	    -->
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.delete"
+			disabledIcon="icons/dlcl16/delete.gif"
+			icon="icons/elcl16/delete.gif"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.delete.menucontribution">
+			<visibleWhen checkEnabled="false">
+			   <or>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyModelContent" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramContent" />
+			   </or>
+			</visibleWhen>
+		</command>
+	</menuContribution>
+	<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=group.reorganize">
+       <separator
+             name="com.ibm.ccl.soa.deploy.core.ui.reorganize.group"
+             visible="true">
+       </separator>
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.move"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.move.menucontribution">
+			<visibleWhen checkEnabled="false">
+	          <or>
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+			     <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+				 <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+	          </or>
+			</visibleWhen>
+		</command>
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.rename"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.rename.menucontribution">
+			<visibleWhen checkEnabled="false">
+	          <or>
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+	          </or>
+			</visibleWhen>
+		</command>
+	</menuContribution>
+    <!--
+    <menuContribution
+          locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=editGroup">
+       <command
+        commandId="com.ibm.ccl.soa.deploy.core.refactoring.copy"
+        disabledIcon="icons/full/dtool16/copy_edit.gif"
+        icon="icons/full/etool16/copy_edit.gif"
+        id="com.ibm.ccl.soa.deploy.core.refactoring.copy.menucontribution">
+           <visibleWhen checkEnabled="false">
+			   <or>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+			   </or>
+			</visibleWhen>
+		</command>
+		<command
+        commandId="com.ibm.ccl.soa.deploy.core.refactoring.paste"
+        disabledIcon="icons/full/dtool16/paste_edit.gif"
+        icon="icons/full/etool16/paste_edit.gif"
+        id="com.ibm.ccl.soa.deploy.core.refactoring.paste.menucontribution">
+			<visibleWhen checkEnabled="false">
+			   <or>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+			      <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode" />
+			   </or>
+			</visibleWhen>
+		</command>
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.delete"
+			disabledIcon="icons/dlcl16/delete.gif"
+			icon="icons/elcl16/delete.gif"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.delete.menucontribution">
+			<visibleWhen checkEnabled="false">
+			   <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			</visibleWhen>
+		</command>
+	</menuContribution>
+	-->
+    <menuContribution
+          locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?before=findGroup">
+       <separator
+             name="com.ibm.ccl.soa.deploy.core.ui.edit.group"
+             visible="true">
+       </separator>
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.move"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.move.menucontribution">
+			<visibleWhen checkEnabled="false">
+	          <or>
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+	          </or>
+			</visibleWhen>
+		</command>
+		<command
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.rename"
+			id="com.ibm.ccl.soa.deploy.core.refactoring.rename.menucontribution">
+			<visibleWhen checkEnabled="false">
+	          <or>
+	             <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+	          </or>
+			</visibleWhen>
+		</command>
+	   <!--
+       <menu
+             id="com.ibm.ccl.soa.deploy.core.ui.edits"
+             label="%zephyr.refactorings.menu.label">
+          <command
+                commandId="com.ibm.ccl.soa.deploy.core.refactoring.move"
+                id="com.ibm.ccl.soa.deploy.core.refactoring.move.menucontribution">
+             <visibleWhen
+                   checkEnabled="false">
+                <or>
+                    <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection"/>
+                </or>
+             </visibleWhen>
+          </command>
+          <separator
+                name="com.ibm.ccl.soa.deploy.core.ui.refactoring.menu.additions">
+          </separator>
+       </menu>
+       -->
+       <separator
+             name="com.ibm.ccl.soa.deploy.core.ui.edit.end.separator"
+             visible="true">
+       </separator>
+    </menuContribution>
+ </extension>
+ <extension
+       point="org.eclipse.ui.bindings">
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.copy"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="com.ibm.ccl.soa.deploy.ide.ui.refactorings.context"
+			sequence="M1+C">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.paste"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="com.ibm.ccl.soa.deploy.ide.ui.refactorings.context"
+			sequence="M2+V">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.delete"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="com.ibm.ccl.soa.deploy.ide.ui.refactorings.context"
+			sequence="DELETE">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.refactoring.rename"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="com.ibm.ccl.soa.deploy.ide.ui.refactorings.context"
+			sequence="F2">
+		</key>
+ </extension>
+ <extension
+       point="org.eclipse.ui.contexts">
+       <context
+          id="com.ibm.ccl.soa.deploy.ide.ui.refactorings.context"
+          name="%zephyr.refactorings.context"
+          parentId="com.ibm.ccl.soa.deploy.core.ui.navigator.deploymentNavigatorActionSet"/>
+ </extension>
+
+</plugin>

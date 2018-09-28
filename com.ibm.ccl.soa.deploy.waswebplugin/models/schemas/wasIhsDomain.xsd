@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+	xmlns:waswebplugin="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="WasWebPluginDeployRoot"
+	ecore:name="waswebplugin" ecore:package="com.ibm.ccl.soa.deploy.waswebplugin"
+	ecore:nsPrefix="waswebplugin">
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/constraint/constraint.xsd"/>
+
+	<!-- Unit types -->
+
+
+	<element name="unit.ihsWasPluginUnit" substitutionGroup="core:unit" type="waswebplugin:IhsWasPluginUnit" />
+	<complexType name="IhsWasPluginUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+
+
+<!-- Capability types -->
+
+	<element name="capability.ihsWasPlugin"
+		substitutionGroup="core:capability" type="waswebplugin:IhsWasPlugin" />
+	<complexType name="IhsWasPlugin">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >
+				<attribute name="installLocation" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!--  Constraint types -->
+	<element name="constraint.WasWebServerToIhsConstraint" 
+		substitutionGroup="core:constraint" type="waswebplugin:WasWebServerToIhsConstraint"/>
+	<complexType name="WasWebServerToIhsConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing necessary configuration of IHS plugin for WAS.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Constraint"/>
+		</complexContent>
+	</complexType>
+
+</schema>

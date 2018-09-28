@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.domaingen/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.domaingen" modelName="CdmBase" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/cdmBase.xsd</foreignModel>
+  <genPackages prefix="Cdmbase" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="cdmbase.ecore#/">
+    <genClasses ecoreClass="cdmbase.ecore#//Account">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Account/accountName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Account/shortName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//AccountUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//AppServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServer/executableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServer/keyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServer/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServer/productVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServer/vendorName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//AppServerCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//AppServerCluster/port"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//AppServerClusterUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//AppServerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//CdmBaseRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//CdmBaseRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityAccount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityAppServer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityAppServerCluster"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityConfigFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityDatabase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityDatabaseServer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityDataFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityDb2Server"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityFileSystemContent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityGeography"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityHomogeneousCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityLogicalContent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityLogicalElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityManagedElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityManagedSystemElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityModelObject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityMQQueueManager"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityOrganizationalEntity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityPhysicalElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityPhysicalLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityRuntimeProcess"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySiteInfo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareInstallation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareModule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilitySSLSettings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityWebContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/capabilityWebVirtualHost"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitAccountUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitAppServerClusterUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitAppServerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitCollectionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitConfigFileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitDatabaseServerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitDatabaseUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitDataFileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitDb2ServerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitFileSystemContentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitFunctionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitGeographyUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitHomogeneousCollectionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitLogicalContentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitLogicalElementUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitManagedElementUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitManagedSystemElementUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitModelObjectUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitMQQueueManagerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitOrganizationalEntityUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitPhysicalElementUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitPhysicalLocationUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitRuntimeProcessUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSiteInfoUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSoftwareComponentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSoftwareContainerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSoftwareInstallationUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSoftwareModuleUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSoftwareResourceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitSSLSettingsUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitWebContainerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmbase.ecore#//CdmBaseRoot/unitWebVirtualHostUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//Collection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Collection/active"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//CollectionUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ConfigFile"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ConfigFileUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//Database"/>
+    <genClasses ecoreClass="cdmbase.ecore#//DatabaseServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//DatabaseServer/home"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//DatabaseServerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//DatabaseUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//DataFile"/>
+    <genClasses ecoreClass="cdmbase.ecore#//DataFileUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//Db2Server">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/levelId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/productId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/protocolParams"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/pTF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Db2Server/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//Db2ServerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//FileSystemContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/lastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/permissions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/realFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//FileSystemContent/size"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//FileSystemContentUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//Function"/>
+    <genClasses ecoreClass="cdmbase.ecore#//FunctionUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//Geography">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/aisle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/altitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/rackPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/regionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/regionNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/row"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/xCoordinate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//Geography/yCoordinate"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//GeographyUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//HomogeneousCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//HomogeneousCollection/memberType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//HomogeneousCollectionUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//LogicalContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//LogicalContent/checksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//LogicalContent/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//LogicalContent/contentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//LogicalContent/fixedPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//LogicalContent/uRI"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//LogicalContentUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//LogicalElement"/>
+    <genClasses ecoreClass="cdmbase.ecore#//LogicalElementUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ManagedElement"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ManagedElementUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ManagedSystemElement"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ManagedSystemElementUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ModelObject"/>
+    <genClasses ecoreClass="cdmbase.ecore#//ModelObjectUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//MQQueueManager">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/channelAutoDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/clusterWorkloadUseQueue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/dataPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/deadLetterQueue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/defautlQueue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/exitsDefaultPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/exitsDefaultPath64"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/isValid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/logDefaultPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/logWriteIntegrity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/maxMessageLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/queueManagerIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/queueManagerStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/repository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/repositoryNameList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/repositoryType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/sSLKeyRepository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/startChannelInitiator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/startCommandServer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/system"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//MQQueueManager/triggerInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//MQQueueManagerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//OrganizationalEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/businessCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/cAGECode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/dUNSNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/entityName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/fax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/globalName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/iSICCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/mobilePhone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/nAICSCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/nAPCSCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/note"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/sICCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/uRL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//OrganizationalEntity/workPhone"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//OrganizationalEntityUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//PhysicalElement"/>
+    <genClasses ecoreClass="cdmbase.ecore#//PhysicalElementUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//PhysicalLocation"/>
+    <genClasses ecoreClass="cdmbase.ecore#//PhysicalLocationUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//RuntimeProcess">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/cmdLine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/command"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/cWD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/env"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/fileDescriptorLimit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/pID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/pPID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/uID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/unattached"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//RuntimeProcess/user"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//RuntimeProcessUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SiteInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/floor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/note"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/postalCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/room"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/siteName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/siteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/stateOrProvince"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SiteInfo/streetAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//SiteInfoUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/executableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/installedDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/publisher"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/softwareVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareComponent/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareComponentUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareContainer"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareContainerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareInstallation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/installedLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/manufacturerName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/productId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareInstallation/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareInstallationUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SoftwareModule/fileName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareModuleUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareResource"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SoftwareResourceUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//SSLSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SSLSettings/cipherSuite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SSLSettings/sessionCacheTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SSLSettings/sslEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//SSLSettings/sslPort"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//SSLSettingsUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//WebContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//WebContainer/serverRoot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//WebContainer/user"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//WebContainerUnit"/>
+    <genClasses ecoreClass="cdmbase.ecore#//WebVirtualHost">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//WebVirtualHost/defaultWebServer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//WebVirtualHost/documentRoot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmbase.ecore#//WebVirtualHost/serverName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmbase.ecore#//WebVirtualHostUnit"/>
+  </genPackages>
+</genmodel:GenModel>

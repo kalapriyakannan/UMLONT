@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/sys/ITSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/AppDescriptor.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/ApplicationDef.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/FunctionalGroup.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.Application">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.ITSystem">
+        <xsd:sequence>
+          <xsd:element name="groups" type="coll:com.collation.platform.model.topology.app.FunctionalGroup" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="appDef" type="coll:com.collation.platform.model.topology.app.ApplicationDef" nillable="true" minOccurs="0"/>
+          <xsd:element name="appDescriptors" type="coll:com.collation.platform.model.topology.app.AppDescriptor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="appVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="vendor" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="installationNumber" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="licenseExpiryDate" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

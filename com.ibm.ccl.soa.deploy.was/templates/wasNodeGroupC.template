@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"  
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+name="WebSphereNodeGroupUnit template">
+
+  <was:unit.wasNodeGroupUnit name="WebSphereNodeGroup" configurationUnit="true" conceptual="true">
+    <was:capability.wasNodeGroup name="Provide WAS Node Group" displayName="Provide WAS Node Group" linkType="any"/>
+    <core:requirement mutable="true" name="Cell" displayName="Contained by cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+
+    <core:requirement mutable="true" name="Group Nodes" displayName="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+  </was:unit.wasNodeGroupUnit>
+  
+</core:topology>

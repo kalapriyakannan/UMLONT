@@ -1,0 +1,3151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension-point
+		id="compositeFactories"
+		name="%compositeFactoriesExtensionPtName"
+		schema="schemas/compositeFactories.exsd" />
+	<!-- Editors -->
+	<extension point="org.eclipse.ui.editors">
+		<editor
+			default="true"
+			name="%Deploy_editor_name"
+			extensions="topology,topologyv"
+			icon="icons/view16/deploy_ed_nav.gif"
+			class="com.ibm.ccl.soa.deploy.core.ui.editor.DeployCoreEditor"
+			contributorClass="com.ibm.ccl.soa.deploy.core.ui.providers.DiagramActionBarContributor"
+			matchingStrategy="com.ibm.ccl.soa.deploy.core.ui.editor.TopologyEditorMatchingStrategy"
+			id="DeployCoreEditor">
+		</editor>
+	</extension>
+	<!-- New Wizard -->
+	<extension point="org.eclipse.ui.newWizards">
+		<category
+			name="%Deploy_core_wizard_category_name"
+			id="com.ibm.ccl.soa.deploy.core.ui" />
+		<wizard
+			name="%newTopologyAction_label"
+			icon="icons/etool16/dply_topology_wiz.gif"
+			category="com.ibm.ccl.soa.deploy.core.ui"
+			class="com.ibm.ccl.soa.deploy.core.ui.wizards.TopologyCreationWizard"
+			id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file">
+			<description>%Deploy_core_wizard_description</description>
+			<selection class="org.eclipse.core.resources.IResource" />
+		</wizard>
+		<wizard
+			name="%newNamespaceAction_label"
+			icon="icons/full/etool16/newnamespace_wiz.gif"
+			category="com.ibm.ccl.soa.deploy.core.ui"
+			class="com.ibm.ccl.soa.deploy.core.ui.wizards.NamespaceCreationWizard"
+			id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.namespace">
+			<description>%Deploy_core_namespace_wizard_description</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+			<selection class="org.eclipse.core.resources.IFolder" />
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.wst.common.frameworks.ui.extendableWizard">
+		<extendableWizard id="com.ibm.ccl.soa.deploy.core.ui.wizards.DeployTopologyCreationWizard"></extendableWizard>
+	</extension>
+	<!-- Global action providers -->
+	<extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+		<GlobalActionHandlerProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployDiagramGlobalActionHandlerProvider"
+			id="DeployCorePresentation">
+			<Priority name="Medium" />
+			<ViewId id="DeployCoreEditor">
+				<ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+					<GlobalActionId actionId="cut" />
+					<GlobalActionId actionId="copy" />
+					<GlobalActionId actionId="paste" />
+					<GlobalActionId actionId="delete" />
+				</ElementType>
+				<ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+					<GlobalActionId actionId="save" />
+				</ElementType>
+			</ViewId>
+		</GlobalActionHandlerProvider>
+		<GlobalActionHandlerProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+			id="DeployCorePresentationIDE">
+			<Priority name="Medium" />
+			<ViewId id="DeployCoreEditor">
+				<ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+					<GlobalActionId actionId="bookmark" />
+				</ElementType>
+			</ViewId>
+		</GlobalActionHandlerProvider>
+        <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+            id="DeployCorePresentationPrint">
+            <Priority name="Medium"/>
+            <ViewId id="DeployCoreEditor">
+                  <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                      <GlobalActionId actionId="print"/>
+                  </ElementType>
+             </ViewId>
+         </GlobalActionHandlerProvider>
+	</extension>
+	
+  	<!-- Group/ungroup actions -->
+  	<extension id="DeployContributionItemProvider2" point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider">
+         <Priority name="Low">
+         </Priority>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"
+                  objectCount="2+">
+               <method
+                     name="getDiagramEditDomain().getEditorPart().getEditorSite().getId()"
+                     value="DeployCoreEditor"/>     
+            </popupStructuredContributionCriteria>     
+            <popupAction path="/formatMenu/miscellaneousGroup" id="groupAction">
+            </popupAction>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.GroupEditPart">
+            	<method
+                     name="getDiagramEditDomain().getEditorPart().getEditorSite().getId()"
+                     value="DeployCoreEditor"/>     
+            </popupStructuredContributionCriteria>                    
+            <popupAction path="/formatMenu/miscellaneousGroup" id="ungroupAction">
+            </popupAction>   
+         </popupContribution>                                 
+      </contributionItemProvider>
+   </extension>  
+	
+	<!-- Context menu contribution -->
+	<extension
+		id="DeployContributionItemProvider"
+		point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+		<contributionItemProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployContributionItemProvider">
+			<Priority name="Low"></Priority>
+	         <partContribution id="DeployCoreEditor">
+	            <partAction menubarPath="/file/print" id="printPreviewAction">
+	            </partAction>
+	         </partContribution>
+			<!-- Contribute "Collapse" Menu/Toolbar -->
+			<partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+				<partMenu
+					menubarPath="/diagramMenu/formatGroup"
+					toolbarPath="/toolbarViewGroup"
+					id="collapseMenuToolbar">
+				</partMenu>
+				<partMenuGroup
+					menubarPath="/diagramMenu/collapseMenu/"
+					toolbarPath="/collapseMenu/"
+					id="collapseGroup">
+				</partMenuGroup>
+				<partAction
+					menubarPath="/diagramMenu/collapseMenu/collapseGroup"
+					id="collapseAllAction">
+				</partAction>
+				<partAction
+					toolbarPath="/collapseMenu/collapseGroup"
+					id="toolbarCollapseAllAction">
+				</partAction>
+				<partAction
+					menubarPath="/diagramMenu/collapseMenu/collapseGroup"
+					id="collapseSelectionAction">
+				</partAction>
+				<partAction
+					toolbarPath="/collapseMenu/collapseGroup"
+					id="toolbarCollapseSelectionAction">
+				</partAction>
+			</partContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"></popupStructuredContributionCriteria>
+				<popupMenu
+					path="/formatMenu/miscellaneousGroup"
+					id="collapseMenu">
+				</popupMenu>
+				<popupMenuGroup
+					path="/formatMenu/collapseMenu/"
+					id="collapseGroup">
+				</popupMenuGroup>
+				<popupAction
+					path="/formatMenu/collapseMenu/collapseGroup"
+					id="collapseAllAction">
+				</popupAction>
+				<popupAction
+					path="/formatMenu/collapseMenu/collapseGroup"
+					id="collapseSelectionAction">
+				</popupAction>
+			</popupContribution>
+			<!-- Contribute "Filter Diagram" Menu/Toolbar -->
+			<partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+				<partMenu
+					menubarPath="/diagramMenu/filtersMenu/miscellaneousGroup"
+					toolbarPath="/toolbarFilterGroup"
+					id="filterPreferenceMenu" />
+				<partMenuGroup
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/"
+					toolbarPath="/filterPreferenceMenu/"
+					id="preferenceFilterGroup" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="dupCounterAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="attributesAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="contractsAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="nubsAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="typeNamesAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="errorStatuesAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="warningStatuesAction" />
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/filterPreferenceMenu/preferenceFilterGroup"
+					toolbarPath="/filterPreferenceMenu/preferenceFilterGroup"
+					id="infoStatuesAction" />
+			</partContribution>
+			<!-- Contribute "Show Related" Menu/Toolbar -->
+			<partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+				<partAction
+					menubarPath="/diagramMenu/filtersMenu/miscellaneousGroup"
+					id="showRelatedAction" />
+			</partContribution>
+			<partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+				<partMenu
+					menubarPath="/diagramMenu/filtersMenu/globalGroup"
+					toolbarPath="/globalToolBar/"
+					id="globalActionsMenu"/>
+				 <partMenuGroup
+					menubarPath="/diagramMenu/filtersMenu/globalGroup/globalActionsMenu/"
+					toolbarPath="/globalActionsMenu"
+					id="globalActionsGroup" />
+			</partContribution>
+			<!-- Contribute "refresh unit" to the diagram context popup menu -->
+		    <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					path="/editGroup"
+					id="refreshUnitAction" />
+			</popupContribution>
+			<!-- Contribute "Delete from Diagram" to the diagram context popup menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					path="/editGroup"
+					id="deployDeleteViewAction" />
+			</popupContribution>
+			<!-- Contribute "Delete from Model" Menu to the diagram context popup menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					path="/editGroup"
+					id="deployDeleteModelAction" />
+			</popupContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					path="/editGroup"
+					id="deployDeleteModelAction">
+				</popupAction>
+			</popupContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					path="/editGroup"
+					id="harvestBoundAction">
+				</popupAction>
+			</popupContribution>
+			<!-- Contribute "Add Configuration Unit" Menu to the diagram context popup menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria
+					objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"
+					objectCount="1" />
+				<popupMenu
+					path="/addGroup"
+					id="addUnitMenu">
+				</popupMenu>
+			</popupContribution>
+			<!-- Contribute "Publish", "unpublish" and "export" menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria
+					objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployDiagramEditPart"
+					objectCount="1" />
+				<popupMenu
+					id="publishMenu"
+					path="/restGroup" />
+				<popupMenu
+					id="unpublishMenu"
+					path="/restGroup" />
+				<popupAction
+					id="exportAction"
+					path="/restGroup" />
+			</popupContribution>
+			<!-- Contribute "Preferences...  -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria
+					objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployDiagramEditPart"
+					objectCount="1" />
+				<popupMenuGroup
+					id="preferencesGroup"
+					path="/preferences"
+					separator="true" />
+				<popupAction
+					path="/propetiesGroup"
+					id="preferencesAction" />
+				<popupAction
+					path="/viewGroup"
+					id="quickOutlineAction" />
+				<popupAction
+					path="/viewGroup"
+					id="quickPaletteAction" />
+				<popupAction
+					id="openTopologyDialog"
+					path="/navigateGroup">
+				</popupAction>
+			</popupContribution>
+			<!-- Add the Group menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupMenu
+					path="/editGroup"
+					id="groupMenu" />
+			</popupContribution>
+			<!-- Contribute "Visualize" menu  -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupMenu
+					id="visualizeMenu"
+					path="/navigateGroup" />
+			</popupContribution>
+			<!-- Contribute "Amplifier" menu  -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupMenu
+					id="amplifierMenu"
+					path="/editGroup" />
+			</popupContribution>
+				<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupMenu
+					id="refreshUnitAction"
+					path="/editGroup" />
+				<popupAction
+					id="addCapabilityAction"
+					path="/addGroup">
+				</popupAction>
+				<popupAction
+					id="addRequirementAction"
+					path="/addGroup">
+				</popupAction>
+			</popupContribution>
+			<!-- Contribute "Add Note" menu item -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart" />
+				<popupAction
+					id="addNewNoteLinkAction"
+					path="/addGroup" />
+				<!-- This needs to trigger on IPrimaryEditPart, not DeployShapeNodeEditPart, because
+					it must come up when the selection includes links. -->
+				<popupAction
+					path="/addGroup"
+					id="bankAction" />
+			</popupContribution>
+			<!-- Contribute "Conceptual" menu item -->
+			<!-- Contribute "Discover Links" menu -->
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupAction
+					path="/formatMenu/miscellaneousGroup"
+					id="snapViews" />
+				<popupAction
+					path="/formatMenu/miscellaneousGroup"
+					id="snapStyle" />
+				<popupAction
+					path="/formatMenu/miscellaneousGroup"
+					id="showOrNotShowUnitOnHostAction" />
+				<popupAction
+					path="/formatMenu"
+					id="showOrNotShowUnitOnHostAction" />
+				<popupAction
+					path="/formatMenu/miscellaneousGroup"
+					id="convertToShapesOrTree" />
+				<popupAction
+					path="/formatMenu"
+					id="convertToShapesOrTree" />
+				<popupAction
+					path="/navigateGroup"
+					id="showUnitResourceInNav" />
+				<!--popupAction path="/editGroup"
+					id="discoverLinksMenu" /-->
+			</popupContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"></popupStructuredContributionCriteria>
+				<popupAction
+					id="openDefaultEditor"
+					path="/navigateGroup">
+				</popupAction>
+			</popupContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+				<popupMenuGroup
+					id="constraintsGroup"
+					path="/constraints" />
+				<popupMenu
+					path="/constraintsGroup"
+					id="constraintsMenu" />
+			</popupContribution>
+			<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"></popupStructuredContributionCriteria>
+				<popupMenu
+					id="globalActionsMenu"
+					path="/editGroup">
+				</popupMenu>
+				<popupMenu
+					id="propertyActionMenu"
+					path="/propertiesGroup">
+				</popupMenu>
+			</popupContribution>
+		</contributionItemProvider>
+	</extension>
+	
+	
+	<!-- Deploy Core View Provider -->
+	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium" />
+			<context
+				viewClass="org.eclipse.gmf.runtime.notation.Diagram"
+				semanticHints="DeployCore" />
+			<!-- allows objects dragged from navigator to be associated with views; ID must be plugin name "." class name -->
+			<!-- if ID isn't working, set breakpoint in AbstractProviderConfiguration.ObjectDescriptor.sameAs() to get correct ID -->
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method
+					name="getProxyClassID()"
+					value="core.Import,  core.Unit " />
+				<!--X <method name="getProxyClassID()"
+					value="core.Import, core.ConceptualNode, core.SoftwareComponent, core.Unit " />-->
+			</object>
+			<context
+				viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="DeployName, Import, DiagramNode, SnapGroup, SnapRow, FilterSurrogateHub, MissingDomainUI" />
+			<!-- forces this plugin to be pulled in (if not already pulled in) when object DND'ed from navigator -->
+			<context
+				viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints=""
+				elements="Nodes" />
+			<context
+				viewClass="org.eclipse.gmf.runtime.notation.Edge"
+				semanticHints="DependencyLink, HostingLink, RealizationLink, ConstraintLink, ConsolidationLink, FilterSurrogateLink" />
+		</viewProvider>
+	</extension>
+	<!-- Deploy Core Editpart Provider -->
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreEditPartProvider">
+			<!-- Note: need to keep at High so that this editpart provider is considered first for core compartment views
+				like HostingListCompartmentView using getType(). Otherwise editpart providers in other plugins set at meduim
+				may potentially be called first, fail using getType(), then use ViewUtil.getSemanticEClassName() to get the views element,
+				which since a compartment doesn't have its own semantic element will find the parent's element and use that to create the
+				parent's editpart and not the comaprtment editpart -->
+			<Priority name="High"></Priority>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Diagram"
+				id="DeployCore">
+				<method
+					name="getType()"
+					value="DeployCore" />
+			</object>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Node"
+				id="DeployCoreParts">
+				<method
+					name="getType()"
+					value="DeployName, FilterSurrogateHub, UnresolvedProxy, DiagramNode, SnapGroup, SnapRow" />
+			</object>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Edge"
+				id="EdgeParts">
+				<method
+					name="getType()"
+					value="DependencyLink, HostingLink, LogicalLink, ConsolidationLink, FilterSurrogateLink, UnresolvedProxy" />
+			</object>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+				<!--X<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="application.Module, application.ConfigurationUnit,  deploy.Import, core.conceptualNode">
+					</staticMethod>	
+				-->
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="application.Module, application.ConfigurationUnit, deploy.Import">
+				</staticMethod>
+			</object>
+			<context views="DeployCore, DeployCoreParts, Nodes, EdgeParts"></context>
+		</editpartProvider>
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.MissingDomainUIEditPartProvider">
+			<Priority name="Low" />
+			<object
+				class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes" />
+			<context views="Nodes" />
+		</editpartProvider>
+	</extension>
+	<!-- Deploy Core Decorator Provider -->
+	<extension
+		id="deployCoreDecoratorProvider"
+		name="deployCoreDecoratorProvider"
+		point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+		<decoratorProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployDecoratorProvider">
+			<Priority name="Medium"></Priority>
+			<object
+				class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+				id="DEPLOYMENT_VIEW">
+			</object>
+			<context decoratorTargets="DEPLOYMENT_VIEW"></context>
+		</decoratorProvider>
+	</extension>
+	<!-- Deploy Core Metamodel Types -->
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<elementTypeFactory
+			factory="com.ibm.ccl.soa.deploy.core.ui.internal.type.UnitTypeFactory"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			params="semanticHint, templateURI">
+		</elementTypeFactory>
+		<metamodel nsURI="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<metamodelType
+				id="deploy.topology"
+				eclass="Topology"
+				icon="icons/small/IconTopology.gif"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.ContainerEditHelper">
+			</metamodelType>
+			<metamodelType
+				id="deploy.unit"
+				name="%Unit.Label"
+				icon="icons/pal/unit_16.gif"
+				eclass="Unit"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.UnitEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+			</metamodelType>
+			<!--X<metamodelType id="deploy.ConceptualNodeMeta"
+				icon="icons/pal/conceptual_node_16.gif"
+				name="%ConceptualNode.Label" eclass="ConceptualNode">
+				</metamodelType>-->
+			<metamodelType
+				id="deploy.unitGroup"
+				icon="icons/pal/unit_group_16.gif"
+				name="%UnitGroup.Label"
+				eclass="Unit">
+			</metamodelType>
+			<metamodelType
+				id="deploy.dependencylink"
+				name="%DependencyLink.Label"
+				icon="icons/dgm/depndlnk_dgm.gif"
+				eclass="DependencyLink"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.DependencyLinkEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="DependencyLink" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.hostinglink"
+				name="%HostingLink.Label"
+				icon="icons/dgm/hstlnk_dgm.gif"
+				eclass="HostingLink"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.HostingLinkEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="HostingLink" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.realizationlink"
+				name="%RealizationLink.Label"
+				icon="icons/pal/realization_pal16.gif"
+				eclass="RealizationLink"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.RealizationLinkEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="RealizationLink" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.contraintlink"
+				name="%ConstraintLink.Label"
+				icon="icons/pal/constraint_link16.gif"
+				eclass="ConstraintLink"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.ConstraintLinkEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="ConstraintLink" />
+			</metamodelType>
+			<!-- although Capability/Requirement not visualize, they are required to make delete DependencyLink work -->
+			<metamodelType
+				id="deploy.capability"
+				name="%Capability.Label"
+				eclass="Capability"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.CapabilityEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="Capability" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.requirement"
+				name="%Requirement.Label"
+				eclass="Requirement"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.RequirementEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="Requirement" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.filtersurrogatelink"
+				name="%FilterSurrogateLink.Label"
+				icon="icons/pal/constraint_link16.gif"
+				eclass="ConstraintLink"
+				edithelper="com.ibm.ccl.soa.deploy.core.ui.edithelpers.FilterSurrogateLinkEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param
+					name="semanticHint"
+					value="FilterSurrogateLink" />
+			</metamodelType>
+			<metamodelType
+				id="deploy.ServiceMeta"
+				icon="icons/dgm/capability_multi_dgm.gif"
+				name="%Service.Label"
+				eclass="Service">
+			</metamodelType>
+			<metamodelType
+				id="deploy.ReferenceMeta"
+				icon="icons/dgm/requirement_multi_dgm.gif"
+				name="%Reference.Label"
+				eclass="Reference">
+			</metamodelType>
+			<metamodelType
+				id="deploy.ImportMeta"
+				name="%Import.Label"
+				icon="icons/dgm/import.gif"
+				eclass="Import">
+			</metamodelType>
+			<metamodelType
+				id="deploy.SoftwareComponent"
+				name="%softwareComponent.Label"
+				icon="icons/pal/SoftwareComponent_16.gif"
+				eclass="SoftwareComponent">
+			</metamodelType>
+			
+		</metamodel>
+  <metamodel
+        nsURI="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/">
+     <metamodelType
+           eclass="SoftwareInstallUnit"
+           icon="icons/pal/SoftwareComponent_16.gif"
+           id="deploy.SoftwareInstall"
+           name="SoftwareInstall">
+     </metamodelType>
+     <metamodelType
+           eclass="SoftwarePatchUnit"
+           icon="icons/pal/SoftwareComponent_16.gif"
+           id="deploy.SoftwarePatch"
+           name="SoftwarePatch">
+     </metamodelType>
+  </metamodel>
+		<!-- chad
+			<specializationType id="deploy.unitGroup"
+			icon="icons/pal/unit_group_16.gif" name="Unit Group"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.UnitGroupEditHelperAdvice">
+			<specializes id="deploy.unit" />
+			<param name="semanticHint" value="UnitGroup" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/unitGroup.template" />
+			</specializationType>
+			<specializationType id="deploy.conceptualNode"
+			icon="icons/pal/conceptual_node_16.gif" name="Conceptual Node"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConceptualNodeEditHelperAdvice">
+			<specializes id="deploy.ConceptualNodeMeta" />
+			<param name="semanticHint" value="ConceptualNode" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/conceptualNode.template" />
+			</specializationType>
+			
+			
+			<specializationType id="deploy.SoftwareComponent"
+			icon="icons/pal/SoftwareComponent_16.gif"
+			name="%softwareComponent.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.SoftwareComponentEditHelperAdvice">
+			<specializes id="deploy.SoftwareComponentMeta" />
+			<param name="semanticHint"
+			value="component.softwareComponent" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/softwareComponent.template" />
+			</specializationType>
+			<specializationType id="deploy.SoftwareComponent.conceptual"
+			icon="icons/pal/SoftwareComponent_16.gif"
+			name="%softwareComponent.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.SoftwareComponentEditHelperAdvice">
+			<specializes id="deploy.SoftwareComponentMeta" />
+			<param name="semanticHint"
+			value="component.softwareComponent" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/softwareComponentC.template" />
+			</specializationType>
+			<specializationType id="deploy.Service"
+			icon="icons/dgm/capability_multi_dgm.gif" name="%Service.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType">
+			<specializes id="deploy.ServiceMeta" />
+			<param name="semanticHint" value="Service" />
+			</specializationType>
+			<specializationType id="deploy.Reference"
+			icon="icons/dgm/requirement_multi_dgm.gif" name="%Reference.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType">
+			<specializes id="deploy.ReferenceMeta" />
+			<param name="semanticHint" value="Reference" />
+			</specializationType>
+			
+			
+			<specializationType id="deploy.Import"
+			icon="icons/dgm/import.gif" name="%Import.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType">
+			<specializes id="deploy.ImportMeta" />
+			<param name="semanticHint" value="Import" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/import.template" />
+			</specializationType>
+		-->
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<!-- CONSTRAINT DEMO: We use com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType instead of
+			org.eclipse.gmf.runtime.emf.type.core.IElementType and a SOA Deploy's factory because
+			we need access to the templateURI -->
+		<elementTypeFactory
+			factory="com.ibm.ccl.soa.deploy.core.ui.internal.type.UnitTypeFactory"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			params="semanticHint, templateURI">
+		</elementTypeFactory>
+		<!-- CONSTRAINT DEMO: note that specialization IDs are 'special' and have an implied
+			relationship to palette entry IDs.  This allows DeployCorePaletteFactory
+			to look up specialization types given a palette ID, which is used to
+			shoehorn the templateURI into the palette. -->
+		<!--specializationType id="st.collocatelink"
+			icon="icons/pal/collocate_pal16.gif" name="%CollocateLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/collocate.template" />
+			</specializationType>
+			<specializationType id="st.anticollocatelink"
+			icon="icons/pal/anticollocate_pal16.gif"
+			name="%AnticollocateLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/anticollocate.template" />
+			</specializationType>
+			<specializationType id="st.deferredhostlink"
+			icon="icons/pal/deferredhost_pal16.gif"
+			name="%DeferredHostingLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/deferredhosting.template" />
+			</specializationType-->
+	</extension>
+	
+	<!--GenericSoftware types-->
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<!-- CONSTRAINT DEMO: We use com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType instead of
+			org.eclipse.gmf.runtime.emf.type.core.IElementType and a SOA Deploy's factory because
+			we need access to the templateURI -->
+		<elementTypeFactory
+			factory="com.ibm.ccl.soa.deploy.core.ui.internal.type.UnitTypeFactory"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			params="semanticHint, templateURI">
+		</elementTypeFactory>
+		<!-- CONSTRAINT DEMO: note that specialization IDs are 'special' and have an implied
+			relationship to palette entry IDs.  This allows DeployCorePaletteFactory
+			to look up specialization types given a palette ID, which is used to
+			shoehorn the templateURI into the palette. -->
+		<!--specializationType id="st.collocatelink"
+			icon="icons/pal/collocate_pal16.gif" name="%CollocateLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/collocate.template" />
+			</specializationType>
+			<specializationType id="st.anticollocatelink"
+			icon="icons/pal/anticollocate_pal16.gif"
+			name="%AnticollocateLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/anticollocate.template" />
+			</specializationType>
+			<specializationType id="st.deferredhostlink"
+			icon="icons/pal/deferredhost_pal16.gif"
+			name="%DeferredHostingLink.Label"
+			kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+			edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.ConstraintLinkEditHelperAdvice">
+			<specializes id="deploy.logicallink" />
+			<param name="semanticHint" value="LogicalLink" />
+			<param name="templateURI"
+			value="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/deferredhosting.template" />
+			</specializationType-->
+	</extension>
+	
+	<!-- Label Provider -->
+	<extension
+		id="parserProviders"
+		name="%ext.parserProviders"
+		point="org.eclipse.gmf.runtime.common.ui.services.parserProviders">
+		<ParserProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreParserProvider">
+			<Priority name="Medium"></Priority>
+		</ParserProvider>
+	</extension>
+	<!-- Deploy Core Preferences -->
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			name="%PreferencePage.Root.Main"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage">
+		</page>
+		<page
+			name="%PreferencePage.Appearance"
+			category="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployAppearancePreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployAppearancePreferencePage">
+		</page>
+		<page
+			name="%PreferencePage.Printing"
+			category="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployPrintingPreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployPrintingPreferencePage">
+		</page>
+		<!--page name="%PreferencePage.Validation"
+			category="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.ValidationPreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.ValidationPreferencePage">
+			</page-->
+		<!--page
+			name="%PreferencePage.Wires"
+			category="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreWirePreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreWirePreferencePage">
+			</page-->
+		<!--page
+			name="%PreferencePage.RulerGrid"
+			category="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreMainPreferencePage"
+			class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreRulerGridPreferencePage"
+			id="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCoreRulerGridPreferencePage">
+			</page-->
+	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="com.ibm.ccl.soa.deploy.core.ui.preferences.DeployCorePreferencesInitializer" />
+	</extension>
+	<!-- Deploy Core - support data models in operations -->
+	<extension point="org.eclipse.wst.common.frameworks.DataModelProviderExtension">
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.operations.CreateDeploymentTopologyProvider"
+			id="CreateDeploymentTopology" />
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.operations.CreateDeploymentVisualizationProvider"
+			id="CreateDeploymentVisualization" />
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.operations.CreateComposedDeploymentTopologyProvider"
+			id="CreateComposedDeploymentTopologyProvider" />
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.operations.TopologyDiscoveryProvider"
+			id="com.ibm.ccl.soa.deploy.core.ui.operations.TopologyDiscoveryProvider" />
+	</extension>
+	<!-- for source control purposes, the topologyv file is text -->
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			type="text"
+			extension="topologyv">
+		</fileTypes>
+	</extension>
+	<!-- Load notational file -->
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			type="topologyv"
+			class="com.ibm.ccl.soa.deploy.core.ui.resources.SOAResourceFactory">
+		</parser>
+	</extension>
+	<!-- Palette Provider -->
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Low"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+				<!-- adding to standard group tools -->
+				<!--
+					<entry label="%topologyZoomStack.Label" kind="stack"
+					description="%topologyZoomStack.Description" small_icon=""
+					path="/standardGroup/" id="topologyZoomStack">
+					</entry>
+					<entry label="%TopologyZoomIn.Label"
+					description="%TopologyZoomIn.Description" kind="tool"
+					large_icon="icons/dgm/zoomplus.gif"
+					small_icon="icons/dgm/zoomplus.gif"
+					path="/standardGroup/topologyZoomStack" id="topologyZoomToolIn">
+					</entry>
+					<entry label="%TopologyZoomOut.Label"
+					description="%TopologyZoomOut.Description" kind="tool"
+					large_icon="icons/dgm/zoomminus.gif"
+					small_icon="icons/dgm/zoomminus.gif"
+					path="/standardGroup/topologyZoomStack" id="topologyZoomToolOut">
+					</entry>
+				-->
+				<!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+				<!--Create Drawers first-->
+				<entry
+					label="%CommonToolDrawer.Label"
+					kind="drawer"
+					description="%CommonToolDrawer.Description"
+					large_icon="icons/dgm/lnktl_dgm.gif"
+					small_icon="icons/dgm/lnktl_dgm.gif"
+					path="/"
+					id="commontoolDrawer">
+					<expand>
+						<content>
+							<!-- expand by default for Topology Editors -->
+						</content>
+					</expand>
+				</entry>	
+				
+				<entry 
+            		label="%genericUnitStack.Label" 
+            		kind="stack" 
+            		description="%genericUnitStack.Description" 
+            		small_icon="icons/pal/unit_16.gif"
+            		large_icon="icons/pal/unit_24.gif" 
+            		path="/commontoolDrawer/" 
+            		id="genericStack">
+            	</entry>	
+							
+				<entry
+					label="%HostingLink.Label"
+					description="%HostingLink.Description"
+					kind="tool"
+					large_icon="icons/dgm/hstlnk_dgm.gif"
+					small_icon="icons/dgm/hstlnk_dgm.gif"
+					path="/commontoolDrawer/"
+					id="deploy.hostinglink">
+				</entry>
+				<entry
+					label="%DependencyLink.Label"
+					description="%DependencyLink.Description"
+					kind="tool"
+					large_icon="icons/dgm/depndlnk_dgm.gif"
+					small_icon="icons/dgm/depndlnk_dgm.gif"
+					path="/commontoolDrawer/"
+					id="deploy.dependencylink">
+				</entry>
+				<entry
+					label="%RealizationLink.Label"
+					description="%RealizationLink.Description"
+					kind="tool"
+					large_icon="icons/pal/realization_pal20.gif"
+					small_icon="icons/pal/realization_pal16.gif"
+					path="/commontoolDrawer/"
+					id="deploy.realizationlink">
+				</entry>
+				<entry
+					label="%ConstraintLink.Label"
+					description="%ConstraintLink.Description"
+					kind="tool"
+					large_icon="icons/pal/constraint_link20.gif"
+					small_icon="icons/pal/constraint_link16.gif"
+					path="/commontoolDrawer/"
+					id="deploy.constraintlink">
+				</entry>
+				<!-- We must give the stack an icon, because that icon is used when the palette is
+					in icon-only mode.  (The usual mode is list, which doesn't need one) -->
+				<!--entry label="%constraintStack.Label"
+					kind="stack" description="%constraintStack.Description"
+					large_icon="icons/pal/collocate_pal16.gif"
+					small_icon="icons/pal/collocate_pal16.gif"
+					path="/commontoolDrawer/"
+					id="constraintStack">
+					</entry-->
+				<!-- Note that we make use of a hack to force parameters into
+					pallete entries.  The value after "deploy." in a palette
+					entry is used to look up a specialization entry.  
+					See DeployCorePaletteFactory.CONSTRAINT_PREFIX. -->
+				<!--entry label="%CollocateLink.Label"
+					description="%CollocateLink.Description" kind="tool"
+					large_icon="icons/pal/collocate_pal16.gif"
+					small_icon="icons/pal/collocate_pal16.gif"
+					path="/commontoolDrawer/constraintStack" id="constraint.st.collocatelink">
+					</entry>
+					<entry label="%AnticollocateLink.Label"
+					description="%AnticollocateLink.Description" kind="tool"
+					large_icon="icons/pal/anticollocate_pal16.gif"
+					small_icon="icons/pal/anticollocate_pal16.gif"
+					path="/commontoolDrawer/constraintStack" id="constraint.st.anticollocatelink">
+					</entry>
+					<entry label="%DeferredHostLink.Label"
+					description="%DeferredHostLink.Description" kind="tool"
+					large_icon="icons/pal/deferredhost_pal16.gif"
+					small_icon="icons/pal/deferredhost_pal16.gif"
+					path="/commontoolDrawer/constraintStack" id="constraint.st.deferredhostlink">
+					</entry-->
+				<!-- chad
+					<entry label="%UnitGroup.Label"
+					description="%UnitGroup.Description" kind="tool"
+					large_icon="icons/pal/unit_group_20.gif"
+					small_icon="icons/pal/unit_group_16.gif" path="/commontoolDrawer/"
+					id="deploy.unitGroup">
+					</entry>
+				-->
+				<!--Define some drawers and stacks here for domain extensions to use. -->
+				<entry
+					label="%applicationToolsDrawer.Label"
+					kind="drawer"
+					description="%applicationToolsDrawer.Description"
+					large_icon="icons/dgm/apptool_dgm.gif"
+					small_icon="icons/dgm/apptool_dgm.gif"
+					path="/"
+					id="applicationToolDrawer">
+				</entry>
+				<!-- chad
+					<entry id="deploy.conceptualNode"
+					label="%ConceptualNode.Label"
+					description="%ConceptualNode.Description" kind="tool"
+					large_icon="icons/pal/conceptual_node_20.gif"
+					small_icon="icons/pal/conceptual_node_16.gif"
+					path="/applicationToolDrawer/">
+					</entry>
+					
+					<entry id="deploy.Import" label="%Import.Label"
+					description="%Import.Description" kind="tool"
+					large_icon="icons/pal/import_20.gif"
+					small_icon="icons/pal/import_16.gif"
+					path="/applicationToolDrawer/">
+					</entry>
+				-->
+				<entry
+					label="%businessComponentStack.Label"
+					kind="stack"
+					description="%businessComponentStack.Description"
+					small_icon=""
+					path="/applicationToolDrawer/"
+					id="businessComponentStack">
+				</entry>
+				<entry
+					label="%umlElementStack.Label"
+					kind="stack"
+					description="%umlElementStack.Description"
+					small_icon=""
+					path="/applicationToolDrawer/"
+					id="umlElementStack">
+				</entry>
+				<!-- can't get this to work -->
+				<!-- 	     
+					<entry id="deploy.SoftwareComponent.conceptual"
+					label="%softwareComponent.Label"
+					description="%softwareComponent.Description" kind="tool"
+					path="/applicationToolDrawer/businessComponentStack"
+					small_icon="icons/pal/SoftwareComponent_16.gif"
+					large_icon="icons/pal/SoftwareComponent_20.gif">
+					</entry>
+					
+					<entry
+					id="deploy.SoftwareComponent"
+					label="%softwareComponent.Label"
+					description="%softwareComponent.Description"
+					kind="tool"
+					path="/applicationToolDrawer/businessComponentStack"
+					small_icon="icons/pal/SoftwareComponent_16.gif"
+					large_icon="icons/pal/SoftwareComponent_20.gif"
+					>
+					</entry>   
+				-->
+				<entry
+					label="%serverSoftwareDrawer.Label"
+					kind="drawer"
+					description="%serverSoftwareDrawer.Description"
+					large_icon="icons/dgm/svrsftw_dgm.gif"
+					small_icon="icons/dgm/svrsftw_dgm.gif"
+					path="/"
+					id="serverSoftwareDrawer">
+				</entry>
+				<entry
+					label="%configurationDrawer.Label"
+					kind="drawer"
+					description="%configurationDrawer.Description"
+					large_icon="icons/dgm/cnfgrtunit_dgm.gif"
+					small_icon="icons/dgm/cnfgrtunit_dgm.gif"
+					path="/"
+					id="configurationDrawer">
+				</entry>
+				<entry
+					label="%operatingSystemDrawer.Label"
+					kind="drawer"
+					description="%operatingSystemDrawer.Description"
+					large_icon="icons/dgm/oprtsys_dgm.gif"
+					small_icon="icons/dgm/oprtsys_dgm.gif"
+					path="/"
+					id="operatingSystemDrawer">
+				</entry>
+				<entry
+					label="%physicalServerDrawer.Label"
+					kind="drawer"
+					description="%physicalServerDrawer.Description"
+					large_icon="icons/dgm/phycsvr_dgm.gif"
+					small_icon="icons/dgm/phycsvr_dgm.gif"
+					path="/"
+					id="physicalServerDrawer">
+				</entry>
+				<!--entry
+					label="%vmtemplateDrawer.Label"
+					kind="drawer"
+					description="%vmtemplateDrawer.Description"
+					path="/"
+					id="vmtemplateDrawer">
+					<expand>
+					<content>
+					<! expand by default for Topology Editors >
+					<!/content>
+					</expand>
+					</entry-->
+				<entry
+					label="%ExtensionDrawer.Label"
+					kind="drawer"
+					description="%ExtensionDrawer.Description"
+					large_icon="icons/dgm/lnktl_dgm.gif"
+					small_icon="icons/dgm/lnktl_dgm.gif"
+					path="/"
+					id="extensionDrawer">
+				</entry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+	<!-- Add Geometric shape palette to palette (also see MANIFEST for GeoShape plugin) -->
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium" />
+			<editor id="DeployCoreEditor" />
+			<contribution>
+				<predefinedEntry
+					id="geoshapeDrawer"
+					path="/">
+				</predefinedEntry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+	<!-- Perspective  -->
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			name="%Deployment"
+			icon="icons/view16/deploy_pers.gif"
+			class="com.ibm.ccl.soa.deploy.core.ui.perspective.DeployCorePerspectiveFactory"
+			id="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective">
+		</perspective>
+	</extension>
+	<!-- Package Explorer Content Provider -->
+	<!-- property page: categories -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+		<propertyContributor
+			typeMapper="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ModelElementTypeMapper"
+			contributorId="com.ibm.ccl.soa.deploy.core.ui.properties"
+			labelProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyCommonLabelProvider">
+			<propertyCategory category="Appearance"></propertyCategory>
+			<propertyCategory category="Diagram"></propertyCategory>
+			<propertyCategory category="Units"></propertyCategory>
+			<!--propertyCategory
+				category="Services">
+				</propertyCategory-->
+			<!--propertyCategory
+				category="Annotations">
+				</propertyCategory-->
+			<!-- Although 'Module' category isn't used in this plug-in we put it here,
+				as adding categories in other plug-ins didn't work. -->
+			<!--propertyCategory
+				category="Module">
+				</propertyCategory-->
+			<!--propertyCategory
+				category="Advanced">
+				</propertyCategory-->
+		</propertyContributor>
+	</extension>
+	<!-- property page: tabs -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+		<propertyTabs contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab
+				label="%Topology"
+				category="Diagram"
+				id="property.tab.TopologyPropertySection">
+			</propertyTab>
+		</propertyTabs>
+		<propertyTabs contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab
+				label="%Appearance"
+				category="Appearance"
+				id="property.tab.AppearancePropertySection">
+			</propertyTab>
+		</propertyTabs>
+		<propertyTabs contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab
+				label="%Units"
+				category="Units"
+				id="property.tab.UnitsPropertySection">
+			</propertyTab>
+			<propertyTab
+				category="Units"
+				id="property.tab.GeneralPropertySection"
+				label="%General" />
+		</propertyTabs>
+		<propertyTabs contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab
+				afterTab="property.tab.RequirementsPropertyTab2"
+				category="Units"
+				id="property.tab.RequirementsPropertyTab"
+				label="%Requirements">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.CapabilitiesPropertyTab"
+				category="Units"
+				id="property.tab.RequirementsPropertyTab2"
+				label="%Requirements2">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.UnitsPropertySection"
+				label="%Capabilities"
+				category="Units"
+				id="property.tab.CapabilitiesPropertyTab">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.UnitsPropertySection"
+				category="Units"
+				id="property.tab.MembersPropertyTab"
+				label="%Members">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.UnitsPropertySection"
+				category="Units"
+				id="property.tab.LinksPropertyTab"
+				label="%Links">
+			</propertyTab>
+			<propertyTab
+				category="Units"
+				id="property.tab.LinkPropertyTab"
+				label="%Link">
+			</propertyTab>
+			<propertyTab
+				label="%Capabilities"
+				category="Units"
+				id="property.tab.ServicesPropertyTab">
+			</propertyTab>
+			<propertyTab
+				label="%Capabilities2"
+				category="Units"
+				id="property.tab.ServicesPropertyTab2">
+			</propertyTab>
+			<propertyTab
+				label="%Requirements2"
+				category="Units"
+				id="property.tab.ReferencesPropertyTab">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.InterfacesPropertyTab"
+				label="%Capabilities2"
+				category="Units"
+				id="property.tab.CapabilitiesPropertyTab2">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.CapabilitiesPropertyTab2"
+				label="%Links2"
+				category="Units"
+				id="property.tab.LinksPropertyTab2">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.AnnotationsPropertySection"
+				category="Units"
+				id="property.tab.TopologyTab"
+				label="%TopologyDetails">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.TopologyTab"
+				category="Units"
+				id="property.tab.ImportTab"
+				label="%Import">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.TopologyTab"
+				category="Units"
+				id="property.tab.TopologyVariableTab"
+				label="%Variables">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.ImportTab"
+				category="Units"
+				id="property.tab.ImportVariableTab"
+				label="%Variables">
+			</propertyTab>
+		</propertyTabs>
+	</extension>
+	<!-- property page: sections (bits of GUI that live on the tabs) -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<!-- Appearance tab -->
+			<!-- Usually this tab's filter is org.eclipse.gmf.runtime.diagram.ui.properties.filters.EditPartPropertySectionFilter.
+				If we set it to that then the appearance tab appears for everything, including our Units.  It actually works
+				for our units, letting the color and fonts be changed.  Defect 5975 says we need the appearance tab for GeoShapes,
+				but I assume we don't want it for Units because we had disabled it.  We instead enable for everything but Units. -->
+			<propertySection
+				tab="property.tab.AppearancePropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.NotUnitEditPartPropertySectionFilter"
+				class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection"
+				id="property.section.ShapeColorAndFontPropertySection">
+			</propertySection>
+			<propertySection
+				tab="property.tab.TopologyPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.DiagramEditPartPropertySectionFilter"
+				id="property.section.TopologyPropertySection">
+				<input type="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart" />
+			</propertySection>
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.AdvancedPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.UnitsPropertySection"
+				tab="property.tab.UnitsPropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart"/>
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.NameCompartmentEditPart"/>
+				</propertySection-->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.internal.properties.GeneralPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.GeneralPropertySection"
+				tab="property.tab.GeneralPropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart" />
+			</propertySection>
+			<!-- 'Tree-like' Units tab for SOA Unit, Capability, Requirements -->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.ServicePropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.UnitsServicesPropertySection"
+				tab="property.tab.UnitsPropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart"/>
+				</propertySection-->
+			<!-- Requirements view/editing tab -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.internal.properties.RequirementsPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.RequirementsPropertySection2"
+				tab="property.tab.RequirementsPropertyTab2">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart" />
+			</propertySection>
+			<!-- Capabilities view/editing tab -->
+			<!-- Interfaces on components view/editing tab -->
+			<!-- (Disabled; interfaces now edited through Capabilities2) -->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.InterfacesPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.BusinessComponentEditPartPropertySectionFilter"
+				id="property.section.InterfacesCmpPropertySection"
+				tab="property.tab.InterfacesPropertyTab">
+				<input
+				type="com.ibm.ccl.soa.deploy.core.ui.editparts.BusinessComponentEditPart" />
+				</propertySection-->
+			<!-- Configurations tab -->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.ConfigurationsPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.HasConfigurationsUnitSectionFilter"
+				id="property.section.ConfigurationsPropertySection"
+				tab="property.tab.ConfigurationsPropertyTab">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart"/>
+				</propertySection-->
+			<!-- Members tab -->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.MembersPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.MembersPropertySection"
+				tab="property.tab.MembersPropertyTab">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitGroupEditPart"/>
+				</propertySection-->
+			<!--   filter="com.ibm.ccl.soa.deploy.core.ui.properties.HasMembersUnitSectionFilter" -->
+			<!-- Links tab -->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.LinksPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.LinksPropertySection"
+				tab="property.tab.LinksPropertyTab">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart"/>
+				</propertySection-->
+			<!-- Links2 tab -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.LinksPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.LinksPropertySection2"
+				tab="property.tab.LinksPropertyTab2">
+			</propertySection>
+			<!-- Link tab -->
+			<!--propertySection
+				afterSection="property.section.UnitLinkPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.AdvancedPropertySection2"
+				id="property.section.LinkPropertySection"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge"/>
+				</propertySection-->
+			<propertySection
+				id="property.section.LinksPropertySection3"
+				afterSection="property.section.LinksPropertySection2"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.LinksPropertySection3"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.DeployLinkEditPartPropertySectionFilter"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge" />
+			</propertySection>
+			<!--propertySection
+				afterSection="property.section.DependencyLinkPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.UnitLinkPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitLinkFilter"
+				id="property.section.UnitLinkPropertySection"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge"/>
+				</propertySection-->
+			<!--propertySection
+				afterSection="property.section.RealizationLinkPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.DependencyLinkPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.DependencyLinkFilter"
+				id="property.section.DependencyLinkPropertySection"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge"/>
+				</propertySection-->
+			<!--propertySection
+				afterSection="property.section.LogicalLinkPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.RealizationLinkPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.RealizationLinkFilter"
+				id="property.section.RealizationLinkPropertySection"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge"/>
+				</propertySection-->
+			<!--propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.LogicalLinkPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.LogicalLinkFilter"
+				id="property.section.LogicalLinkPropertySection"
+				tab="property.tab.LinkPropertyTab">
+				<input type="org.eclipse.gmf.runtime.notation.Edge" />
+				</propertySection-->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.CapabilitiesPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.CapabilitiesPropertySection2"
+				tab="property.tab.CapabilitiesPropertyTab2">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart" />
+			</propertySection>
+			<!-- Topology debug tab -->
+			<!--propertySection tab="property.tab.TopologyTab"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyDetailsSection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyEditPartFilter"
+				id="property.section.TopologySection">
+				<input
+				type="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployDiagramEditPart" />
+				</propertySection-->
+			<!-- Import debug tab -->
+			<propertySection
+				tab="property.tab.ImportTab"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.ImportPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.ImportEditPartFilter"
+				id="property.section.ImportTopologySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.ImportTopologyEditPart" />
+			</propertySection>
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyVariableSection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyEditPartFilter"
+				id="property.section.TopologyVariableSection"
+				tab="property.tab.TopologyVariableTab">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployDiagramEditPart"></input>
+			</propertySection>
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyVariableSection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.ImportEditPartFilter"
+				id="property.section.ImportVariableSection"
+				tab="property.tab.ImportVariableTab">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.ImportTopologyEditPart"></input>
+			</propertySection>
+		</propertySections>
+	</extension>
+	<!-- property page FOR DEPLOYMENT NAVIGATOR: categories -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+		<propertyContributor
+			contributorId="org.eclipse.ui.navigator.ProjectExplorer"
+			labelProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.DeployLabelProvider">
+			<propertyCategory category="Diagram" />
+			<propertyCategory category="Units" />
+			<propertyCategory category="Providers" />
+			<propertyCategory category="Advanced" />
+		</propertyContributor>
+	</extension>
+	<!-- property page FOR DEPLOYMENT NAVIGATOR: tabs -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+		<propertyTabs contributorId="org.eclipse.ui.navigator.ProjectExplorer">
+			<propertyTab
+				category="Units"
+				id="property.tab.N_GeneralPropertySection"
+				label="%General" />
+			<propertyTab
+				afterTab="property.tab.N_GeneralPropertySection"
+				category="Units"
+				id="property.tab.N_RequirementsPropertyTab2"
+				label="%Requirements2">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.N_RequirementsPropertyTab2"
+				label="%Capabilities2"
+				category="Units"
+				id="property.tab.N_CapabilitiesPropertyTab2">
+			</propertyTab>
+			<propertyTab
+				afterTab="property.tab.N_CapabilitiesPropertyTab2"
+				label="%Links2"
+				category="Units"
+				id="property.tab.N_LinksPropertyTab2">
+			</propertyTab>
+			<propertyTab
+				label="%Module"
+				afterTab="property.tab.N_LinksPropertyTab2"
+				category="Units"
+				id="property.tab.N_ModulePropertySection">
+			</propertyTab>
+			<propertyTab
+				label="%Topology"
+				category="Units"
+				id="property.tab.N_TopologyPropertySection">
+			</propertyTab>
+		</propertyTabs>
+	</extension>
+	<!-- property page FOR DEPLOYMENT NAVIGATOR: sections -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="org.eclipse.ui.navigator.ProjectExplorer">
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.internal.properties.GeneralPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitPropertySectionFilter"
+				id="property.section.N_GeneralPropertySection"
+				tab="property.tab.N_GeneralPropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.Unit" />
+			</propertySection>
+			<!-- Requirements view/editing tab -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.internal.properties.RequirementsPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitPropertySectionFilter"
+				id="property.section.N_RequirementsPropertySection2"
+				tab="property.tab.N_RequirementsPropertyTab2">
+				<input type="com.ibm.ccl.soa.deploy.core.Unit" />
+			</propertySection>
+			<!-- Links2 tab -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.LinksPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitPropertySectionFilter"
+				id="property.section.N_LinksPropertySection2"
+				tab="property.tab.N_LinksPropertyTab2">
+				<input type="com.ibm.ccl.soa.deploy.core.Unit" />
+			</propertySection>
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.CapabilitiesPropertySection2"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitPropertySectionFilter"
+				id="property.section.N_CapabilitiesPropertySection2"
+				tab="property.tab.N_CapabilitiesPropertyTab2">
+				<input type="com.ibm.ccl.soa.deploy.core.Unit" />
+			</propertySection>
+			<!-- Module tab for SOA Module artifacts -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.ModulePropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitPropertySectionFilter"
+				id="property.section.N_ModulePropertySection"
+				tab="property.tab.N_ModulePropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.Unit" />
+			</propertySection>
+			<!-- NOTE: This one never gets used, because the Project Explorer doesn't
+				include Topologies, it includes IFiles that contain Topologies. -->
+			<propertySection
+				tab="property.tab.N_TopologyPropertySection"
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyPropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.TopologyPropertySectionFilter"
+				id="property.section.N_TopologyPropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode" />
+			</propertySection>
+		</propertySections>
+	</extension>
+	<!-- Deploy Action Provider -->
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.JavaProjectPropertyTester"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.resourcePropertyTester"
+			namespace="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy"
+			properties="javaNature"
+			type="org.eclipse.core.resources.IProject">
+		</propertyTester>
+		<propertyTester
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.EmptyNamespaceFragmentPropertyTester"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.emptyNamespaceFragmentTester"
+			namespace="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy"
+			properties="emptyNamespaceFragment"
+			type="com.ibm.ccl.soa.deploy.core.namespace.INamespaceFragment" />
+		<propertyTester
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.EClassPropertyTester"
+			id="com.ibm.ccl.soa.deploy.core.ui.eclassPropertyTester"
+			namespace="com.ibm.ccl.soa.deploy.core.ui"
+			properties="eclass"
+			type="org.eclipse.emf.ecore.EObject" />
+		<propertyTester
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.util.MatchReferencerPropertyTester"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.referencerContentTypePropertyTester"
+			namespace="com.ibm.ccl.soa.deploy.core.ui.search"
+			properties="referencerContentType"
+			type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match" />
+	</extension>
+	<!-- adapter factory for the emf objects -->
+	<extension point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+		<adapterFactory
+			className="com.ibm.ccl.soa.deploy.core.provider.CoreItemProviderAdapterFactory"
+			functionGroupID="com.ibm.ccl.soa.deploy.core"
+			id="com.ibm.ccl.soa.deploy.core.provider.CoreItemProviderAdapterFactory"
+			packageURI="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+		</adapterFactory>
+	</extension>
+	<!-- marker navigation Service -->
+	<extension
+		id="markerNavigationProviders"
+		name="%ext.markerNavigationProviders"
+		point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders">
+		<MarkerNavigationProvider class="com.ibm.ccl.soa.deploy.core.ui.internal.marker.DeployMarkerNavigationProvider">
+			<Priority name="Highest"></Priority>
+			<MarkerType name="com.ibm.ccl.soa.deploy.internal.core.validator.DeployMarker"></MarkerType>
+		</MarkerNavigationProvider>
+	</extension>
+	<!-- Common Navigator Integration -->
+	<!-- tell the common navigator plugin which view it lives in -->
+	<extension point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<contentExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.rootContent" />
+				<contentExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.namespaceElementContent" />
+				<contentExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.filters.*" />
+				<contentExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.topologyModelContent" />
+			</includes>
+		</viewerContentBinding>
+		<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<actionExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.deployActionProvider" />
+				<actionExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.namespaceActionProvider" />
+			</includes>
+		</viewerActionBinding>
+	</extension>
+	<!-- configure the common navigator with this plugin's content -->
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<navigatorContent
+			activeByDefault="true"
+			contentProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.DeployContentProvider"
+			icon="icons/obj16/other_prj_obj.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.rootContent"
+			labelProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.DeployLabelProvider"
+			name="%deployProjectContent"
+			priority="normal">
+			<triggerPoints>
+				<or>
+					<instanceof value="org.eclipse.core.resources.IWorkspaceRoot" />
+				</or>
+			</triggerPoints>
+			<possibleChildren>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DeployModelObject" />
+				</or>
+			</possibleChildren>
+		</navigatorContent>
+		<!-- Deployment Wizard New -->
+		<navigatorContent
+			activeByDefault="true"
+			contentProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.DeployEMFContentProvider"
+			icon="icons/obj16/deply_project_obj.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.topologyModelContent"
+			labelProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.DeployEMFLabelProvider"
+			name="%deployEmfContent"
+			priority="high"
+			providesSaveables="true">
+			<triggerPoints>
+				<or>
+					<adapt type="org.eclipse.core.resources.IFile" />
+				</or>
+			</triggerPoints>
+			<possibleChildren>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Topology" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DeployModelObject" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.provider.TopologyItemProvider" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.provider.DeployModelObjectItemProvider" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode"></instanceof>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.LoadingModelNode"></instanceof>
+				</or>
+			</possibleChildren>
+			<actionProvider
+				id="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.deployActionProvider"
+				class="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.DeployActionProvider">
+				<enablement>
+					<or>
+						<adapt type="org.eclipse.core.resources.IFile">
+							<test
+								property="org.eclipse.core.resources.extension"
+								value="topology" />
+						</adapt>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.DeployModelObject" />
+						<instanceof value="org.eclipse.emf.edit.provider.IWrapperItemProvider" />
+						<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode"></instanceof>
+					</or>
+				</enablement>
+			</actionProvider>
+			<commonSorter
+				class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyUnitSorter"
+				id="com.ibm.ccl.soa.deploy.core.ui.sortByCategory" />
+		</navigatorContent>
+		<navigatorContent
+			activeByDefault="true"
+			contentProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.NamespaceElementContentProvider"
+			icon="icons/obj16/topology_obj.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.namespaceElementContent"
+			labelProvider="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.NamespaceElementLabelProvider"
+			name="%namespaceElementContent.name"
+			priority="higher">
+			<triggerPoints>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement" />
+					<instanceof value="org.eclipse.core.resources.IFolder" />
+				</or>
+			</triggerPoints>
+			<possibleChildren>
+				<or>
+					<instanceof value="org.eclipse.core.resources.IFile"/>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement" />
+					<instanceof value="org.eclipse.core.resources.IFolder" />
+				</or>
+			</possibleChildren>
+			<override
+				policy="InvokeAlwaysRegardlessOfSuppressedExt"
+				suppressedExtensionId="org.eclipse.ui.navigator.resourceContent" />
+			<actionProvider
+				class="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.OverrideResourceEditActionsProvider"
+				id="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.overrideResourceEditActionsProvider"
+				overrides="org.eclipse.ui.navigator.resources.actions.EditActions">
+				<enablement>
+				     <or>
+						 <adapt type="org.eclipse.core.resources.IFile">
+								<test
+									property="org.eclipse.core.resources.extension"
+									value="topology" />
+						 </adapt>
+						 <adapt type="org.eclipse.core.resources.IFile">
+								<test
+									property="org.eclipse.core.resources.extension"
+									value="topologyv" />
+						 </adapt>
+				    </or>
+				</enablement>
+			</actionProvider>
+	        <dropAssistant
+	              class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDropAdapterAssistant"
+	              id="com.ibm.ccl.soa.deploy.core.ui.navigator.topologyDropAdapter">
+	           <possibleDropTargets>
+	              <or>
+	              	<instanceof value="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement" />
+	              	<adapt type="org.eclipse.core.resources.IFile"/>
+	              	<adapt type="org.eclipse.core.resources.IFolder"/>
+	              	<adapt type="org.eclipse.core.resources.IProject"/>
+	              </or>
+	           </possibleDropTargets>
+	        </dropAssistant> 
+			<commonSorter
+				class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.NamespaceElementSorter"
+				id="com.ibm.ccl.soa.deploy.core.ui.namespace.sorter" />
+		</navigatorContent>
+		<commonWizard
+			type="new"
+			wizardId="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file">
+			<enablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject" />
+					<adapt type="org.eclipse.core.resources.IResource" />
+				</or>
+			</enablement>
+		</commonWizard>
+		<commonWizard
+			type="new"
+			wizardId="com.ibm.ccl.soa.deploy.core.ui.wizard.new.namespace">
+			<enablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject" />
+					<adapt type="org.eclipse.core.resources.IResource" />
+					<adapt type="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement" />
+				</or>
+			</enablement>
+		</commonWizard>
+		<commonWizard
+			type="export"
+			wizardId="com.ibm.ccl.soa.deploy.core.ui.export">
+			<enablement>
+				<adapt type="org.eclipse.core.resources.IFile">
+					<test
+						property="org.eclipse.core.resources.extension"
+						value="topology" />
+				</adapt>
+			</enablement>
+		</commonWizard>
+		<!--
+			<commonFilter activeByDefault="true"
+			description="%topologyVFileFilter.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.filters.topologyVFileFilter"
+			name="%topologyVFileFilter.name">
+			<filterExpression>
+			<and>
+			<instanceof
+			value="org.eclipse.core.resources.IFile" />
+			<test
+			property="org.eclipse.core.resources.extension"
+			value="topologyv" />
+			</and>
+			</filterExpression>
+			</commonFilter>
+			<commonFilter activeByDefault="true"
+			description="%topologyRootsFileFilter.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.filters.topologyRootsFileFilter"
+			name="%topologyRootsFileFilter.name">
+			<filterExpression>
+			<and>
+			<instanceof
+			value="org.eclipse.core.resources.IFile" />
+			<test
+			property="org.eclipse.core.resources.extension"
+			value="topologyroots" />
+			</and>
+			</filterExpression>
+			</commonFilter>
+		-->
+		<commonFilter
+			activeByDefault="false"
+			description="%emptyTopologyNamespaceFilter.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.filters.emptyTopologyNamespaceFilter"
+			name="%emptyTopologyNamespaceFilter.name">
+			<filterExpression>
+				<and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.namespace.INamespaceFragment" />
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.emptyNamespaceFragment"
+						value="true" />
+				</and>
+			</filterExpression>
+		</commonFilter>
+		<commonFilter
+			activeByDefault="true"
+			description="%topologyVFileFilter.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.filters.topologyVFilter"
+			name="%topologyVFileFilter.name">
+			<filterExpression>
+				<and>
+					<instanceof value="org.eclipse.core.resources.IFile"></instanceof>
+					<test
+						property="org.eclipse.core.resources.extension"
+						value="topologyv">
+					</test>
+				</and>
+			</filterExpression>
+		</commonFilter>
+	</extension>
+	<extension point="org.eclipse.ui.exportWizards">
+		<category
+			name="%deployTopology.category_name"
+			id="com.ibm.ccl.soa.deploy.core.ui" />
+		<wizard
+			id="com.ibm.ccl.soa.deploy.core.ui.export"
+			category="com.ibm.ccl.soa.deploy.core.ui"
+			name="%deployTopologyExportWizard.name"
+			class="com.ibm.ccl.soa.deploy.core.ui.wizards.DeployTopologyExportWizard"
+			icon="icons/elcl16/ex_topology_wiz.gif">
+			<description>%deployTopologyExportWizard.description</description>
+			<selection class="org.eclipse.core.resources.IResource"></selection>
+		</wizard>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: deploy status resolution generators                                      -->
+	<!-- =================================================================================== -->
+	<extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionParameterizer
+			id="SetAttributeResolutionParameterizer"
+			name="%resolutionParameterizer.SetAttributeResolutionParameterizer"
+			interactive="true"
+			class="com.ibm.ccl.soa.deploy.internal.core.ui.validator.resolution.SetAttributeResolutionParameterizer">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.SetAttributeResolution" />
+			</enablement>
+		</resolutionParameterizer>
+		<!-- Note: the following two resolutions could in principle be combined -->
+		<resolutionGenerator
+			id="GenericHostingRequirementSatisfactionResolutionDiscoveryGenerator"
+			name="%resolutionGenerator.GenericHostingRequirementSatisfactionResolutionDiscoveryGenerator"
+			class="com.ibm.ccl.soa.deploy.core.ui.validator.resolution.GenericHostingRequirementSatisfactionResolutionDiscoveryGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitNotHosted" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="GenericDependencyRequirementSatisfactionResolutionDiscoveryGenerator"
+			name="%resolutionGenerator.GenericDependencyRequirementSatisfactionResolutionDiscoveryGenerator"
+			class="com.ibm.ccl.soa.deploy.core.ui.validator.resolution.GenericDependencyRequirementSatisfactionResolutionDiscoveryGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitDependencyRequirementUnmatched" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="MultiRealizationWizardResolutionGenerator"
+			name="%resolutionGenerator.MultiRealizationWizardResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.ui.validator.resolution.RealizationAssistantResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized" />
+			</enablement>
+		</resolutionGenerator>
+		
+	</extension>
+	<!-- ================================================================================================ -->
+	<!-- Author: Neo Sun, sunyingl@cn.ibm.com 															-->
+	<!-- Extension: Define ModelingAssistantProvider to provide the content for the context pop-up bar    -->
+	<!-- ================================================================================================ -->
+	<extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+		<modelingAssistantProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreModelingAssistantProvider">
+			<Priority name="Lowest" />
+			<object
+				class="com.ibm.ccl.soa.deploy.core.ui.editparts.ModuleEditPart"
+				id="ModuleUnit">
+			</object>
+			<object
+				class="com.ibm.ccl.soa.deploy.core.ui.editparts.ConfigurationEditPart"
+				id="ConfigurationUnit">
+			</object>
+			<object
+				class="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitGroupEditPart"
+				id="UnitGroup">
+			</object>
+			<object
+				class="com.ibm.ccl.soa.deploy.core.ui.editparts.business.BusinessComponentEditPart"
+				id="ComponentUnit">
+			</object>
+			<!--
+				<object
+				class="com.ibm.ccl.soa.deploy.core.ui.editparts.UnitGroupCompartmentEditPart"
+				id="UnitGroupAreaCompartment">
+				</object>
+			-->
+			<context elements="ModuleUnit, ConfigurationUnit, UnitGroup, ComponentUnit" />
+		</modelingAssistantProvider>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: Publish Problems View                                     -->
+	<!-- =================================================================================== -->
+	<extension point="org.eclipse.ui.views">
+		<!-- <view
+			allowMultiple="false"
+			category="com.ibm.ccl.soa.deploy.core.ui.navigator"
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.statusview.publish.PublishView"
+			icon="icons/view16/errors.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.views.publish"
+			name="%publish.view.name">
+			</view> -->
+		<category
+            id="com.ibm.deployment.architecture"
+            name="%deployment.architecture.label"/>
+		<view
+			allowMultiple="false"
+			category="com.ibm.deployment.architecture"
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.statusview.export.ExportView"
+			icon="icons/view16/expt_error.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.views.export"
+			name="%export.view.name">
+		</view>
+		<view
+			allowMultiple="false"
+			category="com.ibm.deployment.architecture"
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.statusview.TopologyStatusView"
+			icon="icons/view16/errors.gif"
+			id="com.ibm.ccl.soa.deploy.core.ui.views.topology.view"
+			name="%view.name.0">
+		</view>
+	</extension>
+	<!-- property page: tabs.  Note contributorId matches the *editor*, not the project, id. -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+		<propertyTabs contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab
+				label="%Module"
+				afterTab="property.tab.LinkPropertyTab"
+				category="Units"
+				id="property.tab.ModulePropertySection">
+			</propertyTab>
+		</propertyTabs>
+	</extension>
+	<!-- property page: sections (bits of GUI that live on the tabs)
+		Note contributorId matches the *editor*, not the project, id -->
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<!-- Module tab for SOA Module artifacts -->
+			<propertySection
+				class="com.ibm.ccl.soa.deploy.core.ui.properties.ModulePropertySection"
+				filter="com.ibm.ccl.soa.deploy.core.ui.properties.UnitEditPartPropertySectionFilter"
+				id="property.section.ModulePropertySection"
+				tab="property.tab.ModulePropertySection">
+				<input type="com.ibm.ccl.soa.deploy.core.ui.editparts.ModuleEditPart" />
+			</propertySection>
+		</propertySections>
+	</extension>
+	<!-- Deploy Navigator link helpers -->
+	<extension point="org.eclipse.ui.navigator.linkHelper">
+		<linkHelper
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.DeployLinkHelper"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.rootContent">
+			<editorInputEnablement>
+				<or>
+					<instanceof value="org.eclipse.ui.IFileEditorInput" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.editor.TopologySaveableInput" />
+					<instanceof value="org.eclipse.draw2d.ConnectionAnchor.CompositeShapeFigure" />
+				</or>
+			</editorInputEnablement>
+			<selectionEnablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject"></adapt>
+					<instanceof value="org.eclipse.core.resources.IWorkspaceRoot" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployDiagramEditPart" />
+					<instanceof value="org.eclipse.gmf.runtime.notation.impl.NodeImpl" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode" />
+				</or>
+			</selectionEnablement>
+		</linkHelper>
+	</extension>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/notation/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.ui.notation.DeployNotationPackage"
+			genModel="models/deploy.notation.genmodel" />
+	</extension>
+	<extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory
+			uri="http://www.ibm.com/ccl/soa/deploy/notation/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.ui.notation.provider.DeployNotationItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+	<!-- Decorator Semantic Pattern Binding-->
+	<extension
+		id="com.ibm.ccl.soa.deploy.core.topology"
+		name="%coreTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<propertySheetContent>
+				<include pattern="com.ibm.ccl.soa.deploy.core.ui.properties" />
+			</propertySheetContent>
+			<viewContent>
+				<include pattern=".*" />
+				<exclude pattern="com.ibm.ccl.soa.deploy.core.ui.views.publish" />
+			</viewContent>
+			<paletteEntryContent>
+				<include pattern="deploy.hostinglink" />
+				<include pattern="deploy.dependencylink" />
+				<include pattern="deploy.realizationlink" />
+				<include pattern="deploy.conceptualNode" />
+				<include pattern="deploy.Import" />
+			</paletteEntryContent>
+			<menuContent>
+				<include pattern=".*" />
+				<exclude pattern="publishGroup" />
+				<exclude pattern="publishTopology" />
+				<exclude pattern="unpublishTopology" />
+				<exclude pattern="addToGroupMenu" />
+				<exclude pattern="moveToGroupMenu" />
+				<exclude pattern="removeFromGroupMenu" />
+			</menuContent>
+		</decoratorSemanticPatternBinding>
+		<!--	<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.core.ids">
+			<propertySheetContent>
+			<include
+			pattern="com.ibm.ccl.soa.deploy.core.ui.properties" />
+			</propertySheetContent>
+			<viewContent>
+			<include pattern=".*" />
+			<exclude
+			pattern="com.ibm.ccl.soa.deploy.core.ui.views.publish" />
+			</viewContent>
+			<paletteEntryContent>
+			<include pattern="deploy.unitGroup" />
+			<include pattern="deploy.Import" />
+			</paletteEntryContent>
+			<menuContent>
+			<include pattern=".*" />
+			<exclude pattern="publishGroup" />
+			<exclude pattern="publishTopology" />
+			<exclude pattern="unpublishTopology" />
+			<exclude pattern="insertNewUnit" />
+			</menuContent>
+			</decoratorSemanticPatternBinding> -->
+		<!-- Template design decorator semantic obsoleted by topology reuse support (contracts etc). -->
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.tdds">
+			<propertySheetContent>
+				<include pattern="com.ibm.ccl.soa.deploy.core.ui.properties" />
+			</propertySheetContent>
+			<viewContent>
+				<include pattern=".*" />
+				<exclude pattern="com.ibm.ccl.soa.deploy.core.ui.views.publish" />
+			</viewContent>
+			<paletteEntryContent>
+				<include pattern=".*" />
+			</paletteEntryContent>
+			<menuContent>
+				<include pattern=".*" />
+				<exclude pattern="publishGroup" />
+				<exclude pattern="publishTopology" />
+				<exclude pattern="unpublishTopology" />
+			</menuContent>
+		</decoratorSemanticPatternBinding>
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.dds">
+			<propertySheetContent>
+				<include pattern=".*" />
+			</propertySheetContent>
+			<viewContent>
+				<include pattern=".*" />
+			</viewContent>
+			<paletteEntryContent>
+				<include pattern=".*" />
+			</paletteEntryContent>
+			<menuContent>
+				<include pattern=".*" />
+			</menuContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+	<extension point="org.eclipse.ui.decorators">
+		<decorator
+			adaptable="true"
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyProjectDecorator"
+			id="com.ibm.ccl.soa.deploy.core.ui.decorator.topologyprojectdecorator"
+			label="%topologyprojectdecorator.label"
+			lightweight="true"
+			location="TOP_RIGHT"
+			state="true">
+			<enablement>
+				<and>
+					<objectClass name="org.eclipse.core.resources.IResource" />
+					<or>
+						<objectClass name="org.eclipse.core.resources.IProject" />
+						<objectClass name="org.eclipse.core.resources.IFile" />
+					</or>
+				</and>
+			</enablement>
+		</decorator>
+		<decorator
+			adaptable="true"
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDecorator"
+			id="com.ibm.ccl.soa.deploy.core.ui.decorator.topologydecorator"
+			label="%topologydecorator.label"
+			lightweight="true"
+			location="TOP_RIGHT"
+			state="true">
+			<enablement>
+				<or>
+					<objectClass name="org.eclipse.core.resources.IFile" />
+					<!-- todo property tester for user template file? -->
+				</or>
+			</enablement>
+		</decorator>
+		<decorator
+			adaptable="true"
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.ConceptualNodeDecorator"
+			id="com.ibm.ccl.soa.deploy.core.ui.decorator.conceptualnodedecorator"
+			label="%conceptualnodedecorator.label"
+			lightweight="true"
+			location="TOP_RIGHT"
+			state="true">
+			<enablement>
+				<or>
+					<objectClass name="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</enablement>
+		</decorator>
+		<decorator
+			adaptable="true"
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyNodeColorDecorator"
+			id="com.ibm.ccl.soa.deploy.core.ui.topologyNodeDecorator"
+			label="%topologynodecolordecorator.name"
+			lightweight="true"
+			state="true">
+			<enablement>
+				<or>
+					<objectClass name="com.ibm.ccl.soa.deploy.core.DeployModelObject"></objectClass>
+				</or>
+			</enablement>
+		</decorator>
+	</extension>
+	<extension point="org.eclipse.ui.actionSets">
+		<actionSet
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploymentNavigatorActionSet"
+			label="%deploymentnavigatoractionset.label">
+			<action
+				class="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.OpenTopologyDialogHandler"
+				definitionId="com.ibm.ccl.soa.deploy.core.ui.openTopologyDialog"
+				icon="icons/obj16/deply_mdl_obj.gif"
+				id="com.ibm.ccl.soa.deploy.core.ui.openTopologyDialogAction"
+				label="%opentopologyaction.label"
+				menubarPath="navigate/open.ext2"
+				style="push"
+				toolbarPath="Normal/JavaWizards" />
+		</actionSet>
+	</extension>
+	<extension point="org.eclipse.ui.commands">
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.OpenTopologyDialogHandler"
+			description="%opentopologycommand.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.openTopologyDialog"
+			name="%opentopologycommand.label" />
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.QuickOutlineDialogHandler"
+			description="%quickoutline.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.quickOutlineAction"
+			name="%quickoutline.label" />
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.QuickPaletteDialogHandler"
+			description="%quickpalette.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.quickPaletteAction"
+			name="%quickpalette.label" />
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.OpenCapabilitiesFlyout"
+			description="%capabilitiesflyout.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.openCapabilitiesPropertyFlyout"
+			name="%capabilitiesflyout.name">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.OpenGeneralPropertyFlyout"
+			description="%generalflyout.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.openGeneralPropertyFlyout"
+			name="%generalflyout.name">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.OpenRequirementsFlyout"
+			description="%requirementsflyout.name"
+			id="com.ibm.ccl.soa.deploy.core.ui.openRequirementsPropertyFlyout"
+			name="%requirementsflyout.name">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			defaultHandler="com.ibm.ccl.soa.deploy.core.ui.actions.OpenQuickFixDialog"
+			description="%quickfixdialog.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.openQuickFixDialog"
+			name="%quickfixdialog.name">
+		</command>
+		<category
+			description="%command.category.description"
+			id="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			name="%command.category.label">
+		</category>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.deleteFromModelCommand"
+			name="%deleteFromModelCommand.name">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.createTopologyNamespaceCommand"
+			name="%createNamespaceCommand.name">
+		</command>
+		<category
+			id="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			name="%zephyr.search.command.category.name">
+		</category>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.workspace"
+			name="%zephyr.search.menu.workspace.label">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject"
+			name="%zephyr.search.menu.enclosingProject.label">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel"
+			name="%zephyr.search.menu.enclosingModel.label">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram"
+			name="%zephyr.search.menu.enclosingDiagram.label">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.workingSet"
+			name="%zephyr.search.menu.workingSet.label">
+		</command>
+		<command
+			categoryId="com.ibm.ccl.soa.deploy.core.ui.zephyr.search.commands"
+			id="com.ibm.ccl.soa.deploy.core.ui.search.selectInView"
+			name="%zephyr.search.menu.selectInView.label">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.bindings">
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.openTopologyDialog"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M2+I" />
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.quickOutlineAction"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+O" />
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.quickPaletteAction"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+T" />
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.openCapabilitiesPropertyFlyout"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+C">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.openGeneralPropertyFlyout"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+U">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.openRequirementsPropertyFlyout"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+R">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.openQuickFixDialog"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+I">
+		</key>
+		<key
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.workspace"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+W">
+		</key>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.handlers.NavigatorDeleteFromModelHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.deleteFromModelCommand">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.handlers.CreateNamespaceHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.createTopologyNamespaceCommand">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.ReferencesInWorkspaceHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.workspace">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.ReferencesInEnclosingProjectHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.ReferencesInEnclosingModelHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.ReferencesInEnclosingDiagramHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.ReferencesInWorkingSetHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.workingSet">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.SelectInDiagramHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.selectInView">
+			<enabledWhen>
+				<with variable="selection">
+					<and>
+						<iterate>
+							<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match" />
+						</iterate>
+						<count value="1" />
+					</and>
+				</with>
+			</enabledWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.handlers.SelectInModelExplorerHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.selectInView">
+			<enabledWhen>
+				<with variable="selection">
+					<and>
+						<iterate>
+							<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match" />
+						</iterate>
+						<count value="1" />
+					</and>
+				</with>
+			</enabledWhen>
+			<activeWhen>
+				<with variable="selection">
+					<iterate>
+						<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match">
+							<test
+								forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.core.ui.search.referencerContentType"
+								value="com.ibm.ccl.soa.deploy.core.topologyModelContentType">
+							</test>
+						</adapt>
+					</iterate>
+				</with>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective">
+			 <actionSet id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploymentNavigatorActionSet" />
+				<actionSet
+	               id="com.ibm.xtools.common.ui.reduction.modelingViewpointsActionSet">
+	        	 </actionSet>
+	         <perspectiveShortcut id="com.ibm.xtools.modeler.internal.ui.perspectives.ModelingPerspective"/>
+	         <perspectiveShortcut id="com.ibm.xtools.reqpro.activities.internal.perspective.RequirementPerspective"/>
+	         <newWizardShortcut id="com.ibm.xtools.modeler.ui.actions.NewModelProjectActionWizard"/>
+	         <newWizardShortcut id="com.ibm.xtools.modeler.ui.actions.NewModelActionWizard"/>
+		</perspectiveExtension>
+		<!--Extend Modeling Perspective -->
+		<perspectiveExtension
+ 			targetID="com.ibm.xtools.modeler.internal.ui.perspectives.ModelingPerspective">
+ 			<actionSet id="com.ibm.ccl.soa.deploy.core.ui.navigator.deploymentNavigatorActionSet" />
+  			<newWizardShortcut id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file"/> 
+  			<perspectiveShortcut id="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective"/>
+    	</perspectiveExtension>
+    	<!-- extend resourcePerspective -->
+    	<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+        	<newWizardShortcut id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file"/> 
+         	<perspectiveShortcut id="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective"/>
+      	</perspectiveExtension>
+	    <!-- extend RequirementPerspective -->
+	    <perspectiveExtension targetID="com.ibm.xtools.reqpro.activities.internal.perspective.RequirementPerspective">
+	       <newWizardShortcut id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file"/>
+	       <perspectiveShortcut id="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective"/>
+	    </perspectiveExtension>
+      	<!-- extend JavaPerspective -->
+      	<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+       	  <perspectiveShortcut id="com.ibm.ccl.soa.deploy.core.ui.DeployCore.Perspective"/>
+      	</perspectiveExtension>
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+		<IconProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.ResourceTypeIconProvider">
+			<Priority name="High" />
+		</IconProvider>
+	</extension>
+	<extension
+		point="com.ibm.ccl.soa.deploy.core.ui.compositeFactories"
+		id="AttributeValueConstraintUIHandler">
+		<compositeFactory
+			name="%attributeValueConstraintUIHandlerName"
+			description="%attributeValueConstraintUIHandlerDescription"
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.AttributeValueUIHandler">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<or>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+							value="ExclusionConstraint">
+						</test>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+							value="RangeConstraint">
+						</test>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+							value="VersionConstraint">
+						</test>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+							value="EqualsConstraint">
+						</test>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+							value="AttributeDefinedConstraint">
+						</test>
+					</or>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.EnumerationConstraintUIHandler"
+			description="%enumerationConstraintUIHandlerDescription"
+			name="%enumerationConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="EnumerationConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.ExclusionConstraintUIHandler"
+			description="%exclusionConstraintUIHandlerDescription"
+			name="%exclusionConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="ExclusionConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.ExclusionConstraintUIHandler"
+			description="%exclusionConstraintUIHandlerDescription"
+			name="%exclusionConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="ExclusionConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.GroupCardinalityConstraintUIHandler"
+			description="%groupCardinalityConstraintUIHandlerDescription"
+			name="%groupCardinalityConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="GroupCardinalityConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.MemberCardinalityConstraintUIHandler"
+			description="%groupCardinalityConstraintUIHandlerDescription"
+			name="%groupCardinalityConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="MemberCardinalityConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.RangeConstraintUIHandler"
+			description="%rangeConstraintUIHandlerDescription"
+			name="%rangeConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="RangeConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.TypeConstraintUIHandler"
+			description="%typeConstraintUIHandlerDescription"
+			name="%typeConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="TypeConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.CapacityConstraintUIHandler"
+			description="%capacityConstraintUIHandlerDescription"
+			name="%capacityConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="CapacityConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.AttributeCapacityConstraintUIHandler"
+			description="%attributeCapacityConstraintUIHandlerDescription"
+			name="%attributeCapacityConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="AttributeCapacityConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>	
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.StereotypeConstraintUIHandler"
+			name="%stereotypeConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="StereotypeConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.CollocationConstraintUIHandler"
+			description="%collocationConstraintUIHandlerDescription"
+			name="%collocationConstraintUIHandlerName">
+			<enablement>
+				<and>
+					<instanceof value="org.eclipse.emf.ecore.EObject"></instanceof>
+					<test
+						property="org.eclipse.wst.common.emfworkbench.integration.emfPackage"
+						value="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/">
+					</test>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.ui.eclass"
+						value="CollocationConstraint">
+					</test>
+				</and>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.RequirementExpressionUIHandler"
+			description="%requirementExpressionUIHandlerDescription"
+			name="%requirementExpressionUIHandlerName">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.RequirementExpression"></instanceof>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.ui.handlers.ServiceUIHandler"
+			description="%serviceUIHandlerDescription"
+			name="%serviceUIHandlerName">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Service"></instanceof>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.AttributePropagationConstraintUIHandler"
+			description="%attributePropagationConstraintUIHandlerDescription"
+			name="%attributePropagationConstraintUIHandlerName">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.AttributePropagationConstraint"></instanceof>
+			</enablement>
+		</compositeFactory>
+		<compositeFactory
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.handlers.ApplicationCommunicationProtocolConstraintUIHandler"
+			description="%applicationCommunicationProtocolConstraintUIHandlerDescription"
+			name="%applicationCommunicationProtocolConstraintUIHandlerName">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.ApplicationCommunicationProtocolConstraint"></instanceof>
+			</enablement>
+		</compositeFactory>
+	</extension> 
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=group.edit">
+			<command
+				commandId="com.ibm.ccl.soa.deploy.core.ui.deleteFromModelCommand"
+				disabledIcon="icons/dlcl16/delete.gif"
+				icon="icons/elcl16/delete.gif"
+				id="com.ibm.ccl.soa.deploy.core.ui.deleteFromModelCommand.menucontribution">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection"></reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=group.search">
+			<separator
+				name="com.ibm.ccl.soa.deploy.core.ui.search.group"
+				visible="true">
+			</separator>
+			<menu
+				id="com.ibm.ccl.soa.deploy.core.ui.search"
+				label="%zephyr.search.menu.label"
+				mnemonic="%zephyr.search.menu.mnemonic">
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.workspace"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.workspace.menucontribution"
+					mnemonic="%zephyr.search.menu.workspace.mnemonic">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject.menucontribution">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel.menucontribution">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram.menucontribution">
+					<visibleWhen checkEnabled="false">
+						<with variable="activeMenu">
+							<iterate>
+								<equals value="org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu" />
+							</iterate>
+						</with>
+					</visibleWhen>
+				</command>
+				<separator
+					name="com.ibm.ccl.soa.deploy.core.ui.search.menu.additions"
+					visible="true">
+				</separator>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.workingSet"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.workingSet.menucontribution">
+				</command>
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection" />
+				</visibleWhen>
+			</menu>
+			<separator
+				name="com.ibm.ccl.soa.deploy.core.ui.search.end.separator"
+				visible="true">
+			</separator>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=findGroup">
+			<separator
+				name="com.ibm.ccl.soa.deploy.core.ui.find.group"
+				visible="true">
+			</separator>
+			<menu
+				id="com.ibm.ccl.soa.deploy.core.ui.find"
+				label="%zephyr.search.menu.label"
+				mnemonic="%zephyr.search.menu.mnemonic">
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.workspace"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.workspace.menucontribution"
+					mnemonic="%zephyr.search.menu.workspace.mnemonic">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject.menucontribution">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel.menucontribution">
+				</command>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram.menucontribution">
+					<visibleWhen checkEnabled="false">
+						<with variable="activeMenu">
+							<iterate>
+								<equals value="org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu"></equals>
+							</iterate>
+						</with>
+					</visibleWhen>
+				</command>
+				<separator
+					name="com.ibm.ccl.soa.deploy.core.ui.search.menu.additions"
+					visible="true">
+				</separator>
+				<command
+					commandId="com.ibm.ccl.soa.deploy.core.ui.search.workingSet"
+					id="com.ibm.ccl.soa.deploy.core.ui.search.workingSet.menucontribution">
+				</command>
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection"></reference>
+				</visibleWhen>
+			</menu>
+			<separator
+				name="com.ibm.ccl.soa.deploy.core.ui.find.end.separator"
+				visible="true">
+			</separator>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<command
+				commandId="com.ibm.ccl.soa.deploy.core.ui.search.selectInView"
+				id="com.ibm.ccl.soa.deploy.core.ui.search.selectInView.menucontribution">
+				<visibleWhen>
+					<with variable="activeMenuSelection">
+						<and>
+							<iterate>
+								<instanceof value="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match" />
+							</iterate>
+							<count value="1" />
+						</and>
+					</with>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.core.runtime.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.xml"
+			default-charset="UTF-8"
+			file-extensions="topologyv"
+			id="topologyDiagramContentType"
+			name="%topologyDiagramContentType"
+			priority="high">
+		</content-type>
+	</extension>
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory
+			adaptableType="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode"
+			class="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNodeAdapterFactory">
+			<adapter type="org.eclipse.core.resources.IFile"></adapter>
+			<adapter type="org.eclipse.core.resources.IResource"></adapter>
+		</factory>
+		<factory
+			adaptableType="org.eclipse.gef.EditPart"
+			class="com.ibm.ccl.soa.deploy.core.ui.editparts.adapter.EditPartAdapterFactory">
+			<adapter type="org.eclipse.gmf.runtime.notation.View"></adapter>
+			<adapter type="com.ibm.ccl.soa.deploy.core.DeployModelObject"></adapter>
+			<adapter type="com.ibm.ccl.soa.deploy.core.Unit"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ITarget"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ref.StructuredReference"></adapter>
+		</factory>
+		<factory
+			adaptableType="org.eclipse.gmf.runtime.notation.View"
+			class="com.ibm.ccl.soa.deploy.core.ui.editparts.adapter.ViewAdapterFactory">
+			<adapter type="com.ibm.ccl.soa.deploy.core.DeployModelObject"></adapter>
+			<adapter type="com.ibm.ccl.soa.deploy.core.Unit"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ITarget"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ref.StructuredReference"></adapter>
+		</factory>
+		<factory
+			adaptableType="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match"
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.util.MatchAdapterFactory">
+			<adapter type="org.eclipse.core.resources.IResource"></adapter>
+			<adapter type="org.eclipse.core.resources.IFile"></adapter>
+			<adapter type="org.eclipse.emf.common.util.URI"></adapter>
+		</factory>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isUnitSelection">
+			<with variable="selection">
+				<iterate
+					operator="and"
+					ifEmpty="false">
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"></instanceof>
+				</iterate>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isAdaptableUnitSelection">
+			<and>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection" />
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+			</and>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.containsAdaptableUnitSelection">
+			<with variable="selection">
+				<iterate
+					operator="and"
+					ifEmpty="false">
+					<adapt type="com.ibm.ccl.soa.deploy.core.Unit"></adapt>
+				</iterate>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isTopologyModelContent">
+			<and>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsTopologyModelContent" />
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+			</and>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramContent">
+			<and>
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.containsTopologyDiagramContent" />
+				<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+			</and>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.containsTopologyModelContent">
+			<with variable="selection">
+				<and>
+					<iterate
+						operator="and"
+						ifEmpty="false">
+						<instanceof value="org.eclipse.core.resources.IResource"></instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+							<test
+								property="org.eclipse.core.resources.contentTypeId"
+								value="com.ibm.ccl.soa.deploy.core.topologyModelContentType">
+							</test>
+						</adapt>
+					</iterate>
+				</and>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.containsTopologyDiagramContent">
+			<with variable="selection">
+				<and>
+					<iterate
+						operator="and"
+						ifEmpty="false">
+						<instanceof value="org.eclipse.core.resources.IResource"></instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+							<test
+								property="org.eclipse.core.resources.contentTypeId"
+								value="com.ibm.ccl.soa.deploy.core.ui.topologyDiagramContentType">
+							</test>
+						</adapt>
+					</iterate>
+				</and>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isTopologyNamespaceElement">
+			<with variable="selection">
+				<and>
+					<iterate
+						operator="and"
+						ifEmpty="false">
+						<instanceof value="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement"></instanceof>
+					</iterate>
+                    <reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+				</and>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isTopologyDiagramNode">
+			<with variable="selection">
+				<and>
+					<iterate
+						operator="and"
+						ifEmpty="false">
+						<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode"></instanceof>
+					</iterate>
+					<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+				</and>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection">
+			<with variable="selection">
+				<count value="1"></count>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.core.ui.alwaysFalse">
+			<with variable="selection">
+				<count value="-100"></count>
+			</with>
+		</definition>
+	</extension>
+	<extension point="org.eclipse.search.searchResultViewPages">
+		<viewPage
+			class="com.ibm.ccl.soa.deploy.core.ui.internal.search.pages.DeploySearchResultsPage"
+			id="com.ibm.ccl.soa.deploy.core.ui.internal.search.pages.DeploySearchResultsPage"
+			searchResultClass="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.DeploySearchResult">
+		</viewPage>
+	</extension>
+	<extension
+         point="org.eclipse.ui.activities">
+      <!--Define the categories-->
+      <category
+            id="com.ibm.ccl.soa.deploy.core.ui.category.deploy"
+            name="%deploy_BUILDING_BLOCKS"/>
+       <category
+            id="com.ibm.ccl.soa.deploy.core.ui.category.logical"
+            name="%deploy_LOGICAL_CAT"/>
+      <category
+            id="com.ibm.ccl.soa.deploy.core.ui.category.physical"
+            name="%deploy_PHYSICAL_CAT"/>
+      <category
+            id="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"
+            name="%deploy_INFRA_CAT"/>
+      <!--Define the activities-->
+      <activity
+            id="com.ibm.ccl.soa.deploy.core.ui.activity.core"
+            name="%_UI_Deploy_CORE"/>
+      <activity
+            id="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+            name="%genericActivity.label"/>
+     <!--Define the activity bindings-->
+     <activityPatternBinding
+            activityId="com.ibm.ccl.soa.deploy.core.ui.activity.core"
+            pattern="(?&lt;!.)deploy\.[\w.-]*"/>
+     <activityPatternBinding
+            activityId="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.generic\.[\w.-]*"/>
+     <activityPatternBinding
+            activityId="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.core\.genericsoftware\.[\w.-]*"/>
+      <!--Define the category bindings-->
+      <categoryActivityBinding
+            activityId="com.ibm.ccl.soa.deploy.core.ui.activity.core"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.deploy"/>
+       <categoryActivityBinding
+            activityId="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.deploy"/>
+    </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.core"/>
+      <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.generic"/>
+ <!-- Moved support to Analysis & Design viewpoint
+      <viewpoint
+            name="%deploy_LOGICAL_VIEWPT"
+            id="com.ibm.ccl.soa.deploy.core.ui.viewpoint.logical">
+         <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.core"/>
+         <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.generic"/>
+         <activity
+                  ref="com\.ibm\.rational\.deployment\.activity\.logical\.[\w.-]*"
+                  match="pattern"/>
+      </viewpoint>
+-->
+       <viewpoint
+            name="%deploy_PHYSICAL_VIEWPT"
+            id="com.ibm.ccl.soa.deploy.core.ui.viewpoint.physical">
+            <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.core"/>
+            <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.generic"/>
+            <activity
+                  ref="com\.ibm\.rational\.deployment\.activity\.physical\.[\w.-]*"
+                  match="pattern"/>
+      </viewpoint>
+      <viewpoint
+            name="%deploy_INFRA_VIEWPT"
+            id="com.ibm.ccl.soa.deploy.core.ui.viewpoint.infrastructure">
+            <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.core"/>
+            <activity ref="com.ibm.ccl.soa.deploy.core.ui.activity.generic"/>
+            <activity
+                  ref="com\.ibm\.rational\.deployment\.activity\.infrastructure\.[\w.-]*"
+                  match="pattern"/>
+      </viewpoint>
+	</extension>
+    <extension
+          point="com.ibm.ccl.soa.deploy.saf.ui.uihandlers">
+       <artifactUIHandler
+             class="com.ibm.ccl.soa.deploy.core.ui.internal.properties.FileArtifactUIHandler"
+             description="%artifact.file.description"
+             kind="artifact.file"
+             name="%artifact.file.name">
+       </artifactUIHandler>
+    </extension>
+</plugin>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.j2ee.jms/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.j2ee.jms/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.j2ee.jms" modelName="Jms" nonNLSMarkers="true"
+    suppressEMFTypes="true" importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/jmsDomain.xsd</foreignModel>
+  <genPackages prefix="Jms" basePackage="com.ibm.ccl.soa.deploy.j2ee" resource="XML"
+      disposableProviderFactory="true" ecorePackage="jms.ecore#/">
+    <genEnums ecoreEnum="jms.ecore#//AcknowledgeModeEnum">
+      <genEnumLiterals ecoreEnumLiteral="jms.ecore#//AcknowledgeModeEnum/AutoAcknowledge"/>
+      <genEnumLiterals ecoreEnumLiteral="jms.ecore#//AcknowledgeModeEnum/DuplicatesOkAutoAcknowledge"/>
+      <genEnumLiterals ecoreEnumLiteral="jms.ecore#//AcknowledgeModeEnum/NonPersistent"/>
+    </genEnums>
+    <genEnums ecoreEnum="jms.ecore#//DestinationTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="jms.ecore#//DestinationTypeEnum/javaxJmsQueue"/>
+      <genEnumLiterals ecoreEnumLiteral="jms.ecore#//DestinationTypeEnum/javaxJmsTopic"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="jms.ecore#//AcknowledgeModeEnumObject"/>
+    <genDataTypes ecoreDataType="jms.ecore#//DestinationTypeEnumObject"/>
+    <genClasses ecoreClass="jms.ecore#//JMSActivationSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/acknowledgeMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/clientIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/jndiName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/mesasageSelector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/specificationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/subscriptionDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSActivationSpecification/subscriptionName"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSActivationSpecificationUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSConnectionFactory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSConnectionFactory/factoryName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSConnectionFactory/jndiName"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSConnectionFactoryUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSDeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute jms.ecore#//JMSDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSActivationSpecification"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSConnectionFactory"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSProvider"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSQueueConnectionFactory"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSQueueDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSTopicConnectionFactory"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/capabilityJMSTopicDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSActivationSpecificationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSProviderUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSQueueConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSQueueDestinationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSTopicConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference jms.ecore#//JMSDeployRoot/unitJMSTopicDestinationUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSDestination">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSDestination/destinationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSDestination/jndiName"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSProvider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/classPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/nativePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/initialContextFactory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/providerName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/providerURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSProvider/providerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSProviderUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSQueueConnectionFactory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSQueueConnectionFactory/factoryName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSQueueConnectionFactory/jndiName"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSQueueConnectionFactoryUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSQueueDestination"/>
+    <genClasses ecoreClass="jms.ecore#//JMSQueueDestinationUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSTopicConnectionFactory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSTopicConnectionFactory/factoryName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jms.ecore#//JMSTopicConnectionFactory/jndiName"/>
+    </genClasses>
+    <genClasses ecoreClass="jms.ecore#//JMSTopicConnectionFactoryUnit"/>
+    <genClasses ecoreClass="jms.ecore#//JMSTopicDestination"/>
+    <genClasses ecoreClass="jms.ecore#//JMSTopicDestinationUnit"/>
+  </genPackages>
+</genmodel:GenModel>

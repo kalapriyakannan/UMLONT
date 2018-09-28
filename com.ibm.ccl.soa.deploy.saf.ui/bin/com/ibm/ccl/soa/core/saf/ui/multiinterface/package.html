@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>XID Framework</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+Extensible Interface Dialog allowing clients to choose interface (and interface type) for Service/References.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top">
+<h1 ALIGN="CENTER">Xtensible Interface Dialog (XID)</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">XID Introduction [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>XID is built upon Eclipse Web Tool Project's configurable Component Search Dialog. SOA Assembly framework allows SCA extension clients
+		to define their own Interface types such as Java, EGL, WSDL and more. The need to gather all such kind of interfaces
+		and show it to the end user in an elegant way resulted in creation of XID. The only thing every client needs to do in order to show their 
+		interface type within the XID is to define an Interface type via extension point <code>com.ibm.ccl.soa.core.saf.handlers</code> and then implement 
+		<a href="IInterfacehandler.html"><code>com.ibm.ccl.soa.core.saf.handler.IInterfacehandler</code></a></p>
+		
+		<p>In this document, concepts are enclosed by italics (<i>like this</i>), references to types or methods in the Java
+		API are enclosed by	fixed-width fonts (<code>like this</code>), and references to elements in the schemas are enclosed 
+		in angle brackets (&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"><code>Details
+		[<a style="color: lightblue;" href="#top">Top</a>]</code></font>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>As mentioned in the above section, any Interface provider client who wants to integrate with the dialog needs to only define 
+		its Interface type using the SAF framework. XID is integrated with SAF and the new interface type will automaticlly appear in the drop down
+		combo box in the dialog.</p>				
+		</td>
+	</tr>
+	<tr>
+		<td><IMG border="0" src="Overview.jpg"></td>
+	</tr>
+	<tr>
+		<td>
+		<p>
+		<a href ="MultiInterfaceSearchListDialogConfiguration.html"><code>MultiInterfaceSearchListDialogConfiguration</code></a> stores a list of <a href="InterfaceHandler.html"><code>InterfaceProvider</code></a> which essentially is a wrapper around <a href = "IInterfaceHandler.html"><code>IInterfaceHandler</code></a>. Based on the user selection
+		it also stores the current provider. It keeps reference to <a href="MultiInterfaceDescriptionProvider.html"><code>MultiInterfaceDescriptionProvider</code></a> and
+		<a href="MultiInterfaceSearchListProvider.html"><code>MultiInterfaceSearchListProvider</code></a> which in turn keep a list of wrapped IInterfaceHandlers.
+		</p>  
+		
+		<p>
+		All calls are routed to the applicable/active <a href="InterfaceDescriptionProvider.hrml"><code>InterfaceDescriptionProvider</code></a> or <a href = "InterfaceSearchListProvider.html"><code>InterfaceSearchListProvider</code></a> which are nothing but 
+		wrapper on <a href="IInterfaceHandler.html"><code>IInterfaceHandler</code></a>.
+		</p>
+		
+		<p>
+		</p>
+		</td>	
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">How to contribute your interface handlers? [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+	<td>The following is an example showing how java interface type is contributed. XID will dynamically pick this interface
+	type and show it in the dialog.	
+	<table cols="1" width="100%" bgColor="#cccccc" border="0">
+		<tr>
+			<td>
+			<tt>
+				<PRE>
+&lt;extension 
+	point="com.ibm.ccl.soa.core.saf.handlers"
+	id="javaHandlers" 
+	name="%javaHandlersName"&gt;
+	&lt;interfaceHandler
+    		name="%javaInterfaceHandlerName"
+        	description="%javaInterfaceHandlerDescription"
+        	kind="interface.java"
+        	largeIcon="icons/obj16/impcomp_obj.gif"
+	    	smallIcon="icons/obj16/impcomp_obj.gif"
+        	descriptiveKindName="%javaInterfaceHandler"
+        	class="com.ibm.ccl.soa.internal.java.handler.JavaInterfaceHandler"&gt;
+	&lt;/interfaceHandler&gt;
+&lt;/extension&gt;
+				</PRE>
+			</tt>
+			</td>
+		</tr>
+	</table>		
+	</td>	
+	</tr>
+	<tr><td>When the client after defining the above extension opens the XID while create a new Service or Reference, the following dialog is shown.</td></tr>
+	<tr>		
+		<td><IMG border="0" src="dialog.jpg"></td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing [<a style="color: lightblue;" href="#top">Top</a>]</font>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+		<td>		
+		A client can invoke the XID using the following code
+		
+		<table cols="1" width="100%" bgColor="#cccccc" border="0">
+		<tr>
+			<td>
+			<tt>
+				<PRE>
+AbstractInterfaceHandler[] interfaceHandlers = SOAComponentUiPlugin.getDefault().getInterfaceHandlerService().findAllInterfaceHandlers();
+MultiInterfaceSearchListDialogConfiguration configuration = new MultiInterfaceSearchListDialogConfiguration(); 
+for (int i=0; i < interfaceHandlers.length; i++)
+	configuration.addInterfaceProvider(new InterfaceProvider(interfaceHandlers[i]));
+
+ComponentSearchListDialog dialog = new ComponentSearchListDialog(shell, title, configuration);
+	      
+try {
+	if (dialog.open() == Window.OK) {
+		//do something with the selection
+	}
+} catch (InvalidOperationException e) {						
+} catch (SAFException e) {		
+}</PRE>
+			</tt>
+			</td>
+		</tr>
+	</table>		
+	
+		
+		
+		<p>The XID will be tested by verifying the following: 
+		<ul>		
+			<li>Once a client provides extension for its Interface type by following the section above, the XID is supposed to pick up the type
+			automatically and show up in the 'Interface Type' combo box.
+			</li>
+			<li>To verify if the client has implemented <code>com.ibm.ccl.soa.core.saf.IInterfaceHandler</code> correctly, open the XID programmatically
+			and select the client's Interface type from the drop down list. The Component List should get updated as per how the IInterfaceHanlder is implemented.
+			</li>
+			<li>Verify the label decorators are implemented correctly.
+			</li>
+		</ul>
+		</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+	</tr>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by Manish Bhargava <i>(manishb{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+	</tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" name="Windows2000 Template">
+  <core:annotation context="topology_root">
+     <core:detail key="root1" value="GenericOS"/>   
+  </core:annotation>
+  
+  <os:unit.operatingSystemUnit name="GenericOS" conceptual="true">
+    <os:capability.operatingSystem name="OS" displayName="Generic OS" linkType="any"/>
+	<os:capability.directory displayName="directory" name="directory" linkType="any" FixedPath="">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false" />      
+    </os:capability.directory>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:Server" linkType="hosting"/>
+  </os:unit.operatingSystemUnit>
+
+</core:topology>

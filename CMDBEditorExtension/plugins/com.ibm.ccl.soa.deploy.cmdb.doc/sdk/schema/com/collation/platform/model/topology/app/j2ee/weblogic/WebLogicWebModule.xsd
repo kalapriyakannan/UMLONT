@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/WebModule.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicWebContainer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicJ2EEApplication.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicWebModule">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.WebModule">
+        <xsd:sequence>
+          <xsd:element name="application" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicJ2EEApplication" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastModified" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="path" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="deployed" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="URI" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="webContainers" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicWebContainer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="authRealmName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultServlet" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="servletReloadCheckSecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionIDLength" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="singleThreadedServletPoolSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="cleanupSessionFilesEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="debugEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="indexDirectoryEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="preferWebInfClasses" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="servletExtensionCaseSensitive" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionDebuggable" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionMonitoringEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionTrackingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

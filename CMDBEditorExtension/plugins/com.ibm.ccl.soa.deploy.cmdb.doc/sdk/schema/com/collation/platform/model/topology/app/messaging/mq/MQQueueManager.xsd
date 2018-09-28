@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/AppServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQQueue.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQService.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQProcess.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQChannel.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQPageSet.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQInstallableService.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQNameList.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQReceiverChannel.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQApiExitLocal.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQListener.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQCluster.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQAuthInfo.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQStorageClass.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQBufferPool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQSenderChannel.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQInstallation.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.messaging.mq.MQQueueManager">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.AppServer">
+        <xsd:sequence>
+          <xsd:element name="process" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQProcess" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="deadLetterQueue" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="channels" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQChannel" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="pageSet" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQPageSet" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="queueManagerStatus" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="service" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQService" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="storageClass" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQStorageClass" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="dataPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="exitLocal" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQApiExitLocal" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="repositoryNameList" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="exitsDefaultPath64" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="nameList" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQNameList" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="logWriteIntegrity" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="queues" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQQueue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="mqinstallableservice" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQInstallableService" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="logDefaultPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="mqreceiverchannel" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQReceiverChannel" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="listeners" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQListener" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="authInfo" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQAuthInfo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="startCommandServer" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="bufferPool" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQBufferPool" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="installation" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQInstallation" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusters" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQCluster" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="mqsenderchannel" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQSenderChannel" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="repositoryType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxMessageLength" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLKeyRepository" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="channelAutoDefinition" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="defautlQueue" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="repository" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusterWorkloadUseQueue" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="exitsDefaultPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="queueManagerIdentifier" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="startChannelInitiator" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="triggerInterval" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="isValid" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="system" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="default" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

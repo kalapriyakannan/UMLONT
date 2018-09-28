@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Conceptual Node API Package</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+A conceptual node describes the fundamental properties of a server that hosts one or more components.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">Conceptual Node Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="711">
+		<p></p>
+		<p>The conceptual node is an EMF abstraction representing a
+		collection of artifacts. Nodes can be linked together representing
+		“communication”. They can also be linked to by artifacts (i.e. such as
+		application components) providing a collection relationship between
+		other linked artifacts. In levels of refinement node abstraction
+		solidifies enabling progressive validation. In the following initial
+		design we will discuss:</p>
+		<UL>
+			<LI>The Conceptual Node definition</LI>
+			<LI>Linkage between Nodes and other Deploy Models</LI>
+			<LI>Requirement and Capabilty definition for protocols </LI>
+			<LI>Validation between conceptual nodes and software components </LI>
+			
+		</UL>
+		<B>Bugzilla item</B> for this review: <A
+			href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11501">11501</A><BR><BR>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Vocabulary
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="712">
+		<p><u>Links</u>:</p>
+
+		<ul>
+<li><b>Dependency link</b>: contains a Source: Requirement and a Target: capability</li>
+<li><b>Hosting link:</b> contains a Source: Unit: Target: Unit (matching on
+hosting requirements\capacities)&nbsp;</li>
+<li><b>Member link</b>: collection of units hosted on a group.</li>
+<li><b>Unit link:</b> contains a Source: Unit and a Target: Unit ; parent of hosting and member links
+</li>
+<li><b>Logical link: </b>contains a source: DMO&nbsp;target: DMO</li>
+</ul>
+
+<p><u>Other:</u></p>
+
+<ul>
+<li><b>Unit:</b> model introduces requirement and capability concepts.</li>
+<li><b>DepoloyModuleObject (DMO)</b> – parent of core models– common resolving defined
+here.</li>
+		</ul>
+		<br>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Conceptual Node Definition[<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table>
+	<tr>
+		<td width="1068">
+		<p>	</p>
+		<p>A Conceptual node could be any unit. An attribute on the unit
+		would determine if it is conceptual. This would allow for morphing or
+		refactoring from a concrete artifact to a conceptual node while
+		capturing non functional requirements.</p>
+		<p> The following is snapshot of the<b> xsd</b> and class diagram: </p>
+ 		<P><IMG border="0" src="coreXsd.JPG" width="1202" height="448"> </P>
+		<b>Class Diagram:</b>
+		<p><img border="0" src="conceptualUnitDiagram.JPG" width="683"
+			height="415"></p>
+		<p> UI Implementation: Lollypop indicator will always appear on the conceptual units. (see validation level 1)</p>
+		<p> The following template would be created to support ui function (palette entry):
+     <P><IMG border="0" src="template.JPG" width="982" height="102"> </P>
+ 		</td>
+	</tr>
+</table>
+<br>
+<b>Palette Entry:</b><br>
+<img border="0" src="paleteEntry.JPG" width="140" height="44"><br><table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Dependecy Link [<a style="color: lightblue;" href="#top">Top</a>]</font>
+		<td>
+		
+		</td>	
+</table>
+<table>
+	<tr>
+		<td width="721"><p> A Dependency link which would have the following attributes: type, source and target.  
+		On linkage between nodes a conceptual requirement and a conceptual capability would be added to the units and be cached as the source and target attributes. 
+		On deletation of the link requirement and capability would not be removed. 
+		This matching code would be special cased to respect the conceptual node.</p>
+		
+		<p>The following <b>xsd</b> represent the newly created capabilites </p>
+		<P><img border="0" src="capability.JPG" width="542" height="142"></P>
+		<p><b></b></p>
+		<p><b>Class Diagram:</b></p>
+		<img border="0" src="commCapDiagram.JPG" width="613" height="660">
+		<p></p>
+
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Hosting link [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="740">
+	<tr>
+		<td width="664"><br>
+		Hosting to conceptual node will be allowed if the hosting capabilities are empty. Else the hosted requirements and host capabilities must be satisfied.<br>
+		<br>
+		Hosting a Conceptual node will not be supported in M3. <br>
+		</td>
+		<td width="70"></td>
+	</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[Validation level 1] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+			
+</table>
+<table>
+	<tr>
+		<td width="635">
+		<p>Level one validation includes the rules for linking conceptual nodes together, enabling dependency link lollipop, the interaction of concrete conceptual nodes, and hosting.<br>
+		<b></b></p>
+		<p><b>Enabling dependency link lollipop indicators:</b> A
+		conceptual node should be easily linked by communication to other
+		conceptual objects. To help facilitate the user a lollipop indicator
+		will always appear on a conceptual node editpart like this:</p>
+		<img border="0" src="conceptualUINode.JPG" width="200" height="75">
+		<br>
+		<b>Implementation:</b> Using the existing UI pattern for the lollipop edit policy the following occurs: <br>
+		1) Mouse is dragged over edit part<br>
+		2) Lollipop edit policy in notified<br>
+		3) The unit is derived from the mouse location.<br>
+		4) Validator service is called to find a matcher, by namespace<br>
+		5) CoreDomainMatcher is returned. <br>
+		6) Matcher checks for strategies against unit<br>
+		7) Dependency link Matcher strategy found<br>
+		8) Calls out to registered matchers.<br>
+		9) The matcher checks if interested in unit<br>
+		10) Dependency link matcher obtained.<br>
+		<br>The following is a sequence diagram  showing the procedure:<br>
+		<img border="0" src="sequenceDiagramLollipop.JPG" width="1361"
+			height="656"><p></p>
+		<p></p>11) In this case the only check that needs to be made to enable the lollypop: Unit.isConceptual() = true;<br>
+		12) Matcher status returned as found and lollypop figure drawn.<br>
+		<br>
+		<a name="top0"><b>After the lollypop from above has been extended
+		to a target node</b></a> :<br>
+		<img border="0" src="conceptualUINodes.JPG" width="475" height="128">
+		<br>
+		1) Mouse is dragged over conceptual/a edit part<br>
+		2) The source unit  and target unit are dervied from the mouse location.<br>
+		3) Validatior service is called to find a matcher, by namespace<br>
+		4) CoreDomainMatcher is returned. <br>
+		5) Matcher checks for strategies against unit<br>
+		6) Dependency link matcher strategy found<br>
+		7) Call out to registered matchers.<br>
+		8) The matcher checks if interested in unit<br>
+		9) Dependency link matcher obtained.<br>10) The Dependency Link matcher calls the canBeLinkTarget(Source Unit, Target unit)<br>
+		11) The following linking conceptual rules are followed:<br>
+		<ul>
+			<li><a name="top1">Unit.isConceptual()</a></li>
+			<li>target  only has communication dependencies.</li>
+		</ul>
+		<b>Creating the link:</b><br>
+		1) If the above steps are satisfied the Dependency Link creation tool is notified<br>2) Inside the creation
+		tool a conceptual node check is made against the source and target units.<br>
+		3) If the check is statified then a dynamic constraint wizard is presented to the user:<br>
+		<img border="0" src="communicationWizard.JPG" width="480" height="402"><br>4) The wizard will call an operation that creates a communication capability and a  a requirement with a dmoType of the communication capability. A matching rule also will be created<br>
+		specifying the protocol type:<br>
+		<br>
+		<b>Operation class diagram files:</b><br>
+		<img border="0" src="wizardDatamodelCommunication.JPG" width="880"
+			height="792"><br>
+		<b><br>CommunicationConstraintDataModel.ecore - used to build the datamodels:
+		<br><br>
+		<img border="0" src="CommunicationEcore.JPG" width="1181" height="668">
+		<br>
+		<br>
+		Matching rule:</b><br>
+		<img border="0" src="matchingrule.JPG" width="520" height="386">
+		<br>
+		5)     After constraints have been created the matching defaults to existing code.<br>
+		6) Dependency IFigure drawn.<br><br>
+		<br>
+		<b>Junits:</b>
+		<p><i></i><img border="0" src="communicationTest.JPG" width="383"
+			height="173"></p>
+		<p></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Validation Level 2</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+			
+</table>
+<table>
+	<tr>
+		<td width="953">
+		<p>Level 2 validation compares the communication paths between the infrastructure level (conceptual) and the application level. If a link exist in the applicaiton level it should also be in the conceptual level with a matching protocol. </p><ul>
+			<li>For every dependency link in the application level there most be a corresponding dependency link in the conceptual level. If the application nodes in the link are hosted to conceptual nodes.</li>
+			<li>Currently there will not be support for dependency link jumping over hosted nodes (show example)</li>
+		</ul>
+		<br>
+		Lets use this Topology to describe the implementation: <br>
+		<img border="0" src="topologyInfrConcept.JPG" width="444" height="241">
+		<br>When the validation job fires the following will happen:<br>1) The CoreDomainValidator will be called based on a namespace. The validator will iterate through the units in a given context. In this case all the units are in core so this will be our context. The first unit in the context will be delegated to the unitvalidator. This is cached in the domain validator. The unit validator will check to make sure the capabilities and requirements have valid values. Next, the unit validator will check to make sure the links and corresponding matching code is correct. The last thing that happens is a check to see if the unit is conceptual. If the link is conceptual it will be cached. <br>
+		2) After the domain validator has iterated through the list of units and the unitvalidators, a call to the ConceptualNodePatternValidator (CNPV) is made.<br>
+		3) CNPV take as an argument the conceptual units, the context (all the units in the topology) and a reporter. The reporter is used to create deploy markers.<br>
+		4) Now the traversal of the topology begins: Iterating over the passed conceptual nodes, the first node is acquired (ConceptualNode).<br>
+		5) The node queried for any hostingLinks. If there aren't any hosting links return to the next conceptual node.<br>
+		6) A hosting link is discovered ( WebProject to Conceptual node- vertical link)<br>
+		7) From the link the hosted unit Webproject is derived, and dependency references are queried. References are always present on the source unit indicating the starting of link direction.<br>
+		8) If a reference exist then there is a check for a dependency link relationship. In our case there is one. WebComponent (Reference) to WebComponent0 (Service).<br>
+		9) The protocol is derived from the Service and the WebComponent0 is derived from the link relationship.<br>
+		10) Now we have ConceptualNode, WebComponent and a protocol. At this point we need to find out if the WebComponent0 is hosted on a conceptual node and if it is there should be a link between ConceptualNode(requirment:Dmotyp:communicationCapability) and ConceptualNode/a(communicationcapability) of protocol type http.<br>
+		11) On ConceptualNode the dependency requirements are discovered, and a check for a link and dmotype communicationCapability occurs. This is satisfied in our example. Next the communicationcapability is discovered and the ConceptualNode/a is derived. <br>
+		12) A check to make sure ConceptualNode/a has a hosting link relationship with Webcomponent0 occurs.<br>
+		13) In our example it does validation is successful, iterates to next conceptual node: back to (5)<br>
+		<br>
+		<b>Sequence diagram:</b><br>
+		<img border="0" src="validatorSequenceDiagram.JPG" width="1182"
+			height="618"><br>
+		<br>
+		<b>Class diagram:</b>
+		<br>
+		<img border="0" src="patternValidator.JPG" width="557" height="527">
+		<br>
+		<br>
+		<b>Junits</b>:<br>
+		<img border="0" src="validationTest.JPG" width="337" height="192">
+		<br>
+		<b>Errors:<br></b>Markers will show up in the problems view and on the conceptual units. <br>
+		<br>
+
+		<p></p>
+		</td>
+	</tr>
+</table>
+
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+			
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>author</b> <i>(blancett@us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+</BODY>
+</HTML>

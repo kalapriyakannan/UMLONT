@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.41 2008/06/16 19:46:05 barnold Exp $
+-->
+
+<plugin>
+  <!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	                          	        	
+		        <entry 
+            		label="%windowsOperatingSystemStack.Label" 
+            		kind="stack" 
+            		description="%windowsOperatingSystemStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/operatingSystemDrawer/" 
+            		id="windowsOperatingSystemStack">
+            	</entry>
+		        <entry 
+            		label="%linuxOperatingSystemStack.Label" 
+            		kind="stack" 
+            		description="%linuxOperatingSystemStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/operatingSystemDrawer/" 
+            		id="linuxOperatingSystemStack">
+            	</entry> 
+		        <entry 
+            		label="%aixOperatingSystemStack.Label" 
+            		kind="stack" 
+            		description="%aixOperatingSystemStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/operatingSystemDrawer/" 
+            		id="aixOperatingSystemStack">
+            	</entry>             	    
+		        <entry 
+            		label="%windowsConfigurationStack.Label" 
+            		kind="stack" 
+            		description="%windowsConfigurationStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/configurationDrawer/" 
+            		id="windowsConfigurationStack">
+            	</entry>              	 
+		        <entry 
+            		label="%linuxConfigurationStack.Label" 
+            		kind="stack" 
+            		description="%linuxConfigurationStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/configurationDrawer/" 
+            		id="linuxConfigurationStack">
+            	</entry>      
+		        <entry 
+            		label="%aixConfigurationStack.Label" 
+            		kind="stack" 
+            		description="%aixConfigurationStack.Description" 
+            		small_icon="icons/pal/os_16.gif" 
+            		large_icon="icons/pal/os_20.gif"
+            		path="/configurationDrawer/" 
+            		id="aixConfigurationStack">
+            	</entry>
+         		<entry 
+            		label="%fileSystemStack.Label" 
+            		kind="stack" 
+            		description="%fileSystemStack.Description" 
+            		small_icon="icons/pal/file_sys_pal16.gif" 
+            		large_icon="icons/pal/file_sys_pal20.gif" 
+            		path="/configurationDrawer/" 
+            		id="fileSystemStack">
+            	</entry>
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+   
+  	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.os.ui.providers.OsEditPartProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])" 
+            	value="os.OperatingSystemUnit, os.WindowsOperatingSystemUnit, os.LinuxOperatingSystemUnit, os.AIXOperatingSystemUnit,os.UserUnit, os.WindowsLocalUserUnit, os.LinuxLocalUserUnit, os.AIXLocalUserUnit, os.UserGroupUnit, os.WindowsLocalGroupUnit, os.LinuxLocalGroupUnit, os.AIXLocalGroupUnit, os.PortConfigUnit, os.FileSystemUnit, os.LocalFileSystemUnit, os.NFSFileSystemUnit, os.OpenVmsFileSystemUnit, os.RemoteFileSystemUnit, os.SMBFileSystemUnit, os.SolarisFileSystemUnit, os.UnixFileSystemUnit, os.WindowsFileSystemUnit, os.DirectoryUnit, os.DataFileUnit">
+            </staticMethod>
+         </object>         
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.os, configurationUnit.user, unitGroup.userGroup, configurationUnit.port"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="os.OperatingSystemUnit, os.WindowsOperatingSystemUnit, os.LinuxOperatingSystemUnit, os.AIXOperatingSystemUnit, os.UserUnit, os.WindowsLocalUserUnit, os.LinuxLocalUserUnit, os.AIXLocalUserUnit, os.UserGroupUnit, os.WindowsLocalGroupUnit, os.LinuxLocalGroupUnit, os.AIXLocalGroupUnit, os.PortConfigUnit, os.FileSystemUnit, os.LocalFileSystemUnit, os.NFSFileSystemUnit, os.OpenVmsFileSystemUnit, os.RemoteFileSystemUnit, os.SMBFileSystemUnit, os.SolarisFileSystemUnit, os.UnixFileSystemUnit, os.WindowsFileSystemUnit, os.DirectoryUnit, os.DataFileUnit">
+            </method>
+         </object> 
+         <!--        
+         <object class="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType(com.ibm.ccl.soa.deploy.core.ui)" id="NodeTypes">
+            <method name="getEClassName()" value="os.OperatingSystemUnit">
+            </method>
+         </object>    -->                                  
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.os, configurationUnit.user, unitGroup.userGroup, configurationUnit.port">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension
+       point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+    <IconProvider class="com.ibm.ccl.soa.deploy.os.ui.providers.OsIconProvider">
+       <Priority name="Medium"/>
+    </IconProvider>
+   </extension>   
+   
+      	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/">
+	    	<metamodelType
+	        	id="os.OperatingSystemUnitMeta"            
+	            name="%OperatingSystemUnitMeta.label"
+	            icon="icons/pal/os_16.gif"   
+	            eclass="OperatingSystemUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="os.UserUnitMeta"            
+	            name="%UserUnitMeta.label"
+	            icon="icons/pal/user_obj_16.gif"   
+	            eclass="UserUnit">                      
+	        </metamodelType>     
+	        <metamodelType
+	        	id="os.UserGroupUnitMeta"
+	            icon="icons/pal/user_group_pal16.gif"               
+	            name="%UserGroupUnitMeta.label"
+	            eclass="UserGroupUnit">                      
+	        </metamodelType>  	   
+	        <metamodelType
+	        	id="os.PortConfigUnitMeta"   
+	            icon="icons/pal/port_config_16.gif"         
+	            name="%PortConfigUnitMeta.label"
+	            eclass="PortConfigUnit">                      
+	        </metamodelType>  	
+	    	<metamodelType
+	        	id="os.WindowsOperatingSystemUnitMeta"    
+	            icon="icons/pal/win_xp_16.gif"           
+	            name="%WindowsOperatingSystemUnitMeta.label"
+	            eclass="WindowsOperatingSystemUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="os.WindowsLocalUserUnitMeta"
+	            icon="icons/pal/win_user_16.gif"               
+	            name="%WindowsLocalUserUnitMeta.label"
+	            eclass="WindowsLocalUserUnit">                      
+	        </metamodelType>     
+	        <metamodelType
+	        	id="os.WindowsLocalGroupUnitMeta"
+	            icon="icons/pal/grp_wind_user_16.gif"               
+	            name="%WindowsLocalGroupUnitMeta.label"
+	            eclass="WindowsLocalGroupUnit">                      
+	        </metamodelType>  	    
+	        
+	    	<metamodelType
+	        	id="os.LinuxOperatingSystemUnitMeta"
+	            icon="icons/pal/systemlinux_obj_16.gif"               
+	            name="%LinuxOperatingSystemUnitMeta.label"
+	            eclass="LinuxOperatingSystemUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="os.LinuxLocalUserUnitMeta" 
+	            icon="icons/pal/user_obj_16.gif"              
+	            name="%LinuxLocalUserUnitMeta.label"
+	            eclass="LinuxLocalUserUnit">                      
+	        </metamodelType>     
+	        <metamodelType
+	        	id="os.LinuxLocalGroupUnitMeta"       
+	            icon="icons/pal/usergroup_obj_16.gif"       
+	            name="%LinuxLocalGroupUnitMeta.label"
+	            eclass="LinuxLocalGroupUnit">                      
+	        </metamodelType>  	
+	        
+	    	<metamodelType
+	        	id="os.AIXOperatingSystemUnitMeta"    
+	            icon="icons/pal/aix_os_16_pal.gif"           
+	            name="%AIXOperatingSystemUnitMeta.label"
+	            eclass="AIXOperatingSystemUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="os.AIXLocalUserUnitMeta"  
+	            icon="icons/pal/user_pal16.gif"              
+	            name="%AIXLocalUserUnitMeta.label"
+	            eclass="AIXLocalUserUnit">                      
+	        </metamodelType>     
+	        <metamodelType
+	        	id="os.AIXLocalGroupUnitMeta"        
+	            icon="icons/pal/usergroup_obj_16.gif"        
+	            name="%AIXLocalGroupUnitMeta.label"
+	            eclass="AIXLocalGroupUnit">                      
+	        </metamodelType>  
+	        
+	        <metamodelType
+	        	id="os.FileSystemUnitMeta"        
+	            icon="icons/pal/file_sys_pal16.gif"        
+	            name="%FileSystemUnitMeta.label"
+	            eclass="FileSystemUnit">                      
+	        </metamodelType>  
+	        
+	       	<metamodelType
+	        	id="os.DirectoryUnitMeta"        
+	            icon="icons/pal/comp_dir_pal16.gif"        
+	            name="%DirectoryUnitMeta.label"
+	            eclass="DirectoryUnit">                      
+	        </metamodelType>
+	        	        
+	       	<metamodelType
+	        	id="os.DataFileMeta"        
+	            icon="icons/pal/data_file_pal16.gif"        
+	            eclass="DataFileUnit">                      
+	        </metamodelType>
+	        	        
+	        	            	        	   
+	                
+        </metamodel>
+      </extension>
+      
+      
+    <!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.os"
+            name="%osActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.os"
+            name="%osActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.os"
+            pattern="(?&lt;!.)os\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.os"
+            pattern="(?&lt;!.)os\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.os"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.os"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.os"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.os"/>
+      </extension>
+
+</plugin>
+

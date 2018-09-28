@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+  xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+  elementFormDefault="qualified">
+  <annotation>
+    <documentation>
+      This basic set of schema are intented to provide the constructs
+      for all components of a topology. It is not expected that any of
+      these constructs will ever be instantiated in an xml document
+      other than the root topology element.
+    </documentation>
+  </annotation>
+
+  <complexType name="DeployModelObject" abstract="true">
+    <annotation>
+      <documentation>
+        Root model type for all types defined in this model.
+      </documentation>
+    </annotation>
+    <sequence>
+      <element name="annotation" minOccurs="0" maxOccurs="unbounded"
+        type="core:Annotation">
+        <annotation>
+          <documentation>
+            All model objects support the addition of annotations to
+            further extend an a type with more meta-data.
+          </documentation>
+        </annotation>
+      </element>
+    </sequence>
+    <attributeGroup ref="core:IdentityAttributes" />
+    <attribute name="frozen" type="boolean" use="optional"
+      default="false" />
+  </complexType>
+
+  <element name="topology" type="core:Topology" />
+  <complexType name="Topology">
+    <annotation>
+      <documentation>
+        The purpose of a topology is to provide a XML root that contains
+        all of the assets described in a single document.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="core:DeployModelObject">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" ref="core:unit" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <element name="unit" type="core:Unit" />
+  <complexType name="Unit">
+    <annotation>
+      <documentation>
+        The purpose of a unit is to be the object that provides and
+        consumes services. Units are linked together based on the
+        satisfying the consumed requirements with provided capabilities.
+        A unit has the prime role of associating units together and
+        capturing a potential hierarchy of services that are ultimately
+        made available by this unit to be consumed by other units.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="core:DeployModelObject">
+        <sequence>
+          <element maxOccurs="1" minOccurs="0" name="consumes"
+            type="core:ServicesSet">
+            <annotation>
+              <documentation>
+                This reference is used to capture the set of services
+                that will be consumed (required) by this unit.
+              </documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="1" minOccurs="0" name="provides"
+            type="core:ServicesSet">
+            <annotation>
+              <documentation>
+                This reference is used to capture the set of services
+                (capabilities) that will be provided by this unit.
+              </documentation>
+            </annotation>
+          </element>
+
+          <element maxOccurs="1" minOccurs="0" name="consumedHosting"
+            type="core:HostingServicesSet">
+            <annotation>
+              <documentation>
+                This reference is used to capture the set of hosting
+                services that will be consumed (required) by this unit.
+                These are the set of hosting requirements which must be
+                satisfied by another host.
+              </documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="1" minOccurs="0" name="providedHosting"
+            type="core:HostingServicesSet">
+            <annotation>
+              <documentation>
+                This reference is used to capture the set of hosting
+                services that will be provided by this unit.
+              </documentation>
+            </annotation>
+          </element>
+
+          <element minOccurs="0" maxOccurs="unbounded"
+            ref="core:unit">
+            <annotation>
+              <documentation>
+                A Unit may optionally contain other unit definitions.
+                This is a containment by reference.
+              </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" maxOccurs="unbounded"
+            ref="core:hostedLinks">
+            <annotation>
+              <documentation>
+                A collection of links which link together a "host" unit
+                to the "hosted" units (i.e., the units that are hosted
+                on a given host unit).
+              </documentation>
+            </annotation>
+          </element>
+        </sequence>
+        <attributeGroup ref="core:OriginAttributes" />
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <element name="hostedLinks" type="core:HostedLinkSet" />
+  <complexType name="HostedLinkSet">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded"
+        ref="core:link.hosting" />
+    </sequence>
+  </complexType>
+
+  <complexType name="ServicesSet">
+    <sequence>
+      <element ref="core:service" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <element name="service" type="core:Service" />
+  <complexType name="Service">
+    <complexContent>
+      <extension base="core:DeployModelObject">
+        <sequence>
+          <element minOccurs="0" maxOccurs="1" ref="core:link" />
+        </sequence>
+        <attributeGroup ref="core:OriginAttributes" />
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <attributeGroup name="OriginAttributes">
+    <attribute name="buildVersion" type="core:VersionString"
+      use="optional" />
+    <attribute name="origin" type="string" use="optional" />
+  </attributeGroup>
+  <attributeGroup name="IdentityAttributes">
+    <attribute name="version" type="core:VersionString" use="optional" />
+    <attribute name="displayName" type="string" use="optional" />
+    <attribute name="name" type="string" use="required" />
+    <attribute name="manufacturer" type="string" use="optional" />
+    <attribute name="description" type="string" use="optional" />
+  </attributeGroup>
+
+  <!--##### VERSION ##################################-->
+  <!--##### VRML format, simple string type           -->
+  <!--##### This is the preferred format for          -->
+  <!--##### representing version information          -->
+  <simpleType name="VersionString">
+    <restriction base="string">
+      <pattern value="([0-9]{1,9})(\.[0-9]{1,9}){1,3}" />
+    </restriction>
+  </simpleType>
+  <!--##### Generic format for existing version info  -->
+  <!--##### This is defined to permit accepting and   -->
+  <!--##### interpreting existing version information -->
+  <!--##### that does not conform to the VRML format  -->
+  <simpleType name="GenericVersionString">
+    <restriction base="string">
+      <maxLength value="200" />
+      <pattern
+        value="([0-9a-zA-Z]+(([\+_ \-]*)+[0-9a-zA-Z]+)*)+(\.([0-9a-zA-Z]+(([\+_ \-]*)+[0-9a-zA-Z]+)*)){0,99}" />
+    </restriction>
+  </simpleType>
+
+  <element name="link" type="core:ServiceLink" />
+  <complexType name="ServiceLink">
+    <annotation>
+      <documentation>
+        A ServiceLink is used to capture a linkage between two services.
+        ServiceLink can be extended to provide additional properties for
+        the specific type of link.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="core:DeployModelObject">
+        <sequence>
+          <element name="source" minOccurs="0" maxOccurs="1"
+            type="anyURI" />
+          <element name="target" minOccurs="0" maxOccurs="1"
+            type="anyURI" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <!-- Hosting Service -->
+  <element name="hosting" type="core:HostingService" />
+  <complexType name="HostingService">
+    <complexContent>
+      <extension base="core:Service" />
+    </complexContent>
+  </complexType>
+
+  <element name="link.hosting" type="core:HostingLink" />
+  <complexType name="HostingLink">
+    <complexContent>
+      <extension base="core:DeployModelObject">
+        <attribute name="hosted" type="anyURI" use="required" />
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="HostingServicesSet">
+    <sequence>
+      <element ref="core:hosting" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <element name="link.realization" type="core:RealizationLink"
+    substitutionGroup="core:link" />
+  <complexType name="RealizationLink">
+    <annotation>
+      <documentation>
+        A RealizationLink is used to realize a service (the source) that
+        is provided by its containing Unit with a service (target)
+        provided by another Unit.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="core:ServiceLink" />
+    </complexContent>
+  </complexType>
+
+  <element name="annotation" type="core:Annotation" />
+  <complexType name="Annotation">
+    <annotation>
+      <documentation>
+        This element is used to capture annotations from other
+        namespaces. An Annotation object is keyed by its context
+        attribute. This allows for object to have multiple Annotation
+        objects for different contexts.
+      </documentation>
+    </annotation>
+    <sequence>
+      <any namespace="##other" processContents="lax" minOccurs="0"
+        maxOccurs="unbounded" />
+      <element name="detail" minOccurs="0" maxOccurs="unbounded"
+        type="core:StringToStringEntry" />
+    </sequence>
+    <attribute name="context" type="string" use="required" />
+  </complexType>
+
+  <complexType name="StringToStringEntry">
+    <attribute name="key" type="string" />
+    <attribute name="value" type="string" />
+  </complexType>
+</schema>

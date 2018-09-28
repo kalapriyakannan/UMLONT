@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:db2high="http://www.ibm.com/Zephyr/db2high/1.0.0/"
+xmlns:db2="http://www.ibm.com/Zephyr/db2/1.0.0/"
+name="DB2PartitionGroup Template">
+  <db2high:unit.DB2PartitionGroupUnit name="DB2PartitionGroup" configurationUnit="false" conceptual="true">
+    <db2high:capability.DB2PartitionGroup name="DB2PartitionGroup" linkType="any"/>
+    <core:requirement name="Hosted on Database" dmoType="core:Capability" linkType="hosting" use="optional"/>  
+  </db2high:unit.DB2PartitionGroupUnit>
+</core:topology>

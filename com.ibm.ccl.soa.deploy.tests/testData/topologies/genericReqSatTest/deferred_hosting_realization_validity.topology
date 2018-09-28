@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" description="&#x9;&#x9;Created on Monday, July 7, 2008 3:46:06 PM EDT" displayName="deferred_hosting_realization_validity" name="deferred_hosting_realization_validity" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds" namespace="">
+  <db2Deploy:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client" name="DB2RuntimeClient" conceptual="true">
+    <db2Deploy:capability.db2Client displayName="DB2 Client" name="DB2 Client" linkType="any" db2ClientVersion="8"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.constraint name="cl0" source="/DB2RuntimeClient" target="/POWER Server">
+      <constraint:constraint.deferredHosting name="c0"/>
+    </core:link.constraint>
+  </db2Deploy:unit.db2RuntimeClientUnit>
+  <db2Deploy:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client2" name="DB2RuntimeClient0">
+    <db2Deploy:capability.db2Client displayName="DB2 Client" name="DB2 Client" linkType="any" db2ClientVersion="8.2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2Deploy:unit.db2RuntimeClientUnit>
+  <db2Deploy:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client3" name="DB2RuntimeClient1">
+    <db2Deploy:capability.db2Client displayName="DB2 Client" name="DB2 Client" linkType="any" db2ClientVersion="8.2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2Deploy:unit.db2RuntimeClientUnit>
+  <os:unit.aixOperatingSystemUnit displayName="AIX 5L" name="AIX">
+    <os:capability.aixOperatingSystem displayName="AIX" name="AIX" linkType="any" os.type="AIX" os.version="5L"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="powerpc"/>
+    </core:requirement>
+    <core:link.hosting name="AIXHostsRoot" source="/AIX" target="/root0"/>
+    <core:link.hosting name="AIXHostsDB2RuntimeClient1" source="/AIX" target="/DB2RuntimeClient1"/>
+  </os:unit.aixOperatingSystemUnit>
+  <os:unit.aixLocalUser displayName="root2" name="root0" configurationUnit="true">
+    <os:capability.aixLocalUser displayName="root" name="AIXLocalUser" linkType="dependency" userId="root">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.aixLocalUser>
+    <core:requirement displayName="AIX Operating System" mutable="true" name="AIXOperatingSystem" dmoType="os:AIXOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="AIX"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:AIXLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.aixLocalUser>
+  <os:unit.linuxOperatingSystemUnit name="RedhatLinuxAS4">
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS4" target="/root"/>
+    <core:link.hosting name="RedhatLinuxAS4HostsDB2RuntimeClient0" source="/RedhatLinuxAS4" target="/DB2RuntimeClient0"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxLocalUser displayName="root" name="root" configurationUnit="true">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <server:unit.serverUnit displayName="POWER Server" name="POWER Server" conceptual="true">
+    <server:capability.server displayName="POWER Server" name="POWER Server" linkType="any" cpu.architecture="powerpc">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="POWER Server2" name="POWER Server0">
+    <server:capability.server displayName="POWER Server" name="POWER Server" linkType="any" cpu.architecture="powerpc" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="POWER Server0HostsAIX" source="/POWER Server0" target="/AIX"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server" name="x86 Server">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server" target="/RedhatLinuxAS4"/>
+  </server:unit.serverUnit>
+  <core:contract.explicit displayName="Make All Units Public-Editable By Default" name="ExplicitContract0" defaultConceptualPolicy="public_editable" defaultPolicy="public_editable">
+    <core:exported.unit configurable="false" linkable="false" path="/DB2RuntimeClient"/>
+  </core:contract.explicit>
+</core:topology>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEComponent.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.oracleapp.OracleAppResourceAdapter">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEComponent">
+        <xsd:sequence>
+          <xsd:element name="state" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="adapterType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="adapterVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="eisType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="licenseRequired" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="reauthenticationSupport" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="resourceAdapterClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="specVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

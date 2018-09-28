@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/Management.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/sun/SunFireComputerSystem.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.sun.SystemController">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.Management">
+        <xsd:sequence>
+          <xsd:element name="sunfirecomputersystem" type="coll:com.collation.platform.model.topology.sys.sun.SunFireComputerSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="controllerRole" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="versionString" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="majorVersion" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="release" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="modifier" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="level" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="buildLevel" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

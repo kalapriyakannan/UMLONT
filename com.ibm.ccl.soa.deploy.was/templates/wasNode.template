@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  
+displayName="WebSphereNodeUnit Template">
+   <core:annotation context="topology_root">
+      <core:detail key="root1" value="WebSphereNode"/>   
+   </core:annotation>
+  <was:unit.wasNodeUnit name="WebSphereNode">
+    <was:capability.wasNode name="WebSphereNode" linkType="any" wasVersion="6.0" nodeName="Node01" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>    
+    </was:capability.wasNode>    
+    <was:capability.wasConfigurationContainer name="Provide Configuration Container" displayName="Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer name="SharedlibraryContainer" displayName="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable name="Substitution Variable" displayName="Substitution variable"  linkType="any"/>    
+<!--      <os:capability.portConsumer name="PortConsumer" displayName="Port Consumer" linkType="any"/> -->
+    
+    <core:requirement mutable="true" name="A hosting WAS system" displayName="Host on WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement mutable="true" name="NodeGroup" displayName="Member of NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement mutable="true" name="Cell" displayName="Must contained by Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    
+ 	<!--
+    <core:requirement mutable="true" name="Dmgr" displayName="Deployment Manager" dmoType="was:WasDeploymentManagerUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    -->
+    
+   <!-- MK 8/8/2006 replaced the following with a single HostingLink
+    <core:link.hosting name="Node_BOOTSTRAP_ADDRESS" target="/BOOTSTRAP_ADDRESS"/>
+    <core:link.hosting name="host CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" target="/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS"/>
+    <core:link.hosting name="host CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" target="/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS"/>
+    <core:link.hosting name="host DCS_UNICAST_ADDRESS" target="/DCS_UNICAST_ADDRESS"/>
+    <core:link.hosting name="host DRS_CLIENT_ADDRESS" target="/DRS_CLIENT_ADDRESS"/>
+    <core:link.hosting name="host NODE_DISCOVERY_ADDRESS" target="/NODE_DISCOVERY_ADDRESS"/>
+    <core:link.hosting name="host NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS" target="/NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS"/>
+    <core:link.hosting name="host NODE_MULTICAST_DISCOVERY_ADDRESS" target="/NODE_MULTICAST_DISCOVERY_ADDRESS"/>
+    <core:link.hosting name="host ORB_LISTENER_ADDRESS" target="/ORB_LISTENER_ADDRESS"/>
+    <core:link.hosting name="host SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" target="/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS"/>
+    <core:link.hosting name="host SOAP_CONNECTOR_ADDRESS" target="/SOAP_CONNECTOR_ADDRESS"/>
+    -->
+	<!-- MK 8/8/2006 hid configuration units until UI support available
+	<core:link.hosting name="ports" target="/portConfiguration"/>
+	-->
+    
+  <!--      
+  <core:requirement mutable="true" name="user account" displayName="Depend on an user Account" dmoType="os:User" linkType="dependency"/> 
+  -->
+
+ </was:unit.wasNodeUnit>
+  <!-- MK 8/8/2006 hid the port configuration until UI support available
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true">
+    <os:capability.port displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" portName="BOOTSTRAP_ADDRESS" mutable ="false" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="DCS_UNICAST_ADDRESS" name="DCS_UNICAST_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="DRS_CLIENT_ADDRESS" name="DRS_CLIENT_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="NODE_DISCOVERY_ADDRESS" name="NODE_DISCOVERY_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="httpPort" name="httpPort" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="NODE_MULTICAST_DISCOVERY_ADDRESS" name="NODE_MULTICAST_DISCOVERY_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="ORB_LISTENER_ADDRESS" name="ORB_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <os:capability.port displayName="SOAP_CONNECTOR_ADDRESS" name="SOAP_CONNECTOR_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  -->
+ 
+  <!-- MK 8/8/2006 replaced all of the below PortConfigUnits with the single one above
+  <os:unit.portConfigUnit displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" portName="BOOTSTRAP_ADDRESS" mutable ="false" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="WebSphereNodePortConsumer" mutable="true" name="WebSphereNodePortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="BOOTSTRAP_ADDRESS" name="BOOTSTRAP_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+
+  <os:unit.portConfigUnit displayName="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="DCS_UNICAST_ADDRESS" name="DCS_UNICAST_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="DCS_UNICAST_ADDRESS" name="DCS_UNICAST_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="DRS_CLIENT_ADDRESS" name="DRS_CLIENT_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="DRS_CLIENT_ADDRESS" name="DRS_CLIENT_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="NODE_DISCOVERY_ADDRESS" name="NODE_DISCOVERY_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="NODE_DISCOVERY_ADDRESS" name="NODE_DISCOVERY_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS" name="NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="httpPort" name="httpPort" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>			
+
+  <os:unit.portConfigUnit displayName="NODE_MULTICAST_DISCOVERY_ADDRESS" name="NODE_MULTICAST_DISCOVERY_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="NODE_MULTICAST_DISCOVERY_ADDRESS" name="NODE_MULTICAST_DISCOVERY_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+
+  <os:unit.portConfigUnit displayName="ORB_LISTENER_ADDRESS" name="ORB_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="ORB_LISTENER_ADDRESS" name="ORB_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+
+  <os:unit.portConfigUnit displayName="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+
+  <os:unit.portConfigUnit displayName="SOAP_CONNECTOR_ADDRESS" name="SOAP_CONNECTOR_ADDRESS" configurationUnit="true">
+    <os:capability.port displayName="SOAP_CONNECTOR_ADDRESS" name="SOAP_CONNECTOR_ADDRESS" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>		
+  -->	
+</core:topology>

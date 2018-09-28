@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/ModelObject.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/profile/ScopeRestriction.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/auth/ProfileAccessEntry.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/profile/Property.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/agent/AgentConfiguration.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.discovery.profile.DiscoveryProfile">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.ModelObject">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentConfigurations" type="coll:com.collation.platform.model.discovery.agent.AgentConfiguration" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="properties" type="coll:com.collation.platform.model.discovery.profile.Property" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="scopeRestrictions" type="coll:com.collation.platform.model.discovery.profile.ScopeRestriction" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="accessList" type="coll:com.collation.platform.model.discovery.auth.ProfileAccessEntry" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="objectVersion" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

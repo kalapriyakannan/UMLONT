@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="WebSphereMQQueueDestinationUnit template">
+  <was:unit.wasSibInboundPortUnit displayName="Conceptual WasSibInboundPortUnit" name="WebSphereSibInboundPortUnit" configurationUnit="true" conceptual="true">
+    <was:capability.wasSibInboundPort name="WebSphere Bus Inbound Port" displayName="WebSphere Bus Inbound Port" linkType="any"/>
+    <core:requirement mutable="true" name="Hosted on Was Inbound Service" displayName="Hosted on Was Inbound Service" dmoType="was:WasSibInboundService" linkType="hosting"/>
+    <core:requirement mutable="true" name="depend on a endpoint listener" displayName="depend on a endpoint listener" dmoType="was:WasEndpointListenerConfiguration" linkType="dependency"/>    
+  </was:unit.wasSibInboundPortUnit>
+</core:topology>

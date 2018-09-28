@@ -1,0 +1,1594 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../schemas/os.xsd#/ ../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#/ ../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#/ ../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#/"
+    outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#/ ../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/ os.ecore#/"
+    topToBottom="true">
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry/key"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=33/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/any"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/details"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/context"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//annotation;XSDElementDeclaration=27"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/annotation"/>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//boolean;XSDSimpleTypeDefinition=8"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/attributeName"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/description"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/encrypted"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/encryptionRequired"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/mutable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=5"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/parameter"/>
+  </nested>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//anyType;XSDComplexTypeDefinition=27"
+      outputs="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EJavaObject;XSDSimpleTypeDefinition=22"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EString;XSDSimpleTypeDefinition=30"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/key"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/details"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/contents"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/references"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/source"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/eAnnotations"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EJavaClass;XSDSimpleTypeDefinition=21"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaClass"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EBooleanObject;XSDSimpleTypeDefinition=3"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EBoolean;XSDSimpleTypeDefinition=2"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=42"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EIntegerObject;XSDSimpleTypeDefinition=20"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EInt;XSDSimpleTypeDefinition=19"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/defaultValue"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClass"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClassName"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType/serializable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute/data"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute/name"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Constraint;XSDComplexTypeDefinition=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Constraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/description"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/displayName"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/name"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IStatus;XSDSimpleTypeDefinition=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//IStatus"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Stereotype">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Stereotype/keyword"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Stereotype/profile"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Stereotype;XSDComplexTypeDefinition=19/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Stereotype/required"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//VersionString;XSDSimpleTypeDefinition=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//VersionString"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/buildVersion"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/hosting"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/dependency"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/origin"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/stereotypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Capability;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/linkType"/>
+  </nested>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=23"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink/sourceURI"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=23/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink/targetURI"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DependencyLink;XSDComplexTypeDefinition=24"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DependencyLink"/>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=24"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/hosting"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/dependency"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/member"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/many"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EParameter;XSDComplexTypeDefinition=13"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/changeable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValue"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/transient"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/unsettable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/volatile"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/eAttributeType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/iD"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/container"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eReferenceType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/resolveProxies"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eStructuralFeatures"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=7"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllContainments"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=8"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllOperations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllReferences"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=9"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllStructuralFeatures"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=10"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllSuperTypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=11"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eIDAttribute"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eReferences"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/interface"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/attributeName"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/interpreter"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/use"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=22/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/dependencyLinkGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/link"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/dmoType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/extends"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/linkType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=21/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/use"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//UnitLink;XSDComplexTypeDefinition=25"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//UnitLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConstraintLink;XSDComplexTypeDefinition=26"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConstraintLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RealizationLink;XSDComplexTypeDefinition=27"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RealizationLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/buildVersion"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/installed"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/notInstalled"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/unknown"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/origin"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/publish"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/doNotPublish"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/unknown"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//HostingLink;XSDComplexTypeDefinition=30"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//HostingLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//MemberLink;XSDComplexTypeDefinition=31"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//MemberLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/capabilityGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/capabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/requirementGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/requirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/unitLinksGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/unitLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/constraintLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/realizationLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/stereotypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/conceptual"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/configurationUnit"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/goalInstallState"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/initInstallState"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/publishIntent"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property/name"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property/select"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/additions"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/feature"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/select"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredCapabilityGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredCapabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredRequirementsGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredRequirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredProperties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/augmentationGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/augmentations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/referenced"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstanceConfiguration">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstanceConfiguration/instantiations"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/instanceConfiguration"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/namespace"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/pattern"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConfigurationContract;XSDComplexTypeDefinition=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConfigurationContract"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/units"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitLinksGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/constraintLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/dependencyLinkGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/dependencyLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/realizationLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/imports"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/configurationContractGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/configurationContract"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/decoratorSemantic"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/namespace"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/annotations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/attributeMetaData"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/extendedAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/artifactGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/artifacts"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/constraintGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/constraints"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/mutable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Artifact;XSDComplexTypeDefinition=16"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Artifact"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//artifact;XSDElementDeclaration=12"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/artifact"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//FileArtifact">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//FileArtifact/fileURIs"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//artifact.file;XSDElementDeclaration=14"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/artifactFile"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BaseComponentUnit;XSDComplexTypeDefinition=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BaseComponentUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//baseComponent;XSDElementDeclaration=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/baseComponent"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//unit;XSDElementDeclaration=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/unit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability;XSDElementDeclaration=16"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capability"/>
+  <nested inputs="../schemas/os.xsd#//UserGroup;XSDComplexTypeDefinition=2" outputs="os.ecore#//UserGroup">
+    <nested inputs="../schemas/os.xsd#//UserGroup;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="os.ecore#//UserGroup/groupName"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//AIXLocalGroup;XSDComplexTypeDefinition=26" outputs="os.ecore#//AIXLocalGroup">
+    <nested inputs="../schemas/os.xsd#//AIXLocalGroup;XSDComplexTypeDefinition=26/XSDAttributeUse"
+        outputs="os.ecore#//AIXLocalGroup/groupDescription"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalGroup;XSDComplexTypeDefinition=26/XSDAttributeUse=1"
+        outputs="os.ecore#//AIXLocalGroup/groupSid"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.aixLocalGroup;XSDElementDeclaration=26"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityAixLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24"
+      outputs="os.ecore#//AIXLocalService">
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=2"
+        outputs="os.ecore#//AIXLocalService/actionType"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=1"
+        outputs="os.ecore#//AIXLocalService/executablePath"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse"
+        outputs="os.ecore#//AIXLocalService/serviceDescription"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=11"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelEight"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=8"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelFive"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=7"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelFour"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=12"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelNine"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=4"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelOne"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=10"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelSeven"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=9"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelSix"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=6"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelThree"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=5"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelTwo"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalService;XSDComplexTypeDefinition=24/XSDAttributeUse=3"
+        outputs="os.ecore#//AIXLocalService/startupRunLevelZero"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.aixLocalService;XSDElementDeclaration=24"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityAixLocalService"/>
+  <nested inputs="../schemas/os.xsd#//User;XSDComplexTypeDefinition=1" outputs="os.ecore#//User">
+    <nested inputs="../schemas/os.xsd#//User;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="os.ecore#//User/userId"/>
+    <nested inputs="../schemas/os.xsd#//User;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="os.ecore#//User/userPassword"/>
+  </nested>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//integer;XSDSimpleTypeDefinition=38"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+  <nested inputs="../schemas/os.xsd#//AIXAuthMethodType;XSDSimpleTypeDefinition=27"
+      outputs="os.ecore#//AIXAuthMethodType">
+    <nested inputs="../schemas/os.xsd#//AIXAuthMethodType;XSDSimpleTypeDefinition=27/XSDEnumerationFacet"
+        outputs="os.ecore#//AIXAuthMethodType/SYSTEM"/>
+    <nested inputs="../schemas/os.xsd#//AIXAuthMethodType;XSDSimpleTypeDefinition=27/XSDEnumerationFacet=1"
+        outputs="os.ecore#//AIXAuthMethodType/NONE"/>
+    <nested inputs="../schemas/os.xsd#//AIXAuthMethodType;XSDSimpleTypeDefinition=27/XSDEnumerationFacet=2"
+        outputs="os.ecore#//AIXAuthMethodType/tokenUsername"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//AIXUserRegisteringMethodType;XSDSimpleTypeDefinition=26"
+      outputs="os.ecore#//AIXUserRegisteringMethodType">
+    <nested inputs="../schemas/os.xsd#//AIXUserRegisteringMethodType;XSDSimpleTypeDefinition=26/XSDEnumerationFacet"
+        outputs="os.ecore#//AIXUserRegisteringMethodType/files"/>
+    <nested inputs="../schemas/os.xsd#//AIXUserRegisteringMethodType;XSDSimpleTypeDefinition=26/XSDEnumerationFacet=1"
+        outputs="os.ecore#//AIXUserRegisteringMethodType/NIS"/>
+    <nested inputs="../schemas/os.xsd#//AIXUserRegisteringMethodType;XSDSimpleTypeDefinition=26/XSDEnumerationFacet=2"
+        outputs="os.ecore#//AIXUserRegisteringMethodType/DCE"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25" outputs="os.ecore#//AIXLocalUser">
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=2"
+        outputs="os.ecore#//AIXLocalUser/accountDescription"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=6"
+        outputs="os.ecore#//AIXLocalUser/accountDisabled"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=13"
+        outputs="os.ecore#//AIXLocalUser/accountExpirationTime"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=3"
+        outputs="os.ecore#//AIXLocalUser/changePasswordNextLogon"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=1"
+        outputs="os.ecore#//AIXLocalUser/fullName"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=8"
+        outputs="os.ecore#//AIXLocalUser/homeDir"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=10"
+        outputs="os.ecore#//AIXLocalUser/isAdmin"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=16"
+        outputs="os.ecore#//AIXLocalUser/loginPermitted"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=18"
+        outputs="os.ecore#//AIXLocalUser/loginRetries"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=17"
+        outputs="os.ecore#//AIXLocalUser/loginTimes"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=21"
+        outputs="os.ecore#//AIXLocalUser/maxCharRepeats"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=19"
+        outputs="os.ecore#//AIXLocalUser/maxPasswordAgeInWeeks"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=20"
+        outputs="os.ecore#//AIXLocalUser/maxPasswordValidWeeks"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=23"
+        outputs="os.ecore#//AIXLocalUser/minAlphaCharsInPassword"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=24"
+        outputs="os.ecore#//AIXLocalUser/minDiffChars"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=26"
+        outputs="os.ecore#//AIXLocalUser/minOtherCharsInPassword"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=22"
+        outputs="os.ecore#//AIXLocalUser/minPasswordAgeInWeeks"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=25"
+        outputs="os.ecore#//AIXLocalUser/minPasswordLength"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=15"
+        outputs="os.ecore#//AIXLocalUser/notReusableNumberOfPasswords"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=14"
+        outputs="os.ecore#//AIXLocalUser/passReuseNotAllowedInWeeks"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=27"
+        outputs="os.ecore#//AIXLocalUser/passwordChangeWarnTime"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=5"
+        outputs="os.ecore#//AIXLocalUser/passwordNeverExpires"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=11"
+        outputs="os.ecore#//AIXLocalUser/primaryAuthMethod"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=29"
+        outputs="os.ecore#//AIXLocalUser/remoteLoginIsAllowed"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=12"
+        outputs="os.ecore#//AIXLocalUser/secondaryAuthMethod"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=7"
+        outputs="os.ecore#//AIXLocalUser/shell"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=31"
+        outputs="os.ecore#//AIXLocalUser/suGroupsAllowed"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=30"
+        outputs="os.ecore#//AIXLocalUser/suIsAllowed"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=32"
+        outputs="os.ecore#//AIXLocalUser/timeLastLogin"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=4"
+        outputs="os.ecore#//AIXLocalUser/userCannotChangePassword"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse"
+        outputs="os.ecore#//AIXLocalUser/userName"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=28"
+        outputs="os.ecore#//AIXLocalUser/userRegisteringMethod"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=9"
+        outputs="os.ecore#//AIXLocalUser/userSid"/>
+    <nested inputs="../schemas/os.xsd#//AIXLocalUser;XSDComplexTypeDefinition=25/XSDAttributeUse=33"
+        outputs="os.ecore#//AIXLocalUser/usuccessfulLoginCount"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.aixLocalUser;XSDElementDeclaration=25"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityAixLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//KernelWidthType;XSDSimpleTypeDefinition=21"
+      outputs="os.ecore#//KernelWidthType">
+    <nested inputs="../schemas/os.xsd#//KernelWidthType;XSDSimpleTypeDefinition=21/XSDEnumerationFacet"
+        outputs="os.ecore#//KernelWidthType/_32Bit"/>
+    <nested inputs="../schemas/os.xsd#//KernelWidthType;XSDSimpleTypeDefinition=21/XSDEnumerationFacet=1"
+        outputs="os.ecore#//KernelWidthType/_64Bit"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition" outputs="os.ecore#//OperatingSystem">
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=5"
+        outputs="os.ecore#//OperatingSystem/fqdn"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="os.ecore#//OperatingSystem/hostname"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=6"
+        outputs="os.ecore#//OperatingSystem/kernelArchitecture"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=7"
+        outputs="os.ecore#//OperatingSystem/kernelVersion"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=8"
+        outputs="os.ecore#//OperatingSystem/kernelWidth"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=10"
+        outputs="os.ecore#//OperatingSystem/locale"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=9"
+        outputs="os.ecore#//OperatingSystem/manufacturer"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="os.ecore#//OperatingSystem/osDistribution"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=4"
+        outputs="os.ecore#//OperatingSystem/osServicepack"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="os.ecore#//OperatingSystem/osType"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=3"
+        outputs="os.ecore#//OperatingSystem/osVersion"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystem;XSDComplexTypeDefinition/XSDAttributeUse=11"
+        outputs="os.ecore#//OperatingSystem/timeZone"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//AIXDesktopType;XSDSimpleTypeDefinition=24" outputs="os.ecore#//AIXDesktopType">
+    <nested inputs="../schemas/os.xsd#//AIXDesktopType;XSDSimpleTypeDefinition=24/XSDEnumerationFacet"
+        outputs="os.ecore#//AIXDesktopType/CDE"/>
+    <nested inputs="../schemas/os.xsd#//AIXDesktopType;XSDSimpleTypeDefinition=24/XSDEnumerationFacet=1"
+        outputs="os.ecore#//AIXDesktopType/NONE"/>
+    <nested inputs="../schemas/os.xsd#//AIXDesktopType;XSDSimpleTypeDefinition=24/XSDEnumerationFacet=2"
+        outputs="os.ecore#//AIXDesktopType/KDE"/>
+    <nested inputs="../schemas/os.xsd#//AIXDesktopType;XSDSimpleTypeDefinition=24/XSDEnumerationFacet=3"
+        outputs="os.ecore#//AIXDesktopType/GNOME"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23"
+      outputs="os.ecore#//AIXOperatingSystem">
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse=3"
+        outputs="os.ecore#//AIXOperatingSystem/desktop"/>
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse=1"
+        outputs="os.ecore#//AIXOperatingSystem/installDate"/>
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse=4"
+        outputs="os.ecore#//AIXOperatingSystem/kernel"/>
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse=2"
+        outputs="os.ecore#//AIXOperatingSystem/lastBootUpTime"/>
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse"
+        outputs="os.ecore#//AIXOperatingSystem/owner"/>
+    <nested inputs="../schemas/os.xsd#//AIXOperatingSystem;XSDComplexTypeDefinition=23/XSDAttributeUse=5"
+        outputs="os.ecore#//AIXOperatingSystem/tCB"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.aixOperatingSystem;XSDElementDeclaration=23"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityAixOperatingSystem"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability/id"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=34/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability/version"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability.bundle;XSDElementDeclaration=28"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capabilityBundle"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PortType;XSDSimpleTypeDefinition=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PortType"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability/applicationLayerProtocol"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=29/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability/port"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability.communication;XSDElementDeclaration=24"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capabilityCommunication"/>
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//long;XSDSimpleTypeDefinition=41"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Long"/>
+  <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61"
+      outputs="os.ecore#//FileSystemContent">
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=1"
+        outputs="os.ecore#//FileSystemContent/fixedPath"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=3"
+        outputs="os.ecore#//FileSystemContent/group"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=5"
+        outputs="os.ecore#//FileSystemContent/lastModified"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=6"
+        outputs="os.ecore#//FileSystemContent/owner"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=4"
+        outputs="os.ecore#//FileSystemContent/permissions"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=7"
+        outputs="os.ecore#//FileSystemContent/realFile"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse=2"
+        outputs="os.ecore#//FileSystemContent/size"/>
+    <nested inputs="../schemas/os.xsd#//FileSystemContent;XSDComplexTypeDefinition=61/XSDAttributeUse"
+        outputs="os.ecore#//FileSystemContent/uRI"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//DataFile;XSDComplexTypeDefinition=63" outputs="os.ecore#//DataFile"/>
+  <nested inputs="../schemas/os.xsd#//capability.dataFile;XSDElementDeclaration=63"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityDataFile"/>
+  <nested inputs="../schemas/os.xsd#//Directory;XSDComplexTypeDefinition=65" outputs="os.ecore#//Directory">
+    <nested inputs="../schemas/os.xsd#//Directory;XSDComplexTypeDefinition=65/XSDAttributeUse"
+        outputs="os.ecore#//Directory/directoryPath"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.directory;XSDElementDeclaration=65"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityDirectory"/>
+  <nested inputs="../schemas/os.xsd#//FileSystem;XSDComplexTypeDefinition=43" outputs="os.ecore#//FileSystem">
+    <nested inputs="../schemas/os.xsd#//FileSystem;XSDComplexTypeDefinition=43/XSDAttributeUse"
+        outputs="os.ecore#//FileSystem/availableSpace"/>
+    <nested inputs="../schemas/os.xsd#//FileSystem;XSDComplexTypeDefinition=43/XSDAttributeUse=2"
+        outputs="os.ecore#//FileSystem/capacity"/>
+    <nested inputs="../schemas/os.xsd#//FileSystem;XSDComplexTypeDefinition=43/XSDAttributeUse=1"
+        outputs="os.ecore#//FileSystem/mountPoint"/>
+    <nested inputs="../schemas/os.xsd#//FileSystem;XSDComplexTypeDefinition=43/XSDAttributeUse=3"
+        outputs="os.ecore#//FileSystem/type"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.fileSystem;XSDElementDeclaration=43"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.fileSystemContent;XSDElementDeclaration=61"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityFileSystemContent"/>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalGroup;XSDComplexTypeDefinition=20"
+      outputs="os.ecore#//LinuxLocalGroup">
+    <nested inputs="../schemas/os.xsd#//LinuxLocalGroup;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="os.ecore#//LinuxLocalGroup/groupDescription"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.linuxLocalGroup;XSDElementDeclaration=20"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityLinuxLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//LinuxServiceStatusType;XSDSimpleTypeDefinition=17"
+      outputs="os.ecore#//LinuxServiceStatusType">
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStatusType;XSDSimpleTypeDefinition=17/XSDEnumerationFacet"
+        outputs="os.ecore#//LinuxServiceStatusType/Running"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStatusType;XSDSimpleTypeDefinition=17/XSDEnumerationFacet=1"
+        outputs="os.ecore#//LinuxServiceStatusType/Stopped"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStatusType;XSDSimpleTypeDefinition=17/XSDEnumerationFacet=2"
+        outputs="os.ecore#//LinuxServiceStatusType/Unknown"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12"
+      outputs="os.ecore#//LinuxServiceStartupTypeType">
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12/XSDEnumerationFacet"
+        outputs="os.ecore#//LinuxServiceStartupTypeType/Automatic"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12/XSDEnumerationFacet=1"
+        outputs="os.ecore#//LinuxServiceStartupTypeType/Boot"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12/XSDEnumerationFacet=2"
+        outputs="os.ecore#//LinuxServiceStartupTypeType/System"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12/XSDEnumerationFacet=3"
+        outputs="os.ecore#//LinuxServiceStartupTypeType/Manual"/>
+    <nested inputs="../schemas/os.xsd#//LinuxServiceStartupTypeType;XSDSimpleTypeDefinition=12/XSDEnumerationFacet=4"
+        outputs="os.ecore#//LinuxServiceStartupTypeType/Disabled"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17"
+      outputs="os.ecore#//LinuxLocalService">
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=2"
+        outputs="os.ecore#//LinuxLocalService/executablePath"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=5"
+        outputs="os.ecore#//LinuxLocalService/serviceAccount"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=1"
+        outputs="os.ecore#//LinuxLocalService/serviceDescription"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse"
+        outputs="os.ecore#//LinuxLocalService/serviceName"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=3"
+        outputs="os.ecore#//LinuxLocalService/serviceStatus"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=11"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelFive"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=10"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelFour"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=7"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelOne"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=12"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelSix"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=9"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelThree"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=8"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelTwo"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=6"
+        outputs="os.ecore#//LinuxLocalService/startupRunLevelZero"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalService;XSDComplexTypeDefinition=17/XSDAttributeUse=4"
+        outputs="os.ecore#//LinuxLocalService/startupType"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.linuxLocalService;XSDElementDeclaration=17"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityLinuxLocalService"/>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14"
+      outputs="os.ecore#//LinuxLocalUser">
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=2"
+        outputs="os.ecore#//LinuxLocalUser/accountDescription"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=6"
+        outputs="os.ecore#//LinuxLocalUser/accountDisabled"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=3"
+        outputs="os.ecore#//LinuxLocalUser/changePasswordNextLogon"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="os.ecore#//LinuxLocalUser/fullName"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=8"
+        outputs="os.ecore#//LinuxLocalUser/homeDir"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=5"
+        outputs="os.ecore#//LinuxLocalUser/passwordNeverExpires"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=7"
+        outputs="os.ecore#//LinuxLocalUser/shell"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse=4"
+        outputs="os.ecore#//LinuxLocalUser/userCannotChangePassword"/>
+    <nested inputs="../schemas/os.xsd#//LinuxLocalUser;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="os.ecore#//LinuxLocalUser/userName"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.linuxLocalUser;XSDElementDeclaration=14"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityLinuxLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//LinuxOperatingSystem;XSDComplexTypeDefinition=11"
+      outputs="os.ecore#//LinuxOperatingSystem">
+    <nested inputs="../schemas/os.xsd#//LinuxOperatingSystem;XSDComplexTypeDefinition=11/XSDAttributeUse"
+        outputs="os.ecore#//LinuxOperatingSystem/kernelRelease"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.linuxOperatingSystem;XSDElementDeclaration=11"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityLinuxOperatingSystem"/>
+  <nested inputs="../schemas/os.xsd#//LocalFileSystem;XSDComplexTypeDefinition=47"
+      outputs="os.ecore#//LocalFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.localFileSystem;XSDElementDeclaration=47"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityLocalFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//RemoteFileSystem;XSDComplexTypeDefinition=45"
+      outputs="os.ecore#//RemoteFileSystem">
+    <nested inputs="../schemas/os.xsd#//RemoteFileSystem;XSDComplexTypeDefinition=45/XSDAttributeUse=1"
+        outputs="os.ecore#//RemoteFileSystem/exportName"/>
+    <nested inputs="../schemas/os.xsd#//RemoteFileSystem;XSDComplexTypeDefinition=45/XSDAttributeUse"
+        outputs="os.ecore#//RemoteFileSystem/serverName"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//NFSFileSystem;XSDComplexTypeDefinition=57" outputs="os.ecore#//NFSFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.nFSFileSystem;XSDElementDeclaration=57"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityNFSFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//OpenVmsFileSystem;XSDComplexTypeDefinition=59"
+      outputs="os.ecore#//OpenVmsFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.openVmsFileSystem;XSDElementDeclaration=59"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityOpenVmsFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.operatingSystem;XSDElementDeclaration"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityOperatingSystem"/>
+  <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9"
+      outputs="os.ecore#//TransportLayerProtocolType">
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet"
+        outputs="os.ecore#//TransportLayerProtocolType/TCP"/>
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=1"
+        outputs="os.ecore#//TransportLayerProtocolType/UDP"/>
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=2"
+        outputs="os.ecore#//TransportLayerProtocolType/DCCP"/>
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=3"
+        outputs="os.ecore#//TransportLayerProtocolType/SCTP"/>
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=4"
+        outputs="os.ecore#//TransportLayerProtocolType/IL"/>
+    <nested inputs="../schemas/os.xsd#//TransportLayerProtocolType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=5"
+        outputs="os.ecore#//TransportLayerProtocolType/RUDP"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4" outputs="os.ecore#//Port">
+    <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4/XSDAttributeUse=3"
+        outputs="os.ecore#//Port/applicationLayerProtocol"/>
+    <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4/XSDAttributeUse=2"
+        outputs="os.ecore#//Port/ipAddressOrHostname"/>
+    <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4/XSDAttributeUse=4"
+        outputs="os.ecore#//Port/port"/>
+    <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="os.ecore#//Port/portName"/>
+    <nested inputs="../schemas/os.xsd#//Port;XSDComplexTypeDefinition=4/XSDAttributeUse=1"
+        outputs="os.ecore#//Port/transportLayerProtocol"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.port;XSDElementDeclaration=4" outputs="os.ecore#//OperatingSystemRoot/capabilityPort"/>
+  <nested inputs="../schemas/os.xsd#//PortConsumer;XSDComplexTypeDefinition=3" outputs="os.ecore#//PortConsumer"/>
+  <nested inputs="../schemas/os.xsd#//capability.portConsumer;XSDElementDeclaration=3"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityPortConsumer"/>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalGroup;XSDComplexTypeDefinition=21"
+      outputs="os.ecore#//RedhatLinuxLocalGroup">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalGroup;XSDComplexTypeDefinition=21/XSDAttributeUse"
+        outputs="os.ecore#//RedhatLinuxLocalGroup/groupSid"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.redhatLinuxLocalGroup;XSDElementDeclaration=21"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalService;XSDComplexTypeDefinition=18"
+      outputs="os.ecore#//RedhatLinuxLocalService"/>
+  <nested inputs="../schemas/os.xsd#//capability.redhatLinuxLocalService;XSDElementDeclaration=18"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalService"/>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15"
+      outputs="os.ecore#//RedhatLinuxLocalUser">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=5"
+        outputs="os.ecore#//RedhatLinuxLocalUser/accountDisableAfterDays"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=6"
+        outputs="os.ecore#//RedhatLinuxLocalUser/accountDisableDate"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="os.ecore#//RedhatLinuxLocalUser/daysBeforePasswordMayChange"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="os.ecore#//RedhatLinuxLocalUser/lastPasswordChange"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="os.ecore#//RedhatLinuxLocalUser/passwordExpireAfterDays"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="os.ecore#//RedhatLinuxLocalUser/passwordExpireWarningDays"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxLocalUser;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="os.ecore#//RedhatLinuxLocalUser/userSid"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.redhatLinuxLocalUser;XSDElementDeclaration=15"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxBootLoaderType;XSDSimpleTypeDefinition=7"
+      outputs="os.ecore#//RedhatLinuxBootLoaderType">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxBootLoaderType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet"
+        outputs="os.ecore#//RedhatLinuxBootLoaderType/GRUB"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxBootLoaderType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet=1"
+        outputs="os.ecore#//RedhatLinuxBootLoaderType/LILO"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxBootLoaderType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet=2"
+        outputs="os.ecore#//RedhatLinuxBootLoaderType/Other"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//RedhatDesktopType;XSDSimpleTypeDefinition=22"
+      outputs="os.ecore#//RedhatDesktopType">
+    <nested inputs="../schemas/os.xsd#//RedhatDesktopType;XSDSimpleTypeDefinition=22/XSDEnumerationFacet"
+        outputs="os.ecore#//RedhatDesktopType/GNOME"/>
+    <nested inputs="../schemas/os.xsd#//RedhatDesktopType;XSDSimpleTypeDefinition=22/XSDEnumerationFacet=1"
+        outputs="os.ecore#//RedhatDesktopType/KDE"/>
+    <nested inputs="../schemas/os.xsd#//RedhatDesktopType;XSDSimpleTypeDefinition=22/XSDEnumerationFacet=2"
+        outputs="os.ecore#//RedhatDesktopType/NONE"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxProductTypeType;XSDSimpleTypeDefinition=6"
+      outputs="os.ecore#//RedhatLinuxProductTypeType">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxProductTypeType;XSDSimpleTypeDefinition=6/XSDEnumerationFacet"
+        outputs="os.ecore#//RedhatLinuxProductTypeType/Server"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxProductTypeType;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=1"
+        outputs="os.ecore#//RedhatLinuxProductTypeType/PersonalDesktop"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxProductTypeType;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=2"
+        outputs="os.ecore#//RedhatLinuxProductTypeType/WorkStation"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxProductTypeType;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=3"
+        outputs="os.ecore#//RedhatLinuxProductTypeType/Other"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//SELinuxStateType;XSDSimpleTypeDefinition=25"
+      outputs="os.ecore#//SELinuxStateType">
+    <nested inputs="../schemas/os.xsd#//SELinuxStateType;XSDSimpleTypeDefinition=25/XSDEnumerationFacet"
+        outputs="os.ecore#//SELinuxStateType/disabled"/>
+    <nested inputs="../schemas/os.xsd#//SELinuxStateType;XSDSimpleTypeDefinition=25/XSDEnumerationFacet=1"
+        outputs="os.ecore#//SELinuxStateType/permissive"/>
+    <nested inputs="../schemas/os.xsd#//SELinuxStateType;XSDSimpleTypeDefinition=25/XSDEnumerationFacet=2"
+        outputs="os.ecore#//SELinuxStateType/enforcing"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12"
+      outputs="os.ecore#//RedhatLinuxOperatingSystem">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=3"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/bootLoader"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=5"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/desktop"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=4"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/installDate"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/lastBootUpTime"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=1"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/owner"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=2"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/productType"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxOperatingSystem;XSDComplexTypeDefinition=12/XSDAttributeUse=6"
+        outputs="os.ecore#//RedhatLinuxOperatingSystem/sELinuxState"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.redhatLinuxOperatingSystem;XSDElementDeclaration=12"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxOperatingSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.remoteFileSystem;XSDElementDeclaration=45"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityRemoteFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//SMBFileSystem;XSDComplexTypeDefinition=55" outputs="os.ecore#//SMBFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.sMBFileSystem;XSDElementDeclaration=55"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySMBFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//UnixFileSystem;XSDComplexTypeDefinition=49"
+      outputs="os.ecore#//UnixFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//SolarisFileSystem;XSDComplexTypeDefinition=51"
+      outputs="os.ecore#//SolarisFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.solarisFileSystem;XSDElementDeclaration=51"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySolarisFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxLocalGroup;XSDComplexTypeDefinition=22"
+      outputs="os.ecore#//SUSELinuxLocalGroup">
+    <nested inputs="../schemas/os.xsd#//SUSELinuxLocalGroup;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="os.ecore#//SUSELinuxLocalGroup/groupId"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.suseLinuxLocalGroup;XSDElementDeclaration=22"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxLocalService;XSDComplexTypeDefinition=19"
+      outputs="os.ecore#//SUSELinuxLocalService"/>
+  <nested inputs="../schemas/os.xsd#//capability.suseLinuxLocalService;XSDElementDeclaration=19"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalService"/>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxLocalUser;XSDComplexTypeDefinition=16"
+      outputs="os.ecore#//SUSELinuxLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//capability.suseLinuxLocalUser;XSDElementDeclaration=16"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxBootLoaderType;XSDSimpleTypeDefinition=8"
+      outputs="os.ecore#//SUSELinuxBootLoaderType">
+    <nested inputs="../schemas/os.xsd#//SUSELinuxBootLoaderType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet"
+        outputs="os.ecore#//SUSELinuxBootLoaderType/GRUB"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxBootLoaderType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=1"
+        outputs="os.ecore#//SUSELinuxBootLoaderType/LILO"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxBootLoaderType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=2"
+        outputs="os.ecore#//SUSELinuxBootLoaderType/Other"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//SUSEDesktopType;XSDSimpleTypeDefinition=23"
+      outputs="os.ecore#//SUSEDesktopType">
+    <nested inputs="../schemas/os.xsd#//SUSEDesktopType;XSDSimpleTypeDefinition=23/XSDEnumerationFacet"
+        outputs="os.ecore#//SUSEDesktopType/GNOME"/>
+    <nested inputs="../schemas/os.xsd#//SUSEDesktopType;XSDSimpleTypeDefinition=23/XSDEnumerationFacet=1"
+        outputs="os.ecore#//SUSEDesktopType/KDE"/>
+    <nested inputs="../schemas/os.xsd#//SUSEDesktopType;XSDSimpleTypeDefinition=23/XSDEnumerationFacet=2"
+        outputs="os.ecore#//SUSEDesktopType/NONE"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxOperatingSystem;XSDComplexTypeDefinition=13"
+      outputs="os.ecore#//SUSELinuxOperatingSystem">
+    <nested inputs="../schemas/os.xsd#//SUSELinuxOperatingSystem;XSDComplexTypeDefinition=13/XSDAttributeUse"
+        outputs="os.ecore#//SUSELinuxOperatingSystem/bootLoader"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxOperatingSystem;XSDComplexTypeDefinition=13/XSDAttributeUse=2"
+        outputs="os.ecore#//SUSELinuxOperatingSystem/desktop"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxOperatingSystem;XSDComplexTypeDefinition=13/XSDAttributeUse=1"
+        outputs="os.ecore#//SUSELinuxOperatingSystem/lastBootUpDate"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.suseLinuxOperatingSystem;XSDElementDeclaration=13"
+      outputs="os.ecore#//OperatingSystemRoot/capabilitySuseLinuxOperatingSystem"/>
+  <nested inputs="../schemas/os.xsd#//UnixDirectory;XSDComplexTypeDefinition=8" outputs="os.ecore#//UnixDirectory"/>
+  <nested inputs="../schemas/os.xsd#//capability.unixDirectory;XSDElementDeclaration=8"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityUnixDirectory"/>
+  <nested inputs="../schemas/os.xsd#//capability.unixFileSystem;XSDElementDeclaration=49"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityUnixFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.user;XSDElementDeclaration=1" outputs="os.ecore#//OperatingSystemRoot/capabilityUser"/>
+  <nested inputs="../schemas/os.xsd#//capability.userGroup;XSDElementDeclaration=2"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityUserGroup"/>
+  <nested inputs="../schemas/os.xsd#//WindowsDirectory;XSDComplexTypeDefinition=7"
+      outputs="os.ecore#//WindowsDirectory"/>
+  <nested inputs="../schemas/os.xsd#//capability.windowsDirectory;XSDElementDeclaration=7"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsDirectory"/>
+  <nested inputs="../schemas/os.xsd#//WindowsFileSystem;XSDComplexTypeDefinition=53"
+      outputs="os.ecore#//WindowsFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//capability.windowsFileSystem;XSDElementDeclaration=53"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsFileSystem"/>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalGroup;XSDComplexTypeDefinition=6"
+      outputs="os.ecore#//WindowsLocalGroup">
+    <nested inputs="../schemas/os.xsd#//WindowsLocalGroup;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="os.ecore#//WindowsLocalGroup/description1"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalGroup;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="os.ecore#//WindowsLocalGroup/groupSid"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.windowsLocalGroup;XSDElementDeclaration=6"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15"
+      outputs="os.ecore#//WindowsServiceErrorControlType">
+    <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15/XSDEnumerationFacet"
+        outputs="os.ecore#//WindowsServiceErrorControlType/Ignore"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15/XSDEnumerationFacet=1"
+        outputs="os.ecore#//WindowsServiceErrorControlType/Normal"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15/XSDEnumerationFacet=2"
+        outputs="os.ecore#//WindowsServiceErrorControlType/Severe"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15/XSDEnumerationFacet=3"
+        outputs="os.ecore#//WindowsServiceErrorControlType/Critical"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceErrorControlType;XSDSimpleTypeDefinition=15/XSDEnumerationFacet=4"
+        outputs="os.ecore#//WindowsServiceErrorControlType/Unknown"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsServiceStatusType;XSDSimpleTypeDefinition=10"
+      outputs="os.ecore#//WindowsServiceStatusType">
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStatusType;XSDSimpleTypeDefinition=10/XSDEnumerationFacet"
+        outputs="os.ecore#//WindowsServiceStatusType/Running"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStatusType;XSDSimpleTypeDefinition=10/XSDEnumerationFacet=1"
+        outputs="os.ecore#//WindowsServiceStatusType/Stopped"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStatusType;XSDSimpleTypeDefinition=10/XSDEnumerationFacet=2"
+        outputs="os.ecore#//WindowsServiceStatusType/Paused"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStatusType;XSDSimpleTypeDefinition=10/XSDEnumerationFacet=3"
+        outputs="os.ecore#//WindowsServiceStatusType/Unknown"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11"
+      outputs="os.ecore#//WindowsServiceStartupType">
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11/XSDEnumerationFacet"
+        outputs="os.ecore#//WindowsServiceStartupType/Boot"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11/XSDEnumerationFacet=1"
+        outputs="os.ecore#//WindowsServiceStartupType/System"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11/XSDEnumerationFacet=2"
+        outputs="os.ecore#//WindowsServiceStartupType/Automatic"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11/XSDEnumerationFacet=3"
+        outputs="os.ecore#//WindowsServiceStartupType/Manual"/>
+    <nested inputs="../schemas/os.xsd#//WindowsServiceStartupType;XSDSimpleTypeDefinition=11/XSDEnumerationFacet=4"
+        outputs="os.ecore#//WindowsServiceStartupType/Disabled"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10"
+      outputs="os.ecore#//WindowsLocalService">
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=13"
+        outputs="os.ecore#//WindowsLocalService/dependantComponents"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=8"
+        outputs="os.ecore#//WindowsLocalService/errorControl"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=3"
+        outputs="os.ecore#//WindowsLocalService/executablePath"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=6"
+        outputs="os.ecore#//WindowsLocalService/logOnAsSystem"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=11"
+        outputs="os.ecore#//WindowsLocalService/runProgram"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=9"
+        outputs="os.ecore#//WindowsLocalService/serviceAccount"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=10"
+        outputs="os.ecore#//WindowsLocalService/serviceAccountPassword"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=12"
+        outputs="os.ecore#//WindowsLocalService/serviceDependencies"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=2"
+        outputs="os.ecore#//WindowsLocalService/serviceDescription"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=1"
+        outputs="os.ecore#//WindowsLocalService/serviceDisplayName"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse"
+        outputs="os.ecore#//WindowsLocalService/serviceName"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=4"
+        outputs="os.ecore#//WindowsLocalService/serviceStatus"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=7"
+        outputs="os.ecore#//WindowsLocalService/startParams"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalService;XSDComplexTypeDefinition=10/XSDAttributeUse=5"
+        outputs="os.ecore#//WindowsLocalService/startupType"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.windowsLocalService;XSDElementDeclaration=10"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsLocalService"/>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5"
+      outputs="os.ecore#//WindowsLocalUser">
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=1"
+        outputs="os.ecore#//WindowsLocalUser/accountDescription"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=8"
+        outputs="os.ecore#//WindowsLocalUser/accountDisabled"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=9"
+        outputs="os.ecore#//WindowsLocalUser/accountLocked"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=5"
+        outputs="os.ecore#//WindowsLocalUser/changePasswordNextLogon"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=13"
+        outputs="os.ecore#//WindowsLocalUser/enableRemoteControl"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse"
+        outputs="os.ecore#//WindowsLocalUser/fullName"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=12"
+        outputs="os.ecore#//WindowsLocalUser/homeFolder"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=11"
+        outputs="os.ecore#//WindowsLocalUser/logonScript"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=7"
+        outputs="os.ecore#//WindowsLocalUser/passwordNeverExpires"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=10"
+        outputs="os.ecore#//WindowsLocalUser/profilePath"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=4"
+        outputs="os.ecore#//WindowsLocalUser/userAccountType"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=6"
+        outputs="os.ecore#//WindowsLocalUser/userCannotChangePassword"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=2"
+        outputs="os.ecore#//WindowsLocalUser/userSid"/>
+    <nested inputs="../schemas/os.xsd#//WindowsLocalUser;XSDComplexTypeDefinition=5/XSDAttributeUse=3"
+        outputs="os.ecore#//WindowsLocalUser/userSidType"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.windowsLocalUser;XSDElementDeclaration=5"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//EncryptionLevelType;XSDSimpleTypeDefinition=3"
+      outputs="os.ecore#//EncryptionLevelType">
+    <nested inputs="../schemas/os.xsd#//EncryptionLevelType;XSDSimpleTypeDefinition=3/XSDEnumerationFacet"
+        outputs="os.ecore#//EncryptionLevelType/_40"/>
+    <nested inputs="../schemas/os.xsd#//EncryptionLevelType;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=1"
+        outputs="os.ecore#//EncryptionLevelType/_128"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsProductTypeType;XSDSimpleTypeDefinition=5"
+      outputs="os.ecore#//WindowsProductTypeType">
+    <nested inputs="../schemas/os.xsd#//WindowsProductTypeType;XSDSimpleTypeDefinition=5/XSDEnumerationFacet"
+        outputs="os.ecore#//WindowsProductTypeType/WorkStation"/>
+    <nested inputs="../schemas/os.xsd#//WindowsProductTypeType;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=1"
+        outputs="os.ecore#//WindowsProductTypeType/DomainController"/>
+    <nested inputs="../schemas/os.xsd#//WindowsProductTypeType;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=2"
+        outputs="os.ecore#//WindowsProductTypeType/Server"/>
+    <nested inputs="../schemas/os.xsd#//WindowsProductTypeType;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=3"
+        outputs="os.ecore#//WindowsProductTypeType/Other"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsDirectoryType;XSDSimpleTypeDefinition=4"
+      outputs="os.ecore#//WindowsDirectoryType">
+    <nested inputs="../schemas/os.xsd#//WindowsDirectoryType;XSDSimpleTypeDefinition=4/XSDEnumerationFacet"
+        outputs="os.ecore#//WindowsDirectoryType/WINDOWS"/>
+    <nested inputs="../schemas/os.xsd#//WindowsDirectoryType;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=1"
+        outputs="os.ecore#//WindowsDirectoryType/WINNT"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9"
+      outputs="os.ecore#//WindowsOperatingSystem">
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=1"
+        outputs="os.ecore#//WindowsOperatingSystem/company"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=14"
+        outputs="os.ecore#//WindowsOperatingSystem/domainAdmin"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=12"
+        outputs="os.ecore#//WindowsOperatingSystem/domainName"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=15"
+        outputs="os.ecore#//WindowsOperatingSystem/domainPassword"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=8"
+        outputs="os.ecore#//WindowsOperatingSystem/encryptionLevel"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=9"
+        outputs="os.ecore#//WindowsOperatingSystem/installDate"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=2"
+        outputs="os.ecore#//WindowsOperatingSystem/language"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=3"
+        outputs="os.ecore#//WindowsOperatingSystem/languageGroup"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=10"
+        outputs="os.ecore#//WindowsOperatingSystem/lastBootUpTime"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=13"
+        outputs="os.ecore#//WindowsOperatingSystem/machineObjectOU"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=11"
+        outputs="os.ecore#//WindowsOperatingSystem/numberOfLicensedUsers"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="os.ecore#//WindowsOperatingSystem/owner"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=4"
+        outputs="os.ecore#//WindowsOperatingSystem/productKey"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=5"
+        outputs="os.ecore#//WindowsOperatingSystem/productType"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=6"
+        outputs="os.ecore#//WindowsOperatingSystem/systemDrive"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=7"
+        outputs="os.ecore#//WindowsOperatingSystem/windowsDirectory"/>
+    <nested inputs="../schemas/os.xsd#//WindowsOperatingSystem;XSDComplexTypeDefinition=9/XSDAttributeUse=16"
+        outputs="os.ecore#//WindowsOperatingSystem/workgroupName"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//capability.windowsOperatingSystem;XSDElementDeclaration=9"
+      outputs="os.ecore#//OperatingSystemRoot/capabilityWindowsOperatingSystem"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//config.topology;XSDElementDeclaration=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/configTopology"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//constraint;XSDElementDeclaration=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/constraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/configurable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/linkable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/name"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/path"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedCapabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedRequirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedProperties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/constraintGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/augmentedConstraints"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/private"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/public"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/publicEditable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/exportedUnits"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/properties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/defaultConceptualPolicy"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/defaultPolicy"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//contract.explicit;XSDElementDeclaration=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/contractExplicit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//contract.topology;XSDElementDeclaration=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/contractTopology"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//deployModelObject;XSDElementDeclaration"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/deployModelObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//import;XSDElementDeclaration=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/import"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//instantiation;XSDElementDeclaration=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/instantiation"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Interface;XSDComplexTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Interface"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//interface;XSDElementDeclaration"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/interface"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.constraint;XSDElementDeclaration=22"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkConstraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.dependency;XSDElementDeclaration=20"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkDependency"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.deploy;XSDElementDeclaration=19"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkDeploy"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.hosting;XSDElementDeclaration=25"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkHosting"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.unit;XSDElementDeclaration=21"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.member;XSDElementDeclaration=26"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkMember"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.realization;XSDElementDeclaration=23"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkRealization"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//property;XSDElementDeclaration=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/property"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//ServiceRange;XSDSimpleTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ServiceRange"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Reference">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Reference/interfaceGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Reference/interface"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Reference;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Reference/range"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//reference;XSDElementDeclaration=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/reference"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//requirement;XSDElementDeclaration=17"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/requirement"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//req_expr;XSDElementDeclaration=18"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/reqExpr"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//ServiceVersion;XSDSimpleTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ServiceVersion"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Service;XSDComplexTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Service">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Service/interfaceGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Service/interface"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Service/protocol"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//Service;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Service/version"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//service;XSDElementDeclaration=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/service"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//SoftwareComponent;XSDComplexTypeDefinition=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//SoftwareComponent"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/business.xsd#//softwareComponent;XSDElementDeclaration=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/softwareComponent"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//stereotype;XSDElementDeclaration=15"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/stereotype"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//topology;XSDElementDeclaration=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/topology"/>
+  <nested inputs="../schemas/os.xsd#//UserGroupUnit;XSDComplexTypeDefinition=35" outputs="os.ecore#//UserGroupUnit"/>
+  <nested inputs="../schemas/os.xsd#//AIXLocalGroupUnit;XSDComplexTypeDefinition=38"
+      outputs="os.ecore#//AIXLocalGroupUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.aixLocalGroup;XSDElementDeclaration=38"
+      outputs="os.ecore#//OperatingSystemRoot/unitAixLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//AIXLocalServiceUnit;XSDComplexTypeDefinition=42"
+      outputs="os.ecore#//AIXLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.aixLocalServiceUnit;XSDElementDeclaration=42"
+      outputs="os.ecore#//OperatingSystemRoot/unitAixLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//UserUnit;XSDComplexTypeDefinition=31" outputs="os.ecore#//UserUnit"/>
+  <nested inputs="../schemas/os.xsd#//AIXLocalUserUnit;XSDComplexTypeDefinition=34"
+      outputs="os.ecore#//AIXLocalUserUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.aixLocalUser;XSDElementDeclaration=34"
+      outputs="os.ecore#//OperatingSystemRoot/unitAixLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//OperatingSystemUnit;XSDComplexTypeDefinition=27"
+      outputs="os.ecore#//OperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//AIXOperatingSystemUnit;XSDComplexTypeDefinition=30"
+      outputs="os.ecore#//AIXOperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.aixOperatingSystemUnit;XSDElementDeclaration=30"
+      outputs="os.ecore#//OperatingSystemRoot/unitAixOperatingSystemUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConceptualNode;XSDComplexTypeDefinition=17"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConceptualNode"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//unit.ConceptualNode;XSDElementDeclaration=13"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/unitConceptualNode"/>
+  <nested inputs="../schemas/os.xsd#//FileSystemContentUnit;XSDComplexTypeDefinition=62"
+      outputs="os.ecore#//FileSystemContentUnit"/>
+  <nested inputs="../schemas/os.xsd#//DataFileUnit;XSDComplexTypeDefinition=64" outputs="os.ecore#//DataFileUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.dataFileUnit;XSDElementDeclaration=64"
+      outputs="os.ecore#//OperatingSystemRoot/unitDataFileUnit"/>
+  <nested inputs="../schemas/os.xsd#//DirectoryUnit;XSDComplexTypeDefinition=66" outputs="os.ecore#//DirectoryUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.directoryUnit;XSDElementDeclaration=66"
+      outputs="os.ecore#//OperatingSystemRoot/unitDirectoryUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.fileSystemContentUnit;XSDElementDeclaration=62"
+      outputs="os.ecore#//OperatingSystemRoot/unitFileSystemContentUnit"/>
+  <nested inputs="../schemas/os.xsd#//FileSystemUnit;XSDComplexTypeDefinition=44"
+      outputs="os.ecore#//FileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.fileSystemUnit;XSDElementDeclaration=44"
+      outputs="os.ecore#//OperatingSystemRoot/unitFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalGroupUnit;XSDComplexTypeDefinition=37"
+      outputs="os.ecore#//LinuxLocalGroupUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.linuxLocalGroup;XSDElementDeclaration=37"
+      outputs="os.ecore#//OperatingSystemRoot/unitLinuxLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalServiceUnit;XSDComplexTypeDefinition=41"
+      outputs="os.ecore#//LinuxLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.linuxLocalServiceUnit;XSDElementDeclaration=41"
+      outputs="os.ecore#//OperatingSystemRoot/unitLinuxLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//LinuxLocalUserUnit;XSDComplexTypeDefinition=33"
+      outputs="os.ecore#//LinuxLocalUserUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.linuxLocalUser;XSDElementDeclaration=33"
+      outputs="os.ecore#//OperatingSystemRoot/unitLinuxLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//LinuxOperatingSystemUnit;XSDComplexTypeDefinition=29"
+      outputs="os.ecore#//LinuxOperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.linuxOperatingSystemUnit;XSDElementDeclaration=29"
+      outputs="os.ecore#//OperatingSystemRoot/unitLinuxOperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//LocalFileSystemUnit;XSDComplexTypeDefinition=48"
+      outputs="os.ecore#//LocalFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.localFileSystemUnit;XSDElementDeclaration=48"
+      outputs="os.ecore#//OperatingSystemRoot/unitLocalFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//RemoteFileSystemUnit;XSDComplexTypeDefinition=46"
+      outputs="os.ecore#//RemoteFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//NFSFileSystemUnit;XSDComplexTypeDefinition=58"
+      outputs="os.ecore#//NFSFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.nFSFileSystemUnit;XSDElementDeclaration=58"
+      outputs="os.ecore#//OperatingSystemRoot/unitNFSFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//OpenVmsFileSystemUnit;XSDComplexTypeDefinition=60"
+      outputs="os.ecore#//OpenVmsFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.openVmsFileSystemUnit;XSDElementDeclaration=60"
+      outputs="os.ecore#//OperatingSystemRoot/unitOpenVmsFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.operatingSystemUnit;XSDElementDeclaration=27"
+      outputs="os.ecore#//OperatingSystemRoot/unitOperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//PortConfigUnit;XSDComplexTypeDefinition=39"
+      outputs="os.ecore#//PortConfigUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.portConfigUnit;XSDElementDeclaration=39"
+      outputs="os.ecore#//OperatingSystemRoot/unitPortConfigUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.remoteFileSystemUnit;XSDElementDeclaration=46"
+      outputs="os.ecore#//OperatingSystemRoot/unitRemoteFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//SMBFileSystemUnit;XSDComplexTypeDefinition=56"
+      outputs="os.ecore#//SMBFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.sMBFileSystemUnit;XSDElementDeclaration=56"
+      outputs="os.ecore#//OperatingSystemRoot/unitSMBFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//UnixFileSystemUnit;XSDComplexTypeDefinition=50"
+      outputs="os.ecore#//UnixFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//SolarisFileSystemUnit;XSDComplexTypeDefinition=52"
+      outputs="os.ecore#//SolarisFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.solarisFileSystemUnit;XSDElementDeclaration=52"
+      outputs="os.ecore#//OperatingSystemRoot/unitSolarisFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.unixFileSystemUnit;XSDElementDeclaration=50"
+      outputs="os.ecore#//OperatingSystemRoot/unitUnixFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.user;XSDElementDeclaration=31" outputs="os.ecore#//OperatingSystemRoot/unitUser"/>
+  <nested inputs="../schemas/os.xsd#//unit.userGroup;XSDElementDeclaration=35" outputs="os.ecore#//OperatingSystemRoot/unitUserGroup"/>
+  <nested inputs="../schemas/os.xsd#//WindowsFileSystemUnit;XSDComplexTypeDefinition=54"
+      outputs="os.ecore#//WindowsFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.windowsFileSystemUnit;XSDElementDeclaration=54"
+      outputs="os.ecore#//OperatingSystemRoot/unitWindowsFileSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalGroupUnit;XSDComplexTypeDefinition=36"
+      outputs="os.ecore#//WindowsLocalGroupUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.windowsLocalGroup;XSDElementDeclaration=36"
+      outputs="os.ecore#//OperatingSystemRoot/unitWindowsLocalGroup"/>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalServiceUnit;XSDComplexTypeDefinition=40"
+      outputs="os.ecore#//WindowsLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.windowsLocalServiceUnit;XSDElementDeclaration=40"
+      outputs="os.ecore#//OperatingSystemRoot/unitWindowsLocalServiceUnit"/>
+  <nested inputs="../schemas/os.xsd#//WindowsLocalUserUnit;XSDComplexTypeDefinition=32"
+      outputs="os.ecore#//WindowsLocalUserUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.windowsLocalUser;XSDElementDeclaration=32"
+      outputs="os.ecore#//OperatingSystemRoot/unitWindowsLocalUser"/>
+  <nested inputs="../schemas/os.xsd#//WindowsOperatingSystemUnit;XSDComplexTypeDefinition=28"
+      outputs="os.ecore#//WindowsOperatingSystemUnit"/>
+  <nested inputs="../schemas/os.xsd#//unit.windowsOperatingSystemUnit;XSDElementDeclaration=28"
+      outputs="os.ecore#//OperatingSystemRoot/unitWindowsOperatingSystemUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//visibility;XSDElementDeclaration=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/visibility"/>
+  <nested inputs="../schemas/os.xsd#//ArchitectureBusType;XSDSimpleTypeDefinition=20"
+      outputs="os.ecore#//ArchitectureBusType">
+    <nested inputs="../schemas/os.xsd#//ArchitectureBusType;XSDSimpleTypeDefinition=20/XSDEnumerationFacet"
+        outputs="os.ecore#//ArchitectureBusType/_32Bit"/>
+    <nested inputs="../schemas/os.xsd#//ArchitectureBusType;XSDSimpleTypeDefinition=20/XSDEnumerationFacet=1"
+        outputs="os.ecore#//ArchitectureBusType/_64Bit"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16"
+      outputs="os.ecore#//DefaultWindowsUserGroups">
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet"
+        outputs="os.ecore#//DefaultWindowsUserGroups/Administrators"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=1"
+        outputs="os.ecore#//DefaultWindowsUserGroups/BackupOperators"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=2"
+        outputs="os.ecore#//DefaultWindowsUserGroups/DistributedCOMUsers"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=3"
+        outputs="os.ecore#//DefaultWindowsUserGroups/Guests"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=4"
+        outputs="os.ecore#//DefaultWindowsUserGroups/NetworkConfigurationOperators"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=5"
+        outputs="os.ecore#//DefaultWindowsUserGroups/PowerUsers"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=6"
+        outputs="os.ecore#//DefaultWindowsUserGroups/PrintOperators"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=7"
+        outputs="os.ecore#//DefaultWindowsUserGroups/RemoteDesktopUsers"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=8"
+        outputs="os.ecore#//DefaultWindowsUserGroups/Replicator"/>
+    <nested inputs="../schemas/os.xsd#//DefaultWindowsUserGroups;XSDSimpleTypeDefinition=16/XSDEnumerationFacet=9"
+        outputs="os.ecore#//DefaultWindowsUserGroups/Users"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet/deployModelObjectGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=28/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet/deployModelObject"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//GenericVersionString;XSDSimpleTypeDefinition=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//GenericVersionString"/>
+  <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition"
+      outputs="os.ecore#//OperatingSystemType">
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="os.ecore#//OperatingSystemType/AIX"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="os.ecore#//OperatingSystemType/WindowsCygwin"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="os.ecore#//OperatingSystemType/HPUX"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=3"
+        outputs="os.ecore#//OperatingSystemType/Linux"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=4"
+        outputs="os.ecore#//OperatingSystemType/Solaris"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=5"
+        outputs="os.ecore#//OperatingSystemType/Windows"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=6"
+        outputs="os.ecore#//OperatingSystemType/OpenMVS"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=7"
+        outputs="os.ecore#//OperatingSystemType/i5OperatingSystem"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=8"
+        outputs="os.ecore#//OperatingSystemType/MacOS"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=9"
+        outputs="os.ecore#//OperatingSystemType/NetWare"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=10"
+        outputs="os.ecore#//OperatingSystemType/VMwareESX"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=11"
+        outputs="os.ecore#//OperatingSystemType/Darwin"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=12"
+        outputs="os.ecore#//OperatingSystemType/Tru64"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=13"
+        outputs="os.ecore#//OperatingSystemType/FreeBSD"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=14"
+        outputs="os.ecore#//OperatingSystemType/IPSO"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=15"
+        outputs="os.ecore#//OperatingSystemType/zOS"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=16"
+        outputs="os.ecore#//OperatingSystemType/zVM"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=17"
+        outputs="os.ecore#//OperatingSystemType/zLinux"/>
+    <nested inputs="../schemas/os.xsd#//OperatingSystemType;XSDSimpleTypeDefinition/XSDEnumerationFacet=18"
+        outputs="os.ecore#//OperatingSystemType/_"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14"
+      outputs="os.ecore#//RedhatLinuxServiceStartupTypeType">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14/XSDEnumerationFacet"
+        outputs="os.ecore#//RedhatLinuxServiceStartupTypeType/Automatic"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14/XSDEnumerationFacet=1"
+        outputs="os.ecore#//RedhatLinuxServiceStartupTypeType/Boot"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14/XSDEnumerationFacet=2"
+        outputs="os.ecore#//RedhatLinuxServiceStartupTypeType/System"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14/XSDEnumerationFacet=3"
+        outputs="os.ecore#//RedhatLinuxServiceStartupTypeType/Manual"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStartupTypeType;XSDSimpleTypeDefinition=14/XSDEnumerationFacet=4"
+        outputs="os.ecore#//RedhatLinuxServiceStartupTypeType/Disabled"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStatusType;XSDSimpleTypeDefinition=18"
+      outputs="os.ecore#//RedhatLinuxServiceStatusType">
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStatusType;XSDSimpleTypeDefinition=18/XSDEnumerationFacet"
+        outputs="os.ecore#//RedhatLinuxServiceStatusType/Running"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStatusType;XSDSimpleTypeDefinition=18/XSDEnumerationFacet=1"
+        outputs="os.ecore#//RedhatLinuxServiceStatusType/Stopped"/>
+    <nested inputs="../schemas/os.xsd#//RedhatLinuxServiceStatusType;XSDSimpleTypeDefinition=18/XSDEnumerationFacet=2"
+        outputs="os.ecore#//RedhatLinuxServiceStatusType/Unknown"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13"
+      outputs="os.ecore#//SUSELinuxServiceStartupTypeType">
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13/XSDEnumerationFacet"
+        outputs="os.ecore#//SUSELinuxServiceStartupTypeType/Automatic"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13/XSDEnumerationFacet=1"
+        outputs="os.ecore#//SUSELinuxServiceStartupTypeType/Boot"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13/XSDEnumerationFacet=2"
+        outputs="os.ecore#//SUSELinuxServiceStartupTypeType/System"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13/XSDEnumerationFacet=3"
+        outputs="os.ecore#//SUSELinuxServiceStartupTypeType/Manual"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStartupTypeType;XSDSimpleTypeDefinition=13/XSDEnumerationFacet=4"
+        outputs="os.ecore#//SUSELinuxServiceStartupTypeType/Disabled"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStatusType;XSDSimpleTypeDefinition=19"
+      outputs="os.ecore#//SUSELinuxServiceStatusType">
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStatusType;XSDSimpleTypeDefinition=19/XSDEnumerationFacet"
+        outputs="os.ecore#//SUSELinuxServiceStatusType/Running"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStatusType;XSDSimpleTypeDefinition=19/XSDEnumerationFacet=1"
+        outputs="os.ecore#//SUSELinuxServiceStatusType/Stopped"/>
+    <nested inputs="../schemas/os.xsd#//SUSELinuxServiceStatusType;XSDSimpleTypeDefinition=19/XSDEnumerationFacet=2"
+        outputs="os.ecore#//SUSELinuxServiceStatusType/Unknown"/>
+  </nested>
+  <nested inputs="../schemas/os.xsd#//TCPPortType;XSDSimpleTypeDefinition=1" outputs="os.ecore#//TCPPortType"/>
+  <nested inputs="../schemas/os.xsd#//UDPPortType;XSDSimpleTypeDefinition=2" outputs="os.ecore#//UDPPortType"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//VersionRange;XSDSimpleTypeDefinition=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//VersionRange"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

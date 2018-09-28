@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/ModelObject.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/provision/runtime/ParamMap.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/provision/runtime/ParamValue.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.provision.runtime.ParamMap">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.ModelObject">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="ownerType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="owner" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="values" type="coll:com.collation.platform.model.provision.runtime.ParamValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="children" type="coll:com.collation.platform.model.provision.runtime.ParamMap" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

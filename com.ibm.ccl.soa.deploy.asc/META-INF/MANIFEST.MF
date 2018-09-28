@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.ibm.ccl.soa.deploy.asc; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.ibm.ccl.soa.deploy.asc.ASCActivator
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)",
+ com.ibm.ccl.soa.deploy.core;bundle-version="[1.0.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.was;bundle-version="[1.0.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.os;bundle-version="[1.0.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.j2ee;bundle-version="[1.0.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.java;bundle-version="[1.0.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.db2;bundle-version="[1.0.0,2.0.0)"
+Eclipse-LazyStart: true
+Export-Package: com.ibm.ccl.soa.deploy.asc,
+ com.ibm.ccl.soa.deploy.asc.exporter,
+ com.ibm.asc.orchestrator.dynamic,
+ com.ibm.ccl.soa.deploy.asc.was,
+ com.ibm.ccl.soa.deploy.asc.exception
+Bundle-ClassPath: lib/asc.jar,
+ .

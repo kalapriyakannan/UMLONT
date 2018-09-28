@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.ibm.com/Zephyr/wps/1.0.0/" 
+elementFormDefault="qualified" 
+    ecore:documentRoot="WPSRoot"
+	ecore:name="wps"
+	ecore:package="com.ibm.ccl.soa.deploy.wps"
+	ecore:nsPrefix="wps" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:wps="http://www.ibm.com/Zephyr/wps/1.0.0/"	 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+	
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+
+
+
+<element name ="unit.wpsBaseSystemUnit" substitutionGroup ="core:unit" type="wps:WpsBaseSystemUnit">
+</element>
+	<complexType name="WpsBaseSystemUnit">
+	<annotation>
+		<documentation>
+			A WPS base system represents the the installation unit of the TDS that can hold an 
+			WPS ServerInstance for accessing and storing user authentication data.
+		</documentation>
+	</annotation>
+	<complexContent>
+		<extension base="core:Unit"/>
+	</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.wpsBaseSystem" substitutionGroup="core:capability" type="wps:WpsBaseSystem">
+	</element>
+	<complexType name ="WpsBaseSystem">
+	<annotation><documentation></documentation></annotation>
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="installLocation" type="string">
+	<annotation>
+	<documentation>
+	</documentation>
+	</annotation>
+	</attribute>
+	<attribute name="version" type="string">
+	<annotation><documentation></documentation></annotation>
+	</attribute>
+	<attribute name="ProfileDir" type="string">
+	<annotation><documentation></documentation></annotation>
+	</attribute>	
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	<!--  This unit is for the wps and it will be hosted on top of the WAS AppServer -->
+<element name="unit.wpsSystemUnit" substitutionGroup="core:unit" type="wps:WpsSystemUnit"/>
+	<complexType name="WpsSystemUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	
+	
+	<element name="capability.BPEContainer" substitutionGroup="core:capability" type="wps:BPEContainer"/>
+	<complexType name="BPEContainer">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="JDBCProvider"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="ImplementationClassName"><annotation><documentation></documentation></annotation></attribute>	
+	<attribute name="DataSourceUsername"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="DataSourcePassword"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSProvider"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="QueueManager"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="Classpath"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSUserID"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSPassword"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSAPIUserID"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSAPIPassword"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="AdministratorSecurityRoleMapping"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="SystemMonitorSecurityRoleMapping"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSResources"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSConnectionFactory"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="InternalQueue"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="ExternalRequestProcessingQueue"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="RetentionQueue"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="HoldQueue"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="InstallBusinessProcessChoreographerExplorer"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="EnableCEIlogging"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="EnableAuditLog"> <annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>	
+	</complexType>
+	
+	
+	<element name="capability.TaskContainer" substitutionGroup="core:capability" type="wps:TaskContainer"/>
+	<complexType  name="TaskContainer">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="JMSProvider"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="QueueManager"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="Classpath"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSUserID"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSPassword"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="Escalationpassword"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="AdministratorSecurityRoleMapping"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="SystemMonitorSecurityRoleMapping"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSResources"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JMSConnectionFactory"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="HoldQueue"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="MailSession"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="EnableCEIlogging"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="EnableAuditLog"> <annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+
+	
+	<element name="capability.applicationSchedular" substitutionGroup="core:capability" type="wps:ApplicationSchedular"/>
+	<complexType name="ApplicationSchedular">
+	<complexContent>
+	<extension base="core:Capability">
+		<attribute name="ServerName" type="string">	<annotation><documentation></documentation></annotation></attribute>
+		<attribute name="DataBaseName"  type="string"><annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.CommonEventInfrastructure" substitutionGroup="core:capability" type="wps:CommonEventInfrastructure"/>
+	<complexType name="CommonEventInfrastructure">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="Name"><annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+
+	
+	<element name="capability.ManagingEventService"  substitutionGroup="core:capability" type="wps:ManagingEventservice"/>
+	<complexType name="ManagingEventservice">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="EventsInfrastructureEmitterFactoryJNDIName" type="string">
+	<annotation><documentation></documentation></annotation>
+	</attribute>	
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.BusinessRulesManager" substitutionGroup="core:capability" type="wps:BusinessRulesManager"/>
+	<complexType name="BusinessRulesManager">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="BusinessRulesManager" type="string"><annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+
+	<element name="capability.ExtendedMessagingService" substitutionGroup="core:capability" type="wps:ExtendedMessagingService"/>
+	<complexType name="ExtendedMessagingService">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="InputPort" type="string"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="OutputPort" type="string"><annotation><documentation></documentation></annotation></attribute>		
+	</extension>
+	</complexContent>
+	</complexType>
+
+
+	<element name="capability.SCARuntime" substitutionGroup="core:capability" type="wps:SCARuntime"/>
+	<complexType name="SCARuntime">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="InstallationPath" type="string"><annotation><documentation></documentation></annotation></attribute>		
+	</extension>	
+	</complexContent>
+	</complexType>
+	
+	<element name="capability.SDORuntime" substitutionGroup="core:capability" type="wps:SDORuntime"/>
+	<complexType name="SDORuntime">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="InstallationPath" type="string"><annotation><documentation></documentation>	</annotation></attribute>	
+	</extension>	
+	</complexContent>
+	</complexType>
+
+	<element name="capability.WebSphereBusinessIntegrationAdaptersService" substitutionGroup="core:capability" type="wps:WebSphereBusinessIntegrationAdaptersService"/>
+	<complexType name="WebSphereBusinessIntegrationAdaptersService">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+	<attribute name="JNDIName" type="string"><annotation><documentation></documentation></annotation></attribute>		
+	<attribute name="InputQueueJNDIName" type="string"><annotation><documentation></documentation>
+	</annotation></attribute>
+	<attribute name="OutputQueueJNDIName" type="string"><annotation><documentation></documentation>
+	</annotation></attribute>	
+	<attribute name="Timeout" type="string"><annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+
+
+
+	<element name="capability.WPSESB" substitutionGroup="core:capability" type="wps:WPSESB"/>
+	<complexType name="WPSESB">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="Name" type="string"><annotation><documentation></documentation>	</annotation></attribute>	
+	</extension>	
+	</complexContent>
+	</complexType>
+	
+	<element name="capability.WPSSIB" substitutionGroup="core:capability" type="wps:WPSSIB"/>
+	<complexType name="WPSSIB">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="Name" type="string"><annotation><documentation></documentation>	</annotation></attribute>	
+	</extension>	
+	</complexContent>
+	</complexType>
+	
+<!-- All the capabilities can also be a configuration unit -->
+
+<element name="unit.BPEContainerUnit" substitutionGroup="core:unit" type="wps:BPEContainerUnit"/>
+	<complexType name="BPEContainerUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+
+<element name="unit.TaskContainerUnit" substitutionGroup="core:unit" type="wps:TaskContainerUnit"/>
+	<complexType name="TaskContainerUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType>
+
+<!-- <element name="unit.TaskContainerUnit" substitutionGroup="core:unit" type="wps:TaskContainerUnit"/>
+	<complexType name="TaskContainerUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType> -->
+
+
+
+<element name="unit.WPSCommonEventInfrastructureUnit" substitutionGroup="core:unit" type="wps:WPSCommonEventInfrastructureUnit"/>
+	<complexType name="WPSCommonEventInfrastructureUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType>
+
+
+<!-- <element name="unit.WPSCommonEventInfrastructureUnit" substitutionGroup="core:unit" type="wps:CommonEventInfrastructureUnit"/>
+	<complexType name="WPSCommonEventInfrastructureUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType> -->
+
+<element name="unit.BusinessRulesManagerUnit" substitutionGroup="core:unit" type="wps:BusinessRulesManagerUnit"/>
+	<complexType name="BusinessRulesManagerUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType>
+
+<element name="unit.WPSESBUnit" substitutionGroup="core:unit" type="wps:WPSESBUnit"/>
+	<complexType name="WPSESBUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType>
+
+<element name="unit.WPSSIBUnit" substitutionGroup="core:unit" type="wps:WPSSIBUnit"/>
+	<complexType name="WPSSIBUnit">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+</complexType>
+
+</schema>
+

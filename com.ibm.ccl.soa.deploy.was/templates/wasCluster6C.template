@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  
+displayName="WebSphereClusterUnit Template">
+  <was:unit.wasClusterUnit name="WebSphere6Cluster" conceptual="true">
+    <j2ee:capability.j2eeContainer name="J2EE Container" displayName="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2ee:capability.servletContainer name="Servlet Container" displayName="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2ee:capability.jspContainer name="JSP Container" displayName="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2ee:capability.ejbContainer name="EJB Container" displayName="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2ee:capability.jcaContainer name="JCA Container" displayName="JCA Container" linkType="any" containerVersion="1.5"/> 
+    <was:capability.wasCluster name="Provide a WebSphere 6.0 Cluster" displayName="Provide a WebSphere 6.0 cluster" wasVersion="6.0" linkType="any">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>    
+    </was:capability.wasCluster>      
+    <was:capability.wasConfigurationContainer name="Provide Configuration Container" displayName="Configuration Container" linkType="any"/>             
+    <was:capability.wasSubstitutionVariable name="Substitution Variable" displayName="Substitution variable"  linkType="any"/>
+	<java:capability.jre description="" displayName="java JRE" name="java.JRE" jreVersion="1.4.2" linkType="any"/>      
+    <core:requirement mutable="true" name="WebSphere NodeGroup" displayName="Depends on a NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency"/>
+ 
+    <core:requirement mutable="true" name="Application Server" displayName="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    
+   <!-- MK 4/8/2007 change cluster to be hosted on cell -->
+    <core:requirement mutable="true" name="WebSphereCell" displayName="WebSphereCell" dmoType="was:WasCell" linkType="hosting"/>
+   <!-- end change -->
+
+        <core:requirement mutable="true" name="messageEngineDB" displayName="When appserver used as member of SIBus, appserver may need a datasource" dmoType="was:WasV5Datasource" use="optional" linkType="dependency" />
+  </was:unit.wasClusterUnit>
+</core:topology>

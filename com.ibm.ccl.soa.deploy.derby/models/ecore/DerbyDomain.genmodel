@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.derby/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.derby/src" modelPluginID="com.ibm.ccl.soa.deploy.derby"
+    redirection="" modelName="DerbyDomain" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    usedGenPackages="../../../com.ibm.ccl.soa.deploy.database/models/ecore/databaseDomain.genmodel#//database ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/DerbyDomain.xsd</foreignModel>
+  <genPackages prefix="Derby" basePackage="com.ibm.ccl.soa.deploy.internal" resource="XML"
+      disposableProviderFactory="true" ecorePackage="derby.ecore#/">
+    <genClasses ecoreClass="derby.ecore#//DerbyDatabase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyDatabase/dbAlias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyDatabase/dbDrive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyDatabase/dbName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyDatabase/derbyVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="derby.ecore#//DerbyDatabaseInstanceUnit"/>
+    <genClasses ecoreClass="derby.ecore#//DerbyDatabaseUnit"/>
+    <genClasses ecoreClass="derby.ecore#//DerbyDDLArtifact"/>
+    <genClasses ecoreClass="derby.ecore#//DerbyDeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/artifactDerbyddl"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/capabilityDerbyDatabase"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/capabilityDerbyInstance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/unitDerbyDatabaseInstanceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference derby.ecore#//DerbyDeployRoot/unitDerbyDatabaseUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="derby.ecore#//DerbyInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyInstance/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyInstance/instanceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute derby.ecore#//DerbyInstance/port"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

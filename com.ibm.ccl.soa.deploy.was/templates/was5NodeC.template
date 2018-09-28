@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  
+displayName="WebSphereNodeUnit Template">
+   <core:annotation context="topology_root">
+      <core:detail key="root1" value="WebSphereNode"/>   
+   </core:annotation>
+  <was:unit.wasNodeUnit name="WebSphereNode" conceptual="true">
+    <was:capability.wasNode name="WebSphereNode" displayName="WebSphere Node" linkType="any" wasVersion="5.1" profileType="default">
+        <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer name="Provide Configuration Container" displayName="Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer name="SharedlibraryContainer" displayName="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable name="Substitution Variable" displayName="Substitution variable"  linkType="any"/>    
+    <core:requirement mutable="true" name="A hosting WAS system" displayName="Host on WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement mutable="true" name="Cell" displayName="Must contained by Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+ </was:unit.wasNodeUnit> 
+
+</core:topology>

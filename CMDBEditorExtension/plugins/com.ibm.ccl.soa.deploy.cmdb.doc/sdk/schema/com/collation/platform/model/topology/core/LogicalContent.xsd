@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/ConfigFile.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.core.LogicalContent">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="configFile" type="coll:com.collation.platform.model.topology.app.ConfigFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="URI" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="fixedPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="content" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="checksum" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="contentType" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

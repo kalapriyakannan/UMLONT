@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sca:composite xmlns:sca="http://www.osoa.org/xmlns/sca/0.9">
+  <entryPoint name="EntryPoint1">
+    <sca:interface.java interface="com.ibm.ccl.soa.deploy.application.CloudUnit"/>
+    <reference>Component1/Service1</reference>
+    <reference>Component2/s1</reference>
+  </entryPoint>
+  <component name="Component1">
+    <sca:implementation.abstract>
+      <sca:componentType>
+        <service name="Service1">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.application.CloudUnit"/>
+        </service>
+        <reference name="Reference1">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.java.JdbcProvider"/>
+        </reference>
+        <reference name="Reference2">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.application.CloudUnit"/>
+        </reference>
+      </sca:componentType>
+    </sca:implementation.abstract>
+    <references>
+      <reference name="Reference1">
+        <target>ExternalService1</target>
+      </reference>
+      <reference name="Reference2">
+        <target>Component2/Service1</target>
+      </reference>
+    </references>
+  </component>
+  <component name="Component2">
+    <sca:implementation.abstract>
+      <sca:componentType>
+        <service name="Service1">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.application.CloudUnit"/>
+        </service>
+        <service name="s1">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.application.CloudUnit"/>
+        </service>
+        <reference name="Reference1">
+          <sca:interface.java interface="com.ibm.ccl.soa.deploy.java.JdbcProvider"/>
+        </reference>
+        <property name="p1" type="java.lang.String"/>
+      </sca:componentType>
+    </sca:implementation.abstract>
+    <properties>
+      <property name="p1">
+        <value>1</value>
+      </property>
+    </properties>
+    <references>
+      <reference name="Reference1">
+        <target>ExternalService1</target>
+      </reference>
+    </references>
+  </component>
+  <component name="Component3">
+    <sca:implementation.abstract type="implementation.properties">
+      <sca:componentType/>
+    </sca:implementation.abstract>
+  </component>
+  <externalService name="ExternalService1">
+    <sca:interface.java callbackInterface="" interface="com.ibm.ccl.soa.deploy.java.JdbcProvider"/>
+  </externalService>
+</sca:composite>

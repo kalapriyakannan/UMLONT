@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ibm.ccl.soa.deploy.core">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ibm.ccl.soa.deploy.core" id="domains" name="SOA Topology Domains"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to define domain-specific extensions to the tooling.  A &quot;domain&quot; is a common area of technology, such as J2EE, WebSphere, DB2, etc.
+
+There are several areas where a domain can contribute function to the tooling; including validators, packagers, capability providers, resource types, and more.
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="domain" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="synchronizationParticipant" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="domain">
+      <annotation>
+         <documentation>
+            This is the top-level domain element to create a new domain extension.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="validator" minOccurs="0" maxOccurs="1"/>
+            <element ref="packager" minOccurs="0" maxOccurs="1"/>
+            <element ref="capabilityProvider" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="decoratorSemanticBindingRule" minOccurs="0" maxOccurs="1"/>
+            <element ref="resourceType" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="resourceTypeBinding" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="resourceTypeUIBinding" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of the domain.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of the domain.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique ID for this domain
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="targetNamespace" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The target namespace of the domain.  Multiple domain extensions can reference the same target namespace.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="validator">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            Define a validator to handle validation of elements defined in this domain.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class for this domain validator  The class should extend the &lt;b&gt;com.ibm.ccl.soa.deploy.core.validator.DomainValidator&lt;/b&gt; abstract class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.DomainValidator"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="packager">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            Define a packager to handling packaging of elements defined in this domain.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class for this domain packager  The class should extend the &lt;b&gt;com.ibm.ccl.soa.deploy.core.DomainPackager&lt;/b&gt; abstract class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.DomainPackager"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="capabilityProvider">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            Define a provider that serves out capabilities and requirements for this domain.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="inputEnablement"/>
+            <element ref="outputEnablement"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translateable name for this capability provider.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translateable description for this capability provider.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class for this capability provider  The class should extend the &lt;b&gt;com.ibm.ccl.soa.deploy.core.CapabilityProvider&lt;/b&gt; abstract class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.CapabilityProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="inputEnablement">
+      <annotation>
+         <documentation>
+            Describe the set of objects that various implementations may accept as input.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="not"/>
+            <element ref="and"/>
+            <element ref="or"/>
+            <element ref="instanceof"/>
+            <element ref="test"/>
+            <element ref="systemTest"/>
+            <element ref="equals"/>
+            <element ref="count"/>
+            <element ref="with"/>
+            <element ref="resolve"/>
+            <element ref="adapt"/>
+            <element ref="iterate"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="outputEnablement">
+      <annotation>
+         <documentation>
+            Describe the set of objects that various implementations may accept as output
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="not"/>
+            <element ref="and"/>
+            <element ref="or"/>
+            <element ref="instanceof"/>
+            <element ref="test"/>
+            <element ref="systemTest"/>
+            <element ref="equals"/>
+            <element ref="count"/>
+            <element ref="with"/>
+            <element ref="resolve"/>
+            <element ref="adapt"/>
+            <element ref="iterate"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="hostEnablement">
+      <annotation>
+         <documentation>
+            Describe the set of objects that various implementations may accept as hosts.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="not"/>
+            <element ref="and"/>
+            <element ref="or"/>
+            <element ref="instanceof"/>
+            <element ref="test"/>
+            <element ref="systemTest"/>
+            <element ref="equals"/>
+            <element ref="count"/>
+            <element ref="with"/>
+            <element ref="resolve"/>
+            <element ref="adapt"/>
+            <element ref="iterate"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="synchronizationParticipant">
+      <annotation>
+         <documentation>
+            Contribute change events to the synchronization framework from this domain.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="inputEnablement"/>
+         </sequence>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class for this synchronization participant.  The class should extend the &lt;b&gt;com.ibm.ccl.soa.deploy.core.synchronization.SynchronizationParticipant&lt;/b&gt; abstract class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.synchronization.ImplementationParticipant"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique identifier for this participant.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="decoratorSemanticBindingRule">
+      <annotation>
+         <documentation>
+            Binding rules for existing decorator semantic.  This allows content defined in this domain to be bound to specific decorator semantics and not be made globally available.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="paletteEntryContent" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="paletteEntryContent">
+      <annotation>
+         <documentation>
+            Binding rules for palette entry content.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="explicit-entry" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="explicit-entry">
+      <annotation>
+         <documentation>
+            Rule declaring that the specified content can only be enabled in the specified decorator semantic.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="content" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Specific id of the content to restrict
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="resourceType">
+      <annotation>
+         <documentation>
+            Define a resource type for this domain, which is a unique instance of a element topology, with all its associated properties.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The unique identifier for this resource type.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The display name for this resource type.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="templateURI" type="string">
+            <annotation>
+               <documentation>
+                  The URI for the template for this resource.  Only one of templateURI or eclass should be specified.  The eclass attribute value will be ignored if templateURI is set.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="eclass" type="string">
+            <annotation>
+               <documentation>
+                  The eclass for this resource.  Only one of templateURI or eclass should be specified.  eclass attribute value will be ignored if templateURI is set.  Use the eclass attribute to denote a class for this resource type in cases where there is no associated template.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of this resource type.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="resourceTypeBinding">
+      <annotation>
+         <documentation>
+            Associate a domain-specific identifier with an existing resource type.  This can be used to bind identifiers for various external environments to existing resource types known to the deploy tooling.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="resourceTypeId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The identifier for the exisitng resource type to bind against.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="context" type="string">
+            <annotation>
+               <documentation>
+                  The context, or category, of this resource type binding.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The domain or environment id to bind to the specified resource type.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="resourceTypeUIBinding">
+      <annotation>
+         <documentation>
+            Associate a domain-specific identifier with the desired appearance in the editor palette and pop-up menus.  Use the boolean flags to disable the binding if required.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="resourceTypeId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The identifier for the exisitng resource type to bind against.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  The UI display label for this resource type.  Used to override the name attribute from the resourceType, if required.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of this UI entry.  Used to override the description attribute from the resourceType, if required.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="smallIcon" type="string">
+            <annotation>
+               <documentation>
+                  The small icon for this palette entry.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="largeIcon" type="string">
+            <annotation>
+               <documentation>
+                  The large icon for this palette entry.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="path" type="string">
+            <annotation>
+               <documentation>
+                  The palette path for this palette entry.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="enablePalette" type="string">
+            <annotation>
+               <documentation>
+                  Declare to enable or disable this binding in the palette.  Default is true, so set to false to disable this entry from the palette.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         2.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following example shows the domain extension for an &quot;OSGi domain&quot;.
+
+&lt;p&gt;
+&lt;pre&gt;
+	&lt;extension point=&quot;com.ibm.ccl.soa.deploy.core.domains&quot;&gt;
+		&lt;domain description=&quot;Provides a Zephyr Domain Model for the OSGi Runtime.&quot;
+			id=&quot;com.ibm.ccl.soa.deploy.osgi&quot; name=&quot;OSGi Domain Model&quot;
+			targetNamespace=&quot;http://www.ibm.com/zephyr/osgi/1.0.0&quot;&gt;
+			&lt;validator
+				class=&quot;com.ibm.ccl.soa.deploy.osgi.internal.validation.OSGIDomainValidatorImpl&quot;&gt;
+			&lt;/validator&gt;
+			&lt;packager
+				class=&quot;com.ibm.ccl.soa.deploy.osgi.internal.packager.OSGIDomainPackager&quot; /&gt;
+			&lt;resourceType
+				description=&quot;Provides an OSGI Bundle with the default configuration settings&quot;
+				id=&quot;deploy.OSGiBundle&quot; name=&quot;OSGI Bundle&quot;
+				templateURI=&quot;templates/osgibundle.template&quot;&gt;
+			&lt;/resourceType&gt;
+			&lt;resourceType id=&quot;deploy.OSGiLibrary&quot;
+				name=&quot;OSGi Classpath Library Configuration&quot;
+				templateURI=&quot;templates/osgiLibrary.template&quot;&gt;
+			&lt;/resourceType&gt;
+
+			&lt;resourceTypeUIBinding enablePalette=&quot;true&quot; label=&quot;OSGi Bundle&quot;
+				path=&quot;/applicationToolDrawer/businessComponentStack&quot;
+             	largeIcon=&quot;icons/pal/red_hat_server_pal20.gif&quot;
+             	smallIcon=&quot;icons/pal/red_hat_server_pal16.gif&quot;
+				resourceTypeId=&quot;deploy.OSGiBundle&quot;&gt;
+			&lt;/resourceTypeUIBinding&gt;
+			&lt;resourceTypeUIBinding enablePalette=&quot;true&quot; label=&quot;OSGi Library&quot;
+				path=&quot;/applicationToolDrawer/businessComponentStack&quot;
+             	largeIcon=&quot;icons/pal/port_config_20.gif&quot;
+             	smallIcon=&quot;icons/pal/port_config_16.gif&quot;
+				resourceTypeId=&quot;deploy.OSGiLibrary&quot;&gt;
+			&lt;/resourceTypeUIBinding&gt;
+   &lt;capabilityProvider
+         class=&quot;com.ibm.ccl.soa.deploy.osgi.internal.capability.provider.BundleCapabilityProvider&quot;
+         name=&quot;com.ibm.ccl.soa.deploy.osgi.BundleCapabilityProvider&quot;&gt;
+      &lt;inputEnablement&gt;
+         &lt;and&gt;
+            &lt;instanceof
+                  value=&quot;org.eclipse.core.resources.IProject&quot;&gt;
+            &lt;/instanceof&gt;
+            &lt;test
+                  property=&quot;com.ibm.ccl.soa.deploy.osgi.isPluginProject&quot;
+                  value=&quot;true&quot;&gt;
+            &lt;/test&gt;
+         &lt;/and&gt;&lt;/inputEnablement&gt;
+      &lt;outputEnablement&gt;&lt;/outputEnablement&gt;
+   &lt;/capabilityProvider&gt;
+   &lt;capabilityProvider
+         class=&quot;com.ibm.ccl.soa.deploy.osgi.internal.capability.provider.ExportedPackageCapabilityProvider&quot;
+         name=&quot;com.ibm.ccl.soa.deploy.osgi.ExportedPackageCapabilityProvider&quot;&gt;
+      &lt;inputEnablement&gt;
+         &lt;and&gt;
+            &lt;instanceof
+                  value=&quot;org.eclipse.core.resources.IProject&quot;&gt;
+            &lt;/instanceof&gt;
+            &lt;test
+                  property=&quot;com.ibm.ccl.soa.deploy.osgi.isPluginProject&quot;
+                  value=&quot;true&quot;&gt;
+            &lt;/test&gt;
+         &lt;/and&gt;&lt;/inputEnablement&gt;
+      &lt;outputEnablement&gt;&lt;/outputEnablement&gt;
+   &lt;/capabilityProvider&gt;
+		&lt;/domain&gt;
+	&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         This extension point is published API and will only incur non-breaking
+changes in future releases.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM.
+ All rights reserved.
+ 
+ US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ Schedule Contract with IBM Corp.
+ 
+ Contributors: IBM Corporation - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>

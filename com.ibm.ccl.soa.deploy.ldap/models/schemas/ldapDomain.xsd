@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- LDAP (Lightweight Directory Access Protocol) Domain Extension
+
+    Copyright (c) 2006, 2008 IBM Corporation. Licensed Material - Property of IBM. All
+    rights reserved. US Government Users Restricted Rights - Use, duplication, or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+    $Id: ldapDomain.xsd,v 1.14 2008/06/25 22:31:02 mdelder Exp $
+
+-->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ldap="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+    xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" ecore:documentRoot="LdapDeployRoot"
+    ecore:name="ldapDeploy" ecore:nsPrefix="ldapDeploy"
+    ecore:package="com.ibm.ccl.soa.deploy.ldap" elementFormDefault="qualified"
+    targetNamespace="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/">
+
+    <import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+        schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+
+    <annotation>
+        <documentation>
+            <p>
+                Partial attempt to model LDAP servers. This model is slightly polluted
+                with ITDS-specific extensions, but we have tried to keep this minimal.
+            </p>
+            <p>
+                We have only modelled (so far) a subset of the defined LDAP object
+                classes. No attempt has been made to model the attribute types: we simply
+                declare all attributes to be strings. Also, multi-valued attributes are
+                not supported.
+            </p>
+            <p>$Id: ldapDomain.xsd,v 1.14 2008/06/25 22:31:02 mdelder Exp $</p>
+        </documentation>
+    </annotation>
+
+    <!-- Modelling for the LDAP Server -->
+
+    <element name="ldapServerUnit" type="ldap:LdapServerUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="LdapServerUnit">
+        <annotation>
+            <documentation>
+                <p>
+                    This is the unit that represents an LDAP server. It should have a
+                    hosting requirement on an operating system. Some LDAP servers may have
+                    a dependency on a database, but this is not an inherent property of
+                    LDAP servers, so we don't include it.
+                </p>
+                <p>
+                    Our characteristic capability is {@link Ldap}: this capability can
+                    host LDAPSuffix configuration units, as well as LDAPDirectoryEntry
+                    configuration units.
+                </p>
+                <p>
+                    This is a minimal LDAP domain: we will extend it in the future as
+                    needed to support future use-cases. In particular, we probably need to
+                    model the encryption salt value (and probably the encryption scheme).
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapServer" type="ldap:LdapServer"
+        substitutionGroup="core:capability" />
+    <complexType name="LdapServer">
+        <annotation>
+            <documentation>
+                <p>
+                    This is the characteristic capability of the {@link LdapServerUnit}.
+                </p>
+                <p>TODO: Need to define the 'securePort', defaulting to 636.</p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Capability">
+                <attribute name="administratorDN" type="string" use="optional"
+                    default="cn=root">
+                    <annotation>
+                        <documentation>
+                            <p>
+                                The distinguished name (DN) of the LDAP server's
+                                administrator. By default, &quot;cn=root&quot;.
+                            </p>
+                        </documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="administratorPassword" type="string">
+                    <annotation>
+                        <documentation>
+                            <p>The password for the administrator.</p>
+                        </documentation>
+                    </annotation>
+                </attribute>  
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!-- Modelling for the LdapSuffix configuration unit. -->
+
+    <element name="ldapSuffixUnit" type="ldap:LdapSuffixUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="LdapSuffixUnit">
+        <annotation>
+            <documentation>
+                <p>
+                    Configuration unit defining a suffix DN which is serviced by this LDAP
+                    server. Note that an LDAP server may support many suffixes. Our
+                    characteristic capability is {@link LdapSuffix}.
+                </p>
+                <p>
+                    This unit must have a mandatory hosting requirement on an LDAP Server.
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapSuffix" type="ldap:LdapSuffix"
+        substitutionGroup="core:capability" />
+    <complexType name="LdapSuffix">
+        <annotation>
+            <documentation>
+                <p>
+                    Should we have a reference to an {@link LdapEntry} configuration unit
+                    instead of (or in addition to) the 'suffixDN' string?
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Capability">
+                <attribute name="suffixDN" type="string">
+                    <annotation>
+                        <documentation>
+                            <p>The suffix, expressed as a distinguished name (DN).</p>
+                        </documentation>
+                    </annotation>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!-- Modelling for the LdapEntry configuration unit -->
+
+    <element name="ldapEntryUnit" type="ldap:LdapEntryUnit" substitutionGroup="core:unit" />
+    <complexType name="LdapEntryUnit">
+        <annotation>
+            <documentation>
+                <p>
+                    Configuration unit defining an entry in an LDAP directory. Our
+                    characteristic capability is {@link LdapEntry}. In addition, an
+                    {@link LdapEntryUnit} MUST have exactly one structural LDAP class
+                    capability (a specialization of {@link Top}), MAY have one or more
+                    auxiliary LDAP class capabilities (specializations of {@link
+                    LDAPAuxiliaryClass}), and MUST have {@link ExtendedAttribute
+                    ExtendedAttributes}, attached to the {@link LdapEntry} capability,
+                    which are compatible with the LDAP classes.
+                </p>
+                <p>
+                    This unit must have a mandatory hosting requirement on either
+                    an(other) {@link LdapEntry} or an {@link LdapServer} (for top-level
+                    entries).
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapEntry" type="ldap:LdapEntry"
+        substitutionGroup="core:capability" />
+    <complexType name="LdapEntry">
+        <complexContent>
+            <extension base="core:Capability">
+                <attribute name="relativeDN" type="string">
+                    <annotation>
+                        <documentation>
+                            <p>The relative distinguished name of this entry.</p>
+                        </documentation>
+                    </annotation>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="LdapObject" abstract="true">
+        <complexContent>
+            <extension base="core:Capability" />
+        </complexContent>
+    </complexType>
+
+    <complexType name="Top" abstract="true">
+        <annotation>
+            <documentation>
+                <p>
+                    All structural object classes derive (directly or indirectly) from the
+                    'top' abstract object class. Auxiliary object classes do not
+                    necessarily derive from 'top'.
+                </p>
+                <p>All entries belong to the 'top' abstract object class.</p>
+                <p>
+                    Even though auxiliary classes can inherit from {@link Top}, we do not
+                    permit this, due to our lack of multiple interitance.
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:LdapObject" />
+        </complexContent>
+    </complexType>
+
+
+    <!-- LDAP Structural Classes
+
+        Additions/changes to the MUST, MAY, and MUST NOT attribute lists for these LDAP Classes
+        need to be reflected in LdapEntryUnitValidator.java so that they will be correctly
+        enforced.
+
+    -->
+
+    <!--
+        <complexType name="ExtensibleObject">
+            <annotation>
+                <documentation>
+                    <p>
+                        The 'extensibleObject' auxiliary object class allows entries that
+                        belong to it to hold any user attribute.  The set of allowed
+                        attribute types of this object class is implicitly the set of all
+                        attribute types of userApplications usage.
+                    </p>
+                    <p>
+                        The mandatory attributes of the other object classes of this entry
+                        are still required to be present, and any precluded attributes are
+                        still not allowed to be present.
+                    </p>
+                </documentation>
+            </annotation>
+            <complexContent>
+                <extension base="ldap:LDAPAuxiliaryClass" />
+            </complexContent>
+        </complexType>
+    -->
+
+
+    <element name="ldap.inetOrgPerson" type="ldap:InetOrgPerson"
+        substitutionGroup="core:capability" />
+    <complexType name="InetOrgPerson">
+        <annotation>
+            <documentation>
+                <p>
+                    The inetOrgPerson represents people who are associated with an
+                    organization in some way. It is a structural class and is derived from
+                    the {@link OrganizationalPerson} class which is defined in X.521
+                    [X521].
+                </p>
+                <p>
+                    An 'inetOrgPerson' object MAY have the following attributes:
+                    <menu>
+                        <li>audio</li>
+                        <li>businessCategory</li>
+                        <li>carLicense</li>
+                        <li>departmentNumber</li>
+                        <li>displayName</li>
+                        <li>employeeNumber</li>
+                        <li>employeeType</li>
+                        <li>givenName</li>
+                        <li>homePhone</li>
+                        <li>homePostalAddress</li>
+                        <li>initials</li>
+                        <li>jpegPhoto</li>
+                        <li>labeledURI</li>
+                        <li>mail</li>
+                        <li>manager</li>
+                        <li>mobile</li>
+                        <li>o</li>
+                        <li>pager</li>
+                        <li>photo</li>
+                        <li>preferredLanguage</li>
+                        <li>roomNumber</li>
+                        <li>secretary</li>
+                        <li>uid</li>
+                        <li>userCertificate</li>
+                        <li>userPKCS12</li>
+                        <li>userSMIMECertificate</li>
+                        <li>x500uniqueIdentifier</li>
+                    </menu>
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:OrganizationalPerson" > 
+				<attribute name="accessHint" type="string" />
+				<attribute name="accountHint" type="string" />
+				<attribute name="audio" type="string" />
+				<attribute name="businessCategory" type="string" />
+				<attribute name="c" type="string" />
+				<attribute name="carLicense" type="string" />
+				<attribute name="configPtr" type="string" />
+				<attribute name="departmentNumber" type="string" /> 
+				<attribute name="employeeNumber" type="string" />
+				<attribute name="employeeType" type="string" /> 
+				<attribute name="generationQualifier" type="string" />
+				<attribute name="givenName" type="string" />
+				<attribute name="homeFax" type="string" />
+				<attribute name="homePhone" type="string" />
+				<attribute name="homePostalAddress" type="string" />
+				<attribute name="initials" type="string" /> 
+				<attribute name="jpegPhoto" type="string" /> 
+				<attribute name="labeledURI" type="string" />
+				<attribute name="mail" type="string" />
+				<attribute name="manager" type="string" />
+				<attribute name="middleName" type="string" />
+				<attribute name="mobile" type="string" />
+				<attribute name="o" type="string" />
+				<attribute name="organizationalStatus" type="string" />
+				<attribute name="otherMailbox" type="string" /> 
+				<attribute name="pager" type="string" />
+				<attribute name="personalTitle" type="string" />
+				<attribute name="photo" type="string" />   
+				<attribute name="preferredLanguage" type="string" /> 
+				<attribute name="roomNumber" type="string" />
+				<attribute name="secretary" type="string" /> 
+				<attribute name="street" type="string" />  
+				<attribute name="thumbnailLogo" type="string" />
+				<attribute name="thumbnailPhoto" type="string" /> 
+				<attribute name="uid" type="string" />
+				<attribute name="uniqueIdentifier" type="string" />
+				<attribute name="userCertificate" type="string" /> 
+				<attribute name="userPKCS12" type="string" />
+				<attribute name="userSMIMECertificate" type="string" /> 
+				<attribute name="x500UniqueIdentifier" type="string" />            
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <element name="ldap.organization" type="ldap:Organization"
+        substitutionGroup="core:capability" />
+    <complexType name="Organization">
+        <annotation>
+            <documentation>
+                <p>
+                    The 'organization' object class is the basis of an entry that
+                    represents a structured group of people. (Source: X.521 [X.521])
+                </p>
+                <p>
+                    An 'organization' object MUST have the following attribute:
+                    <menu>
+                        <li>o</li>
+                    </menu>
+                </p>
+                <p>
+                    An 'organization' object MAY have the following attributes:
+                    <menu>
+                        <li>businessCategory</li>
+                        <li>description</li>
+                        <li>destinationIndicator</li>
+                        <li>facsimileTelephoneNumber</li>
+                        <li>internationalISDNNumber</li>
+                        <li>l</li>
+                        <li>physicalDeliveryOfficeName</li>
+                        <li>postOfficeBox</li>
+                        <li>postalAddress</li>
+                        <li>postalCode</li>
+                        <li>preferredDeliveryMethod</li>
+                        <li>registeredAddress</li>
+                        <li>searchGuide</li>
+                        <li>seeAlso</li>
+                        <li>st</li>
+                        <li>street</li>
+                        <li>telephoneNumber</li>
+                        <li>teletexTerminalIdentifier</li>
+                        <li>telexNumber</li>
+                        <li>userPassword</li>
+                        <li>x121Address</li>
+                    </menu>
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:Top">
+            	<attribute name="o" type="string" />
+            	<attribute name="businessCategory" type="string" />
+            	<attribute name="Description" type="string" />
+            	<attribute name="destinationIndicator" type="string" />
+            	<attribute name="facsimileTelephoneNumber"
+            		type="string" />
+            	<attribute name="internationalISDNNumber" type="string" />
+            	<attribute name="l" type="string" />
+            	<attribute name="physicalDeliveryOfficeName"
+            		type="string" />
+            	<attribute name="postalAddress" type="string" />
+            	<attribute name="postalCode" type="string" />
+            	<attribute name="postOfficeBox" type="string" />
+            	<attribute name="preferredDeliveryMethod" type="string" />
+            	<attribute name="registeredAddress" type="string" />
+            	<attribute name="searchGuide" type="string" />
+            	<attribute name="seeAlso" type="string" />
+            	<attribute name="st" type="string" />
+            	<attribute name="street" type="string" />
+            	<attribute name="telephoneNumber" type="string" />
+            	<attribute name="teletexTerminalIdentifier"
+            		type="string" />
+            	<attribute name="telexNumber" type="string" />
+            	<attribute name="userPassword" type="string" />
+            	<attribute name="x121address" type="string" />
+ 
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <element name="ldap.organizationalPerson" type="ldap:OrganizationalPerson"
+        substitutionGroup="core:capability" />
+    <complexType name="OrganizationalPerson">
+        <annotation>
+            <documentation>
+                <p>
+                    The 'organizationalPerson' object class is the basis of an entry that
+                    represents a person in relation to an organization. (Source: X.521
+                    [X.521])
+                </p>
+                <p>
+                    An 'organizationalPerson' object MAY have the following attributes:
+                    <menu>
+                        <li>title</li>
+                        <li>x121Address</li>
+                        <li>registeredAddress</li>
+                        <li>destinationIndicator</li>
+                        <li>preferredDeliveryMethod</li>
+                        <li>telexNumber</li>
+                        <li>teletexTerminalIdentifier</li>
+                        <li>telephoneNumber</li>
+                        <li>internationalISDNNumber</li>
+                        <li>facsimileTelephoneNumber</li>
+                        <li>street</li>
+                        <li>postOfficeBox</li>
+                        <li>postalCode</li>
+                        <li>postalAddress</li>
+                        <li>physicalDeliveryOfficeName</li>
+                        <li>ou</li>
+                        <li>st</li>
+                        <li>l</li>
+                    </menu>
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:Person" >
+				<attribute name="destinationIndicator" type="string" /> 
+				<attribute name="facsimileTelephoneNumber" type="string" />  
+				<attribute name="internationalISDNNumber" type="string" /> 
+				<attribute name="l" type="string" /> 
+				<attribute name="ou" type="string" /> 
+				<attribute name="physicalDeliveryOfficeName" type="string" />  
+				<attribute name="postalAddress" type="string" /> 
+				<attribute name="postalCode" type="string" /> 
+				<attribute name="postOfficeBox" type="string" /> 
+				<attribute name="preferredDeliveryMethod" type="string" /> 
+				<attribute name="registeredAddress" type="string" /> 
+				<attribute name="st" type="string" /> 
+				<attribute name="street" type="string" /> 
+				<attribute name="teletexTerminalIdentifier" type="string" /> 
+				<attribute name="telexNumber" type="string" /> 
+				<attribute name="title" type="string" /> 
+				<attribute name="x121address" type="string" />
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <element name="ldap.person" type="ldap:Person" substitutionGroup="core:capability" />
+    <complexType name="Person">
+        <annotation>
+            <documentation>
+                <p>
+                    The 'person' object class is the basis of an entry that represents a
+                    human being. (Source: X.521 [X.521])
+                </p>
+                <p>
+                    A 'person' object MUST have the following attributes:
+                    <menu>
+                        <li>sn</li>
+                        <li>cn</li>
+                    </menu>
+                </p>
+                <p>
+                    A 'person' object MAY have the following attributes:
+                    <menu>
+                        <li>userPassword</li>
+                        <li>telephoneNumber</li>
+                        <li>seeAlso</li>
+                        <li>description</li>
+                    </menu>
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:Top" >
+            	<attribute name="cn" type="string" /> 
+				<attribute name="sn" type="string" />  
+				<attribute name="description" type="string" /> 
+				<attribute name="seeAlso" type="string" /> 
+				<attribute name="telephoneNumber" type="string" /> 
+				<attribute name="userPassword" type="string" />            
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!-- LDAP Auxiliary Classes -->
+
+    <complexType name="LdapAuxiliaryClass" abstract="true">
+        <annotation>
+            <documentation>
+                <p>Abstract superclass for all of our LDAP auxiliary classes</p>
+                <p>
+                    Even though auxiliary classes can inherit from {@link Top}, we do not
+                    permit this, due to our lack of multiple interitance.
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:LdapObject" />
+        </complexContent>
+    </complexType>
+
+
+    <element name="ldap.ePerson" type="ldap:EPerson" substitutionGroup="core:capability" />
+    <complexType name="EPerson">
+        <annotation>
+            <documentation>
+                <p>
+                    <strong>
+                        This is an ITDS-defined class, and should be factored out into a
+                        separate .deploy.itds domain extension at some point.
+                    </strong>
+                </p>
+                <p>
+                    This auxiliary class collects commonly used attributes from a number
+                    of different industry-defined person classes. It also has several DN
+                    pointers to help integrate these entries into other CIM-based classes.
+                </p>
+                <p>
+                    An 'ePerson' object MAY have the following attributes:
+                    <menu>
+                        <li>accesshint</li>
+                        <li>accounthint</li>
+                        <li>audio</li>
+                        <li>businesscategory</li>
+                        <li>c</li>
+                        <li>carlicense</li>
+                        <li>configptr</li>
+                        <li>departmentnumber</li>
+                        <li>description</li>
+                        <li>destinationindicator</li>
+                        <li>displayname</li>
+                        <li>employeenumber</li>
+                        <li>employeetype</li>
+                        <li>facsimiletelephonenumber</li>
+                        <li>generationqualifier</li>
+                        <li>givenname</li>
+                        <li>homefax</li>
+                        <li>homephone</li>
+                        <li>homepostaladdress</li>
+                        <li>initials</li>
+                        <li>internationalisdnnumber</li>
+                        <li>jpegphoto</li>
+                        <li>l</li>
+                        <li>labeleduri</li>
+                        <li>mail</li>
+                        <li>manager</li>
+                        <li>middlename</li>
+                        <li>mobile</li>
+                        <li>o</li>
+                        <li>organizationalstatus</li>
+                        <li>othermailbox</li>
+                        <li>ou</li>
+                        <li>pager</li>
+                        <li>personaltitle</li>
+                        <li>photo</li>
+                        <li>physicaldeliveryofficename</li>
+                        <li>postaladdress</li>
+                        <li>postalcode</li>
+                        <li>postofficebox</li>
+                        <li>preferreddeliverymethod</li>
+                        <li>preferredlanguage</li>
+                        <li>registeredaddress</li>
+                        <li>roomnumber</li>
+                        <li>secretary</li>
+                        <li>seealso</li>
+                        <li>st</li>
+                        <li>street</li>
+                        <li>telephonenumber</li>
+                        <li>teletexterminalidentifier</li>
+                        <li>telexnumber</li>
+                        <li>thumbnaillogo</li>
+                        <li>thumbnailphoto</li>
+                        <li>title</li>
+                        <li>uid</li>
+                        <li>uniqueidentifier</li>
+                        <li>usercertificate</li>
+                        <li>userpassword</li>
+                        <li>userpkcs12</li>
+                        <li>usersmimecertificate</li>
+                        <li>x121address</li>
+                        <li>x500uniqueidentifier</li>
+                    </menu>
+                </p>
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="ldap:LdapAuxiliaryClass" >
+				<attribute name="cn" type="string" />
+				<attribute name="sn" type="string" />
+				<attribute name="accessHint" type="string" />
+				<attribute name="accountHint" type="string" />
+				<attribute name="audio" type="string" />
+				<attribute name="businessCategory" type="string" />
+				<attribute name="c" type="string" />
+				<attribute name="carLicense" type="string" />
+				<attribute name="configPtr" type="string" />
+				<attribute name="departmentNumber" type="string" />
+				<attribute name="destinationIndicator" type="string" />
+				<attribute name="employeeNumber" type="string" />
+				<attribute name="employeeType" type="string" />
+				<attribute name="facsimileTelephoneNumber" type="string" />
+				<attribute name="generationQualifier" type="string" />
+				<attribute name="givenName" type="string" />
+				<attribute name="homeFax" type="string" />
+				<attribute name="homePhone" type="string" />
+				<attribute name="homePostalAddress" type="string" />
+				<attribute name="initials" type="string" />
+				<attribute name="internationalISDNumber" type="string" />
+				<attribute name="jpegPhoto" type="string" />
+				<attribute name="l" type="string" />
+				<attribute name="labeledURI" type="string" />
+				<attribute name="mail" type="string" />
+				<attribute name="manager" type="string" />
+				<attribute name="middleName" type="string" />
+				<attribute name="mobile" type="string" />
+				<attribute name="o" type="string" />
+				<attribute name="organizationalStatus" type="string" />
+				<attribute name="otherMailbox" type="string" />
+				<attribute name="ou" type="string" />
+				<attribute name="pager" type="string" />
+				<attribute name="personalTitle" type="string" />
+				<attribute name="photo" type="string" />
+				<attribute name="physicalDeliveryOfficeName" type="string" />
+				<attribute name="postalAddress" type="string" />
+				<attribute name="postalCode" type="string" />
+				<attribute name="postOfficebox" type="string" />
+				<attribute name="preferredDeliveryMethod" type="string" />
+				<attribute name="preferredLanguage" type="string" />
+				<attribute name="registeredAddress" type="string" />
+				<attribute name="roomNumber" type="string" />
+				<attribute name="secretary" type="string" />
+				<attribute name="seeAlso" type="string" />
+				<attribute name="st" type="string" />
+				<attribute name="street" type="string" />
+				<attribute name="telephoneNumber" type="string" />
+				<attribute name="teletexTerminalIdentifier" type="string" />
+				<attribute name="telexNumber" type="string" />
+				<attribute name="thumbnailLogo" type="string" />
+				<attribute name="thumbnailPhoto" type="string" />
+				<attribute name="title" type="string" />
+				<attribute name="uid" type="string" />
+				<attribute name="uniqueIdentifier" type="string" />
+				<attribute name="userCertificate" type="string" />
+				<attribute name="userPassword" type="string" />
+				<attribute name="userPKCS12" type="string" />
+				<attribute name="userSMIMECertificate" type="string" />
+				<attribute name="x121Address" type="string" />
+				<attribute name="x500UniqueIdentifier" type="string" />
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <!-- Modelling for an LDAP Client (deprecated) -->
+
+    <element name="unit.ldapClientUnit" type="ldap:LdapClientUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="LdapClientUnit">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapClient" substitutionGroup="core:capability"
+        type="ldap:LdapClient" />
+    <complexType name="LdapClient">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Capability"></extension>
+        </complexContent>
+    </complexType>
+
+
+    <!-- Modelling for an LDIF file (deprecated for now) -->
+
+    <element name="unit.ldapLdifUnit" type="ldap:LdapLdifUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="LdapLdifUnit">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="unit.ldifArtifact" type="ldap:LdifArtifact"
+        substitutionGroup="core:artifact" />
+    <complexType name="LdifArtifact">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:FileArtifact" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapLdif" substitutionGroup="core:capability"
+        type="ldap:LdapLdif" />
+    <complexType name="LdapLdif">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Capability">
+                <attribute name="subtree_dn" type="string" />
+                <attribute name="action" type="ldap:LdifAction" />
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="LdifAction">
+        <annotation>
+            <documentation xml:lang="en">
+                @deprecated until we find an actual use for this
+
+                This type defines the actions that can be performed using a ldif file
+                artifact
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="import" />
+            <enumeration value="export" />
+        </restriction>
+    </simpleType>
+
+
+    <!-- Modelling for LDAP Schemas (deprecated) -->
+
+    <element name="unit.ldapSchemaUnit" type="ldap:LdapSchemaUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="LdapSchemaUnit">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit" />
+        </complexContent>
+    </complexType>
+
+    <element name="unit.schemaArtifact" type="ldap:SchemaArtifact"
+        substitutionGroup="core:artifact" />
+    <complexType name="SchemaArtifact">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:FileArtifact" />
+        </complexContent>
+    </complexType>
+
+    <element name="capability.ldapSchema" substitutionGroup="core:capability"
+        type="ldap:LdapSchema" />
+    <complexType name="LdapSchema">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Capability">
+                <attribute name="action" type="ldap:SchemaAction" />
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="SchemaAction">
+        <annotation>
+            <documentation xml:lang="en">
+                @deprecated until we find an actual use for this
+
+                This type defines the actions that can be performed using a schema file
+                artifact
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="add" />
+            <enumeration value="remove" />
+        </restriction>
+    </simpleType>
+
+
+    <!-- Modelling for an LDAP Role Reference (deprecated) -->
+
+    <element name="unit.ldapRoleReference" type="ldap:SecurityRoleReferenceUnit"
+        substitutionGroup="core:unit" />
+    <complexType name="SecurityRoleReferenceUnit">
+        <annotation>
+            <documentation>
+                @deprecated until we find an actual use for this
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="core:Unit"></extension>
+        </complexContent>
+    </complexType>
+
+</schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" name="DB2 8 Template">
+  <db2:unit.db2AppDevelClientUnit displayName="DB2 AppDevel Client" name="DB2AppDevelClient">
+    <db2:capability.db2AppDevelClient name="DB2 AppDevel Client" displayName="DB2 Application Developer Client" linkType="any" db2ClientVersion="8.2"/>        
+    <db2:capability.db2JdbcDriver name="DB2 JDBC Driver" displayName="DB2 JDBC Driver" linkType="dependency" classname="com.ibm.db2.jdbc.app.DB2Driver" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <core:requirement mutable="true" name="Operating System" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2:unit.db2AppDevelClientUnit>
+</core:topology>

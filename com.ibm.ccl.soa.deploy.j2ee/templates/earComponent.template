@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+	name="Ear Component Template">
+  <j2ee:component.ear name="EARComponent" displayName="EAR Component" initInstallState="not_installed" publishIntent="publish" conceptual="false">
+    <j2ee:capability.earModule name="EARComponent0" displayName="EAR Component" id="EARComponent" version="1.0" linkType="dependency"/>
+    <core:requirement displayName="JCA Connector Components" name="ContainedJCAComponents" dmoType="j2ee:JCAModule" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Application Client Components" name="ContainedAppClientComponents" dmoType="j2ee:AppClient" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Utility Jar Components" name="ContainedUtilityJarComponents" dmoType="j2ee:JarModule" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="EJB Components" name="ContainedEjbComponents" dmoType="j2ee:EjbModule" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Web Components" name="ContainedWebComponents" dmoType="j2ee:WebModule" linkType="member" use="required">
+      <constraint:constraint.memberCardinality displayName="AllowedNumberOfMembers" name="AllowedNumberOfMembers" maxValue="2147483647" minValue="0"/>
+    </core:requirement>
+    <core:requirement name="Hosting Requirement" linkType="hosting" use="required">
+      <constraint:constraint.type displayName="j2eeService_14" name="j2eeService_14" dmoType="j2ee:J2EEContainer">
+        <constraint:constraint.version displayName="VersionSpecification" name="VersionSpecification" attributeName="containerVersion" value="1.4+"/>
+      </constraint:constraint.type>
+    </core:requirement>
+  </j2ee:component.ear>
+</core:topology>

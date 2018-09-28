@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:genericsoftware="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+	name="SoftwarePatch Template">
+	<genericsoftware:unit.softwarePatchUnit name="SoftwarePatch"
+		configurationUnit="true" conceptual="false">
+		<genericsoftware:capability.softwarePatch name="SoftwarePatch"
+			linkType="any" />
+		<genericsoftware:capability.version name="Version"
+			linkType="any" />
+		<core:requirement name="HostingReq" dmoType="core:Capability"
+			linkType="hosting" use="required" />
+	</genericsoftware:unit.softwarePatchUnit>
+</core:topology>

@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.39 2008/05/29 14:42:52 nmakin Exp $
+-->
+
+<plugin>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.db2.Db2Package"
+			genModel="models/ecore/db2Domain.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="db2"
+			class="com.ibm.ccl.soa.deploy.db2.util.Db2ResourceFactoryImpl" />
+	</extension>
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.db2.provider.Db2ItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.db2.domain"
+			name="%extension.db2Domain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.db2.internal.validator.DB2DomainValidator" />
+			
+			<resourceType 
+				id="db2.DB2DatabaseUnit.8.infra" 
+				name="%db2.DB2DatabaseUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2Database.template">
+			</resourceType>
+			<resourceType 
+				id="db2.DB2DatabaseUnit.8.conceptual" 
+				name="%db2.DB2DatabaseUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2DatabaseC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2DatabaseUnitTool8.Description"
+				label="%db2.DB2DatabaseUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"				
+				largeIcon="icons/pal/db2database_pal20.gif"
+				smallIcon="icons/pal/db2database_pal16.gif"
+             	resourceTypeId="db2.DB2DatabaseUnit.8.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%db2DatabaseUnitTool8.Description"
+				enablePalette="true"							
+				label="%db2.DB2DatabaseUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"				
+				largeIcon="icons/pal/db2database_pal20.gif"
+				smallIcon="icons/pal/db2database_pal16.gif"
+             	resourceTypeId="db2.DB2DatabaseUnit.8.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2SystemUnit.8.infra"
+				name="%db2.DB2SystemUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28System.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2SystemUnitTool8.Description"
+				label="%db2.DB2SystemUnit.8.Label"
+				path="/serverSoftwareDrawer/db2DataBaseStack"
+			 	largeIcon="icons/pal/db2system_pal20.gif"
+				smallIcon="icons/pal/db2system_pal16.gif"
+             	resourceTypeId="db2.DB2SystemUnit.8.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2SystemUnit.8.conceptual"
+				name="%db2.DB2SystemUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28SystemC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2SystemUnitTool8.Description"
+				label="%db2.DB2SystemUnit.8.Label"
+				path="/serverSoftwareDrawer/db2DataBaseStack"
+			 	largeIcon="icons/pal/db2system_pal20.gif"
+				smallIcon="icons/pal/db2system_pal16.gif"
+             	resourceTypeId="db2.DB2SystemUnit.8.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2RuntimeClientUnit.8.infra"
+				name="%db2.DB2RuntimeClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28RuntimeClient.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2RuntimeClientUnitTool8.Description"
+				label="%db2.DB2RuntimeClientUnit.8.Label"
+				path="/serverSoftwareDrawer/db2DataBaseStack"
+			 	largeIcon="icons/pal/db2client_pal20.gif"
+				smallIcon="icons/pal/db2client_pal16.gif"
+             	resourceTypeId="db2.DB2RuntimeClientUnit.8.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2RuntimeClientUnit.8.conceptual"
+				name="%db2.DB2RuntimeClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28RuntimeClientC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2RuntimeClientUnitTool8.Description"
+				label="%db2.DB2RuntimeClientUnit.8.Label"
+				path="/serverSoftwareDrawer/db2DataBaseStack"
+			 	largeIcon="icons/pal/db2client_pal20.gif"
+				smallIcon="icons/pal/db2client_pal16.gif"
+             	resourceTypeId="db2.DB2RuntimeClientUnit.8.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2InstanceUnit.8.infra"
+				name="%db2.DB2InstanceUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28Instance.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2InstanceUnitTool8.Description"
+				label="%db2.DB2InstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2InstanceUnit.8.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2InstanceUnit.8.conceptual"
+				name="%db2.DB2InstanceUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28InstanceC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2InstanceUnitTool8.Description"
+				label="%db2.DB2InstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2InstanceUnit.8.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%db2InstanceUnitTool8.Description"
+				enablePalette="true"			
+				label="%db2.DB2InstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2InstanceUnit.8.infra">
+			</resourceTypeUIBinding>			
+			<resourceType
+				id="db2.DB2ClientInstanceUnit.8.infra"
+				name="%db2.DB2ClientInstanceUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28ClientInstance.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2ClientInstanceUnitTool8.Description"
+				label="%db2.DB2ClientInstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2ClientInstanceUnit.8.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2ClientInstanceUnit.8.conceptual"
+				name="%db2.DB2ClientInstanceUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28ClientInstanceC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%db2ClientInstanceUnitTool8.Description"
+				label="%db2.DB2ClientInstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2ClientInstanceUnit.8.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%db2ClientInstanceUnitTool8.Description"
+				enablePalette="true"
+				label="%db2.DB2ClientInstanceUnit.8.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2instance_pal20.gif"
+				smallIcon="icons/pal/db2instance_pal16.gif"
+             	resourceTypeId="db2.DB2ClientInstanceUnit.8.infra">
+			</resourceTypeUIBinding>
+
+			<resourceType
+				id="db2.DB2CatalogUnit.infra"
+				name="%db2.DB2CatalogUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2Catalog.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%DB2CatalogUnitTool.Description"
+				label="%db2.DB2CatalogUnit.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2catalog_pal20.gif"
+				smallIcon="icons/pal/db2catalog_pal16.gif"
+             	resourceTypeId="db2.DB2CatalogUnit.infra">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="db2.DB2CatalogUnit.conceptual"
+				name="%db2.DB2CatalogUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2CatalogC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%DB2CatalogUnitTool.Description"
+				enablePalette="true"
+				label="%db2.DB2CatalogUnit.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2catalog_pal20.gif"
+				smallIcon="icons/pal/db2catalog_pal16.gif"
+             	resourceTypeId="db2.DB2CatalogUnit.conceptual">
+			</resourceTypeUIBinding>
+
+			<resourceType
+				id="db2.DB2NodeCatalogUnit.infra"
+				name="%db2.DB2NodeCatalogUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2NodeCatalog.template">
+			</resourceType>
+			<resourceType
+				id="db2.DB2NodeCatalogUnit.conceptual"
+				name="%db2.DB2NodeCatalogUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db2NodeCatalogC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%DB2NodeCatalogUnitTool.Description"
+				label="%db2.DB2NodeCatalogUnit.Label"
+				path="/configurationDrawer/db2ConfigurationStack"
+				largeIcon="icons/pal/db2ndcatalog_pal20.gif"
+				smallIcon="icons/pal/db2ndcatalog_pal16.gif"
+             	resourceTypeId="db2.DB2NodeCatalogUnit.infra">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%DB2NodeCatalogUnitTool.Description"
+				enablePalette="true"
+				label="%db2.DB2NodeCatalogUnit.Label"
+				largeIcon="icons/pal/db2ndcatalog_pal20.gif"
+				path="/configurationDrawer/db2ConfigurationStack"
+				resourceTypeId="db2.DB2NodeCatalogUnit.conceptual"
+				smallIcon="icons/pal/db2ndcatalog_pal16.gif">
+			</resourceTypeUIBinding>
+
+			<!-- These currently have not UI/palette bindings -->
+			<resourceType
+				id="db2.DB2AdminClientUnit.8.infra"
+				name="%db2.DB2AdminClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28AdminClient.template">
+			</resourceType>
+			<resourceType
+				id="db2.DB2AdminClientUnit.8.conceptual"
+				name="%db2.DB2AdminClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28AdminClientC.template">
+			</resourceType>
+			<resourceType
+				id="db2.DB2AppDevelClientUnit.8.infra"
+				name="%db2.DB2AppDevelClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28AppDevelClient.template">
+			</resourceType>
+			<resourceType
+				id="db2.DB2AppDevelClientUnit.8.conceptual"
+				name="%db2.DB2AppDevelClientUnit.8.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2/templates/db28AppDevelClientC.template">
+			</resourceType>
+		</domain>
+	</extension>
+
+
+	<!-- =================================================================================== -->
+	<!-- Extension: deploy status resolution generators                                      -->
+	<!-- =================================================================================== -->
+	<extension
+		point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator
+			id="resolutionGenerator.InsertNewDatabaseInstanceGenerator"
+			name="%resolutionGenerator.InsertNewDatabaseInstanceGenerator"
+			class="com.ibm.ccl.soa.deploy.db2.validator.resolution.InsertNewDatabaseInstanceGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.db2.Db2InstanceUnitMissing" />
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator
+			id="resolutionGenerator.UseridPasswordHostnameResolutionGenerator"
+			name="%resolutionGenerator.UseridPasswordHostnameResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.db2.validator.resolution.UseridPasswordHostnameResolutionGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.db2.instanceMissingLinkToInstanceAdminUser" />
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator
+			id="resolutionGenerator.PropagatePasswordResolutionGenerator"
+			name="%resolutionGenerator.PropagatePasswordResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.db2.internal.validator.resolution.PropagatePasswordResolutionGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeInvalid" />
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator
+			id="resolutionGenerator.SuggestInstallDirNamesGenerator"
+			name="%resolutionGenerator.SuggestInstallDirNamesGenerator"
+			class="com.ibm.ccl.soa.deploy.db2.validator.resolution.SuggestInstallDirNamesGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator
+			id="resolutionGenerator.SuggestJdbcTypeGenerator"
+			name="%resolutionGenerator.SuggestJdbcTypeGenerator"
+			class="com.ibm.ccl.soa.deploy.db2.validator.resolution.SuggestJdbcTypeGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeInvalid" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.attributeName"
+					value="com.ibm.ccl.soa.deploy.db2.DB2JdbcDriver#jdbcType" />
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator
+	    		id="InsertNewDatabaseResolutionGenerator"
+	    		name="%resolutionGenerator.InsertNewDatabaseResolutionGenerator"
+        		class="com.ibm.ccl.soa.deploy.db2.validator.resolution.InsertNewDatabaseResolutionGenerator">
+      		<enablement>
+         		<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/> 
+	        	<test
+              		property="com.ibm.ccl.soa.deploy.core.problemType"
+              		value="com.ibm.ccl.soa.deploy.core.ConstraintNotEnoughInfoToValidate"/>
+      		</enablement>
+     	</resolutionGenerator>
+
+	</extension>
+
+
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientInstanceUnitFilter"
+			description="%db2ClientInstanceUnitFilter.description"
+			name="%db2ClientInstanceUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2ClientInstanceUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2AdminClientUnitFilter.description"
+			name="%db2AdminClientUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2AdminClientUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2RuntimeClientUnitFilter.description"
+			name="%db2RuntimeClientUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2RuntimeClientUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2AppDevelClientUnitFilter.description"
+			name="%db2AppDevelClientUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2AppDevelClientUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2InstanceUnitFilter"
+			description="%db2InstanceUnitFilter.description"
+			name="%db2InstanceUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2InstanceUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2SystemUnitFilter"
+			description="%db2SystemUnitFilter.description"
+			name="%db2SystemUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2SystemUnit" />
+			</inputEnablement>
+		</unitFilter>
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2NodeCatalogUnitFilter"
+			description="%db2NodeCatalogUnitFilter.description"
+			name="%db2NodeCatalogUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.db2.DB2NodeCatalogUnit" />
+			</inputEnablement>
+		</unitFilter>
+
+		<!--
+			<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2unitfilter.description"
+			name="%db2unitfilter.name">
+			<inputEnablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.db2.DB2RuntimeClientUnit"/>
+			</inputEnablement>
+			</unitFilter>
+			<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2unitfilter.description"
+			name="%db2unitfilter.name">
+			<inputEnablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.db2.DB2AppDevelClientUnit"/>
+			</inputEnablement>
+			</unitFilter>
+			<unitFilter
+			class="com.ibm.ccl.soa.deploy.db2.internal.filter.DB2ClientUnitFilter"
+			description="%db2unitfilter.description"
+			name="%db2unitfilter.name">
+			<inputEnablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.db2.DB2AdminClientUnit"/>      
+			</inputEnablement>
+			</unitFilter>          
+		-->
+	</extension>
+ <extension
+       point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+    <adapterFactory
+          className="com.ibm.ccl.soa.deploy.db2.provider.Db2ItemProviderAdapterFactory"
+          functionGroupID="com.ibm.ccl.soa.deploy.db2"
+          id="com.ibm.ccl.soa.deploy.db2.provider.Db2ItemProviderAdapterFactory"
+          packageURI="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/">
+    </adapterFactory>
+ </extension>
+ 
+ <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.db2">		
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.db2/models/schemas/db2Domain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+	
+</plugin>
+

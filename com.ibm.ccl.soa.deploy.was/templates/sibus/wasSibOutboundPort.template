@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+name="WebSphereMQQueueDestinationUnit template">
+  <was:unit.wasSibOutboundPortUnit displayName="WebSphereSibOutboundPortUnit" name="WebSphereSibOutboundPortUnit" configurationUnit="true">
+    <was:capability.wasSibOutboundPort name="WebSphere sib outbound port" displayName="WebSphere sib outbound port" linkType="any"/>
+    <core:requirement mutable="true" name="Hosted on Was outbound Service" displayName="Hosted on Was outbound Service" dmoType="was:WasSibOutboundService" linkType="hosting"/>
+    <core:requirement mutable="true" name="depend on a sibus destnation" displayName="depend on a sibus destnation" dmoType="was:WasSibDestination" linkType="dependency">    
+		<constraint:constraint.equals name="Port" attributeName="type" value="Port"/>
+    </core:requirement>
+  </was:unit.wasSibOutboundPortUnit>
+</core:topology>

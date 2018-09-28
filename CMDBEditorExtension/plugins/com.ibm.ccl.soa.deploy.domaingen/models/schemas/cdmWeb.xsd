@@ -1,0 +1,631 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmweb/1.0.0/"
+	xmlns:cdmWeb="http://www.ibm.com/ccl/soa/deploy/cdmweb/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmWebRoot"
+	ecore:name="cdmWeb"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmweb"
+	ecore:nsPrefix="cdmWeb">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.webServer" substitutionGroup="core:capability" type="cdmWeb:WebServer"/>
+	<complexType name="WebServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webServerUnit" substitutionGroup="core:unit" type="cdmWeb:WebServerUnit"/>
+	<complexType name="WebServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheVirtualHost" substitutionGroup="core:capability" type="cdmWeb:ApacheVirtualHost"/>
+	<complexType name="ApacheVirtualHost">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHost">
+				<attribute name="ResourceConfig" type="string" />
+				<attribute name="RLimitMEM" type="int" />
+				<attribute name="RLimitNPROC" type="int" />
+				<attribute name="ErrorLog" type="string" />
+				<attribute name="RLimitCPU" type="int" />
+				<attribute name="Group" type="string" />
+				<attribute name="ServerAdmin" type="string" />
+				<attribute name="AccessConfig" type="string" />
+				<attribute name="ServerPath" type="string" />
+				<attribute name="LogLevel" type="string" />
+				<attribute name="LimitRequestBody" type="int" />
+				<attribute name="User" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheVirtualHostUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheVirtualHostUnit"/>
+	<complexType name="ApacheVirtualHostUnit">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHostUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheWebContainer" substitutionGroup="core:capability" type="cdmWeb:ApacheWebContainer"/>
+	<complexType name="ApacheWebContainer">
+		<complexContent>
+			<extension base="cdmBase:WebContainer">
+				<attribute name="MinSpareServers" type="int" />
+				<attribute name="ServerType" type="string" />
+				<attribute name="AcceptMutex" type="string" />
+				<attribute name="SendBufferSize" type="int" />
+				<attribute name="StartServers" type="int" />
+				<attribute name="PidFile" type="string" />
+				<attribute name="ScoreBoardFile" type="string" />
+				<attribute name="MaxKeepAliveRequests" type="int" />
+				<attribute name="MaxSpareServers" type="int" />
+				<attribute name="KeepAliveTimeout" type="int" />
+				<attribute name="LimitRequestFieldSize" type="int" />
+				<attribute name="LockFile" type="string" />
+				<attribute name="CoreDumpDirectory" type="string" />
+				<attribute name="LimitRequestFields" type="int" />
+				<attribute name="LimitRequestLine" type="int" />
+				<attribute name="ListenBacklog" type="int" />
+				<attribute name="MaxClients" type="int" />
+				<attribute name="Timeout" type="int" />
+				<attribute name="KeepAlive" type="int" />
+				<attribute name="LimitRequestBody" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheWebContainerUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheWebContainerUnit"/>
+	<complexType name="ApacheWebContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:WebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webStaticContentModule" substitutionGroup="core:capability" type="cdmWeb:WebStaticContentModule"/>
+	<complexType name="WebStaticContentModule">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webStaticContentModuleUnit" substitutionGroup="core:unit" type="cdmWeb:WebStaticContentModuleUnit"/>
+	<complexType name="WebStaticContentModuleUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheServer" substitutionGroup="core:capability" type="cdmWeb:ApacheServer"/>
+	<complexType name="ApacheServer">
+		<complexContent>
+			<extension base="cdmWeb:WebServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheServerUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheServerUnit"/>
+	<complexType name="ApacheServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetJVMSettings" substitutionGroup="core:capability" type="cdmWeb:IPlanetJVMSettings"/>
+	<complexType name="IPlanetJVMSettings">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MinHeapSize" type="int" />
+				<attribute name="MaxHeapSize" type="int" />
+				<attribute name="JSPDebugEnabled" type="boolean" />
+				<attribute name="JavaClasspath" type="string" />
+				<attribute name="ClassGCEnabled" type="boolean" />
+				<attribute name="JavaCompiler" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetJVMSettingsUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetJVMSettingsUnit"/>
+	<complexType name="IPlanetJVMSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nSAPIPlugin" substitutionGroup="core:capability" type="cdmWeb:NSAPIPlugin"/>
+	<complexType name="NSAPIPlugin">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+				<attribute name="InitFunctions" type="string" />
+				<attribute name="SharedLibFlags" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nSAPIPluginUnit" substitutionGroup="core:unit" type="cdmWeb:NSAPIPluginUnit"/>
+	<complexType name="NSAPIPluginUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iIsModule" substitutionGroup="core:capability" type="cdmWeb:IIsModule"/>
+	<complexType name="IIsModule">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iIsModuleUnit" substitutionGroup="core:unit" type="cdmWeb:IIsModuleUnit"/>
+	<complexType name="IIsModuleUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webModule" substitutionGroup="core:capability" type="cdmWeb:WebModule"/>
+	<complexType name="WebModule">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webModuleUnit" substitutionGroup="core:unit" type="cdmWeb:WebModuleUnit"/>
+	<complexType name="WebModuleUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetProxyServer" substitutionGroup="core:capability" type="cdmWeb:IPlanetProxyServer"/>
+	<complexType name="IPlanetProxyServer">
+		<complexContent>
+			<extension base="cdmWeb:IPlanetServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetProxyServerUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetProxyServerUnit"/>
+	<complexType name="IPlanetProxyServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:IPlanetServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iIsWebServer" substitutionGroup="core:capability" type="cdmWeb:IIsWebServer"/>
+	<complexType name="IIsWebServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SecureBindings" type="string" />
+				<attribute name="ServerBindings" type="string" />
+				<attribute name="DontLog" type="boolean" />
+				<attribute name="RootPath" type="string" />
+				<attribute name="AppIsolation" type="string" />
+				<attribute name="IIsParametersRaw" type="string" />
+				<attribute name="DirBrowseFlags" type="string" />
+				<attribute name="IIsPath" type="string" />
+				<attribute name="AppPoolId" type="string" />
+				<attribute name="AccessFlags" type="string" />
+				<attribute name="ContentIndexed" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iIsWebServerUnit" substitutionGroup="core:unit" type="cdmWeb:IIsWebServerUnit"/>
+	<complexType name="IIsWebServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.cGIScript" substitutionGroup="core:capability" type="cdmWeb:CGIScript"/>
+	<complexType name="CGIScript">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cGIScriptUnit" substitutionGroup="core:unit" type="cdmWeb:CGIScriptUnit"/>
+	<complexType name="CGIScriptUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetWebContainer" substitutionGroup="core:capability" type="cdmWeb:IPlanetWebContainer"/>
+	<complexType name="IPlanetWebContainer">
+		<complexContent>
+			<extension base="cdmBase:WebContainer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetWebContainerUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetWebContainerUnit"/>
+	<complexType name="IPlanetWebContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:WebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheModule" substitutionGroup="core:capability" type="cdmWeb:ApacheModule"/>
+	<complexType name="ApacheModule">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheModuleUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheModuleUnit"/>
+	<complexType name="ApacheModuleUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheSSLSettings" substitutionGroup="core:capability" type="cdmWeb:ApacheSSLSettings"/>
+	<complexType name="ApacheSSLSettings">
+		<complexContent>
+			<extension base="cdmBase:SSLSettings">
+				<attribute name="VerifyClientDepth" type="int" />
+				<attribute name="LogFile" type="string" />
+				<attribute name="VerifyClient" type="string" />
+				<attribute name="LogLevel" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheSSLSettingsUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheSSLSettingsUnit"/>
+	<complexType name="ApacheSSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:SSLSettingsUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iBMHTTPServer" substitutionGroup="core:capability" type="cdmWeb:IBMHTTPServer"/>
+	<complexType name="IBMHTTPServer">
+		<complexContent>
+			<extension base="cdmWeb:ApacheServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iBMHTTPServerUnit" substitutionGroup="core:unit" type="cdmWeb:IBMHTTPServerUnit"/>
+	<complexType name="IBMHTTPServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:ApacheServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericWebServer" substitutionGroup="core:capability" type="cdmWeb:GenericWebServer"/>
+	<complexType name="GenericWebServer">
+		<complexContent>
+			<extension base="cdmWeb:WebServer">
+				<attribute name="GenericType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericWebServerUnit" substitutionGroup="core:unit" type="cdmWeb:GenericWebServerUnit"/>
+	<complexType name="GenericWebServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webProxyServer" substitutionGroup="core:capability" type="cdmWeb:WebProxyServer"/>
+	<complexType name="WebProxyServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webProxyServerUnit" substitutionGroup="core:unit" type="cdmWeb:WebProxyServerUnit"/>
+	<complexType name="WebProxyServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetJSP" substitutionGroup="core:capability" type="cdmWeb:IPlanetJSP"/>
+	<complexType name="IPlanetJSP">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetJSPUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetJSPUnit"/>
+	<complexType name="IPlanetJSPUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheProxyServer" substitutionGroup="core:capability" type="cdmWeb:ApacheProxyServer"/>
+	<complexType name="ApacheProxyServer">
+		<complexContent>
+			<extension base="cdmWeb:WebProxyServer">
+				<attribute name="CacheDefaultExpire" type="int" />
+				<attribute name="ProxyDomain" type="string" />
+				<attribute name="CacheDirLength" type="int" />
+				<attribute name="CacheGcInterval" type="int" />
+				<attribute name="CacheForceCompletion" type="int" />
+				<attribute name="ProxyVia" type="int" />
+				<attribute name="CacheLastModifiedFactor" type="float" />
+				<attribute name="CacheMaxExpire" type="int" />
+				<attribute name="CacheDirLevels" type="int" />
+				<attribute name="CacheSize" type="int" />
+				<attribute name="CacheRoot" type="string" />
+				<attribute name="ProxyReceiveBufferSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheProxyServerUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheProxyServerUnit"/>
+	<complexType name="ApacheProxyServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebProxyServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetServlet" substitutionGroup="core:capability" type="cdmWeb:IPlanetServlet"/>
+	<complexType name="IPlanetServlet">
+		<complexContent>
+			<extension base="cdmWeb:WebModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetServletUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetServletUnit"/>
+	<complexType name="IPlanetServletUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webVirtualHostConfigDirective" substitutionGroup="core:capability" type="cdmWeb:WebVirtualHostConfigDirective"/>
+	<complexType name="WebVirtualHostConfigDirective">
+		<complexContent>
+			<extension base="cdmWeb:ConfigDirective">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webVirtualHostConfigDirectiveUnit" substitutionGroup="core:unit" type="cdmWeb:WebVirtualHostConfigDirectiveUnit"/>
+	<complexType name="WebVirtualHostConfigDirectiveUnit">
+		<complexContent>
+			<extension base="cdmWeb:ConfigDirectiveUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetServer" substitutionGroup="core:capability" type="cdmWeb:IPlanetServer"/>
+	<complexType name="IPlanetServer">
+		<complexContent>
+			<extension base="cdmWeb:WebServer">
+				<attribute name="MtaHost" type="string" />
+				<attribute name="ErrorLog" type="string" />
+				<attribute name="MaxKeepAliveConnections" type="int" />
+				<attribute name="ServerId" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetServerUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetServerUnit"/>
+	<complexType name="IPlanetServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppHTTPServer" substitutionGroup="core:capability" type="cdmWeb:OracleAppHTTPServer"/>
+	<complexType name="OracleAppHTTPServer">
+		<complexContent>
+			<extension base="cdmWeb:ApacheServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppHTTPServerUnit" substitutionGroup="core:unit" type="cdmWeb:OracleAppHTTPServerUnit"/>
+	<complexType name="OracleAppHTTPServerUnit">
+		<complexContent>
+			<extension base="cdmWeb:ApacheServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheGlobalSSLSettings" substitutionGroup="core:capability" type="cdmWeb:ApacheGlobalSSLSettings"/>
+	<complexType name="ApacheGlobalSSLSettings">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ConnectRandomSeed" type="string" />
+				<attribute name="SessionCache" type="string" />
+				<attribute name="StartupRandomSeed" type="string" />
+				<attribute name="PassPhraseDialog" type="string" />
+				<attribute name="Mutex" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheGlobalSSLSettingsUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheGlobalSSLSettingsUnit"/>
+	<complexType name="ApacheGlobalSSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetSSLSettings" substitutionGroup="core:capability" type="cdmWeb:IPlanetSSLSettings"/>
+	<complexType name="IPlanetSSLSettings">
+		<complexContent>
+			<extension base="cdmBase:SSLSettings">
+				<attribute name="Ssl2Enabled" type="boolean" />
+				<attribute name="Ssl3CipherSuite" type="string" />
+				<attribute name="Ssl3SessionCacheTimeout" type="int" />
+				<attribute name="Ssl3Enabled" type="boolean" />
+				<attribute name="ClientCertAuth" type="boolean" />
+				<attribute name="SSLCacheEntries" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetSSLSettingsUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetSSLSettingsUnit"/>
+	<complexType name="IPlanetSSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:SSLSettingsUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webServerConfigDirective" substitutionGroup="core:capability" type="cdmWeb:WebServerConfigDirective"/>
+	<complexType name="WebServerConfigDirective">
+		<complexContent>
+			<extension base="cdmWeb:ConfigDirective">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webServerConfigDirectiveUnit" substitutionGroup="core:unit" type="cdmWeb:WebServerConfigDirectiveUnit"/>
+	<complexType name="WebServerConfigDirectiveUnit">
+		<complexContent>
+			<extension base="cdmWeb:ConfigDirectiveUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.serverAlias" substitutionGroup="core:capability" type="cdmWeb:ServerAlias"/>
+	<complexType name="ServerAlias">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Alias" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.serverAliasUnit" substitutionGroup="core:unit" type="cdmWeb:ServerAliasUnit"/>
+	<complexType name="ServerAliasUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicPlugin" substitutionGroup="core:capability" type="cdmWeb:WebLogicPlugin"/>
+	<complexType name="WebLogicPlugin">
+		<complexContent>
+			<extension base="cdmWeb:NSAPIPlugin">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicPluginUnit" substitutionGroup="core:unit" type="cdmWeb:WebLogicPluginUnit"/>
+	<complexType name="WebLogicPluginUnit">
+		<complexContent>
+			<extension base="cdmWeb:NSAPIPluginUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iIsWebService" substitutionGroup="core:capability" type="cdmWeb:IIsWebService"/>
+	<complexType name="IIsWebService">
+		<complexContent>
+			<extension base="cdmWeb:WebServer">
+				<attribute name="ImagePath" type="string" />
+				<attribute name="IIsParametersRaw" type="string" />
+				<attribute name="RunAs" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iIsWebServiceUnit" substitutionGroup="core:unit" type="cdmWeb:IIsWebServiceUnit"/>
+	<complexType name="IIsWebServiceUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicConnection" substitutionGroup="core:capability" type="cdmWeb:WebLogicConnection"/>
+	<complexType name="WebLogicConnection">
+		<complexContent>
+			<extension base="cdmWeb:WebConnection">
+				<attribute name="PathTrim" type="string" />
+				<attribute name="ConnectionName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicConnectionUnit" substitutionGroup="core:unit" type="cdmWeb:WebLogicConnectionUnit"/>
+	<complexType name="WebLogicConnectionUnit">
+		<complexContent>
+			<extension base="cdmWeb:WebConnectionUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.configDirective" substitutionGroup="core:capability" type="cdmWeb:ConfigDirective"/>
+	<complexType name="ConfigDirective">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.configDirectiveUnit" substitutionGroup="core:unit" type="cdmWeb:ConfigDirectiveUnit"/>
+	<complexType name="ConfigDirectiveUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webConnection" substitutionGroup="core:capability" type="cdmWeb:WebConnection"/>
+	<complexType name="WebConnection">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Path" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webConnectionUnit" substitutionGroup="core:unit" type="cdmWeb:WebConnectionUnit"/>
+	<complexType name="WebConnectionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iPlanetVirtualHost" substitutionGroup="core:capability" type="cdmWeb:IPlanetVirtualHost"/>
+	<complexType name="IPlanetVirtualHost">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHost">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iPlanetVirtualHostUnit" substitutionGroup="core:unit" type="cdmWeb:IPlanetVirtualHostUnit"/>
+	<complexType name="IPlanetVirtualHostUnit">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHostUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iIsWebVirtualDir" substitutionGroup="core:capability" type="cdmWeb:IIsWebVirtualDir"/>
+	<complexType name="IIsWebVirtualDir">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Path" type="string" />
+				<attribute name="IIsParametersRaw" type="string" />
+				<attribute name="IIsPath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iIsWebVirtualDirUnit" substitutionGroup="core:unit" type="cdmWeb:IIsWebVirtualDirUnit"/>
+	<complexType name="IIsWebVirtualDirUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.iIsParameter" substitutionGroup="core:capability" type="cdmWeb:IIsParameter"/>
+	<complexType name="IIsParameter">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Path" type="string" />
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.iIsParameterUnit" substitutionGroup="core:unit" type="cdmWeb:IIsParameterUnit"/>
+	<complexType name="IIsParameterUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.apacheAllowCONNECTPort" substitutionGroup="core:capability" type="cdmWeb:ApacheAllowCONNECTPort"/>
+	<complexType name="ApacheAllowCONNECTPort">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Port" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.apacheAllowCONNECTPortUnit" substitutionGroup="core:unit" type="cdmWeb:ApacheAllowCONNECTPortUnit"/>
+	<complexType name="ApacheAllowCONNECTPortUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/tds/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.tds.provider.TdsItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/tds/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.tds.TdsPackage"
+       genModel = "models/ecore/tds.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="tds"
+       class="com.ibm.ccl.soa.deploy.tds.util.TdsResourceFactoryImpl" />
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.domains">
+     <domain
+           description="Provides a Zephyr Domain  Model for the Tivoli Diretory Server"
+           id="com.ibm.ccl.soa.deploy.tds"
+           name="TDS Domain Model"
+           targetNamespace="http://www.ibm.com/Zephyr/tds/1.0.0/">
+          	<resourceType
+	        	id="tdsBaseSystemUnit"
+	            name="%tds.tdsBaseSystemUnit.spec.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tds/templates/tds.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+				description="%tds.TdsBaseSystemUnit.Description"
+				label="%tds.TdsBaseSystemUnit.Label" path="/serverSoftwareDrawer"
+				largeIcon="icons/pal/tds_base_system_unit_24.gif"
+				smallIcon="icons/pal/tds_base_system_unit_16.gif"
+				resourceTypeId="tds.unit">
+			</resourceTypeUIBinding>
+     </domain>
+  </extension>
+
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+    <extender 
+       uri = "http://www.ibm.com/Zephyr/tds/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.tds.provider.TdsItemProviderAdapterFactory" />
+  </extension>
+</plugin>

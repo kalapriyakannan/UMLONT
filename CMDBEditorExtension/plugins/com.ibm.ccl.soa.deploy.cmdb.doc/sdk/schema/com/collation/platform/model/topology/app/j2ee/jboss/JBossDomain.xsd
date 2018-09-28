@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEDomain.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossManagedConnectionFactory.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossTransactionCM.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/ComputerSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossManagedConnectionPool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/jboss/JBossJMSServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.jboss.JBossDomain">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEDomain">
+        <xsd:sequence>
+          <xsd:element name="serverTempDir" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverHomeDir" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="rootDeploymentFilename" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="blockingShutDown" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverLibraryURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="homeDir" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="libraryURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverDataDir" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="homeURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverConfigURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverBaseURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverHomeURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaVendor" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaVMName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="activeThreadGroupCount" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="listeningPort" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="totalMemory" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaVMVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaVMVendor" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="OSName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxMemory" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="JTA" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossTransactionCM" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="JBossManagedConnectionPool" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossManagedConnectionPool" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="JBossManagedConnectionFactory" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossManagedConnectionFactory" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="JMS" type="coll:com.collation.platform.model.topology.app.j2ee.jboss.JBossJMSServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="host" type="coll:com.collation.platform.model.topology.sys.ComputerSystem" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

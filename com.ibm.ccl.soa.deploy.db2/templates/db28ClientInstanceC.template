@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" 
+xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+name="DB2 8 Template">
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="DB2ClientInstance"/>   
+  </core:annotation>
+  <db2Deploy:unit.db2ClientInstanceUnit name="DB2ClientInstance" conceptual="true">
+    <db2Deploy:capability.db2ClientInstance name="DB2 Client Instance" displayName="DB2 Client Instance" linkType="any"/>
+    <core:requirement mutable="true" name="DB2 Client" displayName="DB2 Client" dmoType="db2Deploy:DB2Client" linkType="hosting">
+      <constraint:constraint.version name="db2ClientVersion" displayName="db2ClientVersion" attributeName="db2ClientVersion" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2ClientInstanceUnit>
+</core:topology>

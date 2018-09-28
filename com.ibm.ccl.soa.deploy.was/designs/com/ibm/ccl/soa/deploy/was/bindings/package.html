@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>WAS Bindings Package</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The WAS bindings package provides Bindings Capability providers for the WAS domain.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">WAS Bindings Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The WAS bindings package provides BindingProvider classes that provide
+		WAS specific bindings to the J2EE domain modules.</p>
+		<!--  Leave this paragraph  -->
+		<p>In this document, concepts are enclosed by italics (<i>like
+		this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements
+		in the schemas are enclosed in angle brackets(&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">WAS Bindings
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>WAS uses special bindings files located alonside the normal J2EE deployment
+		descriptors to define the special names that was uses to located J2EE services
+		exposed in the J2EE modules and defined in the J2EE deployment descriptors.  These
+		special bindings files are necessary for WAS to be able to find the appropriate 
+		service on the server or within the application and map it to the correct J2EE 
+		service defined within the J2EE deployment descriptor.   
+		</p>
+		<p>The <i>BindingProvider</i>s in this package hook into the capability provider
+		extension point of the SOA Deploy Tools plugin to provide suppored J2EE module
+		types with the information found in the WAS bindings files.  WAS bindings are
+		modeled on the J2EE modules as <i>OverrideExpression</i>s and <i>OverrideAttribute</i>s
+		occordingly.  The purpose of a WAS binding is to remap a declared J2EE service 
+		to a known WAS service and that is the pattern that these BindingProviders follow
+		as well.  They do not create new Capabilities or Requirements for a J2EE module
+		but rather they provide a way of redirecting references away from names that 
+		WAS cannot understand to names that WAS does understand.</p>
+		<p>The <i>BindingProvider</i> type is a marker type that the J2EEModuleUnitProvider
+		utilizes to ensure that they are called last in the list of CapabilityProviders
+		when introspecting a type.  Since BindingProvider do not return any new requirements
+		or capabilities they rely on the existence of other requirements and capabilities
+		that they can then augment with OverrideExpressions and OverrideAttributes that 
+		will represent the was bindings found in the bindings file for a particular J2EE
+		module type.
+		</p>
+		<p>The bindings providers in this package should be registered with the capability
+		providers extension point and should set the input enablement as follows:
+		</p>
+		<ul>
+			<ul>{inputEnablement}
+				<ul>{and}
+				    <ul>{test com.ibm.ccl...hasWasBindings=true}</ul>
+				    <ul>{or}
+				    	<ul>{instanceof org.eclipse.jst...EJBJar}</ul>
+				    	<ul>{instanceof org.eclipse.jst...WebApp}</ul>
+				    	<ul>{instanceof org.eclipse.jst...ApplicationClient}</ul>
+				    	<ul>{instanceof org.eclipse.jst...Application}</ul>
+				    </ul>
+				</ul>
+			</ul>
+		</ul>
+		<p>Note the use of the test in the above input enablement expression.  The purpose of
+		this property tester is to ensure that a was bindings file exists for the J2EE module
+		before the bindings are introspected.  Without this test in place a new was bindings
+		file could possibly get created if one does not already exist.
+		</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing Requrements [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The WAS Binding API will be tested by verifying the following: </p>
+		<ul>
+			<li>OverrideExpressions are created for each supported requirement expression
+			that corresponds to a WAS binding.</li>
+			<li>OverrideAttributes are created for each supported capability that corresponds
+			to a WAS binding.</li>
+			<li>Was bindings are not created for J2EE modules that do not contain was
+			bindings files.</li>
+		</ul>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Tim Pouyer</b> <i>(tpouyer{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

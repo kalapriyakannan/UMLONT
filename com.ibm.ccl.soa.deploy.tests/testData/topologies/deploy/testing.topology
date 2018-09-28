@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Created on Tue 2007.06.19 at 10:54:20 PM EDT" displayName="testing" name="testing" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds" namespace="deploy">
+  <db2Deploy:unit.db2DatabaseUnit name="DB2Database" conceptual="false">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" dbName="TPCW"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <core:req_expr displayName="db2Version" name="db2Version" attributeName="db2Version" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <was:unit.db2JdbcProviderUnit name="Db2LegacyCliType2JdbcProviderXA" configurationUnit="true" initInstallState="not_installed">
+    <was:capability.db2JdbcProvider description="DB2 JDBC2-compliant Provider" displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="Db2LegacyCliType2JdbcProviderXA" linkType="any" classpath="C:/SQLLIB/java/db2java.zip" implementationClassName="COM.ibm.db2.jdbc.DB2XADataSource" nativepath="" providerName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" providerType="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" jdbcType="2" template="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)"/>
+    <core:requirement displayName="DB2 JDBC Driver" mutable="true" name="DB2 JDBC Driver" dmoType="db2Deploy:DB2JdbcDriver" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WasConfigurationContainer" mutable="true" name="WasConfigurationContainer" dmoType="was:WasConfigurationContainer" linkType="hosting"/>
+    <core:link.hosting name="HostingLink0" target="/WAS5DB2V5DataSource"/>
+  </was:unit.db2JdbcProviderUnit>
+  <db2Deploy:unit.db2CatalogUnit name="DB2Catalog" configurationUnit="true" initInstallState="not_installed">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="dependency" dbAlias="TPCW" dbName="TPCW"/>
+    <core:requirement displayName="Db2 Cataloged Node" mutable="true" name="Db2CatalogedNode" dmoType="db2Deploy:DB2CatalogedNode" linkType="hosting"/>
+    <core:requirement displayName="Db2 Database" mutable="true" name="Db2Database" dmoType="db2Deploy:DB2Database" linkType="dependency">
+      <core:link.dependency name="DependencyLink1" target="tpcw.TPCW:/DB2Database/DB2 Database"/>
+    </core:requirement>
+  </db2Deploy:unit.db2CatalogUnit>
+  <was:unit.wasdatasource name="WAS5DB2V5DataSource" configurationUnit="true" initInstallState="not_installed">
+    <was:capability.wasv5DB2Datasource displayName="WAS V5 Data Source" name="WAS5 Data Source" linkType="dependency" datasourceName="TPCWEJB2.jar" dbName="TPCW" hostname="testDB" jndiName="jdbc/TPCWEJB2.jar" usedForCmp="true" dataSourceHelperClassName="com.ibm.websphere.rsadapter.DB2DataStoreHelper" j2cAuthAlias="Administrator">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </was:capability.wasv5DB2Datasource>
+    <core:requirement displayName="DB2 Jdbc Provider" mutable="true" name="DB2JdbcProvider" dmoType="was:DB2JdbcProvider" linkType="hosting"/>
+    <core:requirement displayName="DB2 Database" mutable="true" name="DB2Database" dmoType="db2Deploy:DB2Database" linkType="dependency" use="optional">
+      <core:link.dependency name="DependencyLink0" target="/DB2Catalog/DB2 Database"/>
+    </core:requirement>
+    <core:requirement displayName="Authentication" mutable="true" name="J2CAuthenticationEntry" dmoType="was:WASJ2CAuthenticationDataEntry" linkType="dependency" use="optional">
+      <core:link.dependency name="DependencyLink0" target="/WAS J2C Auth/WAS J2ee Authentication Data Entry"/>
+    </core:requirement>
+  </was:unit.wasdatasource>
+  <was:unit.wasJ2CAuth name="WAS J2C Auth" configurationUnit="true" initInstallState="not_installed">
+    <was:capability.wasJ2CAuth displayName="WAS J2ee Authentication Data Entry" name="WAS J2ee Authentication Data Entry" linkType="dependency" alias="Administrator" password="jWQalB8Qvfth" userId="Administrator">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </was:capability.wasJ2CAuth>
+    <core:requirement displayName="OS User" mutable="true" name="OS User" dmoType="os:User" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WAS Cell" mutable="true" name="WASCell" dmoType="was:WasCell" linkType="hosting"/>
+  </was:unit.wasJ2CAuth>
+  <was:unit.db2JdbcProviderUnit name="Db2LegacyCliType2JdbcProviderXA0" configurationUnit="true" initInstallState="not_installed">
+    <was:capability.db2JdbcProvider description="DB2 JDBC2-compliant Provider" displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="Db2LegacyCliType2JdbcProviderXA" linkType="any" classpath="C:/SQLLIB/java/db2java.zip" implementationClassName="COM.ibm.db2.jdbc.DB2XADataSource" nativepath="" providerName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" providerType="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" jdbcType="2" template="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)"/>
+    <core:requirement displayName="DB2 JDBC Driver" mutable="true" name="DB2 JDBC Driver" dmoType="db2Deploy:DB2JdbcDriver" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WasConfigurationContainer" mutable="true" name="WasConfigurationContainer" dmoType="was:WasConfigurationContainer" linkType="hosting"/>
+    <core:link.hosting name="HostingLink0" target="/WAS5DB2V5DataSource0"/>
+  </was:unit.db2JdbcProviderUnit>
+  <was:unit.wasdatasource name="WAS5DB2V5DataSource0" configurationUnit="true" initInstallState="not_installed">
+    <was:capability.wasv5DB2Datasource displayName="WAS V5 Data Source" name="WAS5 Data Source" linkType="dependency" datasourceName="TPCWDS" dbName="TPCW" hostname="testDB" jndiName="jdbc/TPCWDS" dataSourceHelperClassName="com.ibm.websphere.rsadapter.DB2DataStoreHelper" j2cAuthAlias="Administrator">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </was:capability.wasv5DB2Datasource>
+    <core:requirement displayName="DB2 Jdbc Provider" mutable="true" name="DB2JdbcProvider" dmoType="was:DB2JdbcProvider" linkType="hosting"/>
+    <core:requirement displayName="DB2 Database" mutable="true" name="DB2Database" dmoType="db2Deploy:DB2Database" linkType="dependency" use="optional">
+      <core:link.dependency name="DependencyLink0" target="/DB2Catalog/DB2 Database"/>
+    </core:requirement>
+    <core:requirement displayName="Authentication" mutable="true" name="J2CAuthenticationEntry" dmoType="was:WASJ2CAuthenticationDataEntry" linkType="dependency" use="optional">
+      <core:link.dependency name="DependencyLink0" target="/WAS J2C Auth/WAS J2ee Authentication Data Entry"/>
+    </core:requirement>
+  </was:unit.wasdatasource>
+  <core:link.hosting name="HostingLink0" source="templates.Testing:/DB2Instance" target="/DB2Database"/>
+  <core:link.hosting name="HostingLink1" source="templates.Testing:/WAS6Server" target="tpcw.TPCW:/EarModule0"/>
+  <core:link.hosting name="HostingLink2" source="infra.sampleInfra:/WAS6Server2" target="/Db2LegacyCliType2JdbcProviderXA"/>
+  <core:link.hosting name="HostingLink3" source="infra.sampleInfra:/DB2NodeCatalog" target="/DB2Catalog"/>
+  <core:link.hosting name="HostingLink4" source="infra.sampleInfra:/was6StandaloneServerCell2" target="/WAS J2C Auth"/>
+  <core:link.hosting name="HostingLink5" source="infra.sampleInfra:/WAS6Server2" target="/Db2LegacyCliType2JdbcProviderXA0"/>
+  <core:link.dependency name="DependencyLink0" source="tpcw.TPCW:/JarModule0/JRE" target="templates.Testing:/WAS6Server/java.JRE"/>
+  <core:link.dependency name="DependencyLink1" source="tpcw.TPCW:/EjbModule0/jdbc_TPCWEJB2_jar" target="/WAS5DB2V5DataSource/WAS5 Data Source"/>
+  <core:link.dependency name="DependencyLink2" source="tpcw.TPCW:/EjbModule1/jdbc_TPCWDS" target="/WAS5DB2V5DataSource0/WAS5 Data Source"/>
+  <core:link.realization name="RealizationLink0" source="tpcw.TPCW:/DB2Database" target="/DB2Database"/>
+  <core:link.realization name="RealizationLink1" source="templates.Testing:/DB2ClientInstance" target="infra.sampleInfra:/DB2ClientInstance"/>
+  <core:link.realization name="RealizationLink2" source="templates.Testing:/Administrator0" target="infra.sampleInfra:/Administrator2"/>
+  <core:link.realization name="RealizationLink3" source="templates.Testing:/Administrator" target="infra.sampleInfra:/Administrator5"/>
+  <core:link.realization name="RealizationLink4" source="templates.Testing:/WAS6Server" target="infra.sampleInfra:/WAS6Server2"/>
+  <core:link.realization name="RealizationLink5" source="templates.Testing:/WasSystemUnit" target="infra.sampleInfra:/WasSystemUnit2"/>
+  <core:link.realization name="RealizationLink6" source="templates.Testing:/WasNodeGroup" target="infra.sampleInfra:/WasNodeGroup2"/>
+  <core:link.realization name="RealizationLink7" source="templates.Testing:/ServerClassLoader" target="infra.sampleInfra:/ServerClassLoader2"/>
+  <core:link.realization name="RealizationLink8" source="templates.Testing:/Windows20000" target="infra.sampleInfra:/Windows2000"/>
+  <core:link.realization name="RealizationLink9" source="templates.Testing:/WasNode" target="infra.sampleInfra:/WasNode2"/>
+  <core:link.realization name="RealizationLink10" source="templates.Testing:/DB2System" target="infra.sampleInfra:/DB2System1"/>
+  <core:link.realization name="RealizationLink11" source="templates.Testing:/was6StandaloneServerCell" target="infra.sampleInfra:/was6StandaloneServerCell2"/>
+  <core:link.realization name="RealizationLink12" source="templates.Testing:/portConfiguration0" target="infra.sampleInfra:/portConfiguration2"/>
+  <core:link.realization name="RealizationLink13" source="templates.Testing:/Administrators0" target="infra.sampleInfra:/Administrators2"/>
+  <core:link.realization name="RealizationLink14" source="templates.Testing:/Administrators" target="infra.sampleInfra:/Administrators5"/>
+  <core:link.realization name="RealizationLink15" source="templates.Testing:/DB2Instance" target="infra.sampleInfra:/DB2Instance1"/>
+  <core:link.realization name="RealizationLink16" source="templates.Testing:/DB2NodeCatalog" target="infra.sampleInfra:/DB2NodeCatalog"/>
+  <core:link.realization name="RealizationLink17" source="templates.Testing:/Windows2000" target="infra.sampleInfra:/Windows20002"/>
+  <core:link.realization name="RealizationLink18" source="templates.Testing:/DB2RuntimeClient" target="infra.sampleInfra:/DB2RuntimeClient"/>
+  <core:link.realization name="RealizationLink19" source="templates.Testing:/portConfiguration" target="infra.sampleInfra:/portConfiguration4"/>
+  <core:link.realization name="RealizationLink20" source="tpcw.TPCW:/x86 Server" target="infra.sampleInfra:/x86 Server5"/>
+  <core:import displayName="TPCW" mutable="true" name="Import0" namespace="tpcw" pattern="TPCW">
+    <core:config.topology name="default">
+      <core:instantiation name="Instantiation0" referenced="EarModule0">
+        <core:requirement displayName="Shared Library Entry" name="SharedLibraryEntry" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+      </core:instantiation>
+      <core:instantiation name="Instantiation1" referenced="WebModule0">
+        <core:requirement displayName="Shared Library Entry" name="SharedLibraryEntry" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+      </core:instantiation>
+      <core:instantiation name="Instantiation2" referenced="JarModule0"/>
+      <core:instantiation name="Instantiation3" referenced="EjbModule0"/>
+      <core:instantiation name="Instantiation4" referenced="EjbModule1"/>
+      <core:instantiation name="Instantiation5" referenced="DatabaseComponent0"/>
+      <core:instantiation name="Instantiation6" referenced="DB2Database"/>
+      <core:instantiation name="Instantiation7" referenced="x86 Server"/>
+      <core:instantiation name="Instantiation8" referenced="/WebModule0/ejb_ShoppingCart">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_ShoppingCart)" name="WasJNDIBindingConstraint0" jndiName="ejb/ShoppingCart"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_ShoppingCart)" name="WasJNDIBindingConstraint0" jndiName="ejb/ShoppingCart"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation9" referenced="/WebModule0/ejb_Catalog">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation10" referenced="/WebModule0/ejb_AdminPortal">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation11" referenced="/EjbModule0/IdManager">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(IdManager)" name="WasJNDIBindingConstraint0" jndiName="ejb/IdManager"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(IdManager)" name="WasJNDIBindingConstraint0" jndiName="ejb/IdManager"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation12" referenced="/EjbModule0/Address">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Address)" name="WasJNDIBindingConstraint0" jndiName="ejb/Address"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Address)" name="WasJNDIBindingConstraint0" jndiName="ejb/Address"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation13" referenced="/EjbModule0/Country">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Country)" name="WasJNDIBindingConstraint0" jndiName="ejb/Country"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Country)" name="WasJNDIBindingConstraint0" jndiName="ejb/Country"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation14" referenced="/EjbModule0/Author">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Author)" name="WasJNDIBindingConstraint0" jndiName="ejb/Author"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Author)" name="WasJNDIBindingConstraint0" jndiName="ejb/Author"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation15" referenced="/EjbModule0/Item">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Item)" name="WasJNDIBindingConstraint0" jndiName="ejb/Item"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Item)" name="WasJNDIBindingConstraint0" jndiName="ejb/Item"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation16" referenced="/EjbModule0/Customer">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Customer)" name="WasJNDIBindingConstraint0" jndiName="ejb/Customer"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Customer)" name="WasJNDIBindingConstraint0" jndiName="ejb/Customer"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation17" referenced="/EjbModule0/Cc_xact">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Cc_xact)" name="WasJNDIBindingConstraint0" jndiName="ejb/Cc_xact"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Cc_xact)" name="WasJNDIBindingConstraint0" jndiName="ejb/Cc_xact"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation18" referenced="/EjbModule0/Orders">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Orders)" name="WasJNDIBindingConstraint0" jndiName="ejb/Orders"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Orders)" name="WasJNDIBindingConstraint0" jndiName="ejb/Orders"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation19" referenced="/EjbModule0/OrderLine">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(OrderLine)" name="WasJNDIBindingConstraint0" jndiName="ejb/OrderLine"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(OrderLine)" name="WasJNDIBindingConstraint0" jndiName="ejb/OrderLine"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation20" referenced="/EjbModule0/ejb_IdManager">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_IdManager)" name="WasJNDIBindingConstraint0" jndiName="ejb/IdManager"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_IdManager)" name="WasJNDIBindingConstraint0" jndiName="ejb/IdManager"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation21" referenced="/EjbModule0/jdbc_TPCWEJB2_jar">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(jdbc_TPCWEJB2_jar)" name="WasJNDIBindingConstraint0"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(jdbc_TPCWEJB2_jar)" name="WasJNDIBindingConstraint0"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation22" referenced="/EjbModule1/Catalog">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation23" referenced="/EjbModule1/ShoppingCart">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ShoppingCart)" name="WasJNDIBindingConstraint0" jndiName="ejb/ShoppingCart"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ShoppingCart)" name="WasJNDIBindingConstraint0" jndiName="ejb/ShoppingCart"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation24" referenced="/EjbModule1/AdminPortal">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation25" referenced="/EjbModule1/ejb_Cc_xact">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Cc_xact)" name="WasJNDIBindingConstraint0" jndiName="ejb/Cc_xact"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Cc_xact)" name="WasJNDIBindingConstraint0" jndiName="ejb/Cc_xact"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation26" referenced="/EjbModule1/ejb_Customer">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Customer)" name="WasJNDIBindingConstraint0" jndiName="ejb/Customer"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Customer)" name="WasJNDIBindingConstraint0" jndiName="ejb/Customer"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation27" referenced="/EjbModule1/ejb_Country">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Country)" name="WasJNDIBindingConstraint0" jndiName="ejb/Country"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Country)" name="WasJNDIBindingConstraint0" jndiName="ejb/Country"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation28" referenced="/EjbModule1/ejb_Address">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Address)" name="WasJNDIBindingConstraint0" jndiName="ejb/Address"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Address)" name="WasJNDIBindingConstraint0" jndiName="ejb/Address"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation29" referenced="/EjbModule1/ejb_Author">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Author)" name="WasJNDIBindingConstraint0" jndiName="ejb/Author"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Author)" name="WasJNDIBindingConstraint0" jndiName="ejb/Author"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation30" referenced="/EjbModule1/ejb_OrderLine">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_OrderLine)" name="WasJNDIBindingConstraint0" jndiName="ejb/OrderLine"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_OrderLine)" name="WasJNDIBindingConstraint0" jndiName="ejb/OrderLine"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation31" referenced="/EjbModule1/ejb_Item">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Item)" name="WasJNDIBindingConstraint0" jndiName="ejb/Item"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Item)" name="WasJNDIBindingConstraint0" jndiName="ejb/Item"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation32" referenced="/EjbModule1/ejb_Order">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Order)" name="WasJNDIBindingConstraint0" jndiName="ejb/Orders"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Order)" name="WasJNDIBindingConstraint0" jndiName="ejb/Orders"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation33" referenced="/EjbModule1/ejb_Catalog">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_Catalog)" name="WasJNDIBindingConstraint0" jndiName="ejb/Catalog"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation34" referenced="/EjbModule1/ejb_AdminPortal">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(ejb_AdminPortal)" name="WasJNDIBindingConstraint0" jndiName="ejb/AdminPortal"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation35" referenced="/EjbModule1/jdbc_TPCWDS">
+        <core:augmentation select="constraints">
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(jdbc_TPCWDS)" name="WasJNDIBindingConstraint0"/>
+          <was:constraint.wasJNDIBindingConstraint displayName="WasJNDIBindingConstraint(jdbc_TPCWDS)" name="WasJNDIBindingConstraint0"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation36" referenced="/EjbModule0/administrator">
+        <core:augmentation select="constraints">
+          <was:constraint.wasSecuritySubjectConstraint displayName="WasSecuritySubjectConstraint(administrator)" name="administrator_com.ibm.ccl.soa.deploy.was.WasSecuritySubjectConstraint0" wasSecuritySubject="administrator"/>
+          <was:constraint.wasSecuritySubjectConstraint displayName="WasSecuritySubjectConstraint(administrator)" name="administrator_com.ibm.ccl.soa.deploy.was.WasSecuritySubjectConstraint0" wasSecuritySubject="administrator"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation37" referenced="/WebModule0">
+        <core:augmentation select="constraints">
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWWeb)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+          <was:constraint.wasWarClassloaderPolicyConstraint displayName="WasWarClassloaderPolicyConstraint(TPCWWeb)" name="com.ibm.ccl.soa.deploy.was.WasWarClassloaderPolicyConstraint0" order="PARENT_FIRST"/>
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWWeb)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+          <was:constraint.wasWarClassloaderPolicyConstraint displayName="WasWarClassloaderPolicyConstraint(TPCWWeb)" name="com.ibm.ccl.soa.deploy.was.WasWarClassloaderPolicyConstraint0" order="PARENT_FIRST"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation38" referenced="/EjbModule0">
+        <core:augmentation select="constraints">
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWEJB2)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWEJB2)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation39" referenced="/EjbModule1">
+        <core:augmentation select="constraints">
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWEJB1)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+          <was:constraint.wasModuleStartWeightConstraint displayName="WasModuleStartWeightConstraint(TPCWEJB1)" name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0" startingWeight="0"/>
+        </core:augmentation>
+      </core:instantiation>
+      <core:instantiation name="Instantiation40" referenced="/EarModule0">
+        <core:augmentation select="constraints">
+          <was:constraint.wasEarClassloaderPolicyConstraint displayName="WasEarClassloaderPolicyConstraint(TPCWApplication)" name="com.ibm.ccl.soa.deploy.was.WasEarClassloaderPolicyConstraint0" order="PARENT_FIRST" policy="MULTIPLE" reloadClasses="true" reloadInterval="15"/>
+          <was:constraint.wasEarClassloaderPolicyConstraint displayName="WasEarClassloaderPolicyConstraint(TPCWApplication)" name="com.ibm.ccl.soa.deploy.was.WasEarClassloaderPolicyConstraint0" order="PARENT_FIRST" policy="MULTIPLE" reloadClasses="true" reloadInterval="15"/>
+        </core:augmentation>
+      </core:instantiation>
+    </core:config.topology>
+  </core:import>
+  <core:import displayName="sampleInfra" mutable="true" name="Import2" namespace="infra" pattern="sampleInfra">
+    <core:config.topology name="default">
+      <core:instantiation name="Instantiation0" referenced="WasNodeGroup"/>
+      <core:instantiation name="Instantiation1" referenced="WindowsXP"/>
+      <core:instantiation name="Instantiation2" referenced="x86 Server"/>
+      <core:instantiation name="Instantiation3" referenced="Administrator"/>
+      <core:instantiation name="Instantiation4" referenced="portConfiguration0"/>
+      <core:instantiation name="Instantiation5" referenced="DB2System"/>
+      <core:instantiation name="Instantiation6" referenced="ServerClassLoader"/>
+      <core:instantiation name="Instantiation7" referenced="WasNode"/>
+      <core:instantiation name="Instantiation8" referenced="WasSystemUnit"/>
+      <core:instantiation name="Instantiation9" referenced="DB2Instance"/>
+      <core:instantiation name="Instantiation10" referenced="Administrators"/>
+      <core:instantiation name="Instantiation11" referenced="portConfiguration"/>
+      <core:instantiation name="Instantiation12" referenced="WAS6Server"/>
+      <core:instantiation name="Instantiation13" referenced="was6StandaloneServerCell"/>
+      <core:instantiation name="Instantiation14" referenced="WasNodeGroup0"/>
+      <core:instantiation name="Instantiation15" referenced="WindowsXP0"/>
+      <core:instantiation name="Instantiation16" referenced="x86 Server0"/>
+      <core:instantiation name="Instantiation17" referenced="Administrator0"/>
+      <core:instantiation name="Instantiation18" referenced="portConfiguration00"/>
+      <core:instantiation name="Instantiation19" referenced="DB2System0"/>
+      <core:instantiation name="Instantiation20" referenced="ServerClassLoader0"/>
+      <core:instantiation name="Instantiation21" referenced="WasNode0"/>
+      <core:instantiation name="Instantiation22" referenced="WasSystemUnit0"/>
+      <core:instantiation name="Instantiation23" referenced="DB2Instance0"/>
+      <core:instantiation name="Instantiation24" referenced="Administrators0"/>
+      <core:instantiation name="Instantiation25" referenced="portConfiguration1"/>
+      <core:instantiation name="Instantiation26" referenced="WAS6Server0"/>
+      <core:instantiation name="Instantiation27" referenced="was6StandaloneServerCell0"/>
+      <core:instantiation name="Instantiation28" referenced="WasNodeGroup1"/>
+      <core:instantiation name="Instantiation29" referenced="WindowsXP1"/>
+      <core:instantiation name="Instantiation30" referenced="x86 Server1"/>
+      <core:instantiation name="Instantiation31" referenced="Administrator1"/>
+      <core:instantiation name="Instantiation32" referenced="portConfiguration01"/>
+      <core:instantiation name="Instantiation33" referenced="ServerClassLoader1"/>
+      <core:instantiation name="Instantiation34" referenced="WasNode1"/>
+      <core:instantiation name="Instantiation35" referenced="WasSystemUnit1"/>
+      <core:instantiation name="Instantiation36" referenced="Administrators1"/>
+      <core:instantiation name="Instantiation37" referenced="WAS6Server1"/>
+      <core:instantiation name="Instantiation38" referenced="was6StandaloneServerCell1"/>
+      <core:instantiation name="Instantiation39" referenced="DB2Instance1"/>
+      <core:instantiation name="Instantiation40" referenced="x86 Server2"/>
+      <core:instantiation name="Instantiation41" referenced="DB2System1"/>
+      <core:instantiation name="Instantiation42" referenced="Administrators2"/>
+      <core:instantiation name="Instantiation43" referenced="portConfiguration2"/>
+      <core:instantiation name="Instantiation44" referenced="Windows2000"/>
+      <core:instantiation name="Instantiation45" referenced="Administrator2"/>
+      <core:instantiation name="Instantiation46" referenced="DB2Instance2"/>
+      <core:instantiation name="Instantiation47" referenced="x86 Server3"/>
+      <core:instantiation name="Instantiation48" referenced="DB2System2"/>
+      <core:instantiation name="Instantiation49" referenced="Administrators3"/>
+      <core:instantiation name="Instantiation50" referenced="portConfiguration3"/>
+      <core:instantiation name="Instantiation51" referenced="Windows20000"/>
+      <core:instantiation name="Instantiation52" referenced="Administrator3"/>
+      <core:instantiation name="Instantiation53" referenced="x86 Server4"/>
+      <core:instantiation name="Instantiation54" referenced="DB2System3"/>
+      <core:instantiation name="Instantiation55" referenced="Administrators4"/>
+      <core:instantiation name="Instantiation56" referenced="Windows20001"/>
+      <core:instantiation name="Instantiation57" referenced="Administrator4"/>
+      <core:instantiation name="Instantiation58" referenced="WasSystemUnit2"/>
+      <core:instantiation name="Instantiation59" referenced="Windows20002"/>
+      <core:instantiation name="Instantiation60" referenced="Administrator5"/>
+      <core:instantiation name="Instantiation61" referenced="Administrators5"/>
+      <core:instantiation name="Instantiation62" referenced="DB2RuntimeClient"/>
+      <core:instantiation name="Instantiation63" referenced="DB2NodeCatalog"/>
+      <core:instantiation name="Instantiation64" referenced="WAS6Server2"/>
+      <core:instantiation name="Instantiation65" referenced="x86 Server5"/>
+      <core:instantiation name="Instantiation66" referenced="ServerClassLoader2"/>
+      <core:instantiation name="Instantiation67" referenced="DB2ClientInstance"/>
+      <core:instantiation name="Instantiation68" referenced="was6StandaloneServerCell2"/>
+      <core:instantiation name="Instantiation69" referenced="portConfiguration4"/>
+      <core:instantiation name="Instantiation70" referenced="WasNode2"/>
+      <core:instantiation name="Instantiation71" referenced="WasNodeGroup2"/>
+      <core:instantiation name="Instantiation72" referenced="WasSystemUnit3"/>
+      <core:instantiation name="Instantiation73" referenced="Windows20003"/>
+      <core:instantiation name="Instantiation74" referenced="Administrator6"/>
+      <core:instantiation name="Instantiation75" referenced="Administrators6"/>
+      <core:instantiation name="Instantiation76" referenced="DB2RuntimeClient0"/>
+      <core:instantiation name="Instantiation77" referenced="DB2NodeCatalog0"/>
+      <core:instantiation name="Instantiation78" referenced="WAS6Server3"/>
+      <core:instantiation name="Instantiation79" referenced="x86 Server6"/>
+      <core:instantiation name="Instantiation80" referenced="ServerClassLoader3"/>
+      <core:instantiation name="Instantiation81" referenced="DB2ClientInstance0"/>
+      <core:instantiation name="Instantiation82" referenced="was6StandaloneServerCell3"/>
+      <core:instantiation name="Instantiation83" referenced="portConfiguration5"/>
+      <core:instantiation name="Instantiation84" referenced="WasNode3"/>
+      <core:instantiation name="Instantiation85" referenced="WasNodeGroup3"/>
+      <core:instantiation name="Instantiation86" referenced="WasSystemUnit4"/>
+      <core:instantiation name="Instantiation87" referenced="Windows20004"/>
+      <core:instantiation name="Instantiation88" referenced="Administrator7"/>
+      <core:instantiation name="Instantiation89" referenced="Administrators7"/>
+      <core:instantiation name="Instantiation90" referenced="WAS6Server4"/>
+      <core:instantiation name="Instantiation91" referenced="x86 Server7"/>
+      <core:instantiation name="Instantiation92" referenced="ServerClassLoader4"/>
+      <core:instantiation name="Instantiation93" referenced="was6StandaloneServerCell4"/>
+      <core:instantiation name="Instantiation94" referenced="portConfiguration6"/>
+      <core:instantiation name="Instantiation95" referenced="WasNode4"/>
+      <core:instantiation name="Instantiation96" referenced="WasNodeGroup4"/>
+      <core:instantiation name="Instantiation97" referenced="x86 Server8"/>
+      <core:instantiation name="Instantiation98" referenced="DB2RuntimeClient1"/>
+      <core:instantiation name="Instantiation99" referenced="WasDeploymentManagerUnit"/>
+      <core:instantiation name="Instantiation100" referenced="portConfiguration7"/>
+      <core:instantiation name="Instantiation101" referenced="DB2ClientInstance1"/>
+      <core:instantiation name="Instantiation102" referenced="WasNodeGroup5"/>
+      <core:instantiation name="Instantiation103" referenced="DB2NodeCatalog1"/>
+      <core:instantiation name="Instantiation104" referenced="Was6DmgrNode"/>
+      <core:instantiation name="Instantiation105" referenced="Windows20005"/>
+      <core:instantiation name="Instantiation106" referenced="Administrator8"/>
+      <core:instantiation name="Instantiation107" referenced="was6DistributedCell"/>
+      <core:instantiation name="Instantiation108" referenced="Administrators8"/>
+      <core:instantiation name="Instantiation109" referenced="WasSystemUnit5"/>
+      <core:instantiation name="Instantiation110" referenced="x86 Server9"/>
+      <core:instantiation name="Instantiation111" referenced="DB2RuntimeClient2"/>
+      <core:instantiation name="Instantiation112" referenced="WasDeploymentManagerUnit0"/>
+      <core:instantiation name="Instantiation113" referenced="portConfiguration8"/>
+      <core:instantiation name="Instantiation114" referenced="DB2ClientInstance2"/>
+      <core:instantiation name="Instantiation115" referenced="WasNodeGroup6"/>
+      <core:instantiation name="Instantiation116" referenced="DB2NodeCatalog2"/>
+      <core:instantiation name="Instantiation117" referenced="Was6DmgrNode0"/>
+      <core:instantiation name="Instantiation118" referenced="Windows20006"/>
+      <core:instantiation name="Instantiation119" referenced="Administrator9"/>
+      <core:instantiation name="Instantiation120" referenced="was6DistributedCell0"/>
+      <core:instantiation name="Instantiation121" referenced="Administrators9"/>
+      <core:instantiation name="Instantiation122" referenced="WasSystemUnit6"/>
+      <core:instantiation name="Instantiation123" referenced="x86 Server10"/>
+      <core:instantiation name="Instantiation124" referenced="WasDeploymentManagerUnit1"/>
+      <core:instantiation name="Instantiation125" referenced="portConfiguration9"/>
+      <core:instantiation name="Instantiation126" referenced="WasNodeGroup7"/>
+      <core:instantiation name="Instantiation127" referenced="Was6DmgrNode1"/>
+      <core:instantiation name="Instantiation128" referenced="Windows20007"/>
+      <core:instantiation name="Instantiation129" referenced="Administrator10"/>
+      <core:instantiation name="Instantiation130" referenced="was6DistributedCell1"/>
+      <core:instantiation name="Instantiation131" referenced="Administrators10"/>
+      <core:instantiation name="Instantiation132" referenced="WasSystemUnit7"/>
+      <core:instantiation name="Instantiation133" referenced="Windows20008"/>
+      <core:instantiation name="Instantiation134" referenced="Administrator11"/>
+      <core:instantiation name="Instantiation135" referenced="Administrators11"/>
+      <core:instantiation name="Instantiation136" referenced="DB2RuntimeClient3"/>
+      <core:instantiation name="Instantiation137" referenced="DB2NodeCatalog3"/>
+      <core:instantiation name="Instantiation138" referenced="x86 Server11"/>
+      <core:instantiation name="Instantiation139" referenced="DB2ClientInstance3"/>
+      <core:instantiation name="Instantiation140" referenced="Windows20009"/>
+      <core:instantiation name="Instantiation141" referenced="Administrator12"/>
+      <core:instantiation name="Instantiation142" referenced="Administrators12"/>
+      <core:instantiation name="Instantiation143" referenced="DB2RuntimeClient4"/>
+      <core:instantiation name="Instantiation144" referenced="DB2NodeCatalog4"/>
+      <core:instantiation name="Instantiation145" referenced="x86 Server12"/>
+      <core:instantiation name="Instantiation146" referenced="DB2ClientInstance4"/>
+      <core:instantiation name="Instantiation147" referenced="Windows200010"/>
+      <core:instantiation name="Instantiation148" referenced="Administrator13"/>
+      <core:instantiation name="Instantiation149" referenced="Administrators13"/>
+      <core:instantiation name="Instantiation150" referenced="DB2RuntimeClient5"/>
+      <core:instantiation name="Instantiation151" referenced="DB2NodeCatalog5"/>
+      <core:instantiation name="Instantiation152" referenced="x86 Server13"/>
+      <core:instantiation name="Instantiation153" referenced="DB2ClientInstance5"/>
+      <core:instantiation name="Instantiation154" referenced="Windows200011"/>
+      <core:instantiation name="Instantiation155" referenced="Administrator14"/>
+      <core:instantiation name="Instantiation156" referenced="Administrators14"/>
+      <core:instantiation name="Instantiation157" referenced="DB2RuntimeClient6"/>
+      <core:instantiation name="Instantiation158" referenced="DB2NodeCatalog6"/>
+      <core:instantiation name="Instantiation159" referenced="x86 Server14"/>
+      <core:instantiation name="Instantiation160" referenced="DB2ClientInstance6"/>
+      <core:instantiation name="Instantiation161" referenced="WasSystemUnitND"/>
+      <core:instantiation name="Instantiation162" referenced="portConfiguration14"/>
+      <core:instantiation name="Instantiation163" referenced="WasNode9"/>
+      <core:instantiation name="Instantiation164" referenced="WAS6Server9"/>
+      <core:instantiation name="Instantiation165" referenced="ServerClassLoader9"/>
+      <core:instantiation name="Instantiation166" referenced="WasSystemUnitND0"/>
+      <core:instantiation name="Instantiation167" referenced="portConfiguration10"/>
+      <core:instantiation name="Instantiation168" referenced="WasNode5"/>
+      <core:instantiation name="Instantiation169" referenced="WAS6Server5"/>
+      <core:instantiation name="Instantiation170" referenced="ServerClassLoader5"/>
+      <core:instantiation name="Instantiation171" referenced="WAS6Server6"/>
+      <core:instantiation name="Instantiation172" referenced="portConfiguration11"/>
+      <core:instantiation name="Instantiation173" referenced="WasNode6"/>
+      <core:instantiation name="Instantiation174" referenced="WasSystemUnitND1"/>
+      <core:instantiation name="Instantiation175" referenced="ServerClassLoader6"/>
+      <core:instantiation name="Instantiation176" referenced="WAS6Server7"/>
+      <core:instantiation name="Instantiation177" referenced="portConfiguration12"/>
+      <core:instantiation name="Instantiation178" referenced="WasNode7"/>
+      <core:instantiation name="Instantiation179" referenced="WasSystemUnitND2"/>
+      <core:instantiation name="Instantiation180" referenced="ServerClassLoader7"/>
+      <core:instantiation name="Instantiation181" referenced="Was6Cluster"/>
+      <core:instantiation name="Instantiation182" referenced="Was6Cluster0"/>
+    </core:config.topology>
+  </core:import>
+  <core:import displayName="Testing" mutable="true" name="Import1" namespace="templates" pattern="Testing">
+    <core:config.topology name="default">
+      <core:instantiation name="Instantiation0" referenced="portConfiguration"/>
+      <core:instantiation name="Instantiation1" referenced="ServerClassLoader"/>
+      <core:instantiation name="Instantiation2" referenced="WasSystemUnit"/>
+      <core:instantiation name="Instantiation3" referenced="WasNode"/>
+      <core:instantiation name="Instantiation4" referenced="was6StandaloneServerCell"/>
+      <core:instantiation name="Instantiation5" referenced="WasNodeGroup"/>
+      <core:instantiation name="Instantiation6" referenced="WAS6Server"/>
+      <core:instantiation name="Instantiation7" referenced="Windows2000"/>
+      <core:instantiation name="Instantiation8" referenced="Administrators"/>
+      <core:instantiation name="Instantiation9" referenced="Administrator"/>
+      <core:instantiation name="Instantiation10" referenced="DB2RuntimeClient"/>
+      <core:instantiation name="Instantiation11" referenced="DB2ClientInstance"/>
+      <core:instantiation name="Instantiation12" referenced="Windows20000"/>
+      <core:instantiation name="Instantiation13" referenced="Administrators0"/>
+      <core:instantiation name="Instantiation14" referenced="Administrator0"/>
+      <core:instantiation name="Instantiation15" referenced="DB2System"/>
+      <core:instantiation name="Instantiation16" referenced="portConfiguration0"/>
+      <core:instantiation name="Instantiation17" referenced="DB2Instance"/>
+      <core:instantiation name="Instantiation18" referenced="DB2NodeCatalog"/>
+    </core:config.topology>
+  </core:import>
+  <core:contract.explicit displayName="Make All Units Private By Default" name="ExplicitContract0" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

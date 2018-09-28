@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" ecore:documentRoot="DatabaseDeployRoot" ecore:name="database" ecore:nsPrefix="database" ecore:package="com.ibm.ccl.soa.deploy.database" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+	<!-- Units -->
+
+	<element name="unit.SQLModule" substitutionGroup="base:unit" type="database:SQLModule">
+		<annotation>
+						<documentation>
+							This is the unit definition for a database definition file.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="SQLModule">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="artifact.ddl" substitutionGroup="base:artifact" type="database:DDLArtifact">
+	<annotation>
+						<documentation>
+							This is the artifact definition for a database definition.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DDLArtifact">
+		<complexContent>
+			<extension base="base:FileArtifact"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="artifact.dml" substitutionGroup="base:artifact" type="database:DMLArtifact">
+	<annotation>
+						<documentation>
+							This is the artifact definition for a database meta data definition.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DMLArtifact">
+		<complexContent>
+			<extension base="base:FileArtifact"/>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.databaseInstanceUnit" substitutionGroup="base:unit" type="database:DatabaseInstanceUnit">
+		<annotation>
+						<documentation>
+							This is the unit definition for a database instance.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DatabaseInstanceUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.databaseUnit" substitutionGroup="base:unit" type="database:DatabaseUnit">
+		<annotation>
+						<documentation>
+							This is the unit definition for a database.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DatabaseUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+
+	<!-- Services -->
+	
+	<element name="capability.databaseInstance" substitutionGroup="base:capability" type="database:DatabaseInstance">
+	<annotation>
+						<documentation>
+							This is the capability definition for a database instance.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DatabaseInstance">
+		<complexContent>
+			<extension base="base:Capability"/>		
+		</complexContent>
+	</complexType>
+
+	<element name="capability.database" substitutionGroup="base:capability" type="database:Database">
+	<annotation>
+						<documentation>
+							This is the capability definition for a database.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="Database">
+		<complexContent>
+			<extension base="base:Capability"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.sqlUser" substitutionGroup="base:capability" type="database:SQLUser">
+	<annotation>
+						<documentation>
+							This is the capability definition for a sql user.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="SQLUser">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="userId" type="string"/>
+				<attribute name="userPassword" type="string"/> 			
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Database Component Defintion -->
+	<element name="component.database" substitutionGroup="base:softwareComponent" type="database:DatabaseComponent">
+	<annotation>
+						<documentation>
+							This is the component definition for a database module.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DatabaseComponent">
+		<complexContent>
+			<extension base="base:SoftwareComponent"/>
+		</complexContent>
+	</complexType>
+	<!-- Database Definition Service -->
+	<element name="service.databaseDefinition" substitutionGroup="base:service" type="database:DatabaseDefinition">
+	<annotation>
+						<documentation>
+							This is the service definition for a database definition.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DatabaseDefinition">
+		<complexContent>
+			<extension base="base:Service"/>
+		</complexContent>
+	</complexType>
+	
+	<!-- DDL Interface Defintion -->
+	<element name="interface.ddl" substitutionGroup="base:interface" type="database:DDLInterface">
+	<annotation>
+						<documentation>
+							This is the interface definition for a database definition.
+						</documentation>
+					</annotation>
+	</element>
+	<complexType name="DDLInterface">
+		<complexContent>
+			<extension base="base:Interface">
+				<attribute name="schemaUri" type="anyURI" use="required"/>
+			</extension>
+		</complexContent>
+		
+	</complexType>
+</schema>

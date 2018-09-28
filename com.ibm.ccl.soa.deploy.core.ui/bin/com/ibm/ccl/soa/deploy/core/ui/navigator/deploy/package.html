@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Deployment Navigator Changes Overview Documentation</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The SCA Core Models provide EMF-based object abstractions of the SCA document format.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">Deployment Navigator Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>
+		The deployment perspective currently has its own separate deployment navigator in our framework. The original purpose behind this architecture was to help customers conceptualize the ideas behind the deployment perspective. Namely, it would group projects inside of top-level virtual nodes so that it was obvious which projects were deployable/had topologies/etc.</p>
+		<p>
+		<i>This implementation is no longer practical</i>, being that we are beginning to re-invent the Project Explorer. Most features offered by the project explorer are becoming needed in the deployment perspective, and it no longer makes sense to have a separate navigator. Many bugs that have arisen are a result of using the deployment navigator and would be resolved by switching to the use of the project explorer.</p>
+		<p>
+		In the following initial design, we will discuss the <i>replacement our current navigator with the Project Explorer</i> used by other Eclipse perspectives and address some new functionalities to be implemented for the navigator in this milestone.</p>
+		<p>
+		Bugzilla item for this review: <a href="http://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12204">12204</a>
+		</p><br>
+		</td>
+	</tr>
+</table>
+
+<!--Merged document-->
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Useful Abstractions [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=501 style='width:376.1pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes;height:182.25pt'>
+  <td style='padding:.75pt .75pt .75pt .75pt;height:182.25pt'>
+  <table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+   style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+   <tr style='mso-yfti-irow:0;height:36.9pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployActionProvider</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'>: <o:p></o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1026"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:1;height:36.9pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployCommonNavigator</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'>: <o:p></o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1027"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:2;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployCommonViewer:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1028"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:3;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployContentProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1029"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:4;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployEMFContentProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1030"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:5;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployEMFContentProvider2:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1031"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:6;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployEMFLabelProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1032"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:7;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployLabelProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1033"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:8;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployResourceOpenListener:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1034"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:9;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeploySorter:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1035"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:10;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>JavaProjectPropertyTester:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1036"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:11;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>TopologyEMFRootObjectProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1037"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:12;mso-yfti-lastrow:yes;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>TopologyFileExtensionPropertyTester:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1038"
+    src="../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+			<tr style="mso-yfti-irow:12;mso-yfti-lastrow:yes;height:37.25pt">
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt">
+				<p class="MsoNormal"><code><b><span
+					style="font-size:10.0pt">NamespaceElementContentProvider:</span></b></code></p>
+				<p class="MsoNormal"></p>
+				<p class="MsoNormal">Provides content for the deployment navigator tree in the form of NamespaceFragmentRoot and NamespaceFragment objects. Implements the IPipelinedTreeContentProvider.</p>
+				<p class="MsoNormal"></p>
+				<p class="MsoNormal">An important distinction to make about this content provider is that it displays the NamespaceFragments as a flat structure rather than a heiarchal structure. NamespaceFragments are displayed a children of their NamespaceFragmentRoot and not as children of the NamespaceFragment that is their parent.</p>
+				<p class="MsoNormal"><span
+					style="font-size:10.0pt;font-family:Arial"></span></p></td>
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt"></td>
+			</tr>
+			<tr style="mso-yfti-irow:12;mso-yfti-lastrow:yes;height:37.25pt">
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt">
+				<p class="MsoNormal"><code><b><span
+					style="font-size:10.0pt">NamespaceElementLabelProvider:</span></b></code></p>
+				<p class="MsoNormal"></p>
+				<p class="MsoNormal">Provides the label information for the deployment navigator tree for the NamespaceFragmentRoot and NamespaceFragment objects appearing in the tree.</p>
+				<p class="MsoNormal"></p>
+				<p class="MsoNormal">This label provider displays NamespaceFragments with their fully-qualified names and not just the last segment of their fully-qualified name. This is necessary since the content provider for NamespaceFragments utilizes a flat structure where all NamespaceFragments that belong to a single NamespaceFragmentRoot are displayed a children of the same NamespaceFragmentRoot object. So fully-qualified names on the NamespaceFragment children are necessary in order to distinguish the &quot;heirarchy&quot; of the NamespaceFragments from other NamespaceFragments in the same NamespaceFragmentRoot.</p>
+				<p class="MsoNormal"><span
+					style="font-size:10.0pt;font-family:Arial"></span></p>
+				</td>
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt"></td>
+			</tr>
+			<tr style="mso-yfti-irow:12;mso-yfti-lastrow:yes;height:37.25pt">
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt">
+				<p class="MsoNormal"><code><b><span
+					style="font-size:10.0pt">EmptyNamespaceFragmentPropertyTester:</span></b></code></p>
+				<p class="MsoNormal"></p>
+				<p class="MsoNormal">Is used within the defininition of a common filter for the deployment navigator to test if the current NamespaceFragment in the tree is &quot;empty&quot; or not.</p>
+				<p class="MsoNormal"><span
+					style="font-size:10.0pt;font-family:Arial"></span></p>
+				</td>
+				<td style="padding:.75pt .75pt .75pt .75pt;height:37.25pt"></td>
+			</tr>
+		</table>
+<p style='margin:0in;margin-bottom:.0001pt'><span style='display:none;
+  mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+<!--End Merge-->
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Project Explorer
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td><b>Items:</b>
+			<ol>	
+				<li><b>Add the Project Navigator to the Deployment Perspective</b></li><br>
+				-This would replace the current Deployment navigator.<br>
+				-Making this change resolves many bugs around the deployment navigator and allows for easier integration
+				with the new functionalities listed later in this document.<br><br>
+				<b>Proposed Changes:</b><br><br>
+				<ol> 
+				<li>The Project Explorer should be added to the Deployment Perspective.</li><br>
+				<li>The Topology Namespace extension should be bound to the Project Explorer.</li><br>
+				<li>Topology Model Content extension should be bound to the Project Explorer.</li><br>
+				<li>Remove old code relating to Deployment Navigator.</li><br>
+				</ol>
+			</ol>
+	
+			<p><b>Details:</b><br>
+These changes are fairly straightforward and require little code change. We simply need to modify the plugin.xml such that we bind the Project explorer to our deployment view and bind our deployment extensions to the Project explorer. *See patch in bugzilla <a href="http://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12204">12204</a>*
+</p><br>
+		</td>
+	
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Open Topology Dialog [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="1000">
+	<tr>
+		<td width="60%" valign="top" rowspan="2">
+			<b>Items:</b>
+			<ol>	
+				<li><b>Add an Open Topology action to the Navigator</b></li>
+			</ol>
+				<p><b>Details:</b><br>The latest concern is giving the user easy access to his/her topology files. The current suggestion is to use a open topology dialog similar to the "open resource dialog"/"jdt open type dialog". This dialog would be bound to a certain keyset in the deployment perspective (need to pick a keyset), and would also be available inside the navigation menu and also the action toolbar.</p><p>This would perform the same way the open resource dialog does today, but it would filter all resources except for .topology files. Rather than display content using a selection dialog (with file containers displayed underneath the dialog), we will use something similar to the project explorer's tree navigator. This way, we can use filtering on a tree-like structure in order to better convey the containment of similarly named items.</p>
+			<p><b>Proposed Changes:</b>
+				<ol> 
+				<li>Extend SelectionDialog to build our own SWT Composite Dialog named OpenTopologyDialog</li><br>
+		     		<li>Dialog content will be displayed by a FilteredTree</li><br>
+				<li>Extend NamespaceElementContentProvider to return us the content we want for our Dialog</li><br>
+				<li>Add this new action and command binding to the plugin.xml</li>
+				</ol>
+			</p>
+		</td>
+		<td><img align="right" valign="top" src="res.jpg"/></td>
+	</tr>
+	<tr><td><img align="right" src="jdt.jpg"/></td></tr>
+		
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Action Changes [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td><b>Items:</b>
+			<ol>	
+				<li><b>Add the ability to import a Topology</b></li><br>
+				-Would all users to nest topologies within one another (Also see Content section below)<br>
+				-Contents of the imported topology should be viewable within the editor, but not the navigator<br>
+				-Item is based on lineitem <a href="http://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12198">12198</a>
+				<br><br>
+
+				<b>Proposed Changes:</b><br><br>
+				<ol>
+					<li>Currently Implemented through DnD onto the topology editor only</li><br>
+					-In later milestones, other import actions may be provided
+					
+				</ol><br>
+
+				<li><b>Add the ability to delete a Topology Import</b></li><br>
+				-This would allow users to delete an import and have the diagram cleanup any leftover references
+				in the current topology.<br>
+				-This action would only be implemented in the editor. Navigator actions to delete Eobjects such
+				as imports may want to be considered for later milestones.
+				<br><br>
+
+				<b>Proposed Changes:</b><br><br>
+				<ol>
+					<li>Piggyback on Deployment editor delete</li><br>
+					-Links can be deleted pre-import deletion using EcoreUtil<br><br>
+					<li>Add functionality in Topology model to retreive all DeployLinks</li>
+					
+				</ol><br>
+				
+				
+				
+			</ol>
+		</td>
+	</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Content Changes [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td><b>Items:</b>
+			<ol>
+				<li><b>Add the ability to display imported Topologies</b></li>
+			</ol>
+			
+			<p><b>Details:</b><br>The Navigation will need to be able to now recognize imported topologies inside of a topology file. These will exist as URI references in the model. Imported topologies containing imports themselves will not be included when imported into another topology (i.e. the topology that is DnD onto the editor is the one that is imported; no consideration is made as to whether or not that topology has an import inside of it)
+			<br><br><b>Imported Topologies should:</b>
+			<ol>
+				<li>Be displayed with other nodes underneath the topology	
+				<li>Display with their own specific Icon and Text</li>
+				<li>Not display their children (to avoid cluttering the navigation)</li>
+				<li>When opened, be displayed in a seperate window, just like normal topologies</li>
+				-Navigator should jump to the actual location of the topology when opened	
+			</ol></p>
+
+			<p><b>Proposed Changes:</b><br>
+			<ol>
+				<li>Add imports field to Topology</li><br>
+				<li>Modify the TopologyItemProvider to return the imports in its list of children</li><br>
+				-This item is based on lineitem <a href="http://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12198">12198</a><br>
+				-Should essentially get a list of imported topologies from the model, and if so then display them at the top of the children tree.<br><br>
+				<li>Generate/Modify ImportItemProvider to display the imports</li><br>
+				-Need to modify to display imported topologies with their own label and icon<br>
+			</ol>
+			</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Nick Kruk</b> <i>(nrkruk{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2007 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

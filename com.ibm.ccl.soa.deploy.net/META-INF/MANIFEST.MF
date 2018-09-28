@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.ibm.ccl.soa.deploy.net; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.ibm.ccl.soa.deploy.net.NetPlugin
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: com.ibm.ccl.soa.deploy.net,
+ com.ibm.ccl.soa.deploy.net.impl,
+ com.ibm.ccl.soa.deploy.net.provider,
+ com.ibm.ccl.soa.deploy.net.util,
+ com.ibm.ccl.soa.deploy.net.validator.pattern.attribute
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ com.ibm.ccl.soa.deploy.core,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.ecore.edit
+Eclipse-LazyStart: true

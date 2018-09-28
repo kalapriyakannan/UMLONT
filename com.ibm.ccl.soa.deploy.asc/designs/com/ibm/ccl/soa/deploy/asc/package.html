@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>SOA Deploy ASC Exporter API</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The SOA ASC Exporter can export topology units to executable ASC tasks.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top">
+<h1 ALIGN="CENTER">ASC Exporter API Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The package contains the API of ASC exporter plugin which can
+		export a topology to a set of ASC scripts.To use the ASC exporter, you
+		must have the basic knowledge of <a
+			href="https://w3.opensource.ibm.com/frs/?group_id=1614">ASC</a></p>
+		<!--  Leave this paragraph  -->
+		<p>In this document, concepts are enclosed by italics (<i>like
+		this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements
+		in the schemas are enclosed in angle brackets(&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">BackGround [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>In Constellation Project, we need to support ASC exporter to
+		export the topology model to executable scripts which are contained in
+		target archive .zip file. Here the script type is ASC script,
+		including below files: build.xml: This is a kind of orchestration file
+		which is an Ant buildfile that defines the order of tasks to be
+		executed and which ASC agents should execute them. This buildfile can
+		then be executed by Ant in order to carry out the desired operations.
+		solution.properties: This is a property file containing all tasks'
+		required attribute value. Above two files are generated according to
+		topology model. Besides these two files, other ASC related files are
+		also need to be included in the archive file. They are: asc.jar: All
+		ASC related API. ascLibrary.zip: ASC library files. In the library, we
+		define the new tasks (Macrodef).ASC exploits Ant macros as a means of
+		codifying operations for subsequent reuse. Those Macro Tasks accept
+		the user-specified parameter valueand pass them to the core
+		executable file to execute. In ASC, there are several kinds of
+		'macros': local macros, distributed macros and remote macros. The
+		focus on 'local macros' implies that the underlying operations affect
+		only the local system. ASC 'distributed macros' codify operations that
+		may affect more than one server. Unlike 'local macros', distributed
+		macros require manual development of the remoting aspects since more
+		than one ASC agent may be involved. And the 'remote macros' mean that
+		the operations can be executed on a remate system via ASCRemoteAgent.
+		ASC remote macros can be generated automatically based on local and
+		distributed macros definition. 
+		runAll.bat,We provide a batch file to
+		help user to run the generated orchestration file.</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Useful Abstractions [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>ZhaoYong</b> <i>(zhaoyong{at}cn.ibm.com)</i>.
+
+
+		
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

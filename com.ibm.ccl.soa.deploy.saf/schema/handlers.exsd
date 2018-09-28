@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ibm.ccl.soa.core.saf">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ibm.ccl.soa.core.saf" id="handlers" name="SOA Assembly Framework Handlers"/>
+      </appInfo>
+      <documentation>
+         SCA extension providers must contribute to this extension point, supplying one or more handler classes that, depending on the type of extension, implement one of the specialized &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IHandler&lt;/code&gt; interfaces (&lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IImplementationHandler&lt;/code&gt;, &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IBindingHandler&lt;/code&gt;, &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IInterfaceHandler&lt;/code&gt;).  
+&lt;p&gt;
+A handler provides a Service Provider Interface that the framework uses to call the handler with various requests for creating and operating on an SCA extension object.  The handler is identified by the SCA extension element name.  The form of the element names for interfaces, implementations, and bindings is chosen to enable extensibility of the schemas in a simple and easy-to-read format.  The corresponding element names are interface.xxx, implementation.xxx and binding.xxx.  “xxx” can take a name that relates to the type of interface, implementation, or binding concerned.   
+&lt;p&gt;
+The information provided for each handler is stored in an instance of the &lt;code&gt;com.ibm.ccl.soa.core.component.IKindDescriptor&lt;/code&gt; interface, which is returned by various methods in the &lt;code&gt;com.ibm.ccl.soa.core.component.ISAFManager&lt;/code&gt; interface.
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="interfaceHandler" minOccurs="0" maxOccurs="1"/>
+            <element ref="handlerBinding" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="service" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  an optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="interfaceHandler">
+      <annotation>
+         <documentation>
+            Interface handler definition contributed when a new interface element is created for the SCA assembly model.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="enablement" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of this handler.  It must be readable for final users.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  An optional description of this handler.  It must be readable for final users.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Specifies a class name for the handler. The class must extend the interface &lt;code&gt;com.ibm.ccl.soa.core.component.handler.IInterfaceHandler&lt;/code&gt;.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.core.saf.handler.AbstractInterfaceHandler"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="smallIcon" type="string">
+            <annotation>
+               <documentation>
+                  Small icon used to visually represent this element kind, for example, in an editor&apos;s palette.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="largeIcon" type="string">
+            <annotation>
+               <documentation>
+                  Large icon used to visually represent this element kind, for example, in an editor&apos;s palette.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.Interface"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="handlerBinding">
+      <complexType>
+         <sequence>
+            <element ref="interface" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="serviceType" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="interface">
+      <complexType>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.Interface"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="service">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="etype"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of this handler.  It must be readable for final users.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  An optional description of this handler.  It must be readable for final users.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="smallIcon" type="string">
+            <annotation>
+               <documentation>
+                  Small icon used to visually represent this element kind, for example, in an editor&apos;s palette.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="largeIcon" type="string">
+            <annotation>
+               <documentation>
+                  Large icon used to visually represent this element kind, for example, in an editor&apos;s palette.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.Service"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="package" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provides the package URI of the EMF model that defines this type; e.g. &quot;http://www.ibm.com/ccl/soa/deploy/was/1.0.0/&quot;
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="etype" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="serviceType">
+      <complexType>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.Service"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of implementation, binding and interface handler contributions:
+
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension point=&quot;com.ibm.ccl.soa.core.component.handlers&quot; 
+   id=&quot;xyzHandlers&quot; 
+   name=&quot;XYZ handlers&quot;&gt;
+      &lt;implementationHandler
+          name=&quot;XYZ Implementation Handler&quot;
+          description=&quot;Provides support for creating/manipulating the XYZ implementation&quot;
+          kind=&quot;implementation.xyz&quot;
+          descriptiveKindName=&quot;xyz&quot;
+          class=&quot;com.xyz.XYZImplementationHandler&quot;/&gt;
+      &lt;bindingHandler
+          name=&quot;XYZ EntryPoint Binding Handler&quot;
+          description=&quot;Provides support for creating/manipulating the XYZ binding for a Reference/Service&quot;
+          kind=&quot;binding.xyz&quot;
+          descriptiveKindName=&quot;xyz&quot;
+          class=&quot;com.xyz.XYZBindingEntryPointHandler&quot;/&gt;      
+      &lt;interfaceHandler
+          name=&quot;XYZ Interface Handler&quot;
+          description=&quot;Provides support for creating/manipulating a XYZ interface&quot;
+          kind=&quot;interface.xyz&quot;
+          descriptiveKindName=&quot;xyz&quot;
+          class=&quot;com.xyz.interface.XYZInterfaceHandler&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The value of the class attribute in each handler must represent an implementation of &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IImplementationHandler&lt;/code&gt; for Implementation handlers, &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IBindingHandler&lt;/code&gt; for binding handlers, and &lt;code&gt;com.ibm.ccl.soa.core.saf.handler.IInterfaceHandler&lt;/code&gt; for Interface handlers.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         The SOA Assembly Framework itself does not provide any default handler. Particular product installs may include handlers as required by their SCA implementation.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Licensed Materials - Property of IBM&lt;br&gt;
+5724-I66&lt;br&gt;
+(c) Copyright IBM Corporation 2000, 2004. All Rights Reserved. &lt;br&gt;
+Note to U.S. Government Users Restricted Rights:  Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+      </documentation>
+   </annotation>
+
+</schema>

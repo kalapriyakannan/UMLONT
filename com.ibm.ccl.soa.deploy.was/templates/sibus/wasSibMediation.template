@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="MediationModule template">
+  <was:unit.wasSibMediationUnit displayName="WebSphereMediationUnit" name="MediationUnit" configurationUnit="true">
+    <was:capability.wasSibMediation name="Provide a Mediation" displayName="Provide a Mediation" linkType="any"/>
+    <core:requirement mutable="true" name="Hosted on a sibus" displayName="Hosted on a sibus" dmoType="was:WasSIBus" linkType="hosting"/>
+    <core:requirement mutable="true" name="require a EJBModule which provides HandlerList capability" displayName="require a EJBModule which provides HandlerList capability" dmoType="was:WasHandlerList" use="optional" linkType="dependency"/>
+  </was:unit.wasSibMediationUnit>
+</core:topology>

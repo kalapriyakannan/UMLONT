@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:derby="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/"
+	xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	ecore:documentRoot="DerbyDeployRoot" ecore:name="derby"
+	ecore:nsPrefix="derby"
+	ecore:package="com.ibm.ccl.soa.deploy.internal.derby"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import
+		namespace="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.database/models/schemas/databaseDomain.xsd" />
+
+	<!-- Units -->
+
+	<element name="artifact.derbyddl" type="derby:DerbyDDLArtifact" substitutionGroup="base:artifact"/>
+	<complexType name="DerbyDDLArtifact">
+		<complexContent>
+			<extension base="database:DDLArtifact"/>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.derbyDatabaseInstanceUnit" substitutionGroup="base:unit"
+		type="derby:DerbyDatabaseInstanceUnit" />
+	<complexType name="DerbyDatabaseInstanceUnit">
+		<complexContent>
+			<extension base="database:DatabaseInstanceUnit"></extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.derbyDatabaseUnit" substitutionGroup="base:unit"
+		type="derby:DerbyDatabaseUnit" />
+	<complexType name="DerbyDatabaseUnit">
+		<complexContent>
+			<extension base="database:DatabaseUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Services -->
+
+	<element name="capability.derbyDatabase" substitutionGroup="base:capability" type="derby:DerbyDatabase"/>
+	<complexType name="DerbyDatabase">
+		<complexContent>
+			<extension base="database:Database">
+				<attribute name="derbyVersion" type="string" />
+				<attribute name="dbAlias" type="string"/>
+				<attribute name="dbName" type="string"/>
+				<attribute name="dbDrive" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.derbyInstance" substitutionGroup="base:capability" type="derby:DerbyInstance"/>
+	<complexType name="DerbyInstance">
+		<complexContent>
+			<extension base="database:DatabaseInstance">
+				<attribute name="instanceName" type="string"/>
+				<attribute name="port" type="integer"/>		
+				<attribute name="hostname" type="string"/>					
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

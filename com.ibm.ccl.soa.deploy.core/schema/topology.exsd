@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ibm.ccl.soa.deploy.core">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ibm.ccl.soa.deploy.core" id="topology" name="Topology"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to group elements that operate on an entire topology. The two elements defined in this extension point are the exporter and publisher. The exporter is used to define a mechanism for exporting the contents of the topology and the publisher will, go figure, publish the topology using the technology associated with with the type of publisher.
+&lt;p&gt;
+Additionally, this extension point can be used to declare a new decorator semantic, and/or to declare content that should be enabled for a decorator semantic.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <complexType>
+         <choice>
+            <element ref="publisher" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exporter" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="discoverer" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="decoratorSemantic" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="decoratorSemanticPatternBinding" minOccurs="1" maxOccurs="unbounded"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="publisher">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            This extension is used to contribute a provider that can publish the topology artifacts to a desired publish location.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translatable name.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translatable description.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of the publisher.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.TopologyPublisher"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="exporter">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            This extension is used to contribute an exporter that can translate the topology contents to a desired format.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translatable name.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translatable description.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of the exporter.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.TopologyExporter"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="discoverer">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            This extension can be used to contribute a provider to discover the resources that are similar to a unit based on the matching set of capabilities or requirements.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translatable name.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translatable description.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of the discoverer.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.core.TopologyDiscoverer"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="decoratorSemantic">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            This extension can be used to contribute a decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a unique identifier for this decorator semantic.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translatable name.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translatable description.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="icon" type="string">
+            <annotation>
+               <documentation>
+                  Optional path to an icon image.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="decoratorSemanticPatternBinding">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            This extension can be used to define content to a decorator semantic.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="typeContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="menuContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="viewContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="paletteEntryContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="propertySheetContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="contentProviderContent" minOccurs="0" maxOccurs="1"/>
+            <element ref="userDefinedContent" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="decoratorSemanticId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Refers to an existing identifier for a decorator semantic for which
+                  to add content.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="typeContent">
+      <annotation>
+         <documentation>
+            A list of enabled types for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="menuContent">
+      <annotation>
+         <documentation>
+            A list of enabled menu ids for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="viewContent">
+      <annotation>
+         <documentation>
+            A list of enabled views for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="paletteEntryContent">
+      <annotation>
+         <documentation>
+            A list of enabled palette entries for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="propertySheetContent">
+      <annotation>
+         <documentation>
+            A list of enabled property sheets for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="contentProviderContent">
+      <annotation>
+         <documentation>
+            A list of enabled content providers for this decorator semantic
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="userDefinedContent">
+      <annotation>
+         <documentation>
+            Use this element to define a specialized category of content for 
+            a decorator semantic.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="include" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="exclude" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of this category, which is used as a key in
+      gathering up all bindings for this category.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="include">
+      <annotation>
+         <documentation>
+            An object type to enable for this decorator semantic.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="enablement" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="pattern" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The pattern of an object or group of objects to 
+            include as valid content for this decorator semantic.
+            Should comply to the java.util.regex.Pattern syntax.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="exclude">
+      <annotation>
+         <documentation>
+            An object type to disable for this decorator semantic.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="enablement" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="pattern" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The pattern of an object or group of objects to 
+            exclude as valid content for this decorator semantic.
+            Should comply to the java.util.regex.Pattern syntax.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="enablement">
+      <annotation>
+         <documentation>
+            Describes further enablement conditions on decorator semantic content.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="not"/>
+            <element ref="and"/>
+            <element ref="or"/>
+            <element ref="instanceof"/>
+            <element ref="test"/>
+            <element ref="systemTest"/>
+            <element ref="equals"/>
+            <element ref="count"/>
+            <element ref="with"/>
+            <element ref="resolve"/>
+            <element ref="adapt"/>
+            <element ref="iterate"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         ... filler for now 
+
+The &lt;i&gt;fooBar&lt;/i&gt; extension allows a client to define a new design variable
+for the Workflow palette. Each &lt;i&gt;fooBar&lt;/i&gt; extension defines two
+attributes, a text value and a programming language for which the design
+variable may be used.
+
+&lt;p&gt;
+The following example declares a new design variable &quot;bobdole&quot; for all
+programming languages.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&gt;
+
+  &lt;extension point=&quot;org.acme.fooBar&quot;&gt;
+    &lt;fooBar
+       designVariable = &quot;bobdole&quot;
+       language = &quot;*&quot;
+       /&gt;
+    &lt;/fooBar&gt;
+  &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         This extension point is published API and will only incur non-breaking
+changes in future releases.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2005, 2006 IBM Corporation.
+Licensed Material - Property of IBM. All rights reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure
+restricted by GSA ADP Schedule Contract with IBM Corp.
+
+Contributors:
+ IBM Corporation - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>

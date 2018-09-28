@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.27 2008/05/29 14:43:13 nmakin Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.tomcat.provider.TomcatItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.tomcat.TomcatPackage"
+       genModel = "models/ecore/tomcatDomain.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="tomcat"
+       class="com.ibm.ccl.soa.deploy.tomcat.util.TomcatResourceFactoryImpl" />
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+     <unitPublisher
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.Tomcat32UnitPublisher"
+           description="%tomcat32UnitPublisher.description"
+           name="%tomcat32UnitPublisher.label">
+        <enablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+           <and>
+              <test
+                    property="com.ibm.ccl.soa.deploy.tomcat.tomcatVersion"
+                    value="3.2"/>
+           </and>
+        </enablement>         
+     </unitPublisher>
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+     <unitPublisher
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.Tomcat40UnitPublisher"
+           description="%tomcat40UnitPublisher.description"
+           name="%tomcat40UnitPublisher.label">
+        <enablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+           <and>
+              <test
+                    property="com.ibm.ccl.soa.deploy.tomcat.tomcatVersion"
+                    value="4.0"/>
+           </and>
+        </enablement>         
+     </unitPublisher>
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+     <unitPublisher
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.Tomcat41UnitPublisher"
+           description="%tomcat41UnitPublisher.description"
+           name="%tomcat41UnitPublisher.label">
+        <enablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+           <and>
+              <test
+                    property="com.ibm.ccl.soa.deploy.tomcat.tomcatVersion"
+                    value="4.1"/>
+           </and>
+        </enablement>         
+     </unitPublisher>
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+     <unitPublisher
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.Tomcat50UnitPublisher"
+           description="%tomcat50UnitPublisher.description"
+           name="%tomcat50UnitPublisher.label">
+        <enablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+           <and>
+              <test
+                    property="com.ibm.ccl.soa.deploy.tomcat.tomcatVersion"
+                    value="5.0"/>
+           </and>
+        </enablement>         
+     </unitPublisher>
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+     <unitPublisher
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.Tomcat55UnitPublisher"
+           description="%tomcat55UnitPublisher.description"
+           name="%tomcat55UnitPublisher.label">
+        <enablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+           <and>
+              <test
+                    property="com.ibm.ccl.soa.deploy.tomcat.tomcatVersion"
+                    value="5.5"/>
+           </and>
+        </enablement>         
+     </unitPublisher>
+  </extension>
+       <extension point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester 
+           id="com.ibm.ccl.soa.deploy.tomcat.TomcatPropertyTester"
+           type="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"
+           namespace="com.ibm.ccl.soa.deploy.tomcat"
+           properties="tomcatVersion"
+           class="com.ibm.ccl.soa.deploy.tomcat.publisher.TomcatPropertyTester">
+        </propertyTester>
+        <propertyTester 
+           id="com.ibm.ccl.soa.deploy.tomcat.internal.capability.provider.TomcatRuntimePropertyTester"
+           type="org.eclipse.wst.common.project.facet.core.runtime.IRuntime"
+           namespace="com.ibm.ccl.soa.deploy.tomcat"
+           properties="isTomcatRuntime"
+           class="com.ibm.ccl.soa.deploy.tomcat.internal.capability.provider.TomcatRuntimePropertyTester">
+        </propertyTester>
+        <propertyTester 
+           id="com.ibm.ccl.soa.deploy.tomcat.internal.unit.provider.TomcatRuntimePropertyTester"
+           type="org.eclipse.wst.server.core.IRuntime"
+           namespace="com.ibm.ccl.soa.deploy.tomcat"
+           properties="isTomcatServerRuntime"
+           class="com.ibm.ccl.soa.deploy.tomcat.internal.capability.provider.TomcatRuntimePropertyTester">
+        </propertyTester>
+        <propertyTester 
+           id="com.ibm.ccl.soa.deploy.tomcat.internal.unit.provider.TomcatRuntimePropertyTester"
+           type="com.ibm.ccl.soa.deploy.core.Annotation"
+           namespace="com.ibm.ccl.soa.deploy.tomcat"
+           properties="isTomcatRuntimeAnnotation"
+           class="com.ibm.ccl.soa.deploy.tomcat.internal.capability.provider.TomcatRuntimePropertyTester">
+        </propertyTester>
+   <!--     <propertyTester 
+           id="com.ibm.ccl.soa.deploy.ast.was.validator.resolution.DatasourceDependencyPropertyTester"
+		   type="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"
+           namespace="com.ibm.ccl.soa.deploy.tomcat.validator.resolution"
+           properties="isUnsatisfiedDatasource"
+           class="com.ibm.ccl.soa.deploy.tomcat.validator.resolution.TomcatDatasourceDependencyResolutionPropertyTester">
+       </propertyTester> -->
+     </extension>
+
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.tomcat.domain"
+       name="%extension.tomcatDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.tomcat.internal.validator.TomcatDomainValidator"/>
+       <capabilityProvider
+             class="com.ibm.ccl.soa.deploy.tomcat.internal.capability.provider.TomcatRuntimeCapabilityProvider"
+             description="%tomcat_runtime_capability_provider.description"
+             name="Tomcat server runtime capability provider">
+          <inputEnablement>
+             <and>
+                <instanceof value="org.eclipse.wst.common.project.facet.core.runtime.IRuntime"/>
+   	       	  	<test property="com.ibm.ccl.soa.deploy.tomcat.isTomcatRuntime" forcePluginActivation="true"/>
+             </and>
+          </inputEnablement>
+       </capabilityProvider>
+       <resourceType
+             id="tomcat.webserver.50.conceptual"
+             name="Tomcat 5.0 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat50C.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.50.infra"
+             name="Tomcat 5.0 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat50.template">
+       </resourceType>
+       <resourceTypeBinding
+             context="wtp"
+             id="org.eclipse.jst.server.tomcat.runtime.50"
+             resourceTypeId="tomcat.webserver.50.infra">
+       </resourceTypeBinding>
+       <resourceType
+             id="tomcat.webserver.55.conceptual"
+             name="Tomcat 5.5 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat55C.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.55.infra"
+             name="Tomcat 5.5 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat55.template">
+       </resourceType>
+       <resourceTypeBinding
+             context="wtp"
+             id="org.eclipse.jst.server.tomcat.runtime.55"
+             resourceTypeId="tomcat.webserver.55.infra">
+       </resourceTypeBinding>
+        <resourceType
+             id="tomcat.webserver.41.conceptual"
+             name="Tomcat 4.1 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat41C.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.41.infra"
+             name="Tomcat 4.1 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat41.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.40.conceptual"
+             name="Tomcat 4.0 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat40C.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.40.infra"
+             name="Tomcat 4.0 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat40.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.32.conceptual"
+             name="Tomcat 3.2 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat32C.template">
+       </resourceType>
+       <resourceType
+             id="tomcat.webserver.32.infra"
+             name="Tomcat 3.2 Web Server"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat32.template">
+       </resourceType>
+       <resourceTypeBinding
+             context="wtp"
+             id="org.eclipse.jst.server.tomcat.runtime.41"
+             resourceTypeId="tomcat.webserver.41.infra">
+       </resourceTypeBinding>
+       <resourceTypeBinding
+             context="wtp"
+             id="org.eclipse.jst.server.tomcat.runtime.40"
+             resourceTypeId="tomcat.webserver.40.infra">
+       </resourceTypeBinding>
+       <resourceTypeBinding
+             context="wtp"
+             id="org.eclipse.jst.server.tomcat.runtime.32"
+             resourceTypeId="tomcat.webserver.32.infra">
+       </resourceTypeBinding>
+       <resourceType
+             id="tomcat.datasource.50.infra"
+             name="Tomcat 5.0 Datasource"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/templates/tomcat50datasource.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool55.Description"
+             label="%tomcatWebServerTool55.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.55.conceptual">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool55.Description"
+             label="%tomcatWebServerTool55.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.55.infra">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool50.Description"
+             label="%tomcatWebServerTool50.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.50.conceptual">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool50.Description"
+             label="%tomcatWebServerTool50.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.50.infra">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool41.Description"
+             label="%tomcatWebServerTool41.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.41.conceptual">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool41.Description"
+             label="%tomcatWebServerTool41.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.41.infra">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool40.Description"
+             label="%tomcatWebServerTool40.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.40.conceptual">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool40.Description"
+             label="%tomcatWebServerTool40.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.40.infra">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatWebServerTool32.Description"
+             label="%tomcatWebServerTool32.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.32.conceptual">
+       </resourceTypeUIBinding>
+        <resourceTypeUIBinding
+             description="%tomcatWebServerTool32.Description"
+             label="%tomcatWebServerTool32.Label"
+             path="/serverSoftwareDrawer/tomcatWebServerStack"
+             smallIcon="icons/pal/apache_rntm_16.gif"
+             largeIcon="icons/pal/apache_rntm_24.gif"
+             resourceTypeId="tomcat.webserver.32.infra">
+       </resourceTypeUIBinding>
+       <resourceTypeUIBinding
+             description="%tomcatDatasourceUnitTool50.Description"
+             label="%tomcatDatasourceUnitTool50.Label"
+             path="/configurationDrawer"
+             smallIcon="icons/pal/tomcat_ds_16.gif"
+             largeIcon="icons/pal/tomcat_ds_16.gif"
+             resourceTypeId="tomcat.datasource.50.infra">
+       </resourceTypeUIBinding>
+    </domain>
+  </extension>
+  
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.tomcat.internal.filter.TomcatWebServerUnitFilter"
+           description="%tomcatunitfilter.description"
+           name="%tomcatunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.tomcat.TomcatWebServerUnit"/>
+        </inputEnablement>
+     </unitFilter>
+      <unitProvider
+              class="com.ibm.ccl.soa.deploy.ide.internal.unitprovider.IDEServerUnitProvider"
+              description="%idetomcatUnitProvider.description"
+              name="%idetomcatUnitProvider.label">
+           <inputEnablement>
+              <or>
+	              <and>
+	              	<instanceof value="org.eclipse.wst.server.core.IRuntime"/>
+     	       	 	<test property="com.ibm.ccl.soa.deploy.tomcat.isTomcatServerRuntime" forcePluginActivation="true"/>
+	              </and>
+	              <and>
+	              	<instanceof value="com.ibm.ccl.soa.deploy.core.Annotation"/>
+	     	      	<test property="com.ibm.ccl.soa.deploy.tomcat.isTomcatRuntimeAnnotation" forcePluginActivation="true"/>
+	              </and>
+              </or>
+           </inputEnablement>
+        </unitProvider>
+  </extension>
+  <!--
+  <extension
+          id="com.ibm.ccl.soa.deploy.ide.ui.operation.DatasourceResolutionOperation"
+          point="org.eclipse.wst.common.frameworks.OperationExtension">
+    <operationExtension
+             id="com.ibm.ccl.soa.deploy.ide.ui.operation.DatasourceResolutionOperation"
+             postOperationClass="com.ibm.ccl.soa.deploy.tomcat.validator.resolution.TomcatDatasourceResolutionOperation"/>
+    </extension>
+    -->
+    
+  <extension
+        point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+     <adapterFactory
+           className="com.ibm.ccl.soa.deploy.tomcat.provider.TomcatItemProviderAdapterFactory"
+           functionGroupID="com.ibm.ccl.soa.deploy.tomcat"
+           id="com.ibm.ccl.soa.deploy.tomcat.provider.TomcatItemProviderAdapterFactory"
+           packageURI="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/"/>
+  </extension>
+
+   <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.tomcat">
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.tomcat/models/schemas/tomcatDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>    
+
+</plugin>
+

@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="DeployCoreRoot"
+	ecore:name="core"
+	ecore:package="com.ibm.ccl.soa.deploy.core"
+	ecore:nsPrefix="core">
+	<annotation>
+		<documentation>
+		    The Topology Definition Model (TDM) defines a core set of concepts to describe
+		    Enterprise Architectures from the Software Applications down to the hardware 
+		    requirements. The model is inherently extensible, allowing technology specific
+		    domains to define their own types. At a high level, the model is orgainzed into
+		    {@link Topology topologies}, which contain {@link Unit}s. A Unit contain 
+		    {@link Capability capabilities}, {@Requirement requirements}, and four types 
+		    of links ({@link DependencyLink  dependency links}, {@link HostingLink  hosting links},
+		    {@link ConstraintLink  constraint links}, {@link MemberLink  member links}. In 
+		    addition, the model defines the notion of {@link Constraint constraints} which 
+		    can be added to Units or Contraint Links in order to describe requirements on 
+		    target application or environment. 
+		</documentation>
+	</annotation>
+
+    <!-- Needed because we are using EJavaObject, EDataType, EClass as parameters to operations. -->
+    <import namespace="http://www.eclipse.org/emf/2002/Ecore"
+            schemaLocation="model/Ecore.xsd"/>
+ 	
+    <!--                      -->
+    <!--  Deploy Model Object -->
+    <!--                      -->
+    <element name="deployModelObject" type="core:DeployModelObject" abstract="true"/>
+	<complexType name="DeployModelObject" abstract="true">
+		<annotation>
+			<documentation>
+			    Abstract parent type of all deployment types.
+			</documentation>
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getConstraints" type="core:Constraint" lowerBound="0" upperBound="-1"/>
+ 			    <operation xmlns="" name="getExtendedAttribute" type="core:ExtendedAttribute" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="name" type="xsd:string" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>  
+ 			    <operation xmlns="" name="getConstraint" type="core:Constraint" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="name" type="xsd:string" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>  
+
+ 			    <operation xmlns="" name="findAnnotation" type="core:Annotation" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="context" type="xsd:string" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+
+                <operation xmlns="" name="getParent" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+
+                <operation xmlns="" name="getStatus" type="core:IStatus" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="addStatus" type="core:IStatus" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="aNewStatus" type="core:IStatus" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                <operation xmlns="" name="clearStatus" lowerBound="1" upperBound="1"/>
+ 
+                <operation xmlns="" name="getContainedModelObjects" type="core:DeployModelObject" lowerBound="0" upperBound="-1"/>
+ 
+                <operation xmlns="" name="getTopology" type="core:Topology" lowerBound="1" upperBound="1"/>
+
+                <operation xmlns="" name="getFullPath" type="string" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="getRelativePath" type="string" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="relativeObject" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                                
+ 			    <operation xmlns="" name="resolve" type="core:DeployModelObject" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="path" type="xsd:string" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>                                            
+            </appinfo>			
+		</annotation>
+		<sequence>
+			<element name="annotation" minOccurs="0" maxOccurs="unbounded" type="core:Annotation" ecore:name="annotations">
+					<annotation>
+						<documentation>
+							(Use SOA Deploy {@link Annotation}s instead of EMF EAnnotation for adding annotations).
+						</documentation>
+					</annotation>
+			</element>
+			<element name="attributeMetaData" minOccurs="0" maxOccurs="unbounded" type="core:AttributeMetaData" ecore:name="attributeMetaData">
+ 					<annotation>
+						<documentation>
+							Used to add metadata, such as 'mutable=false' or password nature, to individual attributes of instances.
+							The metadata applies to the attribute with the same EStructuralFeature.name as the AttributeMetaData.attributeName,
+							or the same ExtendedAttribute.name.
+						</documentation>
+					</annotation>
+			</element>
+            <element name="extendedAttribute" minOccurs="0" maxOccurs="unbounded" type="core:ExtendedAttribute" ecore:name="extendedAttributes">
+					<annotation>
+						<documentation>
+							Used to add attributes to instances that aren't in the schema.  SOA Deploy treats the ExtendedAttributes as
+							the equal of ordinary typed attributes in the GUI and validation logic.
+						</documentation>
+					</annotation>
+			</element>
+			<element minOccurs="0" maxOccurs="unbounded" ref="core:artifact" ecore:name="artifacts">
+	                <annotation>
+		                <documentation>Usually FileArtifacts which contain URIs to files</documentation>
+		                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		                <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+	                </annotation>
+			</element>
+			<element name="constraint" minOccurs="0" maxOccurs="unbounded" type="core:Constraint" ecore:name="constraints" ecore:featureMap="constraintGroup">
+	        	<annotation>
+                	<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+	            	<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+					<documentation>Constraints defined on this DMO.</documentation>
+				</annotation>
+			</element>
+		</sequence>
+		<attributeGroup ref="core:IdentityAttributes"/>
+		<attribute name="mutable" type="boolean" use="optional" default="true">
+		   <annotation><documentation>if false, object is considered to be read-only.  if true, DeployModelObject is mutable iff all its parents have mutable=true</documentation></annotation>
+		</attribute>
+	</complexType>
+	
+	<!--                      -->
+	<!--  Attribute Meta Data -->
+	<!--                      -->
+	<complexType name="AttributeMetaData"> 		
+		<annotation>
+			<documentation>
+				Properties that can be applied to any attribute in a {@link DeployModelObject} (including {@link ExtendedAttributes}).
+			</documentation>
+		</annotation>   	
+		<!--  sequence>
+            <element name="expression" minOccurs="0" maxOccurs="unbounded" type="core:RequirementExpression" ecore:name="expressions">
+    		<annotation><documentation>Validation constraints</documentation></annotation>
+    		</element>
+    	</sequence -->
+		<attribute name="attributeName" type="string">
+		<annotation><documentation>identifies which attribute or {@link ExtendedAttribute} this metadata applies to</documentation></annotation>
+		</attribute>
+		<attribute name="description" type="string">
+	      <annotation>
+	         <documentation>
+	            A string description of the function of the attribute.
+	            <p>
+	            The label is a user-friendly and internationalized description of the attribute.  Typically,
+	            descriptions will be provided for extended attributes, but they can also be provided to
+	            elaborate on static attributes.
+	            </p>
+	            @see #getLabel()
+	         </documentation>
+	      </annotation>
+	   </attribute>
+		<attribute name="label" type="string">
+	      <annotation>
+	         <documentation>
+	            A string label for the attribute.
+	            <p>
+	            The label is a user-friendly and internationalized name for an attribute.   Typically,
+	            labels will be provided for extended attributes, but they can also be provided to
+	            customize the name of static attributes.
+	            </p>
+	            @see #getDescription()
+	         </documentation>
+	      </annotation>
+	   </attribute>
+		<attribute name="mutable" type="boolean"  use="optional"  default="true">
+		<annotation><documentation>if false, attribute is considered to be read-only</documentation></annotation>
+		</attribute>
+		<attribute name="encrypted" type="boolean"  use="optional"  default="false">
+		<annotation><documentation>if <code>true</code>, field is treated as a password and not displayed clear in GUI or serialized clear</documentation></annotation>
+		</attribute>
+		<attribute name="encryptionRequired" type="boolean"  use="optional"  default="false"/>
+		<!-- TODO - is 'encrypted' or 'encryptionRequired' the correct field to use for making the attribute appear in a password dialog? -->
+		<attribute name="optional" type="boolean"  use="optional"  default="false">
+	      <annotation>
+	         <documentation>
+	            TODO <b>What is the meaning of this attribute</b>
+	         </documentation>
+	      </annotation>
+	   </attribute>
+		<attribute name="parameter" type="boolean" use="optional" default="false">
+	      <annotation>
+	         <documentation>
+	         	<i>Template</i> validation MUST NOT complain about the value of any (extended) attribute 
+	         	tagged as a parameter (but <i>Publish</i> validation MUST complain if publishing would fail
+	         	with the attribute at it's current value.  'Deploy' validation MAY complain.)  'Parameter' is a hint 
+	         	to validators indicating that an attribute's value isn't finalized.  It's a hint to 
+	         	to 'topology factories' of good customization points on topology templates.
+	         </documentation>
+	      </annotation>
+	   </attribute>
+	</complexType>
+	
+	<!--                      -->
+	<!--  Extended Attribute  -->
+	<!--                      -->
+	<complexType name="ExtendedAttribute">		
+		<annotation>
+			<documentation>
+				Structure for dynamic addition of attributes to a {@link DeployModelObject}.
+				<p>
+				Extended attribute instances are created using {@link CoreFactory#createExtendedAttribute()}.
+				They are associated with a deploy object by being added to the list of
+				{@link DeployModelObject#getExtendedAttributes()}.  An extended attribute must
+				have a <code>name</code> that is unique for the object.</p>
+			</documentation>
+			
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getValue" type="ecore:EJavaObject" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setValue" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="value" type="ecore:EJavaObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+               <operation xmlns="" name="getInstanceType" type="ecore:EDataType" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setInstanceType" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="type" type="ecore:EDataType" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                <operation xmlns="" name="getContainer" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+            </appinfo>
+		</annotation>     	
+		<sequence>
+			<element name="data">
+				<annotation>
+					<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+				    <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+		<attribute name="name" type="string"/>
+	</complexType>
+	
+	<!--          -->
+	<!-- Topology -->
+	<!--          -->
+	<element name="topology" type="core:Topology"/>
+	<complexType name="Topology">
+		<annotation>
+			<documentation>
+			    A container of {@link Unit} instances expressing a deployment topology.
+			    <p>
+			    In the first release of the Topology Definition Model (TDM) a topology
+			    wholly contains all the links between its {@link Unit} instances.  Future
+			    releases will support cross-topology linking.</p>
+			</documentation>
+			
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getUnits" type="core:DeployModelObject" lowerBound="0" upperBound="-1"/>
+                <!--  TODO findHosts, findMemberOf, findDependentRequirements: return arrays -->             
+                <operation xmlns="" name="getGroups" type="core:DeployModelObject" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getConfigurations" type="core:DeployModelObject" lowerBound="0" upperBound="-1"/> 
+                <operation xmlns="" name="getConceptualUnits" type="core:DeployModelObject" lowerBound="0" upperBound="-1"/> 
+                <operation xmlns="" name="getDependencyLinks" type="core:DependencyLink" lowerBound="0" upperBound="-1"/> 
+                <operation xmlns="" name="findAllDependencyLinks" type="core:DependencyLink" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="findAllConstraintLinks" type="core:ConstraintLink" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="findAllHostingLinks" type="core:HostingLink" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="findAllRealizationLinks" type="core:RealizationLink" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="findAllMemberLinks" type="core:MemberLink" lowerBound="0" upperBound="-1"/>
+            </appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="core:DeployModelObject">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" ref="core:unit" ecore:name="units">
+						<annotation>
+				          <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+				          <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+				        </annotation>
+				    </element>
+				    <element minOccurs="0" maxOccurs="unbounded" ref="core:link.unit" ecore:name="unitLinks">
+		            	<annotation>
+		            		<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		                	<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		                	<documentation>Relationships between units</documentation>
+		           		</annotation>
+            		</element>
+            		<element minOccurs="0" maxOccurs="unbounded" ref="core:link.constraint" ecore:name="constraintLinks">
+		              	<annotation>
+		               		<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		               		<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		              	</annotation>
+            		</element>
+            		<element minOccurs="0" maxOccurs="unbounded" ref="core:link.dependency" ecore:name="dependencyLinks">
+		                <annotation>
+		                  <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		                  <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		                  <documentation>Relationships between capabilities and requirements</documentation>
+		                </annotation>
+            		</element>
+            		<element minOccurs="0" maxOccurs="unbounded" ref="core:link.realization" ecore:name="realizationLinks">
+		              	<annotation>
+		               		<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		               		<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		              	</annotation>
+            		</element>
+            		<element minOccurs="0" maxOccurs="unbounded" ref="core:import" ecore:name="imports"/>
+            		<element minOccurs="0" maxOccurs="1" ref="core:contract.topology" ecore:name="configurationContract">
+            		</element>
+				</sequence>		
+			<attribute name="decoratorSemantic" type="string" use="optional"/>
+			<attribute name="namespace" type="string" use="optional"/>
+			<attribute name="mutabilityConfigurable" type="boolean" use="optional" default="false"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="constraint" type="core:Constraint" ecore:featureMap="constraintGroup" abstract="true"/>
+	<complexType name="Constraint" abstract="true">
+		<annotation>
+			<documentation>
+				Common abstract object type, representing a constraint imposed on the model.
+			</documentation>
+			<!--  Expose manually coded operations. -->
+            <!--  appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore"> 
+ 			    <operation xmlns="" name="validate" type="core:IStatus" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="context" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                    <parameter xmlns="" name="monitor" type="core:IProgressMonitor" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+			</appinfo -->
+		</annotation>   
+		<complexContent>
+			<extension base="core:DeployModelObject"/>
+		</complexContent>
+	</complexType>
+
+
+	<element name="baseComponent" substitutionGroup="core:unit" type="core:BaseComponentUnit"/>
+	<complexType name="BaseComponentUnit">
+		<annotation>
+			<documentation xml:lang="en">
+				A BaseComponent is a base for all the component type extensions.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<!-- Imported topology -->
+	<element name="import" type="core:Import"/>
+	<complexType name="Import">
+		<annotation>
+			<documentation>
+				An imported topology whose contents will be visible by reference to this topology.
+			</documentation>
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="resolveImport" type="core:Topology" lowerBound="1" upperBound="1"/>              
+            </appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="core:DeployModelObject">
+				<sequence>
+            		<element minOccurs="1" maxOccurs="1" ref="core:config.topology" ecore:name="instanceConfiguration" ecore:opposite="imported"/>            		
+				</sequence>
+				<attribute name="namespace" type="string" use="required"/>
+				<attribute name="pattern" type="string" use="required"/>
+				<attribute name="reexport" type="xsd:boolean" ecore:name="reexported"  use="optional"/>
+				<!-- removing location for M4, pending further details on scoping mechanism
+				<attribute name="location" type="string" use="optional"/>
+				-->
+			</extension>
+		</complexContent>
+	</complexType>
+	 
+	
+	<!-- Configuration Contract -->
+	<element name="contract.topology" type="core:ConfigurationContract" 
+		ecore:featureMap="configurationContractGroup"/>
+	<complexType name="ConfigurationContract" abstract="true">
+		<complexContent>
+			<extension base="core:DeployModelObject">
+				<annotation>
+					<documentation>
+						A representation of the content that can be exposed by this
+						topology upon import by another topology.
+					</documentation>
+				</annotation>
+			</extension>
+		</complexContent>
+	</complexType> 
+	  
+	<!-- Explicit Contract. Exports Capabilities, Requirements, and Attributes via paths. -->
+	<element name="contract.explicit" type="core:ExplicitContract" substitutionGroup="core:contract.topology"/>
+	<complexType name="ExplicitContract">
+		<complexContent>
+			<extension base="core:ConfigurationContract">
+				<annotation>
+					<documentation>
+						A configuration contract that exposes user-chosen content as visible and configurable.
+					</documentation>
+				</annotation>
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element name="exported.unit" type="core:ExportedUnit" minOccurs="0" maxOccurs="unbounded" ecore:name="exportedUnits"/> 
+					<xsd:element ref="core:property" minOccurs="0" maxOccurs="unbounded" ecore:name="properties"/>
+				</xsd:sequence>
+				<xsd:attribute name="defaultPolicy" type="core:Visibility"/> 
+				<xsd:attribute name="defaultConceptualPolicy" type="core:Visibility"/> 
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="visibility" type="core:Visibility" />
+	<simpleType name="Visibility"> 
+		<annotation>
+			<documentation>
+				Defines an enumeration of the possible contract visibility types (private, public, public-editable)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="private" />
+			<enumeration value="public" />
+			<enumeration value="public_editable" />
+		</restriction>			
+	</simpleType>
+	
+	
+	<xsd:complexType name="Exported">
+		<xsd:attribute name="name" type="xsd:string" />
+		<xsd:attribute name="path" type="xsd:string" /> 
+		<!--  "Public" -->
+		<xsd:attribute name="linkable" type="boolean" />
+		<!--  "Public-Editable" -->
+		<xsd:attribute name="configurable" type="boolean" />
+	</xsd:complexType>
+	 
+	<!-- Provides variable and exported attribute support -->	
+	<xsd:element name="property" type="core:Property" />
+	<xsd:complexType name="Property">
+		<xsd:simpleContent >
+			<xsd:extension base="string">
+				<xsd:attribute name="select" type="xsd:string" />
+			 	<xsd:attribute name="name" type="xsd:string" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType> 
+	
+	<xsd:complexType name="ExportedUnit">
+		<xsd:complexContent>
+			<xsd:extension base="core:Exported">
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element name="exported.capability" type="core:Exported" minOccurs="0" maxOccurs="unbounded" ecore:name="exportedCapabilities"/>
+					<xsd:element name="exported.requirement" type="core:Exported" minOccurs="0" maxOccurs="unbounded" ecore:name="exportedRequirements"/>
+					<xsd:element ref="core:property" minOccurs="0" maxOccurs="unbounded" ecore:name="exportedProperties"/>
+					<xsd:element ref="core:constraint" minOccurs="0" maxOccurs="unbounded" ecore:name="augmentedConstraints"/>								
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+		
+	<!-- Instance Configuration -->
+	<element name="config.topology" type="core:InstanceConfiguration" />
+	<complexType name="InstanceConfiguration"> 
+		<annotation>
+			<documentation>
+				An InstanceConfiguration is the consumer of a {@link ConfigurationContract}. The contract exposes
+				{@link DeployModelObject model elements} and their respective properties. The InstanceConfiguration
+				allows the user to set and persist specific values for the exposed properties. The configured values
+				are stored with the importING topology, leaving the importED topology (edit topology) untouched.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:DeployModelObject">
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element ref="core:instantiation" minOccurs="0" maxOccurs="unbounded" ecore:name="instantiations"/>
+				</xsd:sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="instantiation" type="core:Instantiation" />
+	<xsd:complexType name="Instantiation">
+		<annotation>
+			<documentation>
+				An Instantiation represents a {@link Unit} from the importED topology. When a {@link Unit} is exposed 
+				in the {@link ConfigurationContract} as <b>public-editable</b>, the user may additively modify the 
+				{@link Unit} in order to configure it in the importING topology. Examples of these modifications include
+				adding custom/specialized {@link Capability capabilities}, {@link Requirement requirements}, setting values
+				for exposed {@link Property properties}, as well as persisting {@link Augmentation augmentations} to append
+				to lists contained in the imported {@link DeployModelObject model objects} dynamically in memory.
+			</documentation>
+		</annotation>
+		<xsd:complexContent>
+			<extension base="core:DeployModelObject"> 
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element ref="core:capability" minOccurs="0" maxOccurs="unbounded" 
+						ecore:name="configuredCapabilities" ecore:featureMap="configuredCapabilityGroup">
+					  <annotation>
+		                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			            <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			          </annotation>			        
+					</xsd:element>
+					<xsd:element ref="core:requirement" minOccurs="0" maxOccurs="unbounded" 
+						ecore:name="configuredRequirements" ecore:featureMap="configuredRequirementsGroup">
+					  <annotation>
+		                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			            <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			          </annotation>			        
+					</xsd:element> 
+					<xsd:element ref="core:property" minOccurs="0" maxOccurs="unbounded" 
+						ecore:name="configuredProperties" />
+					<xsd:element name="augmentation" minOccurs="0" maxOccurs="unbounded" 
+						ecore:name="augmentations" ecore:featureMap="augmentationGroup" type="core:Augmentation"/>
+				</xsd:sequence> 
+				<xsd:attribute name="referenced" type="xsd:string" />
+			</extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+ 
+ 	<xsd:complexType name="Augmentation">
+		<annotation>
+			<documentation>
+				Augmentations are not meant to be access directly, instead clients should see {@link ConfigurationContract} 
+				and {@link InstanceConfiguration} for the relevant API. An Augmentation can append to a list of items from
+				an importED {@link DeployModelObject} dynamically in memory. The original items, as well as the appended 
+				items will appear as one cohesive list in memory. 
+			</documentation>
+			<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+		</annotation>
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" ecore:name="additions"/>
+		</xsd:sequence>			     
+		<xsd:attribute name="select" type="xsd:string"/>  
+		<xsd:attribute name="feature" type="xsd:string"/> 
+ 	</xsd:complexType>
+ 
+    <!--      -->
+    <!-- Unit -->
+    <!--      -->
+	<element name="unit" type="core:Unit" ecore:featureMap="unitGroup"/>
+	<complexType name="Unit">
+	  <annotation>
+	    <documentation>
+	      Represents an abstract unit of publishable deployment.
+	      <p>
+	      A unit is an contains provided {@link Capability} instances, and consumed {@link Requirement}
+	      instances.  In is contained in a {@link Topology}.  A unit can be published to the modeled
+	      infrastructure using a deployment publisher.  It has hosting and dependency requirements.</p>
+	      <p>
+	      Typically, unit subtypes are defined as tag types and do not add attributes.  The tag is
+	      used by publishers to identify the driver responsible for provisioning the unit in the
+	      infrastructure.  Unit properties are typically associated with subtypes of {@link Capability}.
+	      In the first release of the Topology Definition Model (TDM) the schema does not enforce
+	      the association between unit and capability types.  Modelers create templates which are
+	      instances of unit subtypes containing predefined sets of capabilities and requirements.</p>
+	    </documentation>
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getHostingOrAnyRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getDependencyOrAnyRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyAnyRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyHostingRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyDependencyRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyMemberRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getMemberOrAnyRequirements" type="core:Requirement" lowerBound="0" upperBound="-1"/>
+
+                <operation xmlns="" name="getCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyHostingCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyDependencyCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getHostingOrAnyCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getDependencyOrAnyCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+                <operation xmlns="" name="getOnlyAnyCapabilities" type="core:Capability" lowerBound="0" upperBound="-1"/>
+ 
+                <operation xmlns="" name="isBound" type="xsd:boolean"/>
+                <operation xmlns="" name="isGroup" type="xsd:boolean"/>
+                <operation xmlns="" name="isVisible" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublic" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublicEditable" type="xsd:boolean"/>
+ 
+                <operation xmlns="" name="getUnitLinks" type="core:UnitLink" lowerBound="0" upperBound="-1"/>
+ 
+                <operation xmlns="" name="getHostingLinks" type="core:HostingLink" lowerBound="0" upperBound="-1"/>
+
+                <operation xmlns="" name="getMemberLinks" type="core:MemberLink" lowerBound="0" upperBound="-1"/>
+
+                <operation xmlns="" name="getConstraintLinks" type="core:ConstraintLink" lowerBound="0" upperBound="-1">
+					<annotation>
+						<documentation>Returns the list of Constraint Links contained in the Unit. 
+						Constraint Links contained in a Unit should be links that have as their source 
+						a DeployModelObject that is contained (directly, or indirectly) in the unit.
+						The code that creates a new Constraint Link should make sure that the link is added
+						to the list of Constraint Links of the appropriate unit.</documentation>
+					</annotation>
+				</operation>
+
+                <operation xmlns="" name="getRealizationLinks" type="core:RealizationLink" lowerBound="0" upperBound="-1"/>
+
+                <operation xmlns="" name="getSpecializedTypeId" type="string" lowerBound="1" upperBound="1"/>
+
+                <operation xmlns="" name="getArtifacts" type="core:Artifact" lowerBound="0" upperBound="-1"/>
+                
+                <operation xmlns="" name="getDependencyLinks" type="core:DependencyLink" lowerBound="0" upperBound="-1"/>
+             </appinfo>
+	  </annotation>
+	  <complexContent>
+	    <extension base="core:DeployModelObject">
+	      <sequence>
+		    <element minOccurs="0" maxOccurs="unbounded" ref="core:capability"
+		      ecore:name="capabilities" ecore:featureMap="capabilityGroup">
+				<annotation>
+                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+					<documentation>
+						This reference is used to capture the set of capabilities
+						that will be provided by this unit.
+					</documentation>
+				</annotation>
+			</element>
+		    <element minOccurs="0" maxOccurs="unbounded" ref="core:requirement"
+		      ecore:name="requirements" ecore:featureMap="requirementGroup">
+	          <annotation>
+                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+	            <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+	          </annotation>
+	        </element>
+	        <element minOccurs="0" maxOccurs="unbounded" ref="core:link.unit" ecore:name="unitLinks">
+              <annotation>
+                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                <documentation>Relationships to other units</documentation>
+              </annotation>
+            </element>
+	        <element minOccurs="0" maxOccurs="unbounded" ref="core:link.constraint" ecore:name="constraintLinks">
+              <annotation>
+                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+              </annotation>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" ref="core:link.realization" ecore:name="realizationLinks">
+            	<annotation>
+             		<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+             		<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+            	</annotation>
+            </element>
+            <element ecore:name="stereotypes" maxOccurs="unbounded" minOccurs="0" ref="core:stereotype"/>
+	      </sequence>
+          <attribute name="initInstallState" type="core:InstallState" use="optional" default="unknown">
+          <annotation><documentation>If 'installed', short-circuits some validation and publishing steps</documentation></annotation>
+          </attribute>
+          <attribute name="publishIntent" type="core:PublishIntent" use="optional" default="publish"/>
+          <attribute name="conceptual" type="boolean" use="optional" default="false"/>
+          <!-- TODO Define semantics -->
+		  <attribute name="configurationUnit" type="boolean"  use="optional"  default="false">
+		  <annotation><documentation>Hint that this Unit configures another Unit</documentation></annotation>
+		  </attribute>
+          <attribute name="goalInstallState" type="core:InstallState" use="optional" default="unknown"/>
+	      <attributeGroup ref="core:OriginAttributes" />
+	    </extension>
+	  </complexContent>
+	</complexType>
+	
+	<!--           -->
+	<!--  Artifact -->
+	<!--           -->	
+	<element name="artifact" type="core:Artifact" ecore:featureMap="artifactGroup"/>
+		<annotation>
+			<documentation>
+				An object that can be part of a deployable module.  See {@link FileArtifact}.
+			</documentation>
+		</annotation>
+	<complexType name="Artifact" abstract="true">
+		<complexContent>
+			<extension base="core:DeployModelObject"/>
+		</complexContent>
+	</complexType>
+	
+	<!--           		  -->
+	<!--  Conceptual Node -->
+	<!--           		  -->	
+	<element name="unit.ConceptualNode" substitutionGroup="core:unit" type="core:ConceptualNode" />
+	<complexType name="ConceptualNode">
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<!--               -->
+	<!-- File Artifact -->
+	<!--               -->
+	<element name="artifact.file" type="core:FileArtifact" substitutionGroup="core:artifact"/>
+	<complexType name="FileArtifact">
+		<annotation>
+			<documentation>
+				An artifact that represents a file resource.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Artifact">
+				<sequence>
+					<element name="fileURI" type="anyURI" minOccurs="1" maxOccurs="unbounded" ecore:name="fileURIs"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="InstallState">		
+		<annotation>
+			<documentation>
+				If a {@link Unit} represents a fully realized entity in the data center, it should have
+				an install state of 'installed'.  If a Unit represents a deployment goal it should
+				have an install state of 'not_installed'.
+			</documentation>
+		</annotation>   
+		<restriction base="string">
+			<enumeration value="installed" />
+			<enumeration value="not_installed" />
+			<enumeration value="unknown" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="PublishIntent">		
+		<annotation>
+			<documentation>
+				If the publish intent of a {@link Unit} is 'do_not_publish' it will not be deployed
+				when the topology is published.
+			</documentation>
+		</annotation>   
+		<restriction base="string">
+			<enumeration value="publish" />
+			<enumeration value="do_not_publish" />
+			<enumeration value="unknown" />
+		</restriction>
+	</simpleType>
+	
+	<!--            -->
+	<!-- Stereotype -->
+	<!--            -->
+	<element name="stereotype" type="core:Stereotype"/> 
+	<complexType name="Stereotype">
+		<attribute name="keyword" type="string"/>
+		<attribute name="profile" type="string"/> 
+		<attribute name="required" type="boolean"/>
+	</complexType>
+  
+    <!--            -->
+    <!-- Capability -->
+    <!--            -->
+	<element name="capability" type="core:Capability"
+	  ecore:featureMap="capabilityGroup" />
+	<complexType name="Capability">		
+		<annotation>
+			<documentation>
+				Capabilities carry configuration content for their containing {@link Unit}.
+				<p>
+				Capabilities satisify {@link Requirement}s on other Units.  The linking may
+				be direct, using a {@link DependencyLink}, or indirect using a {@link UnitLink}.
+				A unit will typically provide one or more capabilities.  Because the model
+				does not support multiple inheritance, the use of multiple capabilites provides
+				the modeler with a tool to capture different facets of the unit.</p>
+				<p>
+				Capability instances may restrict the types of links that can be bound to
+				them, directly or indirectly.  Typically, dependency capabilities have
+				link type {@link CapabilityLinkTypes#DEPENDENCY}, while hosting capabilities
+				have link type {@link CapabilityLinkTypes#ANY} to express the fact that even
+				though they are hosting, others may have indirect dependencies on their
+				configuration.</p>
+				<p>
+				Domain extensions are expected to extend the capability type, providing additional
+				attributes.</p>
+			</documentation>
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">               
+                <operation xmlns="" name="isVisible" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublic" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublicEditable" type="xsd:boolean"/>
+             </appinfo>
+		</annotation>   
+		<complexContent>
+			<extension base="core:DeployModelObject">
+				<sequence>
+	            	<element ecore:name="stereotypes" maxOccurs="unbounded" minOccurs="0" ref="core:stereotype"/>
+	            </sequence>
+	            <attributeGroup ref="core:OriginAttributes" />
+				<attribute name="linkType" type="core:CapabilityLinkTypes" use="optional" default="dependency">
+	              	<annotation><documentation>Satisfies a {@link DependencyLink} or {@link UnitLink}; Matches against {@link Requirement}.linkType</documentation></annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--             -->
+	<!-- Requirement -->
+	<!--             -->
+	<element name="requirement" type="core:Requirement"/>
+    <complexType name="Requirement">	
+		<annotation>
+			<documentation>
+				A Requirement expresses a configuration or runtime dependency of its containing {@link Unit}.
+				<p>
+				The requirement must be satisfied by a {@link Capability}.  Typically, the capability
+				will be on another unit.  The linking will depend on the {@link #getLinkType()} of
+				the requirement.</p>
+				
+				<ul>
+				<li> {@link RequirementLinkTypes#DEPENDENCY} : the linking is through {@link #getLink()}.</li>
+				<li> {@link RequirementLinkTypes#HOSTING}: the linking is through a {@link HostingLink}
+				     contained in the parent Unit.</li>
+				<li> {@link RequirementLinkTypes#MEMBER}: the linking is through a {@link MemberLink}
+				     contained in the parent Unit.</li>
+				<li> {@link RequirementLinkTypes#ANY}: rarely used for capabilities that can be simultaneously
+				     dependency, hosting, and member.</li>
+				     
+				</ul>
+			</documentation>
+
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore"> 
+                <operation xmlns="" name="getDmoEType" type="ecore:EClass" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setDmoEType" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="type" type="ecore:EClass" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                
+                <operation xmlns="" name="getLink" type="core:DependencyLink" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setLink" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="link" type="core:DependencyLink" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+				<operation xmlns="" name="getExpressions" type="core:RequirementExpression" lowerBound="0" upperBound="-1">
+					<annotation>
+						<documentation>Returns the List RequirementExpressionconstraints, 
+						defined on this Requirement.</documentation>
+					</annotation>
+				</operation>
+				<operation xmlns="" name="isVisible" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublic" type="xsd:boolean"/>
+                <operation xmlns="" name="isPublicEditable" type="xsd:boolean"/>
+			</appinfo>
+		</annotation>   
+      <complexContent>
+        <extension base="core:DeployModelObject">
+          <sequence>
+            <!--  element minOccurs="0" maxOccurs="unbounded" ref="core:req_expr"
+              ecore:name="expressions">
+              <annotation><documentation>Validation constraints</documentation></annotation>
+              </element -->
+            <element minOccurs="0" maxOccurs="1" ref="core:link.dependency" ecore:name="link">
+                <annotation>
+                  <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                  <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                  <documentation>if linkType=dependency, link may refer to a Capability that satisfies this requirement</documentation>
+                </annotation>
+            </element>
+          </sequence>
+          <attribute name="linkType" type="core:RequirementLinkTypes" use="optional" default="dependency">
+          <annotation><documentation>Shall Requirement be met by a {@link DependencyLink} or {@link UnitLink}; matches against {@link Capability}.linkType</documentation></annotation>
+          </attribute>
+          <attribute name="use" type="core:RequirementUsage" use="optional" default="required">
+          <annotation><documentation>Usually 'required'</documentation></annotation>
+          </attribute>
+          <attribute name="dmoType" type="QName" use="required">
+          	<annotation>
+          		<documentation>optional Constraint to a {@link Unit} or {@link Capability} class instance</documentation>
+                <appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+                <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+          	</annotation>
+          </attribute>
+		  <attribute name="extends" type="string" use="optional">
+		  	<annotation>
+				<documentation>Relative path to a requirement that this requirement extends</documentation>
+			</annotation>
+		  </attribute> 
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!--                        -->
+    <!-- Requirement Expression --> 
+    <!--                        -->   
+    <element name="req_expr" substitutionGroup="core:constraint" type="core:RequirementExpression"/>		
+    <complexType name="RequirementExpression">
+    	<annotation>
+			<documentation>
+				A further matching constraint upon a {@link Requirement}.
+			</documentation>
+		</annotation>
+      <complexContent>
+        <extension base="core:Constraint" >
+          <attribute name="attributeName" type="string" use="optional">
+          <annotation><documentation>name of an attribute on the {@link Capability} or {@link Unit} that satisfies the containing {@link Requirement}</documentation></annotation>
+          </attribute>
+          <attribute name="use" type="core:RequirementExpressionUsage">
+          <annotation><documentation>Usually 'required'</documentation></annotation>
+          </attribute>
+          <attribute name="interpreter" type="string" use="required">
+          <annotation><documentation>Refers to an &lt;interpreter name=&gt; in domain extension</documentation></annotation>
+          </attribute>
+          <attribute name="value" type="string" use="required">
+          <annotation><documentation>interpreter-specific; for the equals interpreter a constaint that will be compared to the value of the attribute on the matching Capability</documentation></annotation>
+          </attribute>
+        </extension>
+     </complexContent>
+    </complexType>
+    
+    <simpleType name="RequirementExpressionUsage">		
+    	<annotation>
+			<documentation>
+				'required' means normal {@link RequirementExpression} semantics.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="required"/>
+        <enumeration value="optional"/>
+        <enumeration value="prohibited"/>
+	  </restriction>
+    </simpleType>
+    
+    <simpleType name="RequirementUsage">		
+    	<annotation>
+			<documentation>
+				The usage of this {@link Requirement}.  'required' means that the
+				Requirement expresses a requirement, rather than an anti-requirement.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="required"/>
+        <enumeration value="optional"/>
+        <enumeration value="prohibited"/>
+	  </restriction>
+    </simpleType>
+    
+    <simpleType name="RequirementLinkTypes">
+		<annotation>
+			<documentation>
+				The type of links supported by this {@link Requirement}.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="hosting"/>
+        <enumeration value="dependency"/>
+        <enumeration value="member"/>
+        <enumeration value="any"/>
+	  </restriction>
+    </simpleType>
+    
+    <simpleType name="CapabilityLinkTypes">		
+    	<annotation>
+			<documentation>
+				The type of links supported by this {@link Capability}.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="hosting"/>
+        <enumeration value="dependency"/>
+        <enumeration value="any"/>
+	  </restriction>
+    </simpleType>
+    
+        
+	<attributeGroup name="OriginAttributes">
+		<attribute name="buildVersion" type="core:VersionString" use="optional">
+		<annotation><documentation>This attribute is used to specify the build version of the unit when having multiple version controlled units.</documentation></annotation>
+		</attribute>
+		<attribute name="origin" type="string" use="optional">
+		<annotation><documentation>This attribute is used to set the origin of the unit when having multiple version controlled units.</documentation></annotation>
+		</attribute>
+	</attributeGroup>
+	<attributeGroup name="IdentityAttributes">
+		<attribute name="displayName" type="string" use="optional">
+		<annotation><documentation>Name used on GUI labels and messages</documentation></annotation>
+		</attribute>
+		<attribute name="name" type="string" use="required">
+		<annotation><documentation>Internal 'anchor' for XML references.  See {@link #displayName} for the name exposed in the UI.</documentation></annotation>
+		</attribute>
+		<attribute name="description" type="string" use="optional" />
+		<!--  TODO Semantics? -->
+	</attributeGroup>
+
+	<!--##### VERSION ##################################-->
+	<!--##### VRML format, simple string type           -->
+	<!--##### This is the preferred format for          -->
+	<!--##### representing version information          -->
+	<simpleType name="VersionString">
+		<restriction base="string">
+			<pattern value="([0-9]{1,9})(\.[0-9]{1,9}){0,3}" />
+		</restriction>
+	</simpleType>
+	<!--##### Generic format for existing version info  -->
+	<!--##### This is defined to permit accepting and   -->
+	<!--##### interpreting existing version information -->
+	<!--##### that does not conform to the VRML format  -->
+	<simpleType name="GenericVersionString">
+		<restriction base="string">
+			<maxLength value="200" />
+			<pattern
+				value="([0-9a-zA-Z]+(([\+_ \-]*)+[0-9a-zA-Z]+)*)+(\.([0-9a-zA-Z]+(([\+_ \-]*)+[0-9a-zA-Z]+)*)){0,99}" />
+		</restriction>
+	</simpleType>
+	
+	<!--##### VERSION RANGE ########################### -->
+	<!--##### Range format for validating VersionString -->
+	<!--##### simple types. Note that this will not     -->
+	<!--##### validate a GenericVersion simple type.    -->
+    <simpleType name="VersionRange">
+    	<restriction base="string"><pattern value="[\[\(][0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\,[0-9]{1,3}\,[ ]+[0-9]{1,3}\.[0-9]{1,3}[\)\]]"></pattern></restriction>
+    </simpleType>
+    
+    <!--                   -->
+	<!--  Base deploy link -->
+	<!--                   -->
+	<element name="link.deploy" type="core:DeployLink"/>
+	<complexType name="DeployLink">
+		<annotation>
+			<documentation>
+			    Base link type for subsequent, specially-typed links to extend.
+			</documentation>
+		</annotation>
+	  <complexContent>
+	    <extension base="core:DeployModelObject">
+	      <attribute name="target" type="anyURI" use="required"
+	        ecore:name="targetURI">
+	        <annotation>
+	          <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			<documentation>The target end of the link, which becomes a {@link DeployModelObject} during deserialization</documentation>
+	        </annotation>
+	      </attribute>
+          <attribute name="source" type="anyURI" use="optional"
+          ecore:name="sourceURI">
+            <annotation>
+             <appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+			<documentation>The source end of the link, which becomes a {@link DeployModelObject} during deserialization</documentation>
+            </annotation>
+          </attribute>
+	    </extension>
+	  </complexContent>
+	</complexType>
+	
+	<!--                   -->
+	<!--  DEPENDENCY LINK  -->
+	<!--                   -->
+	<element name="link.dependency" type="core:DependencyLink" ecore:featureMap="dependencyLinkGroup"/>
+	<complexType name="DependencyLink">
+		<annotation>
+			<documentation>
+			    Binds a {@link Requirement} to a {@link Capability} which satisfies it.
+			    <p>
+			    Dependency links are binary relationships.  In the programming interface they are 
+			    created by {@link CoreFactory#createDependencyLink()}.  In the user interface, they
+			    are created  by the {@link com.ibm.ccl.soa.deploy.core.validator.matcher.DomainMatcher}
+			    using the<code>getPossibleLinks</code> methods.  They may be extended to associate
+			    additional information with the binding.  In such cases, the user must also modify
+			    the matcher to return descriptors that will create the required subtype.</p>
+			    <p>
+			    The endpoints of the dependency links are serialized as topology paths obtained
+			    using {@link DeployModelObject#getFullPath()}.  In the first release of the Topology
+			    Definition Model (TDM), the source of the dependency link is the containing requirement
+			    {@link #getParent()}.  In future versions, dependency links may be contained in an
+			    object that is different from the source, so users should use {@link #getSource} to
+			    obtain the requirement, rather than casting the result of {@link #getParent}.</p>
+			</documentation>
+			
+			<!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getSource" type="core:Requirement" lowerBound="1" upperBound="1"/>
+                <operation xmlns="" name="getTarget" type="core:Capability" lowerBound="1" upperBound="1"/>
+			    <operation xmlns="" name="setTarget" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="capability" type="core:Capability" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+			    </operation>
+            </appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="core:DeployLink"/>
+		</complexContent>
+	</complexType> 		
+	
+	<element name="link.unit" type="core:UnitLink" />
+	<complexType name="UnitLink">
+		<annotation>
+			<documentation>
+			    A generic binding of a {@link Unit} to another {@link Unit}.
+			    <p>
+			    Unit links are binary relationships.  In the programming interface they are 
+			    created by {@link CoreFactory#createUnitLink()}.  In the user interface, they
+			    cannot be directly instantiated.  Instead, users instantiate one of their two
+			    core subtypes: {@link HostingLink} or {@link MemberLink}.</p>
+			    <p>
+			    Users may extend {@link UnitLink} to provide new kinds of unit to unit relationships.
+			    In such cases, the domain implementation of the abstract domain matcher
+			    {@link com.ibm.ccl.soa.deploy.core.validator.matcher.DomainMatcher}
+			    must be extended to return link descriptors that generate the subtype instance.</p>
+			    <p>
+			    The endpoints of unit links are serialized as topology paths obtained
+			    using {@link DeployModelObject#getFullPath()}.  In the first release of the Topology
+			    Definition Model (TDM), the source of the unit link is the containing unit
+			    {@link #getParent()}.  In future versions, unit links may be contained in an object
+			    that is different from the source, so users should use {@link #getSource} to
+			    obtain the requirement, rather than casting the result of {@link #getParent}.</p>.
+			</documentation>
+			
+	        <!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getSource" type="core:Unit" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setSource" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="capability" type="core:Unit" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                <operation xmlns="" name="getTarget" type="core:Unit" lowerBound="1" upperBound="1"/>
+			    <operation xmlns="" name="setTarget" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="target" type="core:Unit" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+			    </operation>
+            </appinfo>
+		</annotation>
+	  <complexContent>
+	    <extension base="core:DeployLink"/>
+	  </complexContent>
+	</complexType>
+	
+  <element name="link.constraint" type="core:ConstraintLink" />
+  <complexType name="ConstraintLink">
+		<annotation>
+			<documentation>
+			    Constraint links express a high-level binary constraint pattern between two entities.
+			    <p>
+			    The endpoints of constraint links can be any type of {@link DeployModelObject}. 
+			    The semantics of a constraint link is determined by the child constraint of the link.
+			    Constraint links may be created in various ways. There is a UI tool to create constaints links 
+			    with a predefined constraint, by using context menu for a pair of selected objects. 
+			    Another way to be able to create a constraint link is for a constraint extension to declare 
+			    a specialized link matcher in the <code>com.ibm.ccl.soa.deploy.core.constraints</code>
+			    extension point (using &lt;linkMatcher/&gt; element).</p>
+			    <p>
+			    Constraint links will also be used for the old "Logical Link" mechanism (which will be 
+			    decrecated in M6 milestone). Below is the description of this mechanism.</p>
+			    <p>
+			    The semantics of the "logical link" are domain specific. Logical links are created by specialized
+			    matchers which are declared using the <code>com.ibm.ccl.soa.deploy.core.logicalLink</code>
+			    extension point.</p>
+			    <p>
+			    Programmatically, logical link instances are created using {@link CoreFactory#createLogicalLink()}.
+			    The deployment editor allows users to create logical links using the dependency lollypop or
+			    the hosting lollypop.  It is the responsibility of the logical link matcher 
+			    {@link com.ibm.ccl.soa.deploy.core.logicallink.LogicalLinkMatcher} to check
+			    the preconditions, and create an appropriate descriptor.</p>
+			    <p>
+			    The {@link com.ibm.ccl.soa.deploy.core.logicallink.LogicalLinkImplementation} class
+			    declared in the extension point is responsible for validating that the logical pattern
+			    represented by the link has been implemented.  If it has not, then the implementation
+			    is also responsible for providing a resolution that will implement it.</p>
+			</documentation>
+
+			<!--  Expose manually coded operations. -->			
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getSource" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setSource" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="source" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                <operation xmlns="" name="getTarget" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+			    <operation xmlns="" name="setTarget" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="target" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+			    </operation>
+            </appinfo>
+		</annotation>
+    <complexContent>
+      <extension base="core:DeployLink"/>    
+    </complexContent>
+  </complexType>
+  
+  	<!--                    -->
+	<!--  Realization link  -->
+	<!--                    -->
+  <element name="link.realization" type="core:RealizationLink" />
+	<complexType name="RealizationLink">
+		<annotation>
+			<documentation>
+				TODO fill this in with some useful information
+			</documentation>
+	        <!--  Expose manually coded operations. -->
+            <appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+                <operation xmlns="" name="getSource" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+ 			    <operation xmlns="" name="setSource" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="capability" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+                </operation>
+                <operation xmlns="" name="getTarget" type="core:DeployModelObject" lowerBound="1" upperBound="1"/>
+			    <operation xmlns="" name="setTarget" lowerBound="1" upperBound="1">
+                    <parameter xmlns="" name="target" type="core:DeployModelObject" lowerBound="1" upperBound="1" unique="false" ordered="false"/>   
+			    </operation>
+            </appinfo>
+		</annotation>
+	  <complexContent>
+	    <extension base="core:DeployLink"/>
+	  </complexContent>
+	</complexType>
+  
+  <complexType name="DeployModelObjectSet">
+    <sequence>
+      <element ref="core:deployModelObject" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
+  <element name="capability.communication" substitutionGroup="core:capability" type="core:CommunicationCapability"/>
+	<complexType name="CommunicationCapability">
+		<complexContent>
+			<extension base="core:Capability">					
+				<attribute name="applicationLayerProtocol" type="string" />
+				<attribute name="port" type="core:PortType" use="required" />	
+			</extension>	
+		</complexContent>
+	</complexType>
+		
+    <simpleType name="PortType">
+      <restriction base="integer">
+        <minInclusive value="1"/>
+        <maxInclusive value="65535"/>
+      </restriction>
+    </simpleType>	
+	
+	<!-- In OS, Extend port from comm cap
+	comm cap should have port and applicationLayerProtocol
+	bring in simple port type from OS -->
+  
+  <!--               -->
+  <!--  Hosting Link -->
+  <!--               -->
+  <element name="link.hosting" type="core:HostingLink" substitutionGroup="core:link.unit"/>
+  <complexType name="HostingLink">
+		<annotation>
+			<documentation>
+				A HostingLink expresses the relationship between a hosting {@link Requirement} and
+				a hosting {@link Capability}.
+			</documentation>
+		</annotation>
+    <complexContent>
+      <extension base="core:UnitLink"/>
+    </complexContent>
+  </complexType>
+  
+  <!--              -->
+  <!--  Member Link -->
+  <!--              -->
+  <element name="link.member" type="core:MemberLink" substitutionGroup="core:link.unit"/>
+  <complexType name="MemberLink">    
+		<annotation>
+			<documentation>
+				A MemberLink expresses a containment relationship {@link Unit}s.  It is a hint to the GUI for rendering
+				the topology.
+			</documentation>
+		</annotation>
+    <complexContent>
+      <extension base="core:UnitLink"/>
+    </complexContent>
+  </complexType>
+  
+  <!--             -->
+  <!--  Annotation -->
+  <!--             -->
+	<element name="annotation" type="core:Annotation" />
+	<complexType name="Annotation">
+		<annotation>
+			<documentation>
+				This element expresses annotations from other
+				namespaces.  An Annotation object is keyed by its
+				context attribute.  This allows for object to have multiple
+				Annotation objects for different contexts.
+			</documentation>
+		</annotation>
+		<sequence>
+			<any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="detail" minOccurs="0" maxOccurs="unbounded" type="core:StringToStringEntry" ecore:name="details"/>
+		</sequence>
+		<attribute name="context" type="string" use="required"/>
+	</complexType>
+	
+	<!--                      -->
+	<!--  StringToStringEntry -->
+	<!--                      -->
+	<complexType name="StringToStringEntry" ecore:instanceClass="java.util.Map$Entry">
+		<attribute name="key" type="string"/>
+		<attribute name="value" type="string"/>
+	</complexType>
+
+
+    <!--          -->
+    <!--  IStatus -->
+    <!--          -->
+    <simpleType name="IStatus" ecore:instanceClass="org.eclipse.core.runtime.IStatus">
+      <restriction base="string"/>
+    </simpleType>
+
+	<element name="capability.bundle" substitutionGroup="core:capability" type="core:BundleCapability"></element>
+    <complexType name="BundleCapability">
+    	<complexContent>
+    		<extension base="core:Capability">
+				<attribute name="id" type="string" use="required"/>
+				<attribute name="version" type="core:VersionString" use="required"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+</schema>

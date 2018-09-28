@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<core:topology name="LDAP Server Template"
+	xmlns:ldap="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/">
+
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="LdapServer"/>   
+  </core:annotation>
+  
+	<ldap:ldapServerUnit name="LdapServer" conceptual="true">
+
+		<ldap:capability.ldapServer name="LdapServer" linkType="any" />
+ 
+
+		<core:requirement dmoType="os:OperatingSystem"
+			linkType="hosting" name="Host on Operating System" />
+
+		<core:link.hosting name="ports" target="/portConfiguration" />
+	</ldap:ldapServerUnit>
+	
+	
+	<os:unit.portConfigUnit displayName="Port Configuration"
+		name="portConfiguration" configurationUnit="true" conceptual="true">
+		<os:capability.port displayName="ldap_port" name="ldap_port"
+			linkType="dependency" portName="ldap_port"
+			transportLayerProtocol="TCP" applicationLayerProtocol="LDAP" port="389" /> 
+
+		<core:requirement dmoType="ldap:LdapServer"
+			linkType="hosting" name="Host on LDAP Server" />				
+	</os:unit.portConfigUnit>
+	
+
+</core:topology>

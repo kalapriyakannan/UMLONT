@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<core:topology name="LDAP Suffix Configuration Unit"
+			   xmlns:ldap="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+			   xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+			   >
+
+	<ldap:ldapSuffixUnit name="LdapSuffix" configurationUnit="true" conceptual="true">
+
+		<ldap:capability.ldapSuffix linkType="dependency" name="LdapSuffix" />
+
+		<core:requirement dmoType="ldap:LdapServer" linkType="hosting" name="LdapServer" />
+
+	</ldap:ldapSuffixUnit>
+
+</core:topology>

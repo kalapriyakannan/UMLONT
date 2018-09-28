@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension-point id="unitPublisher"
+		name="%extensionPoint.unitLifecycle.name"
+		schema="schema/unitPublisher.exsd" />
+	<extension point="com.ibm.ccl.soa.deploy.core.topology">
+		<exporter
+			class="com.ibm.ccl.soa.deploy.ide.exporter.IdeTopologyExporter"
+			description="%extension.ideTopologyExporter.description"
+			name="%extension.ideTopologyExporter" />
+		<discoverer
+			class="com.ibm.ccl.soa.deploy.ide.internal.discoverer.IdeTopologyDiscoverer"
+			description="%extension.ideTopologyDiscoverer.description"
+			name="%extension.ideTopologyDiscoverer" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.ide.internal.unitprovider.IDEJ2EEModuleUnitProvider"
+			description="%idej2eeUnitProvider.description"
+			name="%idej2eeUnitProvider.label">
+			<inputEnablement>
+				<or>
+					<and>
+						<instanceof
+							value="org.eclipse.core.runtime.IAdaptable" />
+						<or>
+							<and>
+								<test
+									property="com.ibm.ccl.soa.deploy.ide.isResourceName"
+									value="web.xml" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.web" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.ear" forcePluginActivation="true" />
+							</and>
+							<and>
+								<test
+									property="com.ibm.ccl.soa.deploy.ide.isResourceName"
+									value="application.xml" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.ear" forcePluginActivation="true" />
+							</and>
+							<and>
+								<test
+									property="com.ibm.ccl.soa.deploy.ide.isResourceName"
+									value="ejb-jar.xml" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.ejb" forcePluginActivation="true" />
+							</and>
+							<and>
+								<test
+									property="com.ibm.ccl.soa.deploy.ide.isResourceName"
+									value="ra.xml" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.connector" forcePluginActivation="true" />
+							</and>
+							<and>
+								<test
+									property="com.ibm.ccl.soa.deploy.ide.isResourceName"
+									value="application-client.xml" forcePluginActivation="true" />
+								<test
+									property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+									value="jst.appclient" forcePluginActivation="true" />
+							</and>
+						</or>
+					</and>
+					<and>
+						<instanceof
+							value="org.eclipse.jdt.core.IJavaProject" />
+						<or>
+							<test forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.ear" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.web" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.ejb" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.connector" forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.appclient" forcePluginActivation="true" />
+							<test forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.java" />
+						</or>
+					</and>
+					<and>
+						<instanceof
+							value="org.eclipse.core.resources.IProject" />
+						<or>
+						    <test forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.j2ee.memberOfFacetProject"
+								value="jst.ear" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.web" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.ejb" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.connector" forcePluginActivation="true" />
+							<test
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.appclient" forcePluginActivation="true" />
+							<test forcePluginActivation="true"
+								property="org.eclipse.wst.common.project.facet.core.projectFacet"
+								value="jst.java" />
+						</or>
+					</and>
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.WARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.RARFile" />
+					<instanceof
+						value="org.eclipse.jst.j2ee.commonarchivecore.internal.ApplicationClientFile" />
+					<and>
+						<instanceof
+							value="com.ibm.ccl.soa.deploy.core.Unit" />
+						<and>
+							<test
+								property="com.ibm.ccl.soa.deploy.ide.targetNamespace"
+								value="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+								forcePluginActivation="true" />
+						</and>
+					</and>
+				</or>
+
+			</inputEnablement>
+			<outputEnablement>
+				<or>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EarModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.EjbModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.JarModule" />
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.j2ee.AppClientModule" />
+				</or>
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.ide.internal.unitprovider.ConceptualServerUnitProvider"
+			description="%server.conceptual.unit.provider.description"
+			name="%server.conceptual.unit.provider.name">
+			<inputEnablement>
+				<or>
+					<instanceof
+						value="org.eclipse.wst.server.core.IRuntime" />
+				</or>
+			</inputEnablement>
+		</unitProvider>
+
+		<unitDiscoverer
+			class="com.ibm.ccl.soa.deploy.ide.internal.discoverer.IdeJ2EEUnitDiscoverer"
+			description="%ideUnitDiscoverer.description"
+			name="%ideUnitDiscoverer.label">
+			<inputEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				<and>
+					<test
+						property="com.ibm.ccl.soa.deploy.ide.targetNamespace"
+						value="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+						forcePluginActivation="true" />
+				</and>
+			</inputEnablement>
+		</unitDiscoverer>
+
+		<unitDiscoverer
+			class="com.ibm.ccl.soa.deploy.ide.internal.discoverer.IdeDatabaseUnitDiscoverer"
+			description="%ideDatabaseUnitDiscoverer.description"
+			name="%ideDatabaseUnitDiscoverer.label">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.database.DatabaseComponent" />
+				<!--  <and>
+					<test property="com.ibm.ccl.soa.deploy.ide.targetNamespace" value="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" forcePluginActivation="true"/>      	
+					</and>   -->
+			</inputEnablement>
+		</unitDiscoverer>
+	</extension>
+
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.ide.IDERuntimePropertyTester"
+			type="org.eclipse.wst.server.core.IRuntime"
+			namespace="com.ibm.ccl.soa.deploy.ide" properties="isSupportedType"
+			class="com.ibm.ccl.soa.deploy.ide.internal.propertytester.IDERuntimePropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.ide.ResourceNamePropertyTester"
+			type="org.eclipse.core.runtime.IAdaptable"
+			namespace="com.ibm.ccl.soa.deploy.ide" properties="isResourceName"
+			class="com.ibm.ccl.soa.deploy.ide.internal.propertytester.ResourceNamePropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.ide.TargetNamespacePropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.Unit"
+			namespace="com.ibm.ccl.soa.deploy.ide" properties="targetNamespace"
+			class="com.ibm.ccl.soa.deploy.ide.internal.propertytester.TargetNamespacePropertyTester">
+		</propertyTester>
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.ide.domain"
+			name="%idedomain.label"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/">
+			<packager
+				class="com.ibm.ccl.soa.deploy.ide.packager.IDEJ2EEDomainPackager" />
+			<validator
+				class="com.ibm.ccl.soa.deploy.ide.validator.IDEDomainValidator" />
+			<resourceTypeBinding context="wtp" id="DB2 UDBV8.1"
+				resourceTypeId="db2.DB2DatabaseUnit.8">
+			</resourceTypeBinding>
+			<resourceTypeBinding context="wtp" id="DB2 UDBV8.2"
+				resourceTypeId="db2.DB2DatabaseUnit.8">
+			</resourceTypeBinding>
+			<resourceTypeBinding context="wtp" id="DB2 UDBV9.1"
+				resourceTypeId="db2.DB2DatabaseUnit.8">
+			</resourceTypeBinding>
+			<resourceTypeBinding context="wtp" id="ddl"
+				resourceTypeId="database.databaseComponent">
+			</resourceTypeBinding>
+
+
+		</domain>
+	</extension>
+ <extension
+       point="org.eclipse.ltk.core.refactoring.moveParticipants">
+       <moveParticipant 
+           id="com.ibm.ccl.soa.deploy.ide.refactoring.move.MoveTopologyParticipant"
+           name="%refactoring.participant.movetopologyparticipant.label"
+           class="com.ibm.ccl.soa.deploy.ide.refactoring.participant.MoveTopologyParticipant">
+           <enablement>
+              <and>
+                  <with variable="processorIdentifier">
+                      <equals value="org.eclipse.ltk.core.refactoring.moveResourcesProcessor"/>
+                  </with>
+                  <with variable="element">
+                      <and>
+                         <adapt type="org.eclipse.core.resources.IFile">
+			                  <test
+			                        property="org.eclipse.core.resources.extension"
+			                        value="topology">
+			                  </test>
+                         </adapt>
+                         <instanceof value="org.eclipse.core.resources.IFile"/>
+                      </and>
+                  </with>
+              </and>
+           </enablement>
+       </moveParticipant>
+ </extension>
+ <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant 
+           id="com.ibm.ccl.soa.deploy.ide.refactoring.move.RenameTopologyParticipant"
+           name="%refactoring.participant.renametopologyparticipant.label"
+           class="com.ibm.ccl.soa.deploy.ide.refactoring.participant.RenameTopologyParticipant">
+           <enablement>
+              <and>
+                  <with variable="processorIdentifier">
+                      <equals value="org.eclipse.ltk.core.refactoring.renameResourceProcessor"/>
+                  </with>
+                  <with variable="element">
+                      <and>
+                         <adapt type="org.eclipse.core.resources.IFile">
+			                  <test
+			                        property="org.eclipse.core.resources.extension"
+			                        value="topology">
+			                  </test>
+                         </adapt>
+                         <instanceof value="org.eclipse.core.resources.IFile"/>
+                      </and>
+                  </with>
+              </and>
+           </enablement>
+       </renameParticipant>
+       <renameParticipant 
+           id="com.ibm.ccl.soa.deploy.ide.refactoring.move.RenameDiagramParticipant"
+           name="%refactoring.participant.renamediagramparticipant.label"
+           class="com.ibm.ccl.soa.deploy.ide.refactoring.participant.RenameDiagramParticipant">
+           <enablement>
+              <and>
+                  <with variable="processorIdentifier">
+                      <equals value="org.eclipse.ltk.core.refactoring.renameResourceProcessor"/>
+                  </with>
+                  <with variable="element">
+                      <and>
+                         <adapt type="org.eclipse.core.resources.IFile">
+			                  <test
+			                        property="org.eclipse.core.resources.extension"
+			                        value="topologyv">
+			                  </test>
+                         </adapt>
+                         <instanceof value="org.eclipse.core.resources.IFile"/>
+                      </and>
+                  </with>
+              </and>
+           </enablement>
+       </renameParticipant>
+ </extension>
+ <extension
+       point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant 
+           id="com.ibm.ccl.soa.deploy.ide.refactoring.delete.DeleteTopologyParticipant"
+           name="%refactoring.participant.deletetopologyparticipant.label"
+           class="com.ibm.ccl.soa.deploy.ide.refactoring.participant.DeleteTopologyParticipant">
+           <enablement>
+              <and>
+                  <with variable="processorIdentifier">
+                      <equals value="org.eclipse.ltk.core.refactoring.deleteResourcesProcessor"/>
+                  </with>
+                  <with variable="element">
+                      <and>
+                         <adapt type="org.eclipse.core.resources.IFile">
+			                  <test
+			                        property="org.eclipse.core.resources.extension"
+			                        value="topology">
+			                  </test>
+                         </adapt>
+                         <instanceof value="org.eclipse.core.resources.IFile"/>
+                      </and>
+                  </with>
+              </and>
+           </enablement>
+       </deleteParticipant>
+       <deleteParticipant 
+           id="com.ibm.ccl.soa.deploy.ide.refactoring.delete.DeleteNamespaceParticipant"
+           name="%refactoring.participant.deletenamespaceparticipant.label"
+           class="com.ibm.ccl.soa.deploy.ide.refactoring.participant.DeleteNamespaceParticipant">
+           <enablement>
+              <and>
+                  <with variable="processorIdentifier">
+                      <equals value="org.eclipse.ltk.core.refactoring.deleteResourcesProcessor"/>
+                  </with>
+                  <with variable="element">
+                      <and>
+                         <instanceof value="org.eclipse.core.resources.IFolder"/>
+                      </and>
+                  </with>
+              </and>
+           </enablement>
+       </deleteParticipant>
+ </extension>
+
+
+</plugin>

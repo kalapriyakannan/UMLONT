@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../../schemas/dynamictype/dynamictype.xsd#/"
+    outputs="dynamictype.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1"
+      outputs="dynamictype.ecore#//DynamicPaletteEntry">
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=2"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/description"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/id"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=7"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/kind"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/label"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=4"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/largeIcon"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=6"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/path"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=3"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/smallIcon"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=5"
+        outputs="dynamictype.ecore#//DynamicPaletteEntry/templateURI"/>
+  </nested>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//dynamicPaletteEntry;XSDElementDeclaration=1"
+      outputs="dynamictype.ecore#//DynamicTypeRoot/dynamicPaletteEntry"/>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteStack;XSDComplexTypeDefinition=2"
+      outputs="dynamictype.ecore#//DynamicPaletteStack">
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteStack;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="dynamictype.ecore#//DynamicPaletteStack/description"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteStack;XSDComplexTypeDefinition=2/XSDAttributeUse=3"
+        outputs="dynamictype.ecore#//DynamicPaletteStack/icon"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteStack;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="dynamictype.ecore#//DynamicPaletteStack/id"/>
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicPaletteStack;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="dynamictype.ecore#//DynamicPaletteStack/label"/>
+  </nested>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//dynamicPaletteStack;XSDElementDeclaration=2"
+      outputs="dynamictype.ecore#//DynamicTypeRoot/dynamicPaletteStack"/>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicTypes;XSDComplexTypeDefinition"
+      outputs="dynamictype.ecore#//DynamicTypes">
+    <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//DynamicTypes;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="dynamictype.ecore#//DynamicTypes/paletteEntries"/>
+  </nested>
+  <nested inputs="../../schemas/dynamictype/dynamictype.xsd#//dynamicTypes;XSDElementDeclaration"
+      outputs="dynamictype.ecore#//DynamicTypeRoot/dynamicTypes"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

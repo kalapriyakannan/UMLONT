@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSSiteServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.sms.SMSSiteComponents">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="numInfos" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="status" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="state" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMSSite" type="coll:com.collation.platform.model.topology.app.sms.SMSSiteServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastStarted" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="numWarnings" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="numErrors" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="nextScheduledTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastContacted" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="componentName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="type" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

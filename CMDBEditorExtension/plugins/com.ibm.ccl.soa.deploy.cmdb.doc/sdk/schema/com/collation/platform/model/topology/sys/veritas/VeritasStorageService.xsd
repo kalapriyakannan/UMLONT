@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/Service.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/veritas/VeritasDiskGroup.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/veritas/VeritasPlex.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/veritas/VeritasVolume.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/LocalFileSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/MediaAccessDevice.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.veritas.VeritasStorageService">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.Service">
+        <xsd:sequence>
+          <xsd:element name="excludedDevices" type="coll:com.collation.platform.model.topology.dev.MediaAccessDevice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="filesystem" type="coll:com.collation.platform.model.topology.sys.LocalFileSystem" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="plexes" type="coll:com.collation.platform.model.topology.dev.veritas.VeritasPlex" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="volumes" type="coll:com.collation.platform.model.topology.dev.veritas.VeritasVolume" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="diskGroups" type="coll:com.collation.platform.model.topology.dev.veritas.VeritasDiskGroup" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

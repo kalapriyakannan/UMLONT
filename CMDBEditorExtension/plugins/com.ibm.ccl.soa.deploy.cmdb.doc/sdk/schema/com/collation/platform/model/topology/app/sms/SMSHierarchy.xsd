@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSPackage.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSSiteServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSAdvertizements.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSCollections.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSQuery.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSReports.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.sms.SMSHierarchy">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMSPackages" type="coll:com.collation.platform.model.topology.app.sms.SMSPackage" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SMSReports" type="coll:com.collation.platform.model.topology.app.sms.SMSReports" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SMSCollections" type="coll:com.collation.platform.model.topology.app.sms.SMSCollections" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SMSSities" type="coll:com.collation.platform.model.topology.app.sms.SMSSiteServer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SMSAdvertisements" type="coll:com.collation.platform.model.topology.app.sms.SMSAdvertizements" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="SMSQueries" type="coll:com.collation.platform.model.topology.app.sms.SMSQuery" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="numSities" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

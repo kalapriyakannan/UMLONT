@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/"
+name="MQMessageListnerServicePort Template">
+  <mq:unit.MQMessageListnerServicePortUnit name="MQMessageListnerServicePort" configurationUnit="false" conceptual="true">
+    <mq:capability.MQMesseageListernerServicePort name="MQMessageListnerServicePort" linkType="any"/>
+    <core:requirement name="HostedOnJMSProvider" dmoType="mq:MQMessagingProvider" linkType="hosting" use="required"/>  
+  </mq:unit.MQMessageListnerServicePortUnit>
+</core:topology>

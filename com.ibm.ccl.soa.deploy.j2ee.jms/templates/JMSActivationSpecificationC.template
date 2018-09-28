@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:jms="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/" 
+	name="JMSActivationSpecificationUnit Template">
+	
+	<jms:unit.JMSActivationSpecificationUnit
+		name="JMSActivationSpecificationUnit"
+		configurationUnit="true" conceptual="true">
+		<jms:capability.JMSActivationSpecification
+			name="JMSActivationSpecification"
+			linkType="any" />
+    <core:requirement displayName="Destination" name="destination" dmoType="jms:JMSDestination" linkType="dependency">
+      <constraint:constraint.or name="choice">
+        <constraint:constraint.type name="queue" dmoType="jms:JMSQueueDestination"/>
+        <constraint:constraint.type name="topic" dmoType="jms:JMSTopicDestination"/>
+      </constraint:constraint.or>
+    </core:requirement>
+	</jms:unit.JMSActivationSpecificationUnit>
+</core:topology>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"
+	name="WebSphereMQQcfClientUnit template">
+	<was:unit.wasDefaultMessagingConnectionFactoryUnit
+		displayName="WebSphereDefaultMessagingConnectionFactoryUnit"
+		name="WebSphereDefaultMessagingConnectionFactoryUnit"
+		configurationUnit="true">
+		<was:capability.wasDefaultMessagingConnectionFactoryConfiguration
+			name="WebSphereDefaultMessagingConnectionFactoryConfiguration"
+			displayName="WebSphereDefaultMessagingConnectionFactoryConfiguration"
+			linkType="any" />
+		<core:requirement mutable="true"
+			name="WebSphereConfigurationContainer"
+			displayName="WebSphereConfigurationContainer"
+			dmoType="was:WasConfigurationContainer" linkType="hosting" />
+		<core:requirement mutable="true" name="depend on SIbus"
+			displayName="depend on SIbus" dmoType="was:WasSIBus"
+			linkType="dependency" />
+		<!--<core:requirement mutable = "true" use="optional" name = "J2CAuthenticationEntry" displayName = "Authentication" dmoType = "was:WASJ2CAuthenticationDataEntry" linkType ="dependency"/>    -->
+	</was:unit.wasDefaultMessagingConnectionFactoryUnit>
+</core:topology>

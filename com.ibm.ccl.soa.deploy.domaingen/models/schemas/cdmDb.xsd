@@ -1,0 +1,761 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmdb/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:cdmDb="http://www.ibm.com/ccl/soa/deploy/cdmdb/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmDbRoot"
+	ecore:name="cdmDb"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmdb"
+	ecore:nsPrefix="cdmDb">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.oracleModule" substitutionGroup="core:capability" type="cdmDb:OracleModule"/>
+	<complexType name="OracleModule">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleModuleUnit" substitutionGroup="core:unit" type="cdmDb:OracleModuleUnit"/>
+	<complexType name="OracleModuleUnit">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleRedoLogFile" substitutionGroup="core:capability" type="cdmDb:OracleRedoLogFile"/>
+	<complexType name="OracleRedoLogFile">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleRedoLogFileUnit" substitutionGroup="core:unit" type="cdmDb:OracleRedoLogFileUnit"/>
+	<complexType name="OracleRedoLogFileUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseEngineProcess" substitutionGroup="core:capability" type="cdmDb:SybaseEngineProcess"/>
+	<complexType name="SybaseEngineProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseEngineProcessUnit" substitutionGroup="core:unit" type="cdmDb:SybaseEngineProcessUnit"/>
+	<complexType name="SybaseEngineProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Alias" substitutionGroup="core:capability" type="cdmDb:Db2Alias"/>
+	<complexType name="Db2Alias">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2AliasUnit" substitutionGroup="core:unit" type="cdmDb:Db2AliasUnit"/>
+	<complexType name="Db2AliasUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2System" substitutionGroup="core:capability" type="cdmDb:Db2System"/>
+	<complexType name="Db2System">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2SystemUnit" substitutionGroup="core:unit" type="cdmDb:Db2SystemUnit"/>
+	<complexType name="Db2SystemUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2InstanceConfigValue" substitutionGroup="core:capability" type="cdmDb:Db2InstanceConfigValue"/>
+	<complexType name="Db2InstanceConfigValue">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValue">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2InstanceConfigValueUnit" substitutionGroup="core:unit" type="cdmDb:Db2InstanceConfigValueUnit"/>
+	<complexType name="Db2InstanceConfigValueUnit">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleServer" substitutionGroup="core:capability" type="cdmDb:OracleServer"/>
+	<complexType name="OracleServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleServerUnit" substitutionGroup="core:unit" type="cdmDb:OracleServerUnit"/>
+	<complexType name="OracleServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.databaseModule" substitutionGroup="core:capability" type="cdmDb:DatabaseModule"/>
+	<complexType name="DatabaseModule">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.databaseModuleUnit" substitutionGroup="core:unit" type="cdmDb:DatabaseModuleUnit"/>
+	<complexType name="DatabaseModuleUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Database" substitutionGroup="core:capability" type="cdmDb:Db2Database"/>
+	<complexType name="Db2Database">
+		<complexContent>
+			<extension base="cdmBase:Database">
+				<attribute name="Path" type="string" />
+				<attribute name="Alias" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2DatabaseUnit" substitutionGroup="core:unit" type="cdmDb:Db2DatabaseUnit"/>
+	<complexType name="Db2DatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseDevice" substitutionGroup="core:capability" type="cdmDb:SybaseDevice"/>
+	<complexType name="SybaseDevice">
+		<complexContent>
+			<extension base="cdmBase:DataFile">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseDeviceUnit" substitutionGroup="core:unit" type="cdmDb:SybaseDeviceUnit"/>
+	<complexType name="SybaseDeviceUnit">
+		<complexContent>
+			<extension base="cdmBase:DataFileUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerModule" substitutionGroup="core:capability" type="cdmDb:SqlServerModule"/>
+	<complexType name="SqlServerModule">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerModuleUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerModuleUnit"/>
+	<complexType name="SqlServerModuleUnit">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleListener" substitutionGroup="core:capability" type="cdmDb:OracleListener"/>
+	<complexType name="OracleListener">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleListenerUnit" substitutionGroup="core:unit" type="cdmDb:OracleListenerUnit"/>
+	<complexType name="OracleListenerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2ServerProcess" substitutionGroup="core:capability" type="cdmDb:Db2ServerProcess"/>
+	<complexType name="Db2ServerProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2ServerProcessUnit" substitutionGroup="core:unit" type="cdmDb:Db2ServerProcessUnit"/>
+	<complexType name="Db2ServerProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleDataFile" substitutionGroup="core:capability" type="cdmDb:OracleDataFile"/>
+	<complexType name="OracleDataFile">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleDataFileUnit" substitutionGroup="core:unit" type="cdmDb:OracleDataFileUnit"/>
+	<complexType name="OracleDataFileUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleDatabase" substitutionGroup="core:capability" type="cdmDb:OracleDatabase"/>
+	<complexType name="OracleDatabase">
+		<complexContent>
+			<extension base="cdmBase:Database">
+				<attribute name="DBName" type="string" />
+				<attribute name="DomainName" type="string" />
+				<attribute name="DBVersion" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleDatabaseUnit" substitutionGroup="core:unit" type="cdmDb:OracleDatabaseUnit"/>
+	<complexType name="OracleDatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseDatabase" substitutionGroup="core:capability" type="cdmDb:SybaseDatabase"/>
+	<complexType name="SybaseDatabase">
+		<complexContent>
+			<extension base="cdmBase:Database">
+				<attribute name="Size" type="long" />
+				<attribute name="Options" type="string" />
+				<attribute name="SchemasRawData" type="string" />
+				<attribute name="Owner" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseDatabaseUnit" substitutionGroup="core:unit" type="cdmDb:SybaseDatabaseUnit"/>
+	<complexType name="SybaseDatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseModule" substitutionGroup="core:capability" type="cdmDb:SybaseModule"/>
+	<complexType name="SybaseModule">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseModuleUnit" substitutionGroup="core:unit" type="cdmDb:SybaseModuleUnit"/>
+	<complexType name="SybaseModuleUnit">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerUser" substitutionGroup="core:capability" type="cdmDb:SqlServerUser"/>
+	<complexType name="SqlServerUser">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Uid" type="int" />
+				<attribute name="Gid" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerUserUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerUserUnit"/>
+	<complexType name="SqlServerUserUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleControlFile" substitutionGroup="core:capability" type="cdmDb:OracleControlFile"/>
+	<complexType name="OracleControlFile">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleControlFileUnit" substitutionGroup="core:unit" type="cdmDb:OracleControlFileUnit"/>
+	<complexType name="OracleControlFileUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseServerProcess" substitutionGroup="core:capability" type="cdmDb:SybaseServerProcess"/>
+	<complexType name="SybaseServerProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseServerProcessUnit" substitutionGroup="core:unit" type="cdmDb:SybaseServerProcessUnit"/>
+	<complexType name="SybaseServerProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleSchema" substitutionGroup="core:capability" type="cdmDb:OracleSchema"/>
+	<complexType name="OracleSchema">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Owner" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleSchemaUnit" substitutionGroup="core:unit" type="cdmDb:OracleSchemaUnit"/>
+	<complexType name="OracleSchemaUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleSchemaDetail" substitutionGroup="core:capability" type="cdmDb:OracleSchemaDetail"/>
+	<complexType name="OracleSchemaDetail">
+		<complexContent>
+			<extension base="cdmBase:LogicalContent">
+				<attribute name="MetaData" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleSchemaDetailUnit" substitutionGroup="core:unit" type="cdmDb:OracleSchemaDetailUnit"/>
+	<complexType name="OracleSchemaDetailUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalContentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleDBLink" substitutionGroup="core:capability" type="cdmDb:OracleDBLink"/>
+	<complexType name="OracleDBLink">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="IpAddress" type="string" />
+				<attribute name="ServiceName" type="string" />
+				<attribute name="Port" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleDBLinkUnit" substitutionGroup="core:unit" type="cdmDb:OracleDBLinkUnit"/>
+	<complexType name="OracleDBLinkUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleSGAValue" substitutionGroup="core:capability" type="cdmDb:OracleSGAValue"/>
+	<complexType name="OracleSGAValue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Value" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleSGAValueUnit" substitutionGroup="core:unit" type="cdmDb:OracleSGAValueUnit"/>
+	<complexType name="OracleSGAValueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2AdminServer" substitutionGroup="core:capability" type="cdmDb:Db2AdminServer"/>
+	<complexType name="Db2AdminServer">
+		<complexContent>
+			<extension base="cdmBase:Db2Server">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2AdminServerUnit" substitutionGroup="core:unit" type="cdmDb:Db2AdminServerUnit"/>
+	<complexType name="Db2AdminServerUnit">
+		<complexContent>
+			<extension base="cdmBase:Db2ServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseSegment" substitutionGroup="core:capability" type="cdmDb:SybaseSegment"/>
+	<complexType name="SybaseSegment">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseSegmentUnit" substitutionGroup="core:unit" type="cdmDb:SybaseSegmentUnit"/>
+	<complexType name="SybaseSegmentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2DatabaseConfigValue" substitutionGroup="core:capability" type="cdmDb:Db2DatabaseConfigValue"/>
+	<complexType name="Db2DatabaseConfigValue">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValue">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2DatabaseConfigValueUnit" substitutionGroup="core:unit" type="cdmDb:Db2DatabaseConfigValueUnit"/>
+	<complexType name="Db2DatabaseConfigValueUnit">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValueUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Container" substitutionGroup="core:capability" type="cdmDb:Db2Container"/>
+	<complexType name="Db2Container">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PartitionGroup" type="string" />
+				<attribute name="NumPages" type="long" />
+				<attribute name="ContainerId" type="int" />
+				<attribute name="Type" type="string" />
+				<attribute name="PageSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2ContainerUnit" substitutionGroup="core:unit" type="cdmDb:Db2ContainerUnit"/>
+	<complexType name="Db2ContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerDatabase" substitutionGroup="core:capability" type="cdmDb:SqlServerDatabase"/>
+	<complexType name="SqlServerDatabase">
+		<complexContent>
+			<extension base="cdmBase:Database">
+				<attribute name="DbVersion" type="int" />
+				<attribute name="CreationDate" type="string" />
+				<attribute name="DbId" type="int" />
+				<attribute name="PrimaryDataFile" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerDatabaseUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerDatabaseUnit"/>
+	<complexType name="SqlServerDatabaseUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Module" substitutionGroup="core:capability" type="cdmDb:Db2Module"/>
+	<complexType name="Db2Module">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2ModuleUnit" substitutionGroup="core:unit" type="cdmDb:Db2ModuleUnit"/>
+	<complexType name="Db2ModuleUnit">
+		<complexContent>
+			<extension base="cdmDb:DatabaseModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleInitValue" substitutionGroup="core:capability" type="cdmDb:OracleInitValue"/>
+	<complexType name="OracleInitValue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleInitValueUnit" substitutionGroup="core:unit" type="cdmDb:OracleInitValueUnit"/>
+	<complexType name="OracleInitValueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2ConfigValue" substitutionGroup="core:capability" type="cdmDb:Db2ConfigValue"/>
+	<complexType name="Db2ConfigValue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2ConfigValueUnit" substitutionGroup="core:unit" type="cdmDb:Db2ConfigValueUnit"/>
+	<complexType name="Db2ConfigValueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Instance" substitutionGroup="core:capability" type="cdmDb:Db2Instance"/>
+	<complexType name="Db2Instance">
+		<complexContent>
+			<extension base="cdmBase:Db2Server">
+				<attribute name="BitSize" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2InstanceUnit" substitutionGroup="core:unit" type="cdmDb:Db2InstanceUnit"/>
+	<complexType name="Db2InstanceUnit">
+		<complexContent>
+			<extension base="cdmBase:Db2ServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleServerProcess" substitutionGroup="core:capability" type="cdmDb:OracleServerProcess"/>
+	<complexType name="OracleServerProcess">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcess">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleServerProcessUnit" substitutionGroup="core:unit" type="cdmDb:OracleServerProcessUnit"/>
+	<complexType name="OracleServerProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:RuntimeProcessUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleInstance" substitutionGroup="core:capability" type="cdmDb:OracleInstance"/>
+	<complexType name="OracleInstance">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServer">
+				<attribute name="Hostname" type="string" />
+				<attribute name="Port" type="int" />
+				<attribute name="SID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleInstanceUnit" substitutionGroup="core:unit" type="cdmDb:OracleInstanceUnit"/>
+	<complexType name="OracleInstanceUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseServer" substitutionGroup="core:capability" type="cdmDb:SybaseServer"/>
+	<complexType name="SybaseServer">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServer">
+				<attribute name="FullVersion" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseServerUnit" substitutionGroup="core:unit" type="cdmDb:SybaseServerUnit"/>
+	<complexType name="SybaseServerUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sybaseConfigValue" substitutionGroup="core:capability" type="cdmDb:SybaseConfigValue"/>
+	<complexType name="SybaseConfigValue">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sybaseConfigValueUnit" substitutionGroup="core:unit" type="cdmDb:SybaseConfigValueUnit"/>
+	<complexType name="SybaseConfigValueUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Schema" substitutionGroup="core:capability" type="cdmDb:Db2Schema"/>
+	<complexType name="Db2Schema">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2SchemaUnit" substitutionGroup="core:unit" type="cdmDb:Db2SchemaUnit"/>
+	<complexType name="Db2SchemaUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServer" substitutionGroup="core:capability" type="cdmDb:SqlServer"/>
+	<complexType name="SqlServer">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServer">
+				<attribute name="Language" type="string" />
+				<attribute name="RunAsUser" type="string" />
+				<attribute name="DefaultDomain" type="string" />
+				<attribute name="SortOrder" type="string" />
+				<attribute name="PipeName" type="string" />
+				<attribute name="ConcurrentLimit" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerUnit"/>
+	<complexType name="SqlServerUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerConfig" substitutionGroup="core:capability" type="cdmDb:SqlServerConfig"/>
+	<complexType name="SqlServerConfig">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="IsAdvanced" type="boolean" />
+				<attribute name="ConfigId" type="int" />
+				<attribute name="IsDynamic" type="boolean" />
+				<attribute name="Value" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerConfigUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerConfigUnit"/>
+	<complexType name="SqlServerConfigUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerProcess" substitutionGroup="core:capability" type="cdmDb:SqlServerProcess"/>
+	<complexType name="SqlServerProcess">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Kpid" type="int" />
+				<attribute name="WaitTime" type="int" />
+				<attribute name="Cmd" type="string" />
+				<attribute name="LastWaitType" type="string" />
+				<attribute name="LoginName" type="string" />
+				<attribute name="MemUsage" type="int" />
+				<attribute name="PhysicalIo" type="int" />
+				<attribute name="Cpu" type="int" />
+				<attribute name="Spid" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerProcessUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerProcessUnit"/>
+	<complexType name="SqlServerProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleTableSpace" substitutionGroup="core:capability" type="cdmDb:OracleTableSpace"/>
+	<complexType name="OracleTableSpace">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleTableSpaceUnit" substitutionGroup="core:unit" type="cdmDb:OracleTableSpaceUnit"/>
+	<complexType name="OracleTableSpaceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleBackgroundProcess" substitutionGroup="core:capability" type="cdmDb:OracleBackgroundProcess"/>
+	<complexType name="OracleBackgroundProcess">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Pid" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleBackgroundProcessUnit" substitutionGroup="core:unit" type="cdmDb:OracleBackgroundProcessUnit"/>
+	<complexType name="OracleBackgroundProcessUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericDatabaseServer" substitutionGroup="core:capability" type="cdmDb:GenericDatabaseServer"/>
+	<complexType name="GenericDatabaseServer">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServer">
+				<attribute name="GenericType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericDatabaseServerUnit" substitutionGroup="core:unit" type="cdmDb:GenericDatabaseServerUnit"/>
+	<complexType name="GenericDatabaseServerUnit">
+		<complexContent>
+			<extension base="cdmBase:DatabaseServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2BufferPool" substitutionGroup="core:capability" type="cdmDb:Db2BufferPool"/>
+	<complexType name="Db2BufferPool">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="NumPages" type="long" />
+				<attribute name="PoolId" type="int" />
+				<attribute name="PageSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2BufferPoolUnit" substitutionGroup="core:unit" type="cdmDb:Db2BufferPoolUnit"/>
+	<complexType name="Db2BufferPoolUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sqlServerTable" substitutionGroup="core:capability" type="cdmDb:SqlServerTable"/>
+	<complexType name="SqlServerTable">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="CreationDate" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="User" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sqlServerTableUnit" substitutionGroup="core:unit" type="cdmDb:SqlServerTableUnit"/>
+	<complexType name="SqlServerTableUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2TableSpace" substitutionGroup="core:capability" type="cdmDb:Db2TableSpace"/>
+	<complexType name="Db2TableSpace">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Size" type="long" />
+				<attribute name="SpaceId" type="int" />
+				<attribute name="ContentType" type="string" />
+				<attribute name="PageSize" type="int" />
+				<attribute name="Manager" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="Comments" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2TableSpaceUnit" substitutionGroup="core:unit" type="cdmDb:Db2TableSpaceUnit"/>
+	<complexType name="Db2TableSpaceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2SystemConfigValue" substitutionGroup="core:capability" type="cdmDb:Db2SystemConfigValue"/>
+	<complexType name="Db2SystemConfigValue">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValue">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.db2SystemConfigValueUnit" substitutionGroup="core:unit" type="cdmDb:Db2SystemConfigValueUnit"/>
+	<complexType name="Db2SystemConfigValueUnit">
+		<complexContent>
+			<extension base="cdmDb:Db2ConfigValueUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

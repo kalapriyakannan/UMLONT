@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:XSDProfile="http:///schemas/XSDProfile/100" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http:///schemas/XSDProfile/100 pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?">
+  <uml:Package xmi:id="_2_yDQB1JEd2wSNOXElmm7w" name="j2eeDomain">
+    <ownedComment xmi:id="_2_yDQR1JEd2wSNOXElmm7w">
+      <body>
+		    The Topology Definition Model (TDM) defines a core set of concepts to describe
+		    Enterprise Architectures from the Software Applications down to the hardware 
+		    requirements. The model is inherently extensible, allowing technology specific
+		    domains to define their own types. At a high level, the model is orgainzed into
+		    {@link Topology topologies}, which contain {@link Unit}s. A Unit contain 
+		    {@link Capability capabilities}, {@Requirement requirements}, and four types 
+		    of links ({@link DependencyLink  dependency links}, {@link HostingLink  hosting links},
+		    {@link ConstraintLink  constraint links}, {@link MemberLink  member links}. In 
+		    addition, the model defines the notion of {@link Constraint constraints} which 
+		    can be added to Units or Contraint Links in order to describe requirements on 
+		    target application or environment. 
+		</body>
+    </ownedComment>
+    <ownedComment xmi:id="_2_yDQh1JEd2wSNOXElmm7w">
+      <body>
+				An object that can be part of a deployable module.  See {@link FileArtifact}.
+			</body>
+    </ownedComment>
+    <packageImport xmi:id="_2_yDQx1JEd2wSNOXElmm7w">
+      <importedPackage xmi:type="uml:Model" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF4CkGEdmDdasWev0kGA?XSDDataTypes?"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDRB1JEd2wSNOXElmm7w" name="J2EEContainerVersion">
+      <generalization xmi:id="_2_yDRR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDRh1JEd2wSNOXElmm7w" name="1.2" type="_2_yDRB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDRx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.2</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDSB1JEd2wSNOXElmm7w" name="1.3" type="_2_yDRB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDSR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.3</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDSh1JEd2wSNOXElmm7w" name="1.4" type="_2_yDRB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDSx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.4</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDTB1JEd2wSNOXElmm7w" name="5.0" type="_2_yDRB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDTR1JEd2wSNOXElmm7w">
+          <body>Java EE 5.0</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDTh1JEd2wSNOXElmm7w" name="ServletContainerVersion">
+      <generalization xmi:id="_2_yDTx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDUB1JEd2wSNOXElmm7w" name="2.2" type="_2_yDTh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDUR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.2</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDUh1JEd2wSNOXElmm7w" name="2.3" type="_2_yDTh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDUx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.3</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDVB1JEd2wSNOXElmm7w" name="2.4" type="_2_yDTh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDVR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.4</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDVh1JEd2wSNOXElmm7w" name="2.5" type="_2_yDTh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDVx1JEd2wSNOXElmm7w">
+          <body>J2EE 5.0</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDWB1JEd2wSNOXElmm7w" name="JSPContainerVersion">
+      <generalization xmi:id="_2_yDWR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDWh1JEd2wSNOXElmm7w" name="1.1" type="_2_yDWB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDWx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.2</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDXB1JEd2wSNOXElmm7w" name="1.2" type="_2_yDWB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDXR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.3</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDXh1JEd2wSNOXElmm7w" name="2.0" type="_2_yDWB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDXx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.4</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDYB1JEd2wSNOXElmm7w" name="2.1" type="_2_yDWB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDYR1JEd2wSNOXElmm7w">
+          <body>J2EE 5.0</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDYh1JEd2wSNOXElmm7w" name="EJBContainerVersion">
+      <generalization xmi:id="_2_yDYx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDZB1JEd2wSNOXElmm7w" name="1.1" type="_2_yDYh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDZR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.2</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDZh1JEd2wSNOXElmm7w" name="2.0" type="_2_yDYh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDZx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.3</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDaB1JEd2wSNOXElmm7w" name="2.1" type="_2_yDYh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDaR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.4</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDah1JEd2wSNOXElmm7w" name="3.0" type="_2_yDYh1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDax1JEd2wSNOXElmm7w">
+          <body>J2EE 5.0</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDbB1JEd2wSNOXElmm7w" name="JCAContainerVersion">
+      <generalization xmi:id="_2_yDbR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDbh1JEd2wSNOXElmm7w" name="1.0" type="_2_yDbB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDbx1JEd2wSNOXElmm7w">
+          <body>J2EE 1.3</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDcB1JEd2wSNOXElmm7w" name="1.5" type="_2_yDbB1JEd2wSNOXElmm7w">
+        <ownedComment xmi:id="_2_yDcR1JEd2wSNOXElmm7w">
+          <body>J2EE 1.4</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDch1JEd2wSNOXElmm7w" name="Vicinity">
+      <generalization xmi:id="_2_yDcx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDdB1JEd2wSNOXElmm7w" name="local" type="_2_yDch1JEd2wSNOXElmm7w"/>
+      <ownedAttribute xmi:id="_2_yDdR1JEd2wSNOXElmm7w" name="remote" type="_2_yDch1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDdh1JEd2wSNOXElmm7w" name="J2EEContainer">
+      <generalization xmi:id="_2_yDdx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDeB1JEd2wSNOXElmm7w" name="containerVersion" type="_2_yDRB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDeR1JEd2wSNOXElmm7w" name="ServletContainer">
+      <generalization xmi:id="_2_yDeh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDex1JEd2wSNOXElmm7w" name="containerVersion" type="_2_yDTh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDfB1JEd2wSNOXElmm7w" name="JSPContainer">
+      <generalization xmi:id="_2_yDfR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDfh1JEd2wSNOXElmm7w" name="containerVersion" type="_2_yDWB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDfx1JEd2wSNOXElmm7w" name="EJBContainer">
+      <generalization xmi:id="_2_yDgB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDgR1JEd2wSNOXElmm7w" name="containerVersion" type="_2_yDYh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDgh1JEd2wSNOXElmm7w" name="EJB">
+      <generalization xmi:id="_2_yDgx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDhB1JEd2wSNOXElmm7w" name="interface">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDhR1JEd2wSNOXElmm7w" name="J2EEResourceRequirement">
+      <generalization xmi:id="_2_yDhh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDhx1JEd2wSNOXElmm7w" name="type">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDiB1JEd2wSNOXElmm7w" name="jndiName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDiR1JEd2wSNOXElmm7w" name="J2EEResourceEnvironmentRequirement">
+      <generalization xmi:id="_2_yDih1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDix1JEd2wSNOXElmm7w" name="type">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDjB1JEd2wSNOXElmm7w" name="jndiName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDjR1JEd2wSNOXElmm7w" name="J2EESecurityRole">
+      <generalization xmi:id="_2_yDjh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDjx1JEd2wSNOXElmm7w" name="role">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDkB1JEd2wSNOXElmm7w" name="JCAContainer">
+      <generalization xmi:id="_2_yDkR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDkh1JEd2wSNOXElmm7w" name="containerVersion" type="_2_yDbB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDkx1JEd2wSNOXElmm7w" name="J2EEServer">
+      <generalization xmi:id="_2_yDlB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDlR1JEd2wSNOXElmm7w" name="J2EEDatasource">
+      <generalization xmi:id="_2_yDlh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDlx1JEd2wSNOXElmm7w" name="jndiName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDmB1JEd2wSNOXElmm7w" name="datasourceName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDmR1JEd2wSNOXElmm7w" name="dbName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDmh1JEd2wSNOXElmm7w" name="hostname">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDmx1JEd2wSNOXElmm7w" name="port">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGCikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/integer?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDnB1JEd2wSNOXElmm7w" name="username">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDnR1JEd2wSNOXElmm7w" name="password">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDnh1JEd2wSNOXElmm7w" name="usedForCmp">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDnx1JEd2wSNOXElmm7w" name="J2EEModuleCapability">
+      <generalization xmi:id="_2_yDoB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_234rjh1JEd2wSNOXElmm7w?core/BundleCapability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDoR1JEd2wSNOXElmm7w" name="moduleName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDoh1JEd2wSNOXElmm7w" name="EarModule">
+      <generalization xmi:id="_2_yDox1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2xB1mx1JEd2wSNOXElmm7w?business/SoftwareComponent?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDpB1JEd2wSNOXElmm7w" name="EARModuleCapability">
+      <generalization xmi:id="_2_yDpR1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDph1JEd2wSNOXElmm7w" name="EjbModule">
+      <generalization xmi:id="_2_yDpx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2xB1mx1JEd2wSNOXElmm7w?business/SoftwareComponent?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDqB1JEd2wSNOXElmm7w" name="EJBModuleCapability">
+      <generalization xmi:id="_2_yDqR1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDqh1JEd2wSNOXElmm7w" name="WebModule">
+      <generalization xmi:id="_2_yDqx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2xB1mx1JEd2wSNOXElmm7w?business/SoftwareComponent?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDrB1JEd2wSNOXElmm7w" name="WebModuleCapability">
+      <generalization xmi:id="_2_yDrR1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+      <ownedAttribute xmi:id="_2_yDrh1JEd2wSNOXElmm7w" name="contextRoot">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDrx1JEd2wSNOXElmm7w" name="JCAModule">
+      <generalization xmi:id="_2_yDsB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_21DZ-x1JEd2wSNOXElmm7w?core/Unit?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDsR1JEd2wSNOXElmm7w" name="JCAModuleCapability">
+      <generalization xmi:id="_2_yDsh1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDsx1JEd2wSNOXElmm7w" name="JarModule">
+      <generalization xmi:id="_2_yDtB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2xB1mx1JEd2wSNOXElmm7w?business/SoftwareComponent?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDtR1JEd2wSNOXElmm7w" name="JarModuleCapability">
+      <generalization xmi:id="_2_yDth1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDtx1JEd2wSNOXElmm7w" name="AppClient">
+      <generalization xmi:id="_2_yDuB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_21DZ-x1JEd2wSNOXElmm7w?core/Unit?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDuR1JEd2wSNOXElmm7w" name="AppClientModule">
+      <generalization xmi:id="_2_yDuh1JEd2wSNOXElmm7w" general="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDux1JEd2wSNOXElmm7w" name="GenericWebServer">
+      <generalization xmi:id="_2_yDvB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_21DZ-x1JEd2wSNOXElmm7w?core/Unit?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDvR1JEd2wSNOXElmm7w" name="GenericJ2eeServer">
+      <generalization xmi:id="_2_yDvh1JEd2wSNOXElmm7w" general="_2_yDux1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDvx1JEd2wSNOXElmm7w" name="J2CAuthenticationUnit" isAbstract="true">
+      <generalization xmi:id="_2_yDwB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_21DZ-x1JEd2wSNOXElmm7w?core/Unit?"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDwR1JEd2wSNOXElmm7w" name="J2CAuthenticationDataEntry">
+      <generalization xmi:id="_2_yDwh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/core.emx#_22F7wR1JEd2wSNOXElmm7w?core/Capability?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDwx1JEd2wSNOXElmm7w" name="alias">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDxB1JEd2wSNOXElmm7w" name="userId">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yDxR1JEd2wSNOXElmm7w" name="password">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDxh1JEd2wSNOXElmm7w" name="URLService">
+      <ownedComment xmi:id="_2_yDxx1JEd2wSNOXElmm7w">
+        <body>
+			The URLService models a service accessible by a URL address with 
+			HTTP GET or HTTP POST commands. For J2EE, this is primarily a 
+			Java Servlet. The URLService has a simple interface 
+			(j2ee:URLInterface) which captures the list of parameters 
+			that the URL Service understands. The URLService provides 0..* 
+			urlPatterns which define relative web addresses where the URLService
+			may be accessed. For Java EE Servlets, these patterns translate to 
+			the Servlet Mapping that indicates 0..* specific addresses for a 
+			given Servlet.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_2_yDyB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6qB1JEd2wSNOXElmm7w?business/Service?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDyR1JEd2wSNOXElmm7w" name="urlPattern">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2_yDyh1JEd2wSNOXElmm7w" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2_yDyx1JEd2wSNOXElmm7w"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDzB1JEd2wSNOXElmm7w" name="WebService">
+      <generalization xmi:id="_2_yDzR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6qB1JEd2wSNOXElmm7w?business/Service?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yDzh1JEd2wSNOXElmm7w" name="endpoint">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBSkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/anyURI?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yDzx1JEd2wSNOXElmm7w" name="EntityService">
+      <generalization xmi:id="_2_yD0B1JEd2wSNOXElmm7w" general="_2_yD4x1JEd2wSNOXElmm7w"/>
+      <ownedAttribute xmi:id="_2_yD0R1JEd2wSNOXElmm7w" name="managed">
+        <ownedComment xmi:id="_2_yD0h1JEd2wSNOXElmm7w">
+          <body>
+							A value of &quot;true&quot; would indicate that the
+							bean is intended to be managed by the
+							container in which it run in ( CMP ). A
+							value of false would indicate that the bean
+							will manage it's own datasource connection
+							logic. ( BMP )
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD0x1JEd2wSNOXElmm7w" name="SessionService">
+      <generalization xmi:id="_2_yD1B1JEd2wSNOXElmm7w" general="_2_yD4x1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD1R1JEd2wSNOXElmm7w" name="JavaInterface">
+      <generalization xmi:id="_2_yD1h1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6ox1JEd2wSNOXElmm7w?business/Interface?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yD1x1JEd2wSNOXElmm7w" name="interface">
+        <ownedComment xmi:id="_2_yD2B1JEd2wSNOXElmm7w">
+          <body>Specifies the fully qualified type name of a Java Interface.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD2R1JEd2wSNOXElmm7w" name="URLInterface">
+      <generalization xmi:id="_2_yD2h1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6ox1JEd2wSNOXElmm7w?business/Interface?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yD2x1JEd2wSNOXElmm7w" name="paramName">
+        <ownedComment xmi:id="_2_yD3B1JEd2wSNOXElmm7w">
+          <body>Indicates the name of a URL Request Parameter.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2_yD3R1JEd2wSNOXElmm7w" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2_yD3h1JEd2wSNOXElmm7w"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD3x1JEd2wSNOXElmm7w" name="WSDLInterface">
+      <generalization xmi:id="_2_yD4B1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6ox1JEd2wSNOXElmm7w?business/Interface?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yD4R1JEd2wSNOXElmm7w" name="typeUri">
+        <ownedComment xmi:id="_2_yD4h1JEd2wSNOXElmm7w">
+          <body>Indicates the WSDL 1.1 Port Type or WSDL 2.0 interface.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBSkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/anyURI?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD4x1JEd2wSNOXElmm7w" name="EnterpriseBeanService">
+      <generalization xmi:id="_2_yD5B1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="platform:/resource/com.ibm.ccl.soa.deploy.core/models/uml/business.emx#_2wu6qB1JEd2wSNOXElmm7w?business/Service?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_2_yD5R1JEd2wSNOXElmm7w" name="ejbName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yD5h1JEd2wSNOXElmm7w" name="vicinity" type="_2_yDch1JEd2wSNOXElmm7w"/>
+      <ownedAttribute xmi:id="_2_yD5x1JEd2wSNOXElmm7w" name="jndiName">
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2_yD6B1JEd2wSNOXElmm7w" name="homeInterface" type="_2_yD1R1JEd2wSNOXElmm7w">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2_yD6R1JEd2wSNOXElmm7w"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD6h1JEd2wSNOXElmm7w" name="capability.j2eeContainer">
+      <ownedAttribute xmi:id="_2_yD6x1JEd2wSNOXElmm7w" name="capability.j2eeContainer" type="_2_yDdh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD7B1JEd2wSNOXElmm7w" name="capability.servletContainer">
+      <ownedAttribute xmi:id="_2_yD7R1JEd2wSNOXElmm7w" name="capability.servletContainer" type="_2_yDeR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD7h1JEd2wSNOXElmm7w" name="capability.jspContainer">
+      <ownedAttribute xmi:id="_2_yD7x1JEd2wSNOXElmm7w" name="capability.jspContainer" type="_2_yDfB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD8B1JEd2wSNOXElmm7w" name="capability.ejbContainer">
+      <ownedAttribute xmi:id="_2_yD8R1JEd2wSNOXElmm7w" name="capability.ejbContainer" type="_2_yDfx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD8h1JEd2wSNOXElmm7w" name="capability.ejb">
+      <ownedAttribute xmi:id="_2_yD8x1JEd2wSNOXElmm7w" name="capability.ejb" type="_2_yDgh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD9B1JEd2wSNOXElmm7w" name="capability.j2eeResourceRequirement">
+      <ownedAttribute xmi:id="_2_yD9R1JEd2wSNOXElmm7w" name="capability.j2eeResourceRequirement" type="_2_yDhR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD9h1JEd2wSNOXElmm7w" name="capability.j2eeResourceEnvironmentRequirement">
+      <ownedAttribute xmi:id="_2_yD9x1JEd2wSNOXElmm7w" name="capability.j2eeResourceEnvironmentRequirement" type="_2_yDiR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD-B1JEd2wSNOXElmm7w" name="capability.j2eeSecurityRole">
+      <ownedAttribute xmi:id="_2_yD-R1JEd2wSNOXElmm7w" name="capability.j2eeSecurityRole" type="_2_yDjR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD-h1JEd2wSNOXElmm7w" name="capability.jcaContainer">
+      <ownedAttribute xmi:id="_2_yD-x1JEd2wSNOXElmm7w" name="capability.jcaContainer" type="_2_yDkB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD_B1JEd2wSNOXElmm7w" name="capability.j2eeServer">
+      <ownedAttribute xmi:id="_2_yD_R1JEd2wSNOXElmm7w" name="capability.j2eeServer" type="_2_yDkx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yD_h1JEd2wSNOXElmm7w" name="capability.j2eeDatasource">
+      <ownedAttribute xmi:id="_2_yD_x1JEd2wSNOXElmm7w" name="capability.j2eeDatasource" type="_2_yDlR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEAB1JEd2wSNOXElmm7w" name="capability.j2eeModule">
+      <ownedAttribute xmi:id="_2_yEAR1JEd2wSNOXElmm7w" name="capability.j2eeModule" type="_2_yDnx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEAh1JEd2wSNOXElmm7w" name="component.ear">
+      <ownedAttribute xmi:id="_2_yEAx1JEd2wSNOXElmm7w" name="component.ear" type="_2_yDoh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEBB1JEd2wSNOXElmm7w" name="capability.earModule">
+      <ownedAttribute xmi:id="_2_yEBR1JEd2wSNOXElmm7w" name="capability.earModule" type="_2_yDpB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEBh1JEd2wSNOXElmm7w" name="component.ejb">
+      <ownedAttribute xmi:id="_2_yEBx1JEd2wSNOXElmm7w" name="component.ejb" type="_2_yDph1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yECB1JEd2wSNOXElmm7w" name="capability.ejbModule">
+      <ownedAttribute xmi:id="_2_yECR1JEd2wSNOXElmm7w" name="capability.ejbModule" type="_2_yDqB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yECh1JEd2wSNOXElmm7w" name="component.web">
+      <ownedAttribute xmi:id="_2_yECx1JEd2wSNOXElmm7w" name="component.web" type="_2_yDqh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEDB1JEd2wSNOXElmm7w" name="capability.webModule">
+      <ownedAttribute xmi:id="_2_yEDR1JEd2wSNOXElmm7w" name="capability.webModule" type="_2_yDrB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEDh1JEd2wSNOXElmm7w" name="unit.jcaModule">
+      <ownedAttribute xmi:id="_2_yEDx1JEd2wSNOXElmm7w" name="unit.jcaModule" type="_2_yDrx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEEB1JEd2wSNOXElmm7w" name="capability.jcaModule">
+      <ownedAttribute xmi:id="_2_yEER1JEd2wSNOXElmm7w" name="capability.jcaModule" type="_2_yDsR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEEh1JEd2wSNOXElmm7w" name="component.jar">
+      <ownedAttribute xmi:id="_2_yEEx1JEd2wSNOXElmm7w" name="component.jar" type="_2_yDsx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEFB1JEd2wSNOXElmm7w" name="capability.jarModule">
+      <ownedAttribute xmi:id="_2_yEFR1JEd2wSNOXElmm7w" name="capability.jarModule" type="_2_yDtR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEFh1JEd2wSNOXElmm7w" name="unit.appClient">
+      <ownedAttribute xmi:id="_2_yEFx1JEd2wSNOXElmm7w" name="unit.appClient" type="_2_yDtx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEGB1JEd2wSNOXElmm7w" name="capability.appClientModule">
+      <ownedAttribute xmi:id="_2_yEGR1JEd2wSNOXElmm7w" name="capability.appClientModule" type="_2_yDuR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEGh1JEd2wSNOXElmm7w" name="unit.webServer">
+      <ownedAttribute xmi:id="_2_yEGx1JEd2wSNOXElmm7w" name="unit.webServer" type="_2_yDux1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEHB1JEd2wSNOXElmm7w" name="unit.j2eeServer">
+      <ownedAttribute xmi:id="_2_yEHR1JEd2wSNOXElmm7w" name="unit.j2eeServer" type="_2_yDvR1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEHh1JEd2wSNOXElmm7w" name="service.servlet">
+      <ownedAttribute xmi:id="_2_yEHx1JEd2wSNOXElmm7w" name="service.servlet" type="_2_yDxh1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEIB1JEd2wSNOXElmm7w" name="service.ws">
+      <ownedAttribute xmi:id="_2_yEIR1JEd2wSNOXElmm7w" name="service.ws" type="_2_yDzB1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEIh1JEd2wSNOXElmm7w" name="service.entity">
+      <ownedAttribute xmi:id="_2_yEIx1JEd2wSNOXElmm7w" name="service.entity" type="_2_yDzx1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEJB1JEd2wSNOXElmm7w" name="service.session">
+      <ownedAttribute xmi:id="_2_yEJR1JEd2wSNOXElmm7w" name="service.session" type="_2_yD0x1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEJh1JEd2wSNOXElmm7w" name="interface.java">
+      <ownedAttribute xmi:id="_2_yEJx1JEd2wSNOXElmm7w" name="interface.java" type="_2_yD1R1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEKB1JEd2wSNOXElmm7w" name="interface.url">
+      <ownedAttribute xmi:id="_2_yEKR1JEd2wSNOXElmm7w" name="interface.url" type="_2_yD2R1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2_yEKh1JEd2wSNOXElmm7w" name="interface.wsdl">
+      <ownedAttribute xmi:id="_2_yEKx1JEd2wSNOXElmm7w" name="interface.wsdl" type="_2_yD3x1JEd2wSNOXElmm7w"/>
+    </packagedElement>
+    <profileApplication xmi:id="_2_yELB1JEd2wSNOXElmm7w">
+      <eAnnotations xmi:id="_2_yELR1JEd2wSNOXElmm7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_2_yELh1JEd2wSNOXElmm7w">
+      <eAnnotations xmi:id="_2_yELx1JEd2wSNOXElmm7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://XSD_PROFILES/XSDProfile.epx#_w1-ykSkOEdmj4ajjgbmSxQ?XSDProfile?"/>
+    </profileApplication>
+  </uml:Package>
+  <uml:Model xmi:id="_jyK5zRrFEd2qzbUgT12DGQ" name="jee">
+    <eAnnotations xmi:id="_jyK5zhrFEd2qzbUgT12DGQ" source="uml2.diagrams" references="_jyK5zxrFEd2qzbUgT12DGQ">
+      <contents xmi:type="notation:Diagram" xmi:id="_jyK5zxrFEd2qzbUgT12DGQ" type="Freeform" name="Main">
+        <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_jyK50BrFEd2qzbUgT12DGQ"/>
+      </contents>
+    </eAnnotations>
+    <eAnnotations xmi:id="_jyK50RrFEd2qzbUgT12DGQ" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <details xmi:id="_jyK50hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBFunctionTemplateParameter" value="1"/>
+      <details xmi:id="_jyK50xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBPrimitiveTypeTemplateParameter" value="1"/>
+      <details xmi:id="_jyK51BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBElementImport1" value="1"/>
+      <details xmi:id="_jyK51RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBFragment" value="1"/>
+      <details xmi:id="_jyK51hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBElementImport2" value="1"/>
+      <details xmi:id="_jyK51xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBArtifact" value="1"/>
+      <details xmi:id="_jyK52BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBInterfaceTemplateParameter" value="1"/>
+      <details xmi:id="_jyK52RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBFunction" value="1"/>
+      <details xmi:id="_jyK52hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBProfile" value="1"/>
+      <details xmi:id="_jyK52xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStructureDiagram" value="1"/>
+      <details xmi:id="_jyK53BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSubsystem" value="1"/>
+      <details xmi:id="_jyK53RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSignal" value="1"/>
+      <details xmi:id="_jyK53hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBClass" value="1"/>
+      <details xmi:id="_jyK53xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBRelationship1" value="1"/>
+      <details xmi:id="_jyK54BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBRelationship2" value="1"/>
+      <details xmi:id="_jyK54RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStateMachine1" value="1"/>
+      <details xmi:id="_jyK54hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBRelationship3" value="1"/>
+      <details xmi:id="_jyK54xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStateMachine2" value="1"/>
+      <details xmi:id="_jyK55BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBComponent" value="1"/>
+      <details xmi:id="_jyK55RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBDeploymentSpecification" value="1"/>
+      <details xmi:id="_jyK55hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBActivity1" value="1"/>
+      <details xmi:id="_jyK55xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBAbstractionRelation" value="1"/>
+      <details xmi:id="_jyK56BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBActivity2" value="1"/>
+      <details xmi:id="_jyK56RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBActivity3" value="1"/>
+      <details xmi:id="_jyK56hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBAction" value="1"/>
+      <details xmi:id="_jyK56xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBActivityDiagram" value="1"/>
+      <details xmi:id="_jyK57BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBClassTemplateParameter" value="1"/>
+      <details xmi:id="_jyK57RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBActivity4" value="1"/>
+      <details xmi:id="_jyK57hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBPackage" value="1"/>
+      <details xmi:id="_jyK57xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBTemplate" value="1"/>
+      <details xmi:id="_jyK58BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStereotypedDeployment1" value="1"/>
+      <details xmi:id="_jyK58RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSpecificInstanceType1" value="1"/>
+      <details xmi:id="_jyK58hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSequence1" value="1"/>
+      <details xmi:id="_jyK58xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCollaborationUse" value="1"/>
+      <details xmi:id="_jyK59BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSpecificInstanceType2" value="1"/>
+      <details xmi:id="_jyK59RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSequence2" value="1"/>
+      <details xmi:id="_jyK59hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBSequenceDiagram" value="1"/>
+      <details xmi:id="_jyK59xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBObjectDiagram" value="1"/>
+      <details xmi:id="_jyK5-BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBDependancy" value="1"/>
+      <details xmi:id="_jyK5-RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBLifeLine" value="1"/>
+      <details xmi:id="_jyK5-hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBComponentTemplateParameter" value="1"/>
+      <details xmi:id="_jyK5-xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBUsage" value="1"/>
+      <details xmi:id="_jyK5_BrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBFreeFormDiagram" value="1"/>
+      <details xmi:id="_jyK5_RrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBInstance" value="1"/>
+      <details xmi:id="_jyK5_hrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStereotypedArtifact" value="1"/>
+      <details xmi:id="_jyK5_xrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBComponentDiagram" value="1"/>
+      <details xmi:id="_jyK6ABrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBEvent1" value="1"/>
+      <details xmi:id="_jyK6ARrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBTypes1" value="1"/>
+      <details xmi:id="_jyK6AhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBEvent2" value="1"/>
+      <details xmi:id="_jyK6AxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBTypes2" value="1"/>
+      <details xmi:id="_jyK6BBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBTypes3" value="1"/>
+      <details xmi:id="_jyK6BRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBTypes4" value="1"/>
+      <details xmi:id="_jyK6BhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCommunicationDiagram" value="1"/>
+      <details xmi:id="_jyK6BxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBConstraint" value="1"/>
+      <details xmi:id="_jyK6CBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStereotypedClass" value="1"/>
+      <details xmi:id="_jyK6CRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBProfileApplication" value="1"/>
+      <details xmi:id="_jyK6ChrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBPackageTemplateParameter" value="1"/>
+      <details xmi:id="_jyK6CxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStereotypedComponent" value="1"/>
+      <details xmi:id="_jyK6DBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBInterface" value="1"/>
+      <details xmi:id="_jyK6DRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBInformationFlow" value="1"/>
+      <details xmi:id="_jyK6DhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBComment1" value="1"/>
+      <details xmi:id="_jyK6DxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBComment2" value="1"/>
+      <details xmi:id="_jyK6EBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCollaboration" value="1"/>
+      <details xmi:id="_jyK6ERrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCompositeStructure1" value="1"/>
+      <details xmi:id="_jyK6EhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBRealization" value="1"/>
+      <details xmi:id="_jyK6ExrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBStateChartDiagram" value="1"/>
+      <details xmi:id="_jyK6FBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCompositeStructure2" value="1"/>
+      <details xmi:id="_jyK6FRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBUseCase1" value="1"/>
+      <details xmi:id="_jyK6FhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBUseCase2" value="1"/>
+      <details xmi:id="_jyK6FxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBClassDiagram" value="1"/>
+      <details xmi:id="_jyK6GBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBUseCaseDiagram" value="1"/>
+      <details xmi:id="_jyK6GRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBDeployment1" value="1"/>
+      <details xmi:id="_jyK6GhrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBDeployment2" value="1"/>
+      <details xmi:id="_jyK6GxrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBDeploymentDiagram" value="1"/>
+      <details xmi:id="_jyK6HBrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBInteraction" value="1"/>
+      <details xmi:id="_jyK6HRrFEd2qzbUgT12DGQ" key="com.ibm.xtools.activities.umlBBCommunication" value="1"/>
+    </eAnnotations>
+    <packageImport xmi:id="_jyK6HhrFEd2qzbUgT12DGQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <profileApplication xmi:id="_jyK6HxrFEd2qzbUgT12DGQ">
+      <eAnnotations xmi:id="_jyK6IBrFEd2qzbUgT12DGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_jyK6IRrFEd2qzbUgT12DGQ">
+      <eAnnotations xmi:id="_jyK6IhrFEd2qzbUgT12DGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_jyK6IxrFEd2qzbUgT12DGQ">
+      <eAnnotations xmi:id="_jyK6JBrFEd2qzbUgT12DGQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+  </uml:Model>
+  <XSDProfile:annotation xmi:id="_2_yEMR1JEd2wSNOXElmm7w" base_Comment="_2_yDUx1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_2_yEMx1JEd2wSNOXElmm7w" base_Comment="_2_yDVR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_2_yENR1JEd2wSNOXElmm7w" base_Comment="_2_yDVR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_2_yENx1JEd2wSNOXElmm7w" base_Comment="_2_yDVx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_2_yEOR1JEd2wSNOXElmm7w" base_Comment="_2_yDVx1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_2_7NMR1JEd2wSNOXElmm7w" base_Generalization="_2_yDTx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:enumeration xmi:id="_2_7NMx1JEd2wSNOXElmm7w" base_Class="_2_yDWB1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_2_7NNR1JEd2wSNOXElmm7w" base_Comment="_2_yDWx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_2_7NNx1JEd2wSNOXElmm7w" base_Comment="_2_yDSx1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_2_7NOR1JEd2wSNOXElmm7w" base_Comment="_2_yDTR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_2_7NOx1JEd2wSNOXElmm7w" base_Comment="_2_yDTR1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_2_7NPR1JEd2wSNOXElmm7w" base_Generalization="_2_yDRR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:enumeration xmi:id="_2_7NPx1JEd2wSNOXElmm7w" base_Class="_2_yDTh1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_2_7NQR1JEd2wSNOXElmm7w" base_Comment="_2_yDUR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AE-MR1JEd2wSNOXElmm7w" base_Comment="_2_yDUR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3AE-Mx1JEd2wSNOXElmm7w" base_Comment="_2_yDUx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:schema xmi:id="_3AE-NR1JEd2wSNOXElmm7w" base_Package="_2_yDQB1JEd2wSNOXElmm7w" targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" targetNamespacePrefix="j2ee" elementFormDefault="qualified" attributeFormDefault="unqualified"/>
+  <Default:Documentation xmi:id="_3AE-Nx1JEd2wSNOXElmm7w" base_Comment="_2_yDRx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:enumeration xmi:id="_3AE-OR1JEd2wSNOXElmm7w" base_Class="_2_yDRB1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3AE-Ox1JEd2wSNOXElmm7w" base_Comment="_2_yDSR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AE-PR1JEd2wSNOXElmm7w" base_Comment="_2_yDRx1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3AE-Px1JEd2wSNOXElmm7w" base_Comment="_2_yDSx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AOvMR1JEd2wSNOXElmm7w" base_Comment="_2_yDSR1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:complexType xmi:id="_3AOvMx1JEd2wSNOXElmm7w" base_Class="_2_yDdh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3AOvNR1JEd2wSNOXElmm7w" base_Property="_2_yDeB1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:enumeration xmi:id="_3AOvNx1JEd2wSNOXElmm7w" base_Class="_2_yDch1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3AOvOR1JEd2wSNOXElmm7w" base_Generalization="_2_yDcx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3AOvOx1JEd2wSNOXElmm7w" base_Property="_2_yDex1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_3AOvPR1JEd2wSNOXElmm7w" base_Generalization="_2_yDeh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3AOvPx1JEd2wSNOXElmm7w" base_Generalization="_2_yDdx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3AX5IR1JEd2wSNOXElmm7w" base_Class="_2_yDeR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:enumeration xmi:id="_3AX5Ix1JEd2wSNOXElmm7w" base_Class="_2_yDbB1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3AX5JR1JEd2wSNOXElmm7w" base_Comment="_2_yDbx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AX5Jx1JEd2wSNOXElmm7w" base_Comment="_2_yDax1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_3AX5KR1JEd2wSNOXElmm7w" base_Generalization="_2_yDYx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AX5Kx1JEd2wSNOXElmm7w" base_Comment="_2_yDcR1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_3AX5LR1JEd2wSNOXElmm7w" base_Generalization="_2_yDbR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AX5Lx1JEd2wSNOXElmm7w" base_Comment="_2_yDbx1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3AX5MR1JEd2wSNOXElmm7w" base_Comment="_2_yDcR1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3AhqIR1JEd2wSNOXElmm7w" base_Comment="_2_yDZx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AhqIx1JEd2wSNOXElmm7w" base_Comment="_2_yDZR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3AhqJR1JEd2wSNOXElmm7w" base_Comment="_2_yDZR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:enumeration xmi:id="_3AhqJx1JEd2wSNOXElmm7w" base_Class="_2_yDYh1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3AhqKR1JEd2wSNOXElmm7w" base_Comment="_2_yDax1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AhqKx1JEd2wSNOXElmm7w" base_Comment="_2_yDaR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3AhqLR1JEd2wSNOXElmm7w" base_Comment="_2_yDaR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3AhqLx1JEd2wSNOXElmm7w" base_Comment="_2_yDZx1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3ArbIR1JEd2wSNOXElmm7w" base_Comment="_2_yDXx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3ArbIx1JEd2wSNOXElmm7w" base_Comment="_2_yDXR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3ArbJR1JEd2wSNOXElmm7w" base_Comment="_2_yDXR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3ArbJx1JEd2wSNOXElmm7w" base_Comment="_2_yDWx1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_3ArbKR1JEd2wSNOXElmm7w" base_Generalization="_2_yDWR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3ArbKx1JEd2wSNOXElmm7w" base_Comment="_2_yDYR1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3ArbLR1JEd2wSNOXElmm7w" base_Comment="_2_yDYR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3ArbLx1JEd2wSNOXElmm7w" base_Comment="_2_yDXx1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_3ArbMR1JEd2wSNOXElmm7w" base_Property="_2_yDmR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3A0lER1JEd2wSNOXElmm7w" base_Property="_2_yDmh1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3A0lEx1JEd2wSNOXElmm7w" base_Property="_2_yDmx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3A0lFR1JEd2wSNOXElmm7w" base_Property="_2_yDnB1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3A0lFx1JEd2wSNOXElmm7w" base_Generalization="_2_yDlB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3A0lGR1JEd2wSNOXElmm7w" base_Class="_2_yDlR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3A0lGx1JEd2wSNOXElmm7w" base_Property="_2_yDlx1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:attribute xmi:id="_3A0lHR1JEd2wSNOXElmm7w" base_Property="_2_yDmB1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3A0lHx1JEd2wSNOXElmm7w" base_Class="_2_yDkB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3A-WER1JEd2wSNOXElmm7w" base_Property="_2_yDkh1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_3A-WEx1JEd2wSNOXElmm7w" base_Generalization="_2_yDkR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3A-WFR1JEd2wSNOXElmm7w" base_Class="_2_yDkx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3A-WFx1JEd2wSNOXElmm7w" base_Generalization="_2_yDih1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3A-WGR1JEd2wSNOXElmm7w" base_Class="_2_yDjR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3A-WGx1JEd2wSNOXElmm7w" base_Property="_2_yDjx1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_3A-WHR1JEd2wSNOXElmm7w" base_Generalization="_2_yDjh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3A-WHx1JEd2wSNOXElmm7w" base_Class="_2_yDiR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3A-WIR1JEd2wSNOXElmm7w" base_Generalization="_2_yDhh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3BHgAR1JEd2wSNOXElmm7w" base_Property="_2_yDjB1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:attribute xmi:id="_3BHgAx1JEd2wSNOXElmm7w" base_Property="_2_yDix1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3BHgBR1JEd2wSNOXElmm7w" base_Class="_2_yDhR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BHgBx1JEd2wSNOXElmm7w" base_Generalization="_2_yDgx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3BHgCR1JEd2wSNOXElmm7w" base_Property="_2_yDiB1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:attribute xmi:id="_3BHgCx1JEd2wSNOXElmm7w" base_Property="_2_yDhx1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_3BHgDR1JEd2wSNOXElmm7w" base_Generalization="_2_yDgB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3BHgDx1JEd2wSNOXElmm7w" base_Property="_2_yDgR1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:attribute xmi:id="_3BHgER1JEd2wSNOXElmm7w" base_Property="_2_yDhB1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3BRRAR1JEd2wSNOXElmm7w" base_Class="_2_yDgh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3BRRAx1JEd2wSNOXElmm7w" base_Property="_2_yDfh1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3BRRBR1JEd2wSNOXElmm7w" base_Class="_2_yDfB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BRRBx1JEd2wSNOXElmm7w" base_Class="_2_yDfx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BRRCR1JEd2wSNOXElmm7w" base_Generalization="_2_yDfR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BRRCx1JEd2wSNOXElmm7w" base_Generalization="_2_yDuh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BRRDR1JEd2wSNOXElmm7w" base_Class="_2_yDux1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BRRDx1JEd2wSNOXElmm7w" base_Generalization="_2_yDuB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BbCAR1JEd2wSNOXElmm7w" base_Class="_2_yDuR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BbCAx1JEd2wSNOXElmm7w" base_Generalization="_2_yDth1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BbCBR1JEd2wSNOXElmm7w" base_Class="_2_yDtx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BbCBx1JEd2wSNOXElmm7w" base_Generalization="_2_yDtB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BbCCR1JEd2wSNOXElmm7w" base_Class="_2_yDtR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BbCCx1JEd2wSNOXElmm7w" base_Generalization="_2_yDsh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BbCDR1JEd2wSNOXElmm7w" base_Class="_2_yDsx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BbCDx1JEd2wSNOXElmm7w" base_Generalization="_2_yDsB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BkL8R1JEd2wSNOXElmm7w" base_Class="_2_yDsR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BkL8x1JEd2wSNOXElmm7w" base_Generalization="_2_yDrR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BkL9R1JEd2wSNOXElmm7w" base_Class="_2_yDrx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BkL9x1JEd2wSNOXElmm7w" base_Class="_2_yDrB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3BkL-R1JEd2wSNOXElmm7w" base_Property="_2_yDrh1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_3BkL-x1JEd2wSNOXElmm7w" base_Generalization="_2_yDqx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BkL_R1JEd2wSNOXElmm7w" base_Class="_2_yDqh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3BkL_x1JEd2wSNOXElmm7w" base_Generalization="_2_yDqR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3BkMAR1JEd2wSNOXElmm7w" base_Class="_2_yDqB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3Bt88R1JEd2wSNOXElmm7w" base_Generalization="_2_yDpx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3Bt88x1JEd2wSNOXElmm7w" base_Class="_2_yDph1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3Bt89R1JEd2wSNOXElmm7w" base_Generalization="_2_yDpR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3Bt89x1JEd2wSNOXElmm7w" base_Class="_2_yDpB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3Bt8-R1JEd2wSNOXElmm7w" base_Generalization="_2_yDox1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3Bt8-x1JEd2wSNOXElmm7w" base_Class="_2_yDoh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3Bt8_R1JEd2wSNOXElmm7w" base_Generalization="_2_yDoB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3Bt8_x1JEd2wSNOXElmm7w" base_Property="_2_yDoR1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3Bt9AR1JEd2wSNOXElmm7w" base_Class="_2_yDnx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3B3t8R1JEd2wSNOXElmm7w" base_Generalization="_2_yDlh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3B3t8x1JEd2wSNOXElmm7w" base_Property="_2_yDnh1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3B3t9R1JEd2wSNOXElmm7w" base_Property="_2_yDnR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3B3t9x1JEd2wSNOXElmm7w" base_Generalization="_2_yDzR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3B3t-R1JEd2wSNOXElmm7w" base_Property="_2_yDzh1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3B3t-x1JEd2wSNOXElmm7w" base_Property="_2_yD0R1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_3B3t_R1JEd2wSNOXElmm7w" base_Class="_2_yDzx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3B3t_x1JEd2wSNOXElmm7w" base_Comment="_2_yD0h1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3CA34R1JEd2wSNOXElmm7w" base_Comment="_2_yD0h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CA34x1JEd2wSNOXElmm7w" base_Class="_2_yD0x1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3CA35R1JEd2wSNOXElmm7w" base_Generalization="_2_yD0B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CA35x1JEd2wSNOXElmm7w" base_Class="_2_yD1R1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3CA36R1JEd2wSNOXElmm7w" base_Generalization="_2_yD1B1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3CA36x1JEd2wSNOXElmm7w" base_Comment="_2_yD2B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3CA37R1JEd2wSNOXElmm7w" base_Property="_2_yD1x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3CA37x1JEd2wSNOXElmm7w" base_Generalization="_2_yD1h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3CA38R1JEd2wSNOXElmm7w" base_Comment="_2_yD2B1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:element xmi:id="_3CKo4R1JEd2wSNOXElmm7w" base_Property="_2_yD2x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_3CKo4x1JEd2wSNOXElmm7w" base_Class="_2_yD2R1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3CKo5R1JEd2wSNOXElmm7w" base_Generalization="_2_yDvB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CKo5x1JEd2wSNOXElmm7w" base_Class="_2_yDvR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3CKo6R1JEd2wSNOXElmm7w" base_Generalization="_2_yDvh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CKo6x1JEd2wSNOXElmm7w" base_Class="_2_yDvx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3CKo7R1JEd2wSNOXElmm7w" base_Generalization="_2_yDwB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CTy0R1JEd2wSNOXElmm7w" base_Class="_2_yDwR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3CTy0x1JEd2wSNOXElmm7w" base_Property="_2_yDwx1JEd2wSNOXElmm7w" form="qualified" use="required"/>
+  <XSDProfile:attribute xmi:id="_3CTy1R1JEd2wSNOXElmm7w" base_Property="_2_yDxB1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3CTy1x1JEd2wSNOXElmm7w" base_Property="_2_yDxR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3CTy2R1JEd2wSNOXElmm7w" base_Generalization="_2_yDwh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CTy2x1JEd2wSNOXElmm7w" base_Class="_2_yDxh1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3CTy3R1JEd2wSNOXElmm7w" base_Comment="_2_yDxx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3CTy3x1JEd2wSNOXElmm7w" base_Comment="_2_yDxx1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:element xmi:id="_3CTy4R1JEd2wSNOXElmm7w" base_Property="_2_yDyR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3Cdj0R1JEd2wSNOXElmm7w" base_Generalization="_2_yDyB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3Cdj0x1JEd2wSNOXElmm7w" base_Class="_2_yDzB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3Cdj1R1JEd2wSNOXElmm7w" base_Property="_2_yD6x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Cdj1x1JEd2wSNOXElmm7w" base_Class="_2_yD6h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3Cdj2R1JEd2wSNOXElmm7w" base_Comment="_2_yDQh1JEd2wSNOXElmm7w" language="" source=""/>
+  <Default:Documentation xmi:id="_3Cdj2x1JEd2wSNOXElmm7w" base_Comment="_2_yDQh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3Cdj3R1JEd2wSNOXElmm7w" base_Property="_2_yD7x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Cdj3x1JEd2wSNOXElmm7w" base_Class="_2_yD7h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3CnU0R1JEd2wSNOXElmm7w" base_Property="_2_yD7R1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3CnU0x1JEd2wSNOXElmm7w" base_Class="_2_yD7B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3CnU1R1JEd2wSNOXElmm7w" base_Property="_2_yD8x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3CnU1x1JEd2wSNOXElmm7w" base_Class="_2_yD8h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3CnU2R1JEd2wSNOXElmm7w" base_Property="_2_yD8R1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3CnU2x1JEd2wSNOXElmm7w" base_Class="_2_yD8B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3CnU3R1JEd2wSNOXElmm7w" base_Property="_2_yD9x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3CnU3x1JEd2wSNOXElmm7w" base_Class="_2_yD9h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3CnU4R1JEd2wSNOXElmm7w" base_Property="_2_yD9R1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3CwewR1JEd2wSNOXElmm7w" base_Class="_2_yD9B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_3Cwewx1JEd2wSNOXElmm7w" base_Generalization="_2_yD2h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:complexType xmi:id="_3CwexR1JEd2wSNOXElmm7w" base_Class="_2_yD3x1JEd2wSNOXElmm7w"/>
+  <Default:Documentation xmi:id="_3Cwexx1JEd2wSNOXElmm7w" base_Comment="_2_yD3B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3CweyR1JEd2wSNOXElmm7w" base_Comment="_2_yD3B1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_3Cweyx1JEd2wSNOXElmm7w" base_Comment="_2_yD4h1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_3CwezR1JEd2wSNOXElmm7w" base_Generalization="_2_yD4B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3Cwezx1JEd2wSNOXElmm7w" base_Property="_2_yD4R1JEd2wSNOXElmm7w" form="qualified"/>
+  <Default:Documentation xmi:id="_3C6PwR1JEd2wSNOXElmm7w" base_Comment="_2_yD4h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3C6Pwx1JEd2wSNOXElmm7w" base_Property="_2_yD5h1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_3C6PxR1JEd2wSNOXElmm7w" base_Property="_2_yD5x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_3C6Pxx1JEd2wSNOXElmm7w" base_Class="_2_yD4x1JEd2wSNOXElmm7w"/>
+  <XSDProfile:attribute xmi:id="_3C6PyR1JEd2wSNOXElmm7w" base_Property="_2_yD5R1JEd2wSNOXElmm7w" form="qualified"/>
+  <Default:Documentation xmi:id="_3C6Pyx1JEd2wSNOXElmm7w" base_Comment="_2_yDQR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:annotation xmi:id="_3C6PzR1JEd2wSNOXElmm7w" base_Comment="_2_yDQR1JEd2wSNOXElmm7w" language="" source=""/>
+  <XSDProfile:element xmi:id="_3C6Pzx1JEd2wSNOXElmm7w" base_Property="_2_yD6B1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_3C6P0R1JEd2wSNOXElmm7w" base_Generalization="_2_yD5B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DEAwR1JEd2wSNOXElmm7w" base_Property="_2_yEDR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DEAwx1JEd2wSNOXElmm7w" base_Class="_2_yEDB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DEAxR1JEd2wSNOXElmm7w" base_Property="_2_yEDx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DEAxx1JEd2wSNOXElmm7w" base_Class="_2_yEDh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DEAyR1JEd2wSNOXElmm7w" base_Property="_2_yECR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DEAyx1JEd2wSNOXElmm7w" base_Class="_2_yECB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DEAzR1JEd2wSNOXElmm7w" base_Property="_2_yECx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DEAzx1JEd2wSNOXElmm7w" base_Class="_2_yECh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DNKsR1JEd2wSNOXElmm7w" base_Property="_2_yEFR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DNKsx1JEd2wSNOXElmm7w" base_Class="_2_yEFB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DNKtR1JEd2wSNOXElmm7w" base_Property="_2_yEFx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DNKtx1JEd2wSNOXElmm7w" base_Class="_2_yEFh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DNKuR1JEd2wSNOXElmm7w" base_Property="_2_yEER1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DNKux1JEd2wSNOXElmm7w" base_Class="_2_yEEB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DNKvR1JEd2wSNOXElmm7w" base_Property="_2_yEEx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DNKvx1JEd2wSNOXElmm7w" base_Class="_2_yEEh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:global xmi:id="_3DNKwR1JEd2wSNOXElmm7w" base_Class="_2_yD_B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DW7sR1JEd2wSNOXElmm7w" base_Property="_2_yD_R1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DW7sx1JEd2wSNOXElmm7w" base_Class="_2_yD_h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DW7tR1JEd2wSNOXElmm7w" base_Property="_2_yD_x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DW7tx1JEd2wSNOXElmm7w" base_Class="_2_yD-B1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DW7uR1JEd2wSNOXElmm7w" base_Property="_2_yD-R1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DW7ux1JEd2wSNOXElmm7w" base_Class="_2_yD-h1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DW7vR1JEd2wSNOXElmm7w" base_Property="_2_yD-x1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DW7vx1JEd2wSNOXElmm7w" base_Class="_2_yEBB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DgFoR1JEd2wSNOXElmm7w" base_Property="_2_yEBR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DgFox1JEd2wSNOXElmm7w" base_Class="_2_yEBh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DgFpR1JEd2wSNOXElmm7w" base_Property="_2_yEBx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DgFpx1JEd2wSNOXElmm7w" base_Class="_2_yEAB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DgFqR1JEd2wSNOXElmm7w" base_Property="_2_yEAR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3DgFqx1JEd2wSNOXElmm7w" base_Class="_2_yEAh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DgFrR1JEd2wSNOXElmm7w" base_Property="_2_yEAx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:element xmi:id="_3DgFrx1JEd2wSNOXElmm7w" base_Property="_2_yEKx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dp2oR1JEd2wSNOXElmm7w" base_Class="_2_yEKh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3Dp2ox1JEd2wSNOXElmm7w" base_Property="_2_yEKR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dp2pR1JEd2wSNOXElmm7w" base_Class="_2_yEKB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:global xmi:id="_3Dp2px1JEd2wSNOXElmm7w" base_Class="_2_yEHh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3Dp2qR1JEd2wSNOXElmm7w" base_Property="_2_yEHx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dp2qx1JEd2wSNOXElmm7w" base_Class="_2_yEHB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3Dp2rR1JEd2wSNOXElmm7w" base_Property="_2_yEHR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dp2rx1JEd2wSNOXElmm7w" base_Class="_2_yEGh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DznoR1JEd2wSNOXElmm7w" base_Property="_2_yEGx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dznox1JEd2wSNOXElmm7w" base_Class="_2_yEGB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DznpR1JEd2wSNOXElmm7w" base_Property="_2_yEGR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dznpx1JEd2wSNOXElmm7w" base_Class="_2_yEJh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DznqR1JEd2wSNOXElmm7w" base_Property="_2_yEJx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dznqx1JEd2wSNOXElmm7w" base_Class="_2_yEJB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3DznrR1JEd2wSNOXElmm7w" base_Property="_2_yEJR1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3Dznrx1JEd2wSNOXElmm7w" base_Class="_2_yEIh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3D8xkR1JEd2wSNOXElmm7w" base_Property="_2_yEIx1JEd2wSNOXElmm7w" form="qualified"/>
+  <XSDProfile:global xmi:id="_3D8xkx1JEd2wSNOXElmm7w" base_Class="_2_yEIB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:element xmi:id="_3D8xlR1JEd2wSNOXElmm7w" base_Property="_2_yEIR1JEd2wSNOXElmm7w" form="qualified"/>
+</xmi:XMI>

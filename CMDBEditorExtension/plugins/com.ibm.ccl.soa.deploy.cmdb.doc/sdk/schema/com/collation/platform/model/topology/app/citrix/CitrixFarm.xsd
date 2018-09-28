@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/AppServerCluster.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/net/BindAddress.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/citrix/CitrixApplication.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/citrix/CitrixLicensePool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/citrix/CitrixServerFolder.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/net/IpAddress.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/citrix/CitrixAppFolder.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/citrix/CitrixZone.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.citrix.CitrixFarm">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.AppServerCluster">
+        <xsd:sequence>
+          <xsd:element name="licensePool" type="coll:com.collation.platform.model.topology.app.citrix.CitrixLicensePool" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableSNMPAgent" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverFolders" type="coll:com.collation.platform.model.topology.app.citrix.CitrixServerFolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="citrixApplications" type="coll:com.collation.platform.model.topology.app.citrix.CitrixApplication" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="logAutoReconnectAttempts" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableDNSAddressResolution" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="bindaddress" type="coll:com.collation.platform.model.topology.net.BindAddress" nillable="true" minOccurs="0"/>
+          <xsd:element name="appFolders" type="coll:com.collation.platform.model.topology.app.citrix.CitrixAppFolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="RASRespondToClientBroadcast" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="SNMPDisconnectTrap" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="farmName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SNMPThresholdExceededTrap" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="SNMPLogoffTrap" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="notifyDegradation" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="SNMPThresholdValue" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="logOverLimitDenials" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="legacyICADisplayCompatibleMode" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="videoBufferSizeICA" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="discardRedundantGraphics" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="DSDriver" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableAutoClientReconnect" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="useClientLocalTime" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="zones" type="coll:com.collation.platform.model.topology.app.citrix.CitrixZone" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="legacyMFServerCompatibleMode" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="localIp" type="coll:com.collation.platform.model.topology.net.IpAddress" nillable="true" minOccurs="0"/>
+          <xsd:element name="DCRespondToClientBroadcast" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="SNMPLogonTrap" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="disableClientLocalTimeEstimation" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="DSODBC" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="alternateCachingMethod" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxConnectionsPerUser" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="degradationBias" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

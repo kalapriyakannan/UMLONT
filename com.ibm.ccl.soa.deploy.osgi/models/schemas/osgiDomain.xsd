@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.ibm.com/zephyr/osgi/1.0.0" 
+elementFormDefault="qualified" 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:osgi="http://www.ibm.com/zephyr/osgi/1.0.0"
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+ecore:documentRoot="OSGiRoot"
+ecore:name="osgi"
+ecore:package="com.ibm.ccl.soa.deploy.osgi"
+ecore:nsPrefix="osgi">
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation=
+"platform:/plugin/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+<element name="component.bundle" type="osgi:BundleComponent " substitutionGroup="core:baseComponent">
+	</element>
+	<complexType name="BundleComponent"> 
+		<annotation>
+			<documentation>
+				A BundleComponent represents the OSGi Bundle, 
+				which exports itself and Java packages for 
+				other Bundles to depend on.
+
+				The inherited 'displayName' attribute will 				     provide the Bundle-Name.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:SoftwareComponent"> 
+			
+			<attribute name="singleton" type="boolean" >
+        <annotation>
+          <documentation>
+            Must be set to 'true' in order to contribute 
+            plug-in extensions.  
+          </documentation>
+        </annotation>
+      </attribute>    
+      <attribute name="activator" type="string" >
+        <annotation>
+          <documentation>
+            Specifies the fully qualified name of a Java 
+            class which implements 
+            "org.osgi.framework.BundleActivator". 
+          </documentation>
+        </annotation>
+      </attribute>
+      <attribute name="manifestVersion" type="string" >
+        <annotation>
+          <documentation>
+            Defines the version of OSGi Manifest 
+            used in the Bundle. (Currently '2').  
+          </documentation>
+        </annotation>
+      </attribute>
+      <attribute name="localization" type="string" >
+        <annotation>
+          <documentation>
+            Defines the path to a *.properties file which declares
+            localized strings for the Manifest.maf file. 
+            (e.g. 'plug-in' to indicate './plug-in.properties').   
+          </documentation>
+        </annotation>
+      </attribute>
+      <attribute name="vendor" type="string" >
+        <annotation>
+			<documentation>
+            A localized string indicating the Vendor that produced the 
+            Bundle.
+          </documentation>
+        </annotation>
+      </attribute>    
+      <attribute name="eclipseLazyStart" type="boolean" >
+        <annotation>
+          <documentation>
+            Indicates whether the Bundle should be actively started or 
+            only when needed in an Eclipse environment. Set to 'true' 
+            to only load the Bundle once needed. 
+          </documentation>
+        </annotation>
+      </attribute>        
+		</extension>
+		</complexContent>
+	</complexType>
+
+
+<element name="capability.apiPackage" type="osgi:ExportedPackage"
+	substitutionGroup="core:capability">
+</element>
+<complexType name="ExportedPackage">
+  <annotation>
+    <documentation>
+      Describes a Java package that an OSGi Bundle makes available 
+      to other OSGi Bundles that depend on it. 
+    </documentation>
+  </annotation>
+  <complexContent>
+    <extension base="core:Capability">
+      <sequence>
+        <element name="friend" minOccurs="1"
+          maxOccurs="unbounded" type="string">
+        <annotation>
+          <documentation>
+            Provides the fully qualified Bundle identifier of a 
+            downstream Bundle that requires access to enclosing 
+            'ExportedPackage'.               
+</documentation>
+        </annotation>
+        </element>
+      </sequence>
+      <attribute name="internal" type="boolean" >
+        <annotation>
+          <documentation>
+            A value of 'true' indicates the 'ExportedPackage' is 
+            considered part of the internal implementation.  
+          </documentation>
+        </annotation>
+      </attribute>
+    </extension>
+  </complexContent>
+</complexType>
+
+<element name="capability.osgiBundle" type="osgi:BundleCapability"
+  substitutionGroup="core:capability">
+</element>
+<complexType name="BundleCapability">
+  <annotation>
+    <documentation>
+      Describes a Capability that other 'BundleComponents' may link to
+      in order to describe the dependency tree of an OSGi Application. 
+    </documentation>
+  </annotation>
+  <complexContent>
+    <extension base="core:Capability"> 
+      <attribute name="symbolicName" type="string" >
+        <annotation>
+          <documentation>
+            The fully qualified Bundle identifier for the enclosing 
+            'BundleComponent'.  
+          </documentation>
+        </annotation>
+      </attribute>     
+    </extension>
+  </complexContent>
+</complexType>
+
+
+<element name="unit.osgiLibrary" type="osgi:Library"
+  substitutionGroup="core:unit">
+</element>
+<complexType name="Library">
+  <annotation>
+    <documentation>
+      Describes a Configuration Unit that may be 
+      hosted on 'BundleComponents'.
+    </documentation>
+  </annotation>
+  <complexContent>
+    <extension base="core:Unit">
+      <sequence>
+        <element name="source" type="string" minOccurs="1"
+          maxOccurs="unbounded" />
+        <element name="output" type="string" minOccurs="1"
+          maxOccurs="unbounded" />
+      </sequence> 
+    </extension>
+  </complexContent> 
+</complexType>
+
+
+</schema>

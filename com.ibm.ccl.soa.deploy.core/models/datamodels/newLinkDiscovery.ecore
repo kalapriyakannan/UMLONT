@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DiscoveryDataModels"
+    nsURI="http://www.ibm.com/soa/deploy/core/1.0">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.core.datamodels"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.core.internal.datamodels"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkDiscoveryDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="This datamodel is used to determine types of links to be discovered"/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.infrastructure.operations.AbstractEMFScribblerOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unit" eType="#//unit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isHosting" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Sets hosting link as the relationship type used for discovery."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isLogical" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Sets logical link as the relationship type used for discovery."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isDependency" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Sets group as the relationship type used for discovery."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isGroup" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Sets group as the relationship type used for discovery."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentObjectModel"
+        eType="#//DeployModelObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptors" eType="#//List"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="unit" instanceClassName="com.ibm.ccl.soa.deploy.core.Unit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Boolean" instanceClassName="java.lang.Boolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployModelObject" instanceClassName="com.ibm.ccl.soa.deploy.core.DeployModelObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="List" instanceClassName="java.util.List"/>
+</ecore:EPackage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:waswebplugin="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+	xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"	
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	name="IHS WAS Plugin Template">
+	<waswebplugin:unit.ihsWasPluginUnit displayName="IHS WAS Plugin" name="IHSWASPlugin">
+		<waswebplugin:capability.ihsWasPlugin name="IHS WAS Plugin"
+			displayName="IHS WAS Plugin" linkType="any"
+		    installLocation="c:\Program Files\IBM\WebSphere\Plugins" />
+		<core:requirement mutable="true" name="Operating System"
+			displayName="Operating System" dmoType="os:OperatingSystem"
+			linkType="hosting" />
+   		<core:requirement displayName="IHS System" name="IHS System" 
+   			dmoType="ihs:IhsSystem" linkType="dependency" use="required"/>
+	</waswebplugin:unit.ihsWasPluginUnit>
+</core:topology>

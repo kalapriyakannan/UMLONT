@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="com.ibm.ccl.soa.deploy.cmdb.ui.provider.CmdbContentProvider"
+            id="com.ibm.ccl.soa.deploy.cmdb.ui.navigatorContent"
+            labelProvider="com.ibm.ccl.soa.deploy.cmdb.ui.provider.CmdbLabelProvider"
+            name="%cmdbNavigatorContent"
+            priority="normal">
+         <enablement>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IWorkspaceRoot">
+               </instanceof>
+               <instanceof
+                     value="com.ibm.ccl.soa.deploy.cmdb.ui.provider.ICmdbNode">
+               </instanceof>
+            </or>
+         </enablement>
+         <triggerPoints>
+            <instanceof
+                  value="org.eclipse.core.resources.IWorkspaceRoot">
+            </instanceof>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <instanceof
+                     value="com.ibm.ccl.soa.deploy.cmdb.ui.provider.ICmdbNode">
+               </instanceof>
+            </or>
+         </possibleChildren>
+      </navigatorContent>
+   </extension>
+     <!-- tell the common navigator plugin which view it lives in -->
+	<extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding 
+         viewerId="org.eclipse.ui.navigator.ProjectExplorer">                   
+		 <includes>
+		 	<!-- <contentExtension pattern="com.ibm.ccl.soa.deploy.cmdb.ui.navigatorContent" isRoot="true"/> -->
+		 	<contentExtension pattern="com.ibm.ccl.soa.deploy.cmdb.ui.navigatorContent" />
+		</includes>  
+      </viewerContentBinding>   
+   </extension>
+ 
+ 	<!-- Deploy Core Preferences -->
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="%PreferencePage.Cmdb.Explorer"
+			class="com.ibm.ccl.soa.deploy.cmdb.ui.preferences.CmdbExplorerPreferencePage"
+			id="com.ibm.ccl.soa.deploy.cmdb.ui.preferences.CmdbExplorerPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer
+			class="com.ibm.ccl.soa.deploy.cmdb.ui.preferences.CmdbExplorerPreferencesInitializer" />
+	</extension>
+	
+	
+	<!-- Root type selection -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution
+			id="com.ibm.ccl.soa.deploy.cmdb.ui.resourceExplorer.rootTypesSelectionAction.Contribution"
+			targetID="org.eclipse.ui.navigator.ProjectExplorer">
+			<!--targetID="com.ibm.ccl.soa.deploy.core.ui.navigator.views.CommonServerNavigator"> -->
+			<action
+				class="com.ibm.ccl.soa.deploy.cmdb.ui.actions.RootTypesSelectionAction"
+				id="com.ibm.ccl.soa.deploy.cmdb.ui.resourceExplorer.rootTypesSelectionAction.Contribution"
+				label="%root.types.selection.action.name" menubarPath="additions"
+				enablesFor="1">
+			</action>
+		</viewerContribution>
+	</extension>
+
+	<!-- Context menu contribution -->
+	<extension id="DeployContributionItemProvider"
+		point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+		<contributionItemProvider
+			class="com.ibm.ccl.soa.deploy.cmdb.ui.internal.providers.CmdbContributionItemProvider">
+			<Priority name="Low"></Priority>
+			
+			<!-- Discover Menu -->
+			<popupContribution
+				class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+				<popupStructuredContributionCriteria
+					objectClass="com.ibm.ccl.soa.deploy.core.ui.editparts.DeployShapeNodeEditPart"/>
+				<popupMenu path="/editGroup" id="deployDiscoverAction"/>
+			</popupContribution>
+		</contributionItemProvider>
+	</extension>
+</plugin>

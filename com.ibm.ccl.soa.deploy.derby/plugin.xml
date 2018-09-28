@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.16 2008/05/29 14:41:46 nmakin Exp $
+-->
+
+<plugin>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.internal.derby.DerbyPackage"
+			genModel="models/ecore/DerbyDomain.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="derby"
+			class="com.ibm.ccl.soa.deploy.internal.derby.util.DerbyResourceFactoryImpl" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.derby.domain"
+			name="%extension.derbyDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.derby.internal.validator.DerbyDomainValidator" />
+
+			<resourceType
+				id="com.ibm.ccl.soa.deploy.derby.database.10.0.infra"
+				name="%derby.DerbyDatabaseUnit.100.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyDatabase10_0.template">
+			</resourceType>
+			<resourceType
+				id="com.ibm.ccl.soa.deploy.derby.database.10.0.conceptual"
+				name="My TEST DerbyDB"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyDatabase10_0C.template">
+			</resourceType>
+			<resourceType 
+				id="com.ibm.ccl.soa.deploy.derby.database.10.1.infra"
+				name="%derby.DerbyDatabaseUnit.101.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyDatabase10_1.template">
+			</resourceType>
+			<resourceType
+				id="com.ibm.ccl.soa.deploy.derby.database.10.1.conceptual"
+				name="%derby.DerbyDatabaseUnit.101.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyDatabase10_1C.template">
+			</resourceType>
+			<resourceType id="com.ibm.ccl.soa.deploy.derby.database.instance.10.0.infra"
+				name="%derby.DerbyDatabaseInstanceUnit.100.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyInstance10_0.template">
+			</resourceType>
+			<resourceType id="com.ibm.ccl.soa.deploy.derby.database.instance.10.0.conceptual"
+				name="%derby.DerbyDatabaseInstanceUnit.100.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyInstance10_0C.template">
+			</resourceType>
+			<resourceType id="com.ibm.ccl.soa.deploy.derby.database.instance.10.1.infra"
+				name="%derby.DerbyDatabaseInstanceUnit.101.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyInstance10_1.template">
+			</resourceType>
+			<resourceType id="com.ibm.ccl.soa.deploy.derby.database.instance.10.1.conceptual"
+				name="%derby.DerbyDatabaseInstanceUnit.101.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.derby/templates/derbyInstance10_1C.template">
+			</resourceType>
+			<resourceTypeBinding context="wtp" id="Derby10.0"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.0.infra">
+			</resourceTypeBinding>
+			<resourceTypeBinding context="wtp" id="Derby10.1"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.1.infra">
+			</resourceTypeBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseUnitTool100.Description"
+				label="%derby.DerbyDatabaseUnit.100.Label"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.0.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseUnitTool101.Description"
+				label="%derby.DerbyDatabaseUnit.101.Label"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.1.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseInstanceUnitTool100.Description"
+				label="%derby.DerbyDatabaseInstanceUnit.100.Label"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.instance.10.0.conceptual">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseInstanceUnitTool101.Description"
+				label="%derby.DerbyDatabaseInstanceUnit.101.Label"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.instance.10.1.conceptual">
+			</resourceTypeUIBinding>
+			<!--Infrastructure bindings-->
+			<resourceTypeUIBinding
+				description="%derbyDatabaseUnitTool100.Description"
+				label="%derby.DerbyDatabaseUnit.100.Label"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.0.infra">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseUnitTool101.Description"
+				label="%derby.DerbyDatabaseUnit.101.Label"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.10.1.infra">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseInstanceUnitTool100.Description"
+				label="%derby.DerbyDatabaseInstanceUnit.100.Label"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.instance.10.0.infra">
+			</resourceTypeUIBinding>
+			<resourceTypeUIBinding
+				description="%derbyDatabaseInstanceUnitTool101.Description"
+				label="%derby.DerbyDatabaseInstanceUnit.101.Label"
+				largeIcon="icons/pal/derby_db_20.gif"
+				smallIcon="icons/pal/derby_db_16.gif"
+				path="/serverSoftwareDrawer/derbyDataBaseStack"
+				resourceTypeId="com.ibm.ccl.soa.deploy.derby.database.instance.10.1.infra">
+			</resourceTypeUIBinding>
+		</domain>
+	</extension>
+ <extension
+       point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+    <adapterFactory
+          className="com.ibm.ccl.soa.deploy.internal.derby.provider.DerbyItemProviderAdapterFactory"
+          functionGroupID="com.ibm.ccl.soa.deploy.derby"
+          id="com.ibm.ccl.soa.deploy.internal.derby.provider.DerbyItemProviderAdapterFactory"
+          packageURI="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/">
+    </adapterFactory>
+ </extension>
+
+ <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.derby">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.derby/models/schemas/derbyDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:db2high="http://www.ibm.com/Zephyr/db2high/1.0.0/"
+name="DB2Manager Template">
+  <db2high:unit.DB2ManagerUnit name="DB2Manager" configurationUnit="false" conceptual="true">
+    <db2high:capability.DB2Manager name="DB2Manager" linkType="any"/>
+    <core:requirement name="Hosted on a db2System" dmoType="core:Capability" linkType="hosting" use="optional"/>  
+  </db2high:unit.DB2ManagerUnit>
+</core:topology>

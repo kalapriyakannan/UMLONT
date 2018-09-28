@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%db2highStack.Label" 
+            		kind="stack" 
+            		description="%db2highStack.Description" 
+            		small_icon="icons/pal/placeholder_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="db2highStack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.db2high.ui.providers.Db2highEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="db2high.DB2BufferPoolUnit, db2high.DB2ConstraintUnit, db2high.DB2FieldUnit, db2high.DB2IndexUnit, db2high.DB2ManagerUnit, db2high.DB2PartitionGroupUnit, db2high.DB2PermissionUnit, db2high.DB2TableSpaceUnit, db2high.DB2TableUnit, db2high.DB2UserUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.db2high, configurationUnit.db2high"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="db2high.DB2BufferPoolUnit, db2high.DB2ConstraintUnit, db2high.DB2FieldUnit, db2high.DB2IndexUnit, db2high.DB2ManagerUnit, db2high.DB2PartitionGroupUnit, db2high.DB2PermissionUnit, db2high.DB2TableSpaceUnit, db2high.DB2TableUnit, db2high.DB2UserUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.db2high, configurationUnit.db2high">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/Zephyr/db2high/1.0.0/">
+	    	<metamodelType
+	        	id="db2high.ModelObjectUnit"            
+	            name="%ModelObjectUnit.label"
+	            icon="icons/pal/placeholder_16.gif"
+	            eclass="ModelObjectUnit"/>        
+        </metamodel> 
+	</extension>
+   
+
+</plugin>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">   
+               	<entry label="%virtualizationDrawer.Label" kind="drawer"
+					description="%virtualizationDrawer.Description"
+					large_icon="icons/dgm/phycsvr_dgm.gif"
+					small_icon="icons/dgm/phycsvr_dgm.gif" path="/"
+					id="virtualizationDrawer">
+				</entry> 
+				<entry label="%virtualDiskDefStack.Label" kind="stack"
+					description="%virtualDiskDefStack.Description"
+					large_icon="icons/pal/virtual-disk-def_pal20.gif" small_icon="icons/pal/virtual-disk-def_pal16.gif"
+					path="/virtualizationDrawer/" id="virtualDiskDefStack">
+				</entry>		
+				<entry label="%virtualEthernetNICDefStack.Label" kind="stack"
+					description="%virtualEthernetNICDefStack.Description"
+					large_icon="icons/pal/vrt-ethrnt-nic-def_pal20.gif" small_icon="icons/pal/vrt-ethrnt-nic-def_pal16.gif"
+					path="/virtualizationDrawer/" id="virtualEthernetNICDefStack">
+				</entry>		
+				<entry label="%virtualImageStack.Label" kind="stack"
+					description="%virtualImageStack.Description"
+					large_icon="icons/pal/virtual-image_pal20.gif" small_icon="icons/pal/virtual-image_pal16.gif"
+					path="/virtualizationDrawer/" id="virtualImageStack">
+				</entry>		
+				<entry label="%virtualSnapshotStack.Label" kind="stack"
+					description="%virtualSnapshotStack.Description"
+					large_icon="icons/pal/placeholder_20.gif" small_icon="icons/pal/placeholder_16.gif"
+					path="/virtualizationDrawer/" id="snapshotStack">
+				</entry>
+				
+				<entry label="%vmwareStack.Label" kind="stack"
+					description="%vmwareStack.Description"
+					large_icon="icons/pal/placeholder_20.gif" small_icon="icons/pal/placeholder_16.gif"
+					path="/virtualizationDrawer/" id="vmwareStack">
+				</entry>		
+				<entry label="%xenStack.Label" kind="stack"
+					description="%xenStack.Description"
+					large_icon="icons/pal/placeholder_20.gif" small_icon="icons/pal/placeholder_16.gif"
+					path="/virtualizationDrawer/" id="xenStack">
+				</entry>
+				<entry label="%baseVirtualizationStack.Label" kind="stack"
+					description="%baseVirtualizationStack.Description"
+					large_icon="icons/pal/placeholder_20.gif" small_icon="icons/pal/placeholder_16.gif"
+					path="/virtualizationDrawer/" id="baseVirtualizationStack">
+				</entry>								
+																	  
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+   	
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.virtualization.ui.providers.VirtualizationEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="virtualization.VirtualImageUnit, virtualization.VMwareVirtualImageUnit, virtualization.XenVirtualImageUnit, virtualization.VirtualEthernetNICDefUnit, virtualization.VMwareVirtualEthernetNICDefUnit, virtualization.XenVirtualEthernetNICDefUnit, virtualization.VirtualDiskDefUnit, virtualization.VMwareVirtualDiskDefUnit, virtualization.VMwareVirtualSCSIDiskDefUnit, virtualization.VMwareVirtualIDEDiskDefUnit, virtualization.XenVirtualDiskDefUnit, virtualization.VMwareVirtualServerSnapshotUnit, virtualization.VMwareVirtualDiskSnapshotUnit, virtualization.VirtualImageCollectionUnit, virtualization.VMwareESXUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.virtualization, configurationUnit.virtualization"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="virtualization.VirtualImageUnit, virtualization.VMwareVirtualImageUnit, virtualization.XenVirtualImageUnit, virtualization.VirtualEthernetNICDefUnit, virtualization.VMwareVirtualEthernetNICDefUnit, virtualization.XenVirtualEthernetNICDefUnit, virtualization.VirtualDiskDefUnit, virtualization.VMwareVirtualDiskDefUnit, virtualization.VMwareVirtualSCSIDiskDefUnit, virtualization.VMwareVirtualIDEDiskDefUnit, virtualization.XenVirtualDiskDefUnit, virtualization.VMwareVirtualServerSnapshotUnit, virtualization.VMwareVirtualDiskSnapshotUnit, virtualization.VirtualImageCollectionUnit, virtualization.VMwareESXUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.virtualization, configurationUnit.virtualization">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualImageUnit"            
+	            name="%VirtualImageUnit.label"
+	            icon="icons/pal/virtual-image_pal16.gif"
+	            eclass="VirtualImageUnit"/>        
+        </metamodel> 
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VMwareVirtualImageUnit"            
+	            name="%VMwareVirtualImageUnit.label"
+	            icon="icons/pal/virtual-image_pal16.gif"
+	            eclass="VMwareVirtualImageUnit"/>        
+        </metamodel> 
+            	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.XenVirtualImageUnit"            
+	            name="%XenVirtualImageUnit.label"
+	            icon="icons/pal/virtual-image_pal16.gif"
+	            eclass="XenVirtualImageUnit"/>        
+        </metamodel>         
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualEthernetNICDefUnit"            
+	            name="%VirtualEthernetNICDefUnit.label"
+	            icon="icons/pal/vrt-ethrnt-nic-def_pal16.gif"
+	            eclass="VirtualEthernetNICDefUnit"/>        
+        </metamodel> 
+        <metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualDiskDefUnit"            
+	            name="%VirtualDiskDefUnit.label"
+	            icon="icons/pal/virtual-disk-def_pal16.gif"
+	            eclass="VirtualDiskDefUnit"/>    
+        </metamodel>
+        <metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualImageCollectionUnit"            
+	            icon="icons/dgm/vrtl-imge-collect-dgm.gif"
+	            eclass="VirtualImageCollectionUnit"/>     
+        </metamodel>        
+        <metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualDiskSnapshotUnit"            
+	            icon="icons/dgm/disk-snapshot-dgm.gif"
+	            eclass="VirtualDiskSnapshotUnit"/>     
+        </metamodel>        
+        <metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+	    	<metamodelType
+	        	id="virtualization.VirtualServerSnapshotUnit"            
+	            icon="icons/dgm/server-snapshot-dgm.gif"
+	            eclass="VirtualServerSnapshotUnit"/>     
+        </metamodel>        
+	</extension>
+
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.virtualization"
+            name="%virtualizationActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.virtualization"
+            name="%virtualizationActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.virtualization"
+            pattern="(?&lt;!.)virtualization\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.virtualization"
+            pattern="(?&lt;!.)virtualization\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.virtualization"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.virtualization"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.virtualization"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.virtualization"/>
+      </extension>
+
+</plugin>

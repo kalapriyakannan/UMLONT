@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/"
+name="MQQueueConnectionFactory Template">
+  <mq:unit.MQQueueConnectionFactoryUnit name="MQQueueConnectionFactory"  displayName= "MQ Connection Factory" configurationUnit="true" conceptual="true">
+    <mq:capability.MQQueueConnectionFactory name="MQQueueConnectionFactory" linkType="any"/>
+    <core:requirement name="HostingLink" dmoType="mq:MQMessagingProvider" linkType="hosting" use="Required"/>  
+  </mq:unit.MQQueueConnectionFactoryUnit>
+</core:topology>

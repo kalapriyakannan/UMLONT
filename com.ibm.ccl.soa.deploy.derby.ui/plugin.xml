@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.24 2008/05/27 14:03:24 mdelder Exp $
+-->
+
+<plugin>
+
+	<!-- Palette Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution
+				factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+
+				<!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+				<entry label="%derbyDataBaseStack.Label" kind="stack"
+					description="%derbyDataBaseStack.Description"
+					small_icon="icons/pal/derby_db_16.gif"
+					path="/serverSoftwareDrawer/" id="derbyDataBaseStack">
+				</entry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.derby.ui.providers.DerbyEditPartProvider">
+			<Priority name="Medium"></Priority>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="derby.DerbyDatabaseUnit, derby.DerbyDatabaseInstanceUnit">
+				</staticMethod>
+			</object>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()" value="module.derby" />
+			</object>
+			<context views="NodesByType, Nodes"></context>
+		</editpartProvider>
+	</extension>
+
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method name="getProxyClassID()"
+					value="derby.DerbyDatabaseUnit, derby.DerbyDatabaseInstanceUnit">
+				</method>
+			</object>
+			<!--        
+				<object class="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType(com.ibm.ccl.soa.deploy.core.ui)" id="NodeTypes">
+				<method name="getEClassName()" value="db2.DB2InstanceUnit">
+				</method>
+				</object>    -->
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="module.derby">
+			</context>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="" elements="Nodes">
+			</context>
+		</viewProvider>
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+		<unitPublisher
+			class="com.ibm.ccl.soa.deploy.derby.internal.publisher.Derby10UnitPublisher"
+			description="%derby10UnitProvider.description"
+			name="%derby10UnitProvider.label">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.internal.derby.DerbyDatabaseUnit" />
+				<and>
+					<test
+						property="com.ibm.ccl.soa.deploy.derby.derbyVersion" value="10.0" />
+				</and>
+			</enablement>
+		</unitPublisher>
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.ide.unitPublisher">
+		<unitPublisher
+			class="com.ibm.ccl.soa.deploy.derby.internal.publisher.Derby101UnitPublisher"
+			description="%derby101UnitProvider.description"
+			name="%derby101UnitProvider.description">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.internal.derby.DerbyDatabaseUnit" />
+				<and>
+					<test
+						property="com.ibm.ccl.soa.deploy.derby.derbyVersion" value="10.1" />
+				</and>
+			</enablement>
+		</unitPublisher>
+	</extension>
+
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.derby.internal.publisher.DerbyPropertyTester"
+			type="com.ibm.ccl.soa.deploy.internal.derby.DerbyDatabaseUnit"
+			namespace="com.ibm.ccl.soa.deploy.derby" properties="derbyVersion"
+			class="com.ibm.ccl.soa.deploy.internal.derby.util.DerbyPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/">
+	    	<metamodelType
+	        	id="derby.DerbyDatabaseUnit"            
+	            name="%DerbyDatabaseUnit.label"
+				icon="icons/pal/derby_db_16.gif"
+	            eclass="DerbyDatabaseUnit">                      
+	        </metamodelType>
+        </metamodel>
+        <metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/derby/1.0.0/">
+	    	<metamodelType
+	        	id="derby.DerbyDatabaseInstanceUnit"            
+	            name="%DerbyDatabaseInstanceUnit.label"
+				icon="icons/pal/derby_db_16.gif"
+	            eclass="DerbyDatabaseInstanceUnit">                      
+	        </metamodelType>
+        </metamodel>
+    </extension>
+    
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.derby"
+            name="%derbyActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.derby"
+            name="%derbyActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.derby"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.derby\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.derby"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.derby\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.derby"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.derby"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity
+            ref="com.ibm.rational.deployment.activity.physical.derby"
+            match="pattern"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.derby"/>
+      </extension>
+</plugin>
+

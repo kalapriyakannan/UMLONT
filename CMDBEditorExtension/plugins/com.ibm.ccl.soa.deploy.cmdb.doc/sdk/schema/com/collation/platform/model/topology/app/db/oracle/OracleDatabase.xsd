@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/Database.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleInitValue.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleDBLink.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleRedoLogFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleInstance.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalContent.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleTableSpace.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleDataFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleControlFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleSchema.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleSchemaDetail.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.oracle.OracleDatabase">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.db.Database">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleInstance" nillable="true" minOccurs="0"/>
+          <xsd:element name="domainName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="schemaContent" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleSchemaDetail" nillable="true" minOccurs="0"/>
+          <xsd:element name="schemas" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleSchema" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="schemasRawData" type="coll:com.collation.platform.model.topology.core.LogicalContent" nillable="true" minOccurs="0"/>
+          <xsd:element name="redoLogFiles" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleRedoLogFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="dataFiles" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleDataFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="controlFiles" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleControlFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="tableSpaces" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleTableSpace" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="initValues" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleInitValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="DBVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DBName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DBLinks" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleDBLink" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

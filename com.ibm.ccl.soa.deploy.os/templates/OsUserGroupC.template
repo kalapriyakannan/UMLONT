@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" name="Windows2000 Template">
+  <os:unit.userGroup name="UserGroup" configurationUnit="true" conceptual="true">
+    <os:capability.userGroup name="UserGroup" linkType="dependency"/>
+    <core:requirement mutable="true" name="UserGroup Membership" displayName="UserGroup Membership" dmoType="os:UserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinalityConstraint" />     
+    </core:requirement>    
+    <core:requirement mutable="true" name="OperatingSystem" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting">
+    </core:requirement>
+  </os:unit.userGroup>
+</core:topology>

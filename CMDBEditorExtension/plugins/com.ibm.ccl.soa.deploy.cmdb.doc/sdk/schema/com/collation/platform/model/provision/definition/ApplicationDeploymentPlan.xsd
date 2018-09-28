@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/ModelObject.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/workflow/Workflow.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/provision/definition/ModuleMapping.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.provision.definition.ApplicationDeploymentPlan">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.ModelObject">
+        <xsd:sequence>
+          <xsd:element name="previousDeploymentPlan" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="status" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="applicationDefinitionName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="applicationDefinitionVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="workflow" type="coll:com.collation.platform.model.workflow.Workflow" nillable="true" minOccurs="0"/>
+          <xsd:element name="workflowDefinition" type="coll:com.collation.platform.model.workflow.Workflow" nillable="true" minOccurs="0"/>
+          <xsd:element name="moduleMappings" type="coll:com.collation.platform.model.provision.definition.ModuleMapping" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

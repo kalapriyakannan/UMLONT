@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>WebSphere ND Domain</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The WebSphere Domain defines extensions into the IBM SOA Modeling Platform to model
+WebSphere ND.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">WebSphere ND Domain Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The WebSphere ND Domain defines the concepts and abstractions to model WebSphere ND.</p>
+		<!--  Leave this paragraph  -->
+		<p>In this document, concepts are enclosed by italics (<i>like
+		this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements
+		in the schemas are enclosed in angle brackets(&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table>
+
+<!-- begin SHARED LIBRARIES -->
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Shared Libraries
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>Shared libraries identify files used by multiple applications. 
+		They are especially useful when you have different versions of the same framework used by different applications.
+		</p>
+		
+		<p>A shared library definition in WebSphere consists of a symbolic name, a Java class path
+		(including .jar files, .zip files and directories), and a native path for loading JNI 
+		libraries.  A shared library can be defined at the cell, node, server or cluster scope.
+		</p>
+		
+		<p>Milestone M5 will not support multi-dependency requirements (requirements that can be linked to 
+		multiple capabilties, facets (sets of capabilties and requirements associated with a unit),
+		nor constraints.
+		Consequently, the design does not use these features.
+		</p>
+		
+		<p>A shared library is modeled as a configuration unit with: 
+		   <ul><li>a <a href="../SharedLibraryEntry.html">shared library capability</a>, and</li>
+		       <li>a hosting requirement for a 
+		       <a href="../WasConfigurationContainer">WebSphere configuration container</a>, and</li>
+		       <li>an optional dependency requirement on a JarModule (<i>new for M5</i>).
+		       Note that a valid dependency link to a JarModule should have the target's
+		       artifacts listed in the classpath of the shared library. We currently do not 
+		       model sufficient path information to validate this. However, we should be 
+		       able to validate that the classpath contains an entry that ends in the names 
+		       of each artifact (<i>new validation for M5</i>).</li>
+		   </ul>
+		</p>
+
+		<p>When a dependency link from a shared library to a JarModule is created, the satisfied requirement 
+		should be updated with requirement expressions that match the JarModule <tt>BundleCapability</tt>.
+		Then enables version checking if JarModules are updated.  Further, an additional requirement should be
+		added to the shared library enabling additional JarModules to be identified as party to the shared 
+		library.
+		</p>
+		
+		<p>In WebSphere, for the classes represented by the shared library to be loaded, it is necessary
+		to associate the library with 
+			<ul><li>an application,</li>
+                <li>a Web module or</li>
+                <li>the class loader of an application server</li>
+            </ul>
+		If the shared library is associated with an application, 
+		it should not be associated with the class loader of an application server 
+		(<i>new validation for M5</i>).
+		Associating the library to the class loader of an application server makes the 
+		library available to all applications on the server.
+		In WebSphere, to associate a shared library with an application or a Web module, one creates
+		shared library references from the application (Web modules).  To associate a shared
+		library with an application server, a class loader is defined which references the 
+		shared library.  This class loader is then associated with the application server.
+		</p>
+		
+		<p>
+		In the tool, the associations between a shared library and an application or a 
+		web module is expressed by a dependency link from the application (web module) to 
+		a shared library.  The association between a shared library and an application 
+		server is expressed by a dependency link from a class loader hosted on the
+		application server to the shared library. To support this dependency link, an optional 
+		requirement to a shared library should be added to an application and web modules when the
+		application is hosted on WebSphere (and no unlinked requirement exists).  Each time a link
+		to a shared library is created, a new requirment should be added (if there are no unlinked 
+		requirements).  In this way, more than one shared library can be referenced by the 
+		application (modules).
+		</p>
+		
+		<p><b>M5 Work Items</b>
+		</br>
+		The following is required to implement shared library support:
+		<ol>
+		   <li>Modify templates for shared library to include optional dependency
+		   requirement for JAR Module (BundleCapability).</li>
+		   <li>Provide some classpath validation.</li>
+		   <li>Validate that a shared library is not configured for access both by the server 
+		   and by applications (or Web modules) on the server.  Take scope into account; ie,
+		   shared library may be defined at the cell, cluster, node or server scope.</li>
+		   <li>When host application module on WAS, 
+		   add optional requirement for a shared library (if an unlinked requirement is not already present).
+		   </li>
+		   <li>When host application module on WAS,
+		   add optional requirement for shared library to each Web module (if an unlinked requirement
+		   is not already present).</li>
+		   <li>When host Web module on WAS,
+		   add optional requirement for shared library to the Web module (if an unlinked requirement
+		   is not already present).</li>
+		   <li>When a dependency link is created between a shared library requirement and a shared libary,
+		   a new optional requirement should be added to the source's parent unit (if an unlinked requirement
+		   is not already present).  This enables additional links so that multiple shared libraries can
+		   be linked to an application.</li>
+		   <li>The dependency link between a module and an external (i.e., not
+		   part of the application) utility JAR should be validated to ensure:
+		   	<ol><li>If <tt>sourceModule</tt> is a Web module, that sourceModule has a valid dependency
+		   link to a shared library which, in turn, has a valid dependency link to <tt>targetJAR</tt>
+		   (shared library is associated with a web module), or</li>
+		   <li>That the application containing <tt>sourceModule</tt> has a valid dependency link
+		   to a shared library which, in turn, has a valid dependency link to <tt>targetJAR</tt>
+		   (shared library is associated with application), or</li>
+		   <li>The container hosting the application containing <tt>sourceModule</tt> is hosted on also
+		   hosts a class loader with a valid dependency link to a shared library (also hosted
+		   on the same container) which, in turn, has a valid dependency link to <tt>targetJAR</tt>
+		   (shared library is associated with the application server), and</li> 
+		        <li>the container hosting the source module (or its application) provides a Java jre
+		        capability that satisfies the <tt>Java.JRE</tt> requirement of target utility JAR.</li>
+		    </ol></li>
+		   <li>When a dependency link between a shared library and a <tt>JarModule</tt> is created,
+		   the requirement should be updated to match the <tt>BundleCapability</tt> of the target.
+		   This provides a mechanism for version checking later.</li>
+		   <li>When a dependency link between a shared library and a <tt>JarModule</tt> is created,
+		   a new optional <tt>BundleCapability</tt> requirement should be added to the source's parent unit
+		   (if an unlinked requirement is not already present). This enables additional links so that
+		   a shared library can reference many utility JARs.</li>
+		   <li>Provide resolutions to configure shared library access for web modules, application
+		   and application server (using existing or new shared library configurations).</li>
+		</ol>
+		</p> 
+		
+		</td>
+	</tr>
+</table>
+<!-- end SHARED LIBRARIES -->
+
+<!--
+   instead of multi-dependencies need to multiple requirements; may need to do so "on the fly" (as link is created)
+     --> make it a common pattern
+   if possible introduce ability to delete requirement when delete link
+     --> try to support with 
+   need to validate that if dependent on a was shared library then also (eventually) hosted on a was
+   
+-->
+
+<!-- begin CLASS LOADERS -->
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Class Loaders
+		[<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>In WebSphere, class loader policies may be defined at various scopes:
+		<ul><li>application server</li>
+		    <li>application</li>
+		    <li>Web module</li>
+		</ul>
+		</p>
+		<p><b><u>Application Server</u></b>
+		A class loader policy value of <tt>SINGLE</tt> asserts that there is a single application 
+		class loader is used to load all EJBs, utility JARs, and shared libraries within the 
+		application server (JVM); ie, for all applications. 
+		The <i>class loading mode</i> (or <i>order</i>) determines whether or not classes are loaded 
+		parent first or parent last. </p>
+		<p>A class loader policy value of <tt>MULTIPLE</tt> asserts that there is a separate class loader
+		for the EJBs, utility JARs and shared libraries of each application.  In this case, the class loader
+		mode is ignored. </p>
+		<p>In both cases, If the (WAR) class loader policy defined at the application scope
+		determines whether or not each Web module has its own class loader.
+		</p>
+		<p><b><u>Application</u></b>
+		A class loader policy value of <tt>SINGLE</tt> asserts that each Web module will share the application
+		class loader.  A value of <tt>MULTIPLE</tt> means that each Web module will have its own class loader.
+		When the application server policy is <tt>MULTIPLE</tt> the mode defined at the application scope 
+		determines the class loading order (parent first or parent last). </p>
+		<p>At the application scope, one can specify whether or not classes should be reloaded when changed and 
+		an interval for checking for changes.
+		</p>
+		<p><b><u>Web Module</u></b>
+		If the application scope class loader policy is <tt>MULTIPLE</tt> the order defined at the web module scope
+		determines the order (parent first or parent last) behavior of a web module class loader. </br>
+		At the web module scope a <i>startWeight</i> can be specified which orders the initial loading of the
+		Web modules.
+		</p>
+		
+		<p><b><u>M5 Design Overview</u></b>
+		Class loader policies are WebSphere specific but may be associated with the application (modules).  
+		When an application is hosted on WebSphere requirements for class loader policies should be added to the
+		application.  We will make these requirements be hosting requirements since they must be satisfied by
+		capabilities of the hosting server. We will set the default values in the capabilities and allow users
+		to override these defaults by modifying the application requirements.  There need not be a equality
+		match between the attributes on the requirement and those on matching capability. For application 
+		server class loader specification, a separate configuraiton unit is defined and hosted on the application
+		server.
+		</p>
+		
+		<p><b><u>M5 Work Items</u></b>
+		<ol>
+			<li>Define capabilities <tt>wasClassLoaderPolicy</tt>, <tt>wasModuleClassLoaderPolicy</tt>,
+			<tt>wasApplicationClassLoaderPolicy</tt>, and <tt>wasApplicationServerClassLoaderPolicy</tt>.</li>
+			<li>Define wasClassLoaderConfigurationUnit.</li>
+			<li>Modify all templates containing a <tt>WebsphereApplicationServer</tt> to have capabilities:
+			<tt>wasModuleClassLoaderPolicy</tt> and <tt>wasApplicationClassLoaderPolicy</tt>. Further
+			modify the templates to host a <tt>wasClassLoaderConfigurationUnit</tt> with a 
+			<tt>wasApplicationServerClassLoaderPolicy</tt> capability.</li>
+			<li>Validate:<ul><li>Servers should have <tt>wasModuleClassLoaderPolicy</tt> capability.</li>
+							<li>Servers should have <tt>wasApplicationClassLoaderPolicy</tt> capability.</li>
+							<li>Servers should host a single <tt>wasClassLoaderConfigurationUnit</tt>.</li>
+							<li>Attributes <i>reloadInterval</i> and <i>startWeight</i> should be greater than or equal to 0.</li>
+							<li>An application server class loader policy value of <tt>SINGLE</tt> should be
+							flagged as a warning (not best practice).</tt></li>
+							<li><tt>wasClassLoaderConfigurationUnit</tt> validator.</li>
+						</ul>
+			</li>
+			<li>Modify hosting link creation to add a hosting <tt>wasApplicationClassLoaderPolicy</tt> 
+			requirement to an <tt>EarModule</tt> that is hosted on WebSphere.</li>
+			<li>Modify hosting link creation to add a hosting <tt>wasModuleClassLoaderPolicy</tt> 
+			requirement to an <tt>WebModule</tt> that is hosted on WebSphere.</li>
+			<li>Create <tt>True</tt> requirement expression interpreter for specifying class loader policy.
+			This interpreter should allow the requirement expression to match no matter the values of the attributes.</li>
+			<li>Define icon for class loader policy configuration unit.</li>
+		</ol>
+		</p>
+		<p><b><u>Design Implications</u></b>
+		<ol>
+			<li>Deployers wishing to use non-default values for class loader policies will need to set these
+			policies in the requirements of the application module(s).</li>
+			<li>Publishers will need to use the requirements to identify non-default class loader policies.</li>
+		</ol>
+		</p>
+		
+		<p><b><u>Future</u></b> (beyond M5)
+		When a hosting link to WebSphere is deleted, the added requirements should also be deleted.  This is 
+		most easily done if the requirements can be added as part of a WebSphere <i>facet</i>. 
+		</p>	
+		
+		<p>See ppt presentation.</p>
+		</td>
+	</tr>
+</table>
+<!-- end CLASS LOADERS -->
+
+<!-- VIRTUAL HOSTS -->
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Virtual Hosts [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>See ppt presentation. </p>
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- end VIRTUAL HOSTS -->
+
+<!-- SECURITY ROLE MAPPING -->
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Security Role Mapping [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>See ppt presentation. </p>
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- end SECURITY ROLE MAPPING -->
+
+<!-- STRUCTURAL CHANGES -->
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Structural Changes [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>Currently (pre-M5), 
+		<ul>
+		<li>A cluster is a group (of application servers) that 
+		is related to a cell by membership. To view a cluster it is necessary 
+		to open a cell.</li>
+		<li>A node group is a configuration unit that is related to a cell
+		by membership and related to nodes in the cell by membership. One side-ffect
+		is that that nodes appear multiple times (by opening the node groups).</li>
+		</ul>
+		To improve usability, the following changes are made:
+		<ul>
+		<li>A cluster will be hosted on a cell instead of a member of a cell.</li>
+		<li>Node groups will be hosted on the cell instead of a member of a cell.</li>
+		<li>Node groups will no longer be modeled as groups, instead nodes will be related by
+		dependency links instead.</li>
+		</ul>
+		</p>
+		<p><b><u>Design Implications</u></b>
+		Providers will need to modify the models that they create.
+		</p>
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- end STRUCTURAL CHANGES -->
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Author</b> <i>(author{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2007 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

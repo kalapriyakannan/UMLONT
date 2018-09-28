@@ -1,0 +1,51 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UnitEditPartTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String unitEditPartPackage=(String)args.get(2); %>
+<% String classNamePrefix=(String)args.get(3); %>
+<% String superClassNamePrefix=(String)args.get(4); %>
+<% String superClassPackage=(String)args.get(5); %>
+/***************************************************************************************************
+ * Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM. All rights
+ * reserved.
+ * 
+ * US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ * Schedule Contract with IBM Corp.
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
+ **************************************************************************************************/
+package <%=unitEditPartPackage%>;
+
+import org.eclipse.draw2d.DelegatingLayout;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.View;
+
+<% if (superClassNamePrefix.length() > 0) { %>
+import <%=superClassPackage%>.<%=superClassNamePrefix%>UnitEditPart;
+<% } else { %>
+import com.ibm.ccl.soa.deploy.core.ui.editparts.UnitEditPart;
+<% } %>
+import <%=modelPackage%>.ui.figures.<%=ucModelPackagePrefix%>FigureFactory;
+
+/**
+ * Holds a logical node, which is a container capable of holding deployable units.
+ */
+public class <%=classNamePrefix%>UnitEditPart extends <%=superClassNamePrefix%>UnitEditPart {
+	/**
+	 * @param view
+	 */
+	public <%=classNamePrefix%>UnitEditPart(View view) {
+		super(view);
+		// determine figure category description
+		// TODO replace with translatable string
+		setCategory("<%=classNamePrefix%>"); //$NON-NLS-1$ 
+	}
+
+	@Override
+	protected NodeFigure createMainFigure() {
+		NodeFigure f = <%=ucModelPackagePrefix%>FigureFactory.createNew<%=ucModelPackagePrefix%>UnitFigure();
+		f.setLayoutManager(new DelegatingLayout());
+		return f;
+	}
+}

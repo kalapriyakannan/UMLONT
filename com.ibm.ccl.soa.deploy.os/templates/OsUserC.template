@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+ 
+name="User Template">
+
+  <os:unit.user name="UserUnit" configurationUnit="true" conceptual="true">
+    <os:capability.user name="User" linkType="dependency">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true" />    
+    </os:capability.user>
+    <core:requirement mutable="true" name="OperatingSystem" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:UserGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint" />      
+    </core:requirement>     
+  </os:unit.user>
+  
+</core:topology>

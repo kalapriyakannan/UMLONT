@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/"
+	xmlns:generic="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="GenericDeployRoot"
+	ecore:name="generic" ecore:package="com.ibm.ccl.soa.deploy.generic"
+	ecore:nsPrefix="generic">
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+
+	<!-- 
+		The unit.genericUnit element exposes the opportunity
+		to create anonymous abstract Unit types within the model
+		with their own custom Capabilities and Requirements. 
+	-->
+	<element name="unit.genericUnit" substitutionGroup="core:unit"
+		type="core:Unit" /> 
+
+	<!-- 
+		The unit.genericCapability element exposes the opportunity
+		to create anonymous abstract Capability types within the model
+		using the extended attribute support. 
+	 -->
+	<element name="capability.generic"
+		substitutionGroup="core:capability" type="core:Capability" />
+
+</schema>

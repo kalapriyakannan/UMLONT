@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="WebSphereEndpointListenerUnit template">
+  <was:unit.wasEndpointListenerUnit displayName="WebSphereEndpointListenerUnit" name="WebSphereEndpointListenerUnit" configurationUnit="true">
+    <was:capability.wasEndpointListenerConfiguration name="EndpointListener" displayName="EndpointListener" endpointListenerName="SOAPHTTPChannel1" urlRoot="http://your.server.name:port/wsgwsoaphttp1" wsdlUrlRoot="http://your.server.name:port/sibws" linkType="any"/>
+    <core:requirement mutable="true" name="Hosted on a WasJ2EEServer" displayName="Hosted on a WasJ2EEServer" dmoType="was:WasJ2EEServer" linkType="hosting"/>
+  </was:unit.wasEndpointListenerUnit>
+</core:topology>

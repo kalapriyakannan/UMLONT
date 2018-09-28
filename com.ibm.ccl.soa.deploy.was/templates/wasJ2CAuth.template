@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="J2C Authentication template" displayName="topology1">
+  <was:unit.wasJ2CAuth name="WebSphere J2C Auth" configurationUnit="true">
+    <was:capability.wasJ2CAuth name="WebSphere J2ee Authentication Data Entry" displayName="WebSphere J2ee Authentication Data Entry" linkType="dependency">
+      <core:attributeMetaData attributeName="password" encrypted="true" />      
+    </was:capability.wasJ2CAuth>
+    <core:requirement use="optional" mutable="true" name="OS User" displayName="OS User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement mutable="true" name="WebSphereCell" displayName="WebSphere Cell" dmoType="was:WasCell" linkType="hosting"/>
+  </was:unit.wasJ2CAuth>
+</core:topology>

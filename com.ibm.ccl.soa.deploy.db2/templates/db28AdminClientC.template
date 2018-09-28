@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" name="DB2 8 Template">
+  <db2:unit.db2AdminClientUnit displayName="DB2 Admin Client" name="DB2AdminClient" conceptual="true">
+    <db2:capability.db2Client name="DB2 Client" displayName="DB2 Client" linkType="any"/>
+    <db2:capability.db2AdminClient name="DB2 Admin Client" displayName="DB2 Admin Client" linkType="any" db2ClientVersion="8"/>    
+    <db2:capability.db2JdbcDriver name="DB2 JDBC Driver" displayName="DB2 JDBC Driver" linkType="dependency"/>
+    <core:requirement mutable="true" name="Operating System" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2:unit.db2AdminClientUnit>
+</core:topology>

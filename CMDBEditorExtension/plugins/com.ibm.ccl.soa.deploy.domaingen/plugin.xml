@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.ibm.com/ccl/soa/deploy/cdm/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.cdm.CdmPackage"
+       genModel = "models/ecore/cdm.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="cdm" 
+       class="com.ibm.ccl.soa.deploy.cdm.util.CdmResourceFactoryImpl" />
+  </extension>
+  
+	<!-- New Wizard -->
+	<extension point="org.eclipse.ui.newWizards">
+		<category name="%Deploy_core_wizard_category_name"
+			id="com.ibm.ccl.soa.deploy.core.ui" />
+		<wizard name="%newExtensionAction_label"
+			icon="icons/pal/placeholder_16.gif"
+			category="com.ibm.ccl.soa.deploy.core.ui"
+			class="test.NewExtensionWizard"
+			id="com.ibm.ccl.soa.deploy.core.ui.wizard.new.file">
+			<description>%Deploy_core_domain_extension_wizard_description</description>
+			<selection class="org.eclipse.core.resources.IResource" />
+		</wizard>
+	</extension>  
+
+
+</plugin>

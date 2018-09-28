@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=""
+    modelDirectory="/com.ibm.ccl.soa.deploy.core/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.core/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.core" modelName="Locationbinding" editPluginClass="com.ibm.ccl.soa.deploy.core.provider.DeployCoreEditPlugin"
+    nonNLSMarkers="true" suppressEMFTypes="true" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>../../schemas/locationbinding/locationbinding.xsd</foreignModel>
+  <genPackages prefix="Location" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="location.ecore#/">
+    <genClasses ecoreClass="location.ecore#//BindingEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute location.ecore#//BindingEntry/dmoPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute location.ecore#//BindingEntry/location"/>
+    </genClasses>
+    <genClasses ecoreClass="location.ecore#//LocationBinding">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference location.ecore#//LocationBinding/bindingEntry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute location.ecore#//LocationBinding/context"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute location.ecore#//LocationBinding/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute location.ecore#//LocationBinding/topology"/>
+    </genClasses>
+    <genClasses ecoreClass="location.ecore#//LocationBindingRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute location.ecore#//LocationBindingRoot/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference location.ecore#//LocationBindingRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference location.ecore#//LocationBindingRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference location.ecore#//LocationBindingRoot/bindingEntry"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference location.ecore#//LocationBindingRoot/locationBinding"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

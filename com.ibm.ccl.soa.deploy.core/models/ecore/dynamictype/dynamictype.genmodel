@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.core/src"
+    creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.core/src" modelPluginID="com.ibm.ccl.soa.deploy.core"
+    modelName="Dynamictype" editPluginClass="com.ibm.ccl.soa.deploy.core.provider.DeployCoreEditPlugin"
+    nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0"
+    copyrightFields="false">
+  <foreignModel>../../schemas/dynamictype/dynamictype.xsd</foreignModel>
+  <genPackages prefix="Dynamictype" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="dynamictype.ecore#/">
+    <genClasses ecoreClass="dynamictype.ecore#//DynamicPaletteEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/diagramPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/largeIcon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/smallIcon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteEntry/templateURI"/>
+    </genClasses>
+    <genClasses ecoreClass="dynamictype.ecore#//DynamicPaletteStack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteStack/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteStack/icon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteStack/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicPaletteStack/label"/>
+    </genClasses>
+    <genClasses ecoreClass="dynamictype.ecore#//DynamicTypeRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute dynamictype.ecore#//DynamicTypeRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypeRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypeRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypeRoot/dynamicPaletteEntry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypeRoot/dynamicPaletteStack"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypeRoot/dynamicTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="dynamictype.ecore#//DynamicTypes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dynamictype.ecore#//DynamicTypes/paletteEntries"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,334 @@
+<schema targetNamespace="http://www.ibm.com/Zephyr/sca/1.0.0/" 
+elementFormDefault="qualified" 
+    ecore:documentRoot="SCARoot"
+	ecore:name="sca"
+	ecore:package="com.ibm.ccl.soa.deploy.sca"
+	ecore:nsPrefix="tds" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sca="http://www.ibm.com/Zephyr/sca/1.0.0/" 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+	
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+
+<element name ="unit.scaComponentUnit" substitutionGroup ="core:unit" type="sca:SCAComponentUnit">
+</element>
+	<complexType name="SCAComponentUnit">
+	<annotation>
+		<documentation>
+			A WPS base system represents the the installation unit of the TDS that can hold an 
+			WPS ServerInstance for accessing and storing user authentication data.
+		</documentation>
+	</annotation>
+	<complexContent>
+		<extension base="core:Unit"/>
+	</complexContent>
+	</complexType>
+	
+	
+<element name="capability.scaComponent" substitutionGroup="core:capability" type="sca:SCAComponent"/>
+	<complexType name="SCAComponent">
+	<complexContent>
+	<extension base="core:Capability">
+		<attribute name="Name" type="string">	<annotation><documentation></documentation></annotation></attribute>
+		<attribute name="Autowire"  type="string"><annotation><documentation></documentation></annotation></attribute>
+	</extension>
+	</complexContent>
+</complexType>
+
+
+<element name ="unit.scaServiceUnit" substitutionGroup="core:unit" type="sca:SCAServiceUnit"/>
+<complexType name="SCAServiceUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+<element name ="capability.scaService" substitutionGroup="core:capability" type="sca:SCAService"/>
+<complexType name ="SCAService">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.scaPropertyUnit" substitutionGroup="core:unit" type="sca:SCAPropertyUnit"/>
+<complexType name="SCAPropertyUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+<element name="capability.scaProperty" substitutionGroup="core:capability" type="sca:SCAProperty"/>
+<complexType name="SCAProperty">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="mustSupply" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Many" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Value" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Element" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+
+
+<element name= "unit.genericscaImplementationUnit" substitutionGroup="core:unit" type="sca:GenericSCAImplementationUnit"/>
+<complexType name="GenericSCAImplementationUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.genericSCAImplementation" substitutionGroup="core:capability" type="sca:GenericSCAImplementation"/>
+<complexType name="GenericSCAImplementation">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="policySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="type" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.SCAImplementationCompositeUnit" substitutionGroup="core:unit" type="sca:SCAImplementationCompositeUnit"/>
+<complexType name="SCAImplementationCompositeUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+<element name="capability.SCAImplementationComposite" substitutionGroup="core:capability" type="sca:SCAImplementationComposite"/>
+<complexType name="SCAImplementationComposite">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="policySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="type" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.SCAImplementationCplusplusUnit" substitutionGroup="core:unit" type="sca:SCAImplementationCplusplusUnit"/>
+<complexType name="SCAImplementationCplusplusUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAImplementationCplusplus" substitutionGroup="core:capability" type="sca:SCAImplementationCplusplus"/>
+<complexType name="SCAImplementationCplusplus">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="policySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="class" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.SCAImplementationJavaUnit" substitutionGroup="core:unit" type="sca:SCAImplementationJavaUnit"/>
+<complexType name="SCAImplementationJavaUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAImplementationJava" substitutionGroup="core:capability" type="sca:SCAImplementationJava"/>
+<complexType name="SCAImplementationJava">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="policySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="class" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+
+
+<element name= "unit.SCAReferenceUnit" substitutionGroup="core:unit" type="sca:SCAReferenceUnit"/>
+<complexType name="SCAReferenceUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAReference" substitutionGroup="core:capability" type="sca:SCAReference"/>
+<complexType name="SCAReference">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Multiplicity" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Autowire" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="WiredByImpl" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.SCABindingUnit" substitutionGroup="core:unit" type="sca:SCABindingUnit"/>
+<complexType name="SCABindingUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCABinding" substitutionGroup="core:capability" type="sca:SCABinding"/>
+<complexType name="SCABinding">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="URI" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name= "unit.SCAOperationUnit" substitutionGroup="core:unit" type="sca:SCAOperationUnit"/>
+<complexType name="SCAOperationUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAOperation" substitutionGroup="core:capability" type="sca:SCAOperation"/>
+<complexType name="SCAOperation">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="PolicySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name= "unit.SCAInterfaceUnit" substitutionGroup="core:unit" type="sca:SCAInterfaceUnit"/>
+<complexType name="SCAInterfaceUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAInterface" substitutionGroup="core:capability" type="sca:SCAInterface"/>
+<complexType name="SCAInterface">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="conversational" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="CallBackInterface" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Interface" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name= "unit.SCAPolicySetUnit" substitutionGroup="core:unit" type="sca:SCAPolicySetUnit"/>
+<complexType name="SCAPolicySetUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAPolicySet" substitutionGroup="core:capability" type="sca:SCAPolicySet"/>
+<complexType name="SCAPolicySet">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name= "unit.SCAPolicyIntentUnit" substitutionGroup="core:unit" type="sca:SCAPolicyIntentUnit"/>
+<complexType name="SCAPolicyIntentUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAPolicyIntent" substitutionGroup="core:capability" type="sca:SCAPolicyIntent"/>
+<complexType name="SCAPolicyIntent">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.scaPropertyValueUnit" substitutionGroup="core:unit" type="sca:SCAPropertyValueUnit"/>
+<complexType name="SCAPropertyValueUnit">
+<complexContent>
+<extension base="core:Unit">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+<element name="capability.scaPropertyValue" substitutionGroup="core:capability" type="sca:scaPropertyValue"/>
+<complexType name="scaPropertyValue">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Name" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Type" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Element" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Many" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="MustSupply" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="Source" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="File" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.SCAImplementationBPELUnit" substitutionGroup="core:unit" type="sca:SCAImplementationBPELUnit"/>
+<complexType name="SCAImplementationBPELUnit">
+<complexContent>
+<extension base="core:Unit">
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.SCAImplementationBPEL" substitutionGroup="core:capability" type="sca:SCAImplementationBPEL"/>
+<complexType name="SCAImplementationBPEL">
+<complexContent>
+<extension base="core:Capability">
+<attribute name="Requires" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="policySets" type="string"><annotation><documentation></documentation></annotation></attribute>
+<attribute name="class" type="string"><annotation><documentation></documentation></annotation></attribute>
+</extension>
+</complexContent>
+</complexType>
+
+
+</schema>

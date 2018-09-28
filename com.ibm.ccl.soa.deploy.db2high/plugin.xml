@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/db2high/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.db2high.provider.Db2highItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/db2high/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.db2high.Db2highPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="db2high"
+       class="com.ibm.ccl.soa.deploy.db2high.util.Db2highResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.db2high.domain"
+       name="%extension.db2highDomain"
+       targetNamespace="http://www.ibm.com/Zephyr/db2high/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.db2high.internal.validator.Db2highDomainValidator"/>
+       <resourceType
+             id="db2high.DB2BufferPool.conceptual"
+             name="DB2BufferPool"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2BufferPoolC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2BufferPoolTool.Description"
+             label="%db2highDB2BufferPoolTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2BufferPool.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Constraint.conceptual"
+             name="DB2Constraint"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2ConstraintC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2ConstraintTool.Description"
+             label="%db2highDB2ConstraintTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Constraint.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Field.conceptual"
+             name="DB2Field"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2FieldC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2FieldTool.Description"
+             label="%db2highDB2FieldTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Field.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Index.conceptual"
+             name="DB2Index"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2IndexC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2IndexTool.Description"
+             label="%db2highDB2IndexTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Index.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Manager.conceptual"
+             name="DB2Manager"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2ManagerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2ManagerTool.Description"
+             label="%db2highDB2ManagerTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Manager.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2PartitionGroup.conceptual"
+             name="DB2PartitionGroup"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2PartitionGroupC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2PartitionGroupTool.Description"
+             label="%db2highDB2PartitionGroupTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2PartitionGroup.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Permission.conceptual"
+             name="DB2Permission"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2PermissionC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2PermissionTool.Description"
+             label="%db2highDB2PermissionTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Permission.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2TableSpace.conceptual"
+             name="DB2TableSpace"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2TableSpaceC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2TableSpaceTool.Description"
+             label="%db2highDB2TableSpaceTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2TableSpace.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2Table.conceptual"
+             name="DB2Table"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2TableC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2TableTool.Description"
+             label="%db2highDB2TableTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2Table.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="db2high.DB2User.conceptual"
+             name="DB2User"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.db2high/templates/DB2UserC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%db2highDB2UserTool.Description"
+             label="%db2highDB2UserTool.Label"
+             path="/serverSoftwareDrawer/db2highStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="db2high.DB2User.conceptual">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

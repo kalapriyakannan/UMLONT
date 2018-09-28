@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Constraints Design</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+Interfaces and core implementation for enforcing constraints. 
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<p>
+<font color="red" size="+1">
+In milestone M5 development will be performed on the brach LI_419.
+In the first week of M6, based on the state of the branch the changes will be rolled over 
+to the HEAD.
+</font>
+</p>
+
+<a name="top"> 
+<h1 ALIGN="CENTER">Constraints documentation.</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Introduction [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+		</th>
+	</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<p>
+Constraints (or equivalent constructs) are used to set restrictions on the structure of 
+the topology (structural constraints), on a unit (e.g., atrribute value constraints), or 
+on a unit's "neighbors" (e.g., requirements and requirement expressions, 
+relization constraints, etc.), and in other cases. This document describes 
+the design of generic mechanisms to define constraints.
+
+</td>
+</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Constraint use cases and design goals [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+		</th>
+	</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<p>
+Example of constraints in TDM:
+<ul>
+<li>Presence of links (dependency, hosting links). <b>Example</b>: "classic" requirements.</li>
+<li>Cardinality of objects. <b>Example</b>: cardinality of member links with 
+specific endpoints ("classic" member requirements and requirement expressions).</li>
+<li>Attribute value constraints and Forward Resource Locators (FRL).</li>
+<li>Constraints on immediate "neighbor" units. <b>Example</b>: hosting, dependency 
+requirements.</li>
+<li>Constraints on Unit contained objects (capabilities, requirements).</li>
+<li>Constraints on "satellite" units, i.e., on units that can be reached navigating 
+from the origin unit. <b>Example</b>: deferred hosting.</li>
+<li>Complex constraints on (the parts) of the topology. <b>Examples</b>: 
+<ul>
+<li>collocation/anti-collocation</li>
+<li>domain specific constraints, e.g., "Host Satisfies JVM Requirements" WAS domain constraint</li>
+<li>logical link is a constraint on the topology</li>
+</ul>
+</li>
+</ul>
+
+The purpose of this design is to unify all the constraint cases under one umbrella
+and to provide generic and extensible mechanism for constraint definition and validation.
+Design goals:
+<ul>
+<li>Incremental implementation: M5, M6, future releases ...</li>
+<li>Maintain backward compatibility (implementation and concept compatibility).</li>
+<li>Support clean future integration with Schematron/SML.</li>
+<li>Minimize introduction of new element types and logic (leverage Requirement and 
+Requirement Expression).</li>
+<li>Regularity (same concepts can be applied through model).</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Basic principles and elements of the design [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+		</th>
+	</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+
+<h4>Constraint element</h4>
+
+Introduce the base constraint element <code>&lt;constraint/&gt;</code>. 
+<b>Constraint</b> is an extendable element that can support new types of constraints 
+not explicitly anticipated by the platform.
+<b>Constraint</b> element is contained in DeployModelObject as a list (0..*) 
+of child elements. Constraint can also contain other constraints as a list (0..*) 
+of child elements.
+
+<h4>Separation of constraint definition and its validation context</h4>
+
+<p>
+Every constraint is validated in certain context (DeployModelObject). 
+Default context is the constraint's container. But the constraint's 
+container semantics may be taken into account to choose different context
+for the validation of the constraint. For example, <b>RequirementExpresssion</b>
+(contained in <b>Requirement</b>) will be validated in the context of the
+target Capability DMO. In the future we will introduce the mechanism of 
+explicit navigation (containment and through links), which will be used 
+to identify the validation context for the constraint, thus the custom 
+navigation logic will be removed.</p>
+
+<p>
+When constraints are contained in another constraint, their semantics is 
+defined by the parent constraint. The expected pattern would be that 
+the parent constraint delegates the validation of the child constraints 
+to their validators, specifying appropriate context, and collate
+validation statuses. But the parent constraint may also choose to ignore
+containing constraints.</p>
+
+<h4>Constraint validators</h4>
+
+Each constraint type is associated with its Validator, through the
+extension point, which is defined in the <b>core</b> plug-in:
+
+<pre>
+&lt;extension-point id="constraintValidators" 
+                 name="%extensionPoint.constraintValidators.name" 
+                 schema="schema/constraintValidators.exsd"/&gt;
+</pre>
+
+Example of a constraint validator extension definition:
+
+<pre>
+&lt;extension point="com.ibm.ccl.soa.deploy.core.constraintValidators"&gt;
+    &lt;validator id="constraint.reqExpr"
+               class="com.ibm.ccl.soa.deploy.core.validator.constraints.
+                                      RequirementExpresssionConstraintValidator"/&gt;
+&lt;/extension&gt;
+</pre>
+
+where <code>id</code> is the XML element name of the constraint (which 
+identifies <i>constraint type</i>), and <code>class</code>
+is the Java class of the validator. Validation framework validates each 
+constraint using the associated validator. Constraint validators implement interface
+
+<pre>
+public interface ConstraintValidator {
+
+	public IDeployStatus validate(Constraint constraint, DepoyModelObject context);
+
+	...
+}
+</pre>
+
+</td>
+</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Requirement and requirement expressions [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+		</th>
+	</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+
+<b>Requirement</b> extends <b>Constraint</b>. 
+
+In the first phase of the transition to the unified constraints usage 
+(milestone M5):
+<ul>
+<li> the list of Requirements will be kept separately from all other constraints in Unit,</li>
+<li> Requirements will not be validated through the Constraint Validation framework, they will
+still be validated through UnitValidator.</li>
+</ul>
+
+In the future, there will be a <b>RequirementConstraintValidator</b> that will perform 
+validation of Requirements.
+
+<p>
+<b>RequirementExpression</b> extends <b>Constraint</b>. 
+RequirementExpression corresponds to XML element &lt;constraint.reqExpr/&gt;.
+RequirementExpresssion is used, as before, in Requirements to constraint 
+the target capability or to constraint the cardinality of member links. 
+It is also used as an <b>Attribute Value Constraint</b>, when it is contained
+in <b>Capability</b>. There is <b>RequirementExpresssionConstraintValidator</b>
+associated with the RequirementExpression constraint type. It uses
+the Requirement Expresssion Interpreter framework to perform the actual
+logic of validation.
+</p>
+
+In the future: 
+<ul>
+<li>we will abandon RequirementExpression constraint (with its explicit 
+interpreter specification) in favor of explicit constraint types, such as:
+<pre>
+&lt;constraint.numerical/&gt;
+
+&lt;constraint.enumeration/&gt;
+...
+</pre></li>
+<li>The code of RequirementExpression Interpreters will be migrated to form the basis
+for the corresponding Constraint Validators.</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Structural consraints [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+		</th>
+	</tr>
+</table>
+<table width="500">
+<tr>
+TO DO
+<td>
+</td>
+</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Alexander Totok</b> <i>(aatotok{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2007 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+		</th>
+	</tr>
+</table>
+</BODY>
+</HTML>

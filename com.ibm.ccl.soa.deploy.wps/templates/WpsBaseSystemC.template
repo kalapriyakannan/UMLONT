@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:wps="http://www.ibm.com/Zephyr/wps/1.0.0/"
+xmlns:os = "http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+name="WpsBaseSystem Template">
+  <wps:unit.wpsBaseSystemUnit name="WpsBaseSystem" configurationUnit="false" conceptual="true">
+    <wps:capability.wpsBaseSystem name="WpsBaseSystem" linkType="any"/>
+    <core:requirement name="Host on the Server" dmoType="os:OperatingSystem" linkType="hosting" use="required"/>  
+  </wps:unit.wpsBaseSystemUnit>
+</core:topology>

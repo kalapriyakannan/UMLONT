@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.ibm.ccl.soa.deploy.ide">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.ibm.ccl.soa.deploy.ide" id="unitPublisher" name="SOA Topology Unit Publisher"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to group the elements that adapt elements from the environment (or workspace) to a Unit definition in the model (i.e., the unitProvider). The unitPublisher is used to define a publisher for a specific unit type. This may be used by any publisher that wishes but more than likely it will just be used by the DevelopmentTimeTopologyPublisher which will be an impelementation of the &lt;b&gt;topology&lt;/b&gt; extension point.
+&lt;p&gt;
+[Add more description.]
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <complexType>
+         <choice>
+            <element ref="unitPublisher"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="unitPublisher">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name"/>
+         </appInfo>
+         <documentation>
+            Define this extension to create a publisher that can publish specific unit types.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="enablement"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide a translateable name that can be exposed to users in dialogs and wizards.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Provide a translateable description that can be used to explain to the user what source elements may be adapted to be displayed in the Topology Editor.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of the unit publisher.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.ibm.ccl.soa.deploy.ide.publisher.UnitPublisher"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         ... filler for now 
+
+The &lt;i&gt;fooBar&lt;/i&gt; extension allows a client to define a new design variable
+for the Workflow palette. Each &lt;i&gt;fooBar&lt;/i&gt; extension defines two
+attributes, a text value and a programming language for which the design
+variable may be used.
+
+&lt;p&gt;
+The following example declares a new design variable &quot;bobdole&quot; for all
+programming languages.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&gt;
+
+  &lt;extension point=&quot;org.acme.fooBar&quot;&gt;
+    &lt;fooBar
+       designVariable = &quot;bobdole&quot;
+       language = &quot;*&quot;
+       /&gt;
+  &lt;/fooBar&gt;
+  &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         This extension point is published API and will only incur non-breaking
+changes in future releases.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2005, 2006 IBM Corporation.
+Licensed Material - Property of IBM. All rights reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure
+restricted by GSA ADP Schedule Contract with IBM Corp.
+
+Contributors:
+ IBM Corporation - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>

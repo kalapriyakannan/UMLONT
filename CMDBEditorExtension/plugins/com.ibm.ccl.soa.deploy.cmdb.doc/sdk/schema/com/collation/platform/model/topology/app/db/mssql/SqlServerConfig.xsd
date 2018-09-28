@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/mssql/SqlServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.mssql.SqlServerConfig">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.db.mssql.SqlServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="configId" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="value" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="isDynamic" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="isAdvanced" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

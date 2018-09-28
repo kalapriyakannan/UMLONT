@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereUserRegistry.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereSSLSettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereCell.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereGlobalSecuritySettings">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereCell" nillable="true" minOccurs="0"/>
+          <xsd:element name="sslSettings" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereSSLSettings" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="userRegistries" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereUserRegistry" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="activeUserRegistry" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereUserRegistry" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultSslSetting" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereSSLSettings" nillable="true" minOccurs="0"/>
+          <xsd:element name="useLocalSecurityServer" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="useDomainQualifiedUserNames" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="enabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="cacheTimeoutMsecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="issuePermissionWarning" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="activeIIOPProtocol" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enforceJava2Security" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableJava2SecRuntimeFiltering" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

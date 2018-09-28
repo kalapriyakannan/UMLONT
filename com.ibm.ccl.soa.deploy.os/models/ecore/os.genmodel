@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.os/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.os/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.os" modelName="Os" nonNLSMarkers="true"
+    rootExtendsInterface="" suppressEMFTypes="true" featureMapWrapperInterface=""
+    codeFormatting="true" importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/os.xsd</foreignModel>
+  <genPackages prefix="Os" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="os.ecore#/">
+    <genEnums ecoreEnum="os.ecore#//AIXAuthMethodType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXAuthMethodType/SYSTEM"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXAuthMethodType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXAuthMethodType/tokenUsername"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//AIXDesktopType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXDesktopType/CDE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXDesktopType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXDesktopType/KDE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXDesktopType/GNOME"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//AIXUserRegisteringMethodType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXUserRegisteringMethodType/files"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXUserRegisteringMethodType/NIS"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//AIXUserRegisteringMethodType/DCE"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//ArchitectureBusType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//ArchitectureBusType/_32Bit"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//ArchitectureBusType/_64Bit"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//DefaultWindowsUserGroups">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/Administrators"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/BackupOperators"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/DistributedCOMUsers"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/Guests"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/NetworkConfigurationOperators"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/PowerUsers"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/PrintOperators"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/RemoteDesktopUsers"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/Replicator"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//DefaultWindowsUserGroups/Users"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//EncryptionLevelType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//EncryptionLevelType/_40"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//EncryptionLevelType/_128"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os.ecore#//KernelWidthType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//KernelWidthType/_32Bit"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//KernelWidthType/_64Bit"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//LinuxServiceStartupTypeType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStartupTypeType/Automatic"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStartupTypeType/Boot"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStartupTypeType/System"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStartupTypeType/Manual"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStartupTypeType/Disabled"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//LinuxServiceStatusType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStatusType/Running"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStatusType/Stopped"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//LinuxServiceStatusType/Unknown"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//OperatingSystemType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/AIX"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/WindowsCygwin"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/HPUX"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/Linux"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/Solaris"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/Windows"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/OpenMVS"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/i5OperatingSystem"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/MacOS"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/NetWare"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/VMwareESX"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/Darwin"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/Tru64"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/FreeBSD"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/IPSO"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/zOS"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/zVM"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/zLinux"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//OperatingSystemType/_"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//RedhatDesktopType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatDesktopType/GNOME"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatDesktopType/KDE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatDesktopType/NONE"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//RedhatLinuxBootLoaderType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxBootLoaderType/GRUB"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxBootLoaderType/LILO"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxBootLoaderType/Other"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//RedhatLinuxProductTypeType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxProductTypeType/Server"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxProductTypeType/PersonalDesktop"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxProductTypeType/WorkStation"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxProductTypeType/Other"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//RedhatLinuxServiceStartupTypeType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStartupTypeType/Automatic"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStartupTypeType/Boot"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStartupTypeType/System"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStartupTypeType/Manual"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStartupTypeType/Disabled"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//RedhatLinuxServiceStatusType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStatusType/Running"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStatusType/Stopped"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//RedhatLinuxServiceStatusType/Unknown"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//SELinuxStateType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SELinuxStateType/disabled"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SELinuxStateType/permissive"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SELinuxStateType/enforcing"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//SUSEDesktopType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSEDesktopType/GNOME"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSEDesktopType/KDE"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSEDesktopType/NONE"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//SUSELinuxBootLoaderType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxBootLoaderType/GRUB"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxBootLoaderType/LILO"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxBootLoaderType/Other"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//SUSELinuxServiceStartupTypeType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStartupTypeType/Automatic"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStartupTypeType/Boot"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStartupTypeType/System"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStartupTypeType/Manual"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStartupTypeType/Disabled"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//SUSELinuxServiceStatusType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStatusType/Running"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStatusType/Stopped"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//SUSELinuxServiceStatusType/Unknown"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//TransportLayerProtocolType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/TCP"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/UDP"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/DCCP"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/SCTP"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/IL"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//TransportLayerProtocolType/RUDP"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//WindowsDirectoryType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsDirectoryType/WINDOWS"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsDirectoryType/WINNT"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//WindowsProductTypeType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsProductTypeType/WorkStation"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsProductTypeType/DomainController"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsProductTypeType/Server"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsProductTypeType/Other"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//WindowsServiceErrorControlType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceErrorControlType/Ignore"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceErrorControlType/Normal"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceErrorControlType/Severe"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceErrorControlType/Critical"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceErrorControlType/Unknown"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//WindowsServiceStartupType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStartupType/Boot"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStartupType/System"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStartupType/Automatic"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStartupType/Manual"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStartupType/Disabled"/>
+    </genEnums>
+    <genEnums ecoreEnum="os.ecore#//WindowsServiceStatusType">
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStatusType/Running"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStatusType/Stopped"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStatusType/Paused"/>
+      <genEnumLiterals ecoreEnumLiteral="os.ecore#//WindowsServiceStatusType/Unknown"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="os.ecore#//AIXAuthMethodTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//AIXDesktopTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//AIXUserRegisteringMethodTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//ArchitectureBusTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//DefaultWindowsUserGroupsObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//EncryptionLevelTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//KernelWidthTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//LinuxServiceStartupTypeTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//LinuxServiceStatusTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//OperatingSystemTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//RedhatDesktopTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//RedhatLinuxBootLoaderTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//RedhatLinuxProductTypeTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//RedhatLinuxServiceStartupTypeTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//RedhatLinuxServiceStatusTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//SELinuxStateTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//SUSEDesktopTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//SUSELinuxBootLoaderTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//SUSELinuxServiceStartupTypeTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//SUSELinuxServiceStatusTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//TCPPortType"/>
+    <genDataTypes ecoreDataType="os.ecore#//TransportLayerProtocolTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//UDPPortType"/>
+    <genDataTypes ecoreDataType="os.ecore#//WindowsDirectoryTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//WindowsProductTypeTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//WindowsServiceErrorControlTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//WindowsServiceStartupTypeObject"/>
+    <genDataTypes ecoreDataType="os.ecore#//WindowsServiceStatusTypeObject"/>
+    <genClasses ecoreClass="os.ecore#//AIXLocalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalGroup/groupDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalGroup/groupSid"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//AIXLocalGroupUnit"/>
+    <genClasses ecoreClass="os.ecore#//AIXLocalService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/actionType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/executablePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/serviceDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelEight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelFive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelFour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelNine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelOne"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelSeven"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelSix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelThree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelTwo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalService/startupRunLevelZero"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//AIXLocalServiceUnit"/>
+    <genClasses ecoreClass="os.ecore#//AIXLocalUser">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/accountDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/accountDisabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/accountExpirationTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/changePasswordNextLogon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/fullName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/homeDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/isAdmin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/loginPermitted"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/loginRetries"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/loginTimes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/maxCharRepeats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/maxPasswordAgeInWeeks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/maxPasswordValidWeeks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/minAlphaCharsInPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/minDiffChars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/minOtherCharsInPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/minPasswordAgeInWeeks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/minPasswordLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/notReusableNumberOfPasswords"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/passReuseNotAllowedInWeeks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/passwordChangeWarnTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/passwordNeverExpires"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/primaryAuthMethod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/remoteLoginIsAllowed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/secondaryAuthMethod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/shell"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/suGroupsAllowed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/suIsAllowed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/timeLastLogin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/userCannotChangePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/userRegisteringMethod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/userSid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXLocalUser/usuccessfulLoginCount"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//AIXLocalUserUnit"/>
+    <genClasses ecoreClass="os.ecore#//AIXOperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/desktop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/installDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/kernel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/lastBootUpTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//AIXOperatingSystem/tCB"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//AIXOperatingSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//DataFile"/>
+    <genClasses ecoreClass="os.ecore#//DataFileUnit"/>
+    <genClasses ecoreClass="os.ecore#//Directory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Directory/directoryPath"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//DirectoryUnit"/>
+    <genClasses ecoreClass="os.ecore#//FileSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystem/availableSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystem/capacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystem/mountPoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystem/type"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//FileSystemContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/fixedPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/lastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/permissions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/realFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//FileSystemContent/uRI"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//FileSystemContentUnit"/>
+    <genClasses ecoreClass="os.ecore#//FileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalGroup/groupDescription"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalGroupUnit"/>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/executablePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/serviceAccount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/serviceDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/serviceStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelFive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelFour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelOne"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelSix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelThree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelTwo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupRunLevelZero"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalService/startupType"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalServiceUnit"/>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalUser">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/accountDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/accountDisabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/changePasswordNextLogon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/fullName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/homeDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/passwordNeverExpires"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/shell"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/userCannotChangePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxLocalUser/userName"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//LinuxLocalUserUnit"/>
+    <genClasses ecoreClass="os.ecore#//LinuxOperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//LinuxOperatingSystem/kernelRelease"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//LinuxOperatingSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//LocalFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//LocalFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//NFSFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//NFSFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//OpenVmsFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//OpenVmsFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//OperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/fqdn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/kernelArchitecture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/kernelVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/kernelWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/locale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/osDistribution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/osServicepack"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/osType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/osVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystem/timeZone"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//OperatingSystemRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute os.ecore#//OperatingSystemRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityAixLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityAixLocalService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityAixLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityAixOperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityDataFile"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityFileSystemContent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityLinuxLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityLinuxLocalService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityLinuxLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityLinuxOperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityLocalFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityNFSFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityOpenVmsFileSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityOperatingSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityPort"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityPortConsumer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityRedhatLinuxOperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityRemoteFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySMBFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySolarisFileSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySuseLinuxLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilitySuseLinuxOperatingSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityUnixDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityUnixFileSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityUserGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsFileSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsLocalService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/capabilityWindowsOperatingSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitAixLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitAixLocalServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitAixLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitAixOperatingSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitDataFileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitDirectoryUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitFileSystemContentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitFileSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitLinuxLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitLinuxLocalServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitLinuxLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitLinuxOperatingSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitLocalFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitNFSFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitOpenVmsFileSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitOperatingSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitPortConfigUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitRemoteFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitSMBFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitSolarisFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitUnixFileSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitUserGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitWindowsFileSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitWindowsLocalGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitWindowsLocalServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitWindowsLocalUser"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os.ecore#//OperatingSystemRoot/unitWindowsOperatingSystemUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//OperatingSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Port/applicationLayerProtocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Port/ipAddressOrHostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Port/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Port/portName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//Port/transportLayerProtocol"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//PortConfigUnit"/>
+    <genClasses ecoreClass="os.ecore#//PortConsumer"/>
+    <genClasses ecoreClass="os.ecore#//RedhatLinuxLocalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalGroup/groupSid"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//RedhatLinuxLocalService"/>
+    <genClasses ecoreClass="os.ecore#//RedhatLinuxLocalUser">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/accountDisableAfterDays"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/accountDisableDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/daysBeforePasswordMayChange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/lastPasswordChange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/passwordExpireAfterDays"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/passwordExpireWarningDays"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxLocalUser/userSid"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//RedhatLinuxOperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/bootLoader"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/desktop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/installDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/lastBootUpTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/productType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RedhatLinuxOperatingSystem/sELinuxState"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//RemoteFileSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RemoteFileSystem/exportName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//RemoteFileSystem/serverName"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//RemoteFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//SMBFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//SMBFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//SolarisFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//SolarisFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//SUSELinuxLocalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//SUSELinuxLocalGroup/groupId"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//SUSELinuxLocalService"/>
+    <genClasses ecoreClass="os.ecore#//SUSELinuxLocalUser"/>
+    <genClasses ecoreClass="os.ecore#//SUSELinuxOperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//SUSELinuxOperatingSystem/bootLoader"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//SUSELinuxOperatingSystem/desktop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//SUSELinuxOperatingSystem/lastBootUpDate"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//UnixDirectory"/>
+    <genClasses ecoreClass="os.ecore#//UnixFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//UnixFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//User/userId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//User/userPassword"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//UserGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//UserGroup/groupName"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//UserGroupUnit"/>
+    <genClasses ecoreClass="os.ecore#//UserUnit"/>
+    <genClasses ecoreClass="os.ecore#//WindowsDirectory"/>
+    <genClasses ecoreClass="os.ecore#//WindowsFileSystem"/>
+    <genClasses ecoreClass="os.ecore#//WindowsFileSystemUnit"/>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalGroup/description1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalGroup/groupSid"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalGroupUnit"/>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/dependantComponents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/errorControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/executablePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/logOnAsSystem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/runProgram"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceAccount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceAccountPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceDependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceDisplayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/serviceStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/startParams"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalService/startupType"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalServiceUnit"/>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalUser">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/accountDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/accountDisabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/accountLocked"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/changePasswordNextLogon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/enableRemoteControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/fullName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/homeFolder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/logonScript"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/passwordNeverExpires"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/profilePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/userAccountType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/userCannotChangePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/userSid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsLocalUser/userSidType"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//WindowsLocalUserUnit"/>
+    <genClasses ecoreClass="os.ecore#//WindowsOperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/company"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/domainAdmin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/domainName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/domainPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/encryptionLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/installDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/languageGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/lastBootUpTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/machineObjectOU"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/numberOfLicensedUsers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/productKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/productType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/systemDrive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/windowsDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os.ecore#//WindowsOperatingSystem/workgroupName"/>
+    </genClasses>
+    <genClasses ecoreClass="os.ecore#//WindowsOperatingSystemUnit"/>
+  </genPackages>
+</genmodel:GenModel>

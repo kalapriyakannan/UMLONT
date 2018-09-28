@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/sys/Function.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/net/IpRoute.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/net/IpInterface.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.net.Router">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.Function">
+        <xsd:sequence>
+          <xsd:element name="interfaces" type="coll:com.collation.platform.model.topology.net.IpInterface" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="forwarding" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultRoute" type="coll:com.collation.platform.model.topology.net.IpRoute" nillable="true" minOccurs="0"/>
+          <xsd:element name="routingTable" type="coll:com.collation.platform.model.topology.net.IpRoute" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

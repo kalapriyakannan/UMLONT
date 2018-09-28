@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/LotusConfig.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.WebConfig">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.lotus.LotusConfig">
+        <xsd:sequence>
+          <xsd:element name="SSLCiphers" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableSSLV2" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="hostNames" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="bindToHostName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DNSLookup" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DNSLookupCache" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DNSLookupCacheSize" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DNSLookupCacheFoundTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="DNSLookupCacheNotFoundTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="numberOfActiveThreads" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="homeURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTMLDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="iconDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="iconURLPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CGIDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CGIURLPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="allowHTTPClientsToBrowseDatabases" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumRequestsOverSingleConnection" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="minimumActiveThreads" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultHomePage" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumCachedCommands" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="optimizeHTTPPerformance" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="accessLogFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="timeFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="logFileDuration" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxLogEntryLength" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxSizeOfAccessLog" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTTPPersistentConnections" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxRequestsPerPersistentConnection" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="persistentConnectionTimeout" type="xsd:double" nillable="true" minOccurs="0"/>
+          <xsd:element name="requestTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="inputTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="outputTimeout" type="xsd:double" nillable="true" minOccurs="0"/>
+          <xsd:element name="CGITimeout" type="xsd:double" nillable="true" minOccurs="0"/>
+          <xsd:element name="listenQueueSize" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxNumberOfConcurrentNetworkConnections" type="xsd:double" nillable="true" minOccurs="0"/>
+          <xsd:element name="ipAddressAllowDenyPriority" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="IPAddressAllowList" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="ipAddressDenyList" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxURLLength" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxNumberOfURLPathSegments" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxNumberOfRequestHeaders" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxSizeOfRequestHeaders" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxSizeOfRequestContent" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionAuthentication" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="useIIsServer" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxCachedDesigns" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxCachedUsers" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="cachedUserExpirationInterval" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="storeUserPreferencesInCookies" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultRegionalLocale" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="imageConversionFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="interlacedRendering" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultLinesPerViewPage" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxLinesPerViewPage" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultSearchResultLimit" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxSearchResultLimit" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="makeAccessibleToCrawlers" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="redirectToResolveExternalLinks" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="javaServletSupport" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverURLPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="classPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="servletFileExtensions" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionStateTracking" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="idleSessionTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxActiveSessions" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionPersistence" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxPostDataInKBytes" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="fileCompressionOnUpload" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultStringResourceLanguage" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="additionalStringResourceLanguages" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="useUTF8ForOutput" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="useUTF8ForHTMLForms" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="defaultCharacterSetGroup" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="western" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="centralEuropean" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="japanese" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="traditionalChinese" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="simplifedChinese" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="korean" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="cyrillic" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="greek" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="turkish" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="thai" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="baltic" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="arabic" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="hebrew" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="vietnamese" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="indic" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="useAutoDetectionOfCharset" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="charsetInHeader" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="metaCharset" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumCachedDesigns" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumCachedUsers" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumSessionTimeout" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

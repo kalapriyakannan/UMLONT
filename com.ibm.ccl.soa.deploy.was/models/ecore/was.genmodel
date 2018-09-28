@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.was/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.was/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.was" modelName="Was" nonNLSMarkers="true"
+    rootExtendsInterface="" suppressEMFTypes="true" featureMapWrapperInterface=""
+    importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/constraint/constraint.genmodel#//constraint ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../com.ibm.ccl.soa.deploy.j2ee/models/ecore/j2ee.genmodel#//j2ee ../../../com.ibm.ccl.soa.deploy.java/models/ecore/java.genmodel#//java ../../../com.ibm.ccl.soa.deploy.j2ee.jms/models/ecore/jms.genmodel#//jms ../../../com.ibm.ccl.soa.deploy.os/models/ecore/os.genmodel#//os">
+  <foreignModel>../schemas/wasDomain.xsd</foreignModel>
+  <genPackages prefix="Was" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="was.ecore#/">
+    <genEnums ecoreEnum="was.ecore#//AcknowledgeModeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//AcknowledgeModeEnum/AutoAcknowledge"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//AcknowledgeModeEnum/DuplicatesOkAutoAcknowledge"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//AcknowledgeModeEnum/NonPersistent"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//CertificateMapMode">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//CertificateMapMode/EXACTDN"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//CertificateMapMode/CERTIFICATEFILTER"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//CertificateMapMode/other"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//CFTargetSignificanceEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//CFTargetSignificanceEnum/Preferred"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//CFTargetSignificanceEnum/Required"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ClassloaderMode">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ClassloaderMode/PARENTFIRST"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ClassloaderMode/PARENTLAST"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ClassloaderPolicyType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ClassloaderPolicyType/SINGLE"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ClassloaderPolicyType/MULTIPLE"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ConnectionDeliveryModeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionDeliveryModeEnum/Application"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionDeliveryModeEnum/Persistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionDeliveryModeEnum/NonPersistent"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ConnectionFactoryTargetTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionFactoryTargetTypeEnum/BusMember"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionFactoryTargetTypeEnum/Custom"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionFactoryTargetTypeEnum/ME"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ConnectionProximityEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionProximityEnum/Bus"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionProximityEnum/Host"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionProximityEnum/Cluster"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ConnectionProximityEnum/Server"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//DataSourceHelperClassNames">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDB2UniversalDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDB2DataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterCloudscapeNetworkServerDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterInformixDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterSybaseDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterOracleDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterConnectJDBCDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterWSConnectJDBCDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterSequeLinkDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterMSSQLDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterConnectJDBCDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDataDirectDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDB2390DataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterSybase11DataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterCloudscapeDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDB2AS400DataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterOracle10gDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDB2390LocalDataStoreHelperClass"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDerbyDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterDerbyNetworkServerDataStoreHelper"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DataSourceHelperClassNames/comIbmWebsphereRsadapterGenericDataStoreHelper"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//DB2DataSourceTemplateEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UniversalJDBCDriver40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UniversalJDBCDriverDataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UniversalJDBCDriver40XADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UniversalJDBCDriverXADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2LegacyCLIBasedJDBCDriver40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2LegacyCLIBasedJDBCDriverDataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2LegacyCLIBasedJDBCDriver40XADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2LegacyCLIBasedJDBCDriverXADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesNative40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesNativeDataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesNativeXA40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesNativeXADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesToolbox40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesToolboxDataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesToolboxXA40DataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2UDBForISeriesToolboxXADataSource"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2ForZOSLocalJDBCDriver40DataSourceRRS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2DataSourceTemplateEnum/DB2ForZOSLocalJDBCDriverDataSourceRRS"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//DB2JdbcProviderType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/none"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UniversalJDBCDriverProvider"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UniversalJDBCDriverProviderXA"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2LegacyCLIBasedType2JDBCDriver"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2LegacyCLIBasedType2JDBCDriverXA"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UDBForISeriesNative"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UDBForISeriesNativeXA"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UDBForISeriesToolbox"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2UDBForISeriesToolboxXA"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DB2JdbcProviderType/DB2ForZOSLocalJDBCProviderRRS"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//DerbyJdbcProviderTypeType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DerbyJdbcProviderTypeType/CloudscapeJDBCProvider"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DerbyJdbcProviderTypeType/CloudscapeJDBCProviderXA"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//DerbyJdbcProviderTypeType/CloudscapeNetworkServerUsingUniversalJDBCDriver"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//EndPointListenerNameEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//EndPointListenerNameEnum/SOAPHTTPChannel1"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//EndPointListenerNameEnum/SOAPHTTPChannel2"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//EndPointListenerNameEnum/SOAPJMSChannel1"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//EndPointListenerNameEnum/SOAPJMSChannel2"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//IIOPSecurityProtocols">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//IIOPSecurityProtocols/IBM"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//IIOPSecurityProtocols/CSI"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//IIOPSecurityProtocols/BOTH"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//IIOPSecurityProtocols/other"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//JdbcImplementationTypeType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//JdbcImplementationTypeType/ConnectionPool"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//JdbcImplementationTypeType/XA"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//JMSDestinationTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//JMSDestinationTypeEnum/Queue"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//JMSDestinationTypeEnum/Topic"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//LDAPDirectoryType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/IBMDIRECTORYSERVER"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/SECUREWAY"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/IPLANET"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/NETSCAPE"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/DOMINO502"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/NDS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/ACTIVEDIRECTORY"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//LDAPDirectoryType/CUSTOM"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//MessageReliabilityEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/None"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/BestEffortNonpersistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/ExpressNonpersistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/ReliableNonpersistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/ReliablePersistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/AssuredPersistent"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//MessageReliabilityEnum/AsBusDestination"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//Policies">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//Policies/EntirePool"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//Policies/FailingConnectionOnly"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ReadAheadOptimizationEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ReadAheadOptimizationEnum/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ReadAheadOptimizationEnum/AlwaysOn"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ReadAheadOptimizationEnum/AlwaysOff"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//ShareDurableSubscriptionsEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ShareDurableSubscriptionsEnum/InCluster"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ShareDurableSubscriptionsEnum/AlwaysShared"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//ShareDurableSubscriptionsEnum/NeverShared"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WARClassloaderPolicy">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WARClassloaderPolicy/MODULE"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WARClassloaderPolicy/APPLICATION"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasAccountTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasAccountTypeEnum/localsystem"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasAccountTypeEnum/specifieduser"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasApplicationMap">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasApplicationMap/MAPNONE"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasApplicationMap/MAPDEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasApplicationMap/MAPALL"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasApplicationMap/UNKNOWN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="was.ecore#//WasDefaultSecuritySubjectEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDefaultSecuritySubjectEnum/AllAuthenticated"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDefaultSecuritySubjectEnum/Everyone"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasDeploymentManagerPortNames">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/bootstrapAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/cellDiscoveryAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/csiv2SslMutualauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/csiv2SslServerauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/dcsUnicastAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/orbListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/sasSslServerauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/soapConnectorAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/wcAdminhost"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasDeploymentManagerPortNames/wcAdminhostSecure"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasEditionEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasEditionEnum/Base"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasEditionEnum/Express"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasEditionEnum/NetworkDeployment"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasEndpointListenerType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasEndpointListenerType/SOAPOverHttp"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasEndpointListenerType/SOAPOverJms"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasNodeGroupTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodeGroupTypeEnum/default"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodeGroupTypeEnum/user"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasNodePortNames">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/bootstrapAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/csiv2SslMutualauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/csiv2SslServerauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/dcsUnicastAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/drsCleintAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/nodeDiscoveryAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/nodeIpv6MulitcastDiscoveryAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/nodeMulticastDiscoveryAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/orbListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/sasSslServerauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasNodePortNames/soapConnectorAddress"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasProfileTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasProfileTypeEnum/dmgr"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasProfileTypeEnum/managed"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasProfileTypeEnum/default"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasProfileTypeEnum/none"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasRoutingDefinitionTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasRoutingDefinitionTypeEnum/DirectServiceIntegrationBusLink"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasRoutingDefinitionTypeEnum/DirectWebsphereMQLink"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasSibDestinationTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/WebService"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/Port"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/Queue"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/TopicSpace"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/Alias"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasSibDestinationTypeEnum/Foreign"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="was.ecore#//WasUserRegistryTypes">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasUserRegistryTypes/OS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasUserRegistryTypes/LDAP"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasUserRegistryTypes/CUSTOM"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasWebServerNodeType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerNodeType/MANAGED"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerNodeType/UNMANAGED"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasWebServerOS">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/WINDOWS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/SOLARIS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/AIX"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/HPUX"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/LINUX"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/OS400"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/OS390"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerOS/Unknown"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WasWebServerType">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/IHS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/APACHE"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/IIS"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/DOMINO"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/SUNJAVASYSTEM"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WasWebServerType/UNKNOWN"/>
+    </genEnums>
+    <genEnums ecoreEnum="was.ecore#//WebsphereAppServerPortNames">
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/dcsUnicastAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/bootstrapAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/soapConnectorAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/sasSslServerAuthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/csiv2SslMutualauthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/csiv2SslServerAuthListenerAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/wcAdminhost"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/wcAdminhostSecure"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/wcDefaulthost"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/wcDefaulthostSecure"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/sibEndpointAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/sibEndpointSecureAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/sibMqEndpointAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/sibMqEndpointSecureAddress"/>
+      <genEnumLiterals ecoreEnumLiteral="was.ecore#//WebsphereAppServerPortNames/orbListenerAddress"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="was.ecore#//AcknowledgeModeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//CertificateMapModeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//CFTargetSignificanceEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ClassloaderModeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ClassloaderPolicyTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ConnectionDeliveryModeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ConnectionFactoryTargetTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ConnectionProximityEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//DataSourceHelperClassNamesObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//DB2DataSourceTemplateEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//DB2JdbcProviderTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//DerbyJdbcProviderTypeTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//EndPointListenerNameEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//IIOPSecurityProtocolsObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//JdbcImplementationTypeTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//JMSDestinationTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//LDAPDirectoryTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//MessageReliabilityEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//PoliciesObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ReadAheadOptimizationEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//ShareDurableSubscriptionsEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WARClassloaderPolicyObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasAccountTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasApplicationMapObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasDefaultSecuritySubjectEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasDeploymentManagerPortNamesObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasEditionEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasEndpointListenerTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasNodeGroupTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasNodePortNamesObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasProfileTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasRoutingDefinitionTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasSibDestinationTypeEnumObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasUserRegistryTypesObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasWebServerNodeTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasWebServerOSObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WasWebServerTypeObject"/>
+    <genDataTypes ecoreDataType="was.ecore#//WebsphereAppServerPortNamesObject"/>
+    <genClasses ecoreClass="was.ecore#//Classloader">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//Classloader/mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//Classloader/startWeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//Classloader/warClassLoaderPolicy"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//DB2JdbcProvider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//DB2JdbcProvider/jdbcType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//DB2JdbcProvider/template"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//DB2JdbcProviderUnit"/>
+    <genClasses ecoreClass="was.ecore#//DerbyJdbcProvider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//DerbyJdbcProvider/template"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//DerbyJdbcProviderUnit"/>
+    <genClasses ecoreClass="was.ecore#//ExtendedJdbcProvider"/>
+    <genClasses ecoreClass="was.ecore#//ExtendedJdbcProviderUnit"/>
+    <genClasses ecoreClass="was.ecore#//HostNameAliasType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//HostNameAliasType/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//HostNameAliasType/hostnameAlias"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//SharedLibraryEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//SharedLibraryEntry/classPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//SharedLibraryEntry/nativePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//SharedLibraryEntry/sharedLibraryEntryName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//VirtualHostType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//VirtualHostType/hostNameAlias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//VirtualHostType/hostName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasAdvancedLdapConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/certificateFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/certificateMapMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/groupFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/groupIdMap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/groupMemberIdMap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/userFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasAdvancedLdapConfiguration/userIdMap"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasApplicationClassLoaderPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasApplicationClassLoaderPolicy/reloadClasses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasApplicationClassLoaderPolicy/reloadInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasApplicationExt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasApplicationExt/reloadInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasApplicationExt/shareSessionContext"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasApplicationServerClassLoaderPolicy"/>
+    <genClasses ecoreClass="was.ecore#//WasCell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCell/cellName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCell/isDistributed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCell/wasVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasCellUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasClassLoaderConfigurationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasClassLoaderPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasClassLoaderPolicy/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasClassLoaderPolicy/policy"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCluster/clusterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCluster/createReplicationDomain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCluster/preferLocal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasCluster/wasVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasClusterUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasConfigurationContainer"/>
+    <genClasses ecoreClass="was.ecore#//WasDatasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDatasource/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDatasource/connectionTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDatasource/maxConnections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDatasource/minConnections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDatasource/statementCacheSize"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDatasourceUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/clientIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/connectionProximity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/durableSubscriptionHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/nonpersistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/persistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/providerEndpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/readAhead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/shareDurableSubscriptions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/targetInboundTransportChain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/targetSignificance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/tempQnamePrefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingConnectionFactoryConfiguration/tempTopicNamePrefix"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingConnectionFactoryUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/clientIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/connectionProximity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/nonpersistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/persistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/providerEndpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/readAhead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/targetInboundTransportChain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/targetSignificance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueConnectionFactoryConfiguration/tempQNamePrefix"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingQueueConnectionFactoryUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingQueueDestination">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueDestination/connectionDeliveryMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueDestination/messageLiveTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingQueueDestination/messagePriority"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingQueueDestinationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/clientIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/connectionProximity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/durableSubscriptionHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/nonpersistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/persistentMessageReliability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/providerEndpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/readAhead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/shareDurableSubscriptions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/targetInboundTransportChain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/targetSignificance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicConnectionFactoryConfiguration/tempTopicNamePrefix"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingTopicConnectionFactoryUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingTopicDestination">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicDestination/connectionDeliveryMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicDestination/messageLiveTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicDestination/messagePriority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasDefaultMessagingTopicDestination/topicName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasDefaultMessagingTopicDestinationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDeploymentManager"/>
+    <genClasses ecoreClass="was.ecore#//WasDeploymentManagerUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasDeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute was.ecore#//WasDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityDb2JdbcProvider"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityDerbyJdbcProvider"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityExtendedJdbcProvider"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasAdvancedLdapConfiguration"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasApplicationClassLoaderPolicy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasApplicationExt"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasApplicationServerClassLoaderPolicy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasCell"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasClassLoaderPolicy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasCluster"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasConfigurationContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDatasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDefaultMessagingConnectionFactoryConfiguration"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDefaultMessagingQueueConnectionFactoryConfiguration"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDefaultMessagingQueueDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDefaultMessagingTopicConnectionFactoryConfiguration"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDefaultMessagingTopicDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasDeploymentManager"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasEndpointListenerConfiguration"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasHandlerList"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasJ2CAuth"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasJ2EEServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasJMSActivationSpecification"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasLdapConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasMessagingEngine"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasModuleClassLoaderPolicy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasNode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasNodeGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasPluginAdmin"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasPluginRedirection"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSecurity"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSecuritySubject"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSharedLibContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSharedLibrary"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibDestination"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibForeignBus"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibInboundPort"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibInboundService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibMediation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibOutboundPort"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibOutboundService"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSibServiceIntegrationBusLink"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSIBus"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSubstitutionVariable"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasSystem"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasv4datasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasv5datasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasv5DB2Datasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasv5DB2ZosDatasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasVirtualHost"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasWebAppExt"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasWebServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasWebServerManagement"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/capabilityWasWebServerPlugin"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/classloader"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasEarClassloaderPolicyConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasJ2EEConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasJNDIBindingConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasModuleClassloaderPolicyConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasModuleStartWeightConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasSecuritySubjectConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/constraintWasWarClassloaderPolicyConstraint"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/hostNameAlias"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitDb2JdbcProviderUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitDerbyJdbcProviderUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitExtendedJdbcProviderUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasAppServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasCellUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasClassLoaderConfigurationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasClusterUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasdatasource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDefaultMessagingConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDefaultMessagingQueueConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDefaultMessagingQueueDestinationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDefaultMessagingTopicConnectionFactoryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDefaultMessagingTopicDestinationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasDeploymentManagerUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasEndpointListenerUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasJ2CAuth"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasJMSActivationSpecificationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasLdapConfigurationUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasMessagingEngine"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasNodeGroupUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasNodeUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasNodeWindowsServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSharedLibraryEntryUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibDestinationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibInboundPortUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibInboundServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibMediationUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibOutboundPortUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSibOutboundServiceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSIBusUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasSystemUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference was.ecore#//WasDeployRoot/unitWasWebServerUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasEarClassloaderPolicyConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEarClassloaderPolicyConstraint/policy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEarClassloaderPolicyConstraint/reloadClasses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEarClassloaderPolicyConstraint/reloadInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasEndpointListenerConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEndpointListenerConfiguration/endpointListenerName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEndpointListenerConfiguration/urlRoot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasEndpointListenerConfiguration/wsdlUrlRoot"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasEndpointListenerUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasHandlerList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasHandlerList/handlerlistName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WASJ2CAuthenticationDataEntry"/>
+    <genClasses ecoreClass="was.ecore#//WASJ2CAuthenticationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasJ2EEConstraint"/>
+    <genClasses ecoreClass="was.ecore#//WasJ2EEServer"/>
+    <genClasses ecoreClass="was.ecore#//WasJMSActivationSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasJMSActivationSpecification/durableScriptionHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasJMSActivationSpecification/maxBatchSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasJMSActivationSpecification/maxConcurrentEndpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasJMSActivationSpecification/shareDurableSubscription"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasJMSActivationSpecificationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasJNDIBindingConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasJNDIBindingConstraint/jndiName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasLdapConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/baseDN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/bindDN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/bindPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/ignoreCase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/ldapHostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/ldapPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/limit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/monitorInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/realm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/reuseConnection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/searchTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/serverId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/serverPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/sslConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/sslEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasLdapConfiguration/type"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasLdapConfigurationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasMessagingEngine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasMessagingEngine/engineName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasMessagingEngineUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasModuleClassLoaderPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasModuleClassLoaderPolicy/startWeight"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasModuleClassloaderPolicyConstraint"/>
+    <genClasses ecoreClass="was.ecore#//WasModuleStartWeightConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasModuleStartWeightConstraint/startingWeight"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/isDefaultProfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/isManaged"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/profileLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/profileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/profileType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNode/wasVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasNodeGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNodeGroup/isDefaultType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasNodeGroup/nodeGroupName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasNodeGroupUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasNodeUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasNodeWindowsServiceUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasPluginAdmin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasPluginAdmin/wasPluginVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasPluginRedirection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasPluginRedirection/wasPluginVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSecurity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/activeAuthMechanism"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/activeProtocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/activeUserRegistry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/allowAllPermissionForApplication"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/cacheTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/enforceFineGrainedJCASecurity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/enforceJava2SecRuntimeFiletering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/enforceJava2Security"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/globalSecurityEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/issuePermissionWarning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecurity/useDomainQualifiedNames"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSecuritySubject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecuritySubject/accessId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecuritySubject/subjectName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSecuritySubjectConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSecuritySubjectConstraint/wasSecuritySubject"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasServer/serverName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasServer/wasVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSharedLibContainer"/>
+    <genClasses ecoreClass="was.ecore#//WasSharedLibraryEntryUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibDestination">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibDestination/destinationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibDestination/type"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibDestinationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibForeignBus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibForeignBus/foreignBusName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibForeignBus/inBoundUserID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibForeignBus/outBoundUserID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibForeignBus/routingDefinitionType"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibInboundPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibInboundPort/portName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibInboundPortUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibInboundService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibInboundService/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibInboundService/wsdlLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibInboundService/wsdlServiceNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibInboundServiceUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibMediation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibMediation/handlerListName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibMediation/mediationName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibMediationUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibOutboundPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibOutboundPort/portName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibOutboundPortUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibOutboundService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibOutboundService/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibOutboundService/wsdlLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibOutboundService/wsdlServiceNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSibOutboundServiceUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSibServiceIntegrationBusLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibServiceIntegrationBusLink/bootTrapEndpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibServiceIntegrationBusLink/foreignBusName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibServiceIntegrationBusLink/linkName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSibServiceIntegrationBusLink/remoteMessagingEngineName"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSIBus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSIBus/busName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSIBus/configurationReload"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSIBus/discardMessages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSIBus/highMessageThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSIBus/interEngineTransportChain"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSIBusUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasSubstitutionVariable"/>
+    <genClasses ecoreClass="was.ecore#//WasSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSystem/installerDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSystem/wasEdition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSystem/wasHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasSystem/wasVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasSystemUnit"/>
+    <genClasses ecoreClass="was.ecore#//WasV4Datasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV4Datasource/disableAutoConnectionCleanup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV4Datasource/idleTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV4Datasource/orphanTimeout"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasV5Datasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/agedTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/dataSourceHelperClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/j2cAuthAlias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/purgePolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/reapTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5Datasource/unusedTimeout"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasV5DB2Datasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/cliSchema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/currentPackageSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/currentSchema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/deferPrepares"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/fullyMaterializeLobData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/resultSetHoldability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/traceFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/traceLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasV5DB2Datasource/useTemplate"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasV5DB2ZosDatasource"/>
+    <genClasses ecoreClass="was.ecore#//WasWarClassloaderPolicyConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWarClassloaderPolicyConstraint/order"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasWebAppExt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/additionalClassPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/autoLoadFilters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/autoRequestEncoding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/autoResponseEncoding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/defaultErrorPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/directoryBrowsingEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/fileServingEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/preCompileJSPs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/reloadingEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/reloadInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebAppExt/serveServletsByClassnameEnabled"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasWebServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/configFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/host"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/installLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/logFileAccess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/logFileError"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/mapApplications"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/operatingSystem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/serverName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServer/useSecureProtocol"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasWebServerManagement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/autoConfigPropagation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/host"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/userId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerManagement/useSecureProtocol"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasWebServerPlugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute was.ecore#//WasWebServerPlugin/installLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="was.ecore#//WasWebServerUnit"/>
+    <genClasses ecoreClass="was.ecore#//WebsphereAppServerUnit"/>
+  </genPackages>
+</genmodel:GenModel>

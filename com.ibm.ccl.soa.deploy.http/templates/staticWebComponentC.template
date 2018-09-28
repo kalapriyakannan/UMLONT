@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:http="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+	name="Abstract HTTP Server Template">
+	<http:component.staticWeb displayName="Static Web Component" name="StaticWebComponent" conceptual="true">
+		<http:capability.staticWebComponent name="Capability" 
+			displayName="Static Web Component" linkType="any">
+		</http:capability.staticWebComponent>
+		<core:requirement name="Http Server Hosting Requirement" linkType="hosting" use="required">
+      		<constraint:constraint.type displayName="HttpServer" name="HttpServer" dmoType="http:HttpServer"/>
+		</core:requirement>
+	</http:component.staticWeb>
+</core:topology>

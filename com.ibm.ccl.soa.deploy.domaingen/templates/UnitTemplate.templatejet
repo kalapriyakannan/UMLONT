@@ -1,0 +1,17 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UnitTemplateTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String uri=(String)args.get(1); %>
+<% String capClassName=(String)args.get(2); %>
+<% String lcCapClassName=(String)args.get(3); %>
+<% String lcModelPackagePrefix=(String)args.get(4); %>
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:<%=lcModelPackagePrefix%>="<%=uri%>"
+name="<%=capClassName%> Template">
+  <<%=lcModelPackagePrefix%>:unit.<%=lcCapClassName%>Unit name="<%=capClassName%>" configurationUnit="false" conceptual="true">
+    <<%=lcModelPackagePrefix%>:capability.<%=lcCapClassName%> name="<%=capClassName%>" linkType="any"/>
+    <core:requirement name="optionalHostingReq" dmoType="core:Capability" linkType="hosting" use="optional"/>  
+  </<%=lcModelPackagePrefix%>:unit.<%=lcCapClassName%>Unit>
+</core:topology>

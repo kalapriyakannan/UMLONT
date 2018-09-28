@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/core/ManagedElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/process/Capability.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/process/MSSAccessInfo.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/process/ManagementSoftwareSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/process/Agent.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.process.ManagementSoftwareSystem">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.ManagedElement">
+        <xsd:sequence>
+          <xsd:element name="agents" type="coll:com.collation.platform.model.topology.process.Agent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="masterAgent" type="coll:com.collation.platform.model.topology.process.Agent" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentsInUse" type="coll:com.collation.platform.model.topology.process.Agent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="MSSName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="manufacturerName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="productName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="productVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="hostname" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="subcomponent" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="subcomponentInstanceName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="profile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="subsystems" type="coll:com.collation.platform.model.topology.process.ManagementSoftwareSystem" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="accessInfos" type="coll:com.collation.platform.model.topology.process.MSSAccessInfo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="capabilities" type="coll:com.collation.platform.model.topology.process.Capability" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="mobilePhone" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="note" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="fax" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="type" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="email" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="title" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="workPhone" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pager" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="URL" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/"
+	xmlns:tomcat="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/"
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+	xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="TomcatDeployRoot"
+	ecore:name="tomcat" ecore:package="com.ibm.ccl.soa.deploy.tomcat"
+	ecore:nsPrefix="tomcat">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.j2ee/models/schemas/j2eeDomain.xsd" />
+	
+	<element name="unit.tomcatWebServer" type="tomcat:TomcatWebServerUnit" substitutionGroup="base:unit" />
+	<complexType name="TomcatWebServerUnit">
+		<complexContent>
+			<extension base="j2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.tomcatdatasource" type="tomcat:TomcatDatasourceUnit" substitutionGroup="base:unit"/>
+	<complexType name="TomcatDatasourceUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<!-- This is an initial model of a tomcat 5 datasource.  Ultimately, the implementation
+	of this type will make use of value propagation from the related services
+		URL = database name and location and ? from a consumed database service
+		id/password -> from a consumed j2cAuthService
+		jdbcDriver class name/location -> from a consumed jdbcProviderService
+		client jar location -> from a consumed database client service
+		
+	Including everything in this service type for now to test publish functionality
+	 -->
+	 <element name="capability.tomcat50datasource" type="tomcat:Tomcat50Datasource" substitutionGroup="base:capability" />
+	<complexType name="Tomcat50Datasource">
+		<complexContent>
+			<extension base="j2ee:J2EEDatasource">
+					<attribute name="driverClassName" type="string"></attribute>	
+					<attribute name="clientJarLocation" type="string"></attribute>	
+					<attribute name="url" type="string"></attribute>	
+					<attribute name="factory" type="string" default="org.apache.commons.dbcp.BasicDataSourceFactory"></attribute>				
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.tomcatServer" substitutionGroup="base:capability" type="tomcat:TomcatServer"/>
+	<complexType name="TomcatServer">
+		<complexContent>
+			<extension base="j2ee:J2EEServer">
+				<attribute name="tomcatVersion" type="string"/>	
+			</extension>
+		</complexContent>
+	</complexType>
+	
+</schema>

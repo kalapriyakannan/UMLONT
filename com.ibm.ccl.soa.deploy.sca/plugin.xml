@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/sca/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.sca.provider.ScaItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/sca/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.sca.ScaPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="sca"
+       class="com.ibm.ccl.soa.deploy.sca.util.ScaResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.sca.domain"
+       name="%extension.scaDomain"
+       targetNamespace="http://www.ibm.com/Zephyr/sca/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.sca.internal.validator.ScaDomainValidator"/>
+       <resourceType
+             id="sca.GenericSCAImplementation.conceptual"
+             name="GenericSCAImplementation"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/GenericSCAImplementationC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaGenericSCAImplementationTool.Description"
+             label="%scaGenericSCAImplementationTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.GenericSCAImplementation.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCABinding.conceptual"
+             name="SCABinding"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCABindingC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCABindingTool.Description"
+             label="%scaSCABindingTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCABinding.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAComponent.conceptual"
+             name="SCAComponent"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAComponentC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAComponentTool.Description"
+             label="%scaSCAComponentTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAComponent.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAImplementationBPEL.conceptual"
+             name="SCAImplementationBPEL"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAImplementationBPELC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAImplementationBPELTool.Description"
+             label="%scaSCAImplementationBPELTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAImplementationBPEL.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAImplementationComposite.conceptual"
+             name="SCAImplementationComposite"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAImplementationCompositeC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAImplementationCompositeTool.Description"
+             label="%scaSCAImplementationCompositeTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAImplementationComposite.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAImplementationCplusplus.conceptual"
+             name="SCAImplementationCplusplus"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAImplementationCplusplusC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAImplementationCplusplusTool.Description"
+             label="%scaSCAImplementationCplusplusTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAImplementationCplusplus.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAImplementationJava.conceptual"
+             name="SCAImplementationJava"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAImplementationJavaC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAImplementationJavaTool.Description"
+             label="%scaSCAImplementationJavaTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAImplementationJava.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAInterface.conceptual"
+             name="SCAInterface"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAInterfaceC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAInterfaceTool.Description"
+             label="%scaSCAInterfaceTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAInterface.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAOperation.conceptual"
+             name="SCAOperation"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAOperationC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAOperationTool.Description"
+             label="%scaSCAOperationTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAOperation.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAPolicyIntent.conceptual"
+             name="SCAPolicyIntent"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAPolicyIntentC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAPolicyIntentTool.Description"
+             label="%scaSCAPolicyIntentTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAPolicyIntent.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAPolicySet.conceptual"
+             name="SCAPolicySet"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAPolicySetC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAPolicySetTool.Description"
+             label="%scaSCAPolicySetTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAPolicySet.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAProperty.conceptual"
+             name="SCAProperty"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAPropertyC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAPropertyTool.Description"
+             label="%scaSCAPropertyTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAProperty.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAPropertyValue.conceptual"
+             name="SCAPropertyValue"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAPropertyValueC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAPropertyValueTool.Description"
+             label="%scaSCAPropertyValueTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAPropertyValue.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAReference.conceptual"
+             name="SCAReference"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAReferenceC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAReferenceTool.Description"
+             label="%scaSCAReferenceTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAReference.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="sca.SCAService.conceptual"
+             name="SCAService"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.sca/templates/SCAServiceC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%scaSCAServiceTool.Description"
+             label="%scaSCAServiceTool.Label"
+             path="/serverSoftwareDrawer/scaStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="sca.SCAService.conceptual">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

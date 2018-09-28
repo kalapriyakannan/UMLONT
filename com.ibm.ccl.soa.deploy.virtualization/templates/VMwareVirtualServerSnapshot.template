@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+name="VMware Virtual Server Snapshot Template">
+  <virtualization:unit.vmwareVirtualServerSnapshotUnit name="VMwareVirtualServerSnapshot" configurationUnit="true" conceptual="false">
+    <virtualization:capability.vmwareVirtualServerSnapshot name="VMwareVirtualServerSnapshot" linkType="any"/>
+    <core:requirement name="HostingReq1" dmoType="virtualization:VMwareVirtualImage" linkType="hosting" use="required"/>  
+    <core:requirement name="HostingReq2" dmoType="virtualization:VMwareVirtualImageSnapshotContainer" linkType="hosting" use="required"/>  
+  </virtualization:unit.vmwareVirtualServerSnapshotUnit>
+</core:topology>

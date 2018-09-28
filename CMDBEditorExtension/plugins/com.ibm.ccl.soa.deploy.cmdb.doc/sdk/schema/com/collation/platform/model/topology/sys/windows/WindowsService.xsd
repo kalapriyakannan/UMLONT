@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/SoftwareService.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/windows/WindowsOperatingSystem.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.windows.WindowsService">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.SoftwareService">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.sys.windows.WindowsOperatingSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="serviceName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="canBePaused" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="canBeStopped" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="desktopInteract" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="errorControl" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="operatingState" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="started" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="startMode" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="account" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pathName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="processId" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="exitCode" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="serviceSpecificCode" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="serviceType" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

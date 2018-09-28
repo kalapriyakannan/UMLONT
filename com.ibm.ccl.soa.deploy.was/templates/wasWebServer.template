@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+	xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"
+	displayName="WebSphereWebServerUnit Template">
+	<was:unit.wasWebServerUnit name="WebServer">
+		<was:capability.wasWebServer displayName="WebSphere Web Server"
+			name="WebServer" linkType="dependency"
+			configFile="c:\Program Files\IBM HTTP Server\config\httpd.conf"
+			installLocation="c:\Program Files\IBM HTTP Server"
+			logFileError=""
+			mapApplications="MAP_ALL"
+			operatingSystem="WINDOWS"
+			port="80"
+			serverName="webserver01"
+			serviceName="IBMHTTPServer6.0"
+			type="IHS"/>
+		<was:capability.wasWebServerPlugin displayName="WebSphere IHS Plugin"
+			name="cap1"
+				installLocation="c:\Program Files\WebSphere\Plugins"/>
+    	<was:capability.wasWebServerManagement
+    		displayName="WebSphere IHS Plugin Administration"
+    		name="cap0"
+    		port="8008"
+    		autoConfigPropagation="true"
+    		userId="ihsadmin">
+    	    <core:attributeMetaData attributeName="password" encrypted="true" encryptionRequired="true"/>
+    	</was:capability.wasWebServerManagement>
+		<core:requirement mutable="true" name="WebSphere IHS Plugin Redirection" 
+			displayName="WebSphere Plugin Redirection" dmoType="was:WasPluginRedirection"
+			linkType="dependency"/>
+		<core:requirement mutable="true" name="WebSphere Plugin Admin" 
+			displayName="WebSphere Plugin Admin" dmoType="was:WasPluginAdmin"
+			linkType="dependency"/>
+		<core:requirement mutable="true" name="Node"
+			displayName="Hosted by Node" dmoType="was:WasNode"
+			linkType="hosting">
+			<constraint:constraint.equals name="none" attributeName="profileType" value="none"/>
+		</core:requirement>
+	</was:unit.wasWebServerUnit>
+</core:topology>

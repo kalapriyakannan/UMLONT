@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="main" basedir="..">
+
+	<property file="${basedir}/designs/javadoc.properties" />
+	<property file="${basedir}/designs/javadoc-classpath.properties" />
+		
+	<property name="outputDir" value="${basedir}/doc"/>
+
+	<target name="main" depends="javadoc" description="Builds Plugin Javadoc" /> 
+
+    <target name="javadoc">
+    
+    	<echo message="Classpath: ${classpath}" />
+	
+        <javadoc
+        	access="public" 
+			author="false" 
+			classpath="${classpath}" 
+			destdir="${outputDir}" 
+			doctitle="${api.title}" 
+			nodeprecated="false" 
+			nodeprecatedlist="false" 
+			noindex="true" 
+			splitindex="false" 
+			nonavbar="false" 
+			notree="false" 
+			packagenames="${api.packages}" 
+			sourcepath="${plugin.sourcefolders}" 
+			stylesheetfile="${basedir}/designs/default_style.css" 
+			use="true" 
+			version="true"
+			breakiterator="no"
+			/>  
+
+    	<!-- overview="${basedir}/api-overview/overview.html" -->
+    	
+  		<copy todir="${outputDir}" verbose="true" >
+  			<!-- <fileset dir="${basedir}/api-overview/overview/"/> -->
+  			<fileset dir="${basedir}/designs" includes="*/**/**.jpg"/> 
+  			<fileset dir="${basedir}/designs" includes="*/**/**.JPG"/> 
+  		</copy>  
+    </target> 
+</project>

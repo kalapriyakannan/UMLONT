@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!-- LDAP Domain Extension Plugin Manifest
+	
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.12 2008/08/06 17:17:28 chadh Exp $
+-->
+
+<plugin>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.ldap.provider.LdapItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.ldap.LdapPackage"
+			genModel="model/models/ecore/ldapDomain.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="ldap"
+			class="com.ibm.ccl.soa.deploy.ldap.util.LdapResourceFactoryImpl" />
+	</extension>
+
+
+	<!-- SOA Topology Domains:
+		
+		This extension point is used to define domain-specific extensions to the
+		tooling. A "domain" is a common area of technology, such as J2EE, WebSphere, DB2,
+		etc. There are several areas where a domain can contribute function to the
+		tooling; including validators, packagers, capability providers, resource types,
+		and more.
+		
+	-->
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.ldap.domain"
+			name="%extension.ldapDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.ldap.internal.validator.LdapDomainValidator" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapServer.infra"
+				name="LDAP Server" description="A ready configured LDAP server"
+				templateURI="templates/LdapServer.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapServer.infra"
+				path="/serverSoftwareDrawer/ldap"
+				largeIcon="icons/pal/LdapServerUnit_20.gif"
+				smallIcon="icons/pal/LdapServerUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapServer.conceptual"
+				name="LDAP Server" description="A conceptual LDAP server"
+				templateURI="templates/LdapServerC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapServer.conceptual"
+				path="/serverSoftwareDrawer/ldap"
+				largeIcon="icons/pal/LdapServerUnit_20.gif"
+				smallIcon="icons/pal/LdapServerUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapSuffix.infra"
+				name="LDAP Suffix" description="LDAP Suffix"
+				templateURI="templates/LdapSuffix.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapSuffix.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/LdapSuffixUnit_20.gif"
+				smallIcon="icons/pal/LdapSuffixUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapEntry.infra"
+				name="LDAP Entry" description="LDAP Directory Entry"
+				templateURI="templates/LdapEntry.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapEntry.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/LdapEntryUnit_20.gif"
+				smallIcon="icons/pal/LdapEntryUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.ePerson.infra" name="ePerson"
+				description="LDAP ePerson"
+				templateURI="templates/ePerson.template" />
+				<!--  We used the Person icons since no EPerson icon was provided in this format  -->
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.ePerson.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Person_20.gif"
+				smallIcon="icons/pal/Person_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.inetOrgPerson.infra"
+				name="inetOrgPerson" description="LDAP InetOrgPerson"
+				templateURI="templates/inetOrgPerson.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.inetOrgPerson.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/InetOrgPerson_20.gif"
+				smallIcon="icons/pal/InetOrgPerson_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.organization.infra"
+				name="organization" description="LDAP Organization"
+				templateURI="templates/Organization.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.organization.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Organization_20.gif"
+				smallIcon="icons/pal/Organization_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.organizationalPerson.infra"
+				name="organizationalPerson"
+				description="LDAP Organizational Person"
+				templateURI="templates/OrganizationalPerson.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.organizationalPerson.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/OrganizationalPerson_20.gif"
+				smallIcon="icons/pal/OrganizationalPerson_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.person.infra" name="person"
+				description="%_UI_LdapDeployRoot_ldapPerson_feature"
+				templateURI="templates/Person.template" />
+				
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.person.infra"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Person_20.gif"
+				smallIcon="icons/pal/Person_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapSuffix.conceptual"
+				name="LDAP Suffix" description="%_UI_LdapDeployRoot_ldapSuffixUnit_feature"
+				templateURI="templates/LdapSuffixC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapSuffix.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/LdapSuffixUnit_20.gif"
+				smallIcon="icons/pal/LdapSuffixUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.LdapEntry.conceptual"
+				name="LDAP Entry" description="LDAP Directory Entry"
+				templateURI="templates/LdapEntryC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.LdapEntry.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/LdapEntryUnit_20.gif"
+				smallIcon="icons/pal/LdapEntryUnit_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.ePerson.conceptual"
+				name="ePerson" description="%_UI_LdapDeployRoot_ldapEPerson_feature"
+				templateURI="templates/ePersonC.template" />
+				<!--  We used the Person icons since no EPerson icon was provided in this format  -->
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.ePerson.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Person_20.gif"
+				smallIcon="icons/pal/Person_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.inetOrgPerson.conceptual"
+				name="inetOrgPerson" description="%_UI_LdapDeployRoot_ldapInetOrgPerson_feature"
+				templateURI="templates/inetOrgPersonC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.inetOrgPerson.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/InetOrgPerson_20.gif"
+				smallIcon="icons/pal/InetOrgPerson_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.organization.conceptual"
+				name="organization" description="%_UI_LdapDeployRoot_ldapOrganization_feature"
+				templateURI="templates/OrganizationC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.organization.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Organization_20.gif"
+				smallIcon="icons/pal/Organization_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.organizationalPerson.conceptual"
+				name="organizationalPerson"
+				description="%_UI_LdapDeployRoot_ldapOrganizationalPerson_feature"
+				templateURI="templates/OrganizationalPersonC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.organizationalPerson.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/OrganizationalPerson_20.gif"
+				smallIcon="icons/pal/OrganizationalPerson_16.gif" />
+
+			<resourceType
+				id="com.ibm.rational.deployment.ldap.person.conceptual"
+				name="person" description="%_UI_LdapDeployRoot_ldapPerson_feature"
+				templateURI="templates/PersonC.template" />
+			<resourceTypeUIBinding
+				resourceTypeId="com.ibm.rational.deployment.ldap.person.conceptual"
+				path="/configurationDrawer/ldapConfStack"
+				largeIcon="icons/pal/Person_20.gif"
+				smallIcon="icons/pal/Person_16.gif" />
+
+		</domain>
+
+	</extension>
+	
+	
+    <!-- Core Element Types and custom Factory -->
+   	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/">
+			<metamodelType
+	        	id="ldap.Entry"            
+	            name="%_UI_LdapDeployRoot_ldapEntryUnit_feature"
+                icon="icons/pal/LdapEntryUnit_16.gif"
+	            eclass="LdapEntryUnit">  
+	        </metamodelType> 
+	        <metamodelType
+	        	id="ldap.Server"            
+	            name="%_UI_LdapDeployRoot_ldapServerUnit_feature"
+                icon="icons/pal/LdapServerUnit_16.gif"
+	            eclass="LdapServerUnit">                      
+	        </metamodelType>    
+			<metamodelType
+	        	id="ldap.Suffix"            
+	            name="%_UI_LdapDeployRoot_ldapSuffixUnit_feature"
+                icon="icons/pal/LdapSuffixUnit_16.gif"
+	            eclass="LdapSuffixUnit">                      
+	        </metamodelType>                  
+                   
+	        <!--   
+            <metamodelType
+	        	id="ldap.Person"            
+	            name="%_UI_LdapDeployRoot_ldapPerson_feature"
+                icon="icons/pal/Person_16.gif"
+	            eclass="Person">                      
+	        </metamodelType>                  
+            <metamodelType
+	        	id="ldap.InetOrgPerson"            
+	            name="%_UI_LdapDeployRoot_ldapInetOrgPerson_feature"
+                icon="icons/pal/InetOrgPerson_16.gif"
+	            eclass="InetOrgPerson">                      
+	        </metamodelType>  
+	    	<metamodelType
+	        	id="ldap.Organization"            
+	            name="%_UI_LdapDeployRoot_ldapOrganization_feature"
+                icon="icons/pal/Organization_16.gif"
+	            eclass="Organization">                      
+	        </metamodelType>                  
+	    	<metamodelType
+	        	id="ldap.OrganizationalPerson"            
+	            name="%_UI_LdapDeployRoot_ldapOrganizationalPerson_feature"
+                icon="icons/pal/OrganizationalPerson_16.gif"
+	            eclass="OrganizationalPerson">                      
+	        </metamodelType>                
+	    	<metamodelType
+	        	id="ldap.EPerson"            
+	            name="%_UI_LdapDeployRoot_ldapEPerson_feature"
+                icon="icons/pal/Person_16.gif"
+	            eclass="EPerson">                      
+	        </metamodelType>
+	        -->
+	   </metamodel>
+	</extension>	   
+
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.ldap">
+			<uri name="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.ldap/models/schemas/ldapDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+
+</plugin>
+

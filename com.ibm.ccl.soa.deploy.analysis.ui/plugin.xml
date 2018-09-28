@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	                          	        	
+		       <entry label="%analysisDrawer.Label" kind="drawer"
+					description="%analysisDrawer.Description"
+					large_icon="icons/dgm/analysis_dgm.gif"
+					small_icon="icons/dgm/analysis_dgm.gif" path="/"
+					id="analysisDrawer">
+				</entry>
+		        <entry 
+            		label="%deploymentUnitStack.Label" 
+            		kind="stack" 
+            		description="%deploymentUnitStack.Description" 
+            		small_icon="icons/pal/deploymentUnit_16.gif" 
+            		large_icon="icons/pal/deploymentUnit_20.gif"
+            		path="/analysisDrawer/" 
+            		id="deploymentUnitStack">
+            	</entry>
+            	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider
+            class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+         <context
+               elements="Nodes"
+               viewClass="org.eclipse.gmf.runtime.notation.Node">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="analysis.LocationUnit, analysis.NodeUnit, analysis.DeploymentUnit">
+		</context>
+         <object
+               class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+               id="Nodes">
+            <method
+                  name="getProxyClassID()"
+                  value="analysis.LocationUnit, analysis.NodeUnit, analysis.DeploymentUnit">
+            </method>
+         </object>
+      </viewProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider
+            class="com.ibm.ccl.soa.deploy.analysis.ui.internal.providers.AnalysisEditPartProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+         <context
+               views="NodesByType, Nodes">
+         </context>
+         <object
+               class="org.eclipse.gmf.runtime.notation.Node"
+               id="Nodes">
+            <staticMethod
+                  name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+                  value="analysis.LocationUnit, analysis.NodeUnit, analysis.DeploymentUnit">
+            </staticMethod>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()"
+					value="analysis.LocationUnit, analysis.NodeUnit, analysis.DeploymentUnit" />
+		 </object>
+      </editpartProvider>
+   </extension>
+	
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/">
+	    	<metamodelType
+	        	id="analysis.DeploymentUnit.meta"            
+	            name="%analysis.DeploymentUnit.Label"
+				icon="icons/pal/deploymentUnit_16.gif"
+	            eclass="DeploymentUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="analysis.NodeUnit.meta"            
+	            name="%analysis.NodeUnit.Label"
+				icon="icons/pal/node_16.gif"
+	            eclass="NodeUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="analysis.LocationUnit.meta"            
+	            name="%analysis.LocationUnit.Label"
+				icon="icons/pal/location_16.gif"
+	            eclass="LocationUnit">                      
+	        </metamodelType>
+		</metamodel>      
+	</extension>
+
+	<extension
+		point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+		<IconProvider
+			class="com.ibm.ccl.soa.deploy.analysis.ui.internal.providers.AnalysisIconProvider">
+			<Priority name="High" />
+		</IconProvider>
+	</extension>
+	
+	<!-- Analysis Decorator Semantic -->
+	<extension
+         id="com.ibm.ccl.soa.deploy.analysis.topology"
+         name="com.ibm.ccl.soa.deploy.analysis.topology"
+         point="com.ibm.ccl.soa.deploy.core.topology">         
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.analysis.ads">
+			<propertySheetContent>
+					<include pattern=".*" />
+				</propertySheetContent>
+				<viewContent>
+					<include pattern=".*" />
+				</viewContent>
+				<paletteEntryContent>
+					<include pattern=".*" />
+				</paletteEntryContent>
+				<menuContent>
+					<include pattern=".*" />
+				</menuContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+	    <domain
+	       id="com.ibm.ccl.soa.deploy.analysis.domain"
+	       name="com.ibm.ccl.soa.deploy.analysis.domain"
+	       targetNamespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/">   
+	       <resourceTypeUIBinding
+	             description="%analysis.Node.Description"
+	             path="/analysisDrawer"
+	             largeIcon="icons/pal/node_20.gif"
+	             label="%analysis.Node.Label"
+	             smallIcon="icons/pal/node_16.gif"
+	             resourceTypeId="analysis.Node">
+	       </resourceTypeUIBinding>    
+	       <resourceTypeUIBinding
+	             description="%analysis.Location.Description"
+	             path="/analysisDrawer"
+	             largeIcon="icons/pal/location_20.gif"
+	             label="%analysis.Location.Label"
+	             smallIcon="icons/pal/location_16.gif"
+	             resourceTypeId="analysis.Location">
+	       </resourceTypeUIBinding>       
+	       <resourceTypeUIBinding
+	             description="%analysis.DeploymentUnit.Description"
+	             path="/analysisDrawer/deploymentUnitStack"
+	             largeIcon="icons/pal/deploymentUnit_20.gif"
+	             label="%analysis.DeploymentUnit.Label"
+	             smallIcon="icons/pal/deploymentUnit_16.gif"
+	             resourceTypeId="analysis.DeploymentUnit">
+	       </resourceTypeUIBinding>  
+	       <resourceTypeUIBinding
+	             description="%analysis.PresentationDeploymentUnit.Description"
+	             path="/analysisDrawer/deploymentUnitStack"
+	             largeIcon="icons/pal/presentationDeploymentUnit_20.gif"
+	             label="%analysis.PresentationDeploymentUnit.Label"
+	             smallIcon="icons/pal/presentationDeploymentUnit_16.gif"
+	             resourceTypeId="analysis.PresentationDeploymentUnit">
+	       </resourceTypeUIBinding>   
+	       <resourceTypeUIBinding
+	             description="%analysis.ExecutionDeploymentUnit.Description"
+	             path="/analysisDrawer/deploymentUnitStack"
+	             largeIcon="icons/pal/executionDeploymentUnit_20.gif"
+	             label="%analysis.ExecutionDeploymentUnit.Label"
+	             smallIcon="icons/pal/executionDeploymentUnit_16.gif"
+	             resourceTypeId="analysis.ExecutionDeploymentUnit">
+	       </resourceTypeUIBinding>     
+	       <resourceTypeUIBinding
+	             description="%analysis.DataDeploymentUnit.Description"
+	             path="/analysisDrawer/deploymentUnitStack"
+	             largeIcon="icons/pal/dataDeploymentUnit_20.gif"
+	             label="%analysis.DataDeploymentUnit.Label"
+	             smallIcon="icons/pal/dataDeploymentUnit_16.gif"
+	             resourceTypeId="analysis.DataDeploymentUnit">
+	       </resourceTypeUIBinding>
+	    </domain>
+  </extension>
+  
+  	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"
+            name="%analysisActivity.label"/>
+     <!--Necessary to get core acivities enabled when selected from Analysis & Design viewpoint-->
+     <activityRequirementBinding
+     		requiredActivityId="com.ibm.ccl.soa.deploy.core.ui.activity.core"
+     		activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"/>
+     <activityRequirementBinding
+     		requiredActivityId="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+     		activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"/>
+     <activityPatternBinding
+            activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"
+            pattern="(?&lt;!.)analysis\.[\w.-]*">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.logical"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"/>  
+    </extension>
+</plugin>

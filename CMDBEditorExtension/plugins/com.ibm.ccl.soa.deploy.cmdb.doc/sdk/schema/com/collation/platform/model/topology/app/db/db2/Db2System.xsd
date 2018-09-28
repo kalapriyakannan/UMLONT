@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/ComputerSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Instance.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2AdminServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2SystemConfigValue.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.db2.Db2System">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="host" type="coll:com.collation.platform.model.topology.sys.ComputerSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="profileRegistry" type="coll:com.collation.platform.model.topology.app.db.db2.Db2SystemConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="instances" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Instance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="licenseInfo" type="coll:com.collation.platform.model.topology.app.db.db2.Db2SystemConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="adminServer" type="coll:com.collation.platform.model.topology.app.db.db2.Db2AdminServer" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

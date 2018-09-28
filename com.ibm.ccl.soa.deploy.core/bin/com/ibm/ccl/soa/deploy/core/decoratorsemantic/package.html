@@ -1,0 +1,2548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:w="urn:schemas-microsoft-com:office:word"
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="ProgId" content="Word.Document">
+  <meta name="Generator" content="Microsoft Word 10">
+  <meta name="Originator" content="Microsoft Word 10">
+  <link rel="File-List" href="package_files/filelist.xml">
+  <title>Title of API Package ("SOA Deploy Core API")</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>IBM</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>IBM</o:LastAuthor>
+  <o:Revision>52</o:Revision>
+  <o:TotalTime>1658</o:TotalTime>
+  <o:Created>2006-12-05T16:53:00Z</o:Created>
+  <o:LastSaved>2007-01-04T14:48:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2982</o:Words>
+  <o:Characters>17003</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>141</o:Lines>
+  <o:Paragraphs>39</o:Paragraphs>
+  <o:CharactersWithSpaces>19946</o:CharactersWithSpaces>
+  <o:Version>10.6735</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+  <link rel="Stylesheet" type="text/css" media="all"
+ href="http://dev.eclipse.org/default_style.css">
+  <link rel="Stylesheet" type="text/css" media="all"
+ href="styles/stp-core.css">
+  <style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:21.0pt;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:10.5pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:27798671;
+	mso-list-template-ids:1578558666;}
+@list l1
+	{mso-list-id:103424260;
+	mso-list-template-ids:-2145476110;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:215246329;
+	mso-list-template-ids:-1143864712;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:224993754;
+	mso-list-template-ids:-1304684590;}
+@list l3:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:233048952;
+	mso-list-template-ids:2123118772;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:248124369;
+	mso-list-template-ids:-230680676;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:386078132;
+	mso-list-template-ids:-1960925754;}
+@list l6:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7
+	{mso-list-id:429282158;
+	mso-list-template-ids:-1158611220;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:877668316;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1383932700 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l8:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:889338448;
+	mso-list-template-ids:-1375828230;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:1756365688;
+	mso-list-template-ids:-1728660404;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l10:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11
+	{mso-list-id:1862738710;
+	mso-list-template-ids:2061918734;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l11:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l12
+	{mso-list-id:1878351075;
+	mso-list-template-ids:1755861384;}
+@list l13
+	{mso-list-id:1914319307;
+	mso-list-template-ids:-411382304;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l14
+	{mso-list-id:1937710240;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1335883860 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l14:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15
+	{mso-list-id:2137672679;
+	mso-list-template-ids:631829798;}
+@list l15:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+  </style><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if mso 9]-->
+  <style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+  </style><!--[endif]-->
+</head>
+<body style="margin-left: 8.5pt; margin-top: 14.2pt;" lang="EN-US"
+ link="blue" vlink="blue">
+<div class="Section1">
+<p><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->The
+Decorator Semantic extension mechanism allows contributors to the SOA
+Deploy
+Tooling the ability to declare a semantic to enable specific object
+types and
+UI artifacts that are relevant to the desired tooling mode.</p>
+<p class="MsoNormal"><a name="top"></a><a href="%3cA%20name="></a><span
+ style=""><span class="MsoHyperlink"><span
+ style="font-size: 10pt; font-family: Arial;"><o:p></o:p></span></span></span></p>
+<h1 style="text-align: center;" align="center"><span style=""></span><a
+ href="%3cA%20name="><span style="">SOA Deploy Decorator
+Semantic</span><span style=""></span></a><span style=""></span></h1>
+<span style=""></span>
+<p class="MsoNormal"><span style="font-size: 10pt; font-family: Arial;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">Abstract [<a
+ href="overview-summary.html"><span style="color: lightblue;">Index</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="" border="0" cellpadding="0">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>This document describes the design and usage of a "Decorator
+Semantic" notation on a topology in the SOA Deploy tooling. The
+decorator semantic can be used to refine the contents of the editor
+experience for a user of the tooling, particular to the mode they are
+working in, or the type of topology that are currently editing.<br>
+      <br>
+Additional design documents may be required to fully define the
+specific consumptions of this mechanism, such as the topology creation
+editor, palette loading, etc. <br>
+      <br>
+The document will focus on three primary areas of design:</p>
+      <ul type="disc">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Required model changes<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">The extension mechanism
+to declare a new decoratorSemantic<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">The extension mechanism
+to define content to a decoratorSemantic<o:p></o:p></span></li>
+      </ul>
+      <p class="MsoNormal"><span class="SpellE"><b><span
+ style="font-size: 10pt; font-family: Arial;">Bugzilla</span></b></span><b><span
+ style="font-size: 10pt; font-family: Arial;"> item</span></b><span
+ style="font-size: 10pt; font-family: Arial;"> for this review: <a
+ href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11501">11501</a><br>
+      <br>
+      <b>Web link:</b>
+https://cs.opensource.ibm.com/scm/viewvc.php/*checkout*/development/designs/11501_package.html?root=soa-deploy-tool
+      <o:p></o:p></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">Core Model
+Changes[<a href="#top"><span style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>The changes required to the core models to support a
+decoratorSemantic are to simply add an attribute to the topology
+element called "decoratorSemantic". This attribute will be of type <span
+ class="SpellE">xsd<span class="GramE">:String</span></span>, optional,
+and will be single valued.<br>
+      <br>
+The proposed change to the <span class="SpellE">core.xsd</span> schema
+is highlighted below:</p>
+      <p style="margin-left: 0.5in;"><span
+ style="font-family: &quot;Courier New&quot;;"><br>
+      </span><code><span style="font-size: 8pt;">&lt;!-- Topology --&gt;</span></code><span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;;"><br>
+      <code><span style="">&lt;element name="topology"
+type="core:Topology"/&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp; </span>&lt;complexType
+name="Topology"&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp; </span>&lt;complexContent&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp; </span>&lt;extension
+base="core:DeployModelObject"&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>&lt;sequence&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>&lt;element minOccurs="0" maxOccurs="unbounded"
+ref="core:unit" ecore:name="units"&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>&lt;/element&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>&lt;/sequence&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>&lt;attribute name="decoratorSemantic" type="string"
+use="optional"&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp;&nbsp;&nbsp; </span>&lt;/extension&gt;</span></code><br>
+      <code><span style=""><span style="">&nbsp; </span>&lt;/complexContent&gt;</span></code><br>
+      <code><span style="">&lt;/complexType&gt;</span></code></span></p>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;">It will be the
+responsibility of topology-creation mechanisms, such as the "New
+Topology Wizard", to set the value of this attribute.<br>
+      <br>
+      <b>Comments/Questions/Issues:</b> <o:p></o:p></span></p>
+      <ol start="1" type="1">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Should attribute be
+required? Assumption is that if the decoratorSemantic is not defined,
+all available content is enabled for the topology.<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Originally, a
+multi-valued attribute was considered, allowing multiple semantics to
+be defined on a topology. This concept was backed out, since it may
+cause confusion in cases where there is overlap between semantics. For
+example, one semantic enables tomcat content, while another one
+specifically disables it. If both are set, which one wins? For M3, it
+is proposed that only a single semantic can be defined per topology. In
+this case, the topology wizard will only support a dropdown of
+available decorator semantics, and not a set of checkboxes.<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">We should be able to
+create a topology that reuses existing decorator semantics, which is
+why we were considering multi-valued attributes. Could also be achieved
+by allowing the user to extend or aggregate existing decorator
+semantics to define a new semantic. This still leads to the same issues
+of overlap and confusion when items conflict. Some potentially
+complicated priority rules would need to be spelled out for this to be
+fully functional<o:p></o:p></span></li>
+      </ol>
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial;">Post M3 Items to consider:</span></b><span
+ style="font-size: 10pt; font-family: Arial;"><o:p></o:p></span></p>
+      <ul type="disc">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Multi-valued attribute<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Prioritization rules<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Ability to extend or
+aggregate existing decorator semantics into a new decorator semantic.<o:p></o:p></span></li>
+      </ul>
+      </td>
+    </tr>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p><o:p>&nbsp;</o:p></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">Decorator
+Semantic contribution [<a href="#top"><span style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>This section describes the proposed extension mechanism to
+declare a decorator semantic to the tooling. <br>
+      <br>
+The approach used here is similar to that used by the <a
+ href="http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.wst.doc.isv/reference/extension-points/common/org_eclipse_wst_common_frameworks_functionGroup.html">FunctionGroup</a>
+mechanism that was created for potential inclusion in WTP. Concepts
+from that solution have been brought forward into this mechanism, as it
+is in many ways doing the same thing. The overview is that there are
+two separate extension mechanisms that <span class="GramE">are defined
+:</span><br>
+      <br>
+1. The decoratorSemantic definition itself, with a unique identifier.<br>
+2. The pattern bindings for the decorator semantic, which specifically
+refer to a decorator semantic (by id) that the declared content should
+be enabled for.<br>
+      <br>
+      <b>Extension Point Modifications</b><br>
+      <br>
+The proposal here is to add an element to the exiting Topology
+extension point. This element would contain a name attribute, an id
+attribute, which is the string key for the new decorator semantic, an
+icon attribute, and a description attribute.<br>
+      <br>
+The minimum occurrences of this element will be 0.<br>
+The maximum occurrences of this element will be unbounded.<br>
+      <br>
+      <b>Extension Point Details</b><br>
+      <br>
+This element will have the below structure in the extension point .exsd
+schema<br>
+      <br>
+      <span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-family: &quot;Courier New&quot;; color: green;">"decoratorSemantic"</span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&gt;</span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"id"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"name"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"description"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"icon"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: navy;"><span
+ style="">&nbsp;&nbsp;&nbsp; </span>&lt;/element&gt;</span><span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;;"><br>
+      </span><br>
+id : The unique identifier for this decorator semantic (required)<br>
+name : The display name of this decorator semantic (required)<br>
+description : The description of this decorator semantic (optional)<br>
+icon : Location of an image file for this decorator semantic (optional)<br>
+      <br>
+      <b>Example</b> <br style="">
+<!--[if !supportLineBreakNewLine]--><br style="">
+<!--[endif]--></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;decoratorSemantic</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">description=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"A
+Test Decorator Semantic"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">id=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"test.testDecoratorSemantic"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">icon=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"images/someicon.gif"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-family: &quot;Courier New&quot;; color: green;">"Test Decorator
+Semantic"</span><span style="font-family: &quot;Courier New&quot;; color: navy;">/&gt;<br>
+      </span><br>
+      <b>Comments/Questions/Issues:</b><span
+ style="font-family: &quot;Courier New&quot;; color: navy;"><o:p></o:p></span></p>
+      <p class="MsoNormal"
+ style="margin-left: 0.25in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-size: 10pt; font-family: Arial;"><span style="">1.<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span
+ style="font-size: 10pt; font-family: Arial;">Assuming for M3 that the
+topology extension point is the best place for this contribution. As
+opposed to the domain level or perhaps even a standalone extension
+point. Domain extension may not be the best place since a semantic can
+potentially cross domains.<o:p></o:p></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">Decorator
+Semantic Pattern Binding contribution[<a href="#top"><span
+ style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>This section of the design details how to declare content in
+the tooling based on a specific decorator semantic.<span style="">&nbsp;
+      </span>This will be achieved by defining a
+decoratorSemanticPatternBinding element that is used to declare the
+enabled content for a specific decoratorSemantic.<span style="">&nbsp; </span>This
+content is divided into several categories (menus, validators, types,
+etc.), and can be included or excluded as &#8220;patterns&#8221;, following
+java.util.regex syntax, bound to a decorator semantic.</p>
+      <p>By default, a topology without a decorator semantic defined
+will contain all content.</p>
+      <p><b>Extension Point Modifications<br>
+      </b><br>
+The proposal here is to add an element to the exiting Topology
+extension point. This element would contain an attribute to associate
+the bindings with a specific decorator semantic ID, and a subelements
+to define the different types of pattern bindings.<br>
+      <br>
+The minimum occurrences of this element will be 0.<br>
+The maximum occurrences of this element will be unbounded.</p>
+      <p>The content subelements are currently used to distinguish the
+different types of content that can be bound.<span style="">&nbsp; </span>There
+are currently two such content elements defined: &lt;typeContent&gt;
+and &lt;uiContent&gt;.<span style="">&nbsp; </span>Each content
+subelement can contain multiple &lt;include&gt; elements to define
+patterns for enablement.</p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"decoratorSemanticPatternBinding"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"typeContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"uiContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"decoratorSemanticId"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/attribute&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;<o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"typeContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">menuContent</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"validatorContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"viewContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unitProviderContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"paletteEntryContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"propertySheetContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-family: &quot;Courier New&quot;; color: black;"><span style="">&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"userDefinedContent"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"name"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;<o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"include"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"enablement"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"pattern"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/complexType&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;<o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"exclude"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"enablement"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"1"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;attribute</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"pattern"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">type=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"string"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">use=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"required"/</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;<o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">name=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"enablement"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;sequence</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">minOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"0"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">maxOccurs</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"unbounded"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"not"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"and"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"or"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">instanceof</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"test"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">systemTest</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"equals"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"count"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"with"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"resolve"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"adapt"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;element</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">ref=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"iterate"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/sequence&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">complexType</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/element&gt;<o:p></o:p></span></p>
+      <p><b>Example<o:p></o:p></b></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">decoratorSemanticPatternBinding</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">decoratorSemanticId</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">test.testDecoratorSemantic</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">typeContent</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="GramE">include</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">pattern=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"com.ibm.some.object.types.*"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/typeContent&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;viewContent&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="GramE">include</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">pattern=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">com.some.ui.views</span>.*"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">viewContent</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-family: &quot;Courier New&quot;; color: navy;">&lt;/<span
+ class="SpellE">decoratorSemanticPatternBinding</span>&gt;</span><b><o:p></o:p></b></p>
+      <p><b>Pattern Binding Details <o:p></o:p></b></p>
+      <p><span style="">Each pattern binding contains multiple
+categories of content, each of which can contain patterns of content to
+include or exclude in the semantic.<span style="">&nbsp; </span>Additionally,
+each include or exclude pattern can optionally use Eclipse enablement
+to add additional conditions around the inclusion of a pattern.<span
+ style="">&nbsp; </span>In these cases, both the enablement condition
+and the pattern expression must be satisfied for the pattern to be
+included (or excluded).<o:p></o:p></span></p>
+      <p><span style="">The following are the supported categories of
+content for the pattern binding:<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Type content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Menu content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Validator
+content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">View content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Property sheet
+content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Palette entry
+content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">Unit provider
+content<o:p></o:p></span></p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span
+ style="font-family: Symbol;"><span style="">&middot;<span
+ style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><!--[endif]--><span style="">User-defined
+content<o:p></o:p></span></p>
+      <p><span style="">The below section describes each of these
+categories, and their usages, in more detail.<o:p></o:p></span></p>
+      <p><b>Type Content</b><span style=""> : &lt;typeContent&gt; <o:p></o:p></span></p>
+      <p><span style="">This category allows the semantic to
+specifically enable object types for this semantic.<span style="">&nbsp;
+      </span>The required syntax for the pattern expression is the java
+namespace of the class.<o:p></o:p></span></p>
+      <p>The usage of target namespace is beneficial to prevent the
+same type being defined in multiple places (i.e. palette, context menu,
+etc.). However, a downside to this is that it limits the refinement to
+what object types have been declared in the model. For example, today
+there are not separate unit types for WAS6, WAS51, etc. They share the
+same type. This ultimately is caused by our lack of a formal resource
+type system in the tooling, and each contributor is left to define and
+map types independently.</p>
+      <p>The primary difference between the typeContent category and
+the <span class="GramE">others,</span> is that the APIs to determine
+type enablement will take an object argument, as opposed to a string
+argument.</p>
+      <p>Example</p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">decoratorSemanticPatternBinding</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ class="SpellE"><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">decoratorSemanticId</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">test.testDecoratorSemantic</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="SpellE">typeContent</span>&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;<span
+ class="GramE">include</span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">pattern=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">com.ibm.some.object.types</span>.*"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> <o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;exclude</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> </span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">pattern=</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: green;">"<span
+ class="SpellE">com.ibm.some.object.types.not.this.one</span>"</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">/&gt;</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: navy;">&lt;/typeContent&gt;<o:p></o:p></span></p>
+      <p><span style="font-family: &quot;Courier New&quot;; color: navy;"><span
+ style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;/<span
+ class="SpellE">decoratorSemanticPatternBinding</span>&gt;</span><b><o:p></o:p></b></p>
+      <p><b>Menu Content</b><span style=""> : &lt;<span class="SpellE">menuContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category declares menus that should be
+enabled in the decorator semantic, based on their respective menu IDs.<span
+ style="">&nbsp; </span>Currently (M3), this mechanism is queried to
+load the context menus for the deployment diagram editor.<o:p></o:p></span></p>
+      <p><span class="SpellE"><b>Validator</b></span><b> Content</b><span
+ style=""> : &lt;<span class="SpellE">validatorContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category declares the set of domain
+validators that should be enabled for this decorator semantic.<span
+ style="">&nbsp; </span>The validators are specified by their
+classname.<span style="">&nbsp; </span>This allows the semantic
+provider the ability to disable unwanted domain validators in a
+topology with a specific semantic.<o:p></o:p></span></p>
+      <p><span style="">API has been added to the <span class="SpellE">DomainManager</span>
+to query decorator semantic ID when loading domain validators.<o:p></o:p></span></p>
+      <p><b>View Content</b><span style=""> : &lt;<span class="SpellE">viewContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category allows the ability to include or
+exclude particular views from the deployment perspective in the given
+decorator semantic.<span style="">&nbsp; </span>The views should be
+identified by their Eclipse ID.<o:p></o:p></span></p>
+      <p><b>Property Sheet Content</b><span style=""> : &lt;<span
+ class="SpellE">propertySheetContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category allows the ability to include or
+exclude particular property sheets from the deployment perspective in
+the given decorator semantic.<span style="">&nbsp; </span>The property
+sheets should be identified by their Eclipse ID.<o:p></o:p></span></p>
+      <p><b>Palette Entry Content</b><span style=""> : &lt;<span
+ class="SpellE">paletteEntryContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category allows the user to customize the
+set of available entries in the deploy editor palette.<span style="">&nbsp;
+      </span>Entries can be included or excluded as required.<span
+ style="">&nbsp; </span>The <span class="SpellE">paletteEntries</span>
+should be declared by their GMF palette ID.<o:p></o:p></span></p>
+      <p><i style=""><span style="">Post M3</span></i><span style="">:
+Find a way to automatically associate <span class="SpellE">paletteEntryContent</span>
+with <span class="SpellE">typeContent</span>.<span style="">&nbsp; </span>This
+may be expensive since the GMF <span class="SpellE">paletteEntry</span>
+definition and the associated <span class="SpellE">EObject</span>
+(from which type could be derived) are defined in separate extension
+points.<o:p></o:p></span></p>
+      <p><b>Unit Provider Content</b><span style=""> : &lt;<span
+ class="SpellE">unitProviderContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This category allows the user to declare which
+unit providers should be enabled for the given decorator semantic.<span
+ style="">&nbsp; </span>The providers should be identified by their
+classname.<o:p></o:p></span></p>
+      <p><span style="">APIs have been added to the <span
+ class="SpellE">UnitLifeCycleManager</span> to allow lookup of
+providers based on input/output object and a decorator semantic ID.<o:p></o:p></span></p>
+      <p><b>User Defined Content</b><span style=""> : &lt;<span
+ class="SpellE">userDefinedContent</span>&gt;<o:p></o:p></span></p>
+      <p><span style="">This is a special category to allow users to
+dynamically group semantic content bindings in their own category,
+other than those previously mentioned.<span style="">&nbsp; </span>The
+functionality is similar to the previous categories, with an extra
+&#8216;name&#8217; attribute required to define the category name for these
+bindings.<span style="">&nbsp; </span>All bindings for the same
+category can be accessed through API in the DecoratorSemanticService
+that accepts both a semantic ID and a category name.<o:p></o:p></span></p>
+      <p><b>Pattern framework</b><br>
+The above categories will all use a pattern-matching framework to allow
+ease and flexibility with declaring enabled content. This can utilize
+the approach used by Eclipse capabilities. The following concepts
+should be supported:</p>
+      <ul type="disc">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Specific enablement of
+exact types<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Enablement of a group of
+types via wildcarding<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Exclusions of types from
+a specific pattern.<o:p></o:p></span></li>
+      </ul>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;"><br>
+Initially, the support will be based on that which is supported by the <b
+ style="">java.util.regex</b> framework.<span style="">&nbsp;&nbsp; </span>A
+string will be compared against a specified pattern to determine if a
+match is found or not.<span style="">&nbsp; </span>Additional
+complexity with matching rules can be implemented in later milestones.<o:p><br>
+      </o:p></span></p>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;"><o:p><br>
+The java.util.regex framework syntax is not always the same as what is
+typically used in simple wildcarding schemes.&nbsp; For example, to
+include all content, one must include ".*" instead of "*" (note the
+preceding '.').&nbsp; <br>
+      </o:p></span></p>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;"><o:p><br>
+      </o:p>The logic used in the implementation will be to give
+&lt;exclude&gt; patterns priority over &lt;include&gt; patterns.<span
+ style="">&nbsp; </span>For instance, if a given pattern is found in
+the exclude list, it is deemed to be excluded from the semantic
+content, regardless if it is listed in the include list or not.<o:p></o:p></span></p>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;"><o:p>&nbsp;</o:p></span></p>
+      <p class="MsoNormal"><b style=""><span
+ style="font-size: 10pt; font-family: Arial;">Post M3 Items to Consider<br
+ style="">
+<!--[if !supportLineBreakNewLine]--><br style="">
+<!--[endif]--><o:p></o:p></span></b></p>
+      <ul style="margin-top: 0in;" type="disc">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Enablement on type
+content entries, to allow for cases when the object namespace is not
+enough information to fully restrict the content.<span style="">&nbsp; </span>For
+example, the ability to enable WAS6 but not WAS51, since there are not
+separate types for these elements.<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">More robust pattern
+matching support (exclusion) and priority rules to handle collisions.<span
+ style="">&nbsp; </span>For example, semantic one enables a type,
+while semantic two disables that same type.<span style="">&nbsp; </span>Which
+has priority?<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Enhanced type content
+support for validators; allow the ability to replace or disable the
+default validator for a given type, or declare a new validator inline.<span
+ style="">&nbsp; </span>This will likely heavily rely upon a better
+validation framework that supports more fine-grained validators beyond
+the existing domain level.<o:p></o:p></span></li>
+      </ul>
+      <p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial;"><o:p>&nbsp;</o:p></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">API Support
+[<a href="#top"><span style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>The following APIs will be made available for accessing
+decorator semantic information. Assuming the proposed solution, these
+APIs will be accessible from the TopologyManager or the
+DecoratorSemanticService.</p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+String[] getAllDecoratorSemanticNames();<o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+String getDecoratorSemanticDescription( String semanticName );<o:p></o:p></span></p>
+      <p><span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;; color: black;">public
+String <span
+ style="background: silver none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">getDecoratorSemanticId</span>(
+String semanticName );</span><span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean isDmoMemberOf( String decoratorSemanticId, DeployModelObject
+dmo );<o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean isMenuMemberOf( String decoratorSemanticId, String menuId ); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean <span class="SpellE">isPaletteEntryMemberOf</span>( String
+decoratorSemanticId, String <span class="SpellE">paletteId</span> ); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean <span class="SpellE">isPropertySheetMemberOf</span>( String
+decoratorSemanticId, String <span class="SpellE">propertyId</span>); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+      <span class="SpellE">boolean</span> <span class="SpellE">isUnitProviderMemberOf</span>(
+String decoratorSemanticId, String <span class="SpellE">providerId</span>
+); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean <span class="SpellE">isUserContentMemberOf</span>(String
+decoratorSemanticId, String <span class="SpellE">userCategory</span>,
+String <span class="SpellE">contentItem</span>); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean <span class="SpellE">isValidatorMemberOf</span>( String
+decoratorSemanticId, String <span class="SpellE">validatorId</span> );
+      <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+boolean <span class="SpellE">isViewMemberOf</span>( String
+decoratorSemanticId, String <span class="SpellE">viewId</span> );<o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+      <span class="SpellE">DecoratorSemanticDescriptor</span>[]
+findAvailableDecoratorSemantics();</span> <span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+DecoratorSemanticDescriptor findDecoratorSemantic(String id); <o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+DecoratorSemanticPatternBindingDescriptor[]
+findAvailableDecoratorSemanticPatternBindings();</span> <span
+ style="font-size: 8pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <p><span style="font-size: 8pt; font-family: &quot;Courier New&quot;;">public
+DecoratorSemanticPatternBindingDescriptor
+findDecoratorSemanticPatternBinding(String id);</span><br>
+      <br>
+      <b>Comments/Questions/Issues:</b><span
+ style="font-size: 7.5pt; font-family: &quot;Courier New&quot;;"><o:p></o:p></span></p>
+      <ol start="1" type="1">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Any other APIs that may
+be required in M3?<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">API names are certainly
+welcome for input.<o:p></o:p></span></li>
+      </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">Testing <span
+ class="SpellE">Requrements</span> [<a href="#top"><span
+ style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>The decorator semantic extensions and API will be verified by
+junits that test the follow:</p>
+      <ul type="disc">
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Load and verify the
+declared decorator semantics in the workspace<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Create a topology with a
+given decorator semantic<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Verify enabled and
+disabled content for the given topology.<o:p></o:p></span></li>
+        <li class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">Test all categories,
+including userDefinedContent.<o:p></o:p></span></li>
+      </ul>
+      <p class="MsoNormal" style=""><span
+ style="font-size: 10pt; font-family: Arial;">See</span><span
+ style="font-size: 10pt; font-family: &quot;Courier New&quot;; color: black;"> <span
+ class="SpellE">com.ibm.ccl.soa.deploy.tests.extension.DecoratorSemanticTests</span></span><span
+ style="font-size: 10pt; font-family: Arial;"><o:p></o:p></span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial;"><o:p>&nbsp;</o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 567.5pt;" border="0"
+ cellpadding="0" width="757">
+  <tbody>
+    <tr style="">
+      <td style="padding: 0.75pt; width: 564.5pt;" width="753">
+      <p>This documentation is maintained by <b>Chad Holliday</b> <i>(chadh@us.ibm.com)</i>.
+      </p>
+      <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><span
+ style="font-size: 10pt; font-family: Arial; display: none;"><o:p>&nbsp;</o:p></span></p>
+<table class="MsoNormalTable" style="width: 100%;" border="0"
+ cellpadding="0" width="100%">
+  <tbody>
+    <tr style="">
+      <td
+ style="padding: 1.5pt; background: rgb(0, 128, 192) none repeat scroll 0%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;">
+      <p class="MsoNormal"><b><span
+ style="font-size: 10pt; font-family: Arial; color: white;">[<a
+ href="overview-summary.html"><span style="color: lightblue;">Index</span></a>]
+[<a href="#top"><span style="color: lightblue;">Top</span></a>]</span></b><b><span
+ style="font-size: 10pt; font-family: Arial;"> <o:p></o:p></span></b></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+</body>
+</html>

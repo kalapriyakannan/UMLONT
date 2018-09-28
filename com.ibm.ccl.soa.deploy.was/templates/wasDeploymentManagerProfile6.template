@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+description="Created Mon 2006.12.18 at 10:21:26 AM EST" displayName="WebSphere 6.0 Deployment Manager Profile" name="WebSphere6DeploymentManagerProfile">
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="WebSphere6DmgrNode"/>   
+  </core:annotation>
+  
+  <was:unit.wasNodeUnit name="WebSphere6DmgrNode">
+    <was:capability.wasNode name="WebSphere6DmgrNode" linkType="any" isDefaultProfile="true" isManaged="false" nodeName="cellManager01" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\Dmgr01" profileName="Dmgr01" profileType="dmgr" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+      <core:attributeMetaData attributeName="isManaged" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="ConfigurationContainer" name="Provide_ConfigurationContainerCapability" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="SharedLibraryContainer" name="Provide_SharedlibraryContainerCapablity" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="WebSphereNodeHostsWAS6dmgr" source="/WebSphere6DmgrNode" target="/WebSphereDeploymentManagerUnit"/>
+    <core:link.hosting name="WebSphereNodeHostsCell" source="/WebSphere6DmgrNode" target="/WebSphere6DistributedCell"/>
+  </was:unit.wasNodeUnit>
+
+  <was:unit.wasNodeGroupUnit name="WebSphereNodeGroup" configurationUnit="true">
+    <was:capability.wasNodeGroup name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    <core:link.member name="WebSphereNodeGroupContainsWasNode" source="/WebSphereNodeGroup" target="/WebSphere6DmgrNode"/>
+  </was:unit.wasNodeGroupUnit>
+
+  <was:unit.wasCellUnit name="WebSphere6DistributedCell" configurationUnit="true">
+    <was:capability.wasCell name="WebSphere6 Distributed Cell" linkType="any" cellName="cell01" isDistributed="true" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCell>
+    <was:capability.wasConfigurationContainer displayName="WebSphere Cell Configuration Container" name="WebSphereCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WebSphere Cell Shared Library Container" name="WebSphereCellSharedLibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="At least one node in cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="1" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement displayName="At least one node group in cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="1" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="WebSphere6StandaloneCellContainsWasNodeGroup" source="/WebSphere6DistributedCell" target="/WebSphereNodeGroup"/>
+    <core:link.member name="WebSphere6StandaloneCellContainsWasNode" source="/WebSphere6DistributedCell" target="/WebSphere6DmgrNode"/>
+  </was:unit.wasCellUnit>
+
+  <was:unit.wasDeploymentManagerUnit displayName="WebSphere 6.0 Deployment Manager" name="WebSphereDeploymentManagerUnit">
+    <was:capability.wasDeploymentManager displayName="WebSphere Deployment Manager" name="WebSphere deployment Manager" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+		<constraint:constraint.equals name="dmgr" attributeName="profileType" value="dmgr"/>
+		<constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WebSphereDeploymentManagerUnit" target="/portConfiguration"/>
+  </was:unit.wasDeploymentManagerUnit>
+  
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true">
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="cell_discovery_address" name="cell_discovery_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="cell_discovery_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+</core:topology>

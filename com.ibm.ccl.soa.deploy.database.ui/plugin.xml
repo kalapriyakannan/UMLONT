@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<!-- Palette Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution
+				factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+
+				<!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+				<entry label="%businessComponentStack.Label"
+					kind="stack" description="%businessComponentStack.Description"
+					small_icon="" path="/applicationToolDrawer/"
+					id="businessComponentStack">
+				</entry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+
+	<!-- Core Element Types and custom Factory -->
+	<extension
+		point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<metamodelType id="database.DatabaseUnitMeta"
+			    icon="icons/pal/database_pal16.gif"
+				name="%DatabaseUnitMeta.label" eclass="DatabaseUnit">
+			</metamodelType>
+		</metamodel>
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<metamodelType id="database.DatabaseInstanceUnitMeta"
+			    icon="icons/pal/database_pal16.gif"
+				name="%DatabaseInstanceUnitMeta.label"
+				eclass="DatabaseInstanceUnit">
+			</metamodelType>
+		</metamodel>
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<metamodelType id="database.SQLModuleMeta"
+			    icon="icons/pal/SQLModule_16.gif"
+				name="%SQLModuleMeta.label" eclass="SQLModule">
+			</metamodelType>
+		</metamodel>
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<metamodelType id="database.DatabaseComponent"
+				name="%DatabaseComponent.label"
+				icon="icons/pal/DatabaseComponent_16.gif"
+				eclass="DatabaseComponent">
+			</metamodelType>
+		</metamodel>
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<metamodelType id="database.DatabaseDefinitionMeta"
+				name="%DatabaseDefinition.Label" 
+				icon="icons/pal/service_data.gif"
+				eclass="DatabaseDefinition">
+			</metamodelType>
+		</metamodel>
+	</extension>
+
+	<!-- Deploy Core Editpart Providers -->
+	<!-- core editparts  -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.database.ui.providers.DatabaseEditPartProvider">
+			<Priority name="Medium"></Priority>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="database.DatabaseUnit, database.DatabaseInstanceUnit, database.SQLModule, database.DatabaseComponent">
+				</staticMethod>
+			</object>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()"
+					value="module.database, configurationUnit.database, component.database" />
+			</object>
+			<context views="NodesByType, Nodes"></context>
+		</editpartProvider>
+	</extension>
+
+	<!-- Deploy Core View Providers -->
+	<!-- core views  -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method name="getProxyClassID()"
+					value="database.DatabaseUnit, database.DatabaseInstanceUnit, database.SQLModule, database.DatabaseComponent">
+				</method>
+			</object>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="module.database, configurationUnit.database, component.database">
+			</context>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="" elements="Nodes">
+			</context>
+		</viewProvider>
+	</extension>
+
+	<!-- SAF interface provider -->
+	<!-- for DDL -->
+	<extension point="com.ibm.ccl.soa.deploy.saf.ui.uihandlers"
+		id="ddlUIHandlers" name="%ddlUIHandlersName">
+		<interfaceUIHandler name="%ddlInterfaceUIHandlerName"
+			description="%ddlInterfaceUIHandlerDescription" kind="interface.ddl"
+			class="com.ibm.ccl.soa.deploy.database.ui.handlers.DDLInterfaceUIHandler">
+     <enablement>
+        <instanceof
+              value="com.ibm.ccl.soa.deploy.database.DDLInterface">
+        </instanceof>
+     </enablement>
+		</interfaceUIHandler>
+	</extension>
+	<!-- Business Application Decorator Semantic -->
+	<extension id="com.ibm.ccl.soa.deploy.database.topology"
+		name="%databaseTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<paletteEntryContent>
+				<include
+					pattern="database.databaseComponent.conceptual" />
+			</paletteEntryContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+	
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.database"
+            name="%dbActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.database"
+            pattern="(?&lt;!.)database\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.database"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.database"/>  
+   </extension>
+</plugin>

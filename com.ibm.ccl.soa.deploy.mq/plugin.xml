@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/mq/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.mq.provider.MqItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/mq/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.mq.MqPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="mq"
+       class="com.ibm.ccl.soa.deploy.mq.util.MqResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.mq.domain"
+       name="%extension.mqDomain"
+       targetNamespace="http://www.ibm.com/Zephyr/mq/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.mq.internal.validator.MqDomainValidator"/>
+        <resourceType
+             id="mq.MQActivationSpecification.conceptual"
+             name="MQActivationSpecification"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQActivationSpecificationC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQActivationSpecificationTool.Description"
+             label="%mqMQActivationSpecificationTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+             largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQActivationSpecification.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQBaseSystem.conceptual"
+             name="MQBaseSystem"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQBaseSystemC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQBaseSystemTool.Description"
+             label="%mqMQBaseSystemTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+             largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif"             
+             resourceTypeId="mq.MQBaseSystem.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQConnectionFactories.conceptual"
+             name="MQConnectionFactories"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQConnectionFactoriesC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQConnectionFactoriesTool.Description"
+             label="%mqMQConnectionFactoriesTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQConnectionFactories.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQListener.conceptual"
+             name="MQListener"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQListenerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQListenerTool.Description"
+             label="%mqMQListenerTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+             largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQListener.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQMessageListnerServicePort.conceptual"
+             name="MQMessageListnerServicePort"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQMessageListnerServicePortC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQMessageListnerServicePortTool.Description"
+             label="%mqMQMessageListnerServicePortTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQMessageListnerServicePort.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQMessagingProvider.conceptual"
+             name="MQMessagingProvider"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQMessagingProviderC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQMessagingProviderTool.Description"
+             label="%mqMQMessagingProviderTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+           largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQMessagingProvider.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQQueueChannel.conceptual"
+             name="MQQueueChannel"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQQueueChannelC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQQueueChannelTool.Description"
+             label="%mqMQQueueChannelTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQQueueChannel.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQQueueConnectionFactory.conceptual"
+             name="MQQueueConnectionFactory"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQQueueConnectionFactoryC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQQueueConnectionFactoryTool.Description"
+             label="%mqMQQueueConnectionFactoryTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQQueueConnectionFactory.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQQueueDestination.conceptual"
+             name="MQQueueDestination"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQQueueDestinationC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQQueueDestinationTool.Description"
+             label="%mqMQQueueDestinationTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQQueueDestination.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQQueueManager.conceptual"
+             name="MQQueueManager"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQQueueManagerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQQueueManagerTool.Description"
+             label="%mqMQQueueManagerTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+             largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQQueueManager.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQQueue.conceptual"
+             name="MQQueue"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQQueueC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQQueueTool.Description"
+             label="%mqMQQueueTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQQueue.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQTopicConnectionFactory.conceptual"
+             name="MQTopicConnectionFactory"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQTopicConnectionFactoryC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQTopicConnectionFactoryTool.Description"
+             label="%mqMQTopicConnectionFactoryTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+            largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQTopicConnectionFactory.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="mq.MQTopicDestination.conceptual"
+             name="MQTopicDestination"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.mq/templates/MQTopicDestinationC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%mqMQTopicDestinationTool.Description"
+             label="%mqMQTopicDestinationTool.Label"
+             path="/serverSoftwareDrawer/mqStack"
+             largeIcon="icons/pal/derby_db_20.gif"
+			 smallIcon="icons/pal/derby_db_16.gif" 
+             resourceTypeId="mq.MQTopicDestination.conceptual">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

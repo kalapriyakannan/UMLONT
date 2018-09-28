@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+description="Created Wed 2006.12.20 at 02:59:11 PM EST" displayName="WebSphere 6.0 Unmanaged Node with WebServer" name="WebSphere6UnmanagedNodeWithWebServer">
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="WebSphereUnmanagedNode"/>   
+  </core:annotation>
+  
+  <was:unit.wasWebServerUnit name="WebServer">
+    <was:capability.wasWebServer displayName="WebSphere Web Server" name="WebServer" linkType="dependency" configFile="c:\Program Files\IBM HTTP Server\config\httpd.conf" installLocation="c:\Program Files\IBM HTTP Server" logFileError="" mapApplications="MAP_ALL" operatingSystem="WINDOWS" port="80" serverName="webserver01" serviceName="IBMHTTPServer6.0" type="IHS"/>
+    <was:capability.wasWebServerPlugin displayName="WebSphere IHS Plugin" name="cap1" installLocation="c:\Program Files\WebSphere\Plugins"/>
+    <was:capability.wasWebServerManagement displayName="WebSphere IHS Plugin Administration" name="cap0" autoConfigPropagation="true" port="8008" userId="ihsadmin">
+      <core:attributeMetaData attributeName="password" encrypted="true" encryptionRequired="true"/>
+    </was:capability.wasWebServerManagement>
+    <core:requirement displayName="WebSphere Plugin Redirection" mutable="true" name="WebSphere IHS Plugin Redirection" dmoType="was:WasPluginRedirection" linkType="dependency"/>
+    <core:requirement displayName="WebSphere Plugin Admin" mutable="true" name="WebSphere Plugin Admin" dmoType="was:WasPluginAdmin" linkType="dependency"/>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+		<constraint:constraint.equals name="none" attributeName="profileType" value="none"/>
+    </core:requirement>
+  </was:unit.wasWebServerUnit>
+
+  <was:unit.wasNodeUnit name="WebSphereUnmanagedNode">
+    <was:capability.wasNode name="WebSphereWebNode" linkType="any" nodeName="UnmanagedNode1" profileType="none" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="WebSphereNodeHostsWebServer" target="/WebServer"/>
+  </was:unit.wasNodeUnit>
+</core:topology>

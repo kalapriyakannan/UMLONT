@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="package_files/filelist.xml">
+<link rel=Edit-Time-Data href="package_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>ui.marker.quickfix Package (&quot;SOA Deploy Core API&quot;)</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>jswanke</o:Author>
+  <o:LastAuthor>jswanke</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>3</o:TotalTime>
+  <o:Created>2006-10-26T15:12:00Z</o:Created>
+  <o:LastSaved>2006-10-26T15:21:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>461</o:Words>
+  <o:Characters>2631</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>21</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>3086</o:CharactersWithSpaces>
+  <o:Version>10.6735</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all
+href="http://dev.eclipse.org/default_style.css">
+<link rel=Stylesheet type="text/css" media=all href="styles/stp-core.css">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:28.0pt;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-weight:bold;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin-top:0in;
+	margin-bottom:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:588540252;
+	mso-list-template-ids:-2021604068;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><![if mso 9]>
+<style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+</style>
+<![endif]>
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in;margin-left:
+8.5pt;margin-top:14.2pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><a name=top><span style='font-size:10.0pt;font-family:Arial'><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->The
+Provides a UI mechanism to associate a <i>Quick Fix</i> action to validation errors that
+have known <i>resolutions</i>.
+<o:p></o:p></span></a></p>
+
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<h1 align=center style='text-align:center'><span style='mso-bookmark:top'>Deploy
+Core Editor &#8220;<span class=SpellE>Quickfix</span> Marker&#8221; Package API
+Documentation</span></h1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><span style='mso-bookmark:top'><b><span style='font-size:
+  10.0pt;font-family:Arial;color:white'>Abstract [</span></b></span><b><span
+  style='font-size:10.0pt;font-family:Arial;color:white'><a
+  href="overview-summary.html"><span style='color:lightblue'>Index</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+<p>
+This package contains the implementation of <i>Quick fixes</i> in the SOA Deploy
+Core Editor.  If a validation error has a known <i>Resolution</i>, the UI marks
+that error with a light bulb in addition to its error decoration.  When the light
+bulb is clicked by a user, this package runs code to present a list of possible
+resolutions intended to correct the error.
+<o:p></o:p></p>
+<!--  Leave this paragraph  -->
+  <p>In this document, concepts are enclosed by italics (<i>like this</i>),
+  references to types or methods in the Java API are enclosed by fixed-width
+  fonts (<code>like this</code>), and references to elements in the schemas are
+  enclosed in angle <span class=GramE>brackets(</span>&lt;<span class=SpellE>likethis</span>
+  /&gt;).</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Quickfix implementation and API [<a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  
+<p>
+This package contains the user interface code to present a list of <i>Validation Resolutions</i>.
+The list appears as a box near the error marker the user clicked to indicate his or her desire to
+correct a problem.
+
+<p>
+Third parties wishing to add similar behavior to their own <i>GMF EditParts</i> beyond what is
+provided by the SOA Deploy Core Editor may use the
+<a href="QuickFixPopUp.html"><code>QuickFixPopUp</code></a> class.
+</p>
+
+<p>
+Third parties wishing to add their own <i>Validation Resolutions</i> appearing under this UI
+mechanism must implement the <code>com.ibm.ccl.soa.deploy.core.resolutionGenerators</code>
+extension point.
+
+</p>
+
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><img
+  border=0 width=32 height=32 id="_x0000_i1025" src=SCAObject.jpg><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Testing <span class=SpellE>Requirements</span> [<a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The Quickfix API will be tested by verifying the following: </p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>Explain how the major
+       components of this design will be tested<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>... <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+       style='font-size:10.0pt;font-family:Arial'>...<o:p></o:p></span></li>
+  </ul>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This documentation is maintained by <b>Ed Snible</b> <i>(<span class=GramE>snible{</span>at}us.ibm.com)</i>.
+  </p>
+  <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>[<a href="overview-summary.html"><span style='color:lightblue'>Index</span></a>]
+  [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" name="DB2 Node Catalog Template">
+  <db2Deploy:unit.db2NodeCatalogUnit name="DB2NodeCatalog" configurationUnit="true">
+    <db2Deploy:capability.db2CatalogedNode name="Db2CatalogedNode" displayName="DB2 Cataloged Node" linkType="any" nodeType="TCPIP" port="50000"/>
+    <core:requirement mutable="true" name="Db2Instance" displayName="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="dependency"/>
+    <core:requirement mutable="true" name="DB2BaseInstance" displayName="DB2BaseInstance" dmoType="db2Deploy:DB2BaseInstance" linkType="hosting"/>
+  </db2Deploy:unit.db2NodeCatalogUnit>
+</core:topology>

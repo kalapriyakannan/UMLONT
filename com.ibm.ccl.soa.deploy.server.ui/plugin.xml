@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.14 2008/05/27 14:03:04 mdelder Exp $
+-->
+
+<plugin>
+    <!-- Core Element Types and custom Factory -->
+   	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/">
+	    	<metamodelType
+	        	id="server.ServerUnit"
+	            icon="icons/pal/x86svr_dgm.gif"            
+	            name="%ServerUnit.label"
+	            eclass="ServerUnit">                      
+	        </metamodelType>
+        </metamodel>  
+	</extension>
+
+  	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.server.ui.providers.ServerEditPartProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])" value="server.ServerUnit">
+            </staticMethod>
+         </object>         
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="unit.server"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="server.ServerUnit">
+            </method>
+         </object> 
+         <!--        
+         <object class="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType(com.ibm.ccl.soa.deploy.core.ui)" id="NodeTypes">
+            <method name="getEClassName()" value="server.ServerUnit">
+            </method>
+         </object>    -->                                  
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="unit.server">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">             	            	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+   <extension
+       point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+    <IconProvider class="com.ibm.ccl.soa.deploy.server.ui.providers.ServerIconProvider">
+       <Priority name="High"/>
+    </IconProvider>
+   </extension>  
+   
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.server"
+            name="%serverActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.server"
+            name="%serverActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.server"
+            pattern="(?&lt;!.)server\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.server"
+            pattern="(?&lt;!.)server\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.server"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.server"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.server"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.server"/>
+      </extension>  	
+</plugin>
+

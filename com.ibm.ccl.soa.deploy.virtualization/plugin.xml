@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.20 2008/06/16 20:26:46 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.virtualization.provider.VirtualizationItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.virtualization.VirtualizationPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="virtualization"
+       class="com.ibm.ccl.soa.deploy.virtualization.util.VirtualizationResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.virtualization.domain"
+       name="%extension.virtualizationDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.virtualization.internal.validator.VirtualizationDomainValidator"/>
+       <resourceType
+             id="virtualization.VirtualImage.conceptual"
+             name="VirtualImage"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VirtualImageC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualizationVirtualImageTool.Description"
+             label="%virtualizationVirtualImageTool.Label"
+             path="/virtualizationDrawer/baseVirtualizationStack"
+             smallIcon="icons/pal/virtual-image_pal16.gif"
+             largeIcon="icons/pal/virtual-image_pal20.gif"
+             resourceTypeId="virtualization.VirtualImage.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="virtualization.VirtualImageCollection.conceptual"
+             name="VirtualImageCollection"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VirtualImageCollectionC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualizationVirtualImageCollectionTool.Description"
+             label="%virtualizationVirtualImageCollectionTool.Label"
+             path="/virtualizationDrawer/baseVirtualizationStack"
+             smallIcon="icons/pal/vrtl-imge-collect-pal16.gif"
+             largeIcon="icons/pal/vrtl-imge-collect-pal20.gif"
+             resourceTypeId="virtualization.VirtualImageCollection.conceptual">
+       </resourceTypeUIBinding> 
+       <resourceType
+             id="virtualization.VirtualImageCollection.infra"
+             name="VirtualImageCollection"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VirtualImageCollection.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualizationVirtualImageCollectionTool.Description"
+             label="%virtualizationVirtualImageCollectionTool.Label"
+             path="/virtualizationDrawer/baseVirtualizationStack"
+             smallIcon="icons/pal/vrtl-imge-collect-pal16.gif"
+             largeIcon="icons/pal/vrtl-imge-collect-pal20.gif"
+             resourceTypeId="virtualization.VirtualImageCollection.infra">
+       </resourceTypeUIBinding>      
+       <resourceType
+             id="virtualization.VMwareVirtualImage.infra"
+             name="VMwareVirtualImage"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualImage.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualizationVMwareVirtualImageTool.Description"
+             label="%virtualizationVMwareVirtualImageTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/virtual-image_pal16.gif"
+             largeIcon="icons/pal/virtual-image_pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualImage.infra">
+       </resourceTypeUIBinding>  
+       <resourceType
+             id="virtualization.XenVirtualImage.infra"
+             name="XenVirtualImage"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/XenVirtualImage.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualizationXenVirtualImageTool.Description"
+             label="%virtualizationXenVirtualImageTool.Label"
+             path="/virtualizationDrawer/xenStack"
+             smallIcon="icons/pal/virtual-image_pal16.gif"
+             largeIcon="icons/pal/virtual-image_pal20.gif"
+             resourceTypeId="virtualization.XenVirtualImage.infra">
+       </resourceTypeUIBinding>         
+       <resourceType
+             id="os.OperatingSystemUnit.SLES10XenLinux.infra"
+             name="%os.OperatingSystemUnit.SLES10XenLinux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/SLES10XenLinux.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolSLES10XenLinux.Description"
+             largeIcon="icons/pal/suse_linux_server_pal20.gif"
+             smallIcon="icons/pal/suse_linux_server_pal16.gif"
+             label="%os.OperatingSystemUnit.SLES10XenLinux.Label"
+             path="/virtualizationDrawer"
+             resourceTypeId="os.OperatingSystemUnit.SLES10XenLinux.infra">
+       </resourceTypeUIBinding> 
+       <resourceType
+             id="os.OperatingSystemUnit.SLES10XenLinux.conceptual"
+             name="%os.OperatingSystemUnit.SLES10XenLinux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/SLES10XenLinuxC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolSLES10XenLinux.Description"
+             largeIcon="icons/pal/suse_linux_server_pal20.gif"
+             smallIcon="icons/pal/suse_linux_server_pal16.gif"
+             label="%os.OperatingSystemUnit.SLES10XenLinux.Label"
+             path="/virtualizationDrawer"
+             resourceTypeId="os.OperatingSystemUnit.SLES10XenLinux.infra">
+       </resourceTypeUIBinding>   
+       <resourceType
+             id="virtualization.OperatingSystemUnit.VMwareESX.infra"
+             name="%virtualization.OperatingSystemUnit.VMwareESX.conceptual.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareESX.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualization.OperatingSystemUnitToolVMwareESX.Description"
+             largeIcon="icons/pal/os_20.gif"
+             label="%virtualization.OperatingSystemUnitToolVMwareESX.Label"
+             smallIcon="icons/pal/os_16.gif"
+             path="/virtualizationDrawer"
+             resourceTypeId="virtualization.OperatingSystemUnit.VMwareESX.infra">
+       </resourceTypeUIBinding>         
+       <resourceType
+             id="virtualization.VirtualEthernetNICDef.conceptual"
+             name="VirtualEthernetNICDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VirtualEthernetNICDefC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualEthernetNICDefTool.Description"
+             label="%virtualEthernetNICDefTool.Label"
+             path="/virtualizationDrawer/baseVirtualizationStack"
+             smallIcon="icons/pal/vrt-ethrnt-nic-def_pal16.gif"
+             largeIcon="icons/pal/vrt-ethrnt-nic-def_pal20.gif"
+             resourceTypeId="virtualization.VirtualEthernetNICDef.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="virtualization.VMwareVirtualEthernetNICDef.infra"
+             name="VMwareVirtualEthernetNICDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualEthernetNICDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualEthernetNICDefTool.Description"
+             label="%vmwareVirtualEthernetNICDefTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/vrt-ethrnt-nic-def_pal16.gif"
+             largeIcon="icons/pal/vrt-ethrnt-nic-def_pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualEthernetNICDef.infra">
+       </resourceTypeUIBinding>
+              <resourceType
+             id="virtualization.XenVirtualEthernetNICDef.infra"
+             name="XenVirtualEthernetNICDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/XenVirtualEthernetNICDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%xenVirtualEthernetNICDefTool.Description"
+             label="%xenVirtualEthernetNICDefTool.Label"
+             path="/virtualizationDrawer/xenStack"
+             smallIcon="icons/pal/vrt-ethrnt-nic-def_pal16.gif"
+             largeIcon="icons/pal/vrt-ethrnt-nic-def_pal20.gif"
+             resourceTypeId="virtualization.XenVirtualEthernetNICDef.infra">
+       </resourceTypeUIBinding>       
+       <resourceType
+             id="virtualization.VirtualDiskDef.conceptual"
+             name="VirtualDiskDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VirtualDiskDefC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%virtualDiskDefTool.Description"
+             label="%virtualDiskDefTool.Label"
+             path="/virtualizationDrawer/baseVirtualizationStack"
+             smallIcon="icons/pal/virtual-disk-def_pal16.gif"
+             largeIcon="icons/pal/virtual-disk-def_pal20.gif"
+             enablePalette="true"
+             resourceTypeId="virtualization.VirtualDiskDef.conceptual">
+       </resourceTypeUIBinding>       
+       <resourceType
+             id="virtualization.VMwareVirtualDiskDef.infra"
+             name="VMwareVirtualDiskDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualDiskDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualDiskDefTool.Description"
+             label="%vmwareVirtualDiskDefTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/virtual-disk-def_pal16.gif"
+             largeIcon="icons/pal/virtual-disk-def_pal20.gif"
+             enablePalette="true"
+             resourceTypeId="virtualization.VMwareVirtualDiskDef.infra">
+       </resourceTypeUIBinding> 
+       <resourceType
+             id="virtualization.VMwareVirtualIDEDiskDef.infra"
+             name="VMwareVirtualIDEDiskDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualIDEDiskDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualIDEDiskDefTool.Description"
+             label="%vmwareVirtualIDEDiskDefTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/virtual-disk-def_pal16.gif"
+             largeIcon="icons/pal/virtual-disk-def_pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualIDEDiskDef.infra">
+       </resourceTypeUIBinding>        
+       <resourceType
+             id="virtualization.VMwareVirtualSCSIDiskDef.infra"
+             name="VMwareVirtualSCSIDiskDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualSCSIDiskDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualSCSIDiskDefTool.Description"
+             label="%vmwareVirtualSCSIDiskDefTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/virtual-disk-def_pal16.gif"
+             largeIcon="icons/pal/virtual-disk-def_pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualSCSIDiskDef.infra">
+       </resourceTypeUIBinding>             
+       <resourceType
+             id="virtualization.XenVirtualDiskDef.infra"
+             name="XenVirtualDiskDef"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/XenVirtualDiskDef.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%xenVirtualDiskDefTool.Description"
+             label="%xenVirtualDiskDefTool.Label"
+             path="/virtualizationDrawer/xenStack"
+             smallIcon="icons/pal/virtual-disk-def_pal16.gif"
+             largeIcon="icons/pal/virtual-disk-def_pal20.gif"
+             resourceTypeId="virtualization.XenVirtualDiskDef.infra">
+       </resourceTypeUIBinding> 
+       <resourceType
+             id="virtualization.VMwareVirtualServerSnapshot.infra"
+             name="VMwareVirtualServerSnapshot"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualServerSnapshot.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualServerSnapshotTool.Description"
+             label="%vmwareVirtualServerSnapshotTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/server-snapshot-pal16.gif"
+             largeIcon="icons/pal/server-snapshot-pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualServerSnapshot.infra">
+       </resourceTypeUIBinding>     
+       <resourceType
+             id="virtualization.VMwareVirtualDiskSnapshot.infra"
+             name="VMwareVirtualDiskSnapshot"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/templates/VMwareVirtualDiskSnapshot.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%vmwareVirtualDiskSnapshotTool.Description"
+             label="%vmwareVirtualDiskSnapshotTool.Label"
+             path="/virtualizationDrawer/vmwareStack"
+             smallIcon="icons/pal/disk-snapshot-pal16.gif"
+             largeIcon="icons/pal/disk-snapshot-pal20.gif"
+             resourceTypeId="virtualization.VMwareVirtualDiskSnapshot.infra">
+       </resourceTypeUIBinding>                              
+    </domain>
+  </extension>
+    
+    <!-- Zephyr Xen xmdomain and VMware vmx providers -->
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.virtualization.internal.provider.XenVirtualImageUnitProvider"
+			description="%xenVirtualUnitProvider.description"
+			name="%xenVirtualUnitProvider.label">
+			<inputEnablement>
+				<instanceof
+					value="org.eclipse.core.resources.IFile"/>
+		    	<test
+					property="org.eclipse.core.resources.name"
+					value="*.xmdomain" />
+			</inputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.virtualization.internal.provider.VMwareVirtualImageUnitProvider"
+			description="%vmwareVirtualUnitProvider.description"
+			name="%vmwareVirtualUnitProvider.label">
+			<inputEnablement>
+				<instanceof
+					value="org.eclipse.core.resources.IFile"/>
+				<or>
+	    			<test
+						property="org.eclipse.core.resources.name"
+						value="*.vmx" />
+	    			<test
+						property="org.eclipse.core.resources.name"
+						value="*.vmsd" />
+				</or>
+			</inputEnablement>
+		</unitProvider>
+	</extension>
+  
+  // Unit filters
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.virtualization.internal.filter.VirtualImageUnitFilter"
+           description="%virtualImageUnitFilter.description"
+           name="%virtualImageUnitFilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.virtualization.VirtualImageUnit"/>
+        </inputEnablement>
+     </unitFilter>
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.virtualization.internal.filter.VirtualServerSnapshotUnitFilter"
+           description="%virtualServerSnapshotUnitFilter.description"
+           name="%virtualServerSnapshotUnitFilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.virtualization.VirtualServerSnapshotUnit"/>
+        </inputEnablement>
+     </unitFilter>     
+  </extension>	
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.virtualization">		
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.virtualization/models/schemas/virtualization.xsd">
+			</uri>
+		</catalogContribution>
+	</extension> 
+</plugin>

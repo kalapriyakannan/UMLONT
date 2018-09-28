@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+	xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" ecore:documentRoot="Db2DeployRoot" ecore:name="db2Deploy"
+	ecore:nsPrefix="db2Deploy" ecore:package="com.ibm.ccl.soa.deploy.db2" elementFormDefault="qualified"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.java/models/schemas/javaDomain.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.database/models/schemas/databaseDomain.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.os/models/schemas/os.xsd" />
+
+	<!-- Capabilitiess -->
+
+	<element name="capability.db2Database" substitutionGroup="base:capability" type="db2:DB2Database" />
+	<complexType name="DB2Database">
+		<complexContent>
+			<extension base="database:Database">
+				<attribute name="dbAlias" type="string">
+					<annotation>
+						<documentation>Alias for the DB2 database if it has one.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dbName" type="string">
+					<annotation>
+						<documentation>The DB2 database name</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dbDrive" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="db2Version" type="base:VersionString">
+					<annotation>
+						<documentation>
+							The version of DB2. Must be a dotted numeric version string, up to 4 parts
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="createPath" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="codeSet" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<!-- Territories should be enumerated -->
+				<attribute name="territory" type="string">
+					<annotation>
+						<documentation>One of "BLANK, BR CN DE DK FI FR EN ES IT JP KR NO PL RU SE TW"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="pageSize" type="db2:PageSizeType">
+					<annotation>
+						<documentation>Page size</documentation>
+					</annotation>
+				</attribute>
+				<!-- range: default 32 [ 2 - 256 ] -->
+				<attribute name="dftExtentSize" type="integer">
+					<annotation>
+						<documentation></documentation>
+					</annotation>
+				</attribute>
+				<!-- e.g. "SYSTEM USING ('SYSCATSPACE')" -->
+				<attribute name="catalogSp" type="string">
+					<annotation>
+						<documentation>Tablespace for catalog, e.g. "SYSCATSPACE"</documentation>
+					</annotation>
+				</attribute>
+				<!-- e.g. "SYSTEM USING ('USERSPACE1')" -->
+				<attribute name="userSp" type="string">
+					<annotation>
+						<documentation>User tablespace, e.g. "USERSPACE1"</documentation>
+					</annotation>
+				</attribute>
+				<!-- e.g. "SYSTEM USING ('TEMPSPACE1')" -->
+				<attribute name="tempSp" type="string">
+					<annotation>
+						<documentation>Temporary tablespace, e.g. "TEMPSPACE1"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="PageSizeType">
+		<annotation>
+			<documentation xml:lang="en">This type defines the page sizes allowed for DB2 database</documentation>
+		</annotation>
+		<restriction base="int">
+			<enumeration value="4096" />
+			<enumeration value="8192" />
+			<enumeration value="16384" />
+			<enumeration value="32768" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WordWidthType">
+		<annotation>
+			<documentation xml:lang="en">
+				This type defines the word widths available for a Unix db2 install.
+			</documentation>
+		</annotation>
+		<restriction base="int">
+			<enumeration value="31" />
+			<enumeration value="32" />
+			<enumeration value="64" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AuthenticationTypeType">
+		<annotation>
+			<documentation xml:lang="en">
+				This type defines the authentication types for a Unix db2 install.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="SERVER" />
+			<enumeration value="CLIENT" />
+			<enumeration value="SERVER_ENCRYPT" />
+			<enumeration value="DATA_ENCRYPT" />
+			<enumeration value="DATA_ENCRYPT_CMP" />
+			<enumeration value="KERBEROS" />
+			<enumeration value="KRB_SERVER_ENCRYPT" />
+			<enumeration value="GSSPLUGIN" />
+			<enumeration value="GSS_SERVER_ENCRYPT" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UnixInstanceTypeType">
+		<annotation>
+			<documentation xml:lang="en">
+				This type defines the instance types for a Unix or windows db2 install.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Client" />
+			<enumeration value="ESE" />
+			<enumeration value="WSE" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsInstanceTypeType">
+		<annotation>
+			<documentation xml:lang="en">
+				This type extends the instance types with an additional type available for windows db2 install.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Client" />
+			<enumeration value="Standalone" />
+			<enumeration value="ESE" />
+			<enumeration value="WSE" />
+		</restriction>
+	</simpleType>
+
+	<element name="capability.db2Instance" substitutionGroup="base:capability" type="db2:DB2Instance" />
+	<complexType name="DB2Instance">
+		<complexContent>
+			<extension base="db2:DB2BaseInstance">
+				<attribute name="username" type="string">
+					<annotation>
+						<documentation>
+							username for DB2 instance administration user. e.g. db2admin (windows) or "db2inst1"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="password" type="string">
+					<annotation>
+						<documentation>password for DB2 instance administration user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="hostname" type="string">
+					<annotation>
+						<documentation>hostname of the computer with this DB2 instance</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="port" type="os:TCPPortType">
+					<annotation>
+						<documentation>port for the DB2 instance, e.g. "50000"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="autoStart" type="boolean">
+					<annotation>
+						<documentation>
+							Indicates whether the instance starts automatically during at system startup
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixDb2Instance" substitutionGroup="base:capability" type="db2:UnixDB2Instance" />
+	<complexType name="UnixDB2Instance">
+		<complexContent>
+			<extension base="db2:DB2Instance">
+				<attribute name="wordWidth" type="db2:WordWidthType">
+					<annotation>
+						<documentation>Word width for the DB2 instance (31 || 32 || 64)</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="authenticationType" type="db2:AuthenticationTypeType"></attribute>
+				<attribute name="fencedGroupName " type="string">
+					<annotation>
+						<documentation>
+							Group name for DB2 fenced users. DB2 Fenced users are used to run user defined functions
+							(UDFs) and stored procedures outside of the address space used by the DB2 environment.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedGID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUserName" type="string">
+					<annotation>
+						<documentation>
+							User name for the DB2 fenced user. The DB2 Fenced user is used to run user defined functions
+							(UDFs) and stored procedures outside of the address space used by the DB2 environment.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUserPassword" type="string">
+					<annotation>
+						<documentation>Password for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="groupName" type="string">
+					<annotation>
+						<documentation>Group name for administration of the DB2 instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="GID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for administration of the DB2 instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="UID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>User identifier for administration of the DB2 instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="instanceType" type="db2:UnixInstanceTypeType" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsDb2Instance" substitutionGroup="base:capability" type="db2:WindowsDB2Instance" />
+	<complexType name="WindowsDB2Instance">
+		<complexContent>
+			<extension base="db2:DB2Instance">
+				<attribute name="defaultInstance" type="boolean">
+					<annotation>
+						<documentation>Is the Windows DB2 Instance the default instance?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="instanceType" type="db2:WindowsInstanceTypeType" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2System" substitutionGroup="base:capability" type="db2:DB2System" />
+	<complexType name="DB2System">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="installDir" type="string">
+					<annotation>
+						<documentation>Full path to the install location of DB2</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="db2Version" type="base:VersionString">
+					<annotation>
+						<documentation>A dotted numeric version string, up to 4 parts, e.g. "8.2"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="db2ProductLang" type="string">
+					<annotation>
+						<documentation>The product language for the DB2 install, e.g. "EN"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsDb2System" substitutionGroup="base:capability" type="db2:WindowsDB2System" />
+	<complexType name="WindowsDB2System">
+		<complexContent>
+			<extension base="db2:DB2System">
+				<attribute name="extendedSecurity" type="boolean">
+					<annotation>
+						<documentation>Indicates whether Windows extended security for DB2 is enabled</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="adminGroupName" type="string">
+					<annotation>
+						<documentation>
+							The Windows user group for DB2 instance administration users. Members of this group have
+							complete access to all DB2 objects in the system.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="userGroupName" type="string">
+					<annotation>
+						<documentation>
+							The Windows user group for DB2 users. Members of this group will have read and execute
+							access to all DB2 objects in the system.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.unixDb2System" substitutionGroup="base:capability" type="db2:UnixDB2System" />
+	<complexType name="UnixDB2System">
+		<complexContent>
+			<extension base="db2:DB2System"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2AdminServer" substitutionGroup="base:capability" type="db2:DB2AdminServer" />
+	<complexType name="DB2AdminServer">
+		<complexContent>
+			<extension base="base:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixDb2AdminServer" substitutionGroup="base:capability" type="db2:UnixDB2AdminServer" />
+	<complexType name="UnixDB2AdminServer">
+		<complexContent>
+			<extension base="db2:DB2AdminServer">
+				<attribute name="dasGroupName" type="string">
+					<annotation>
+						<documentation>DB2 Administration Server user group name, e.g. "dasadm1"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dasGID" type="string"><!-- Optional -->
+					<annotation>
+						<documentation>
+							DB2 Administration Server group identifier. A number in range 0 - 65535. Recommendation is
+							to leave this attribute unset.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dasUID" type="string"><!-- Optional -->
+					<annotation>
+						<documentation>
+							DB2 Administration Server user identifier. A number in range 0 - 65535. Recommendation is to
+							leave this attribute unset.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dasUserName" type="string">
+					<annotation>
+						<documentation>DB2 Administration Server user name, e.g. "dasusr1"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dasUserPassword" type="string">
+					<annotation>
+						<documentation>DB2 Administration Server user password.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsDb2AdminServer" substitutionGroup="base:capability"
+		type="db2:WindowsDB2AdminServer" />
+	<complexType name="WindowsDB2AdminServer">
+		<complexContent>
+			<extension base="db2:DB2AdminServer">
+				<attribute name="dasDomain" type="string">
+					<annotation>
+						<documentation>DB2 Administration Server domain. (?)</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2AdminClient" substitutionGroup="base:capability" type="db2:DB2AdminClient" />
+	<complexType name="DB2AdminClient">
+		<complexContent>
+			<extension base="db2:DB2Client">
+				<attribute name="db2ProductLang" type="string">
+					<annotation>
+						<documentation>Primary language for the DB2 Administration Client, e.g. "EN"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2AppDevelClient" substitutionGroup="base:capability" type="db2:DB2AppDevelClient" />
+	<complexType name="DB2AppDevelClient">
+		<complexContent>
+			<extension base="db2:DB2Client">
+				<attribute name="db2ProductLang" type="string">
+					<annotation>
+						<documentation>
+							Primary language for the DB2 Application Development Client, e.g. "EN"
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.db2JdbcDriver" substitutionGroup="base:capability" type="db2:DB2JdbcDriver" />
+	<complexType name="DB2JdbcDriver">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="jdbcType" type="java:JdbcTypeType" />
+				<attribute name="driverPath" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="classpath" type="string">
+					<annotation>
+						<documentation>e.g. "C:/IBM/SQLLIB/db2java.zip"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="classname" type="string">
+					<annotation>
+						<documentation>e.g. "COM.ibm.db2.jdbc.DB2XADataSource"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2Client" substitutionGroup="base:capability" type="db2:DB2Client" />
+	<complexType name="DB2Client">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="db2ClientVersion" type="base:VersionString">
+					<annotation>
+						<documentation>
+							The version of the DB2 client. Must be a dotted numeric version string, up to 4 parts, e.g.
+							"8.2"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="installDir" type="string">
+					<annotation>
+						<documentation>Full install path for the DB2 client.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2BaseInstance" substitutionGroup="base:capability" type="db2:DB2BaseInstance" />
+	<complexType name="DB2BaseInstance">
+		<complexContent>
+			<extension base="database:DatabaseInstance">
+				<attribute name="db2InstanceName" type="string">
+					<annotation>
+						<documentation>DB2 instance name, e.g. "db2inst1"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="db2Version" type="base:VersionString">
+					<annotation>
+						<documentation>
+							The version of the DB2 instance. Must be a dotted numeric version string, up to 4 parts,
+							e.g. "8.2"
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.db2ClientInstance" substitutionGroup="base:capability" type="db2:DB2ClientInstance" />
+	<complexType name="DB2ClientInstance">
+		<complexContent>
+			<extension base="db2:DB2BaseInstance"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixDb2ClientInstance" substitutionGroup="base:capability"
+		type="db2:UnixDB2ClientInstance" />
+	<complexType name="UnixDB2ClientInstance">
+		<complexContent>
+			<extension base="db2:DB2ClientInstance">
+				<attribute name="wordWidth" type="db2:WordWidthType">
+					<annotation>
+						<documentation>Word width for the DB2 client (31 || 32 || 64)</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="authenticationType" type="db2:AuthenticationTypeType" />
+				<attribute name="fencedGroupName " type="string">
+					<annotation>
+						<documentation>
+							Group name for DB2 fenced users. DB2 Fenced users are used to run user defined functions
+							(UDFs) and stored procedures outside of the address space used by the DB2 environment.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedGID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUserName" type="string">
+					<annotation>
+						<documentation>
+							User name for the DB2 fenced user. The DB2 Fenced user is used to run user defined functions
+							(UDFs) and stored procedures outside of the address space used by the DB2 environment.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fencedUserPassword" type="string">
+					<annotation>
+						<documentation>Password for the DB2 fenced user.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="groupName " type="string">
+					<annotation>
+						<documentation>Group name for administration of the DB2 Client instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="GID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>Group identifier for administration of the DB2 Client instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="UID" type="string"><!-- optional -->
+					<annotation>
+						<documentation>User identifier for administration of the DB2 Client instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="instanceType" type="db2:UnixInstanceTypeType" />
+				<!-- Note: no good use case for moving username/password to DB2ClientInstance -->
+				<attribute name="username" type="string">
+					<annotation>
+						<documentation>Name of user for administration of the DB2 Client instance.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="password" type="string">
+					<annotation>
+						<documentation>Password of user for administration of the DB2 Client instance.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsDb2ClientInstance" substitutionGroup="base:capability"
+		type="db2:WindowsDB2ClientInstance" />
+	<complexType name="WindowsDB2ClientInstance">
+		<complexContent>
+			<extension base="db2:DB2ClientInstance">
+				<attribute name="defaultInstance" type="boolean">
+					<annotation>
+						<documentation>Is this the default DB2 client instance?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="instanceType" type="db2:WindowsInstanceTypeType"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.db2CatalogedNode" substitutionGroup="base:capability" type="db2:DB2CatalogedNode" />
+	<complexType name="DB2CatalogedNode">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="nodeName" type="string">
+					<annotation>
+						<documentation>Node name for the DB2 cataloged node</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="nodeType" type="string">
+					<annotation>
+						<documentation>Typically "TCPIP"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="port" type="integer">
+					<annotation>
+						<documentation>Port number used to interact with the DB2 instance, e.g. "50000"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="hostname" type="string">
+					<annotation>
+						<documentation>Resolvable name of host of the DB2 instance</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="dasLevel" type="string">
+					<annotation>
+						<documentation>
+							The level of the remote DB2 administration server, e.g. "8.1.0.36"
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Units -->
+	<element name="unit.db2ddl" substitutionGroup="base:artifact" type="db2:DB2DDLArtifact" />
+	<complexType name="DB2DDLArtifact">
+		<complexContent>
+			<extension base="database:DDLArtifact" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2DatabaseUnit" substitutionGroup="base:unit" type="db2:DB2DatabaseUnit" />
+	<complexType name="DB2DatabaseUnit">
+		<complexContent>
+			<extension base="database:DatabaseUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2InstanceUnit" substitutionGroup="base:unit" type="db2:DB2InstanceUnit" />
+	<complexType name="DB2InstanceUnit">
+		<complexContent>
+			<extension base="database:DatabaseInstanceUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2ClientInstanceUnit" substitutionGroup="base:unit" type="db2:DB2ClientInstanceUnit" />
+	<complexType name="DB2ClientInstanceUnit">
+		<annotation>
+			<documentation>
+				DB2ClientInstanceUnit holds a {@link DB2ClientInstance} capability. It is hosted by a unit with a {@link
+				DB2Client} capability (such as the {@link DB2AdminClientUnit}, {@link DB2AppDevelClientUnit}, or {@link
+				DB2RuntimeClientUnit}).
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2AdminServerUnit" substitutionGroup="base:unit" type="db2:DB2AdminServerUnit" />
+	<complexType name="DB2AdminServerUnit">
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2SystemUnit" substitutionGroup="base:unit" type="db2:DB2SystemUnit" />
+	<complexType name="DB2SystemUnit">
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2CatalogUnit" substitutionGroup="base:unit" type="db2:DB2CatalogUnit" />
+	<complexType name="DB2CatalogUnit">
+		<annotation>
+			<documentation>
+				DB2CatalogUnits are a way of using indirection to configure programs that use databases. A
+				DB2CatalogUnit represents a remote DB2 database or an alias to a local database. By convention
+				DB2CatalogUnit is a configuration unit and carries a {@link DB2Database} capability representing the
+				remote database. The type 2 WAS Data Source depends on a DB2Database held by a local {@link
+				DB2DatabaseUnit} or by this {@link DB2CatalogUnit}. DB2CatalogUnit is typically hosted by a {@link
+				DB2NodeCatalogUnit}.
+
+				<p>
+					A DB2CatalogUnit is said to be installed if a connection to a database of that name would be
+					successful. Installation is typically done using the DB2 CATALOG DATABASE command. Removal is
+					typically done with the UNCATALOG DATABASE command.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2NodeCatalogUnit" substitutionGroup="base:unit" type="db2:DB2NodeCatalogUnit" />
+	<complexType name="DB2NodeCatalogUnit">
+		<annotation>
+			<documentation>
+				DB2NodeCatalogUnit represents a connection to a remote DB2 Instance. DB2NodeCatalogUnit carries a {@link
+				DB2CatalogedNode} capability to hold the host and port of the remote DB2 Instance. DB2NodeCatalogUnit
+				hosts {@link DB2NodeCatalogUnit}s representing databases on the remote instance. By convention,
+				DB2NodeCatalogUnits depend upon the remote instance. They are typically hosted by a {@link
+				DB2ClientInstanceUnit}.
+
+				<p>By convention, templates default the nodeType to 'TCPIP' and the port to '50000'.</p>
+
+				<p>
+					A DB2NodeCatalogUnit is said to be installed if it appears in the results of the LIST NODE DIRECTORY
+					command. Installation is typically done using the DB2 CATALOG TCPIP NODE or CATALOG LOCAL NODE
+					commands. Removal is typically done using the DB2 UNCATALOG NODE command.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2BaseClientUnit" substitutionGroup="base:unit" type="db2:DB2BaseClientUnit" />
+	<complexType name="DB2BaseClientUnit">
+		<complexContent>
+			<extension base="base:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2RuntimeClientUnit" substitutionGroup="base:unit" type="db2:DB2RuntimeClientUnit" />
+	<complexType name="DB2RuntimeClientUnit">
+		<annotation>
+			<documentation>
+				A DB2RuntimeClientUnit enables applications to access servers. It lets applications access DB2 servers,
+				but doesn't include the support for database administration and application development found in the
+				{@link DB2AdminClientUnit} or {@link DB2AppDevelClientUnit}. By convention, a DB2RuntimeClientUnit
+				contains a {@link DB2RuntimeClient} capability.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="db2:DB2BaseClientUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2AdminClientUnit" substitutionGroup="base:unit" type="db2:DB2AdminClientUnit" />
+	<complexType name="DB2AdminClientUnit">
+		<complexContent>
+			<extension base="db2:DB2BaseClientUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.db2AppDevelClientUnit" substitutionGroup="base:unit" type="db2:DB2AppDevelClientUnit" />
+	<complexType name="DB2AppDevelClientUnit">
+		<complexContent>
+			<extension base="db2:DB2BaseClientUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<!-- DB2 Instance Ports Name Enumeration -->
+	<!-- instanceInterruptPort not obviously used by current DB2 -->
+	<!-- instanceFCMPort is actually the start of a range, of size MAX_LOGICAL_NODES -->
+	<simpleType name="DB2InstancePortNames">
+		<restriction base="string">
+			<enumeration value="instanceConnectionPort" />
+			<enumeration value="instanceInterruptPort" />
+			<enumeration value="instanceFCMPort" />
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:genericsoftware="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" elementFormDefault="qualified" ecore:documentRoot="GenericsoftwareRoot"
+	ecore:name="genericsoftware" ecore:package="com.ibm.ccl.soa.deploy.genericsoftware" ecore:nsPrefix="genericsoftware">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../base.xsd" />
+
+	<!-- Version is an interface in CDM, implemented by a subset of the types -->
+	<element name="capability.version" substitutionGroup="core:capability" type="genericsoftware:Version" />
+	<complexType name="Version">
+		<annotation>
+			<documentation xml:lang="en">
+				Version can be a capability on any unit type that needs all or some of these attributes.
+
+				A representation of the specification of the version of a piece of hardware or software. The version is
+				specified in two parts - it can be specified as a single string, in which case the format of the string
+				is determined by the manufacturer of the entity (but should not include any manufacturer or model or
+				product name information ... it should just be the data that identifies the version); and it can be
+				specified as a combination of four integers that correspond to the Solution Install standard.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="buildLevel" type="string">
+					<annotation>
+						<documentation>
+							This string contains the build level without any version or release information.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="level" type="int">
+					<annotation>
+						<documentation>
+							A very precise specification of the exact build level of a particular piece of software, or
+							the exact manufacturing run of a physical element. Not always specified in the version
+							string. For products that use a 3 digit numbering convention, the level should not be used.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="majorVersion" type="int">
+					<annotation>
+						<documentation>
+							A major version of the product, and generally specified as the first number in a version
+							string (for example, in WebSphere 6.1, the '6' is the major version). Generally,
+							backwards-compatibility is not maintained across major version changes.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="modifier" type="int">
+					<annotation>
+						<documentation>
+							A version specification that is normally tied to fixes within a software release, and is
+							normally specified third in a version string. The Modifier may not always be specified, as
+							in WebSphere 6.1, but it is more precise to include the exact fix pack level present in the
+							software.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="release" type="int">
+					<annotation>
+						<documentation>
+							The second highest specification in a version, generally used to show updates in a product
+							where compatibility is maintained (such as between version 6.0 and 6.1 of WebSphere, where
+							the '0' and the '1' are the release numbers).
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="versionString" type="string">
+					<annotation>
+						<documentation>
+							The complete version specification of the entity, expressed as a single string. Note that
+							this string should not contain any information about the manufacturer of the entity, the
+							model of the entity, or the name of the product associated with the entity. It should just
+							contain version information, in a format described by the manufacturer of the entity. It is
+							recommended, when the other attributes in the Version interface are filled in, that this
+							attribute contain the same values, separated by periods. Note - In some cases the version
+							string may be returned directly from an API call. If so, the string should not be parsed
+							other than to remove things like line breaks.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- SoftwarePatchUnit also has a Version capability -->
+	<element name="capability.softwarePatch" substitutionGroup="core:capability" type="genericsoftware:SoftwarePatch" />
+	<complexType name="SoftwarePatch">
+		<annotation>
+			<documentation xml:lang="en">
+				SoftwarePatchUnit is a configuration unit hosted on whatever it patches
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="patchID" type="string">
+					<annotation>
+						<documentation>ID or name of the patch. E.g. "KB931768"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="installDate" type="string">
+					<annotation>
+						<documentation>Date and time patch was or will be installed.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwarePatchUnit" substitutionGroup="core:unit" type="genericsoftware:SoftwarePatchUnit" />
+	<complexType name="SoftwarePatchUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<!-- SoftwareInstallUnit also has a Version capability -->
+	<element name="capability.softwareInstall" substitutionGroup="core:capability"
+		type="genericsoftware:SoftwareInstall" />
+	<complexType name="SoftwareInstall">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="ProductId" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="installedLocation" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="productName" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="installDate" type="string">
+					<annotation>
+						<documentation>Date and time software was or will be installed.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="executableName" type="string" >
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="publisher" type="string">
+					<annotation>
+						<documentation>e.g. "Microsoft Corporation"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.softwareInstallUnit" substitutionGroup="core:unit" type="genericsoftware:SoftwareInstallUnit" />
+	<complexType name="SoftwareInstallUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+
+	<!-- 
+		<element name="capability.softwareComponent" substitutionGroup="core:capability" type="genericsoftware:SoftwareComponent"/>
+		<complexType name="SoftwareComponent">
+		<complexContent>
+		<extension base="core:Capability">
+		<attribute name="Group" type="string" />
+		<attribute name="SoftwareComponentName" type="string" />
+		<attribute name="Type" type="string" />
+		<attribute name="SoftwareVersion" type="string" />
+		</extension>
+		</complexContent>
+		</complexType>
+		<element name="unit.softwareComponentUnit" substitutionGroup="core:unit" type="genericsoftware:SoftwareComponentUnit"/>
+		<complexType name="SoftwareComponentUnit">
+		<complexContent>
+		<extension base="core:Unit"/>
+		</complexContent>
+		</complexType>
+	-->
+
+</schema>

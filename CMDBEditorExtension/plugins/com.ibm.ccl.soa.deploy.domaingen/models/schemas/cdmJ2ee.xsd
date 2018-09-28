@@ -1,0 +1,3324 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmj2ee/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:cdmJ2ee="http://www.ibm.com/ccl/soa/deploy/cdmj2ee/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmJ2eeRoot"
+	ecore:name="cdmJ2ee"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmj2ee"
+	ecore:nsPrefix="cdmJ2ee">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.j2EEResource" substitutionGroup="core:capability" type="cdmJ2ee:J2EEResource"/>
+	<complexType name="J2EEResource">
+		<complexContent>
+			<extension base="cdmBase:SoftwareResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEResourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEResourceUnit"/>
+	<complexType name="J2EEResourceUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossJDBC2PM" substitutionGroup="core:capability" type="cdmJ2ee:JBossJDBC2PM"/>
+	<complexType name="JBossJDBC2PM">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManager">
+				<attribute name="SqlProperties" type="string" />
+				<attribute name="ConnectionRetryAttempts" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossJDBC2PMUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossJDBC2PMUnit"/>
+	<complexType name="JBossJDBC2PMUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManagerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJDBCConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJDBCConnectionPool"/>
+	<complexType name="WebLogicJDBCConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCConnectionPool">
+				<attribute name="CapacityIncrement" type="int" />
+				<attribute name="URL" type="string" />
+				<attribute name="PreparedStatementCacheSize" type="int" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="InitialCapacity" type="int" />
+				<attribute name="ShrinkPeriodMinutes" type="int" />
+				<attribute name="MaxCapacity" type="int" />
+				<attribute name="ShrinkingEnabled" type="boolean" />
+				<attribute name="TestConnectionsOnRelease" type="boolean" />
+				<attribute name="RefreshMinutes" type="int" />
+				<attribute name="ConnLeakProfilingEnabled" type="boolean" />
+				<attribute name="LoginDelaySeconds" type="int" />
+				<attribute name="TestTableName" type="string" />
+				<attribute name="TestConnectionsOnReserve" type="boolean" />
+				<attribute name="SupportsLocalTransaction" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJDBCConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJDBCConnectionPoolUnit"/>
+	<complexType name="WebLogicJDBCConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCConnectionPoolUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJDBCDriver" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJDBCDriver"/>
+	<complexType name="WebLogicJDBCDriver">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDriver">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJDBCDriverUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJDBCDriverUnit"/>
+	<complexType name="WebLogicJDBCDriverUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEDeployedObject" substitutionGroup="core:capability" type="cdmJ2ee:J2EEDeployedObject"/>
+	<complexType name="J2EEDeployedObject">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEDeployedObjectUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEDeployedObjectUnit"/>
+	<complexType name="J2EEDeployedObjectUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereServlet" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereServlet"/>
+	<complexType name="WebSphereServlet">
+		<complexContent>
+			<extension base="cdmJ2ee:Servlet">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereServletUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereServletUnit"/>
+	<complexType name="WebSphereServletUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ServletUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jDBC" substitutionGroup="core:capability" type="cdmJ2ee:JDBC"/>
+	<complexType name="JDBC">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jDBCUnit" substitutionGroup="core:unit" type="cdmJ2ee:JDBCUnit"/>
+	<complexType name="JDBCUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicConnectorModule" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicConnectorModule"/>
+	<complexType name="WebLogicConnectorModule">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModule">
+				<attribute name="URI" type="string" />
+				<attribute name="Path" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="LastModified" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicConnectorModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicConnectorModuleUnit"/>
+	<complexType name="WebLogicConnectorModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereTransactionService" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereTransactionService"/>
+	<complexType name="WebSphereTransactionService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ForgeHeuristics" type="boolean" />
+				<attribute name="AbandonTimeout" type="int" />
+				<attribute name="MaxUniqueNameStats" type="int" />
+				<attribute name="TxTimeout" type="int" />
+				<attribute name="BeforeCompletionIterationLimit" type="int" />
+				<attribute name="MaxSimultaneousTx" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereTransactionServiceUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereTransactionServiceUnit"/>
+	<complexType name="WebSphereTransactionServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSDestination" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSDestination"/>
+	<complexType name="WebLogicJMSDestination">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="JNDIName" type="string" />
+				<attribute name="StoreEnabled" type="boolean" />
+				<attribute name="BytesPagingEnabled" type="boolean" />
+				<attribute name="MessagesPagingEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSDestinationUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSDestinationUnit"/>
+	<complexType name="WebLogicJMSDestinationUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereVariable" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereVariable"/>
+	<complexType name="WebSphereVariable">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SymbolicName" type="string" />
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereVariableUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereVariableUnit"/>
+	<complexType name="WebSphereVariableUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJTAResource" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJTAResource"/>
+	<complexType name="OracleAppJTAResource">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="MaxConcurrentTransactions" type="int" />
+				<attribute name="TransactionTimeout" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJTAResourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJTAResourceUnit"/>
+	<complexType name="OracleAppJTAResourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereCell" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereCell"/>
+	<complexType name="WebSphereCell">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomain">
+				<attribute name="DiscoveryProtocol" type="string" />
+				<attribute name="RootDirectory" type="string" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereCellUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereCellUnit"/>
+	<complexType name="WebSphereCellUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomainUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJMSServer" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJMSServer"/>
+	<complexType name="OracleAppJMSServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="PrintStackTrace" type="boolean" />
+				<attribute name="MaxOpenFiles" type="int" />
+				<attribute name="ServerPoll" type="long" />
+				<attribute name="ForceRecovery" type="boolean" />
+				<attribute name="NoJmx" type="boolean" />
+				<attribute name="PagingThreshold" type="double" />
+				<attribute name="NoDms" type="boolean" />
+				<attribute name="J2ee14" type="boolean" />
+				<attribute name="MessagePoll" type="long" />
+				<attribute name="ListenerAttempts" type="int" />
+				<attribute name="Debug" type="boolean" />
+				<attribute name="CheckPermissions" type="boolean" />
+				<attribute name="SaveAllExpired" type="boolean" />
+				<attribute name="Enabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJMSServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJMSServerUnit"/>
+	<complexType name="OracleAppJMSServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSFileStore" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSFileStore"/>
+	<complexType name="WebLogicJMSFileStore">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSStore">
+				<attribute name="Directory" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSFileStoreUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSFileStoreUnit"/>
+	<complexType name="WebLogicJMSFileStoreUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSStoreUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereEJBModule" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereEJBModule"/>
+	<complexType name="WebSphereEJBModule">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModule">
+				<attribute name="URI" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="AlternateDD" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereEJBModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereEJBModuleUnit"/>
+	<complexType name="WebSphereEJBModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossServer" substitutionGroup="core:capability" type="cdmJ2ee:JBossServer"/>
+	<complexType name="JBossServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServer">
+				<attribute name="ListeningPorts" type="string" />
+				<attribute name="WebContainerName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossServerUnit"/>
+	<complexType name="JBossServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereEFixInfo" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereEFixInfo"/>
+	<complexType name="WebSphereEFixInfo">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ComponentName" type="string" />
+				<attribute name="EFixId" type="string" />
+				<attribute name="BuildDate" type="string" />
+				<attribute name="ShortDescription" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereEFixInfoUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereEFixInfoUnit"/>
+	<complexType name="WebSphereEFixInfoUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSJDBCStore" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSJDBCStore"/>
+	<complexType name="WebLogicJMSJDBCStore">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSStore">
+				<attribute name="PrefixName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSJDBCStoreUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSJDBCStoreUnit"/>
+	<complexType name="WebLogicJMSJDBCStoreUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSStoreUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicServlet" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicServlet"/>
+	<complexType name="WebLogicServlet">
+		<complexContent>
+			<extension base="cdmJ2ee:Servlet">
+				<attribute name="ServletName" type="string" />
+				<attribute name="JSPFile" type="string" />
+				<attribute name="LoadOnStartup" type="int" />
+				<attribute name="ServletClass" type="string" />
+				<attribute name="RunAs" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicServletUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicServletUnit"/>
+	<complexType name="WebLogicServletUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ServletUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJMSTopic" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJMSTopic"/>
+	<complexType name="WebSphereJMSTopic">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestination">
+				<attribute name="Topic" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJMSTopicUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJMSTopicUnit"/>
+	<complexType name="WebSphereJMSTopicUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereClusterMember" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereClusterMember"/>
+	<complexType name="WebSphereClusterMember">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="NodeName" type="string" />
+				<attribute name="ServerName" type="string" />
+				<attribute name="UniqueId" type="string" />
+				<attribute name="Weight" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereClusterMemberUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereClusterMemberUnit"/>
+	<complexType name="WebSphereClusterMemberUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSStore" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSStore"/>
+	<complexType name="WebLogicJMSStore">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSStoreUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSStoreUnit"/>
+	<complexType name="WebLogicJMSStoreUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJDBCDataSource" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJDBCDataSource"/>
+	<complexType name="OracleAppJDBCDataSource">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDataSource">
+				<attribute name="LoginTimeout" type="int" />
+				<attribute name="Password" type="string" />
+				<attribute name="ManageLocalTransactions" type="boolean" />
+				<attribute name="TransactionLevel" type="string" />
+				<attribute name="User" type="string" />
+				<attribute name="JndiName" type="string" />
+				<attribute name="ActiveSQLTrace" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJDBCDataSourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJDBCDataSourceUnit"/>
+	<complexType name="OracleAppJDBCDataSourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDataSourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEServer" substitutionGroup="core:capability" type="cdmJ2ee:J2EEServer"/>
+	<complexType name="J2EEServer">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEServerUnit"/>
+	<complexType name="J2EEServerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJMSDestination" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJMSDestination"/>
+	<complexType name="OracleAppJMSDestination">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="DestinationName" type="string" />
+				<attribute name="Location" type="string" />
+				<attribute name="DestinationDomain" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJMSDestinationUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJMSDestinationUnit"/>
+	<complexType name="OracleAppJMSDestinationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJMSQueue" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJMSQueue"/>
+	<complexType name="WebSphereJMSQueue">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestination">
+				<attribute name="QueueNode" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJMSQueueUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJMSQueueUnit"/>
+	<complexType name="WebSphereJMSQueueUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereLDAPUserRegistry" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereLDAPUserRegistry"/>
+	<complexType name="WebSphereLDAPUserRegistry">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereUserRegistry">
+				<attribute name="SearchTimeout" type="long" />
+				<attribute name="MonitorInterval" type="long" />
+				<attribute name="BindDN" type="string" />
+				<attribute name="ReuseConnection" type="boolean" />
+				<attribute name="Type" type="string" />
+				<attribute name="BaseDN" type="string" />
+				<attribute name="SslEnabled" type="boolean" />
+				<attribute name="SslConfig" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereLDAPUserRegistryUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereLDAPUserRegistryUnit"/>
+	<complexType name="WebSphereLDAPUserRegistryUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereUserRegistryUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereMQJMSQueue" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereMQJMSQueue"/>
+	<complexType name="WebSphereMQJMSQueue">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereMQJMSDestination">
+				<attribute name="QueueManagerHost" type="string" />
+				<attribute name="BaseQueueManagerName" type="string" />
+				<attribute name="UserName" type="string" />
+				<attribute name="ServerConnectionChannelName" type="string" />
+				<attribute name="Password" type="string" />
+				<attribute name="BaseQueueName" type="string" />
+				<attribute name="QueueManagerPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereMQJMSQueueUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereMQJMSQueueUnit"/>
+	<complexType name="WebSphereMQJMSQueueUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereMQJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereConnector" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereConnector"/>
+	<complexType name="WebSphereConnector">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereConnectorUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereConnectorUnit"/>
+	<complexType name="WebSphereConnectorUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJ2EEApplication" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJ2EEApplication"/>
+	<complexType name="OracleAppJ2EEApplication">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplication">
+				<attribute name="ApplicationRootDirectoryPath" type="string" />
+				<attribute name="ChildApplicationNames" type="string" />
+				<attribute name="OhsRouting" type="boolean" />
+				<attribute name="State" type="string" />
+				<attribute name="WebSite" type="string" />
+				<attribute name="RoutingId" type="string" />
+				<attribute name="NameAsParent" type="string" />
+				<attribute name="ArchivePath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJ2EEApplicationUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJ2EEApplicationUnit"/>
+	<complexType name="OracleAppJ2EEApplicationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplicationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossIL" substitutionGroup="core:capability" type="cdmJ2ee:JBossIL"/>
+	<complexType name="JBossIL">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayer">
+				<attribute name="StateString" type="string" />
+				<attribute name="PingPeriod" type="long" />
+				<attribute name="XAConnectionFactoryJNDIRef" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossILUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossILUnit"/>
+	<complexType name="JBossILUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereUserRegistry" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereUserRegistry"/>
+	<complexType name="WebSphereUserRegistry">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Limit" type="int" />
+				<attribute name="IgnoreCase" type="boolean" />
+				<attribute name="Realm" type="string" />
+				<attribute name="ServerId" type="string" />
+				<attribute name="RegistryType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereUserRegistryUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereUserRegistryUnit"/>
+	<complexType name="WebSphereUserRegistryUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSSessionPool" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSSessionPool"/>
+	<complexType name="WebLogicJMSSessionPool">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SessionMaximum" type="int" />
+				<attribute name="ListenerClass" type="string" />
+				<attribute name="ConnectionFactory" type="string" />
+				<attribute name="AcknowledgeMode" type="string" />
+				<attribute name="Transacted" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSSessionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSSessionPoolUnit"/>
+	<complexType name="WebLogicJMSSessionPoolUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jMS" substitutionGroup="core:capability" type="cdmJ2ee:JMS"/>
+	<complexType name="JMS">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jMSUnit" substitutionGroup="core:unit" type="cdmJ2ee:JMSUnit"/>
+	<complexType name="JMSUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossDestinationManager" substitutionGroup="core:capability" type="cdmJ2ee:JBossDestinationManager"/>
+	<complexType name="JBossDestinationManager">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossDestinationManagerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossDestinationManagerUnit"/>
+	<complexType name="JBossDestinationManagerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppConnectorModule" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppConnectorModule"/>
+	<complexType name="OracleAppConnectorModule">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModule">
+				<attribute name="Path" type="string" />
+				<attribute name="EisType" type="string" />
+				<attribute name="State" type="string" />
+				<attribute name="NativeLibraryPath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppConnectorModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppConnectorModuleUnit"/>
+	<complexType name="OracleAppConnectorModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.rMI_IIOP" substitutionGroup="core:capability" type="cdmJ2ee:RMI_IIOP"/>
+	<complexType name="RMI_IIOP">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.rMI_IIOPUnit" substitutionGroup="core:unit" type="cdmJ2ee:RMI_IIOPUnit"/>
+	<complexType name="RMI_IIOPUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jDBCConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:JDBCConnectionPool"/>
+	<complexType name="JDBCConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jDBCConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:JDBCConnectionPoolUnit"/>
+	<complexType name="JDBCConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossEJB" substitutionGroup="core:capability" type="cdmJ2ee:JBossEJB"/>
+	<complexType name="JBossEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossEJBUnit"/>
+	<complexType name="JBossEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jDBCDriver" substitutionGroup="core:capability" type="cdmJ2ee:JDBCDriver"/>
+	<complexType name="JDBCDriver">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="ImplementationClass" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jDBCDriverUnit" substitutionGroup="core:unit" type="cdmJ2ee:JDBCDriverUnit"/>
+	<complexType name="JDBCDriverUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aJP13JettyConnector" substitutionGroup="core:capability" type="cdmJ2ee:AJP13JettyConnector"/>
+	<complexType name="AJP13JettyConnector">
+		<complexContent>
+			<extension base="cdmJ2ee:JettyHTTPConnector">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.aJP13JettyConnectorUnit" substitutionGroup="core:unit" type="cdmJ2ee:AJP13JettyConnectorUnit"/>
+	<complexType name="AJP13JettyConnectorUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JettyHTTPConnectorUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereSessionTuningParams" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereSessionTuningParams"/>
+	<complexType name="WebSphereSessionTuningParams">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="InvalidationTimeout" type="int" />
+				<attribute name="AllowOverflow" type="boolean" />
+				<attribute name="MaxInMemSessionCount" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereSessionTuningParamsUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereSessionTuningParamsUnit"/>
+	<complexType name="WebSphereSessionTuningParamsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.genericJ2EEServer" substitutionGroup="core:capability" type="cdmJ2ee:GenericJ2EEServer"/>
+	<complexType name="GenericJ2EEServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServer">
+				<attribute name="GenericType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.genericJ2EEServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:GenericJ2EEServerUnit"/>
+	<complexType name="GenericJ2EEServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicDomain" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicDomain"/>
+	<complexType name="WebLogicDomain">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomain">
+				<attribute name="RootDirectory" type="string" />
+				<attribute name="LastModificationTime" type="long" />
+				<attribute name="ConsoleContextPath" type="string" />
+				<attribute name="ConsoleEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicDomainUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicDomainUnit"/>
+	<complexType name="WebLogicDomainUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomainUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJ2EEApplication" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJ2EEApplication"/>
+	<complexType name="WebSphereJ2EEApplication">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplication">
+				<attribute name="CreateMBeansForResources" type="boolean" />
+				<attribute name="ClassLoaderMode" type="string" />
+				<attribute name="ReloadEnabled" type="boolean" />
+				<attribute name="UseMetadataFromBinaries" type="boolean" />
+				<attribute name="ReloadIntervalSecs" type="long" />
+				<attribute name="DeploymentId" type="string" />
+				<attribute name="EnableDistribution" type="boolean" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="StartingWeight" type="int" />
+				<attribute name="WarClassLoaderPolicy" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJ2EEApplicationUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJ2EEApplicationUnit"/>
+	<complexType name="WebSphereJ2EEApplicationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplicationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossCluster" substitutionGroup="core:capability" type="cdmJ2ee:JBossCluster"/>
+	<complexType name="JBossCluster">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="ClusterAddress" type="string" />
+				<attribute name="DistributedReplicantManagerServices" type="string" />
+				<attribute name="DistributedState" type="string" />
+				<attribute name="UDPMulticastAddress" type="string" />
+				<attribute name="PartitonProperties" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossClusterUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossClusterUnit"/>
+	<complexType name="JBossClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.eJB" substitutionGroup="core:capability" type="cdmJ2ee:EJB"/>
+	<complexType name="EJB">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.eJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:EJBUnit"/>
+	<complexType name="EJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJDBCDataSource" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJDBCDataSource"/>
+	<complexType name="WebLogicJDBCDataSource">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDataSource">
+				<attribute name="RowPrefetchEnabled" type="boolean" />
+				<attribute name="RowPrefetchSize" type="int" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="StreamChunkSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJDBCDataSourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJDBCDataSourceUnit"/>
+	<complexType name="WebLogicJDBCDataSourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDataSourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereCustomUserRegistry" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereCustomUserRegistry"/>
+	<complexType name="WebSphereCustomUserRegistry">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereUserRegistry">
+				<attribute name="CustomRegistryClassName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereCustomUserRegistryUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereCustomUserRegistryUnit"/>
+	<complexType name="WebSphereCustomUserRegistryUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereUserRegistryUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossWebModule" substitutionGroup="core:capability" type="cdmJ2ee:JBossWebModule"/>
+	<complexType name="JBossWebModule">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModule">
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="JBossWebDeploymentDescriptor" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossWebModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossWebModuleUnit"/>
+	<complexType name="JBossWebModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossMailService" substitutionGroup="core:capability" type="cdmJ2ee:JBossMailService"/>
+	<complexType name="JBossMailService">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="StoreProtocol" type="string" />
+				<attribute name="TransportProtocol" type="string" />
+				<attribute name="DefaultSender" type="string" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="SMTPServerHost" type="string" />
+				<attribute name="POP3ServerHost" type="string" />
+				<attribute name="StateString" type="string" />
+				<attribute name="User" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossMailServiceUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossMailServiceUnit"/>
+	<complexType name="JBossMailServiceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hTTPConnector" substitutionGroup="core:capability" type="cdmJ2ee:HTTPConnector"/>
+	<complexType name="HTTPConnector">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ConnectionLinger" type="int" />
+				<attribute name="ProtocolHandlerClassName" type="string" />
+				<attribute name="Secure" type="boolean" />
+				<attribute name="AllowChunking" type="boolean" />
+				<attribute name="TCPNoDelay" type="boolean" />
+				<attribute name="MinProcessors" type="int" />
+				<attribute name="ProxyName" type="string" />
+				<attribute name="Port" type="int" />
+				<attribute name="Compression" type="string" />
+				<attribute name="IntegralPort" type="int" />
+				<attribute name="EnableLookups" type="boolean" />
+				<attribute name="ProxyPort" type="int" />
+				<attribute name="ConfidentialScheme" type="string" />
+				<attribute name="Debug" type="int" />
+				<attribute name="ConnectionTimeout" type="int" />
+				<attribute name="MaxProcessors" type="int" />
+				<attribute name="AcceptCount" type="int" />
+				<attribute name="BufferSize" type="int" />
+				<attribute name="IntegralScheme" type="string" />
+				<attribute name="DisableUploadTime" type="boolean" />
+				<attribute name="Scheme" type="string" />
+				<attribute name="ConfidentialPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hTTPConnectorUnit" substitutionGroup="core:unit" type="cdmJ2ee:HTTPConnectorUnit"/>
+	<complexType name="HTTPConnectorUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereWebContainer" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereWebContainer"/>
+	<complexType name="WebSphereWebContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainer">
+				<attribute name="ThreadPoolInactivityTimeoutMsecs" type="int" />
+				<attribute name="EnableServletCaching" type="boolean" />
+				<attribute name="ThreadPoolMaximumSize" type="int" />
+				<attribute name="ThreadPoolIsGrowable" type="boolean" />
+				<attribute name="DefaultVirtualHostName" type="string" />
+				<attribute name="SessionAffinityFailoverServer" type="string" />
+				<attribute name="SessionAffinityTimeout" type="int" />
+				<attribute name="ThreadPoolMinimumSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereWebContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereWebContainerUnit"/>
+	<complexType name="WebSphereWebContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossManagedConnectionFactory" substitutionGroup="core:capability" type="cdmJ2ee:JBossManagedConnectionFactory"/>
+	<complexType name="JBossManagedConnectionFactory">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="McfInstance" type="string" />
+				<attribute name="SpecVersion" type="string" />
+				<attribute name="ConnectionFactoryInterface" type="string" />
+				<attribute name="VendorName" type="string" />
+				<attribute name="ReauthenticationSupport" type="boolean" />
+				<attribute name="AuthenticationMechanismType" type="string" />
+				<attribute name="TransactionSupport" type="string" />
+				<attribute name="ConnectionURL" type="string" />
+				<attribute name="ResourceName" type="string" />
+				<attribute name="EisType" type="string" />
+				<attribute name="CredentialInterface" type="string" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossManagedConnectionFactoryUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossManagedConnectionFactoryUnit"/>
+	<complexType name="JBossManagedConnectionFactoryUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicWebModule" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicWebModule"/>
+	<complexType name="WebLogicWebModule">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModule">
+				<attribute name="URI" type="string" />
+				<attribute name="IndexDirectoryEnabled" type="boolean" />
+				<attribute name="SessionMonitoringEnabled" type="boolean" />
+				<attribute name="ServletExtensionCaseSensitive" type="boolean" />
+				<attribute name="SingleThreadedServletPoolSize" type="int" />
+				<attribute name="CleanupSessionFilesEnabled" type="boolean" />
+				<attribute name="LastModified" type="long" />
+				<attribute name="SessionTrackingEnabled" type="boolean" />
+				<attribute name="SessionDebuggable" type="boolean" />
+				<attribute name="PreferWebInfClasses" type="boolean" />
+				<attribute name="DebugEnabled" type="boolean" />
+				<attribute name="Path" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="ServletReloadCheckSecs" type="int" />
+				<attribute name="DefaultServlet" type="string" />
+				<attribute name="AuthRealmName" type="string" />
+				<attribute name="SessionIDLength" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicWebModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicWebModuleUnit"/>
+	<complexType name="WebLogicWebModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicVirtualHost" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicVirtualHost"/>
+	<complexType name="WebLogicVirtualHost">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHost">
+				<attribute name="LogFileFormat" type="string" />
+				<attribute name="HTTPSKeepAliveSecs" type="int" />
+				<attribute name="MaxLogFileSizeKBytes" type="int" />
+				<attribute name="MaxPostSize" type="int" />
+				<attribute name="ClusteringEnabled" type="boolean" />
+				<attribute name="WAPEnabled" type="boolean" />
+				<attribute name="MaxPostTimeSecs" type="int" />
+				<attribute name="LogFileFlushSecs" type="int" />
+				<attribute name="LogRotationType" type="string" />
+				<attribute name="LogFileBufferKBytes" type="int" />
+				<attribute name="WriteChunkBytes" type="int" />
+				<attribute name="LoggingEnabled" type="boolean" />
+				<attribute name="PostTimeoutSecs" type="int" />
+				<attribute name="LogRotationTimeBegin" type="string" />
+				<attribute name="LogRotationPeriodMins" type="int" />
+				<attribute name="LogFileName" type="string" />
+				<attribute name="EventsEnabled" type="boolean" />
+				<attribute name="DebugEnabled" type="boolean" />
+				<attribute name="SendServerHeaderEnabled" type="boolean" />
+				<attribute name="KeepAliveSecs" type="int" />
+				<attribute name="SingleSingonDisabled" type="boolean" />
+				<attribute name="KeepAliveEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicVirtualHostUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicVirtualHostUnit"/>
+	<complexType name="WebLogicVirtualHostUnit">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHostUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicEJB" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicEJB"/>
+	<complexType name="WebLogicEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:EJB">
+				<attribute name="EJBClass" type="string" />
+				<attribute name="LocalClass" type="string" />
+				<attribute name="RemoteClass" type="string" />
+				<attribute name="HomeClass" type="string" />
+				<attribute name="LocalHomeClass" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicEJBUnit"/>
+	<complexType name="WebLogicEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereLibraryRef" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereLibraryRef"/>
+	<complexType name="WebSphereLibraryRef">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="SharedClassLoader" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereLibraryRefUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereLibraryRefUnit"/>
+	<complexType name="WebSphereLibraryRefUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEComponent" substitutionGroup="core:capability" type="cdmJ2ee:J2EEComponent"/>
+	<complexType name="J2EEComponent">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEComponentUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEComponentUnit"/>
+	<complexType name="J2EEComponentUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicEJBContainer" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicEJBContainer"/>
+	<complexType name="WebLogicEJBContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBContainer">
+				<attribute name="KeepGenerated" type="boolean" />
+				<attribute name="JavaCompilerPostClassPath" type="string" />
+				<attribute name="ExtraRmicOptions" type="string" />
+				<attribute name="TmpPath" type="string" />
+				<attribute name="JavaCompilerPreClassPath" type="string" />
+				<attribute name="JavaCompiler" type="string" />
+				<attribute name="VerboseEJBDeploymentEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicEJBContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicEJBContainerUnit"/>
+	<complexType name="WebLogicEJBContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.servlet" substitutionGroup="core:capability" type="cdmJ2ee:Servlet"/>
+	<complexType name="Servlet">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.servletUnit" substitutionGroup="core:unit" type="cdmJ2ee:ServletUnit"/>
+	<complexType name="ServletUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJ2EEApplication" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJ2EEApplication"/>
+	<complexType name="WebLogicJ2EEApplication">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplication">
+				<attribute name="Path" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="LastModified" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJ2EEApplicationUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJ2EEApplicationUnit"/>
+	<complexType name="WebLogicJ2EEApplicationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplicationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.eJBContainer" substitutionGroup="core:capability" type="cdmJ2ee:EJBContainer"/>
+	<complexType name="EJBContainer">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.eJBContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:EJBContainerUnit"/>
+	<complexType name="EJBContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereMQJMSDestination" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereMQJMSDestination"/>
+	<complexType name="WebSphereMQJMSDestination">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestination">
+				<attribute name="TargetClient" type="string" />
+				<attribute name="DecimalEncoding" type="string" />
+				<attribute name="IntegerEncoding" type="string" />
+				<attribute name="NativeEncoding" type="boolean" />
+				<attribute name="FloatingPointEncoding" type="string" />
+				<attribute name="CCSID" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereMQJMSDestinationUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereMQJMSDestinationUnit"/>
+	<complexType name="WebSphereMQJMSDestinationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossDomain" substitutionGroup="core:capability" type="cdmJ2ee:JBossDomain"/>
+	<complexType name="JBossDomain">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomain">
+				<attribute name="ServerBaseURL" type="string" />
+				<attribute name="LibraryURL" type="string" />
+				<attribute name="ServerLibraryURL" type="string" />
+				<attribute name="ServerHomeDir" type="string" />
+				<attribute name="JavaVMName" type="string" />
+				<attribute name="JavaVMVendor" type="string" />
+				<attribute name="RootDeploymentFilename" type="string" />
+				<attribute name="BlockingShutDown" type="boolean" />
+				<attribute name="OSName" type="string" />
+				<attribute name="JavaVendor" type="string" />
+				<attribute name="TotalMemory" type="long" />
+				<attribute name="HomeURL" type="string" />
+				<attribute name="ServerDataDir" type="string" />
+				<attribute name="HomeDir" type="string" />
+				<attribute name="ListeningPort" type="int" />
+				<attribute name="JavaVMVersion" type="string" />
+				<attribute name="ServerHomeURL" type="string" />
+				<attribute name="ServerTempDir" type="string" />
+				<attribute name="ActiveThreadGroupCount" type="int" />
+				<attribute name="JavaVersion" type="string" />
+				<attribute name="ServerConfigURL" type="string" />
+				<attribute name="MaxMemory" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossDomainUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossDomainUnit"/>
+	<complexType name="JBossDomainUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomainUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJDBCConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJDBCConnectionPool"/>
+	<complexType name="OracleAppJDBCConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="FactoryClass" type="string" />
+				<attribute name="AbandonedConnectionTimeout" type="int" />
+				<attribute name="NumCachedStatements" type="int" />
+				<attribute name="Url" type="string" />
+				<attribute name="MinConnections" type="int" />
+				<attribute name="PropertyCheckInterval" type="int" />
+				<attribute name="TimeToLiveTimeout" type="int" />
+				<attribute name="InitialLimit" type="int" />
+				<attribute name="MaxConnectAttempts" type="int" />
+				<attribute name="UsedConnectionWaitTimeout" type="int" />
+				<attribute name="LowerThresholdLimit" type="int" />
+				<attribute name="InactivityTimeout" type="int" />
+				<attribute name="ImplicitConnectionCache" type="boolean" />
+				<attribute name="ConnectionRetryInterval" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJDBCConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJDBCConnectionPoolUnit"/>
+	<complexType name="OracleAppJDBCConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJDBCDataSource" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJDBCDataSource"/>
+	<complexType name="WebSphereJDBCDataSource">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="AuthMechanismPreference" type="string" />
+				<attribute name="DatasourceHelperClassname" type="string" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="AuthDataAlias" type="string" />
+				<attribute name="StatementCacheSize" type="int" />
+				<attribute name="Category" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJDBCDataSourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJDBCDataSourceUnit"/>
+	<complexType name="WebSphereJDBCDataSourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sessionBean" substitutionGroup="core:capability" type="cdmJ2ee:SessionBean"/>
+	<complexType name="SessionBean">
+		<complexContent>
+			<extension base="cdmJ2ee:EJB">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sessionBeanUnit" substitutionGroup="core:unit" type="cdmJ2ee:SessionBeanUnit"/>
+	<complexType name="SessionBeanUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicServer" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicServer"/>
+	<complexType name="WebLogicServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServer">
+				<attribute name="DefaultIIOPPassword" type="string" />
+				<attribute name="HelpPageURL" type="string" />
+				<attribute name="IIOPEnabled" type="boolean" />
+				<attribute name="RootDirectory" type="string" />
+				<attribute name="J2EE12OnlyModeEnabled" type="boolean" />
+				<attribute name="ZACEnabled" type="boolean" />
+				<attribute name="ClusterWeight" type="int" />
+				<attribute name="LoginTimeoutMillis" type="int" />
+				<attribute name="ListenThreadStartDelaySecs" type="int" />
+				<attribute name="InterfaceAddress" type="string" />
+				<attribute name="TGIOPEnabled" type="boolean" />
+				<attribute name="JavaCompilerPreClassPath" type="string" />
+				<attribute name="VerboseEJBDeploymentEnabled" type="boolean" />
+				<attribute name="JDBCLoggingEnabled" type="boolean" />
+				<attribute name="DomainLogEnabled" type="boolean" />
+				<attribute name="DefaultTGIOPPassword" type="string" />
+				<attribute name="TunnelingClientTimeoutSecs" type="int" />
+				<attribute name="ExtraRmicOptions" type="string" />
+				<attribute name="StdoutEnabled" type="boolean" />
+				<attribute name="ReplicationGroup" type="string" />
+				<attribute name="CompleteHTTPMessageTimeout" type="int" />
+				<attribute name="ReverseDNSAllowed" type="boolean" />
+				<attribute name="CompleteT3MessageTimeout" type="int" />
+				<attribute name="TunnelingClientPingSecs" type="int" />
+				<attribute name="CompleteIIOPMessageTimeout" type="int" />
+				<attribute name="ExternalDNSName" type="string" />
+				<attribute name="IdleIIOPConnectionTimeout" type="int" />
+				<attribute name="ThreadPoolPercentSocketReaders" type="int" />
+				<attribute name="DefaultIIOPUser" type="string" />
+				<attribute name="StdoutDebugEnabled" type="boolean" />
+				<attribute name="J2EE13WarningEnabled" type="boolean" />
+				<attribute name="InstrumentStackTraceEnabled" type="boolean" />
+				<attribute name="DefaultTGIOPUser" type="string" />
+				<attribute name="WorkspaceShowUserKeysOnly" type="boolean" />
+				<attribute name="JDBCLogFileName" type="string" />
+				<attribute name="HTTPDEnabled" type="boolean" />
+				<attribute name="MaxT3MessageSize" type="int" />
+				<attribute name="TxLogFilePrefix" type="string" />
+				<attribute name="JMSDefaultConnectionFactoriesEnabled" type="boolean" />
+				<attribute name="MaxHTTPMessageSize" type="int" />
+				<attribute name="LogRemoteExceptionsEnabled" type="boolean" />
+				<attribute name="DefaultSecureProtocol" type="string" />
+				<attribute name="StdoutSeverityLevel" type="int" />
+				<attribute name="JavaCompiler" type="string" />
+				<attribute name="PreferredSecondaryGroup" type="string" />
+				<attribute name="ListenDelaySecs" type="int" />
+				<attribute name="LoginTimeout" type="int" />
+				<attribute name="MaxIIOPMessageSize" type="int" />
+				<attribute name="JavaCompilerPostClassPath" type="string" />
+				<attribute name="TunnelingEnabled" type="boolean" />
+				<attribute name="ExpectedToRun" type="boolean" />
+				<attribute name="DefaultProtocol" type="string" />
+				<attribute name="ZACPublishRoot" type="string" />
+				<attribute name="NativeIOEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicServerUnit"/>
+	<complexType name="WebLogicServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicAdminServer" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicAdminServer"/>
+	<complexType name="WebLogicAdminServer">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicAdminServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicAdminServerUnit"/>
+	<complexType name="WebLogicAdminServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereConnectorModule" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereConnectorModule"/>
+	<complexType name="WebSphereConnectorModule">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModule">
+				<attribute name="URI" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="AlternateDD" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereConnectorModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereConnectorModuleUnit"/>
+	<complexType name="WebSphereConnectorModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jettyVirtualHosts" substitutionGroup="core:capability" type="cdmJ2ee:JettyVirtualHosts"/>
+	<complexType name="JettyVirtualHosts">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHost">
+				<attribute name="DeployedObjects" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jettyVirtualHostsUnit" substitutionGroup="core:unit" type="cdmJ2ee:JettyVirtualHostsUnit"/>
+	<complexType name="JettyVirtualHostsUnit">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHostUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossJMSServer" substitutionGroup="core:capability" type="cdmJ2ee:JBossJMSServer"/>
+	<complexType name="JBossJMSServer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossJMSServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossJMSServerUnit"/>
+	<complexType name="JBossJMSServerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jCAConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:JCAConnectionPool"/>
+	<complexType name="JCAConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jCAConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:JCAConnectionPoolUnit"/>
+	<complexType name="JCAConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossResourceAdaptor" substitutionGroup="core:capability" type="cdmJ2ee:JBossResourceAdaptor"/>
+	<complexType name="JBossResourceAdaptor">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+				<attribute name="JCAResource" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossResourceAdaptorUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossResourceAdaptorUnit"/>
+	<complexType name="JBossResourceAdaptorUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEModule" substitutionGroup="core:capability" type="cdmJ2ee:J2EEModule"/>
+	<complexType name="J2EEModule">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDeployedObject">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEModuleUnit"/>
+	<complexType name="J2EEModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDeployedObjectUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJDBCMultiPool" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJDBCMultiPool"/>
+	<complexType name="WebLogicJDBCMultiPool">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="AlgorithmType" type="string" />
+				<attribute name="JNDIName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJDBCMultiPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJDBCMultiPoolUnit"/>
+	<complexType name="WebLogicJDBCMultiPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.embeddedTomcatWebContainer" substitutionGroup="core:capability" type="cdmJ2ee:EmbeddedTomcatWebContainer"/>
+	<complexType name="EmbeddedTomcatWebContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainer">
+				<attribute name="UseJBossWebLoader" type="boolean" />
+				<attribute name="CatalinaHome" type="string" />
+				<attribute name="LenientEJBLink" type="boolean" />
+				<attribute name="UnpackWars" type="boolean" />
+				<attribute name="SnapshotMode" type="string" />
+				<attribute name="Backlog" type="int" />
+				<attribute name="DeleteWorkDirs" type="boolean" />
+				<attribute name="Java2ClassLoadingCompliance" type="boolean" />
+				<attribute name="DownloadServerClasses" type="boolean" />
+				<attribute name="SnapshotInterval" type="int" />
+				<attribute name="SubjectAttributeName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.embeddedTomcatWebContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:EmbeddedTomcatWebContainerUnit"/>
+	<complexType name="EmbeddedTomcatWebContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEApplication" substitutionGroup="core:capability" type="cdmJ2ee:J2EEApplication"/>
+	<complexType name="J2EEApplication">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDeployedObject">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEApplicationUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEApplicationUnit"/>
+	<complexType name="J2EEApplicationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDeployedObjectUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossJNDIService" substitutionGroup="core:capability" type="cdmJ2ee:JBossJNDIService"/>
+	<complexType name="JBossJNDIService">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="InstallGlobalService" type="boolean" />
+				<attribute name="BindAddress" type="string" />
+				<attribute name="Backlog" type="int" />
+				<attribute name="RMIBindAddress" type="string" />
+				<attribute name="Port" type="int" />
+				<attribute name="RMIPort" type="int" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossJNDIServiceUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossJNDIServiceUnit"/>
+	<complexType name="JBossJNDIServiceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereEJB" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereEJB"/>
+	<complexType name="WebSphereEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:EJB">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereEJBUnit"/>
+	<complexType name="WebSphereEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereGlobalSecuritySettings" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereGlobalSecuritySettings"/>
+	<complexType name="WebSphereGlobalSecuritySettings">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="UseDomainQualifiedUserNames" type="boolean" />
+				<attribute name="EnableJava2SecRuntimeFiltering" type="boolean" />
+				<attribute name="IssuePermissionWarning" type="boolean" />
+				<attribute name="EnforceJava2Security" type="boolean" />
+				<attribute name="ActiveIIOPProtocol" type="string" />
+				<attribute name="UseLocalSecurityServer" type="boolean" />
+				<attribute name="CacheTimeoutMsecs" type="int" />
+				<attribute name="Enabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereGlobalSecuritySettingsUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereGlobalSecuritySettingsUnit"/>
+	<complexType name="WebSphereGlobalSecuritySettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereDeploymentManager" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereDeploymentManager"/>
+	<complexType name="WebSphereDeploymentManager">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereDeploymentManagerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereDeploymentManagerUnit"/>
+	<complexType name="WebSphereDeploymentManagerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.farmMemberService" substitutionGroup="core:capability" type="cdmJ2ee:FarmMemberService"/>
+	<complexType name="FarmMemberService">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ScanEnabled" type="boolean" />
+				<attribute name="PartitionName" type="string" />
+				<attribute name="RecursiveSearch" type="boolean" />
+				<attribute name="UDPMulticastAddress" type="string" />
+				<attribute name="StateString" type="string" />
+				<attribute name="URLList" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.farmMemberServiceUnit" substitutionGroup="core:unit" type="cdmJ2ee:FarmMemberServiceUnit"/>
+	<complexType name="FarmMemberServiceUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossServlets" substitutionGroup="core:capability" type="cdmJ2ee:JBossServlets"/>
+	<complexType name="JBossServlets">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossServletsUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossServletsUnit"/>
+	<complexType name="JBossServletsUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicCluster" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicCluster"/>
+	<complexType name="WebLogicCluster">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="ClusterAddress" type="string" />
+				<attribute name="MulticastAddress" type="string" />
+				<attribute name="DefaultLoadAlgorithm" type="string" />
+				<attribute name="MulticastTTL" type="int" />
+				<attribute name="ClientCertProxyEnabled" type="boolean" />
+				<attribute name="MulticastSendDelay" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicClusterUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicClusterUnit"/>
+	<complexType name="WebLogicClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJ2EEWebSite" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJ2EEWebSite"/>
+	<complexType name="OracleAppJ2EEWebSite">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="Secure" type="boolean" />
+				<attribute name="Protocol" type="string" />
+				<attribute name="UseKeepAlives" type="boolean" />
+				<attribute name="OhsRouting" type="boolean" />
+				<attribute name="WebSiteDisplayName" type="string" />
+				<attribute name="MaxRequestSize" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJ2EEWebSiteUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJ2EEWebSiteUnit"/>
+	<complexType name="OracleAppJ2EEWebSiteUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereVirtualHost" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereVirtualHost"/>
+	<complexType name="WebSphereVirtualHost">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereVirtualHostUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereVirtualHostUnit"/>
+	<complexType name="WebSphereVirtualHostUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicSSLSettings" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicSSLSettings"/>
+	<complexType name="WebLogicSSLSettings">
+		<complexContent>
+			<extension base="cdmBase:SSLSettings">
+				<attribute name="HostnameVerifier" type="string" />
+				<attribute name="CertAuthenticator" type="string" />
+				<attribute name="LoginTimeoutMillis" type="int" />
+				<attribute name="TwoWaySslEnabled" type="boolean" />
+				<attribute name="ClientCeritificateEnforced" type="boolean" />
+				<attribute name="ExportKeyLifespan" type="int" />
+				<attribute name="HandlerEnabled" type="boolean" />
+				<attribute name="HostnameVerificationIgnored" type="boolean" />
+				<attribute name="ServerCertificateChainFileName" type="string" />
+				<attribute name="KeyEncrypted" type="boolean" />
+				<attribute name="UseJava" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicSSLSettingsUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicSSLSettingsUnit"/>
+	<complexType name="WebLogicSSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:SSLSettingsUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppEJBModule" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppEJBModule"/>
+	<complexType name="OracleAppEJBModule">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModule">
+				<attribute name="State" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppEJBModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppEJBModuleUnit"/>
+	<complexType name="OracleAppEJBModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.tomcatVirtualHosts" substitutionGroup="core:capability" type="cdmJ2ee:TomcatVirtualHosts"/>
+	<complexType name="TomcatVirtualHosts">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHost">
+				<attribute name="DeployedObjects" type="string" />
+				<attribute name="DefaultContextCrossContext" type="boolean" />
+				<attribute name="StartTime" type="long" />
+				<attribute name="DefaultContextCookies" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.tomcatVirtualHostsUnit" substitutionGroup="core:unit" type="cdmJ2ee:TomcatVirtualHostsUnit"/>
+	<complexType name="TomcatVirtualHostsUnit">
+		<complexContent>
+			<extension base="cdmBase:WebVirtualHostUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSServer" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSServer"/>
+	<complexType name="WebLogicJMSServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="MessagesThresholdLow" type="long" />
+				<attribute name="MessagesMaximum" type="long" />
+				<attribute name="BytesMaximum" type="long" />
+				<attribute name="BytesPagingEnabled" type="boolean" />
+				<attribute name="MessagesThresholdHigh" type="long" />
+				<attribute name="MessagesPagingEnabled" type="boolean" />
+				<attribute name="BytesThresholdLow" type="long" />
+				<attribute name="BytesThresholdHigh" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSServerUnit"/>
+	<complexType name="WebLogicJMSServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossMessageCache" substitutionGroup="core:capability" type="cdmJ2ee:JBossMessageCache"/>
+	<complexType name="JBossMessageCache">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="MaxMemoryMark" type="long" />
+				<attribute name="HighMemoryMark" type="long" />
+				<attribute name="Instance" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossMessageCacheUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossMessageCacheUnit"/>
+	<complexType name="JBossMessageCacheUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJDBCDriver" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJDBCDriver"/>
+	<complexType name="OracleAppJDBCDriver">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDriver">
+				<attribute name="LoginTimeout" type="int" />
+				<attribute name="XaRecoveryPassword" type="string" />
+				<attribute name="Password" type="string" />
+				<attribute name="Url" type="string" />
+				<attribute name="XaRecoveryUsername" type="string" />
+				<attribute name="User" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJDBCDriverUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJDBCDriverUnit"/>
+	<complexType name="OracleAppJDBCDriverUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JDBCDriverUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hASessionState" substitutionGroup="core:capability" type="cdmJ2ee:HASessionState"/>
+	<complexType name="HASessionState">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PartitionName" type="string" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="BeanCleaningDelay" type="long" />
+				<attribute name="UDPMulticastAddress" type="string" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hASessionStateUnit" substitutionGroup="core:unit" type="cdmJ2ee:HASessionStateUnit"/>
+	<complexType name="HASessionStateUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJDBCConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJDBCConnectionPool"/>
+	<complexType name="WebSphereJDBCConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="ReapTimeSecs" type="long" />
+				<attribute name="UnusedTimeoutMsecs" type="long" />
+				<attribute name="PurgePolicy" type="string" />
+				<attribute name="MaxConnections" type="int" />
+				<attribute name="MinConnections" type="int" />
+				<attribute name="ConnectionTimeoutSecs" type="long" />
+				<attribute name="AgedTimeoutMsecs" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJDBCConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJDBCConnectionPoolUnit"/>
+	<complexType name="WebSphereJDBCConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereNode" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereNode"/>
+	<complexType name="WebSphereNode">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="DiscoveryProtocol" type="string" />
+				<attribute name="RootDirectory" type="string" />
+				<attribute name="ConsoleContextPath" type="string" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereNodeUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereNodeUnit"/>
+	<complexType name="WebSphereNodeUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereProcessDefinition" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereProcessDefinition"/>
+	<complexType name="WebSphereProcessDefinition">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Umask" type="string" />
+				<attribute name="ExecutableTargetKind" type="string" />
+				<attribute name="RunAsGroup" type="string" />
+				<attribute name="RunInProcessGroup" type="int" />
+				<attribute name="RunAsUser" type="string" />
+				<attribute name="StderrFilename" type="string" />
+				<attribute name="WorkingDirectory" type="string" />
+				<attribute name="ExecutableName" type="string" />
+				<attribute name="ProcessPriority" type="int" />
+				<attribute name="StdoutFilename" type="string" />
+				<attribute name="StdinFilename" type="string" />
+				<attribute name="ExecutableTarget" type="string" />
+				<attribute name="ExecutableArguments" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereProcessDefinitionUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereProcessDefinitionUnit"/>
+	<complexType name="WebSphereProcessDefinitionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossManagedConnectionPool" substitutionGroup="core:capability" type="cdmJ2ee:JBossManagedConnectionPool"/>
+	<complexType name="JBossManagedConnectionPool">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="MinSize" type="int" />
+				<attribute name="IdleTimeoutMinutes" type="long" />
+				<attribute name="ManagedConnetionPoolID" type="string" />
+				<attribute name="BlockingTimeout" type="int" />
+				<attribute name="NoTxSeparatePools" type="boolean" />
+				<attribute name="AvailableConnectionCount" type="long" />
+				<attribute name="Criteria" type="string" />
+				<attribute name="ResourceName" type="string" />
+				<attribute name="ConnectionCount" type="int" />
+				<attribute name="MaxSize" type="int" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossManagedConnectionPoolUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossManagedConnectionPoolUnit"/>
+	<complexType name="JBossManagedConnectionPoolUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppResourceAdapter" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppResourceAdapter"/>
+	<complexType name="OracleAppResourceAdapter">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+				<attribute name="ResourceAdapterClass" type="string" />
+				<attribute name="LicenseRequired" type="boolean" />
+				<attribute name="EisType" type="string" />
+				<attribute name="SpecVersion" type="string" />
+				<attribute name="AdapterVersion" type="string" />
+				<attribute name="State" type="string" />
+				<attribute name="ReauthenticationSupport" type="boolean" />
+				<attribute name="AdapterType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppResourceAdapterUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppResourceAdapterUnit"/>
+	<complexType name="OracleAppResourceAdapterUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJMSServer" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJMSServer"/>
+	<complexType name="WebSphereJMSServer">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="BytesPagingEnabled" type="boolean" />
+				<attribute name="ExecutableName" type="string" />
+				<attribute name="MessagesThresholdLow" type="long" />
+				<attribute name="MessagesMaximum" type="long" />
+				<attribute name="BytesMaximum" type="long" />
+				<attribute name="MessagesThresholdHigh" type="long" />
+				<attribute name="MessagesPagingEnabled" type="boolean" />
+				<attribute name="BytesThresholdHigh" type="long" />
+				<attribute name="BytesThresholdLow" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJMSServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJMSServerUnit"/>
+	<complexType name="WebSphereJMSServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereSSLSettings" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereSSLSettings"/>
+	<complexType name="WebSphereSSLSettings">
+		<complexContent>
+			<extension base="cdmBase:SSLSettings">
+				<attribute name="KeyFileName" type="string" />
+				<attribute name="TrustFileFormat" type="string" />
+				<attribute name="ClientAuthentication" type="boolean" />
+				<attribute name="Alias" type="string" />
+				<attribute name="ServerKeyAlias" type="string" />
+				<attribute name="TrustFileName" type="string" />
+				<attribute name="EnableCryptoHardwareSupport" type="boolean" />
+				<attribute name="ClientKeyAlias" type="string" />
+				<attribute name="SecurityLevel" type="string" />
+				<attribute name="KeyFileFormat" type="string" />
+				<attribute name="Default" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereSSLSettingsUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereSSLSettingsUnit"/>
+	<complexType name="WebSphereSSLSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:SSLSettingsUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicEntityEJB" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicEntityEJB"/>
+	<complexType name="WebLogicEntityEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJB">
+				<attribute name="CMPVersion" type="string" />
+				<attribute name="PersistenceType" type="string" />
+				<attribute name="PrimaryKeyClass" type="string" />
+				<attribute name="PrimaryKeyField" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicEntityEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicEntityEJBUnit"/>
+	<complexType name="WebLogicEntityEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJTA" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJTA"/>
+	<complexType name="WebLogicJTA">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ForgeHeuristics" type="boolean" />
+				<attribute name="AbandonTimeout" type="int" />
+				<attribute name="MaxUniqueNameStats" type="int" />
+				<attribute name="TxTimeout" type="int" />
+				<attribute name="BeforeCompletionIterationLimit" type="int" />
+				<attribute name="MaxSimultaneousTx" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJTAUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJTAUnit"/>
+	<complexType name="WebLogicJTAUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossJVMInvocationLayer" substitutionGroup="core:capability" type="cdmJ2ee:JBossJVMInvocationLayer"/>
+	<complexType name="JBossJVMInvocationLayer">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossIL">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossJVMInvocationLayerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossJVMInvocationLayerUnit"/>
+	<complexType name="JBossJVMInvocationLayerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossILUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hAILSingletonController" substitutionGroup="core:capability" type="cdmJ2ee:HAILSingletonController"/>
+	<complexType name="HAILSingletonController">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="TargetStartMethodArgument" type="string" />
+				<attribute name="PartitionName" type="string" />
+				<attribute name="TargetStartMethod" type="string" />
+				<attribute name="TargetStopMethodArgument" type="string" />
+				<attribute name="MasterNode" type="boolean" />
+				<attribute name="UDPMulticastAddress" type="string" />
+				<attribute name="TargetStopMethod" type="string" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hAILSingletonControllerUnit" substitutionGroup="core:unit" type="cdmJ2ee:HAILSingletonControllerUnit"/>
+	<complexType name="HAILSingletonControllerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereNamedEndpoint" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereNamedEndpoint"/>
+	<complexType name="WebSphereNamedEndpoint">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="HostName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereNamedEndpointUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereNamedEndpointUnit"/>
+	<complexType name="WebSphereNamedEndpointUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jMSSession" substitutionGroup="core:capability" type="cdmJ2ee:JMSSession"/>
+	<complexType name="JMSSession">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jMSSessionUnit" substitutionGroup="core:unit" type="cdmJ2ee:JMSSessionUnit"/>
+	<complexType name="JMSSessionUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.appClientModule" substitutionGroup="core:capability" type="cdmJ2ee:AppClientModule"/>
+	<complexType name="AppClientModule">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.appClientModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:AppClientModuleUnit"/>
+	<complexType name="AppClientModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicConnector" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicConnector"/>
+	<complexType name="WebLogicConnector">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+				<attribute name="SmallIcon" type="string" />
+				<attribute name="LicenseRequired" type="boolean" />
+				<attribute name="SpecVersion" type="string" />
+				<attribute name="ConnectionInterface" type="string" />
+				<attribute name="ConnectionFactoryInterface" type="string" />
+				<attribute name="ReauthenticationSupport" type="boolean" />
+				<attribute name="VendorName" type="string" />
+				<attribute name="ConnectionFactoryImplClass" type="string" />
+				<attribute name="TransactionSupport" type="string" />
+				<attribute name="LicenseDescription" type="string" />
+				<attribute name="ConnectorVersion" type="string" />
+				<attribute name="ConnectionImplClass" type="string" />
+				<attribute name="EisType" type="string" />
+				<attribute name="LargeIcon" type="string" />
+				<attribute name="ConnectorDisplayName" type="string" />
+				<attribute name="ManagerConnectionFactoryClass" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicConnectorUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicConnectorUnit"/>
+	<complexType name="WebLogicConnectorUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSQueue" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSQueue"/>
+	<complexType name="WebLogicJMSQueue">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSDestination">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSQueueUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSQueueUnit"/>
+	<complexType name="WebLogicJMSQueueUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.entityBean" substitutionGroup="core:capability" type="cdmJ2ee:EntityBean"/>
+	<complexType name="EntityBean">
+		<complexContent>
+			<extension base="cdmJ2ee:EJB">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.entityBeanUnit" substitutionGroup="core:unit" type="cdmJ2ee:EntityBeanUnit"/>
+	<complexType name="EntityBeanUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossOIL" substitutionGroup="core:capability" type="cdmJ2ee:JBossOIL"/>
+	<complexType name="JBossOIL">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossIL">
+				<attribute name="ReadTimeout" type="int" />
+				<attribute name="EnableTcpNoDelay" type="boolean" />
+				<attribute name="BindAddress" type="string" />
+				<attribute name="ClientSocketFactory" type="string" />
+				<attribute name="ServerBindPort" type="int" />
+				<attribute name="ServerSocketFactory" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossOILUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossOILUnit"/>
+	<complexType name="JBossOILUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossILUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.uRL" substitutionGroup="core:capability" type="cdmJ2ee:URL"/>
+	<complexType name="URL">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.uRLUnit" substitutionGroup="core:unit" type="cdmJ2ee:URLUnit"/>
+	<complexType name="URLUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppDomain" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppDomain"/>
+	<complexType name="OracleAppDomain">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomain">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppDomainUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppDomainUnit"/>
+	<complexType name="OracleAppDomainUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEDomainUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jettyHTTPConnector" substitutionGroup="core:capability" type="cdmJ2ee:JettyHTTPConnector"/>
+	<complexType name="JettyHTTPConnector">
+		<complexContent>
+			<extension base="cdmJ2ee:HTTPConnector">
+				<attribute name="LingerTimeSecs" type="int" />
+				<attribute name="IdentifyListener" type="boolean" />
+				<attribute name="BufferReserve" type="int" />
+				<attribute name="LowResourcePersistTime" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jettyHTTPConnectorUnit" substitutionGroup="core:unit" type="cdmJ2ee:JettyHTTPConnectorUnit"/>
+	<complexType name="JettyHTTPConnectorUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:HTTPConnectorUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.statefulSessionBean" substitutionGroup="core:capability" type="cdmJ2ee:StatefulSessionBean"/>
+	<complexType name="StatefulSessionBean">
+		<complexContent>
+			<extension base="cdmJ2ee:SessionBean">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.statefulSessionBeanUnit" substitutionGroup="core:unit" type="cdmJ2ee:StatefulSessionBeanUnit"/>
+	<complexType name="StatefulSessionBeanUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:SessionBeanUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossDestination" substitutionGroup="core:capability" type="cdmJ2ee:JBossDestination"/>
+	<complexType name="JBossDestination">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="JNDIName" type="string" />
+				<attribute name="MaxDepth" type="int" />
+				<attribute name="ServiceName" type="string" />
+				<attribute name="StateString" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossDestinationUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossDestinationUnit"/>
+	<complexType name="JBossDestinationUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEDomain" substitutionGroup="core:capability" type="cdmJ2ee:J2EEDomain"/>
+	<complexType name="J2EEDomain">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEDomainUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEDomainUnit"/>
+	<complexType name="J2EEDomainUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJDBCProvider" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJDBCProvider"/>
+	<complexType name="WebSphereJDBCProvider">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="Nativepath" type="string" />
+				<attribute name="XAClassNameTemplateMatcher" type="boolean" />
+				<attribute name="ImplementationClassName" type="string" />
+				<attribute name="Classpath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJDBCProviderUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJDBCProviderUnit"/>
+	<complexType name="WebSphereJDBCProviderUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.statelessSessionBean" substitutionGroup="core:capability" type="cdmJ2ee:StatelessSessionBean"/>
+	<complexType name="StatelessSessionBean">
+		<complexContent>
+			<extension base="cdmJ2ee:SessionBean">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.statelessSessionBeanUnit" substitutionGroup="core:unit" type="cdmJ2ee:StatelessSessionBeanUnit"/>
+	<complexType name="StatelessSessionBeanUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:SessionBeanUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJDBCTxDataSource" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJDBCTxDataSource"/>
+	<complexType name="WebLogicJDBCTxDataSource">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJDBCDataSource">
+				<attribute name="TwoPhaseCommitEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJDBCTxDataSourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJDBCTxDataSourceUnit"/>
+	<complexType name="WebLogicJDBCTxDataSourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJDBCDataSourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJVMSettings" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJVMSettings"/>
+	<complexType name="WebSphereJVMSettings">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="VerboseModeClass" type="boolean" />
+				<attribute name="MaximumHeapSizeMB" type="int" />
+				<attribute name="DisableJIT" type="boolean" />
+				<attribute name="VerboseModeGarbageCollection" type="boolean" />
+				<attribute name="BootClasspath" type="string" />
+				<attribute name="ExecutableJarFileName" type="string" />
+				<attribute name="HprofArguments" type="string" />
+				<attribute name="DebugMode" type="boolean" />
+				<attribute name="Number" type="int" />
+				<attribute name="VerboseModeJNI" type="boolean" />
+				<attribute name="InitialHeapSizeMB" type="int" />
+				<attribute name="DebugArgs" type="string" />
+				<attribute name="OsName" type="string" />
+				<attribute name="RunHprof" type="boolean" />
+				<attribute name="Classpath" type="string" />
+				<attribute name="GenericJvmArguments" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJVMSettingsUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJVMSettingsUnit"/>
+	<complexType name="WebSphereJVMSettingsUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webModule" substitutionGroup="core:capability" type="cdmJ2ee:WebModule"/>
+	<complexType name="WebModule">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebModuleUnit"/>
+	<complexType name="WebModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereProcessMonitoringPolicy" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereProcessMonitoringPolicy"/>
+	<complexType name="WebSphereProcessMonitoringPolicy">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PingIntervalSecs" type="int" />
+				<attribute name="AutoRestart" type="boolean" />
+				<attribute name="NodeRestartState" type="string" />
+				<attribute name="PingTimeoutMSecs" type="int" />
+				<attribute name="MaxStartupAttempts" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereProcessMonitoringPolicyUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereProcessMonitoringPolicyUnit"/>
+	<complexType name="WebSphereProcessMonitoringPolicyUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.messageDrivenBean" substitutionGroup="core:capability" type="cdmJ2ee:MessageDrivenBean"/>
+	<complexType name="MessageDrivenBean">
+		<complexContent>
+			<extension base="cdmJ2ee:EJB">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.messageDrivenBeanUnit" substitutionGroup="core:unit" type="cdmJ2ee:MessageDrivenBeanUnit"/>
+	<complexType name="MessageDrivenBeanUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.eJBModule" substitutionGroup="core:capability" type="cdmJ2ee:EJBModule"/>
+	<complexType name="EJBModule">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.eJBModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:EJBModuleUnit"/>
+	<complexType name="EJBModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jSP" substitutionGroup="core:capability" type="cdmJ2ee:JSP"/>
+	<complexType name="JSP">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jSPUnit" substitutionGroup="core:unit" type="cdmJ2ee:JSPUnit"/>
+	<complexType name="JSPUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereHTTPTransport" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereHTTPTransport"/>
+	<complexType name="WebSphereHTTPTransport">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereNamedEndpoint">
+				<attribute name="ExternalUsage" type="boolean" />
+				<attribute name="SslEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereHTTPTransportUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereHTTPTransportUnit"/>
+	<complexType name="WebSphereHTTPTransportUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereNamedEndpointUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSTopic" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSTopic"/>
+	<complexType name="WebLogicJMSTopic">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSDestination">
+				<attribute name="MulticastAddress" type="string" />
+				<attribute name="MulticastTTL" type="int" />
+				<attribute name="MulticastPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSTopicUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSTopicUnit"/>
+	<complexType name="WebLogicJMSTopicUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hAJNDI" substitutionGroup="core:capability" type="cdmJ2ee:HAJNDI"/>
+	<complexType name="HAJNDI">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="AutoDiscoverAddress" type="string" />
+				<attribute name="PartitionName" type="string" />
+				<attribute name="BindAddress" type="string" />
+				<attribute name="AutoDiscoveryGroup" type="int" />
+				<attribute name="Backlog" type="int" />
+				<attribute name="UDPMulticastAddress" type="string" />
+				<attribute name="Port" type="int" />
+				<attribute name="StateString" type="string" />
+				<attribute name="RMIPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hAJNDIUnit" substitutionGroup="core:unit" type="cdmJ2ee:HAJNDIUnit"/>
+	<complexType name="HAJNDIUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppWebModule" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppWebModule"/>
+	<complexType name="OracleAppWebModule">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModule">
+				<attribute name="FileModificationCheckInterval" type="long" />
+				<attribute name="AutoJoinSession" type="boolean" />
+				<attribute name="IncludeWarManifestClassPath" type="boolean" />
+				<attribute name="State" type="string" />
+				<attribute name="CookieIsSecure" type="boolean" />
+				<attribute name="UseCookies" type="boolean" />
+				<attribute name="SourceDirectory" type="string" />
+				<attribute name="TemporaryDirectory" type="string" />
+				<attribute name="Distributable" type="boolean" />
+				<attribute name="OhsRouting" type="boolean" />
+				<attribute name="DefaultBufferSize" type="int" />
+				<attribute name="CookieMaxAge" type="int" />
+				<attribute name="CookieDomain" type="string" />
+				<attribute name="WebModuleDisplayName" type="string" />
+				<attribute name="DirectoryBrowsing" type="string" />
+				<attribute name="SearchLocalClassFirst" type="boolean" />
+				<attribute name="PersistencePath" type="string" />
+				<attribute name="WebSites" type="string" />
+				<attribute name="SessionTimeout" type="int" />
+				<attribute name="ServletWebDir" type="string" />
+				<attribute name="WebURL" type="string" />
+				<attribute name="CookiePath" type="string" />
+				<attribute name="Classpath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppWebModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppWebModuleUnit"/>
+	<complexType name="OracleAppWebModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJSPContainer" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJSPContainer"/>
+	<complexType name="OracleAppJSPContainer">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainer">
+				<attribute name="StaticTextInChars" type="boolean" />
+				<attribute name="XmlValidate" type="boolean" />
+				<attribute name="ExtraImportList" type="string" />
+				<attribute name="CacheTlds" type="string" />
+				<attribute name="RunMode" type="string" />
+				<attribute name="ForgiveDupDirAttr" type="boolean" />
+				<attribute name="TaglibLocation" type="string" />
+				<attribute name="Debug" type="boolean" />
+				<attribute name="TagReuseDefault" type="string" />
+				<attribute name="EmitDebugInfo" type="boolean" />
+				<attribute name="ReduceTagCode" type="boolean" />
+				<attribute name="Timeout" type="int" />
+				<attribute name="CheckPrecompile" type="boolean" />
+				<attribute name="ExternalResource" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJSPContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJSPContainerUnit"/>
+	<complexType name="OracleAppJSPContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:SoftwareContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicMessageEJB" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicMessageEJB"/>
+	<complexType name="WebLogicMessageEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJB">
+				<attribute name="MessageSelector" type="string" />
+				<attribute name="TransactionType" type="string" />
+				<attribute name="SubscriptionDurability" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicMessageEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicMessageEJBUnit"/>
+	<complexType name="WebLogicMessageEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereWebModule" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereWebModule"/>
+	<complexType name="WebSphereWebModule">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModule">
+				<attribute name="URI" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="AlternateDD" type="string" />
+				<attribute name="ClassloaderMode" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereWebModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereWebModuleUnit"/>
+	<complexType name="WebSphereWebModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereNodeAgent" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereNodeAgent"/>
+	<complexType name="WebSphereNodeAgent">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereServer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereNodeAgentUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereNodeAgentUnit"/>
+	<complexType name="WebSphereNodeAgentUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.connectorModule" substitutionGroup="core:capability" type="cdmJ2ee:ConnectorModule"/>
+	<complexType name="ConnectorModule">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModule">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.connectorModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:ConnectorModuleUnit"/>
+	<complexType name="ConnectorModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hAIL" substitutionGroup="core:capability" type="cdmJ2ee:HAIL"/>
+	<complexType name="HAIL">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayer">
+				<attribute name="EnableTcpNoDelay" type="boolean" />
+				<attribute name="ChunkSize" type="int" />
+				<attribute name="MasterNode" type="boolean" />
+				<attribute name="ClientSocketFactory" type="string" />
+				<attribute name="ServerPort" type="int" />
+				<attribute name="BufferSize" type="int" />
+				<attribute name="StateString" type="string" />
+				<attribute name="ServerAddress" type="string" />
+				<attribute name="PingPeriod" type="long" />
+				<attribute name="XAConnectionFactoryJNDIRef" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.hAILUnit" substitutionGroup="core:unit" type="cdmJ2ee:HAILUnit"/>
+	<complexType name="HAILUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicJMSConnectionFactory" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicJMSConnectionFactory"/>
+	<complexType name="WebLogicJMSConnectionFactory">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="AllowCloseInOnMessage" type="boolean" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="DefaultPriority" type="int" />
+				<attribute name="OverrunPolicy" type="string" />
+				<attribute name="DefaultTimeToDeliver" type="long" />
+				<attribute name="UserTransactionsEnabled" type="boolean" />
+				<attribute name="AcknowledgePolicy" type="string" />
+				<attribute name="DefaultDeliveryMode" type="string" />
+				<attribute name="XAConnectionFactoryEnabled" type="boolean" />
+				<attribute name="DefaultRedeliveryDelay" type="long" />
+				<attribute name="DefaultTimeToLive" type="long" />
+				<attribute name="MessageMaximum" type="int" />
+				<attribute name="TransactionTimeout" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicJMSConnectionFactoryUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicJMSConnectionFactoryUnit"/>
+	<complexType name="WebLogicJMSConnectionFactoryUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJMSDestination" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJMSDestination"/>
+	<complexType name="WebSphereJMSDestination">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="Expiry" type="string" />
+				<attribute name="MessagePriority" type="string" />
+				<attribute name="SpecifiedExpiry" type="long" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="Persistence" type="string" />
+				<attribute name="Category" type="string" />
+				<attribute name="SpecifiedPriority" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJMSDestinationUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJMSDestinationUnit"/>
+	<complexType name="WebSphereJMSDestinationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.j2EEWebContainer" substitutionGroup="core:capability" type="cdmJ2ee:J2EEWebContainer"/>
+	<complexType name="J2EEWebContainer">
+		<complexContent>
+			<extension base="cdmBase:WebContainer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.j2EEWebContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:J2EEWebContainerUnit"/>
+	<complexType name="J2EEWebContainerUnit">
+		<complexContent>
+			<extension base="cdmBase:WebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereCluster" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereCluster"/>
+	<complexType name="WebSphereCluster">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="ReplicationGroupName" type="string" />
+				<attribute name="PreferLocal" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereClusterUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereClusterUnit"/>
+	<complexType name="WebSphereClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppServlet" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppServlet"/>
+	<complexType name="OracleAppServlet">
+		<complexContent>
+			<extension base="cdmJ2ee:Servlet">
+				<attribute name="LoadOnStartup" type="int" />
+				<attribute name="ServletClass" type="string" />
+				<attribute name="JspFile" type="string" />
+				<attribute name="ServletDisplayName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppServletUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppServletUnit"/>
+	<complexType name="OracleAppServletUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ServletUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereMQJMSTopic" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereMQJMSTopic"/>
+	<complexType name="WebSphereMQJMSTopic">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereMQJMSDestination">
+				<attribute name="BaseTopicName" type="string" />
+				<attribute name="BrokerDurSubQueue" type="string" />
+				<attribute name="BrokerCCDurSubQueue" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereMQJMSTopicUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereMQJMSTopicUnit"/>
+	<complexType name="WebSphereMQJMSTopicUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereMQJMSDestinationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicNodeManager" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicNodeManager"/>
+	<complexType name="WebLogicNodeManager">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicNodeManagerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicNodeManagerUnit"/>
+	<complexType name="WebLogicNodeManagerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossHTTPInvocationLayer" substitutionGroup="core:capability" type="cdmJ2ee:JBossHTTPInvocationLayer"/>
+	<complexType name="JBossHTTPInvocationLayer">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayer">
+				<attribute name="TimeOut" type="int" />
+				<attribute name="URLPrefix" type="string" />
+				<attribute name="URL" type="string" />
+				<attribute name="URLPort" type="int" />
+				<attribute name="URLHostName" type="string" />
+				<attribute name="RestInterval" type="int" />
+				<attribute name="URLSuffix" type="string" />
+				<attribute name="UseHostName" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossHTTPInvocationLayerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossHTTPInvocationLayerUnit"/>
+	<complexType name="JBossHTTPInvocationLayerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossInvocationLayerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJ2EEResourceProperty" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJ2EEResourceProperty"/>
+	<complexType name="WebSphereJ2EEResourceProperty">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Type" type="string" />
+				<attribute name="Required" type="boolean" />
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJ2EEResourcePropertyUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJ2EEResourcePropertyUnit"/>
+	<complexType name="WebSphereJ2EEResourcePropertyUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jMSConnection" substitutionGroup="core:capability" type="cdmJ2ee:JMSConnection"/>
+	<complexType name="JMSConnection">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jMSConnectionUnit" substitutionGroup="core:unit" type="cdmJ2ee:JMSConnectionUnit"/>
+	<complexType name="JMSConnectionUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossInvocationLayer" substitutionGroup="core:capability" type="cdmJ2ee:JBossInvocationLayer"/>
+	<complexType name="JBossInvocationLayer">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ConnectionFactoryJNDIRef" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossInvocationLayerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossInvocationLayerUnit"/>
+	<complexType name="JBossInvocationLayerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jDBCDataSource" substitutionGroup="core:capability" type="cdmJ2ee:JDBCDataSource"/>
+	<complexType name="JDBCDataSource">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jDBCDataSourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:JDBCDataSourceUnit"/>
+	<complexType name="JDBCDataSourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.javaMail" substitutionGroup="core:capability" type="cdmJ2ee:JavaMail"/>
+	<complexType name="JavaMail">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.javaMailUnit" substitutionGroup="core:unit" type="cdmJ2ee:JavaMailUnit"/>
+	<complexType name="JavaMailUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jCAConnectionFactory" substitutionGroup="core:capability" type="cdmJ2ee:JCAConnectionFactory"/>
+	<complexType name="JCAConnectionFactory">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jCAConnectionFactoryUnit" substitutionGroup="core:unit" type="cdmJ2ee:JCAConnectionFactoryUnit"/>
+	<complexType name="JCAConnectionFactoryUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereServer" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereServer"/>
+	<complexType name="WebSphereServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServer">
+				<attribute name="ClusterWeight" type="int" />
+				<attribute name="AddressSpace" type="string" />
+				<attribute name="AppClassloaderPolicy" type="string" />
+				<attribute name="AppClassloadingMode" type="string" />
+				<attribute name="ClusterUniqueId" type="string" />
+				<attribute name="Type" type="string" />
+				<attribute name="JvmLogFileName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereServerUnit"/>
+	<complexType name="WebSphereServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppJ2EEServer" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppJ2EEServer"/>
+	<complexType name="OracleAppJ2EEServer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServer">
+				<attribute name="DefaultRoutingId" type="string" />
+				<attribute name="SecurityProvider" type="string" />
+				<attribute name="DmsOn" type="boolean" />
+				<attribute name="RunningClusterMBeanServer" type="boolean" />
+				<attribute name="JavaVendor" type="string" />
+				<attribute name="JavaVersion" type="string" />
+				<attribute name="OracleHome" type="string" />
+				<attribute name="LogLevel" type="string" />
+				<attribute name="SecurityDeploymentURL" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppJ2EEServerUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppJ2EEServerUnit"/>
+	<complexType name="OracleAppJ2EEServerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicMachine" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicMachine"/>
+	<complexType name="WebLogicMachine">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicMachineUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicMachineUnit"/>
+	<complexType name="WebLogicMachineUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jCAConnection" substitutionGroup="core:capability" type="cdmJ2ee:JCAConnection"/>
+	<complexType name="JCAConnection">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jCAConnectionUnit" substitutionGroup="core:unit" type="cdmJ2ee:JCAConnectionUnit"/>
+	<complexType name="JCAConnectionUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jCAManagedConnectionFactory" substitutionGroup="core:capability" type="cdmJ2ee:JCAManagedConnectionFactory"/>
+	<complexType name="JCAManagedConnectionFactory">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jCAManagedConnectionFactoryUnit" substitutionGroup="core:unit" type="cdmJ2ee:JCAManagedConnectionFactoryUnit"/>
+	<complexType name="JCAManagedConnectionFactoryUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossFilePM" substitutionGroup="core:capability" type="cdmJ2ee:JBossFilePM"/>
+	<complexType name="JBossFilePM">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManager">
+				<attribute name="DataDirectory" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossFilePMUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossFilePMUnit"/>
+	<complexType name="JBossFilePMUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManagerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereAuthMappingModule" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereAuthMappingModule"/>
+	<complexType name="WebSphereAuthMappingModule">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="AuthDataAlias" type="string" />
+				<attribute name="MappingConfigAlias" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereAuthMappingModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereAuthMappingModuleUnit"/>
+	<complexType name="WebSphereAuthMappingModuleUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossRollingLoggedPM" substitutionGroup="core:capability" type="cdmJ2ee:JBossRollingLoggedPM"/>
+	<complexType name="JBossRollingLoggedPM">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManager">
+				<attribute name="RollOverSize" type="int" />
+				<attribute name="DataDirectory" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossRollingLoggedPMUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossRollingLoggedPMUnit"/>
+	<complexType name="JBossRollingLoggedPMUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossPersistenceManagerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicEJBModule" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicEJBModule"/>
+	<complexType name="WebLogicEJBModule">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModule">
+				<attribute name="URI" type="string" />
+				<attribute name="KeepGenerated" type="boolean" />
+				<attribute name="LastModified" type="long" />
+				<attribute name="ExtraRmicOptions" type="string" />
+				<attribute name="JavaCompilerPostClassPath" type="string" />
+				<attribute name="Path" type="string" />
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="TmpPath" type="string" />
+				<attribute name="JavaCompilerPreClassPath" type="string" />
+				<attribute name="JavaCompiler" type="string" />
+				<attribute name="VerboseEJBDeploymentEnabled" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicEJBModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicEJBModuleUnit"/>
+	<complexType name="WebLogicEJBModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicSessionEJB" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicSessionEJB"/>
+	<complexType name="WebLogicSessionEJB">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJB">
+				<attribute name="TransactionType" type="string" />
+				<attribute name="SessionType" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicSessionEJBUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicSessionEJBUnit"/>
+	<complexType name="WebLogicSessionEJBUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebLogicEJBUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereConfiguredConnection" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereConfiguredConnection"/>
+	<complexType name="WebSphereConfiguredConnection">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="PortNumber" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereConfiguredConnectionUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereConfiguredConnectionUnit"/>
+	<complexType name="WebSphereConfiguredConnectionUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereProperty" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereProperty"/>
+	<complexType name="WebSphereProperty">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="ValidationExpression" type="string" />
+				<attribute name="Required" type="boolean" />
+				<attribute name="Value" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSpherePropertyUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSpherePropertyUnit"/>
+	<complexType name="WebSpherePropertyUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereEJBContainer" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereEJBContainer"/>
+	<complexType name="WebSphereEJBContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBContainer">
+				<attribute name="EJBCacheCleanupIntervalMsecs" type="long" />
+				<attribute name="PassivationDirectory" type="string" />
+				<attribute name="EJBCacheSize" type="long" />
+				<attribute name="DefaultDatasourceJNDIName" type="string" />
+				<attribute name="InactivePoolCleanupIntervalMsecs" type="long" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereEJBContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereEJBContainerUnit"/>
+	<complexType name="WebSphereEJBContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJMSProvider" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJMSProvider"/>
+	<complexType name="WebSphereJMSProvider">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResource">
+				<attribute name="Nativepath" type="string" />
+				<attribute name="ExternalInitialContextFactory" type="string" />
+				<attribute name="ExternalProviderURL" type="string" />
+				<attribute name="Classpath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJMSProviderUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJMSProviderUnit"/>
+	<complexType name="WebSphereJMSProviderUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppProcessManager" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppProcessManager"/>
+	<complexType name="OracleAppProcessManager">
+		<complexContent>
+			<extension base="cdmBase:AppServer">
+				<attribute name="RemotePort" type="int" />
+				<attribute name="RequestPort" type="int" />
+				<attribute name="LocalPort" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppProcessManagerUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppProcessManagerUnit"/>
+	<complexType name="OracleAppProcessManagerUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossTransactionCM" substitutionGroup="core:capability" type="cdmJ2ee:JBossTransactionCM"/>
+	<complexType name="JBossTransactionCM">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+				<attribute name="SecurityDomain" type="string" />
+				<attribute name="JNDIName" type="string" />
+				<attribute name="TrackConnectionsByTx" type="boolean" />
+				<attribute name="LocalTransactions" type="boolean" />
+				<attribute name="TransactionManager" type="string" />
+				<attribute name="StateString" type="string" />
+				<attribute name="Instance" type="string" />
+				<attribute name="TransactionTimeout" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossTransactionCMUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossTransactionCMUnit"/>
+	<complexType name="JBossTransactionCMUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jDBCConnection" substitutionGroup="core:capability" type="cdmJ2ee:JDBCConnection"/>
+	<complexType name="JDBCConnection">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jDBCConnectionUnit" substitutionGroup="core:unit" type="cdmJ2ee:JDBCConnectionUnit"/>
+	<complexType name="JDBCConnectionUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossEJBModule" substitutionGroup="core:capability" type="cdmJ2ee:JBossEJBModule"/>
+	<complexType name="JBossEJBModule">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModule">
+				<attribute name="Deployed" type="boolean" />
+				<attribute name="JAWSDeploymentDescriptor" type="string" />
+				<attribute name="StartTime" type="long" />
+				<attribute name="CMPDeploymentDescriptor" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossEJBModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossEJBModuleUnit"/>
+	<complexType name="JBossEJBModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:EJBModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webLogicWebContainer" substitutionGroup="core:capability" type="cdmJ2ee:WebLogicWebContainer"/>
+	<complexType name="WebLogicWebContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainer">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webLogicWebContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebLogicWebContainerUnit"/>
+	<complexType name="WebLogicWebContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereJ2EEResource" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereJ2EEResource"/>
+	<complexType name="WebSphereJ2EEResource">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereJ2EEResourceUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereJ2EEResourceUnit"/>
+	<complexType name="WebSphereJ2EEResourceUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossConnectorModule" substitutionGroup="core:capability" type="cdmJ2ee:JBossConnectorModule"/>
+	<complexType name="JBossConnectorModule">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModule">
+				<attribute name="Deployed" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossConnectorModuleUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossConnectorModuleUnit"/>
+	<complexType name="JBossConnectorModuleUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:ConnectorModuleUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.webSphereSharedLibrary" substitutionGroup="core:capability" type="cdmJ2ee:WebSphereSharedLibrary"/>
+	<complexType name="WebSphereSharedLibrary">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Nativepath" type="string" />
+				<attribute name="Classpath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.webSphereSharedLibraryUnit" substitutionGroup="core:unit" type="cdmJ2ee:WebSphereSharedLibraryUnit"/>
+	<complexType name="WebSphereSharedLibraryUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossJ2EEApplication" substitutionGroup="core:capability" type="cdmJ2ee:JBossJ2EEApplication"/>
+	<complexType name="JBossJ2EEApplication">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplication">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossJ2EEApplicationUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossJ2EEApplicationUnit"/>
+	<complexType name="JBossJ2EEApplicationUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEApplicationUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossRMIInvocationLayer" substitutionGroup="core:capability" type="cdmJ2ee:JBossRMIInvocationLayer"/>
+	<complexType name="JBossRMIInvocationLayer">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossIL">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossRMIInvocationLayerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossRMIInvocationLayerUnit"/>
+	<complexType name="JBossRMIInvocationLayerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:JBossILUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jMSEndpoint" substitutionGroup="core:capability" type="cdmJ2ee:JMSEndpoint"/>
+	<complexType name="JMSEndpoint">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResource">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jMSEndpointUnit" substitutionGroup="core:unit" type="cdmJ2ee:JMSEndpointUnit"/>
+	<complexType name="JMSEndpointUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEResourceUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jettyWebContainer" substitutionGroup="core:capability" type="cdmJ2ee:JettyWebContainer"/>
+	<complexType name="JettyWebContainer">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainer">
+				<attribute name="RootWebApp" type="string" />
+				<attribute name="LenientEJBLink" type="boolean" />
+				<attribute name="UnpackWars" type="boolean" />
+				<attribute name="WebDefaultResource" type="string" />
+				<attribute name="SupportJSR77" type="boolean" />
+				<attribute name="Backlog" type="int" />
+				<attribute name="DownloadServerClasses" type="boolean" />
+				<attribute name="SubjectAttributeName" type="string" />
+				<attribute name="Java2ClassLoadingCompliance" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jettyWebContainerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JettyWebContainerUnit"/>
+	<complexType name="JettyWebContainerUnit">
+		<complexContent>
+			<extension base="cdmJ2ee:J2EEWebContainerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.oracleAppCluster" substitutionGroup="core:capability" type="cdmJ2ee:OracleAppCluster"/>
+	<complexType name="OracleAppCluster">
+		<complexContent>
+			<extension base="cdmBase:AppServerCluster">
+				<attribute name="TopologyAddress" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.oracleAppClusterUnit" substitutionGroup="core:unit" type="cdmJ2ee:OracleAppClusterUnit"/>
+	<complexType name="OracleAppClusterUnit">
+		<complexContent>
+			<extension base="cdmBase:AppServerClusterUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.jBossPersistenceManager" substitutionGroup="core:capability" type="cdmJ2ee:JBossPersistenceManager"/>
+	<complexType name="JBossPersistenceManager">
+		<complexContent>
+			<extension base="cdmBase:LogicalElement">
+				<attribute name="Instance" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.jBossPersistenceManagerUnit" substitutionGroup="core:unit" type="cdmJ2ee:JBossPersistenceManagerUnit"/>
+	<complexType name="JBossPersistenceManagerUnit">
+		<complexContent>
+			<extension base="cdmBase:LogicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

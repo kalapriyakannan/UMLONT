@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Created on Tue 2007.03.13 at 02:52:23 PM EDT" displayName="NDPlusDeploymentManager" name="NDPlusDeploymentManager">
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="cell_discovery_address" name="cell_discovery_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="cell_discovery_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <was:unit.wasDeploymentManagerUnit displayName="WAS 6.0 Deployment Manager" name="WasDeploymentManagerUnit" conceptual="false">
+    <was:capability.wasDeploymentManager displayName="WAS Deployment Manager" name="Was deployment Manager" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.equals name="profileType" attributeName="profileType" value="dmgr"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WasDeploymentManagerUnit" target="/portConfiguration"/>
+  </was:unit.wasDeploymentManagerUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System" name="WasSystemUnit" conceptual="false">
+    <was:capability.wasSystem displayName="WAS System" name="WASSystem" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasDmgrNode" source="/WasSystemUnit" target="/Was6DmgrNode"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasNodeGroupUnit name="WasNodeGroup" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="NodeGroup01"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup" target="/Was6DmgrNode"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasCellUnit name="was6DistributedCell" conceptual="false" configurationUnit="true">
+    <was:capability.wasCell name="was6 Distributed Cell" linkType="any" cellName="Cell01" isDistributed="true" wasVersion="6.0"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="At least one node in cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="At least one node group in cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6DistributedCell" target="/WasNodeGroup"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6DistributedCell" target="/Was6DmgrNode"/>
+    <core:link.hosting name="HostingLink0" target="/Was6Cluster"/>
+  </was:unit.wasCellUnit>
+  <was:unit.wasNodeUnit name="Was6DmgrNode" conceptual="false">
+    <was:capability.wasNode name="WAS6DmgrNode" linkType="any" isDefaultProfile="true" isManaged="false" nodeName="Node01" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="dmgr" wasVersion="6.0">
+      <core:attributeMetaData attributeName="isManaged" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="ConfigurationContainer" name="Provide_ConfigurationContainerCapability" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="SharedLibraryContainer" name="Provide_SharedlibraryContainerCapablity" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="WasNodeHostsWAS6dmgr" source="/Was6DmgrNode" target="/WasDeploymentManagerUnit"/>
+    <core:link.hosting name="WasNodeHostsCell" source="/Was6DmgrNode" target="/was6DistributedCell"/>
+  </was:unit.wasNodeUnit>
+  <os:unit.windowsLocalGroup name="Guests" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Administrators" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators" target="/Administrator"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer2003" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="DmgrHost" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="WindowsServer2003HostsAdministrators" source="/WindowsServer2003" target="/Administrators"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer2003" target="/PowerUsers"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer2003" target="/Users"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer2003" target="/Guests"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer2003" target="/Administrator"/>
+    <core:link.hosting name="HostingLink0" target="/WasSystemUnit"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalGroup name="Users" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalUser name="Administrator" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="g/8qh7wNwT8p">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="inCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <server:unit.serverUnit displayName="x86 Server" name="x86 Server" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer2003"/>
+  </server:unit.serverUnit>
+  <was:unit.wasClusterUnit displayName="WAS 6.0 Cluster" name="Was6Cluster" conceptual="false" configurationUnit="false">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasCluster displayName="Provide a cluster" name="Provide a Cluster" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WAS NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency">
+      <core:link.dependency name="DependencyLink0" target="/WasNodeGroup/Provide WAS Node Group"/>
+    </core:requirement>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="WasCell" mutable="true" name="WasCell" dmoType="was:WasCell" linkType="hosting"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+  </was:unit.wasClusterUnit>
+  <core:contract.explicit name="con0" defaultConceptualPolicy="public" defaultPolicy="public"/>
+</core:topology>

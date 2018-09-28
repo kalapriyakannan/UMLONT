@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/"
+name="MQQueueDestination Template">
+  <mq:unit.MQQueueDestinationUnit name="MQQueueDestination" displayName="MQ Queue Destination" configurationUnit="true" conceptual="true">
+    <mq:capability.MQDestination name="MQQueueDestination" linkType="any"/>
+    <core:requirement name="HostingLink" dmoType="mq:MQMessagingProvider" linkType="hosting" use="required"/>
+    <core:requirement name="DependencyLink" dmoType="mq:MQQueue" linkType="dependency" use="required"/>  
+  </mq:unit.MQQueueDestinationUnit>
+</core:topology>

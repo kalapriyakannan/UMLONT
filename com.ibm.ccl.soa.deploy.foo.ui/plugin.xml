@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%fooStack.Label" 
+            		kind="stack" 
+            		description="%fooStack.Description" 
+            		small_icon="icons/pal/placeholder_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="fooStack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.foo.ui.providers.FooEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="foo.FooBaseSystemUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.foo, configurationUnit.foo"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="foo.FooBaseSystemUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.foo, configurationUnit.foo">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/Zephyr/foo/1.0.0/">
+	    	<metamodelType
+	        	id="foo.ModelObjectUnit"            
+	            name="%ModelObjectUnit.label"
+	            icon="icons/pal/placeholder_16.gif"
+	            eclass="ModelObjectUnit"/>        
+        </metamodel> 
+	</extension>
+   
+
+</plugin>

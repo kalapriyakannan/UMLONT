@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" description="Created Tue 2006.10.24 at 01:19:55 PM EDT" displayName="IBM HTTP Server 6.0" name="IBM HTTP Server 6.0">
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="IHSSystem"/>   
+  </core:annotation>
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true">
+    <os:capability.port displayName="instanceConnectionPort" name="httpPort" linkType="dependency" port="80" portName="httpPort" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <ihs:unit.ihsServerUnit displayName="IBM HTTP Server 6.0" name="IHSServer">
+    <ihs:capability.ihsServer configFile="c:\Program Files\IBM HTTP Server\conf\httpd.conf" displayName="IHS Server" name="IHS Server" linkType="any" secure="false"/>
+    <os:capability.windowsLocalService description="" displayName="Windows IHS Service" name="Windows IHS Service" linkType="any" LogOnAsSystem="true" ServiceName="IBMHTTPServer6.0" StartParams="" StartupType="Automatic">
+      <core:attributeMetaData attributeName="serviceAccountPassword" encrypted="true"/>
+    </os:capability.windowsLocalService>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="IHS System" mutable="true" name="IHS System" dmoType="ihs:IhsSystem" linkType="hosting"/>
+    <core:requirement mutable="true" name="ServiceAccountUser" displayName="ServiceAccountUser" dmoType="os:WindowsLocalUser" linkType="dependency"/>		    
+    <core:link.hosting name="IHSServerHostsportConfiguration" target="/portConfiguration"/>
+  </ihs:unit.ihsServerUnit>
+  <ihs:unit.ihsServerUnit displayName="IBM HTTP Administration 6.0" name="IHSAdminServer">
+    <ihs:capability.ihsServer configFile="c:\Program Files\IBM HTTP Server\conf\admin.conf" displayName="IHS Server" name="IHS Server" linkType="any" secure="false"/>
+    <os:capability.windowsLocalService description="" displayName="Windows IHS Service" name="Windows IHS Service" linkType="any" LogOnAsSystem="true" ServiceDescription="" ServiceName="IBMHTTPAdministration6.0" StartupType="Automatic">
+      <core:attributeMetaData attributeName="serviceAccountPassword" encrypted="true"/>
+    </os:capability.windowsLocalService>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="IHS System" mutable="true" name="IHS System" dmoType="ihs:IhsSystem" linkType="hosting"/>
+    <core:requirement mutable="true" name="ServiceAccountUser" displayName="ServiceAccountUser" dmoType="os:WindowsLocalUser" linkType="dependency"/>		    
+    <core:link.hosting name="IHSServerHostsportConfiguration" target="/portConfiguration0"/>
+  </ihs:unit.ihsServerUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration0" configurationUnit="true">
+    <os:capability.port displayName="instanceConnectionPort" name="adminPort" linkType="dependency" port="8008" portName="adminPort" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <ihs:unit.ihsSystemUnit displayName="IBM HTTP Server 6.0 Install" name="IHSSystem">
+    <ihs:capability.ihsSystem displayName="IHS System" name="IHS System" linkType="any" installLocation="c:\Program Files\IBM HTTP Server"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="IHSSystemHostsIHSServer" target="/IHSServer"/>
+    <core:link.hosting name="IHSSystemHostsIHSAdminServer" target="/IHSAdminServer"/>
+  </ihs:unit.ihsSystemUnit>
+</core:topology>

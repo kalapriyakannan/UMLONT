@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="package_files/filelist.xml">
+<title>Core Deployment Modeling Platform Model</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Alexander V. Konstantinou</o:Author>
+  <o:LastAuthor>Alexander V. Konstantinou</o:LastAuthor>
+  <o:Revision>18</o:Revision>
+  <o:TotalTime>1249</o:TotalTime>
+  <o:Created>2007-02-08T23:21:00Z</o:Created>
+  <o:LastSaved>2007-02-15T18:47:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>478</o:Words>
+  <o:Characters>2728</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>22</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>3200</o:CharactersWithSpaces>
+  <o:Version>10.6817</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all
+href="http://dev.eclipse.org/default_style.css">
+<link rel=Stylesheet type="text/css" media=all href="styles/stp-core.css">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:161;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:21.0pt;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:10.5pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.Code, li.Code, div.Code
+	{mso-style-name:Code;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><![if mso 9]>
+<style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+</style>
+<![endif]><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in;margin-left:
+8.5pt;margin-top:14.2pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->The
+IBM Deployment Modeling Platform provides models and tooling elements to
+construct <span class=SpellE>validatable</span> <span class=SpellE>metamodels</span>
+of the Topology Definition Model (TDM). <a name=top></a><a
+href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512"></a><span
+style='mso-bookmark:top'><span class=MsoHyperlink><o:p></o:p></span></span></span></p>
+
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<h1 align=center style='text-align:center'><span style='mso-bookmark:top'></span><a
+href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512"><span
+style='mso-bookmark:top'>IBM Deployment Modeling Platform Core Model
+Implementation Documentation</span><span style='mso-bookmark:top'></span></a><span
+style='mso-bookmark:top'></span></h1>
+
+<span style='mso-bookmark:top'></span>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Abstract [<a href="overview-summary.html"><span
+  style='color:lightblue'>Index</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The EMF-generated implementation classes of the IBM Deployment Modeling
+  Platform core model include non-generated methods.<span
+  style='mso-spacerun:yes'>  </span>This document outlines the customizations
+  that have been performed.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><a name=Links><b><span style='font-size:10.0pt;font-family:
+  Arial;color:white'>Core Model: Link [</span></b></a><b><span
+  style='font-size:10.0pt;font-family:Arial;color:white'><a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial'>Deploy model links endpoints are maintained
+  in-memory as EMF references, and are serialized as string <span class=SpellE>URIs</span>.<span
+  style='mso-spacerun:yes'>  </span>The <span class=SpellE>deserialization</span>
+  of link references is performed lazily, when the EMF reference <span
+  class=SpellE>accessor</span> method is invoked.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial'>The <span class=SpellE>DeployModelObject</span>
+  type, a common super-type of all deploy objects, defines a method for
+  obtaining a fully qualified, or relative path to the object.<span
+  style='mso-spacerun:yes'>  </span>A path can be resolved in the context of
+  another <span class=SpellE>DeployModelObject</span>.<span
+  style='mso-spacerun:yes'>  </span>The relevant methods are: <span
+  class=SpellE><span class=GramE>getFullPath</span></span><span class=GramE>(</span>),
+  <span class=SpellE>getRelativePath</span>(<span class=SpellE>DeployModelObject</span>),
+  resolve(String).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:10.0pt;font-family:Arial'>The abstract <span class=SpellE>DeployLink</span>
+  type provides <span class=SpellE>accessors</span> for the string link
+  endpoint <span class=SpellE>URIs</span>: <span class=SpellE><span
+  class=GramE>getSourceURI</span></span><span class=GramE>(</span>) and <span
+  class=SpellE>getTargetURI</span>().<span style='mso-spacerun:yes'> 
+  </span>Subtypes must implement the EMF reference <span class=SpellE>accessors</span>
+  and setters, based on the expected type of the endpoints.<span
+  style='mso-spacerun:yes'>  </span>The <span class=SpellE>DeployLinkImpl</span>
+  class provides transient attributes for catching the EMF reference.<span
+  style='mso-spacerun:yes'>  </span>It also provides helper methods <span
+  class=SpellE><span class=GramE>getTargetObject</span></span><span
+  class=GramE>(</span>), <span class=SpellE>setTargetObject</span>(<span
+  class=SpellE>DeployModelObject</span>), <span class=SpellE>getSourceObject</span>()
+  and <span class=SpellE>setSourceObject</span> (<span class=SpellE>DeployModelObject</span>).<span
+  style='mso-spacerun:yes'>  </span>Subtypes can implement get/set
+  source/target just delegating to these helper methods and casting the return
+  value<span style='mso-spacerun:yes'>  </span>For example, <span class=SpellE>DeployLinkImpl</span>
+  includes:<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='mso-spacerun:yes'> </span><span style='font-size:10.0pt;font-family:
+  "Courier New";color:black'><span style='mso-tab-count:1'>      </span></span><b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:#7F0055'>public</span></b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'> Capability <span
+  class=SpellE>getTarget</span>() {</span><span style='font-size:10.0pt;
+  font-family:"Courier New"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'><span
+  style='mso-tab-count:2'>            </span></span><b><span style='font-size:
+  10.0pt;font-family:"Courier New";color:#7F0055'>return</span></b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'> (Capability) <span
+  class=SpellE>super.getTargetObject</span>();</span><span style='font-size:
+  10.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'><span
+  style='mso-tab-count:1'>      </span>}</span><span style='font-size:10.0pt;
+  font-family:"Courier New"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'><span
+  style='mso-tab-count:1'>      </span></span><b><span style='font-size:10.0pt;
+  font-family:"Courier New";color:#7F0055'>public</span></b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'> </span><b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:#7F0055'>void</span></b><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'> <span
+  class=SpellE>setTarget</span>(Capability service) {</span><span
+  style='font-size:10.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'><span
+  style='mso-tab-count:2'>            </span><span class=SpellE>super.setTargetObject</span>(service);<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";color:black'><span
+  style='mso-spacerun:yes'>      </span>}</span><span style='font-size:10.0pt;
+  font-family:"Courier New"'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><a name=Requirement.dmoType><b><span style='font-size:
+  10.0pt;font-family:Arial;color:white'>Core Model: </span></b></a><span
+  class=SpellE><span style='mso-bookmark:"Requirement\.dmoType"'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:white'>Requirement.dmoEType</span></b></span></span><span
+  style='mso-bookmark:"Requirement\.dmoType"'><b><span style='font-size:10.0pt;
+  font-family:Arial;color:white'> [</span></b></span><b><span style='font-size:
+  10.0pt;font-family:Arial;color:white'><a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>The value
+  of the persisted <span class=SpellE>Requirement.dmoType</span> attribute is a
+  string reference to the XSD subtype of <span class=SpellE>DeployModelObject</span>.<span
+  style='mso-spacerun:yes'>  </span>In memory, users get and set the EMF <span
+  class=SpellE>EClass</span> object using the manually coded <span
+  class=SpellE><span class=GramE>getDmoEType</span></span><span class=GramE>(</span>)
+  and <span class=SpellE>setDmoEType</span>(<span class=SpellE>EClass</span>)
+  methods.<span style='mso-spacerun:yes'>  </span>For example, the <span
+  class=SpellE>EClass</span> <span class=SpellE>OperatingSystem</span> would be
+  serialized as &#8220;<span class=SpellE>os<span class=GramE>:operatingSystem</span></span>&#8221;.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>During
+  serialization, it is required that the XML namespace prefix of the all the
+  types referred to in <span class=SpellE>Requirement.dmoType</span> be
+  included in the root of the document.<span style='mso-spacerun:yes'> 
+  </span>Because it is possible that no instances of a namespace are
+  instantiated in the topology, we must take extra steps to insure the
+  consistency of the documents prefix.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'>In order
+  to assure correct serialization of the XMLNS prefixes, the <span
+  class=SpellE>DeployEncryptingXmlHelper</span> class overrides the <span
+  class=GramE>packages(</span>) method to also include the XMLNS prefixes for <span
+  class=SpellE>Requirement#getDmoEType</span>() types contained in the
+  topology.<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<!-- Begin LOGICAL REQUIREMENTS -->
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This documentation is maintained by <b>Alexander V. Konstantinou</b> <i>(avk@us.ibm.com)</i>.
+  </p>
+  <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>[<a href="overview-summary.html"><span style='color:lightblue'>Index</span></a>]
+  [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" description="Created on Tuesday, June 3, 2008 4:20:58 PM EDT" displayName="missing_dep_link_in_infra" name="missing_dep_link_in_infra" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds">
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System" name="DB2System" conceptual="true">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System" target="/DB2Instance"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <os:unit.windowsLocalUser name="Administrator" conceptual="true" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsOperatingSystemUnit name="Windows2000" conceptual="true">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows2000HostsAdministrator" source="/Windows2000" target="/Administrator"/>
+    <core:link.hosting name="Windows2000HostsDB2System" source="/Windows2000" target="/DB2System"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance" conceptual="true">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency">
+      <core:link.dependency name="DB2 UserToWindowsLocalUser" source="/DB2Instance/DB2 User" target="/Administrator/WindowsLocalUser"/>
+    </core:requirement>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2InstanceUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System2" name="DB2System0">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System0" target="/DB2Instance0"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance0">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST" db2Version="8" autoStart="false" port="50000">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2InstanceUnit>
+  <os:unit.windowsLocalUser name="Administrator0" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsOperatingSystemUnit name="Windows20000">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows2000HostsAdministrator" source="/Windows20000" target="/Administrator0"/>
+    <core:link.hosting name="Windows20000HostsDB2System0" source="/Windows20000" target="/DB2System0"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <core:contract.explicit displayName="Make All Units Private By Default" name="ExplicitContract0" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

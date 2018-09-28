@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Server.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2System.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2InstanceConfigValue.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Database.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2ServerProcess.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Alias.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.db2.Db2Instance">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.db.db2.Db2Server">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.db.db2.Db2System" nillable="true" minOccurs="0"/>
+          <xsd:element name="bitSize" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="databases" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Database" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="profileRegistry" type="coll:com.collation.platform.model.topology.app.db.db2.Db2InstanceConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="DBMConfigValues" type="coll:com.collation.platform.model.topology.app.db.db2.Db2InstanceConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="serverProcesses" type="coll:com.collation.platform.model.topology.app.db.db2.Db2ServerProcess" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="aliases" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Alias" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

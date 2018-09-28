@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/windows/WindowsComputerSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSResource.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSCollections.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.sms.SMSCollectionClients">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="SMSID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="isClient" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="siteCode" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="windowsComputerSystem" type="coll:com.collation.platform.model.topology.sys.windows.WindowsComputerSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="resourceType" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMSCollection" type="coll:com.collation.platform.model.topology.app.sms.SMSCollections" nillable="true" minOccurs="0"/>
+          <xsd:element name="isAssigned" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="domain" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMSResource" type="coll:com.collation.platform.model.topology.app.sms.SMSResource" nillable="true" minOccurs="0"/>
+          <xsd:element name="isDirect" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="resourceID" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

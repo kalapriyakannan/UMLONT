@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%netStack.Label" 
+            		kind="stack" 
+            		description="%netStack.Description" 
+            		small_icon="icons/pal/placeholder_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="netStack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.net.ui.providers.NetEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="net.IpInterfaceUnit, net.L2InterfaceUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.net, configurationUnit.net"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="net.IpInterfaceUnit, net.L2InterfaceUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.net, configurationUnit.net">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/">
+	    	<metamodelType
+	        	id="net.IpInterfaceUnit"            
+	            name="%IpInterfaceUnit.label"
+	            icon="icons/pal/ip-interface_pal16.gif"
+	            eclass="IpInterfaceUnit"/>  
+	        <metamodelType
+	        	id="net.L2InterfaceUnit"            
+	            name="%L2InterfaceUnit.label"
+	            icon="icons/pal/l2-interface_pal16.gif"
+	            eclass="L2InterfaceUnit"/> 
+        </metamodel> 
+	</extension>
+   
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.net"
+            name="%netActivity.label"/>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.net"
+            pattern="(?&lt;!.)net\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.net"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.net"/>
+      </extension>
+</plugin>

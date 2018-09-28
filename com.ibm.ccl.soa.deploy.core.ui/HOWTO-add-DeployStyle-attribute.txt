@@ -1,0 +1,38 @@
+1) make changes to deploy.notation.ecore
+	a) right-click on \models\deploy.notation.ecore
+	b) click Open with... Sample Ecore Model Editor
+	c) when diagram editor opens add new attribute:
+		(1) right click on "New Child",
+		(2) add EAttribute or EReference
+		(3) for new attribute:
+			(a) change name, EType (ex: boolean), Default value (ex:true)
+		(4) for new reference
+			(a) change name, EType (ex:View), and set upper bound to -1 for a list 
+	d) save
+
+2) generate new deploy.notation.genmodel
+	a) delete deploy.notation.genmodel
+	b) right-click again on \models\deploy.notation.ecore
+	c) select New/Other.../Eclipse Modeling Framework/EMF Model
+	d) click next accepting "com.ibm.ccl.soa.deploy.core.ui/models" as target
+	e) click next accepting "Ecore model"
+	f) click "Load" on "platform:/resource/com.ibm.ccl.soa.deploy.core.ui/models/deploy.notation.ecore" 
+		then next
+	g) select the first "deploy.notation.ecore"
+		also select "Referenced generator models: "Ecore" and "Notation" below
+		then click "Finish"
+	h) a new deploy.notation.genmodel is created
+	i) set these properties on new genmodel:
+		(1) Non-NLS Markers to true
+		(2) Change Edit/Edit directory to /com.ibm.ccl.soa.deploy.core.ui/src
+		(3) change Edit/Edit plugin class to com.ibm.ccl.soa.deploy.core.ui.notation.provider.DeployNotationEditPlugin
+	
+3) generate new source files	
+	b) open genmodel and select top \Notation (contains DeployStyle)
+	c) change base package to "com.ibm.ccl.soa.deploy.core.ui"
+	d) change prefix to "DeployNotation"
+	e) right-click on DeployNotation then select Generate Model, then Generate Edit
+
+4) commit
+
+	

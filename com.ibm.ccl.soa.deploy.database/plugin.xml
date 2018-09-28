@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.37 2008/07/31 20:03:31 chadh Exp $
+-->
+
+<plugin>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.database.provider.DatabaseItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.database.DatabasePackage"
+			genModel="models/ecore/databaseDomain.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="database"
+			class="com.ibm.ccl.soa.deploy.database.util.DatabaseResourceFactoryImpl" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.database.domain"
+			name="%extension.databaseDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.database.internal.validator.DatabaseDomainValidator" />
+			<!-- Database component -->
+			<resourceType id="database.databaseComponent"
+				name="%database.DatabaseComponent.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.database/templates/databaseComponent.template">
+			</resourceType>
+			<resourceType id="database.databaseComponent.conceptual"
+				name="%database.DatabaseComponent.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.database/templates/databaseComponentC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%database.DatabaseComponent.Description"
+				label="%database.DatabaseComponent.Label"
+				path="/applicationToolDrawer/businessComponentStack"
+				smallIcon="icons/pal/DatabaseComponent_16.gif"
+				largeIcon="icons/pal/DatabaseComponent_20.gif"
+				resourceTypeId="database.databaseComponent.conceptual">
+			</resourceTypeUIBinding>
+			
+			<!-- Database Unit -->
+			<resourceType id="database.DatabaseUnit.conceptual"
+				name="%database.DatabaseUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.database/templates/databaseC.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%database.DatabaseUnit.Description"
+				label="%database.DatabaseUnit.Label"
+			    path="/applicationToolDrawer"				
+				smallIcon="icons/pal/database_pal16.gif"
+				largeIcon="icons/pal/database_pal20.gif"
+				resourceTypeId="database.DatabaseUnit.conceptual">
+			</resourceTypeUIBinding>
+			
+			<!-- Database capabilities -->
+			<resourceType id="database.DatabaseInstanceUnit"
+				name="%database.DatabaseInstance.Label">
+		    </resourceType>
+			<resourceType id="database.SQLModule"
+				name="%database.SQLModule.Label">
+		    </resourceType>
+			<resourceType id="database.DatabaseDefinition"
+				name="%database.DatabaseDefinition.Label"
+               eclass="DatabaseDefinition">
+		    </resourceType>
+			<resourceTypeUIBinding
+        		description="%database.DatabaseDefinition.Description"
+				enablePalette="false"
+				label="%database.DatabaseDefinition.Label"
+				largeIcon="icons/dgm/service_db_dgm.gif"
+				resourceTypeId="database.DatabaseDefinition"
+				smallIcon="icons/dgm/service_db_dgm.gif">
+			</resourceTypeUIBinding>
+			
+		</domain>
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.database.internal.provider.DatabaseComponentUnitProvider"
+			description="%rdb.unit.provider" name="%rdb.unit.provider.name">
+			<inputEnablement>
+				<and>
+					<instanceof
+						value="org.eclipse.core.resources.IFile" />
+					<or>
+						<test
+							property="org.eclipse.core.resources.extension" value="ddl"
+							forcePluginActivation="true" />
+						<test
+							property="org.eclipse.core.resources.extension" value="sql"
+							forcePluginActivation="true" />
+					</or>
+				</and>
+			</inputEnablement>
+		</unitProvider>
+
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.database.internal.filter.DatabaseComponentFilter"
+			description="%DatabaseComponentFilter.description"
+			name="%DatabaseComponentFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.database.DatabaseComponent" />
+			</inputEnablement>
+		</unitFilter>
+
+	</extension>
+
+	<!-- SAF interface provider -->
+	<!-- for DDL -->
+	<extension point="com.ibm.ccl.soa.deploy.saf.handlers"
+		id="ddlHandlers" name="%ddlHandlersName">
+		<interfaceHandler name="%ddlInterfaceHandlerName"
+			description="%ddlInterfaceHandlerDescription"  
+			largeIcon="icons/full/obj16/DDLInterface.gif"
+			smallIcon="icons/full/obj16/DDLInterface.gif"
+			class="com.ibm.ccl.soa.deploy.database.internal.handlers.DDLInterfaceHandler"
+			type="com.ibm.ccl.soa.deploy.database.DDLInterface">
+		</interfaceHandler>
+		<service
+        etype="DatabaseDefinition"
+        name="%DatabaseDefinition.name"
+        package="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+        smallIcon="icons/full/obj16/DatabaseDefinition.gif"
+        type="com.ibm.ccl.soa.deploy.database.DatabaseDefinition">
+		</service>
+		<handlerBinding>
+			<interface
+				type="com.ibm.ccl.soa.deploy.database.DDLInterface">
+			</interface>
+			<serviceType
+				type="com.ibm.ccl.soa.deploy.database.DatabaseDefinition">
+			</serviceType>
+		</handlerBinding>
+	</extension>
+
+	<extension
+		point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+		<adapterFactory
+			className="com.ibm.ccl.soa.deploy.database.provider.DatabaseItemProviderAdapterFactory"
+			functionGroupID="com.ibm.ccl.soa.deploy.database"
+			id="com.ibm.ccl.soa.deploy.database.provider.DatabaseItemProviderAdapterFactory"
+			packageURI="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" />
+	</extension>
+
+	<!-- Business Application Decorator Semantic -->
+	<extension id="com.ibm.ccl.soa.deploy.database.topology"
+		name="%databaseTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<typeContent>
+				<include
+					pattern="com.ibm.ccl.soa.deploy.database.DatabaseComponent" />
+			</typeContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.database">		
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.database/models/schemas/databaseDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

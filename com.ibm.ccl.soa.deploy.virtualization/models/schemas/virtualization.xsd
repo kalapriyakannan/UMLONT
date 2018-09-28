@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+	xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="VirtualizationRoot" ecore:name="virtualization"
+	ecore:package="com.ibm.ccl.soa.deploy.virtualization" ecore:nsPrefix="virtualization">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.net/models/schemas/net.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.server/models/schemas/server.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.os/models/schemas/os.xsd" />
+
+	<!-- Does VirtualImageUnit have a a Version capability? -->
+	<element name="capability.virtualImage" substitutionGroup="core:capability" type="virtualization:VirtualImage" />
+	<complexType name="VirtualImage">
+		<annotation>
+			<documentation>
+				VirtualImages hold meta details of the image file on behalf of a {@link VirtualImageUnit}.
+				<p>
+					VirtualImage doesn't hold the details of the {@link Server} the VirtualImageUnit models, such as
+					memory size or processor type. These details are contained in the {@link VirtualServerDef}
+					capability
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="dateCreated" type="string" />
+				<attribute name="dateLastModified" type="string" />
+				<attribute name="owner" type="string" />
+				<attribute name="notes" type="string" />
+				<attribute name="createdWithVMTool" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.xenVirtualImage" substitutionGroup="core:capability"
+		type="virtualization:XenVirtualImage" />
+	<complexType name="XenVirtualImage">
+		<annotation>
+			<documentation>
+				XenVirtualImages hold meta details of the image file on behalf of a {@link XenVirtualImageUnit}.
+				<p>
+					XenVirtualImage doesn't hold the details of the {@link Server} the XenVirtualImageUnit models, such
+					as memory size or processor type. These details are contained in the {@link XenVirtualServerDef}
+					capability
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualImage">
+				<attribute name="domainName" type="string">
+					<annotation>
+						<documentation>A unique name for the Xen domain.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="domainConfigFile" type="string">
+					<annotation>
+						<documentation>The configuration file for this image.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualImage" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualImage" />
+	<complexType name="VMwareVirtualImage">
+		<annotation>
+			<documentation>
+				VMwareVirtualImages hold meta details of the image file on behalf of a {@link VMwareVirtualImageUnit}.
+				<p>
+					VMwareVirtualImage doesn't hold the details of the {@link Server} the VMwareVirtualImageUnit models,
+					such as memory size or processor type. These details are contained in the {@link
+					VMwareVirtualServerDef} capability
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualImage">
+				<attribute name="configVersion" type="string">
+					<annotation>
+						<documentation>The configuration file for this image.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="vmxFile" type="string">
+					<annotation>
+						<documentation>The vmx (configuration) file for this image.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualServerDef" substitutionGroup="core:capability"
+		type="virtualization:VirtualServerDef" />
+	<complexType name="VirtualServerDef">
+		<annotation>
+			<documentation>
+				VirtualServerDefs hold details for the virtual machine itself on behalf of a {@link VirtualImageUnit}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="memorySize" type="unsignedLong">
+					<annotation>
+						<documentation>Memory size, in 1024 byte units</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="vcpus" type="unsignedLong">
+					<annotation>
+						<documentation>
+							Number of virtual CPUs as seen by a hosted multi-cpu-capable operating system.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="virtualHWFamily" type="string">
+					<annotation>
+						<documentation>
+							The virtual system type. When set, this should use the same format as the VirtualSystemType
+							field in an OVF descriptor. It uniquely identifies the family of virtual hardware that is
+							required. Multiple families can be specified with comma separation. For example, a family
+							identifier could be vmx-4 for VMware's 4th generation virtual hardware or xen-3 for Xen's
+							3rd generation virtual hardware.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.xenVirtualServerDef" substitutionGroup="core:capability"
+		type="virtualization:XenVirtualServerDef" />
+	<complexType name="XenVirtualServerDef">
+		<annotation>
+			<documentation>
+				XenVirtualImage holds details in addition to the attributes on VirtualServerDef, of the image file on
+				behalf of a {@link VirtualImageUnit}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualServerDef"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualServerDef" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualServerDef" />
+	<complexType name="VMwareVirtualServerDef">
+		<annotation>
+			<documentation>
+				VMwareVirtualImage holds details in addition to the attributes on VirtualServerDef, of the image file on
+				behalf of a {@link VirtualImageUnit}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualServerDef">
+				<attribute name="virtualHWVersion" type="string">
+					<annotation>
+						<documentation>VMware virtual hardware version, e.g. "4"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="guestOS" type="string">
+					<annotation>
+						<documentation>Guest operating system</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<!--  Note: The convention is that a VirtualImageUnit represents a single image.  So the SOA Deploy UnitProvider for
+		an IFile containing multiple images, for example the OVA UnitProvider, may create more than one VirtualImageUnit
+		when dropped onto a Topology  -->
+
+	<element name="unit.virtualImageUnit" substitutionGroup="core:unit" type="virtualization:VirtualImageUnit" />
+	<complexType name="VirtualImageUnit">
+		<annotation>
+			<documentation>
+				A VirtualImageUnit represents a single potential virtual server. It usually contains a {@link
+				VirtualImage} capability describing the image and TODO capabilities describing the {@link Server} being
+				modeled.
+
+				<p>VirtualImageUnits usually contain an {@link Artifact} representing the image file.</p>
+
+				<p>
+					VirtualImageUnits are by convention configuration {@link Unit}s and have a {@link Requirement} for
+					the {@link Hypervisor} capability on a {@link OperatingSystemUnit}. They are hosted by Units with a
+					{@link Hypervisor} capability.
+				</p>
+
+				<p>
+					A VirtualImageUnit MAY host domain specific {@link PortUnit}s that model compositions it can be
+					programmed to enter.
+				</p>
+
+				<p>
+					A VirtualImageUnit is said to be INSTALLED if it is 'running' or 'paused'. A VirtualImageUnit is
+					said to be UNINSTALLED if its host doesn't know of it, or if 'stopped'.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.xenVirtualImageUnit" substitutionGroup="core:unit" type="virtualization:XenVirtualImageUnit" />
+	<complexType name="XenVirtualImageUnit">
+		<annotation>
+			<documentation>
+				A XenVirtualImageUnit represents a single potential Xen virtual machine. It extends {@link
+				VirtualImageUnit}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualImageUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.vmwareVirtualImageUnit" substitutionGroup="core:unit"
+		type="virtualization:VMwareVirtualImageUnit" />
+	<complexType name="VMwareVirtualImageUnit">
+		<annotation>
+			<documentation>
+				A VMWareVirtualImageUnit represents a single potential VMware virtual machine. It extends {@link
+				VirtualImageUnit}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualImageUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.hypervisor" substitutionGroup="core:capability" type="virtualization:Hypervisor" />
+	<complexType name="Hypervisor">
+		<annotation>
+			<documentation>
+				This capability or subclasses of it may be provided by {@link Unit}s that can host virtual machines.
+				<p>The attributes are optional and if set, may be used for matching.</p>
+				<p>This capability corresponds to the OVF Platform_Type in an OVF environment xml</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.xenHypervisor" substitutionGroup="core:capability" type="virtualization:XenHypervisor" />
+	<complexType name="XenHypervisor">
+		<annotation>
+			<documentation>
+				This capability may be provided by {@link Unit}s that can host Xen virtual machines images.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:Hypervisor">
+				<attribute name="xenVersion" type="string">
+					<annotation>
+						<documentation>Optional version of the Xen hypervisor, e.g. 3.0</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="capability.vmwareHypervisor" substitutionGroup="core:capability"
+		type="virtualization:VMwareHypervisor" />
+	<complexType name="VMwareHypervisor">
+		<annotation>
+			<documentation>
+				This capability may be provided by {@link Unit}s that can host VMware virtual machines images.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:Hypervisor">
+				<attribute name="vmwareProduct" type="string">
+					<annotation>
+						<documentation>Optional name of the VMware product, e.g. ESX Server</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="vmwareVersion" type="string">
+					<annotation>
+						<documentation>Optional version number of the VMware product, e.g. 1.0.3</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualEthernetNICDef" substitutionGroup="core:capability"
+		type="virtualization:VirtualEthernetNICDef" />
+	<complexType name="VirtualEthernetNICDef">
+		<annotation>
+			<documentation>This capability is provided by {@link EthernetNICDefUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="virtualConnectionType" type="virtualization:VirtualNetworkConnectionType">
+					<annotation>
+						<documentation>Enumeration: bridged (default), nat, host-only, custom</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="macAddress" type="string">
+					<annotation>
+						<documentation>MAC address</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.xenVirtualEthernetNICDef" substitutionGroup="core:capability"
+		type="virtualization:XenVirtualEthernetNICDef" />
+	<complexType name="XenVirtualEthernetNICDef">
+		<annotation>
+			<documentation>This capability is provided by {@link EthernetNICDefUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualEthernetNICDef">
+				<attribute name="networkBridge" type="string">
+					<annotation>
+						<documentation>The network bridge to be used for this device.</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualEthernetNICDef" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualEthernetNICDef" />
+	<complexType name="VMwareVirtualEthernetNICDef">
+		<annotation>
+			<documentation>This capability is provided by {@link EthernetNICDefUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualEthernetNICDef"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.virtualEthernetNICDefUnit" substitutionGroup="core:unit"
+		type="virtualization:VirtualEthernetNICDefUnit" />
+	<complexType name="VirtualEthernetNICDefUnit">
+		<annotation>
+			<documentation>
+				A VirtualEthernetNICDefUnit represents the specification for a virtual ethernet network interface
+				controller
+
+				<p>VirtualEthernetNICDefUnit may have a {@link DependencyLink} to the L2Interface that it specifies.</p>
+
+				<p>
+					VirtualEthernetNICDefUnits are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are
+					hosted by Units with a {@link VirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.xenVirtualEthernetNICDefUnit" substitutionGroup="core:unit"
+		type="virtualization:XenVirtualEthernetNICDefUnit" />
+	<complexType name="XenVirtualEthernetNICDefUnit">
+		<annotation>
+			<documentation>
+				A XenVirtualEthernetNICDefUnit represents the specification for a Xen virtual ethernet network interface
+				controller
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualEthernetNICDefUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.vmwareVirtualEthernetNICDefUnit" substitutionGroup="core:unit"
+		type="virtualization:VMwareVirtualEthernetNICDefUnit" />
+	<complexType name="VMwareVirtualEthernetNICDefUnit">
+		<annotation>
+			<documentation>
+				A VMwareVirtualEthernetNICDefUnit represents the specification for a VMware virtual ethernet network
+				interface controller
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualEthernetNICDefUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualDiskDef" substitutionGroup="core:capability" type="virtualization:VirtualDiskDef" />
+	<complexType name="VirtualDiskDef">
+		<annotation>
+			<documentation>This capability is provided by {@link DiskUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.xenVirtualDiskDef" substitutionGroup="core:capability"
+		type="virtualization:XenVirtualDiskDef" />
+	<complexType name="XenVirtualDiskDef">
+		<annotation>
+			<documentation>This capability is provided by {@link DiskUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskDef">
+				<attribute name="backendDev" type="string">
+					<annotation>
+						<documentation>
+							The backend device for this virtual disk. Can be of form "phys:device" or
+							"file://path/to/file"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="frontendDev" type="string">
+					<annotation>
+						<documentation>
+							How the device should appear in the guest domain. The device can be in symbolic form, as in
+							"xvda", or "sda7"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="mode" type="string">
+					<annotation>
+						<documentation>
+							The access mode for the device. There are 2 valid options, r (read-only), w (read/write)
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualDiskDef" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualDiskDef" />
+	<complexType name="VMwareVirtualDiskDef">
+		<annotation>
+			<documentation>This capability is provided by {@link DiskUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskDef">
+				<attribute name="present" type="boolean">
+					<annotation>
+						<documentation>Indicates whether this disk is present in the virtual machine</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="diskMode" type="string">
+					<annotation>
+						<documentation>Disk mode (persistent, etc)</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fileName" type="string">
+					<annotation>
+						<documentation>Path to vmdk, e.g. "RLELAS4.vmdk" or "RHELAS4-000001.vmdk"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="startConnected" type="boolean">
+					<annotation>
+						<documentation>
+							Set for CD-ROM only. Indicates whether CD-ROM is connected at startup.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="deviceType" type="string">
+					<annotation>
+						<documentation>e.g. "cdrom-raw"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="autodetect" type="boolean">
+					<annotation>
+						<documentation></documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualSCSIDiskDef" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualSCSIDiskDef" />
+	<complexType name="VMwareVirtualSCSIDiskDef">
+		<annotation>
+			<documentation>This capability is provided by {@link DiskUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VMwareVirtualDiskDef">
+				<attribute name="controllerType" type="virtualization:VMwareSCSIControllerType">
+					<annotation>
+						<documentation>"lsilogic" or "buslogic" enumeration</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="controllerNumber" type="int">
+					<annotation>
+						<documentation>number of the SCSI controller (e.g. 0, 1, 2)</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="deviceNumber" type="int">
+					<annotation>
+						<documentation>number of the SCSI device (e.g. 0, 1, 2)</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualIDEDiskDef" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualIDEDiskDef" />
+	<complexType name="VMwareVirtualIDEDiskDef">
+		<annotation>
+			<documentation>This capability is provided by {@link DiskUnits}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VMwareVirtualDiskDef"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.virtualDiskDefUnit" substitutionGroup="core:unit" type="virtualization:VirtualDiskDefUnit" />
+	<complexType name="VirtualDiskDefUnit">
+		<annotation>
+			<documentation>
+				A VirtualDiskDefUnit represents the specification for a virtual disk
+
+				<p>VirtualDiskDefUnit may have a {@link DependencyLink} to the TODO Disk that it specifies.</p>
+
+				<p>
+					VirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are
+					hosted by Units with a {@link VirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.vmwareVirtualDiskDefUnit" substitutionGroup="core:unit"
+		type="virtualization:VMwareVirtualDiskDefUnit" />
+	<complexType name="VMwareVirtualDiskDefUnit">
+		<annotation>
+			<documentation>
+				A VMwareVirtualDiskDefUnit represents the specification for a VMware virtual disk
+				<p>
+					VMwareVirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VMwareVirtualImage} capability on a {@link
+					VMwareVirtualImageUnit}. They are hosted by Units with a {@link VMwareVirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskDefUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.xenVirtualDiskDefUnit" substitutionGroup="core:unit"
+		type="virtualization:XenVirtualDiskDefUnit" />
+	<complexType name="XenVirtualDiskDefUnit">
+		<annotation>
+			<documentation>
+				A XenVirtualDiskDefUnit represents the specification for a Xen virtual disk
+				<p>
+					XenVirtualDiskDefUnits are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link XenVirtualImage} capability on a {@link XenVirtualImageUnit}.
+					They are hosted by Units with a {@link XenVirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskDefUnit" />
+		</complexContent>
+	</complexType>
+
+	<simpleType name="VirtualNetworkConnectionType">
+		<restriction base="string">
+			<enumeration value="bridged" />
+			<enumeration value="nat" />
+			<enumeration value="host-only" />
+			<enumeration value="custom" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VMwareSCSIControllerType">
+		<restriction base="string">
+			<enumeration value="buslogic" />
+			<enumeration value="lsilogic" />
+		</restriction>
+	</simpleType>
+	<!-- 
+		<simpleType name="VMwareDiskMode">
+		<restriction base="string">
+		<enumeration value="persistent" />
+		<enumeration value="undoable" />
+		<enumeration value="nonpersistent" />
+		</restriction>
+		</simpleType>
+		
+		
+		<simpleType name="VMwareIDEDeviceType">
+		<restriction base="string">
+		<enumeration value="cdrom-raw" />
+		<enumeration value="cdrom-image" />
+		<enumeration value="atapi-cdrom" />
+		<enumeration value="disk" />
+		<enumeration value="rawDisk" />
+		<enumeration value="ata-hardDisk" />
+		</restriction>
+		</simpleType>
+	-->
+
+	<element name="unit.virtualServerSnapshotUnit" substitutionGroup="core:unit"
+		type="virtualization:VirtualServerSnapshotUnit" />
+	<complexType name="VirtualServerSnapshotUnit">
+		<annotation>
+			<documentation>
+				A VirtualServerSnapshotUnit represents a snapshot of a virtual machine
+
+				<p>
+					VirtualServerSnapshotUnit are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VirtualImage} capability on a {@link VirtualImageUnit}. They are
+					hosted by Units with a {@link VirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.vmwareVirtualServerSnapshotUnit" substitutionGroup="core:unit"
+		type="virtualization:VMwareVirtualServerSnapshotUnit" />
+	<complexType name="VMwareVirtualServerSnapshotUnit">
+		<annotation>
+			<documentation>
+				A VMwareVirtualServerSnapshotUnit represents a snapshot of a VMware virtual machine
+
+				<p>
+					VMwareVirtualServerSnapshotUnit are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VMwareVirtualImage} capability on a {@link
+					VMwareVirtualImageUnit}. They are hosted by Units with a {@link VMwareVirtualImage} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualServerSnapshotUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualServerSnapshot" substitutionGroup="core:capability"
+		type="virtualization:VirtualServerSnapshot" />
+	<complexType name="VirtualServerSnapshot">
+		<annotation>
+			<documentation>This capability is provided by {@link VirtualServerSnapshotUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualServerSnapshot" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualServerSnapshot" />
+	<complexType name="VMwareVirtualServerSnapshot">
+		<annotation>
+			<documentation>This capability is provided by {@link VMwareVirtualServerSnapshotUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualServerSnapshot">
+				<attribute name="current" type="boolean">
+					<annotation>
+						<documentation>Indicates whether this snapshot the current snapshot.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="filename" type="string">
+					<annotation>
+						<documentation>e.g. "windows server 2003 standard edition-Snapshot2.vmsn"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="parentSnapshotUid" type="string">
+					<annotation>
+						<documentation>e.g. "1", or null if no parent snapshot.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="snapshotType" type="string">
+					<annotation>
+						<documentation>e.g. "1", or "0"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="createTimeHigh" type="long">
+					<annotation>
+						<documentation>
+							High order 32 bits of 64-bit value microseconds since January 1, 1970. e.g. "281325"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="createTimeLow" type="long">
+					<annotation>
+						<documentation>
+							Low order 32 bits of 64-bit value microseconds since January 1, 1970. e.g. "-2028843496"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="numDisks" type="int">
+					<annotation>
+						<documentation>e.g. "1"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="uid" type="string">
+					<annotation>
+						<documentation>e.g. "2"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="desiredSnapshotState" type="virtualization:DesiredSnapshotStateType">
+					<annotation>
+						<documentation>
+							May be used to indicate that the virtual machine should be restored to this snapshot.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.virtualDiskSnapshotUnit" substitutionGroup="core:unit"
+		type="virtualization:VirtualDiskSnapshotUnit" />
+	<complexType name="VirtualDiskSnapshotUnit">
+		<annotation>
+			<documentation>
+				A VirtualDiskSnapshotUnit represents a snapshot of a virtual disk on a virtual server
+
+				<p>
+					VirtualDiskSnapshotUnit are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VirtualServerSnapshot} capability on a {@link
+					VirtualServerSnapshotUnit}. They are hosted by Units with a {@link VirtualServerSnapshot}
+					capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualDiskSnapshot" substitutionGroup="core:capability"
+		type="virtualization:VirtualDiskSnapshot" />
+	<complexType name="VirtualDiskSnapshot">
+		<annotation>
+			<documentation>This capability is provided by {@link VirtualDiskSnapshotUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.vmwareVirtualDiskSnapshotUnit" substitutionGroup="core:unit"
+		type="virtualization:VMwareVirtualDiskSnapshotUnit" />
+	<complexType name="VMwareVirtualDiskSnapshotUnit">
+		<annotation>
+			<documentation>
+				A VMwareVirtualDiskSnapshotUnit represents a snapshot of a VMware virtual disk on a VMware virtual
+				server
+
+				<p>
+					VMwareVirtualDiskSnapshotUnits are by convention configuration {@link Unit}s and have a {@link
+					HostingRequirement} for the {@link VMwareVirtualServerSnapshot} capability on a {@link
+					VMwareVirtualServerSnapshotUnit}. They are hosted by Units with a {@link
+					VMwareVirtualServerSnapshot} capability.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskSnapshotUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualDiskSnapshot" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualDiskSnapshot" />
+	<complexType name="VMwareVirtualDiskSnapshot">
+		<annotation>
+			<documentation>This capability is provided by {@link VMwareVirtualDiskSnapshotUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualDiskSnapshot">
+				<attribute name="diskNum" type="int">
+					<annotation>
+						<documentation>e.g. "0"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="diskFileName" type="string">
+					<annotation>
+						<documentation>
+							e.g. "Windows Server 2003 Standard Edition.vmdk" or "Windows Server 2003 Standard
+							Edition-000001.vmdk"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="snapshotDiskFileName" type="string">
+					<annotation>
+						<documentation>
+							The name of the file that maintains the disk deltas from the base disk file named by
+							attribute "diskFileName" e.g. "Windows Server 2003 Standard Edition-000001.vmdk"
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<!-- VMwareVirtualiImageSnapshotContainer -->
+	<element name="capability.virtualImageSnapshotContainer" substitutionGroup="core:capability"
+		type="virtualization:VirtualImageSnapshotContainer" />
+	<complexType name="VirtualImageSnapshotContainer">
+		<annotation>
+			<documentation>This capability is provided by {@link VirtualImageUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareVirtualImageSnapshotContainer" substitutionGroup="core:capability"
+		type="virtualization:VMwareVirtualImageSnapshotContainer" />
+	<complexType name="VMwareVirtualImageSnapshotContainer">
+		<annotation>
+			<documentation>This capability is provided by {@link VMwareVirtualImageUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="virtualization:VirtualImageSnapshotContainer">
+				<attribute name="numSnapshots" type="int">
+					<annotation>
+						<documentation>Indicates how many snapshots are available for this image.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="lastSnapshotUid" type="string">
+					<annotation>
+						<documentation>e.g. "1"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="currentSnapshotUid" type="string">
+					<annotation>
+						<documentation>The UID of the current snapshot</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="DesiredSnapshotStateType">
+		<restriction base="string">
+			<enumeration value="unknown">
+				<annotation>
+					<documentation>No change to snapshot state necessary</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="active">
+				<annotation>
+					<documentation>Snapshot active</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="revert">
+				<annotation>
+					<documentation>Virtual machine should be reverted to this snapshot</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<element name="unit.virtualImageCollectionUnit" substitutionGroup="core:unit"
+		type="virtualization:VirtualImageCollectionUnit" />
+	<complexType name="VirtualImageCollectionUnit">
+		<annotation>
+			<documentation>
+				A VirtualImageCollectionUnit represents a group of {@link VirtualImageUnit}s.
+
+				<p>
+					VirtualImageCollectionUnits are by convention non-configuration {@link Unit}s and may contain [0.*]
+					member {@link VirtualImageUnit}s
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.virtualImageCollection" substitutionGroup="core:capability"
+		type="virtualization:VirtualImageCollection" />
+	<complexType name="VirtualImageCollection">
+		<annotation>
+			<documentation>This capability is provided by {@link VirtualImageCollectionUnit}s.</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="collectionId" type="string">
+					<annotation>
+						<documentation>
+							an identifying string for the collection of virtual machine images
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.vmwareESX" substitutionGroup="core:capability"
+		type="virtualization:VMwareESX" />
+	<complexType name="VMwareESX">
+		<annotation>
+			<documentation>
+				VMwareESX represents a VMware ESX instance's details on behalf of a {@link VMwareESXUnit}.
+				<p>A peer VMwareHypervisor capability indicates the hypervisor nature of VMware ESX</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="os:OperatingSystem"></extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="unit.vmwareESXUnit" substitutionGroup="core:unit" type="virtualization:VMwareESXUnit" />
+	<complexType name="VMwareESXUnit">
+		<annotation>
+			<documentation>
+				A VMwareESXUnit represents a single VMware ESX installation. It extends {@link
+				OperatingSystemUnit}. A VMwareESXUnit provides a {@link VMwareESX} capability and a {@link
+				VMwareHypervisor} capability.
+				<p>
+				A VMwareESXUnit is hosted directly on a physical (intel architecture) server.
+				</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="os:OperatingSystemUnit" />
+		</complexContent>
+	</complexType>
+
+</schema>

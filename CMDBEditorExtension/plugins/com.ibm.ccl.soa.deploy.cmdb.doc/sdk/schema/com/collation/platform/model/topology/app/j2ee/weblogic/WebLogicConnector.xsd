@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEComponent.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicConnector">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEComponent">
+        <xsd:sequence>
+          <xsd:element name="connectorDisplayName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="eisType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="specVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="vendorName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connectorVersion" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="largeIcon" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="smallIcon" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="licenseDescription" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connectionImplClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connectionInterface" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connectionFactoryImplClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connectionFactoryInterface" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="managerConnectionFactoryClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="transactionSupport" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="licenseRequired" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="reauthenticationSupport" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

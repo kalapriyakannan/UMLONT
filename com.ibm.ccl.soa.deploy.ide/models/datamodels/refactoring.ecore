@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SOADeployIdeRefactoringDataModels"
+    nsURI="http://www.ibm.com/soa/deploy/ide/refactoring/1.0">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.ide.refactoring"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="RefactoringDataModelDescriptor" instanceClassName="com.ibm.ccl.soa.deploy.ide.refactoring.RefactoringDataModelDescriptor"
+      abstract="true" eSuperTypes="#//RefactoringDescriptor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveUnitsRefactoringDataModel" eSuperTypes="#//RefactoringDataModelDescriptor">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="This data model is used to refactor units from one topology model to another.  It allows for the use of an existing topology file as the destination as well as the ability to create a new topology model by nesting the CreatTopologyDataModel."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useExistingTopology" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Indicates if the destination topology model of the move refactoring is an existing topology."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologyCreationDataModel"
+        eType="ecore:EClass ../../../com.ibm.ccl.soa.deploy.core/models/datamodels/operations.ecore#//CreateTopologyDataModel">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Used when the destination of this move refactoring is a new topology model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preserveLinks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Indicates how links to the units that will be moved in this refactoring will be preserved, if any links to the units exist."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="ecore:EClass ../../../com.ibm.ccl.soa.deploy.core/models/datamodels/operations.ecore#//UnitArray">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The set of units to be moved."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="existingTopologyFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Path of the existing topology file."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preserveLinksRestricted"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The purpose of this property is to restrict the preserveLinks property to a&#xD;&#xA;specific value and prevent it from changing.  The preserveLinks property&#xD;&#xA;will remain set to the value it was set to when this property is set to true."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveTopologyRefactoringDataModel" eSuperTypes="#//RefactoringDataModelDescriptor">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=" "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologies" eType="ecore:EClass ../../../com.ibm.ccl.soa.deploy.core/models/datamodels/operations.ecore#//ResourceArray">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=" "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="container" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=" "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RenameTopologyRefactoringDataModel"
+      eSuperTypes="#//RefactoringDataModelDescriptor">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=" "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topology" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=" "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=" "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefactoringDescriptor" instanceClassName="org.eclipse.ltk.core.refactoring.RefactoringDescriptor"
+      abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Change" instanceClassName="org.eclipse.ltk.core.refactoring.Change"
+      abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RefactoringStatus" instanceClassName="org.eclipse.ltk.core.refactoring.RefactoringStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IUndoableOperation" instanceClassName="org.eclipse.core.commands.operations.IUndoableOperation"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IProgressMonitor" instanceClassName="org.eclipse.core.runtime.IProgressMonitor"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CoreException" instanceClassName="org.eclipse.core.runtime.CoreException"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationCanceledException" instanceClassName="org.eclipse.core.runtime.OperationCanceledException"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="EndPoint" instanceClassName="org.eclipse.emf.ecore.EEnum">
+    <eLiterals name="SOURCE"/>
+    <eLiterals name="TARGET" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ObjectArray" instanceClassName="java.lang.Object[]"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IPath" instanceClassName="org.eclipse.core.runtime.IPath"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="URI" instanceClassName="org.eclipse.emf.common.util.URI"/>
+</ecore:EPackage>

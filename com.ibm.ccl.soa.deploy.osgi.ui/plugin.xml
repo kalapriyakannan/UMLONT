@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider
+            class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+         <context
+               elements="Nodes"
+               viewClass="org.eclipse.gmf.runtime.notation.Node">
+         </context>
+         <object
+               class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+               id="Nodes">
+            <method
+                  name="getProxyClassID()">
+            </method>
+         </object>
+      </viewProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider
+            class="com.ibm.ccl.soa.deploy.osgi.ui.Providers.OSGIEditPartProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+         <context
+               views="Nodes">
+         </context>
+         <object
+               class="org.eclipse.gmf.runtime.notation.Node"
+               id="Nodes">
+            <staticMethod
+                  name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.runtime.diagram.core.util.ViewUtil.getSematicEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])">
+            </staticMethod>
+         </object>
+      </editpartProvider>
+   </extension>
+
+</plugin>

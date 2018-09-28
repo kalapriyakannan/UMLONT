@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereJ2EEResource.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereJ2EEResourceProperty.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereJMSProvider.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereJMSDestination">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereJ2EEResource">
+        <xsd:sequence>
+          <xsd:element name="JNDIName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="category" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="provider" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereJMSProvider" nillable="true" minOccurs="0"/>
+          <xsd:element name="resourceProperties" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereJ2EEResourceProperty" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="persistence" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="messagePriority" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="specifiedPriority" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="expiry" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="specifiedExpiry" type="xsd:long" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

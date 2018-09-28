@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../schemas/cdmNet.xsd#/ ../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#/ ../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#/ ../schemas/cdmBase.xsd#/"
+    outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#/ ../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/ cdmbase.ecore#/ cdmnet.ecore#/"
+    topToBottom="true">
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=32"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry/key"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//StringToStringEntry;XSDComplexTypeDefinition=32/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//StringToStringEntry/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=31"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/any"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/details"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Annotation;XSDComplexTypeDefinition=31/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Annotation/context"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//annotation;XSDElementDeclaration=26"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/annotation"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//boolean;XSDSimpleTypeDefinition=8"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/attributeName"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/description"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/encrypted"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/encryptionRequired"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/mutable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=5"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//AttributeMetaData;XSDComplexTypeDefinition=1/XSDAttributeUse=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//AttributeMetaData/parameter"/>
+  </nested>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//anyType;XSDComplexTypeDefinition=27"
+      outputs="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EJavaObject;XSDSimpleTypeDefinition=22"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EString;XSDSimpleTypeDefinition=30"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/key"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStringToStringMapEntry;XSDComplexTypeDefinition=17/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/details"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/contents"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/references"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAnnotation;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/source"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EModelElement;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/eAnnotations"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ENamedElement;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EJavaClass;XSDSimpleTypeDefinition=21"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaClass"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EBooleanObject;XSDSimpleTypeDefinition=3"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EBoolean;XSDSimpleTypeDefinition=2"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=42"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EIntegerObject;XSDSimpleTypeDefinition=20"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EInt;XSDSimpleTypeDefinition=19"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/defaultValue"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClass"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClassifier;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClassName"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EDataType;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType/serializable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute/data"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExtendedAttribute;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExtendedAttribute/name"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Constraint;XSDComplexTypeDefinition=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Constraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/description"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/displayName"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IdentityAttributes;XSDAttributeGroupDefinition=1/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/name"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//IStatus;XSDSimpleTypeDefinition=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//IStatus"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//VersionString;XSDSimpleTypeDefinition=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//VersionString"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/buildVersion"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/hosting"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/dependency"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CapabilityLinkTypes;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CapabilityLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/origin"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Capability;XSDComplexTypeDefinition=19"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Capability;XSDComplexTypeDefinition=19/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Capability/linkType"/>
+  </nested>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=23"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=22"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=22/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink/sourceURI"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployLink;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployLink/targetURI"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DependencyLink;XSDComplexTypeDefinition=23"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DependencyLink"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=24"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/hosting"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/dependency"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/member"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementLinkTypes;XSDSimpleTypeDefinition=5/XSDEnumerationFacet=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementLinkTypes/any"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementUsage;XSDSimpleTypeDefinition=4/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/many"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//ETypedElement;XSDComplexTypeDefinition=16/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EParameter;XSDComplexTypeDefinition=13"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EOperation;XSDComplexTypeDefinition=11/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/changeable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValue"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/transient"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/unsettable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EStructuralFeature;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/volatile"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/eAttributeType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EAttribute;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/iD"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/container"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eReferenceType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EReference;XSDComplexTypeDefinition=14/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/resolveProxies"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2"
+      outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eStructuralFeatures"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=3"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=7"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllContainments"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=8"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllOperations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=4"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllReferences"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=9"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllStructuralFeatures"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=10"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllSuperTypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=6"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=11"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eIDAttribute"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=5"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eReferences"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/model/Ecore.xsd#//EClass;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/interface"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/required"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/optional"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpressionUsage;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpressionUsage/prohibited"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=21"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=21/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/attributeName"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=21/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/interpreter"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=21/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/use"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RequirementExpression;XSDComplexTypeDefinition=21/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RequirementExpression/value"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/dependencyLinkGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/link"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/dmoType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/extends"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/linkType"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Requirement;XSDComplexTypeDefinition=20/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Requirement/use"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//UnitLink;XSDComplexTypeDefinition=24"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//UnitLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConstraintLink;XSDComplexTypeDefinition=25"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConstraintLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//RealizationLink;XSDComplexTypeDefinition=26"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//RealizationLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/buildVersion"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/installed"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/notInstalled"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstallState;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstallState/unknown"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//OriginAttributes;XSDAttributeGroupDefinition/XSDAttributeUse=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/origin"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/publish"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/doNotPublish"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PublishIntent;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PublishIntent/unknown"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//HostingLink;XSDComplexTypeDefinition=29"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//HostingLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//MemberLink;XSDComplexTypeDefinition=30"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//MemberLink"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/capabilityGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/capabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/requirementGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/requirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/unitLinksGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/unitLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/constraintLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/realizationLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/conceptual"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/configurationUnit"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/goalInstallState"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/initInstallState"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Unit;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Unit/publishIntent"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property/name"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Property;XSDComplexTypeDefinition=10/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Property/select"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/additions"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/feature"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Augmentation;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Augmentation/select"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredCapabilityGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredCapabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredRequirementsGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredRequirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/configuredProperties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/augmentationGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/augmentations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Instantiation;XSDComplexTypeDefinition=13/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Instantiation/referenced"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstanceConfiguration">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//InstanceConfiguration;XSDComplexTypeDefinition=12/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//InstanceConfiguration/instantiations"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/instanceConfiguration"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/namespace"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Import;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Import/pattern"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConfigurationContract;XSDComplexTypeDefinition=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConfigurationContract"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/units"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitLinksGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/unitLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/constraintLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/dependencyLinkGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/dependencyLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/realizationLinks"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/imports"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/configurationContractGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/configurationContract"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/decoratorSemantic"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Topology;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Topology/namespace"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/annotations"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/attributeMetaData"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/extendedAttributes"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/artifactGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/artifacts"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/constraintGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/constraints"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObject;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObject/mutable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Artifact;XSDComplexTypeDefinition=16"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Artifact"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//artifact;XSDElementDeclaration=12"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/artifact"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//FileArtifact">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//FileArtifact;XSDComplexTypeDefinition=18/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//FileArtifact/fileURIs"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//artifact.file;XSDElementDeclaration=14"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/artifactFile"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BaseComponentUnit;XSDComplexTypeDefinition=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BaseComponentUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//baseComponent;XSDElementDeclaration=3"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/baseComponent"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//unit;XSDElementDeclaration=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/unit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability;XSDElementDeclaration=15"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capability"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ModelObject;XSDComplexTypeDefinition=40"
+      outputs="cdmbase.ecore#//ModelObject"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ManagedElement;XSDComplexTypeDefinition=14"
+      outputs="cdmbase.ecore#//ManagedElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26"
+      outputs="cdmbase.ecore#//OrganizationalEntity">
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//OrganizationalEntity/businessCategory"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=14"
+        outputs="cdmbase.ecore#//OrganizationalEntity/cAGECode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//OrganizationalEntity/dUNSNumber"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//OrganizationalEntity/email"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=10"
+        outputs="cdmbase.ecore#//OrganizationalEntity/entityName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=11"
+        outputs="cdmbase.ecore#//OrganizationalEntity/fax"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=13"
+        outputs="cdmbase.ecore#//OrganizationalEntity/globalName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//OrganizationalEntity/iSICCode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//OrganizationalEntity/mobilePhone"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse"
+        outputs="cdmbase.ecore#//OrganizationalEntity/nAICSCode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//OrganizationalEntity/nAPCSCode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=9"
+        outputs="cdmbase.ecore#//OrganizationalEntity/note"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=16"
+        outputs="cdmbase.ecore#//OrganizationalEntity/sICCode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//OrganizationalEntity/title"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=12"
+        outputs="cdmbase.ecore#//OrganizationalEntity/type"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//OrganizationalEntity/uRL"/>
+    <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntity;XSDComplexTypeDefinition=26/XSDAttributeUse=15"
+        outputs="cdmbase.ecore#//OrganizationalEntity/workPhone"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//Account;XSDComplexTypeDefinition=6" outputs="cdmbase.ecore#//Account">
+    <nested inputs="../schemas/cdmBase.xsd#//Account;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="cdmbase.ecore#//Account/accountName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Account;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//Account/shortName"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.account;XSDElementDeclaration=6"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityAccount"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ManagedSystemElement;XSDComplexTypeDefinition=4"
+      outputs="cdmbase.ecore#//ManagedSystemElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//LogicalElement;XSDComplexTypeDefinition=8"
+      outputs="cdmbase.ecore#//LogicalElement"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Acl;XSDComplexTypeDefinition" outputs="cdmnet.ecore#//Acl">
+    <nested inputs="../schemas/cdmNet.xsd#//Acl;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Acl/aclIndex"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Acl;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//Acl/aclName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Acl;XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//Acl/aclStatus"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.acl;XSDElementDeclaration" outputs="cdmnet.ecore#//CdmNetRoot/capabilityAcl"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Function;XSDComplexTypeDefinition" outputs="cdmbase.ecore#//Function"/>
+  <nested inputs="../schemas/cdmNet.xsd#//AclFunction;XSDComplexTypeDefinition=50"
+      outputs="cdmnet.ecore#//AclFunction"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.aclFunction;XSDElementDeclaration=50"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityAclFunction"/>
+  <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28"
+      outputs="cdmbase.ecore#//AppServer">
+    <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//AppServer/executableName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28/XSDAttributeUse"
+        outputs="cdmbase.ecore#//AppServer/keyName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//AppServer/productName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//AppServer/productVersion"/>
+    <nested inputs="../schemas/cdmBase.xsd#//AppServer;XSDComplexTypeDefinition=28/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//AppServer/vendorName"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.appServer;XSDElementDeclaration=28"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityAppServer"/>
+  <nested inputs="../schemas/cdmBase.xsd#//AppServerCluster;XSDComplexTypeDefinition=16"
+      outputs="cdmbase.ecore#//AppServerCluster">
+    <nested inputs="../schemas/cdmBase.xsd#//AppServerCluster;XSDComplexTypeDefinition=16/XSDAttributeUse"
+        outputs="cdmbase.ecore#//AppServerCluster/port"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.appServerCluster;XSDElementDeclaration=16"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityAppServerCluster"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RealServer;XSDComplexTypeDefinition=52"
+      outputs="cdmnet.ecore#//RealServer">
+    <nested inputs="../schemas/cdmNet.xsd#//RealServer;XSDComplexTypeDefinition=52/XSDAttributeUse"
+        outputs="cdmnet.ecore#//RealServer/loadBalancingWeight"/>
+    <nested inputs="../schemas/cdmNet.xsd#//RealServer;XSDComplexTypeDefinition=52/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//RealServer/realPort"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServer;XSDComplexTypeDefinition=24"
+      outputs="cdmnet.ecore#//BigIPRealServer">
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServer;XSDComplexTypeDefinition=24/XSDAttributeUse"
+        outputs="cdmnet.ecore#//BigIPRealServer/memberPriority"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServer;XSDComplexTypeDefinition=24/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//BigIPRealServer/memberRatio"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServer;XSDComplexTypeDefinition=24/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//BigIPRealServer/realServerGroupName"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPRealServer;XSDElementDeclaration=24"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPRealServer"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RealServerGroup;XSDComplexTypeDefinition=30"
+      outputs="cdmnet.ecore#//RealServerGroup">
+    <nested inputs="../schemas/cdmNet.xsd#//RealServerGroup;XSDComplexTypeDefinition=30/XSDAttributeUse"
+        outputs="cdmnet.ecore#//RealServerGroup/loadBalancingAlgorithm"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServerGroup;XSDComplexTypeDefinition=42"
+      outputs="cdmnet.ecore#//BigIPRealServerGroup"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPRealServerGroup;XSDElementDeclaration=42"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPRealServerGroup"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Vip;XSDComplexTypeDefinition=44" outputs="cdmnet.ecore#//Vip"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVip;XSDComplexTypeDefinition=68" outputs="cdmnet.ecore#//BigIPVip"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPVip;XSDElementDeclaration=68"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPVip"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VipFunction;XSDComplexTypeDefinition=56"
+      outputs="cdmnet.ecore#//VipFunction"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVipFunction;XSDComplexTypeDefinition=78"
+      outputs="cdmnet.ecore#//BigIPVipFunction"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPVipFunction;XSDElementDeclaration=78"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPVipFunction"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VirtualService;XSDComplexTypeDefinition=38"
+      outputs="cdmnet.ecore#//VirtualService">
+    <nested inputs="../schemas/cdmNet.xsd#//VirtualService;XSDComplexTypeDefinition=38/XSDAttributeUse"
+        outputs="cdmnet.ecore#//VirtualService/virtualPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//VirtualService;XSDComplexTypeDefinition=38/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//VirtualService/virtualPortType"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82"
+      outputs="cdmnet.ecore#//BigIPVirtualService">
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=5"
+        outputs="cdmnet.ecore#//BigIPVirtualService/forwardingEnabled"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//BigIPVirtualService/mayUseProxy"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=6"
+        outputs="cdmnet.ecore#//BigIPVirtualService/poolName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=3"
+        outputs="cdmnet.ecore#//BigIPVirtualService/rule"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=7"
+        outputs="cdmnet.ecore#//BigIPVirtualService/virtualServiceARPEnabled"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse"
+        outputs="cdmnet.ecore#//BigIPVirtualService/virtualServiceMaxConn"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=4"
+        outputs="cdmnet.ecore#//BigIPVirtualService/virtualServiceTransalateAddressEnabled"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualService;XSDComplexTypeDefinition=82/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//BigIPVirtualService/virtualServiceTransalatePortEnabled"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPVirtualService;XSDElementDeclaration=82"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPVirtualService"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Bridge;XSDComplexTypeDefinition=32" outputs="cdmnet.ecore#//Bridge">
+    <nested inputs="../schemas/cdmNet.xsd#//Bridge;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Bridge/bridgeId"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//Vlan;XSDComplexTypeDefinition=20" outputs="cdmnet.ecore#//Vlan">
+    <nested inputs="../schemas/cdmNet.xsd#//Vlan;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Vlan/mgmtDomainName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Vlan;XSDComplexTypeDefinition=20/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//Vlan/vlanId"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Vlan;XSDComplexTypeDefinition=20/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//Vlan/vlanName"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVlan;XSDComplexTypeDefinition=34" outputs="cdmnet.ecore#//BigIPVlan">
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVlan;XSDComplexTypeDefinition=34/XSDAttributeUse"
+        outputs="cdmnet.ecore#//BigIPVlan/allowProxyARP"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVlan;XSDComplexTypeDefinition=34/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//BigIPVlan/portLockDown"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BigIPVlan;XSDComplexTypeDefinition=34/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//BigIPVlan/snatAutomapEnabled"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bigIPVlan;XSDElementDeclaration=34"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBigIPVlan"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BindAddress;XSDComplexTypeDefinition=60"
+      outputs="cdmnet.ecore#//BindAddress">
+    <nested inputs="../schemas/cdmNet.xsd#//BindAddress;XSDComplexTypeDefinition=60/XSDAttributeUse"
+        outputs="cdmnet.ecore#//BindAddress/path"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BindAddress;XSDComplexTypeDefinition=60/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//BindAddress/portNumber"/>
+    <nested inputs="../schemas/cdmNet.xsd#//BindAddress;XSDComplexTypeDefinition=60/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//BindAddress/type"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bindAddress;XSDElementDeclaration=60"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBindAddress"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.bridge;XSDElementDeclaration=32"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityBridge"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=33"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=33/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability/id"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//BundleCapability;XSDComplexTypeDefinition=33/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//BundleCapability/version"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability.bundle;XSDElementDeclaration=27"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capabilityBundle"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Collection;XSDComplexTypeDefinition=22"
+      outputs="cdmbase.ecore#//Collection">
+    <nested inputs="../schemas/cdmBase.xsd#//Collection;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="cdmbase.ecore#//Collection/active"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.collection;XSDElementDeclaration=22"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityCollection"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//integer;XSDSimpleTypeDefinition=38"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//PortType;XSDSimpleTypeDefinition=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//PortType"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=28"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=28/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability/applicationLayerProtocol"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//CommunicationCapability;XSDComplexTypeDefinition=28/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//CommunicationCapability/port"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//capability.communication;XSDElementDeclaration=23"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/capabilityCommunication"/>
+  <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2"
+      outputs="cdmbase.ecore#//LogicalContent">
+    <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//LogicalContent/checksum"/>
+    <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//LogicalContent/content"/>
+    <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//LogicalContent/contentType"/>
+    <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//LogicalContent/fixedPath"/>
+    <nested inputs="../schemas/cdmBase.xsd#//LogicalContent;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="cdmbase.ecore#//LogicalContent/uRI"/>
+  </nested>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//long;XSDSimpleTypeDefinition=41"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Long"/>
+  <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34"
+      outputs="cdmbase.ecore#//FileSystemContent">
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//FileSystemContent/group"/>
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//FileSystemContent/lastModified"/>
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//FileSystemContent/owner"/>
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//FileSystemContent/permissions"/>
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//FileSystemContent/realFile"/>
+    <nested inputs="../schemas/cdmBase.xsd#//FileSystemContent;XSDComplexTypeDefinition=34/XSDAttributeUse"
+        outputs="cdmbase.ecore#//FileSystemContent/size"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//DataFile;XSDComplexTypeDefinition=48" outputs="cdmbase.ecore#//DataFile"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ConfigFile;XSDComplexTypeDefinition=42"
+      outputs="cdmbase.ecore#//ConfigFile"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.configFile;XSDElementDeclaration=42"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityConfigFile"/>
+  <nested inputs="../schemas/cdmNet.xsd#//CustomBindAddress;XSDComplexTypeDefinition=40"
+      outputs="cdmnet.ecore#//CustomBindAddress">
+    <nested inputs="../schemas/cdmNet.xsd#//CustomBindAddress;XSDComplexTypeDefinition=40/XSDAttributeUse"
+        outputs="cdmnet.ecore#//CustomBindAddress/customPath"/>
+    <nested inputs="../schemas/cdmNet.xsd#//CustomBindAddress;XSDComplexTypeDefinition=40/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//CustomBindAddress/customType"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.customBindAddress;XSDElementDeclaration=40"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityCustomBindAddress"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Database;XSDComplexTypeDefinition=10" outputs="cdmbase.ecore#//Database"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.database;XSDElementDeclaration=10"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityDatabase"/>
+  <nested inputs="../schemas/cdmBase.xsd#//DatabaseServer;XSDComplexTypeDefinition=36"
+      outputs="cdmbase.ecore#//DatabaseServer">
+    <nested inputs="../schemas/cdmBase.xsd#//DatabaseServer;XSDComplexTypeDefinition=36/XSDAttributeUse"
+        outputs="cdmbase.ecore#//DatabaseServer/home"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.databaseServer;XSDElementDeclaration=36"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityDatabaseServer"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.dataFile;XSDElementDeclaration=48"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityDataFile"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44"
+      outputs="cdmbase.ecore#//Db2Server">
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//Db2Server/buildLevel"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=9"
+        outputs="cdmbase.ecore#//Db2Server/comment"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//Db2Server/level"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//Db2Server/levelId"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse"
+        outputs="cdmbase.ecore#//Db2Server/nodeName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//Db2Server/port"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//Db2Server/productId"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//Db2Server/protocol"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//Db2Server/protocolParams"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//Db2Server/pTF"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Db2Server;XSDComplexTypeDefinition=44/XSDAttributeUse=10"
+        outputs="cdmbase.ecore#//Db2Server/type"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.db2Server;XSDElementDeclaration=44"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityDb2Server"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.fileSystemContent;XSDElementDeclaration=34"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityFileSystemContent"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18" outputs="cdmnet.ecore#//Firewall">
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse=3"
+        outputs="cdmnet.ecore#//Firewall/fwFilterName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//Firewall/fwMajor"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Firewall/fwMinor"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse=4"
+        outputs="cdmnet.ecore#//Firewall/fwModuleState"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//Firewall/fwProduct"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Firewall;XSDComplexTypeDefinition=18/XSDAttributeUse=5"
+        outputs="cdmnet.ecore#//Firewall/fwVersionInfo"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.firewall;XSDElementDeclaration=18"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityFirewall"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Fqdn;XSDComplexTypeDefinition=66" outputs="cdmnet.ecore#//Fqdn">
+    <nested inputs="../schemas/cdmNet.xsd#//Fqdn;XSDComplexTypeDefinition=66/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Fqdn/fqdn"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.fqdn;XSDElementDeclaration=66"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityFqdn"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.function;XSDElementDeclaration"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityFunction"/>
+  <nested inputs="../schemas/cdmBase.xsd#//PhysicalElement;XSDComplexTypeDefinition=18"
+      outputs="cdmbase.ecore#//PhysicalElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//PhysicalLocation;XSDComplexTypeDefinition=62"
+      outputs="cdmbase.ecore#//PhysicalLocation"/>
+  <nested inputs="bundleentry://1562/cache/www.w3.org/2001/XMLSchema.xsd#//float;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Float"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60"
+      outputs="cdmbase.ecore#//Geography">
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//Geography/aisle"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//Geography/altitude"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//Geography/country"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse"
+        outputs="cdmbase.ecore#//Geography/rackPosition"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//Geography/regionName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//Geography/regionNumber"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//Geography/row"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//Geography/xCoordinate"/>
+    <nested inputs="../schemas/cdmBase.xsd#//Geography;XSDComplexTypeDefinition=60/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//Geography/yCoordinate"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.geography;XSDElementDeclaration=60"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityGeography"/>
+  <nested inputs="../schemas/cdmBase.xsd#//HomogeneousCollection;XSDComplexTypeDefinition=12"
+      outputs="cdmbase.ecore#//HomogeneousCollection">
+    <nested inputs="../schemas/cdmBase.xsd#//HomogeneousCollection;XSDComplexTypeDefinition=12/XSDAttributeUse"
+        outputs="cdmbase.ecore#//HomogeneousCollection/memberType"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.homogeneousCollection;XSDElementDeclaration=12"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityHomogeneousCollection"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpAddress;XSDComplexTypeDefinition=16" outputs="cdmnet.ecore#//IpAddress">
+    <nested inputs="../schemas/cdmNet.xsd#//IpAddress;XSDComplexTypeDefinition=16/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//IpAddress/addressSpace"/>
+    <nested inputs="../schemas/cdmNet.xsd#//IpAddress;XSDComplexTypeDefinition=16/XSDAttributeUse"
+        outputs="cdmnet.ecore#//IpAddress/dotNotation"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipAddress;XSDElementDeclaration=16"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpAddress"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpInterface;XSDComplexTypeDefinition=10"
+      outputs="cdmnet.ecore#//IpInterface">
+    <nested inputs="../schemas/cdmNet.xsd#//IpInterface;XSDComplexTypeDefinition=10/XSDAttributeUse"
+        outputs="cdmnet.ecore#//IpInterface/portList"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipInterface;XSDElementDeclaration=10"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpInterface"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpNetwork;XSDComplexTypeDefinition=12" outputs="cdmnet.ecore#//IpNetwork">
+    <nested inputs="../schemas/cdmNet.xsd#//IpNetwork;XSDComplexTypeDefinition=12/XSDAttributeUse"
+        outputs="cdmnet.ecore#//IpNetwork/netmask"/>
+    <nested inputs="../schemas/cdmNet.xsd#//IpNetwork;XSDComplexTypeDefinition=12/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//IpNetwork/subnetAddress"/>
+    <nested inputs="../schemas/cdmNet.xsd#//IpNetwork;XSDComplexTypeDefinition=12/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//IpNetwork/type"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipNetwork;XSDElementDeclaration=12"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpNetwork"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpRoute;XSDComplexTypeDefinition=2" outputs="cdmnet.ecore#//IpRoute">
+    <nested inputs="../schemas/cdmNet.xsd#//IpRoute;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="cdmnet.ecore#//IpRoute/protocol"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipRoute;XSDElementDeclaration=2"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpRoute"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpV4Address;XSDComplexTypeDefinition=14"
+      outputs="cdmnet.ecore#//IpV4Address"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipV4Address;XSDElementDeclaration=14"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpV4Address"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpV6Address;XSDComplexTypeDefinition=28"
+      outputs="cdmnet.ecore#//IpV6Address"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.ipV6Address;XSDElementDeclaration=28"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityIpV6Address"/>
+  <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58"
+      outputs="cdmnet.ecore#//L2Interface">
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=4"
+        outputs="cdmnet.ecore#//L2Interface/autoNegotiation"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=10"
+        outputs="cdmnet.ecore#//L2Interface/broadcast"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=9"
+        outputs="cdmnet.ecore#//L2Interface/cdpRef"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=5"
+        outputs="cdmnet.ecore#//L2Interface/duplex"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=7"
+        outputs="cdmnet.ecore#//L2Interface/encapsulation"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=8"
+        outputs="cdmnet.ecore#//L2Interface/hwAddress"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//L2Interface/index"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=11"
+        outputs="cdmnet.ecore#//L2Interface/loopback"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//L2Interface/mtu"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse"
+        outputs="cdmnet.ecore#//L2Interface/private"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=6"
+        outputs="cdmnet.ecore#//L2Interface/promiscuous"/>
+    <nested inputs="../schemas/cdmNet.xsd#//L2Interface;XSDComplexTypeDefinition=58/XSDAttributeUse=3"
+        outputs="cdmnet.ecore#//L2Interface/speed"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.l2Interface;XSDElementDeclaration=58"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityL2Interface"/>
+  <nested inputs="../schemas/cdmNet.xsd#//LoadBalancer;XSDComplexTypeDefinition=54"
+      outputs="cdmnet.ecore#//LoadBalancer"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.loadBalancer;XSDElementDeclaration=54"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityLoadBalancer"/>
+  <nested inputs="../schemas/cdmNet.xsd#//LogicalConnection;XSDComplexTypeDefinition=74"
+      outputs="cdmnet.ecore#//LogicalConnection">
+    <nested inputs="../schemas/cdmNet.xsd#//LogicalConnection;XSDComplexTypeDefinition=74/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//LogicalConnection/fromIp"/>
+    <nested inputs="../schemas/cdmNet.xsd#//LogicalConnection;XSDComplexTypeDefinition=74/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//LogicalConnection/fromPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//LogicalConnection;XSDComplexTypeDefinition=74/XSDAttributeUse"
+        outputs="cdmnet.ecore#//LogicalConnection/toIp"/>
+    <nested inputs="../schemas/cdmNet.xsd#//LogicalConnection;XSDComplexTypeDefinition=74/XSDAttributeUse=3"
+        outputs="cdmnet.ecore#//LogicalConnection/toPort"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.logicalConnection;XSDElementDeclaration=74"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityLogicalConnection"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.logicalContent;XSDElementDeclaration=2"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityLogicalContent"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.logicalElement;XSDElementDeclaration=8"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityLogicalElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.managedElement;XSDElementDeclaration=14"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityManagedElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.managedSystemElement;XSDElementDeclaration=4"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityManagedSystemElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.modelObject;XSDElementDeclaration=40"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityModelObject"/>
+  <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38"
+      outputs="cdmbase.ecore#//MQQueueManager">
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//MQQueueManager/channelAutoDefinition"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//MQQueueManager/clusterWorkloadUseQueue"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//MQQueueManager/dataPath"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=16"
+        outputs="cdmbase.ecore#//MQQueueManager/deadLetterQueue"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=9"
+        outputs="cdmbase.ecore#//MQQueueManager/default"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//MQQueueManager/defautlQueue"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//MQQueueManager/exitsDefaultPath"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//MQQueueManager/exitsDefaultPath64"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=14"
+        outputs="cdmbase.ecore#//MQQueueManager/isValid"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=21"
+        outputs="cdmbase.ecore#//MQQueueManager/logDefaultPath"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=10"
+        outputs="cdmbase.ecore#//MQQueueManager/logWriteIntegrity"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=18"
+        outputs="cdmbase.ecore#//MQQueueManager/maxMessageLength"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=20"
+        outputs="cdmbase.ecore#//MQQueueManager/queueManagerIdentifier"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//MQQueueManager/queueManagerStatus"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=19"
+        outputs="cdmbase.ecore#//MQQueueManager/repository"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse"
+        outputs="cdmbase.ecore#//MQQueueManager/repositoryNameList"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=12"
+        outputs="cdmbase.ecore#//MQQueueManager/repositoryType"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=15"
+        outputs="cdmbase.ecore#//MQQueueManager/sSLKeyRepository"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=13"
+        outputs="cdmbase.ecore#//MQQueueManager/startChannelInitiator"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//MQQueueManager/startCommandServer"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=11"
+        outputs="cdmbase.ecore#//MQQueueManager/system"/>
+    <nested inputs="../schemas/cdmBase.xsd#//MQQueueManager;XSDComplexTypeDefinition=38/XSDAttributeUse=17"
+        outputs="cdmbase.ecore#//MQQueueManager/triggerInterval"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.mQQueueManager;XSDElementDeclaration=38"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityMQQueueManager"/>
+  <nested inputs="../schemas/cdmNet.xsd#//ProtocolEndpoint;XSDComplexTypeDefinition=46"
+      outputs="cdmnet.ecore#//ProtocolEndpoint"/>
+  <nested inputs="../schemas/cdmNet.xsd#//NetBIOSProtocolEndpoint;XSDComplexTypeDefinition=4"
+      outputs="cdmnet.ecore#//NetBIOSProtocolEndpoint">
+    <nested inputs="../schemas/cdmNet.xsd#//NetBIOSProtocolEndpoint;XSDComplexTypeDefinition=4/XSDAttributeUse"
+        outputs="cdmnet.ecore#//NetBIOSProtocolEndpoint/nodeName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//NetBIOSProtocolEndpoint;XSDComplexTypeDefinition=4/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//NetBIOSProtocolEndpoint/scopeID"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.netBIOSProtocolEndpoint;XSDElementDeclaration=4"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityNetBIOSProtocolEndpoint"/>
+  <nested inputs="../schemas/cdmNet.xsd#//NetworkService;XSDComplexTypeDefinition=64"
+      outputs="cdmnet.ecore#//NetworkService">
+    <nested inputs="../schemas/cdmNet.xsd#//NetworkService;XSDComplexTypeDefinition=64/XSDAttributeUse"
+        outputs="cdmnet.ecore#//NetworkService/serviceName"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.networkService;XSDElementDeclaration=64"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityNetworkService"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.organizationalEntity;XSDElementDeclaration=26"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityOrganizationalEntity"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.physicalElement;XSDElementDeclaration=18"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityPhysicalElement"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.physicalLocation;XSDElementDeclaration=62"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityPhysicalLocation"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.protocolEndpoint;XSDElementDeclaration=46"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityProtocolEndpoint"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.realServer;XSDElementDeclaration=52"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityRealServer"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.realServerGroup;XSDElementDeclaration=30"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityRealServerGroup"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Router;XSDComplexTypeDefinition=22" outputs="cdmnet.ecore#//Router">
+    <nested inputs="../schemas/cdmNet.xsd#//Router;XSDComplexTypeDefinition=22/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Router/forwarding"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.router;XSDElementDeclaration=22"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityRouter"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36" outputs="cdmnet.ecore#//Rule">
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Rule/destEndingPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=12"
+        outputs="cdmnet.ecore#//Rule/destStartingPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=7"
+        outputs="cdmnet.ecore#//Rule/direction"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=9"
+        outputs="cdmnet.ecore#//Rule/directionIndex"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=3"
+        outputs="cdmnet.ecore#//Rule/intfIndex"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=2"
+        outputs="cdmnet.ecore#//Rule/intfName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=6"
+        outputs="cdmnet.ecore#//Rule/ipProtocol"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=11"
+        outputs="cdmnet.ecore#//Rule/ruleAction"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=8"
+        outputs="cdmnet.ecore#//Rule/ruleIndex"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=5"
+        outputs="cdmnet.ecore#//Rule/serviceName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//Rule/srcEndingPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=4"
+        outputs="cdmnet.ecore#//Rule/srcStartingPort"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Rule;XSDComplexTypeDefinition=36/XSDAttributeUse=10"
+        outputs="cdmnet.ecore#//Rule/typeOfService"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.rule;XSDElementDeclaration=36"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityRule"/>
+  <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52"
+      outputs="cdmbase.ecore#//RuntimeProcess">
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse"
+        outputs="cdmbase.ecore#//RuntimeProcess/cmdLine"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=9"
+        outputs="cdmbase.ecore#//RuntimeProcess/command"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//RuntimeProcess/cWD"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//RuntimeProcess/env"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//RuntimeProcess/fileDescriptorLimit"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//RuntimeProcess/pID"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//RuntimeProcess/pPID"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//RuntimeProcess/uID"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//RuntimeProcess/unattached"/>
+    <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcess;XSDComplexTypeDefinition=52/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//RuntimeProcess/user"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.runtimeProcess;XSDElementDeclaration=52"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityRuntimeProcess"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Segment;XSDComplexTypeDefinition=8" outputs="cdmnet.ecore#//Segment">
+    <nested inputs="../schemas/cdmNet.xsd#//Segment;XSDComplexTypeDefinition=8/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//Segment/layer1Type"/>
+    <nested inputs="../schemas/cdmNet.xsd#//Segment;XSDComplexTypeDefinition=8/XSDAttributeUse"
+        outputs="cdmnet.ecore#//Segment/mTU"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.segment;XSDElementDeclaration=8"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilitySegment"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58" outputs="cdmbase.ecore#//SiteInfo">
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//SiteInfo/city"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//SiteInfo/floor"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//SiteInfo/note"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//SiteInfo/postalCode"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//SiteInfo/room"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//SiteInfo/siteName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//SiteInfo/siteNumber"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse"
+        outputs="cdmbase.ecore#//SiteInfo/stateOrProvince"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SiteInfo;XSDComplexTypeDefinition=58/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//SiteInfo/streetAddress"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.siteInfo;XSDElementDeclaration=58"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySiteInfo"/>
+  <nested inputs="../schemas/cdmNet.xsd#//SNAProtocolEndpoint;XSDComplexTypeDefinition=80"
+      outputs="cdmnet.ecore#//SNAProtocolEndpoint">
+    <nested inputs="../schemas/cdmNet.xsd#//SNAProtocolEndpoint;XSDComplexTypeDefinition=80/XSDAttributeUse"
+        outputs="cdmnet.ecore#//SNAProtocolEndpoint/nAUName"/>
+    <nested inputs="../schemas/cdmNet.xsd#//SNAProtocolEndpoint;XSDComplexTypeDefinition=80/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//SNAProtocolEndpoint/netID"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.sNAProtocolEndpoint;XSDElementDeclaration=80"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilitySNAProtocolEndpoint"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24"
+      outputs="cdmbase.ecore#//SoftwareComponent">
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//SoftwareComponent/executableName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse"
+        outputs="cdmbase.ecore#//SoftwareComponent/group"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//SoftwareComponent/installedDate"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//SoftwareComponent/publisher"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//SoftwareComponent/softwareVersion"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponent;XSDComplexTypeDefinition=24/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//SoftwareComponent/type"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.softwareComponent;XSDElementDeclaration=24"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareComponent"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareContainer;XSDComplexTypeDefinition=50"
+      outputs="cdmbase.ecore#//SoftwareContainer"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.softwareContainer;XSDElementDeclaration=50"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareContainer"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32"
+      outputs="cdmbase.ecore#//SoftwareInstallation">
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=7"
+        outputs="cdmbase.ecore#//SoftwareInstallation/buildLevel"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//SoftwareInstallation/installedLocation"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=4"
+        outputs="cdmbase.ecore#//SoftwareInstallation/level"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="cdmbase.ecore#//SoftwareInstallation/majorVersion"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=8"
+        outputs="cdmbase.ecore#//SoftwareInstallation/manufacturerName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=5"
+        outputs="cdmbase.ecore#//SoftwareInstallation/modifier"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//SoftwareInstallation/productId"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=6"
+        outputs="cdmbase.ecore#//SoftwareInstallation/productName"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=9"
+        outputs="cdmbase.ecore#//SoftwareInstallation/release"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallation;XSDComplexTypeDefinition=32/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//SoftwareInstallation/versionString"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.softwareInstallation;XSDElementDeclaration=32"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareInstallation"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareModule;XSDComplexTypeDefinition=30"
+      outputs="cdmbase.ecore#//SoftwareModule">
+    <nested inputs="../schemas/cdmBase.xsd#//SoftwareModule;XSDComplexTypeDefinition=30/XSDAttributeUse"
+        outputs="cdmbase.ecore#//SoftwareModule/fileName"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.softwareModule;XSDElementDeclaration=30"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareModule"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareResource;XSDComplexTypeDefinition=54"
+      outputs="cdmbase.ecore#//SoftwareResource"/>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.softwareResource;XSDElementDeclaration=54"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySoftwareResource"/>
+  <nested inputs="../schemas/cdmNet.xsd#//SPXProtocolEndpoint;XSDComplexTypeDefinition=70"
+      outputs="cdmnet.ecore#//SPXProtocolEndpoint">
+    <nested inputs="../schemas/cdmNet.xsd#//SPXProtocolEndpoint;XSDComplexTypeDefinition=70/XSDAttributeUse"
+        outputs="cdmnet.ecore#//SPXProtocolEndpoint/networkNumber"/>
+    <nested inputs="../schemas/cdmNet.xsd#//SPXProtocolEndpoint;XSDComplexTypeDefinition=70/XSDAttributeUse=1"
+        outputs="cdmnet.ecore#//SPXProtocolEndpoint/nodeNumber"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.sPXProtocolEndpoint;XSDElementDeclaration=70"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilitySPXProtocolEndpoint"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SSLSettings;XSDComplexTypeDefinition=46"
+      outputs="cdmbase.ecore#//SSLSettings">
+    <nested inputs="../schemas/cdmBase.xsd#//SSLSettings;XSDComplexTypeDefinition=46/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//SSLSettings/cipherSuite"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SSLSettings;XSDComplexTypeDefinition=46/XSDAttributeUse=3"
+        outputs="cdmbase.ecore#//SSLSettings/sessionCacheTimeout"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SSLSettings;XSDComplexTypeDefinition=46/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//SSLSettings/sslEnabled"/>
+    <nested inputs="../schemas/cdmBase.xsd#//SSLSettings;XSDComplexTypeDefinition=46/XSDAttributeUse"
+        outputs="cdmbase.ecore#//SSLSettings/sslPort"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.sSLSettings;XSDElementDeclaration=46"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilitySSLSettings"/>
+  <nested inputs="../schemas/cdmNet.xsd#//Transport;XSDComplexTypeDefinition=48" outputs="cdmnet.ecore#//Transport"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TcpConnection;XSDComplexTypeDefinition=76"
+      outputs="cdmnet.ecore#//TcpConnection"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.tcpConnection;XSDElementDeclaration=76"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityTcpConnection"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TransportEndpoint;XSDComplexTypeDefinition=72"
+      outputs="cdmnet.ecore#//TransportEndpoint">
+    <nested inputs="../schemas/cdmNet.xsd#//TransportEndpoint;XSDComplexTypeDefinition=72/XSDAttributeUse"
+        outputs="cdmnet.ecore#//TransportEndpoint/portNumber"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//TcpPort;XSDComplexTypeDefinition=26" outputs="cdmnet.ecore#//TcpPort"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.tcpPort;XSDElementDeclaration=26"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityTcpPort"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.transport;XSDElementDeclaration=48"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityTransport"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.transportEndpoint;XSDElementDeclaration=72"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityTransportEndpoint"/>
+  <nested inputs="../schemas/cdmNet.xsd#//UdpPort;XSDComplexTypeDefinition=6" outputs="cdmnet.ecore#//UdpPort"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.udpPort;XSDElementDeclaration=6"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityUdpPort"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.vip;XSDElementDeclaration=44"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityVip"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.vipFunction;XSDElementDeclaration=56"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityVipFunction"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.virtualService;XSDElementDeclaration=38"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityVirtualService"/>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.vlan;XSDElementDeclaration=20"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityVlan"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VlanInterface;XSDComplexTypeDefinition=62"
+      outputs="cdmnet.ecore#//VlanInterface">
+    <nested inputs="../schemas/cdmNet.xsd#//VlanInterface;XSDComplexTypeDefinition=62/XSDAttributeUse"
+        outputs="cdmnet.ecore#//VlanInterface/trunkInterface"/>
+  </nested>
+  <nested inputs="../schemas/cdmNet.xsd#//capability.vlanInterface;XSDElementDeclaration=62"
+      outputs="cdmnet.ecore#//CdmNetRoot/capabilityVlanInterface"/>
+  <nested inputs="../schemas/cdmBase.xsd#//WebContainer;XSDComplexTypeDefinition=56"
+      outputs="cdmbase.ecore#//WebContainer">
+    <nested inputs="../schemas/cdmBase.xsd#//WebContainer;XSDComplexTypeDefinition=56/XSDAttributeUse"
+        outputs="cdmbase.ecore#//WebContainer/serverRoot"/>
+    <nested inputs="../schemas/cdmBase.xsd#//WebContainer;XSDComplexTypeDefinition=56/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//WebContainer/user"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.webContainer;XSDElementDeclaration=56"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityWebContainer"/>
+  <nested inputs="../schemas/cdmBase.xsd#//WebVirtualHost;XSDComplexTypeDefinition=20"
+      outputs="cdmbase.ecore#//WebVirtualHost">
+    <nested inputs="../schemas/cdmBase.xsd#//WebVirtualHost;XSDComplexTypeDefinition=20/XSDAttributeUse=1"
+        outputs="cdmbase.ecore#//WebVirtualHost/defaultWebServer"/>
+    <nested inputs="../schemas/cdmBase.xsd#//WebVirtualHost;XSDComplexTypeDefinition=20/XSDAttributeUse=2"
+        outputs="cdmbase.ecore#//WebVirtualHost/documentRoot"/>
+    <nested inputs="../schemas/cdmBase.xsd#//WebVirtualHost;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="cdmbase.ecore#//WebVirtualHost/serverName"/>
+  </nested>
+  <nested inputs="../schemas/cdmBase.xsd#//capability.webVirtualHost;XSDElementDeclaration=20"
+      outputs="cdmbase.ecore#//CdmBaseRoot/capabilityWebVirtualHost"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//config.topology;XSDElementDeclaration=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/configTopology"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//constraint;XSDElementDeclaration=2"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/constraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/configurable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/linkable"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/name"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Exported;XSDComplexTypeDefinition=9/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Exported/path"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedCapabilities"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedRequirements"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/exportedProperties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/constraintGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExportedUnit;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExportedUnit/augmentedConstraints"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/private"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/public"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//Visibility;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//Visibility/publicEditable"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/exportedUnits"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/properties"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse=1"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/defaultConceptualPolicy"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ExplicitContract;XSDComplexTypeDefinition=8/XSDAttributeUse"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ExplicitContract/defaultPolicy"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//contract.explicit;XSDElementDeclaration=6"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/contractExplicit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//contract.topology;XSDElementDeclaration=5"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/contractTopology"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//deployModelObject;XSDElementDeclaration"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/deployModelObject"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//import;XSDElementDeclaration=4"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/import"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//instantiation;XSDElementDeclaration=10"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/instantiation"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.constraint;XSDElementDeclaration=21"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkConstraint"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.dependency;XSDElementDeclaration=19"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkDependency"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.deploy;XSDElementDeclaration=18"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkDeploy"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.hosting;XSDElementDeclaration=24"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkHosting"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.unit;XSDElementDeclaration=20"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.member;XSDElementDeclaration=25"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkMember"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//link.realization;XSDElementDeclaration=22"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/linkRealization"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//property;XSDElementDeclaration=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/property"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//req_expr;XSDElementDeclaration=17"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/reqExpr"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//requirement;XSDElementDeclaration=16"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/requirement"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//topology;XSDElementDeclaration=1"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/topology"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ModelObjectUnit;XSDComplexTypeDefinition=41"
+      outputs="cdmbase.ecore#//ModelObjectUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ManagedElementUnit;XSDComplexTypeDefinition=15"
+      outputs="cdmbase.ecore#//ManagedElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//OrganizationalEntityUnit;XSDComplexTypeDefinition=27"
+      outputs="cdmbase.ecore#//OrganizationalEntityUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//AccountUnit;XSDComplexTypeDefinition=7"
+      outputs="cdmbase.ecore#//AccountUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.accountUnit;XSDElementDeclaration=7"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitAccountUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ManagedSystemElementUnit;XSDComplexTypeDefinition=5"
+      outputs="cdmbase.ecore#//ManagedSystemElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//LogicalElementUnit;XSDComplexTypeDefinition=9"
+      outputs="cdmbase.ecore#//LogicalElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//FunctionUnit;XSDComplexTypeDefinition=1"
+      outputs="cdmbase.ecore#//FunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//AclFunctionUnit;XSDComplexTypeDefinition=51"
+      outputs="cdmnet.ecore#//AclFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.aclFunctionUnit;XSDElementDeclaration=51"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitAclFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//AclUnit;XSDComplexTypeDefinition=1" outputs="cdmnet.ecore#//AclUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.aclUnit;XSDElementDeclaration=1" outputs="cdmnet.ecore#//CdmNetRoot/unitAclUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//AppServerClusterUnit;XSDComplexTypeDefinition=17"
+      outputs="cdmbase.ecore#//AppServerClusterUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.appServerClusterUnit;XSDElementDeclaration=17"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitAppServerClusterUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//AppServerUnit;XSDComplexTypeDefinition=29"
+      outputs="cdmbase.ecore#//AppServerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.appServerUnit;XSDElementDeclaration=29"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitAppServerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RealServerGroupUnit;XSDComplexTypeDefinition=31"
+      outputs="cdmnet.ecore#//RealServerGroupUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServerGroupUnit;XSDComplexTypeDefinition=43"
+      outputs="cdmnet.ecore#//BigIPRealServerGroupUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPRealServerGroupUnit;XSDElementDeclaration=43"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPRealServerGroupUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RealServerUnit;XSDComplexTypeDefinition=53"
+      outputs="cdmnet.ecore#//RealServerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPRealServerUnit;XSDComplexTypeDefinition=25"
+      outputs="cdmnet.ecore#//BigIPRealServerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPRealServerUnit;XSDElementDeclaration=25"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPRealServerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VipFunctionUnit;XSDComplexTypeDefinition=57"
+      outputs="cdmnet.ecore#//VipFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVipFunctionUnit;XSDComplexTypeDefinition=79"
+      outputs="cdmnet.ecore#//BigIPVipFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPVipFunctionUnit;XSDElementDeclaration=79"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPVipFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VipUnit;XSDComplexTypeDefinition=45" outputs="cdmnet.ecore#//VipUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVipUnit;XSDComplexTypeDefinition=69"
+      outputs="cdmnet.ecore#//BigIPVipUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPVipUnit;XSDElementDeclaration=69"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPVipUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VirtualServiceUnit;XSDComplexTypeDefinition=39"
+      outputs="cdmnet.ecore#//VirtualServiceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVirtualServiceUnit;XSDComplexTypeDefinition=83"
+      outputs="cdmnet.ecore#//BigIPVirtualServiceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPVirtualServiceUnit;XSDElementDeclaration=83"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPVirtualServiceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BridgeUnit;XSDComplexTypeDefinition=33"
+      outputs="cdmnet.ecore#//BridgeUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VlanUnit;XSDComplexTypeDefinition=21" outputs="cdmnet.ecore#//VlanUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BigIPVlanUnit;XSDComplexTypeDefinition=35"
+      outputs="cdmnet.ecore#//BigIPVlanUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bigIPVlanUnit;XSDElementDeclaration=35"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBigIPVlanUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//BindAddressUnit;XSDComplexTypeDefinition=61"
+      outputs="cdmnet.ecore#//BindAddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bindAddressUnit;XSDElementDeclaration=61"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBindAddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.bridgeUnit;XSDElementDeclaration=33"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitBridgeUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//CollectionUnit;XSDComplexTypeDefinition=23"
+      outputs="cdmbase.ecore#//CollectionUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.collectionUnit;XSDElementDeclaration=23"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitCollectionUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//ConceptualNode;XSDComplexTypeDefinition=17"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//ConceptualNode"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//unit.ConceptualNode;XSDElementDeclaration=13"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/unitConceptualNode"/>
+  <nested inputs="../schemas/cdmBase.xsd#//LogicalContentUnit;XSDComplexTypeDefinition=3"
+      outputs="cdmbase.ecore#//LogicalContentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//FileSystemContentUnit;XSDComplexTypeDefinition=35"
+      outputs="cdmbase.ecore#//FileSystemContentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//DataFileUnit;XSDComplexTypeDefinition=49"
+      outputs="cdmbase.ecore#//DataFileUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//ConfigFileUnit;XSDComplexTypeDefinition=43"
+      outputs="cdmbase.ecore#//ConfigFileUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.configFileUnit;XSDElementDeclaration=43"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitConfigFileUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//CustomBindAddressUnit;XSDComplexTypeDefinition=41"
+      outputs="cdmnet.ecore#//CustomBindAddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.customBindAddressUnit;XSDElementDeclaration=41"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitCustomBindAddressUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//DatabaseServerUnit;XSDComplexTypeDefinition=37"
+      outputs="cdmbase.ecore#//DatabaseServerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.databaseServerUnit;XSDElementDeclaration=37"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitDatabaseServerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//DatabaseUnit;XSDComplexTypeDefinition=11"
+      outputs="cdmbase.ecore#//DatabaseUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.databaseUnit;XSDElementDeclaration=11"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitDatabaseUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.dataFileUnit;XSDElementDeclaration=49"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitDataFileUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//Db2ServerUnit;XSDComplexTypeDefinition=45"
+      outputs="cdmbase.ecore#//Db2ServerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.db2ServerUnit;XSDElementDeclaration=45"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitDb2ServerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.fileSystemContentUnit;XSDElementDeclaration=35"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitFileSystemContentUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//FirewallUnit;XSDComplexTypeDefinition=19"
+      outputs="cdmnet.ecore#//FirewallUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.firewallUnit;XSDElementDeclaration=19"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitFirewallUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//FqdnUnit;XSDComplexTypeDefinition=67" outputs="cdmnet.ecore#//FqdnUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.fqdnUnit;XSDElementDeclaration=67"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitFqdnUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.functionUnit;XSDElementDeclaration=1"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitFunctionUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//PhysicalElementUnit;XSDComplexTypeDefinition=19"
+      outputs="cdmbase.ecore#//PhysicalElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//PhysicalLocationUnit;XSDComplexTypeDefinition=63"
+      outputs="cdmbase.ecore#//PhysicalLocationUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//GeographyUnit;XSDComplexTypeDefinition=61"
+      outputs="cdmbase.ecore#//GeographyUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.geographyUnit;XSDElementDeclaration=61"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitGeographyUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//HomogeneousCollectionUnit;XSDComplexTypeDefinition=13"
+      outputs="cdmbase.ecore#//HomogeneousCollectionUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.homogeneousCollectionUnit;XSDElementDeclaration=13"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitHomogeneousCollectionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpAddressUnit;XSDComplexTypeDefinition=17"
+      outputs="cdmnet.ecore#//IpAddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipAddressUnit;XSDElementDeclaration=17"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpAddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpInterfaceUnit;XSDComplexTypeDefinition=11"
+      outputs="cdmnet.ecore#//IpInterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipInterfaceUnit;XSDElementDeclaration=11"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpInterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpNetworkUnit;XSDComplexTypeDefinition=13"
+      outputs="cdmnet.ecore#//IpNetworkUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipNetworkUnit;XSDElementDeclaration=13"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpNetworkUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpRouteUnit;XSDComplexTypeDefinition=3"
+      outputs="cdmnet.ecore#//IpRouteUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipRouteUnit;XSDElementDeclaration=3"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpRouteUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpV4AddressUnit;XSDComplexTypeDefinition=15"
+      outputs="cdmnet.ecore#//IpV4AddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipV4AddressUnit;XSDElementDeclaration=15"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpV4AddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//IpV6AddressUnit;XSDComplexTypeDefinition=29"
+      outputs="cdmnet.ecore#//IpV6AddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ipV6AddressUnit;XSDElementDeclaration=29"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitIpV6AddressUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//L2InterfaceUnit;XSDComplexTypeDefinition=59"
+      outputs="cdmnet.ecore#//L2InterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.l2InterfaceUnit;XSDElementDeclaration=59"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitL2InterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//LoadBalancerUnit;XSDComplexTypeDefinition=55"
+      outputs="cdmnet.ecore#//LoadBalancerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.loadBalancerUnit;XSDElementDeclaration=55"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitLoadBalancerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//LogicalConnectionUnit;XSDComplexTypeDefinition=75"
+      outputs="cdmnet.ecore#//LogicalConnectionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.logicalConnectionUnit;XSDElementDeclaration=75"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitLogicalConnectionUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.logicalContentUnit;XSDElementDeclaration=3"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitLogicalContentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.logicalElementUnit;XSDElementDeclaration=9"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitLogicalElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.managedElementUnit;XSDElementDeclaration=15"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitManagedElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.managedSystemElementUnit;XSDElementDeclaration=5"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitManagedSystemElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.modelObjectUnit;XSDElementDeclaration=41"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitModelObjectUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//MQQueueManagerUnit;XSDComplexTypeDefinition=39"
+      outputs="cdmbase.ecore#//MQQueueManagerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.mQQueueManagerUnit;XSDElementDeclaration=39"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitMQQueueManagerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//ProtocolEndpointUnit;XSDComplexTypeDefinition=47"
+      outputs="cdmnet.ecore#//ProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//NetBIOSProtocolEndpointUnit;XSDComplexTypeDefinition=5"
+      outputs="cdmnet.ecore#//NetBIOSProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.netBIOSProtocolEndpointUnit;XSDElementDeclaration=5"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitNetBIOSProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//NetworkServiceUnit;XSDComplexTypeDefinition=65"
+      outputs="cdmnet.ecore#//NetworkServiceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.networkServiceUnit;XSDElementDeclaration=65"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitNetworkServiceUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.organizationalEntityUnit;XSDElementDeclaration=27"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitOrganizationalEntityUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.physicalElementUnit;XSDElementDeclaration=19"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitPhysicalElementUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.physicalLocationUnit;XSDElementDeclaration=63"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitPhysicalLocationUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.protocolEndpointUnit;XSDElementDeclaration=47"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.realServerGroupUnit;XSDElementDeclaration=31"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitRealServerGroupUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.realServerUnit;XSDElementDeclaration=53"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitRealServerUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RouterUnit;XSDComplexTypeDefinition=23"
+      outputs="cdmnet.ecore#//RouterUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.routerUnit;XSDElementDeclaration=23"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitRouterUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//RuleUnit;XSDComplexTypeDefinition=37" outputs="cdmnet.ecore#//RuleUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.ruleUnit;XSDElementDeclaration=37"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitRuleUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//RuntimeProcessUnit;XSDComplexTypeDefinition=53"
+      outputs="cdmbase.ecore#//RuntimeProcessUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.runtimeProcessUnit;XSDElementDeclaration=53"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitRuntimeProcessUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//SegmentUnit;XSDComplexTypeDefinition=9"
+      outputs="cdmnet.ecore#//SegmentUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.segmentUnit;XSDElementDeclaration=9"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitSegmentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SiteInfoUnit;XSDComplexTypeDefinition=59"
+      outputs="cdmbase.ecore#//SiteInfoUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.siteInfoUnit;XSDElementDeclaration=59"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSiteInfoUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//SNAProtocolEndpointUnit;XSDComplexTypeDefinition=81"
+      outputs="cdmnet.ecore#//SNAProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.sNAProtocolEndpointUnit;XSDElementDeclaration=81"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitSNAProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareComponentUnit;XSDComplexTypeDefinition=25"
+      outputs="cdmbase.ecore#//SoftwareComponentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.softwareComponentUnit;XSDElementDeclaration=25"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSoftwareComponentUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareContainerUnit;XSDComplexTypeDefinition=51"
+      outputs="cdmbase.ecore#//SoftwareContainerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.softwareContainerUnit;XSDElementDeclaration=51"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSoftwareContainerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareInstallationUnit;XSDComplexTypeDefinition=33"
+      outputs="cdmbase.ecore#//SoftwareInstallationUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.softwareInstallationUnit;XSDElementDeclaration=33"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSoftwareInstallationUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareModuleUnit;XSDComplexTypeDefinition=31"
+      outputs="cdmbase.ecore#//SoftwareModuleUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.softwareModuleUnit;XSDElementDeclaration=31"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSoftwareModuleUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SoftwareResourceUnit;XSDComplexTypeDefinition=55"
+      outputs="cdmbase.ecore#//SoftwareResourceUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.softwareResourceUnit;XSDElementDeclaration=55"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSoftwareResourceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//SPXProtocolEndpointUnit;XSDComplexTypeDefinition=71"
+      outputs="cdmnet.ecore#//SPXProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.sPXProtocolEndpointUnit;XSDElementDeclaration=71"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitSPXProtocolEndpointUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//SSLSettingsUnit;XSDComplexTypeDefinition=47"
+      outputs="cdmbase.ecore#//SSLSettingsUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.sSLSettingsUnit;XSDElementDeclaration=47"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitSSLSettingsUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TransportUnit;XSDComplexTypeDefinition=49"
+      outputs="cdmnet.ecore#//TransportUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TcpConnectionUnit;XSDComplexTypeDefinition=77"
+      outputs="cdmnet.ecore#//TcpConnectionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.tcpConnectionUnit;XSDElementDeclaration=77"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitTcpConnectionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TransportEndpointUnit;XSDComplexTypeDefinition=73"
+      outputs="cdmnet.ecore#//TransportEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//TcpPortUnit;XSDComplexTypeDefinition=27"
+      outputs="cdmnet.ecore#//TcpPortUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.tcpPortUnit;XSDElementDeclaration=27"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitTcpPortUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.transportEndpointUnit;XSDElementDeclaration=73"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitTransportEndpointUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.transportUnit;XSDElementDeclaration=49"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitTransportUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//UdpPortUnit;XSDComplexTypeDefinition=7"
+      outputs="cdmnet.ecore#//UdpPortUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.udpPortUnit;XSDElementDeclaration=7"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitUdpPortUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.vipFunctionUnit;XSDElementDeclaration=57"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitVipFunctionUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.vipUnit;XSDElementDeclaration=45" outputs="cdmnet.ecore#//CdmNetRoot/unitVipUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.virtualServiceUnit;XSDElementDeclaration=39"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitVirtualServiceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//VlanInterfaceUnit;XSDComplexTypeDefinition=63"
+      outputs="cdmnet.ecore#//VlanInterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.vlanInterfaceUnit;XSDElementDeclaration=63"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitVlanInterfaceUnit"/>
+  <nested inputs="../schemas/cdmNet.xsd#//unit.vlanUnit;XSDElementDeclaration=21"
+      outputs="cdmnet.ecore#//CdmNetRoot/unitVlanUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//WebContainerUnit;XSDComplexTypeDefinition=57"
+      outputs="cdmbase.ecore#//WebContainerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.webContainerUnit;XSDElementDeclaration=57"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitWebContainerUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//WebVirtualHostUnit;XSDComplexTypeDefinition=21"
+      outputs="cdmbase.ecore#//WebVirtualHostUnit"/>
+  <nested inputs="../schemas/cdmBase.xsd#//unit.webVirtualHostUnit;XSDElementDeclaration=21"
+      outputs="cdmbase.ecore#//CdmBaseRoot/unitWebVirtualHostUnit"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//visibility;XSDElementDeclaration=7"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployCoreRoot/visibility"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=27"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet">
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=27/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet/deployModelObjectGroup"/>
+    <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//DeployModelObjectSet;XSDComplexTypeDefinition=27/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//DeployModelObjectSet/deployModelObject"/>
+  </nested>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//GenericVersionString;XSDSimpleTypeDefinition=8"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//GenericVersionString"/>
+  <nested inputs="../../../com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd#//VersionRange;XSDSimpleTypeDefinition=9"
+      outputs="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.ecore#//VersionRange"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

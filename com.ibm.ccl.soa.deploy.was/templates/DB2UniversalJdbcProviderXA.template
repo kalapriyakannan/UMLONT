@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="DB2 JDBCProvider Template">
+  <was:unit.db2JdbcProviderUnit name="Db2UniversalJdbcProviderXA" configurationUnit="true">
+    <was:capability.db2JdbcProvider name="Db2UniversalJdbcProviderXA" 
+    			displayName="DB2 Universal JDBC Provider Driver (XA)" 
+    			description="XA DB2 Universal JDBC Driver-compliant provider" 
+    			jdbcType="4" 
+    			implementationClassName="com.ibm.db2.jcc.DB2XADataSource" 
+    			providerType="DB2 Universal JDBC Driver Provider (XA)" 
+    			providerName="DB2 Universal JDBC Driver Provider (XA)" 
+				template="DB2 Universal JDBC Driver Provider (XA)" 
+    			linkType="any"/>
+    			<!-- TPM does not currently support substitution variables
+    			classpath="${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar" 
+    			-->
+    <core:requirement mutable="true" use="optional" name="DB2 JDBC Driver" displayName="DB2 JDBC Driver" dmoType="db2Deploy:DB2JdbcDriver" linkType="dependency"/>
+    <core:requirement mutable="true" name="WebSphereConfigurationContainer" displayName="WebSphereConfigurationContainer" dmoType="was:WasConfigurationContainer" linkType="hosting"/>
+  </was:unit.db2JdbcProviderUnit>
+</core:topology>

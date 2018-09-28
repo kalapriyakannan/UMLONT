@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="High">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+
+
+		        <entry 
+            		label="%wasPluginStack.Label" 
+            		kind="stack" 
+            		description="%wasPluginStack.Description" 
+            		small_icon="" 
+            		path="/serverSoftwareDrawer/" 
+            		id="websphereAppServerPluginStack">
+            	</entry>
+
+		        <!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+    <!-- Core Element Types and custom Factory -->
+   	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/">
+
+	    	<metamodelType
+	        	id="ihs.IhsWasPluginUnit"
+	            name="%IhsWasPluginUnit.Label"
+	            icon="icons/pal/ihs_plugin_pal16.gif"
+	            eclass="IhsWasPluginUnit">
+	        </metamodelType>
+        </metamodel>
+	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.waswebplugin.ui.providers.WasWebPluginEditPartProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+            	value="waswebplugin.IhsWasPluginUnit">
+            </staticMethod>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.ihswasplugin"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="waswebplugin.IhsWasPluginUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.wasihsplugin">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>
+      </viewProvider>
+   </extension>
+   
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.waswebplugin"
+            name="%wasWebPluginActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.waswebplugin"
+            name="%wasWebPluginActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.waswebplugin"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.waswebplugin\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.waswebplugin"
+            pattern="(?&lt;!.)com\.ibm\.ccl\.soa\.deploy\.waswebplugin\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.waswebplugin"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.waswebplugin"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.waswebplugin"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.waswebplugin"/>
+    </extension>
+</plugin>

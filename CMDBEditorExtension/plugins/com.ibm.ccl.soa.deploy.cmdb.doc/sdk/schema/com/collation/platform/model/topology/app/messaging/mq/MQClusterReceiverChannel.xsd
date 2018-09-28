@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQReceiverChannel.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/mq/MQCluster.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.messaging.mq.MQClusterReceiverChannel">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.messaging.mq.MQReceiverChannel">
+        <xsd:sequence>
+          <xsd:element name="clusters" type="coll:com.collation.platform.model.topology.app.messaging.mq.MQCluster" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="CLWLChannelWeight" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CLWLChannelPriority" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CLWLChannelRank" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusterNameList" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

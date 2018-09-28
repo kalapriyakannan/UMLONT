@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%tomcatWebServerStack.Label" 
+            		kind="stack" 
+            		description="%tomcatWebServerStack.Description" 
+            		small_icon="icons/pal/tomcat_ds_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="tomcatWebServerStack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.tomcat.ui.providers.TomcatEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])" 
+            	value="tomcat.TomcatWebServerUnit, tomcat.TomcatDatasourceUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.tomcat, configurationUnit.tomcat"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="tomcat.TomcatWebServerUnit, tomcat.TomcatDatasourceUnit">
+            </method>
+         </object>    
+         <!--     
+         <object class="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType(com.ibm.ccl.soa.deploy.core.ui)" id="NodeTypes">
+            <method name="getEClassName()" value="tomcat.TomcatWebServerUnit">
+            </method>
+         </object> -->                                     
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.tomcat, configurationUnit.tomcat">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/">
+	    	<metamodelType
+	        	id="tomcat.TomcatWebServerUnit"            
+	            name="%TomcatWebServerUnit.label"
+	            icon="icons/pal/apache_rntm_16.gif"
+	            eclass="TomcatWebServerUnit"/>        
+	        <metamodelType
+	        	id="tomcat.TomcatDatasourceUnit"  
+                icon="icons/pal/tomcat_ds_16.gif"          
+	            name="%TomcatDatasourceUnit.label"
+	            eclass="TomcatDatasourceUnit"/>
+        </metamodel> 
+	</extension>
+   
+    <!-- Tomcat Datasource Resolution  
+    <extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+      <resolutionGenerator
+         id="TomcatDatasourceDependencyResolutionGenerator"
+         name=""
+         class="com.ibm.ccl.soa.deploy.ide.validator.resolution.DatasourceDependencyResolutionGenerator">
+         <enablement>
+         	<and>
+            	<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+            	<test property="com.ibm.ccl.soa.deploy.tomcat.validator.resolution.isUnsatisfiedDatasource" forcePluginActivation="true"/>
+         	</and>
+         </enablement>
+      </resolutionGenerator>      
+    </extension> 
+    -->
+    
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.tomcat"
+            name="%tomcatActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.tomcat"
+            name="%tomcatActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.tomcat"
+            pattern="(?&lt;!.)tomcat\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.tomcat"
+            pattern="(?&lt;!.)tomcat\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.tomcat"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.tomcat"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.tomcat"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.tomcat"/>
+      </extension>
+</plugin>

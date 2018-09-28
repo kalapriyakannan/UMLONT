@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>SAF Framework</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+SAF Framework allows clients to contribute Component implementation types like Java, EGL, BPEL and hence help define 
+various Component types, it allows clients to define bindings for Service and References, defines framework 
+to allow clients to define their own Interface types like Java, EGL, WSDL etc Lastly it incorporates Permission framework 
+within various extension points.
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">SOA Assembly Framework (SAF) Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">SAF Introduction [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The SOA Assembly framework by itself contains multiple extensible frameworks allowing clients to register
+		<li>Component implementation types such as Java, BPEL, State Machines etc. Assembly Editor, for instance, uses this framework 
+		to list available component implementation types for dragging and dropping onto the diagram surface from the palette.</li>		
+		<li>Interface types such as Java Interface, WSDL Interface, EGL interface etc. For example, this framework will be used up by 
+		Xtensible Interface Dialog (XID) Framework to list various registered type of interfaces available to the clients whiule creating
+		Service or Reference.</li>		
+		<li>Binding kinds such as SCA, Web service, stateless session EJB, data base stored procedure, Enterprise Information Systems (EIS). This framework will
+		be used while creating Binding elements for Services and References.</li>
+		</p>
+		
+		<p>This framework is an improvement of Component Assembly Framework (CAF) presently used in Websphere Business
+		Integration. It has been modified to add more capabilities and is based on the new SCA specification. <br/><br/>In this document, 
+		concepts are enclosed by italics (<i>like this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements in the schemas are enclosed in angle brackets
+		(&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"><code>Details
+		[<a style="color: lightblue;" href="#top">Top</a>]</code></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>SCA extension providers must contribute to extension points defined in SAF, supplying one or more handler classes 
+		that, depending on the type of extension defined, implement one of the following specialized <a href="IHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.IHandler</code></a>
+		 interfaces. These interfaces are 
+		 <li><a href="IImplementationHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.IImplementationHandler</code></a></li>
+		 <li><a href="IBindingHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.IBindingHandler</code></a></li>
+ 		 <li><a href="IInterfaceHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.IInterfaceHandler</code></a></li>
+		 </p>				
+		</td>
+	</tr>
+	<tr>
+		<td><IMG border="0" src="Handler.jpg"></td>
+	</tr>
+	<tr>
+		<td>
+		<p>
+		A handler provides a Service Provider Interface that the framework uses to call the handler with 
+		various requests for creating and operating on an SCA extension object.  The handler is identified by the 
+		SCA extension element name.  The form of the element names for interfaces, implementations, and bindings 
+		is chosen to enable extensibility of the schemas in a simple and easy-to-read format.  The corresponding 
+		element names are interface.xxx, implementation.xxx and binding.xxx.  "xxx" can take a name that relates 
+		to the type of interface, implementation, or binding concerned. For instance, java handlers will have element names as
+		<code>interface.java</code>, <code>implementation.java</code> etc.
+		</p>  
+		
+		<p>An abstract implementation of these interfaces are provided in the SAF framework and it is advisable to extend 
+		them when writing SCA extension implementations. These abstract implementations are as follows-
+		<li><a href="AbstractImplementationHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.AbstractImplementationHandler</code></a></li>
+		<li><a href="AbstractBindingHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.AbstractBindingHandler</code></a></li>
+		<li><a href="AbstractInterfaceHandler.html"><code>com.ibm.ccl.soa.core.saf.handler.AbstractInterfaceHandler</code></a></li>
+<br/><br/>
+		
+		<a href="SAFServiceFactory.html"><code>SAFServiceFactory</code></a> allows interaction with the SOA Assembly Framework. It returns services that are provided by the
+		extension point. The three services that it can return are <br/>
+		<li><a href="IImplementationHandlerService.html">com.ibm.ccl.soa.core.saf.handler.IImplementationHandlerService</a></li>
+		<li><a href="IInterfaceHandlerService.html">com.ibm.ccl.soa.core.saf.handler.IInterfaceHandlerService</a></li>
+		<li><a href="IBindingHandlerService.html">com.ibm.ccl.soa.core.saf.handler.IBindingHandlerService</a></li>		
+		 </br></br>
+		 The following figure shows the APIs available-
+		</p>
+				
+		</td>	
+	</tr>
+	<tr>
+		<td align="center"><IMG border="0" src="Manager.jpg"></td>
+	</tr>
+	
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">How to contribute your handlers? [<a
+			style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+	<td>The following is an example of implementation, binding, and interface handler contributions:	
+	<table cols="1" width="100%" bgColor="#cccccc" border="0">
+		<tr>
+			<td>
+			<tt>
+				<pre>		
+&lt;extension point="com.ibm.ccl.soa.core.saf.handlers" id="xyzHandlers" name="XYZ handlers"&gt;
+	&lt;!--<font color="blue">Handler definition for Java Implementation kind. The <i>kind</i> attribute is defined as 
+	'implementation.java' which should be unique across all registered implementation handlers. <br><br>
+	Notice the <i>enablement</i> tag defined. <code>IImplementationHandlerService</code> will return this handler for the call 
+	<a href="../extension/IImplementationHandlerService.html#findImplementationHandlersForObject(java.lang.Object)"><code>findImplementationHandlersForObject(Object)</code></a> only if the enablement expression is evaluated 
+	to true for the object passed.</font> --&gt;
+	&lt;implementationHandler
+          	name="%javaImplementationHandlerName"
+          	description="%javaImplementationHandlerDescription"
+          	kind="implementation.java"
+          	class="com.ibm.ccl.soa.internal.java.handler.JavaImplementationHandler"
+          	largeIcon="icons/obj20/javaComponent_obj.gif"
+	        smallIcon="icons/obj16/javaComponent_obj.gif"
+          	descriptiveKindName="%javaImplementationHandler"&gt;
+	        &lt;enablement&gt;
+	        &lt;or&gt;
+			&lt;instanceof value="org.eclipse.jdt.core.ICompilationUnit"/&gt;
+			&lt;instanceof value="org.eclipse.jdt.core.IType"/&gt;
+			&lt;and&gt;				
+				&lt;instanceof value="org.eclipse.core.resources.IFile" /&gt; 
+				&lt;test property="org.eclipse.core.resources.extension" value="java"/&gt;
+			&lt;/and&gt;
+		&lt;/or&gt;
+		&lt;/enablement&gt;	
+	&lt;/implementationHandler&gt;
+	<br/>
+	&lt;!--<font color="blue">Handler definition for Stateless Session bean binding kind. The <i>kind</i> attribute is defined as 
+	'binding.ejb' which should be unique across all registered binding handlers.</font> --&gt;
+	&lt;bindingHandler
+		name="%slsbBindingHandlerName"
+		description="%slsbBindingHandlerDescription"
+		kind="binding.ejb"
+		descriptiveKindName="%slsbBindingHandler"
+		class="com.ibm.ccl.soa.internal.ejb.handler.SLSBBindingHandler"&gt;	
+	&lt;/bindingHandler&gt;
+		<br/>
+	&lt;!--<font color="blue">Handler definition for Java Interface kind. The <i>kind</i> attribute is defined as 'interface.java' 
+	which should be unique across all registered interface handlers. <br><br>
+	Notice the <i>enablement</i> tag defined. <code>InterfaceHandlerService</code> will return this handler for the call 
+	<a href="../extension/IInterfaceHandlerService.html#findInterfaceHandlersForObject(java.lang.Object)"><code>findInterfaceHandlersForObject(Object)</code></a> only if the enablement expression 
+	is evaluated to true for the object passed.</font> --&gt;	      
+	&lt;interfaceHandler
+          	name="%javaInterfaceHandlerName"
+          	description="%javaInterfaceHandlerDescription"
+          	kind="interface.java"
+          	largeIcon="icons/obj16/impcomp_obj.gif"
+	        smallIcon="icons/obj16/impcomp_obj.gif"
+          	descriptiveKindName="%javaInterfaceHandler"
+          	class="com.ibm.ccl.soa.internal.java.handler.JavaInterfaceHandler"&gt; 
+          	&lt;enablement&gt;			
+			&lt;instanceof value="org.eclipse.jdt.core.IType"/&gt;					
+		&lt;/enablement&gt;       	 
+        &lt;/interfaceHandler&gt;
+		</pre>
+			</tt>
+			</td>
+		</tr>
+	</table>
+			
+	</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="700">
+	<tr>
+		<td>
+		<p>The SAF Framework will be tested by verifying the following: 
+		<ul>
+			<li>SAFServiceFactory.createImplementationServiceHandler().findAllImplementationHandlers() will be called and the results can be verified with the implementation extensions provided.</li>
+			<li>SAFServiceFactory.createBindingServiceHandler().findAllBindingHandlers() will be called and the results can be verified with the binding extensions provided.</li>
+			<li>SAFServiceFactory.createInterfaceServiceHandler().findAllInterfaceHandlers() will be called and the results can be verified with the interface extensions provided.</li>
+		</ul>
+		</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by Manish Bhargava <i>(manishb{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

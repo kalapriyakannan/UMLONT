@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" elementFormDefault="qualified"
+	ecore:documentRoot="OperatingSystemRoot" ecore:name="os" ecore:package="com.ibm.ccl.soa.deploy.os"
+	ecore:nsPrefix="os">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<!--  Capabilities -->
+	<element name="capability.operatingSystem" substitutionGroup="core:capability" type="os:OperatingSystem" />
+	<complexType name="OperatingSystem">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="hostname" type="string">
+					<annotation>
+						<documentation>
+							A hostname, which could be a simple hostname or qualified name up to a full fqdn. In many
+							operating systems, what would be returned by "hostname" from a command line.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="os.type" type="string">
+					<annotation>
+						<documentation>
+							e.g. "AIX", "Windows-Cygwin", "HPUX", "Linux", "Solaris", "Windows". Use the values from the
+							OperatingSystemType enumeration if applicable.
+						</documentation>
+					</annotation>
+				</attribute>
+
+				<attribute name="os.distribution" type="string">
+					<annotation>
+						<documentation>e.g. "SuSE" if osType is "Linux"</documentation>
+					</annotation>
+				</attribute>
+
+				<attribute name="os.version" type="string">
+					<annotation>
+						<documentation>e.g. "4.0"</documentation>
+					</annotation>
+				</attribute>
+
+				<attribute name="os.servicepack" type="string">
+					<annotation>
+						<documentation>e.g. "SP5" for Windows 2000</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fqdn" type="string">
+					<annotation>
+						<documentation>
+							Fully qualified domain name. e.g. "foo.watson.ibm.com." In practice the trailing "." is
+							often omitted.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="kernelArchitecture" type="string">
+					<annotation>
+						<documentation>e.g. Intel (Windows), or i686 (Linux). TODO an enumeration?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="kernelVersion" type="string">
+					<annotation>
+						<documentation>e.g. 5.1.2600 (Windows), or 2.6.9-55.0.2.ELsmp (Linux).</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="kernelWidth" type="os:KernelWidthType">
+					<annotation>
+						<documentation>An enumeration, "32-bit" or "64-bit"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="manufacturer" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="locale" type="string">
+					<annotation>
+						<documentation>In Linux, e.g. “en_US”. In Windows WMI, e.g. “0409”</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="TimeZone" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.user" substitutionGroup="core:capability" type="os:User" />
+	<complexType name="User">
+		<complexContent>
+			<extension base="core:Capability">
+				<!-- From CIM (CIM_User.pdf from cimv211, "Page 12-26: Account") -->
+				<attribute name="userId" type="string" />
+				<attribute name="userPassword" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.userGroup" substitutionGroup="core:capability" type="os:UserGroup" />
+	<complexType name="UserGroup">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="groupName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Switch to CDM model 
+		<element name="capability.directory" substitutionGroup="core:capability" type="os:Directory"/>
+		<complexType name="Directory">
+		<complexContent>
+		<extension base="core:Capability">
+		<attribute name="directoryPath" type="string"/>
+		</extension>
+		</complexContent>
+		</complexType>
+	-->
+
+	<element name="capability.portConsumer" substitutionGroup="core:capability" type="os:PortConsumer" />
+	<complexType name="PortConsumer">
+		<complexContent>
+			<extension base="core:Capability"></extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.port" substitutionGroup="core:capability" type="os:Port" />
+	<complexType name="Port">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="portName" type="string" />
+				<attribute name="transportLayerProtocol" type="os:TransportLayerProtocolType" />
+				<attribute name="ipAddressOrHostname" type="string" />
+				<attribute name="applicationLayerProtocol" type="string" />
+				<attribute name="port" type="core:PortType" use="required" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.windowsLocalUser" substitutionGroup="core:capability" type="os:WindowsLocalUser" />
+	<complexType name="WindowsLocalUser">
+		<complexContent>
+			<extension base="os:User">
+				<attribute name="FullName" type="string" />
+				<attribute name="AccountDescription" type="string" />
+				<attribute name="UserSid" type="string" />
+				<attribute name="UserSidType" type="string" />
+				<attribute name="UserAccountType" type="string" />
+				<attribute name="ChangePasswordNextLogon" type="boolean" />
+				<attribute name="UserCannotChangePassword" type="boolean" />
+				<attribute name="PasswordNeverExpires" type="boolean" />
+				<attribute name="AccountDisabled" type="boolean" />
+				<attribute name="AccountLocked" type="boolean" />
+				<attribute name="ProfilePath" type="string" />
+				<attribute name="LogonScript" type="string" />
+				<attribute name="HomeFolder" type="string" />
+				<attribute name="EnableRemoteControl" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsLocalGroup" substitutionGroup="core:capability" type="os:WindowsLocalGroup" />
+	<complexType name="WindowsLocalGroup">
+		<complexContent>
+			<extension base="os:UserGroup">
+				<attribute name="GroupSid" type="string" />
+				<attribute name="Description" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsDirectory" substitutionGroup="core:capability" type="os:WindowsDirectory" />
+	<complexType name="WindowsDirectory">
+		<complexContent>
+			<extension base="os:Directory" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.unixDirectory" substitutionGroup="core:capability" type="os:UnixDirectory" />
+	<complexType name="UnixDirectory">
+		<complexContent>
+			<extension base="os:Directory" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsOperatingSystem" substitutionGroup="core:capability"
+		type="os:WindowsOperatingSystem" />
+	<complexType name="WindowsOperatingSystem">
+		<complexContent>
+			<extension base="os:OperatingSystem">
+				<attribute name="Owner" type="string" />
+				<attribute name="Company" type="string" />
+				<attribute name="Language" type="string" />
+				<attribute name="LanguageGroup" type="string" />
+				<attribute name="ProductKey" type="string" />
+				<attribute name="ProductType" type="os:WindowsProductTypeType" />
+				<attribute name="SystemDrive" type="string" />
+				<attribute name="WindowsDirectory" type="os:WindowsDirectoryType" />
+				<attribute name="EncryptionLevel" type="os:EncryptionLevelType" />
+				<attribute name="InstallDate" type="string" />
+				<attribute name="LastBootUpTime" type="string" />
+				<attribute name="NumberOfLicensedUsers" type="string" />
+				<attribute name="DomainName" type="string" />
+				<attribute name="MachineObjectOU" type="string" />
+				<attribute name="DomainAdmin" type="string" />
+				<attribute name="DomainPassword" type="string" />
+				<attribute name="WorkgroupName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsLocalService" substitutionGroup="core:capability" type="os:WindowsLocalService" />
+	<complexType name="WindowsLocalService">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="ServiceName" type="string" />
+				<attribute name="ServiceDisplayName" type="string" />
+				<attribute name="ServiceDescription" type="string" />
+				<!-- "Path to executable" -->
+				<attribute name="ExecutablePath" type="string" />
+				<!-- "Current status of local service" -->
+				<attribute name="ServiceStatus" type="os:WindowsServiceStatusType" />
+				<attribute name="StartupType" type="os:WindowsServiceStartupType" />
+				<attribute name="LogOnAsSystem" type="boolean" />
+				<attribute name="StartParams" type="string" />
+				<!-- "Actions taken by startup program if service failure occurs" -->
+				<attribute name="ErrorControl" type="os:WindowsServiceErrorControlType" />
+				<!-- "Log On account" -->
+				<attribute name="ServiceAccount" type="string" />
+				<!-- "Log on account password" -->
+				<attribute name="ServiceAccountPassword" type="string" />
+				<!-- "Program to run in case of failure" -->
+				<attribute name="RunProgram" type="string" />
+				<!-- "The system components this service depends on" -->
+				<attribute name="ServiceDependencies" type="string" />
+				<!-- "The system components depending on this service" -->
+				<attribute name="DependantComponents" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.linuxOperatingSystem" substitutionGroup="core:capability" type="os:LinuxOperatingSystem" />
+	<complexType name="LinuxOperatingSystem">
+		<complexContent>
+			<extension base="os:OperatingSystem">
+				<attribute name="KernelRelease" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.redhatLinuxOperatingSystem" substitutionGroup="core:capability"
+		type="os:RedhatLinuxOperatingSystem" />
+	<complexType name="RedhatLinuxOperatingSystem">
+		<complexContent>
+			<extension base="os:LinuxOperatingSystem">
+				<attribute name="LastBootUpTime" type="string" />
+				<attribute name="Owner" type="string" />
+				<attribute name="ProductType" type="os:RedhatLinuxProductTypeType" />
+				<attribute name="BootLoader" type="os:RedhatLinuxBootLoaderType" />
+				<attribute name="InstallDate" type="string" />
+				<attribute name="Desktop" type="os:RedhatDesktopType" />
+				<attribute name="SELinuxState" type="os:SELinuxStateType" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.suseLinuxOperatingSystem" substitutionGroup="core:capability"
+		type="os:SUSELinuxOperatingSystem" />
+	<complexType name="SUSELinuxOperatingSystem">
+		<complexContent>
+			<extension base="os:LinuxOperatingSystem">
+				<attribute name="BootLoader" type="os:SUSELinuxBootLoaderType" />
+				<attribute name="LastBootUpDate" type="string" />
+				<attribute name="Desktop" type="os:SUSEDesktopType" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxLocalUser" substitutionGroup="core:capability" type="os:LinuxLocalUser" />
+	<complexType name="LinuxLocalUser">
+		<complexContent>
+			<extension base="os:User">
+				<attribute name="UserName" type="string" />
+				<attribute name="FullName" type="string" />
+				<attribute name="AccountDescription" type="string" />
+				<attribute name="ChangePasswordNextLogon" type="boolean" />
+				<attribute name="UserCannotChangePassword" type="boolean" />
+				<attribute name="PasswordNeverExpires" type="boolean" />
+				<attribute name="AccountDisabled" type="boolean" />
+				<attribute name="Shell" type="string" />
+				<attribute name="HomeDir" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.redhatLinuxLocalUser" substitutionGroup="core:capability" type="os:RedhatLinuxLocalUser" />
+	<complexType name="RedhatLinuxLocalUser">
+		<complexContent>
+			<extension base="os:LinuxLocalUser">
+				<attribute name="UserSid" type="string" />
+				<attribute name="LastPasswordChange" type="string" />
+				<!--  Should be integer? -->
+				<attribute name="DaysBeforePasswordMayChange" type="string" />
+				<!--  Should be integer? -->
+				<attribute name="PasswordExpireAfterDays" type="string" />
+				<!--  Should be integer? -->
+				<attribute name="PasswordExpireWarningDays" type="string" />
+				<!--  Should be integer? -->
+				<attribute name="AccountDisableAfterDays" type="string" />
+				<attribute name="AccountDisableDate" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.suseLinuxLocalUser" substitutionGroup="core:capability" type="os:SUSELinuxLocalUser" />
+	<complexType name="SUSELinuxLocalUser">
+		<complexContent>
+			<extension base="os:LinuxLocalUser"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxLocalService" substitutionGroup="core:capability" type="os:LinuxLocalService" />
+	<complexType name="LinuxLocalService">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="ServiceName" type="string" />
+				<attribute name="ServiceDescription" type="string" />
+				<attribute name="ExecutablePath" type="string" />
+				<attribute name="ServiceStatus" type="os:LinuxServiceStatusType" />
+				<attribute name="StartupType" type="os:LinuxServiceStartupTypeType" />
+				<attribute name="ServiceAccount" type="string" />
+				<attribute name="StartupRunLevelZero" type="boolean" />
+				<attribute name="StartupRunLevelOne" type="boolean" />
+				<attribute name="StartupRunLevelTwo" type="boolean" />
+				<attribute name="StartupRunLevelThree" type="boolean" />
+				<attribute name="StartupRunLevelFour" type="boolean" />
+				<attribute name="StartupRunLevelFive" type="boolean" />
+				<attribute name="StartupRunLevelSix" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.redhatLinuxLocalService" substitutionGroup="core:capability"
+		type="os:RedhatLinuxLocalService" />
+	<complexType name="RedhatLinuxLocalService">
+		<complexContent>
+			<extension base="os:LinuxLocalService"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.suseLinuxLocalService" substitutionGroup="core:capability"
+		type="os:SUSELinuxLocalService" />
+	<complexType name="SUSELinuxLocalService">
+		<complexContent>
+			<extension base="os:LinuxLocalService"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.linuxLocalGroup" substitutionGroup="core:capability" type="os:LinuxLocalGroup" />
+	<complexType name="LinuxLocalGroup">
+		<complexContent>
+			<extension base="os:UserGroup">
+				<attribute name="GroupDescription" type="string" />
+				<!--  GroupMembers done with member links -->
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.redhatLinuxLocalGroup" substitutionGroup="core:capability"
+		type="os:RedhatLinuxLocalGroup" />
+	<complexType name="RedhatLinuxLocalGroup">
+		<complexContent>
+			<extension base="os:LinuxLocalGroup">
+				<attribute name="GroupSid" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.suseLinuxLocalGroup" substitutionGroup="core:capability" type="os:SUSELinuxLocalGroup" />
+	<complexType name="SUSELinuxLocalGroup">
+		<complexContent>
+			<extension base="os:LinuxLocalGroup">
+				<attribute name="GroupId" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aixOperatingSystem" substitutionGroup="core:capability" type="os:AIXOperatingSystem" />
+	<complexType name="AIXOperatingSystem">
+		<complexContent>
+			<extension base="os:OperatingSystem">
+				<attribute name="Owner" type="string" />
+				<attribute name="InstallDate" type="string" />
+				<attribute name="LastBootUpTime" type="string" />
+				<attribute name="Desktop" type="os:AIXDesktopType" />
+				<attribute name="Kernel" type="os:KernelWidthType" />
+				<attribute name="TCB" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aixLocalService" substitutionGroup="core:capability" type="os:AIXLocalService" />
+	<complexType name="AIXLocalService">
+		<complexContent>
+			<extension base="core:Capability">
+				<!--  "AIX Local Service" is default -->
+				<attribute name="ServiceDescription" type="string" />
+				<attribute name="ExecutablePath" type="string" />
+				<!-- Parameter that informs the init command how to process specyfied command. -->
+				<attribute name="ActionType" type="string" />
+				<attribute name="StartupRunLevelZero" type="boolean" />
+				<attribute name="StartupRunLevelOne" type="boolean" />
+				<attribute name="StartupRunLevelTwo" type="boolean" />
+				<attribute name="StartupRunLevelThree" type="boolean" />
+				<attribute name="StartupRunLevelFour" type="boolean" />
+				<attribute name="StartupRunLevelFive" type="boolean" />
+				<attribute name="StartupRunLevelSix" type="boolean" />
+				<attribute name="StartupRunLevelSeven" type="boolean" />
+				<attribute name="StartupRunLevelEight" type="boolean" />
+				<attribute name="StartupRunLevelNine" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.aixLocalUser" substitutionGroup="core:capability" type="os:AIXLocalUser" />
+	<complexType name="AIXLocalUser">
+		<complexContent>
+			<extension base="os:User">
+				<attribute name="UserName" type="string" />
+				<attribute name="FullName" type="string" />
+				<!-- "AIX Local User"  -->
+				<attribute name="AccountDescription" type="string" />
+				<!-- User must change password at next logon - default false -->
+				<attribute name="ChangePasswordNextLogon" type="boolean" />
+				<!-- User cannot change password - default false -->
+				<attribute name="UserCannotChangePassword" type="boolean" />
+				<!-- Password never expires - default true -->
+				<attribute name="PasswordNeverExpires" type="boolean" />
+				<!-- User cannot log in - default false -->
+				<attribute name="AccountDisabled" type="boolean" />
+				<!-- User shell -->
+				<attribute name="Shell" type="string" />
+				<!-- User home directory -->
+				<attribute name="HomeDir" type="string" />
+
+				<attribute name="UserSid" type="string" />
+				<!-- The administrative status of the user -->
+				<attribute name="IsAdmin" type="boolean" />
+				<!--  This should be a collection of strings... -->
+				<!-- <attribute name="ManagedGroups" type="string" /> -->
+				<attribute name="PrimaryAuthMethod" type="os:AIXAuthMethodType" />
+				<attribute name="SecondaryAuthMethod" type="os:AIXAuthMethodType" />
+				<attribute name="AccountExpirationTime" type="string" />
+				<attribute name="PassReuseNotAllowedInWeeks" type="integer" />
+				<attribute name="NotReusableNumberOfPasswords" type="integer" />
+				<attribute name="LoginPermitted" type="boolean" />
+				<attribute name="LoginTimes" type="integer" />
+				<attribute name="LoginRetries" type="integer" />
+				<!-- The maximum number of weeks a password is valid (0 is equivalent to unlimited) - default 0 -->
+				<attribute name="MaxPasswordAgeInWeeks" type="integer" />
+				<!--   maximum number of weeks after MaxPasswordAgeInWeeks that an expired password can be changed by the user (-1 is equivalent to unlimited) -->
+				<attribute name="MaxPasswordValidWeeks" type="integer" />
+				<!-- Maximum number of times a given character can appear in a password (8 is equivalent to unlimited) -->
+				<attribute name="MaxCharRepeats" type="integer" />
+				<!--  Minimum number of weeks between password changes - Default 0 -->
+				<attribute name="MinPasswordAgeInWeeks" type="integer" />
+				<!-- The minimum number of alphabetic characters in a password - default 0 -->
+				<attribute name="MinAlphaCharsInPassword" type="integer" />
+				<!-- The minimum number of characters in the new password that were not in the old password - default 0 -->
+				<attribute name="MinDiffChars" type="integer" />
+				<!-- The minimum length of the password - default 0  -->
+				<attribute name="MinPasswordLength" type="integer" />
+				<!--  The minumum number of non-alphabetic character in a password - default 0-->
+				<attribute name="MinOtherCharsInPassword" type="integer" />
+				<!--  The number of days before a forced password change that a warning will be given to the user (0 is equivalent to disable this feature) -->
+				<attribute name="PasswordChangeWarnTime" type="integer" />
+				<!-- Where this user is administered -->
+				<attribute name="UserRegisteringMethod" type="os:AIXUserRegisteringMethodType" />
+				<!-- Whether the user account can be accessed by remote logins -->
+				<attribute name="RemoteLoginIsAllowed" type="boolean" />
+				<!-- Whether other users can switch to this user account - default true-->
+				<attribute name="SuIsAllowed" type="boolean" />
+				<!-- Which groups can switch to this user account - default ALL -->
+				<attribute name="SuGroupsAllowed" type="string" />
+				<!--  Last login time -->
+				<attribute name="TimeLastLogin" type="string" />
+				<!-- Number of unsuccessful login attempts -->
+				<attribute name="UsuccessfulLoginCount" type="integer" />
+				<!-- Group membership done with membership links -->
+
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.aixLocalGroup" substitutionGroup="core:capability" type="os:AIXLocalGroup" />
+	<complexType name="AIXLocalGroup">
+		<complexContent>
+			<extension base="os:UserGroup">
+				<attribute name="GroupDescription" type="string" />
+				<!-- Group SID -->
+				<attribute name="GroupSid" type="string" />
+				<!--  GroupMembers done with member links -->
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<!--  Units -->
+	<element name="unit.operatingSystemUnit" substitutionGroup="core:unit" type="os:OperatingSystemUnit" />
+	<complexType name="OperatingSystemUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.windowsOperatingSystemUnit" substitutionGroup="core:unit" type="os:WindowsOperatingSystemUnit" />
+	<complexType name="WindowsOperatingSystemUnit">
+		<complexContent>
+			<extension base="os:OperatingSystemUnit" />
+		</complexContent>
+	</complexType>
+
+
+	<element name="unit.linuxOperatingSystemUnit" substitutionGroup="core:unit" type="os:LinuxOperatingSystemUnit" />
+	<complexType name="LinuxOperatingSystemUnit">
+		<complexContent>
+			<extension base="os:OperatingSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.aixOperatingSystemUnit" substitutionGroup="core:unit" type="os:AIXOperatingSystemUnit" />
+	<complexType name="AIXOperatingSystemUnit">
+		<complexContent>
+			<extension base="os:OperatingSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="unit.user" substitutionGroup="core:unit" type="os:UserUnit" />
+	<complexType name="UserUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.windowsLocalUser" substitutionGroup="core:unit" type="os:WindowsLocalUserUnit" />
+	<complexType name="WindowsLocalUserUnit">
+		<complexContent>
+			<extension base="os:UserUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.linuxLocalUser" substitutionGroup="core:unit" type="os:LinuxLocalUserUnit" />
+	<complexType name="LinuxLocalUserUnit">
+		<complexContent>
+			<extension base="os:UserUnit"></extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="unit.aixLocalUser" substitutionGroup="core:unit" type="os:AIXLocalUserUnit" />
+	<complexType name="AIXLocalUserUnit">
+		<complexContent>
+			<extension base="os:UserUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.userGroup" substitutionGroup="core:unit" type="os:UserGroupUnit" />
+	<complexType name="UserGroupUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.windowsLocalGroup" substitutionGroup="core:unit" type="os:WindowsLocalGroupUnit" />
+	<complexType name="WindowsLocalGroupUnit">
+		<complexContent>
+			<extension base="os:UserGroupUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.linuxLocalGroup" substitutionGroup="core:unit" type="os:LinuxLocalGroupUnit" />
+	<complexType name="LinuxLocalGroupUnit">
+		<complexContent>
+			<extension base="os:UserGroupUnit"></extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="unit.aixLocalGroup" substitutionGroup="core:unit" type="os:AIXLocalGroupUnit" />
+	<complexType name="AIXLocalGroupUnit">
+		<complexContent>
+			<extension base="os:UserGroupUnit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.portConfigUnit" substitutionGroup="core:unit" type="os:PortConfigUnit" />
+	<complexType name="PortConfigUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="unit.windowsLocalServiceUnit" substitutionGroup="core:unit" type="os:WindowsLocalServiceUnit" />
+	<complexType name="WindowsLocalServiceUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.linuxLocalServiceUnit" substitutionGroup="core:unit" type="os:LinuxLocalServiceUnit" />
+	<complexType name="LinuxLocalServiceUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.aixLocalServiceUnit" substitutionGroup="core:unit" type="os:AIXLocalServiceUnit" />
+	<complexType name="AIXLocalServiceUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>
+	</complexType>
+
+	<!--  Types -->
+	<simpleType name="OperatingSystemType">
+		<annotation>
+			<documentation xml:lang="en">
+				This type defines operating system types known to be allowed by TPM Because list is not exclusive, these
+				values are only used during validation.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="AIX" />
+			<enumeration value="Windows-Cygwin" />
+			<enumeration value="HP-UX" />
+			<enumeration value="Linux" />
+			<enumeration value="Solaris" />
+			<enumeration value="Windows" />
+			<enumeration value="OpenMVS" />
+			<enumeration value="i5OperatingSystem" />
+			<enumeration value="MacOS" />
+			<enumeration value="NetWare" />
+			<enumeration value="VMwareESX" />
+			<enumeration value="Darwin" />
+			<enumeration value="Tru64" />
+			<enumeration value="FreeBSD" />
+			<enumeration value="IPSO" />
+			<enumeration value="z/OS" />
+			<enumeration value="z/VM" />
+			<enumeration value="z/Linux" />
+			<enumeration value="" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TCPPortType">
+		<restriction base="core:PortType"></restriction>
+	</simpleType>
+
+	<simpleType name="UDPPortType">
+		<restriction base="core:PortType"></restriction>
+	</simpleType>
+
+	<simpleType name="EncryptionLevelType">
+		<restriction base="string">
+			<enumeration value="40" />
+			<enumeration value="128" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsDirectoryType">
+		<restriction base="string">
+			<enumeration value="WINDOWS" />
+			<enumeration value="WINNT" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsProductTypeType">
+		<restriction base="string">
+			<enumeration value="Work Station" />
+			<enumeration value="Domain Controller" />
+			<enumeration value="Server" />
+			<enumeration value="Other" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RedhatLinuxProductTypeType">
+		<restriction base="string">
+			<enumeration value="Server" />
+			<enumeration value="Personal Desktop" />
+			<enumeration value="Work Station" />
+			<enumeration value="Other" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RedhatLinuxBootLoaderType">
+		<restriction base="string">
+			<enumeration value="GRUB" />
+			<enumeration value="LILO" />
+			<enumeration value="Other" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SUSELinuxBootLoaderType">
+		<restriction base="string">
+			<enumeration value="GRUB" />
+			<enumeration value="LILO" />
+			<enumeration value="Other" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransportLayerProtocolType">
+		<restriction base="string">
+			<enumeration value="TCP" />
+			<enumeration value="UDP" />
+			<enumeration value="DCCP" />
+			<enumeration value="SCTP" />
+			<enumeration value="IL" />
+			<enumeration value="RUDP" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsServiceStatusType">
+		<restriction base="string">
+			<enumeration value="Running" />
+			<enumeration value="Stopped" />
+			<enumeration value="Paused" />
+			<enumeration value="Unknown" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsServiceStartupType">
+		<restriction base="string">
+			<enumeration value="Boot" />
+			<enumeration value="System" />
+			<enumeration value="Automatic" />
+			<enumeration value="Manual" />
+			<enumeration value="Disabled" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LinuxServiceStartupTypeType">
+		<restriction base="string">
+			<enumeration value="Automatic" /><!-- default -->
+			<enumeration value="Boot" />
+			<enumeration value="System" />
+			<enumeration value="Manual" />
+			<enumeration value="Disabled" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SUSELinuxServiceStartupTypeType">
+		<restriction base="string">
+			<enumeration value="Automatic" /><!-- default -->
+			<enumeration value="Boot" />
+			<enumeration value="System" />
+			<enumeration value="Manual" />
+			<enumeration value="Disabled" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RedhatLinuxServiceStartupTypeType">
+		<restriction base="string">
+			<enumeration value="Automatic" /><!-- default -->
+			<enumeration value="Boot" />
+			<enumeration value="System" />
+			<enumeration value="Manual" />
+			<enumeration value="Disabled" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WindowsServiceErrorControlType">
+		<restriction base="string">
+			<enumeration value="Ignore" />
+			<enumeration value="Normal" />
+			<enumeration value="Severe" />
+			<enumeration value="Critical" />
+			<enumeration value="Unknown" />
+		</restriction>
+	</simpleType>
+
+	<!-- Not an exclusive list - these are the common groups -->
+	<simpleType name="DefaultWindowsUserGroups">
+		<restriction base="string">
+			<enumeration value="Administrators" />
+			<enumeration value="Backup Operators" />
+			<enumeration value="Distributed COM Users" />
+			<enumeration value="Guests" />
+			<enumeration value="Network Configuration Operators" />
+			<enumeration value="Power Users" />
+			<enumeration value="Print Operators" />
+			<enumeration value="Remote Desktop Users" />
+			<enumeration value="Replicator" />
+			<enumeration value="Users" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LinuxServiceStatusType">
+		<restriction base="string">
+			<enumeration value="Running" />
+			<enumeration value="Stopped" />
+			<enumeration value="Unknown" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RedhatLinuxServiceStatusType">
+		<restriction base="string">
+			<enumeration value="Running" />
+			<enumeration value="Stopped" />
+			<enumeration value="Unknown" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SUSELinuxServiceStatusType">
+		<restriction base="string">
+			<enumeration value="Running" />
+			<enumeration value="Stopped" />
+			<enumeration value="Unknown" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ArchitectureBusType">
+		<restriction base="string">
+			<enumeration value="32-bit" />
+			<enumeration value="64-bit" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="KernelWidthType">
+		<restriction base="string">
+			<enumeration value="32-bit" />
+			<enumeration value="64-bit" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RedhatDesktopType">
+		<restriction base="string">
+			<enumeration value="GNOME" />
+			<enumeration value="KDE" />
+			<enumeration value="NONE" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SUSEDesktopType">
+		<restriction base="string">
+			<enumeration value="GNOME" />
+			<enumeration value="KDE" />
+			<enumeration value="NONE" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AIXDesktopType">
+		<restriction base="string">
+			<!--  Default value CDE -->
+			<enumeration value="CDE" />
+			<enumeration value="NONE" />
+			<enumeration value="KDE" />
+			<enumeration value="GNOME" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SELinuxStateType">
+		<restriction base="string">
+			<enumeration value="disabled" />
+			<enumeration value="permissive" />
+			<enumeration value="enforcing" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AIXUserRegisteringMethodType">
+		<restriction base="string">
+			<!-- Default -->
+			<enumeration value="files" />
+			<enumeration value="NIS" />
+			<enumeration value="DCE" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AIXAuthMethodType">
+		<restriction base="string">
+			<!-- default -->
+			<enumeration value="SYSTEM" />
+			<enumeration value="NONE" />
+			<enumeration value="token;username" />
+		</restriction>
+	</simpleType>
+
+	<!-- FileSystem model (Capability and Unit types) -->
+	<element name="capability.fileSystem" substitutionGroup="core:capability" type="os:FileSystem" />
+	<complexType name="FileSystem">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="AvailableSpace" type="long" />
+				<attribute name="MountPoint" type="string" />
+				<attribute name="Capacity" type="long" />
+				<attribute name="Type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemUnit" substitutionGroup="core:unit" type="os:FileSystemUnit" />
+	<complexType name="FileSystemUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.remoteFileSystem" substitutionGroup="core:capability" type="os:RemoteFileSystem" />
+	<complexType name="RemoteFileSystem">
+		<complexContent>
+			<extension base="os:FileSystem">
+				<attribute name="ServerName" type="string" />
+				<attribute name="ExportName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.remoteFileSystemUnit" substitutionGroup="core:unit" type="os:RemoteFileSystemUnit" />
+	<complexType name="RemoteFileSystemUnit">
+		<complexContent>
+			<extension base="os:FileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.localFileSystem" substitutionGroup="core:capability" type="os:LocalFileSystem" />
+	<complexType name="LocalFileSystem">
+		<complexContent>
+			<extension base="os:FileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.localFileSystemUnit" substitutionGroup="core:unit" type="os:LocalFileSystemUnit" />
+	<complexType name="LocalFileSystemUnit">
+		<complexContent>
+			<extension base="os:FileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.unixFileSystem" substitutionGroup="core:capability" type="os:UnixFileSystem" />
+	<complexType name="UnixFileSystem">
+		<complexContent>
+			<extension base="os:LocalFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.unixFileSystemUnit" substitutionGroup="core:unit" type="os:UnixFileSystemUnit" />
+	<complexType name="UnixFileSystemUnit">
+		<complexContent>
+			<extension base="os:LocalFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<!-- This is included because it is in CDM -->
+	<element name="capability.solarisFileSystem" substitutionGroup="core:capability" type="os:SolarisFileSystem" />
+	<complexType name="SolarisFileSystem">
+		<complexContent>
+			<extension base="os:UnixFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.solarisFileSystemUnit" substitutionGroup="core:unit" type="os:SolarisFileSystemUnit" />
+	<complexType name="SolarisFileSystemUnit">
+		<complexContent>
+			<extension base="os:UnixFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.windowsFileSystem" substitutionGroup="core:capability" type="os:WindowsFileSystem" />
+	<complexType name="WindowsFileSystem">
+		<complexContent>
+			<extension base="os:LocalFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.windowsFileSystemUnit" substitutionGroup="core:unit" type="os:WindowsFileSystemUnit" />
+	<complexType name="WindowsFileSystemUnit">
+		<complexContent>
+			<extension base="os:LocalFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sMBFileSystem" substitutionGroup="core:capability" type="os:SMBFileSystem" />
+	<complexType name="SMBFileSystem">
+		<complexContent>
+			<extension base="os:RemoteFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sMBFileSystemUnit" substitutionGroup="core:unit" type="os:SMBFileSystemUnit" />
+	<complexType name="SMBFileSystemUnit">
+		<complexContent>
+			<extension base="os:RemoteFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.nFSFileSystem" substitutionGroup="core:capability" type="os:NFSFileSystem" />
+	<complexType name="NFSFileSystem">
+		<complexContent>
+			<extension base="os:RemoteFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.nFSFileSystemUnit" substitutionGroup="core:unit" type="os:NFSFileSystemUnit" />
+	<complexType name="NFSFileSystemUnit">
+		<complexContent>
+			<extension base="os:RemoteFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<!-- This is included because it is in CDM -->
+	<element name="capability.openVmsFileSystem" substitutionGroup="core:capability" type="os:OpenVmsFileSystem" />
+	<complexType name="OpenVmsFileSystem">
+		<complexContent>
+			<extension base="os:LocalFileSystem"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.openVmsFileSystemUnit" substitutionGroup="core:unit" type="os:OpenVmsFileSystemUnit" />
+	<complexType name="OpenVmsFileSystemUnit">
+		<complexContent>
+			<extension base="os:LocalFileSystemUnit" />
+		</complexContent>
+	</complexType>
+
+	<!-- FileSystemContent model (Capability and Unit types) -->
+
+	<element name="capability.fileSystemContent" substitutionGroup="core:capability" type="os:FileSystemContent" />
+	<complexType name="FileSystemContent">
+		<complexContent>
+			<extension base="core:Capability">
+				<!-- URI and FixedPath are from CDM LogicalContent -->
+				<attribute name="URI" type="string" />
+				<attribute name="FixedPath" type="string" />
+				<attribute name="Size" type="long" />
+				<attribute name="Group" type="string" />
+				<attribute name="Permissions" type="string" />
+				<attribute name="LastModified" type="long" />
+				<attribute name="Owner" type="string" />
+				<attribute name="RealFile" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fileSystemContentUnit" substitutionGroup="core:unit" type="os:FileSystemContentUnit" />
+	<complexType name="FileSystemContentUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.dataFile" substitutionGroup="core:capability" type="os:DataFile" />
+	<complexType name="DataFile">
+		<complexContent>
+			<extension base="os:FileSystemContent"></extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.dataFileUnit" substitutionGroup="core:unit" type="os:DataFileUnit" />
+	<complexType name="DataFileUnit">
+		<complexContent>
+			<extension base="os:FileSystemContentUnit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.directory" substitutionGroup="core:capability" type="os:Directory" />
+	<complexType name="Directory">
+		<complexContent>
+			<extension base="os:FileSystemContent">
+				<!-- Use FixedPath on FileSystemContent instead -->
+				<attribute name="directoryPath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.directoryUnit" substitutionGroup="core:unit" type="os:DirectoryUnit" />
+	<complexType name="DirectoryUnit">
+		<complexContent>
+			<extension base="os:FileSystemContentUnit" />
+		</complexContent>
+	</complexType>
+
+</schema>

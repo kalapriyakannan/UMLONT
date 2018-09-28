@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/meta/CmdbMeta.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/meta/SimilarRule.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/meta/ObjectAttribute.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/meta/DisplayNameRule.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/meta/NamingRule.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.meta.ObjectClass">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.meta.CmdbMeta">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="persistable" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="baseClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="topLevel" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="displayString" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="namingRules" type="coll:com.collation.platform.model.topology.meta.NamingRule" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="similarRules" type="coll:com.collation.platform.model.topology.meta.SimilarRule" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="displayNameRule" type="coll:com.collation.platform.model.topology.meta.DisplayNameRule" nillable="true" minOccurs="0"/>
+          <xsd:element name="objectAttributes" type="coll:com.collation.platform.model.topology.meta.ObjectAttribute" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="lastModified" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="table" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

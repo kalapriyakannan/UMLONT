@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:wasdb2="http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/" description="Created on Sat 2007.05.26 at 01:19:16 PM EDT" displayName="PBW" name="PBW" decoratorSemantic="com.ibm.ccl.soa.deploy.core.tdds" namespace="com.acme.pbw">
+  <j2eeDeploy:component.ear displayName="PlantsByWebSphere" name="EarModule0" conceptual="false" initInstallState="not_installed" publishIntent="publish">
+    <core:annotation context="environment_wtp">
+      <core:detail key="archive_uri" value="C:\runtime-New_configuration\plantsbywebsphere\PlantsByWebSphere.ear"/>
+      <core:detail key="module_type" value="jst.ear"/>
+    </core:annotation>
+    <core:artifact.file name="PlantsByWebSphere">
+      <core:fileURI>platform:/resource/plantsbywebsphere/PlantsByWebSphere.ear</core:fileURI>
+    </core:artifact.file>
+    <j2eeDeploy:capability.j2eeSecurityRole description="Samples Administrator" name="SampAdmin" role="SampAdmin"/>
+    <j2eeDeploy:capability.earModule displayName="PlantsByWebSphere" mutable="true" name="PlantsByWebSphere0" linkType="dependency" id="PlantsByWebSphere_ear" version="1.0"/>
+    <core:requirement displayName="Application Client Components" name="ContainedAppClientComponents" dmoType="j2eeDeploy:AppClient" linkType="member" use="required">
+      <core:req_expr name="OutCardinality" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="EJB Components" name="ContainedEjbComponents" dmoType="j2eeDeploy:EjbModule" linkType="member" use="required">
+      <core:req_expr name="OutCardinality" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Web Components" name="ContainedWebComponents" dmoType="j2eeDeploy:WebModule" linkType="member" use="required">
+      <core:req_expr name="OutCardinality" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="JCA Connector Components" name="ContainedJCAComponents" dmoType="j2eeDeploy:JCAModule" linkType="member" use="required">
+      <core:req_expr name="OutCardinality" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Utility Jar Components" name="ContainedUtilityJarComponents" dmoType="j2eeDeploy:JarModule" linkType="member" use="required">
+      <core:req_expr name="OutCardinality" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="j2eeService_13" name="j2eeService_13" dmoType="j2eeDeploy:J2EEContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="1.3"/>
+    </core:requirement>
+    <core:requirement displayName="PlantsByWebSphereEJB" mutable="true" name="PlantsByWebSphereEJB" dmoType="core:BundleCapability" linkType="dependency">
+      <core:req_expr name="Equals id" attributeName="id" interpreter="Equals" use="required" value="PlantsByWebSphereEJB_jar"/>
+      <core:req_expr name="GreaterThanEquals version" attributeName="version" interpreter="GreaterThanEquals" use="required" value="1.0"/>
+      <core:req_expr name="LessThan version" attributeName="version" interpreter="LessThan" use="required" value="2.0"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/PlantsByWebSphereEJB0"/>
+    </core:requirement>
+    <core:requirement displayName="PlantsGallery" mutable="true" name="PlantsGallery" dmoType="core:BundleCapability" linkType="dependency">
+      <core:req_expr name="Equals id" attributeName="id" interpreter="Equals" use="required" value="PlantsGallery_war"/>
+      <core:req_expr name="GreaterThanEquals version" attributeName="version" interpreter="GreaterThanEquals" use="required" value="1.0"/>
+      <core:req_expr name="LessThan version" attributeName="version" interpreter="LessThan" use="required" value="2.0"/>
+      <core:link.dependency name="DependencyLink0" target="/WebModule0/PlantsGallery0"/>
+    </core:requirement>
+    <core:requirement displayName="PlantsByWebSphere_WEB" mutable="true" name="PlantsByWebSphere_WEB" dmoType="core:BundleCapability" linkType="dependency">
+      <core:req_expr name="Equals id" attributeName="id" interpreter="Equals" use="required" value="PlantsByWebSphere_WEB_war"/>
+      <core:req_expr name="GreaterThanEquals version" attributeName="version" interpreter="GreaterThanEquals" use="required" value="1.0"/>
+      <core:req_expr name="LessThan version" attributeName="version" interpreter="LessThan" use="required" value="2.0"/>
+      <core:link.dependency name="DependencyLink0" target="/JarModule0/PlantsByWebSphere_WEB0"/>
+    </core:requirement>
+    <core:requirement displayName="PlantsByWebSphereClient" mutable="true" name="PlantsByWebSphereClient" dmoType="core:BundleCapability" linkType="dependency">
+      <core:req_expr name="Equals id" attributeName="id" interpreter="Equals" use="required" value="PlantsByWebSphereClient_jar"/>
+      <core:req_expr name="GreaterThanEquals version" attributeName="version" interpreter="GreaterThanEquals" use="required" value="1.0"/>
+      <core:req_expr name="LessThan version" attributeName="version" interpreter="LessThan" use="required" value="2.0"/>
+      <core:link.dependency name="DependencyLink0" target="/AppClient0/PlantsByWebSphereClient0"/>
+    </core:requirement>
+    <core:link.member name="MemberLink0" source="/EarModule0" target="/WebModule0"/>
+    <core:link.member name="MemberLink1" source="/EarModule0" target="/EjbModule0"/>
+    <core:link.member name="MemberLink2" source="/EarModule0" target="/JarModule0"/>
+    <core:link.member name="MemberLink3" source="/EarModule0" target="/AppClient0"/>
+  </j2eeDeploy:component.ear>
+  <j2eeDeploy:component.web displayName="PlantsGallery" name="WebModule0" initInstallState="not_installed">
+    <core:annotation context="environment_wtp">
+      <core:detail key="archive_uri" value="PlantsGallery.war"/>
+      <core:detail key="module_type" value="jst.web"/>
+    </core:annotation>
+    <j2eeDeploy:capability.webModule displayName="PlantsGallery" mutable="true" name="PlantsGallery0" linkType="dependency" id="PlantsGallery_war" version="1.0"/>
+    <core:requirement displayName="jspService_11" name="jspService_11" dmoType="j2eeDeploy:JSPContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="1.1"/>
+    </core:requirement>
+    <core:requirement displayName="servletService_22" name="servletService_22" dmoType="j2eeDeploy:ServletContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="2.2"/>
+    </core:requirement>
+  </j2eeDeploy:component.web>
+  <j2eeDeploy:component.ejb displayName="PlantsByWebSphereEJB" name="EjbModule0" initInstallState="not_installed">
+    <core:annotation context="environment_wtp">
+      <core:detail key="archive_uri" value="PlantsByWebSphereEJB.jar"/>
+      <core:detail key="module_type" value="jst.ejb"/>
+    </core:annotation>
+    <j2eeDeploy:service.entity description="Customer entity bean" displayName="Customer" name="Customer" protocol="RMI" version="2.0" ejbName="Customer" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Customer"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.CustomerHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.entity description="Inventory entity bean" displayName="Inventory" name="Inventory" protocol="RMI" version="2.0" ejbName="Inventory" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Inventory"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.InventoryHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.entity description="Order entity bean" displayName="Order" name="Order" protocol="RMI" version="2.0" ejbName="Order" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Order"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.OrderHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.entity description="Order item entity bean" displayName="OrderItem" name="OrderItem" protocol="RMI" version="2.0" ejbName="OrderItem" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.OrderItem"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.OrderItemHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.entity displayName="IdGenerator" name="IdGenerator" protocol="RMI" version="2.0" ejbName="IdGenerator" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.IdGenerator"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.IdGeneratorHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.entity description="Back Order entity bean" displayName="BackOrder" name="BackOrder" protocol="RMI" version="2.0" ejbName="BackOrder" vicinity="local" managed="true">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderLocal"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderLocalHome"/>
+    </j2eeDeploy:service.entity>
+    <j2eeDeploy:service.session description="Bean that creates a new user" displayName="Login Session EJB" name="Login" protocol="RMI" version="2.0" ejbName="Login" vicinity="remote">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Login"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.LoginHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:service.session description="Bean to support a shopping session" displayName="Shopping Cart Session EJB" name="ShoppingCart" protocol="RMI" version="2.0" ejbName="ShoppingCart" vicinity="remote">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.ShoppingCart"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.ShoppingCartHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:service.session description="Bean to interface the store inventory" displayName="Catalog Session EJB" name="Catalog" protocol="RMI" version="2.0" ejbName="Catalog" vicinity="remote">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Catalog"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.CatalogHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:service.session description="Bean to generate reports" displayName="Report Generator Session EJB" name="ReportGenerator" protocol="RMI" version="2.0" ejbName="ReportGenerator" vicinity="remote">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.ReportGenerator"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.ReportGeneratorHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:service.session description="Bean to interface mail" displayName="Mailer Session EJB" name="Mailer" protocol="RMI" version="2.0" ejbName="Mailer" vicinity="remote">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Mailer"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.MailerHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:service.session displayName="Back Order Stock Session EJB" name="BackOrderStock" protocol="RMI" version="2.0" ejbName="BackOrderStock" vicinity="local">
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderStockLocal"/>
+      <j2eeDeploy:homeInterface interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderStockLocalHome"/>
+    </j2eeDeploy:service.session>
+    <j2eeDeploy:capability.j2eeSecurityRole description="Samples Administrator" name="SampAdmin" role="SampAdmin"/>
+    <j2eeDeploy:capability.ejbModule displayName="PlantsByWebSphereEJB" mutable="true" name="PlantsByWebSphereEJB0" linkType="dependency" id="PlantsByWebSphereEJB_jar" version="1.0"/>
+    <core:requirement displayName="plantsby_PlantsByWebSphereDataSource" name="plantsby_PlantsByWebSphereDataSource" dmoType="j2eeDeploy:J2EEDatasource" linkType="dependency">
+      <core:req_expr name="Equals jndiName" attributeName="jndiName" interpreter="Equals" use="required" value="plantsby/PlantsByWebSphereDataSource"/>
+    </core:requirement>
+    <core:reference displayName="logical_plantsby/PlantsByWebSphereDataSource" name="Requirement" dmoType="database:DatabaseDefinition" use="optional"/>
+    <core:requirement displayName="jdbc_PlantsByWebSphere EJB Module" name="jdbc_PlantsByWebSphere EJB Module" dmoType="j2eeDeploy:J2EEDatasource" linkType="dependency">
+      <core:req_expr name="Equals jndiName" attributeName="jndiName" interpreter="Equals" use="required" value="jdbc/PlantsByWebSphere EJB Module"/>
+      <core:req_expr name="Equals usedForCmp" attributeName="usedForCmp" interpreter="Equals" use="required" value="true"/>
+    </core:requirement>
+    <core:reference displayName="logical_jdbc/PlantsByWebSphere EJB Module" name="Requirement0" dmoType="database:DatabaseDefinition" use="optional"/>
+    <core:reference displayName="ejb_Customer" name="ejb_Customer" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/Customer"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Customer"/>
+    </core:reference>
+    <core:reference displayName="ejb_IdGenerator" name="ejb_IdGenerator" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="IdGenerator"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/IdGenerator"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.IdGenerator"/>
+    </core:reference>
+    <core:reference displayName="ejb_Inventory" name="ejb_Inventory" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="Inventory"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/Inventory"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Inventory"/>
+    </core:reference>
+    <core:reference displayName="ejb_BackOrder" name="ejb_BackOrder" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="BackOrder"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/BackOrder"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderLocal"/>
+    </core:reference>
+    <core:reference displayName="ejb_Order" name="ejb_Order" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/Order"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Order"/>
+    </core:reference>
+    <core:reference displayName="ejb_OrderItem" name="ejb_OrderItem" dmoType="j2eeDeploy:EntityService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="local"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="OrderItem"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/OrderItem"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.OrderItem"/>
+    </core:reference>
+    <core:reference displayName="ejb_BackOrderStock" name="ejb_BackOrderStock" dmoType="j2eeDeploy:SessionService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="remote"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="BackOrderStock"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderStock"/>
+    </core:reference>
+    <core:requirement displayName="ejbService_20" name="ejbService_20" dmoType="j2eeDeploy:EJBContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="2.0"/>
+    </core:requirement>
+    <core:requirement displayName="j2eeService_13" name="j2eeService_13" dmoType="j2eeDeploy:J2EEContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="1.3"/>
+    </core:requirement>
+    <core:link.constraint name="LogicalLink0" source="/EjbModule0/Requirement0" target="/DatabaseComponent0/plantsbywebsphere.ddl">
+          <wasdb2:constraint.datasourceSatisfaction name="c0"/>
+    </core:link.constraint>
+    <core:link.constraint name="LogicalLink1" source="/EjbModule0/Requirement" target="/DatabaseComponent0/plantsbywebsphere.ddl">
+          <wasdb2:constraint.datasourceSatisfaction name="c0"/>
+    </core:link.constraint>
+    <core:link.constraint name="ConstraintLink0" source="/EjbModule0/jdbc_PlantsByWebSphere EJB Module" target="/DB2Database/DB2 Database">
+          <wasdb2:constraint.datasourceSatisfaction name="c0"/>
+    </core:link.constraint>
+    <core:link.constraint name="ConstraintLink1" source="/EjbModule0/plantsby_PlantsByWebSphereDataSource" target="/DB2Database/DB2 Database">
+          <wasdb2:constraint.datasourceSatisfaction name="c0"/>
+    </core:link.constraint>
+  </j2eeDeploy:component.ejb>
+  <j2eeDeploy:component.jar displayName="PlantsByWebSphere_WEB" name="JarModule0" initInstallState="not_installed">
+    <core:annotation context="environment_wtp">
+      <core:detail key="archive_uri" value="PlantsByWebSphere_WEB.war"/>
+      <core:detail key="module_type" value="jst.java"/>
+    </core:annotation>
+    <j2eeDeploy:capability.jarModule displayName="PlantsByWebSphere_WEB" mutable="true" name="PlantsByWebSphere_WEB0" linkType="dependency" id="PlantsByWebSphere_WEB_war" version="1.0"/>
+    <core:requirement displayName="JRE_1_5" mutable="true" name="JRE_1_5" dmoType="javaDeploy:JRE" linkType="dependency">
+      <core:req_expr name="GreaterThanEquals jreVersion" attributeName="jreVersion" interpreter="GreaterThanEquals" use="required" value="1.5"/>
+    </core:requirement>
+  </j2eeDeploy:component.jar>
+  <j2eeDeploy:unit.appClient displayName="PlantsByWebSphereClient" name="AppClient0" initInstallState="not_installed">
+    <core:annotation context="environment_wtp">
+      <core:detail key="archive_uri" value="PlantsByWebSphereClient.jar"/>
+      <core:detail key="module_type" value="jst.appclient"/>
+    </core:annotation>
+    <core:capability.bundle displayName="PlantsByWebSphereClient" mutable="true" name="PlantsByWebSphereClient0" linkType="dependency" id="PlantsByWebSphereClient_jar" version="1.0"/>
+    <core:reference displayName="ejb_ReportGenerator" name="ejb_ReportGenerator" dmoType="j2eeDeploy:SessionService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="remote"/>
+      <core:req_expr name="Equals ejbName" attributeName="ejbName" interpreter="Equals" use="required" value="ReportGenerator"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/ReportGenerator"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.ReportGenerator"/>
+    </core:reference>
+    <core:reference displayName="ejb_Catalog" name="ejb_Catalog" dmoType="j2eeDeploy:SessionService" linkType="dependency">
+      <core:req_expr name="Equals vicinity" attributeName="vicinity" interpreter="Equals" use="required" value="remote"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/Catalog"/>
+      <j2eeDeploy:interface.java interface="com.ibm.websphere.samples.plantsbywebsphereejb.Catalog"/>
+    </core:reference>
+    <core:requirement displayName="j2eeService_13" name="j2eeService_13" dmoType="j2eeDeploy:J2EEContainer" linkType="hosting">
+      <core:req_expr name="GreaterThanEquals containerVersion" attributeName="containerVersion" interpreter="GreaterThanEquals" use="required" value="1.3"/>
+    </core:requirement>
+    <core:requirement displayName="PlantsByWebSphereEJB" mutable="true" name="PlantsByWebSphereEJB" dmoType="core:BundleCapability" linkType="dependency">
+      <core:req_expr name="Equals id" attributeName="id" interpreter="Equals" use="required" value="PlantsByWebSphereEJB_jar"/>
+      <core:req_expr name="GreaterThanEquals version" attributeName="version" interpreter="GreaterThanEquals" use="required" value="1.0"/>
+      <core:req_expr name="LessThan version" attributeName="version" interpreter="LessThan" use="required" value="2.0"/>
+      <core:link.dependency name="DependencyLink0" target="/EjbModule0/PlantsByWebSphereEJB0"/>
+    </core:requirement>
+  </j2eeDeploy:unit.appClient>
+  <database:component.database displayName="plantsbywebsphere" name="DatabaseComponent0" conceptual="false" initInstallState="not_installed" publishIntent="publish">
+    <core:annotation context="environment_wtp">
+      <core:detail key="module_type" value="ddl"/>
+      <core:detail key="runtime_id" value="/plantsbywebsphere/plantsbywebsphere.ddl"/>
+    </core:annotation>
+    <database:artifact.ddl displayName="plantsbywebsphere" name="plantsbywebsphere">
+      <core:fileURI>/plantsbywebsphere/plantsbywebsphere.ddl</core:fileURI>
+    </database:artifact.ddl>
+    <database:service.databaseDefinition displayName="plantsbywebsphere.ddl" name="plantsbywebsphere.ddl">
+      <database:interface.ddl schemaUri="/plantsbywebsphere/plantsbywebsphere.ddl"/>
+    </database:service.databaseDefinition>
+    <core:requirement name="Required Database Hosting" dmoType="database:Database" linkType="hosting"/>
+  </database:component.database>
+  <db2Deploy:unit.db2DatabaseUnit name="DB2Database" conceptual="true">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <core:req_expr displayName="db2Version" name="db2Version" attributeName="db2Version" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="HostingLink0" target="/DatabaseComponent0"/>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <core:contract.explicit displayName="Make All Units Public By Default" name="ExplicitContract0" defaultConceptualPolicy="public" defaultPolicy="public"/>
+</core:topology>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+	xmlns:http="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="HTTPDeployRoot"
+	ecore:name="http" ecore:package="com.ibm.ccl.soa.deploy.http"
+	ecore:nsPrefix="http">
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+
+	<!-- Unit types -->
+	<element name="unit.httpUserUnit" substitutionGroup="core:unit" type="http:HttpUserUnit" abstract="true" />
+	<complexType name="HttpUserUnit" abstract="true" >
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+ 	<element name="unit.httpServerUnit" substitutionGroup="core:unit" type="http:HttpServerUnit"/>
+	<complexType name="HttpServerUnit" >
+		<annotation>
+			<documentation>
+				Unit representation of an HTTP Server.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="component.staticWeb" substitutionGroup="core:unit" type="http:StaticWebComponentUnit" />
+	<complexType name="StaticWebComponentUnit" >
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:SoftwareComponent"/>
+		</complexContent>
+	</complexType>
+	
+<!-- Capability types -->
+
+	<element name="capability.httpServer"
+		substitutionGroup="core:capability" type="http:HttpServer" />
+	<complexType name="HttpServer" >
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >							
+			</extension>
+		</complexContent>
+	</complexType>		
+	
+	<element name="capability.staticWebComponent"
+		substitutionGroup="core:capability" type="http:StaticWebComponent" />
+	<complexType name="StaticWebComponent" >
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:BundleCapability" >							
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+
+	<element name="capability.httpUser"
+		substitutionGroup="core:capability" type="http:HttpUser" />
+	<complexType name="HttpUser" >
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >
+				<attribute name="userId" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="userPassword" type="string">  	
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>						
+			</extension>
+		</complexContent>
+	</complexType>	
+</schema>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DirectoryAssistance.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.DirectoryInfo">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.lotus.DominoServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryAssistanceDatabaseName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="allowAsRemoteDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="nameOfCondensedDirectoryCatalog" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryAssistance" type="coll:com.collation.platform.model.topology.app.lotus.DirectoryAssistance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

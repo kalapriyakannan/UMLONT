@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:uml="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/" 
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:analysis="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+	name="UML Topology">
+  <uml:unit.umlActorUnit name="UMLActor" displayName="UMLActor" conceptual="true">  
+	  <uml:capability.umlActor name="UMLActorCapability" displayName="UML Actor Capability"  umlVisibilityKind="public" linkType="any"/>
+	  <core:requirement name="LocationMem" displayName="Location Group Req" dmoType="analysis:LocationUnit" linkType="member" use="optional">
+		<constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+      </core:requirement>
+  </uml:unit.umlActorUnit>
+</core:topology>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.core/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.core/src" modelPluginID="com.ibm.ccl.soa.deploy.core"
+    modelName="Genericsoftware" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="../core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../../schemas/genericsoftware/genericsoftware.xsd</foreignModel>
+  <genPackages prefix="Genericsoftware" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="genericsoftware.ecore#/">
+    <genClasses ecoreClass="genericsoftware.ecore#//GenericsoftwareRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//GenericsoftwareRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/capabilitySoftwareInstall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/capabilitySoftwarePatch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/capabilityVersion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/unitSoftwareInstallUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference genericsoftware.ecore#//GenericsoftwareRoot/unitSoftwarePatchUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="genericsoftware.ecore#//SoftwareInstall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/executableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/installDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/installedLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/productId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwareInstall/publisher"/>
+    </genClasses>
+    <genClasses ecoreClass="genericsoftware.ecore#//SoftwareInstallUnit"/>
+    <genClasses ecoreClass="genericsoftware.ecore#//SoftwarePatch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwarePatch/installDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//SoftwarePatch/patchID"/>
+    </genClasses>
+    <genClasses ecoreClass="genericsoftware.ecore#//SoftwarePatchUnit"/>
+    <genClasses ecoreClass="genericsoftware.ecore#//Version">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute genericsoftware.ecore#//Version/versionString"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

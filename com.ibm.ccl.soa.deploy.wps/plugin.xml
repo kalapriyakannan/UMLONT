@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/wps/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.wps.provider.WpsItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/wps/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.wps.WpsPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="wps"
+       class="com.ibm.ccl.soa.deploy.wps.util.WpsResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.wps.domain"
+       name="%extension.wpsDomain"
+       targetNamespace="http://www.ibm.com/Zephyr/wps/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.wps.internal.validator.WpsDomainValidator"/>
+       <resourceType
+             id="wps.BPEContainer.conceptual"
+             name="BPEContainer"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/BPEContainerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsBPEContainerTool.Description"
+             label="%wpsBPEContainerTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.BPEContainer.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.BusinessRulesManager.conceptual"
+             name="BusinessRulesManager"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/BusinessRulesManagerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsBusinessRulesManagerTool.Description"
+             label="%wpsBusinessRulesManagerTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.BusinessRulesManager.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.ESB.conceptual"
+             name="ESB"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/ESBC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsESBTool.Description"
+             label="%wpsESBTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.ESB.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.SIB.conceptual"
+             name="SIB"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/SIBC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsSIBTool.Description"
+             label="%wpsSIBTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.SIB.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.TaskContainer.conceptual"
+             name="TaskContainer"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/TaskContainerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsTaskContainerTool.Description"
+             label="%wpsTaskContainerTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.TaskContainer.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.WpsBaseSystem.conceptual"
+             name="WpsBaseSystem"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/WpsBaseSystemC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsWpsBaseSystemTool.Description"
+             label="%wpsWpsBaseSystemTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.WpsBaseSystem.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.WPSCommonEventInfrastructure.conceptual"
+             name="WPSCommonEventInfrastructure"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/WPSCommonEventInfrastructureC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsWPSCommonEventInfrastructureTool.Description"
+             label="%wpsWPSCommonEventInfrastructureTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.WPSCommonEventInfrastructure.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="wps.WpsSystem.conceptual"
+             name="WpsSystem"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.wps/templates/WpsSystemC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%wpsWpsSystemTool.Description"
+             label="%wpsWpsSystemTool.Label"
+             path="/serverSoftwareDrawer/wpsStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="wps.WpsSystem.conceptual">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

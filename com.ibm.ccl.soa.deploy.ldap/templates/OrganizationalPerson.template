@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ldap="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	description="Created on Tuesday, April 29, 2008 4:31:28 PM EDT"
+	displayName="OrganizationalPerson" name="OrganizationalPerson">
+
+	<ldap:ldapEntryUnit name="LdapEntry" configurationUnit="true"  displayName="Organizational Person">
+ 
+
+		<ldap:ldap.organizationalPerson name="OrganizationalPerson0"
+			linkType="dependency"  displayName="Organizational Person" />
+
+		<core:requirement name="Parent" linkType="hosting">
+			<constraint:constraint.or name="either">
+				<constraint:constraint.type name="entry" dmoType="ldap:LdapEntry" />
+				<constraint:constraint.type name="server" dmoType="ldap:LdapServer" />
+			</constraint:constraint.or>
+		</core:requirement>
+
+	</ldap:ldapEntryUnit>
+
+</core:topology>

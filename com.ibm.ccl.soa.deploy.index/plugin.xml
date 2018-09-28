@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+	 <extension
+	       point="com.ibm.xtools.emf.index.configurationEntries">
+	    <contentType
+	          class="com.ibm.ccl.soa.deploy.index.internal.emf.index.xml.providers.XMLIndexProviderFactory"
+	          typeIds="com.ibm.ccl.soa.deploy.core.topologyModelContentType">
+	    </contentType>
+     <contentType
+           class="com.ibm.xtools.emf.index.xmi.providers.XMIIndexProviderFactory"
+           typeIds="com.ibm.ccl.soa.deploy.core.ui.topologyDiagramContentType">
+     </contentType>
+	    <structuralFeature
+	          features="DeployModelObject.name, Topology.namespace, DeployLink.sourceURI, DeployLink.targetURI, Import.namespace, Import.pattern, Instantiation.referenced"
+	          nsURI="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+	    </structuralFeature>
+	 </extension>
+
+</plugin>

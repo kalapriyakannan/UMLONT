@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.ibm.com/Zephyr/tds/1.0.0/" 
+elementFormDefault="qualified" 
+    ecore:documentRoot="TDSRoot"
+	ecore:name="tds"
+	ecore:package="com.ibm.ccl.soa.deploy.tds.TdsPackage"
+	ecore:nsPrefix="tds" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tds="http://www.ibm.com/Zephyr/tds/1.0.0/" 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+	
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+
+
+<element name ="unit.tdsBaseSystemUnit" substitutionGroup ="core:unit" type="tds:TdsBaseSystemUnit">
+</element>
+	<complexType name="TdsBaseSystemUnit">
+	<annotation>
+		<documentation>
+			A TDS base system represents the the installation unit of the TDS that can hold an 
+			TDS ServerInstance for accessing and storing user authentication data.
+		</documentation>
+	</annotation>
+	<complexContent>
+		<extension base="core:Unit"/>
+	</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.tdsBaseSystem" substitutionGroup="core:capability" type="tds:TdsBaseSystem">
+	</element>
+	<complexType name ="TdsBaseSystem">
+	<annotation><documentation></documentation></annotation>
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="installLocation" type="string">
+	<annotation>
+	<documentation>
+	</documentation>
+	</annotation>
+	</attribute>
+	<attribute name="version" type="string">
+	<annotation><documentation></documentation></annotation>
+	</attribute>
+	<attribute name="wonderful" type="string">
+	<annotation><documentation></documentation></annotation>
+	</attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+</schema>

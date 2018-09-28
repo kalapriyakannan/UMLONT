@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" elementFormDefault="qualified" ecore:documentRoot="NetRoot"
+	ecore:name="net" ecore:package="com.ibm.ccl.soa.deploy.net" ecore:nsPrefix="net">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+
+	<element name="capability.l2Interface" substitutionGroup="core:capability" type="net:L2Interface" />
+	<complexType name="L2Interface">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="private" type="boolean">
+					<annotation>
+						<documentation>
+							Is this a private interface? Private interfaces can send data but are never exported into
+							routing tables.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="mtu" type="int">
+					<annotation>
+						<documentation>
+							The Maximum Transmission Unit (aka) frame size that the interface supports
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="index" type="int">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="speed" type="long">
+					<annotation>
+						<documentation>Speed the interface is running on in bits/s.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="autoNegotiation" type="boolean">
+					<annotation>
+						<documentation>802.3 autonegotation setting for ethernet interfaces.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="duplex" type="net:DuplexType">
+					<annotation>
+						<documentation>Enumeration - HalfDuplex, FullDuplex</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="promiscuous" type="boolean">
+					<annotation>
+						<documentation>Is the interface in promiscuous mode?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="encapsulation" type="string">
+					<annotation>
+						<documentation>Interface encapsulation (e.g. ethernet, loopback etc...)</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="hwAddress" type="string">
+					<annotation>
+						<documentation>Hardware address e.g. MAC address</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="broadcast" type="boolean">
+					<annotation>
+						<documentation>Is the interface capable of broadcasting frames or not?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="loopback" type="boolean">
+					<annotation>
+						<documentation>Is this a loopback interface?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="l2InterfaceName" type="string">
+					<annotation>
+						<documentation>
+							Name of the interface. This can vary depending on the Operating System and how the data is
+							collected. SNMP - This field corresponds to the ifName Windows - This attribute corresponds
+							to the "Name" column on the Network Connections panel. The "Device Name" column should not
+							be used since a Computer System may have more than one adapter with the same Device Name.
+							The "Name" column is globally unique. For Unix based systems this atttribute corresponds to
+							the ifConfig value. It should be something like en0.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.l2InterfaceUnit" substitutionGroup="core:unit" type="net:L2InterfaceUnit" />
+	<complexType name="L2InterfaceUnit">
+		<annotation>
+			<documentation xml:lang="en">
+				In CDM, the L2Interface is contained by the computer system. This relationship maps to hosting on a
+				ServerUnit/ComputerSystemUnit. The L2InterfaceUnit should be a configuration unit
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.ipInterface" substitutionGroup="core:capability" type="net:IpInterface" />
+	<complexType name="IpInterface">
+		<complexContent>
+			<extension base="core:Capability">
+				<!-- <attribute name="PortList" type="string" /> -->
+				<attribute name="ipV4Address" type="string">
+					<annotation>
+						<documentation>
+							The IPv4 address string, in IPV4 Dot notation.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="ipV6Address" type="string">
+					<annotation>
+						<documentation>
+							The IPv6 address string, in IpV6 , in the format specified by the ipv6NotationType attribute, or IPv6 Colon Notation by default.
+						</documentation>
+					</annotation>
+				</attribute>				
+				<attribute name="ipv6NotationType" type="net:IPv6AddressNotationType">
+					<annotation>
+						<documentation>
+							Enumeration. "IPv6ColonNotation" or "IPv6ByteNotation"
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="netmask" type="string">
+					<annotation>
+						<documentation>The netmask, for example 255.255.255.0, or similar for IPv6</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="subnetAddress" type="string">
+					<annotation>
+						<documentation>The network part e.g. 10.2.3.0, or similar for IPv6</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="l2InterfaceName" type="string">
+					<annotation>
+						<documentation>
+							Name of the associated L2 interface. This can vary depending on the Operating System and how
+							the data is collected. SNMP - This field corresponds to the ifName Windows - This attribute
+							corresponds to the "Name" column on the Network Connections panel. The "Device Name" column
+							should not be used since a Computer System may have more than one adapter with the same
+							Device Name. The "Name" column is globally unique. For Unix based systems this atttribute
+							corresponds to the ifConfig value. It should be something like en0.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="gateway" type="string">
+					<annotation>
+						The default gateway IP address
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.ipInterfaceUnit" substitutionGroup="core:unit" type="net:IpInterfaceUnit" />
+	<complexType name="IpInterfaceUnit">
+		<annotation>
+			<documentation xml:lang="en">
+				In CDM, the IPInterface is contained by the computer system. It should be contained by the
+				OperatingSystem, and this should map to hosting on an OperatingSystemUnit. The IpInterfaceUnit should be
+				a configuration unit
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<simpleType name="IPv6AddressNotationType">
+		<restriction base="string">
+			<enumeration value="IPv6ColonNotation">
+				<annotation>
+					<documentation>
+						e.g. "2001:0db8:0000:0000:0000:0000:1428:57ab" or "2001:db8::1428:57ab"
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="IPv6MixedNotation">
+				<annotation>
+					<documentation>e.g. "E3D7::51F4:9BC8:192.168.100.32"</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DuplexType">
+		<restriction base="string">
+			<enumeration value="HalfDuplex" />
+			<enumeration value="FullDuplex" />
+		</restriction>
+	</simpleType>
+
+</schema>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.46 2008/05/27 14:01:34 mdelder Exp $
+-->
+
+<plugin>
+
+   	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/">
+	        <metamodelType
+                id="j2ee.EjbModule"     
+                name="%EjbModule.Label"
+                icon="icons/full/obj16/EjbModule.gif"
+                eclass="EjbModule"/>  
+	        <metamodelType
+                id="j2ee.EARModule"     
+                name="%EarModule.Label"
+                icon="icons/full/obj16/EarModule.gif"
+                eclass="EarModule"/>
+	        <metamodelType
+                id="j2ee.JCAModule"     
+                name="%JCAModule.Label"
+                icon="icons/full/obj16/JCAModule.gif"
+                eclass="JCAModule"/>
+	        <metamodelType
+                id="j2ee.JarModule"     
+                name="%JarModule.Label"
+                icon="icons/full/obj16/JarModule.gif"
+                eclass="JarModule"/>
+	        <metamodelType
+                id="j2ee.AppClientModule"     
+                name="%AppClientModule.Label"
+                icon="icons/full/obj16/AppClientModule.gif"
+                eclass="AppClient"/>
+	        <metamodelType
+	        	id="web.WebComponentMeta"            
+	            name="%WebComponentMeta.label"
+                icon="icons/pal/WebComponent_16.gif"
+	            eclass="WebModule">
+	        </metamodelType>	            
+           <metamodelType
+                  id="web.WebServiceMeta"     
+                  name="%WebService.Label"
+                  icon="icons/pal/service_web.gif"
+                  eclass="WebService">
+           </metamodelType>           
+           <metamodelType
+                  id="web.URLServiceMeta"     
+                  name="%URLService.Label"
+                  icon="icons/pal/service_url.gif"
+                  eclass="URLService">
+           </metamodelType>
+           <metamodelType
+                 eclass="EntityService"
+                 id="j2ee.EntityServiceMeta"
+                 icon="icons/pal/service_ejb_entity.gif"
+                 name="%EntityService.Label"/>
+           <metamodelType
+                 eclass="SessionService"
+                 id="j2ee.SessionServiceMeta"
+                 icon="icons/pal/service_ejb_session.gif"
+                 name="%SessionService.Label"/>       
+           <metamodelType
+                 eclass="J2EEServerUnit"
+                 id="j2ee.J2EEServerUnitMeta"
+                 icon="icons/obj16/J2Ee-Server.gif"
+                 name="%j2eeServerUnit.Label"/>        
+        </metamodel>
+    </extension>
+
+
+	<!-- Deploy Core View Provider -->
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium"/> 
+         
+         <!-- These class ids are local-package DOT classname -->
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="j2ee.WebModule, j2ee.EarModule, j2ee.EjbModule, j2ee.JCAModule, j2ee.AppClient, j2ee.JarModule, j2ee.GenericWebServer, j2ee.GenericJ2eeServer ">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="component.web, component.ear, component.ejb, component.jar">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>                    
+      </viewProvider>
+   </extension>
+
+
+	<!-- Deploy Core Editpart Provider -->
+  <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.j2ee.ui.providers.J2EEEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+         
+            <!-- The values are epackage dot eclass -->
+            <staticMethod 
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])" 
+            	value="j2ee.WebModule, j2ee.EarModule, j2ee.EjbModule, j2ee.JCAModule, j2ee.AppClient, j2ee.GenericWebServer, j2ee.JarModule ">
+            </staticMethod>
+         </object>         
+         
+         <!-- the values are (usually? always?) semantic hints -->
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="component.web, component.ear, component.ejb, component.jar"/>
+	     </object>
+         <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   </extension>
+   
+   
+   <!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        
+		        	        
+		        <!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+            	<entry 
+            		label="%j2eeConfigurationStack.Label" 
+            		kind="stack" 
+            		description="%j2eeConfigurationStack.Description" 
+            		small_icon="icons/full/obj16/j2ee_mdl_obj.gif" 
+            		path="/configurationDrawer/" 
+            		id="j2eeConfigurationStack">
+            	</entry>
+            	<entry 
+            		label="%j2eeServerStack.Label" 
+            		kind="stack" 
+            		description="%j2eeServerStack.Description" 
+            		small_icon="icons/full/obj16/j2ee_mdl_obj.gif" 
+            		path="/applicationToolDrawer/" 
+            		id="j2eeServers">
+            	</entry>
+            	<entry 
+            		label="%jms.JMSSTack.Label" 
+            		kind="stack" 
+            		description="%jms.JMSSTack.Description" 
+            		small_icon="icons/full/obj16/j2ee_mdl_obj.gif" 
+            		path="/applicationToolDrawer/" 
+            		id="jmsStack">
+            	</entry>		 		        
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+   
+	<!-- SAF interface provider -->
+	<!-- for Java -->
+    <extension 
+   		point="com.ibm.ccl.soa.deploy.saf.ui.uihandlers"
+	   	id="javaUIHandlers" 
+		name="%javaUIHandlersName">
+		<interfaceUIHandler
+          	name="%javaInterfaceUIHandlerName"
+          	description="%javaInterfaceUIHandlerDescription"
+          	kind="interface.java"          	
+          	class="com.ibm.ccl.soa.deploy.j2ee.ui.handlers.JavaInterfaceUIHandler">
+     <enablement>
+        <instanceof
+              value="com.ibm.ccl.soa.deploy.j2ee.JavaInterface">
+        </instanceof>
+     </enablement>          	   	 
+        </interfaceUIHandler>                       	
+    </extension>   		
+
+	<!-- for WSDL -->
+    <extension 
+   		point="com.ibm.ccl.soa.deploy.saf.ui.uihandlers"
+	   	id="javaUIHandlers" 
+		name="%wsdlUIHandlersName">
+		<interfaceUIHandler
+          	name="%wsdlInterfaceUIHandlerName"
+          	description="%wsdlInterfaceUIHandlerDescription"
+          	kind="interface.wsdl"          	
+          	class="com.ibm.ccl.soa.deploy.j2ee.ui.handlers.WSDLInterfaceUIHandler">
+     <enablement>
+        <instanceof
+              value="com.ibm.ccl.soa.deploy.j2ee.WSDLInterface">
+        </instanceof>
+     </enablement>          	   	 
+        </interfaceUIHandler>                       	
+    </extension>   		
+
+	<!-- for URL -->
+    <extension 
+   		point="com.ibm.ccl.soa.deploy.saf.ui.uihandlers"
+	   	id="urlUIHandlers" 
+		name="%urlUIHandlersName">
+		<interfaceUIHandler
+          	name="%urlInterfaceUIHandlerName"
+          	description="%urlInterfaceUIHandlerDescription"
+          	kind="interface.url"          	
+          	class="com.ibm.ccl.soa.deploy.j2ee.ui.handlers.URLInterfaceUIHandler">
+     <enablement>
+        <instanceof
+              value="com.ibm.ccl.soa.deploy.j2ee.URLInterface">
+        </instanceof>
+     </enablement>          	   	 
+        </interfaceUIHandler>                       	
+    </extension>   		
+
+	<!-- for JarModuleCapability -->
+     		
+<!-- Business Application Decorator Semantic -->
+<extension
+         id="com.ibm.ccl.soa.deploy.j2ee.topology"
+         name="%j2eeTopoloyExtensionName"
+         point="com.ibm.ccl.soa.deploy.core.topology">
+	<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+		<paletteEntryContent>
+			<include pattern="web.WebComponent.conceptual"/>
+   <include pattern="j2ee.EARComponent.conceptual"/>
+   <include pattern="j2ee.EJBComponent.conceptual"/>
+   <include pattern="j2ee.UtilityComponent.conceptual"/>
+		</paletteEntryContent>
+	</decoratorSemanticPatternBinding>
+</extension>	
+
+		<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.j2ee"
+            name="%j2eeActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.j2ee"
+            name="%j2eeActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.j2ee"
+            pattern="(?&lt;!.)j2ee\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.j2ee"
+            pattern="(?&lt;!.)j2ee\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.j2ee"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.j2ee"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity
+            ref="com.ibm.rational.deployment.activity.physical.j2ee"
+            match="pattern"/>  
+      <activity
+            ref="com.ibm.rational.deployment.activity.infrastructure.j2ee"
+            match="pattern"/>
+      </extension>
+</plugin>
+

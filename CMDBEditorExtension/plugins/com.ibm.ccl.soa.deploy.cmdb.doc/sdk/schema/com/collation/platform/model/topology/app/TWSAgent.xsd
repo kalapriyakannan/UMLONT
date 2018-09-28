@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/process/Agent.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.TWSAgent">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.process.Agent">
+        <xsd:sequence>
+          <xsd:element name="agentType" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="masterName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentPort" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="domainName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="TWS_ID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="hostAgentName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="accessMethod" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="WebSphereSystemUnit template">
+  <was:unit.wasSystemUnit name="WebSphereNDSystemUnit" displayName="WebSphere 5.1 ND System" conceptual="true">
+    <was:capability.wasSystem name="WebSphereNDSystem" displayName="WebSphere 5.1 System" wasVersion="5.1" wasEdition="Network Deployment" linkType="any">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>    
+    </was:capability.wasSystem>    
+    <core:requirement mutable="true" name="HostsOnOS" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>    
+  </was:unit.wasSystemUnit>
+</core:topology>

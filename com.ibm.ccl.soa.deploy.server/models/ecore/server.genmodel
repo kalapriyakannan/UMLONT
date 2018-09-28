@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.server/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.server/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.server" modelName="Server" nonNLSMarkers="true"
+    rootExtendsInterface="" suppressEMFTypes="true" featureMapWrapperInterface=""
+    codeFormatting="true" importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/server.xsd</foreignModel>
+  <genPackages prefix="Server" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="server.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="server.ecore#//ArchitectureWidthType">
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ArchitectureWidthType/_32Bit"/>
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ArchitectureWidthType/_64Bit"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="server.ecore#//ProcessingCapacityUnitsType">
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ProcessingCapacityUnitsType/Unknown"/>
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ProcessingCapacityUnitsType/Other"/>
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ProcessingCapacityUnitsType/SPECInt"/>
+      <genEnumLiterals ecoreEnumLiteral="server.ecore#//ProcessingCapacityUnitsType/MSU"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="server.ecore#//ArchitectureWidthTypeObject"/>
+    <genDataTypes ecoreDataType="server.ecore#//ProcessingCapacityUnitsTypeObject"/>
+    <genClasses ecoreClass="server.ecore#//Server">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/autoStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuArchitecture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuArchitectureWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuCoresInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuDiesInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuManufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuSpeed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/cpuType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/isVMIDanLPAR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/memorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/primaryMACAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/processingCapacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/processingCapacityUnits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/romVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/serialNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/systemBoardUUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/systemId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/virtual"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//Server/vmid"/>
+    </genClasses>
+    <genClasses ecoreClass="server.ecore#//ServerRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute server.ecore#//ServerRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference server.ecore#//ServerRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference server.ecore#//ServerRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference server.ecore#//ServerRoot/capabilityServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference server.ecore#//ServerRoot/unitServerUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="server.ecore#//ServerUnit"/>
+  </genPackages>
+</genmodel:GenModel>

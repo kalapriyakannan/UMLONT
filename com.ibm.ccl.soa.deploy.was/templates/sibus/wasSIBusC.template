@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"  
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+name="WebSphereSIBusUnit template">
+  <was:unit.wasSIBusUnit displayName="WebSphereSIBusUnit" name="WebSphereSIBusUnit" conceptual="true">
+     <was:capability.wasSIBus name="Service Integration Bus" displayName="Service Integration Bus" linkType="any"/>
+    
+    <core:requirement mutable="true" name="ContainedbyWasCell" displayName="contained by WasCell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    
+    <core:requirement mutable="true" name="Application Server" displayName="Group of Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    
+    <core:requirement mutable="true" name="WebSphere Cluster" displayName="Group of Was Cluster" dmoType="was:WasClusterUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    
+    <core:requirement name="r0" displayName="Group of Messaging Engine" dmoType="was:WasMessagingEngineUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="c0" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+    
+    <!--<core:requirement mutable = "true" use="optional" name = "J2CAuthenticationEntry" displayName = "Authentication" dmoType = "was:WASJ2CAuthenticationDataEntry" linkType ="dependency"/>-->    
+  </was:unit.wasSIBusUnit>
+</core:topology>

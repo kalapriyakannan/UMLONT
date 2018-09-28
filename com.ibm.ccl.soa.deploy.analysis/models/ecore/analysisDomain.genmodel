@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.analysis/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.analysis/src" modelPluginID="com.ibm.ccl.soa.deploy.analysis"
+    modelName="AnalysisDomain" modelPluginClass="" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/analysisDomain.xsd</foreignModel>
+  <genPackages prefix="Analysis" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="analysis.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis.ecore#//DataServiceType">
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DataServiceType/onlineInteractive"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DataServiceType/offline"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DataServiceType/archive"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DataServiceType/replicated"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis.ecore#//DeploymentUnitFacet">
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DeploymentUnitFacet/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DeploymentUnitFacet/presentation"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DeploymentUnitFacet/execution"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//DeploymentUnitFacet/data"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis.ecore#//ExecutionServiceType">
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//ExecutionServiceType/onlineInteractive"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//ExecutionServiceType/offline"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//ExecutionServiceType/realTime"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis.ecore#//LifespanState">
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//LifespanState/active"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis.ecore#//LifespanState/accessible"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="analysis.ecore#//DataServiceTypeObject"/>
+    <genDataTypes ecoreDataType="analysis.ecore#//DeploymentUnitFacetObject"/>
+    <genDataTypes ecoreDataType="analysis.ecore#//ExecutionServiceTypeObject"/>
+    <genDataTypes ecoreDataType="analysis.ecore#//LifespanStateObject"/>
+    <genClasses ecoreClass="analysis.ecore#//AnalysisConstraint"/>
+    <genClasses ecoreClass="analysis.ecore#//AnalysisDeployRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//AnalysisDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintAvailability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintDailyLoad"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintDataService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintExecutionService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintExpectedLifespan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintExpectedVolume"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintPeakLoad"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintResponseTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintSizePerSubmission"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/analysisConstraintUsageWindowPerDay"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/capabilityDeployment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/capabilityNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/constraintAnalysisConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/unitDeploymentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/unitLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis.ecore#//AnalysisDeployRoot/unitNode"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//AvailabilityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//AvailabilityConstraint/percentage"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//DailyLoadConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//DailyLoadConstraint/dailyLoad"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//DataServiceConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//DataServiceConstraint/type"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//Deployment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//Deployment/facet"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//DeploymentUnit"/>
+    <genClasses ecoreClass="analysis.ecore#//ExecutionServiceConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ExecutionServiceConstraint/type"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//ExpectedLifespanConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ExpectedLifespanConstraint/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ExpectedLifespanConstraint/state"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//ExpectedVolumeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ExpectedVolumeConstraint/growthRatePercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ExpectedVolumeConstraint/initialSize"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//LocationUnit"/>
+    <genClasses ecoreClass="analysis.ecore#//Node"/>
+    <genClasses ecoreClass="analysis.ecore#//NodeUnit"/>
+    <genClasses ecoreClass="analysis.ecore#//PeakLoadConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//PeakLoadConstraint/peakLoad"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//ResponseTimeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ResponseTimeConstraint/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//ResponseTimeConstraint/percentage"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//SizePerSubmissionConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//SizePerSubmissionConstraint/bytes"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis.ecore#//UsageWindowPerDayConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis.ecore#//UsageWindowPerDayConstraint/duration"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

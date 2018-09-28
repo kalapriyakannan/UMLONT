@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<core:topology name="LDAP Entry Configuration Unit"
+			   xmlns:ldap="http://www.ibm.com/ccl/soa/deploy/ldap/1.0.0/"
+			   xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+			   xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			   >
+
+	<ldap:ldapEntryUnit name="LdapEntry" configurationUnit="true" displayName="Generic LDAP Entry" conceptual="true">
+
+		<ldap:capability.ldapEntry linkType="any" name="LdapEntry" />
+
+		<core:requirement linkType="hosting" name="Parent">
+			<constraint:constraint.or name="either">
+		        <constraint:constraint.type name="entry" dmoType="ldap:LdapEntry"/>
+		        <constraint:constraint.type name="server" dmoType="ldap:LdapServer"/>
+			</constraint:constraint.or>
+		</core:requirement>
+
+	</ldap:ldapEntryUnit>
+
+</core:topology>

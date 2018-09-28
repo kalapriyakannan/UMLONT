@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<!-- Palette Provider -->
+   	<extension 
+   		id="wasPaletteProvider" 
+   		name="%ext.wasPaletteProvider" 
+   		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        
+		        	        
+		        <!--Templates - these are unit instances of types that already have some preconfigured aspects. -->	
+		        
+		        <!-- Palette Drawers -->	                  	        	
+		        <entry 
+            		label="%websphereBundleStack.Label" 
+            		kind="stack" 
+            		description="%websphereBundleStack.Description" 
+            		small_icon="" 
+            		path="/serverSoftwareDrawer/" 
+            		id="websphereBundleStack">
+            	</entry>
+		        <entry 
+            		label="%websphereElementsStack.Label" 
+            		kind="stack" 
+            		description="%websphereElementsStack.Description" 
+            		small_icon="" 
+            		path="/serverSoftwareDrawer/" 
+            		id="websphereElementsStack">
+            	</entry>
+
+		        <entry 
+            		label="%websphereAppServerStack5.Label" 
+            		kind="stack" 
+            		description="%websphereAppServerStack5.Description" 
+            		small_icon="" 
+            		path="/serverSoftwareDrawer/" 
+            		id="websphereAppServerStack5">
+            	</entry>
+            	
+            	<entry 
+            		label="%wasConfigurationStack.Label" 
+            		kind="stack" 
+            		description="%wasConfigurationStack.Description" 
+            		small_icon="" 
+            		path="/configurationDrawer/" 
+            		id="wasConfigurationStack">
+            	</entry>       
+		     </contribution>
+      	</paletteProvider>
+   	</extension>
+   
+    <!-- Core Element Types and custom Factory -->
+   	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/">
+	    	<metamodelType
+	        	id="was.WebsphereAppServerUnit"            
+	            name="%WebsphereAppServerUnit.label"
+                icon="icons/pal/appserver_pal.gif"
+	            eclass="WebsphereAppServerUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasWebServerUnitMeta"
+	        	icon="icons/pal/was_web_server_pal16.gif"          
+	            name="%was.wasWebServer.Label"
+	            eclass="WasWebServerUnit">                      
+	        </metamodelType>	        
+  	    	<metamodelType
+	        	id="was.WasDeploymentManagerUnitMeta"   
+	            icon="icons/pal/dploym_mng_pal.gif"         
+	            name="%WasDeployManagerTool.label"
+	            eclass="WasDeploymentManagerUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasClusterUnitMeta"            
+	            name="%WasClusterUnit.label"
+                icon="icons/pal/cluster_pal.gif"
+	            eclass="WasClusterUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasDatasourceUnitMeta"   
+	            icon="icons/pal/was_ds_16.gif"         
+	            name="%WasDatasourceUnit.label"
+	            eclass="WasDatasourceUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasJ2CAuthenticationUnitMeta"
+                icon="icons/pal/was_j2c_authent_16.gif"            
+	            name="%WasJ2CAuthenticationUnitMeta.label"
+	            eclass="WASJ2CAuthenticationUnit"/>   
+	        <metamodelType
+	        	id="was.ExtendedJdbcProviderUnitMeta" 
+	        	icon="icons/dgm/jdbcprovider_dgm.gif"           
+	            name="%ExtendedProviderUnit.label"
+	            eclass="ExtendedJdbcProviderUnit">                      
+	        </metamodelType>	            
+	        <metamodelType
+	        	id="was.DB2JdbcProviderUnitMeta"            
+	            name="%DB2JdbcProviderUnit.label"
+	            icon="icons/pal/jdbcprovider_pal.gif"
+	            eclass="DB2JdbcProviderUnit">                      
+	        </metamodelType>	        
+	        <metamodelType
+	        	id="was.DerbyJdbcProviderUnitMeta"  
+                icon="icons/dgm/jdbcprovider_dgm.gif"
+	            name="%DerbyJdbcProviderUnit.label"
+	            eclass="DerbyJdbcProviderUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasCellUnitMeta"  
+	        	icon="icons/pal/wasstndalnb_pal.gif"          
+	            name="%WasCellUnit.label"
+	            eclass="WasCellUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSibDestinationUnitMeta"   
+	            icon="icons/pal/wassibdstnt_pal.gif"         
+	            name="%WasDestinationUnit.label"
+	            eclass="WasSibDestinationUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSharedLibraryEntryUnitMeta"  
+	            icon="icons/pal/shrlibryentr_pal.gif"          
+	            name="%WasSharedLibraryEntryUnit.label"
+	            eclass="WasSharedLibraryEntryUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasApplicationServerClassLoaderPolicyUnitMeta"
+	            icon="icons/pal/clpolicy_pal.gif"            
+	            name="%WasApplicationServerClassLoaderPolicyUnit.label"
+	            eclass="WasClassLoaderConfigurationUnit">                      
+	        </metamodelType>
+	      <!--  <metamodelType
+	        	id="was.WasSubSttVariableUnitMeta"            
+	            name="%WasSubSttVariableUnit.label"
+	            eclass="WasSubstitutionVariableUnit">                      
+	        </metamodelType> -->
+	        <metamodelType
+	        	id="was.WasEndpointListenerUnitMeta"   
+	            icon="icons/pal/wasedpntlistnrunt_pal.gif"         
+	            name="%WasEndpointListenerUnit.label"
+	            eclass="WasEndpointListenerUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSibInboundServiceUnitMeta" 
+	            icon="icons/pal/wasinbndsrvunt_pal.gif"
+	            name="%WasInboundServiceUnit.label"
+	            eclass="WasSibInboundServiceUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasMQQcfBindingUnitMeta"            
+	            name="%WasMQQcfBindingUnit.label"
+	            eclass="WasMQQcfBindingUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasMQQcfClientUnitMeta"            
+	            name="%WasMQQcfClientUnit.label"
+	            eclass="WasMQQcfClientUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasMQQueueDestinationUnitMeta"            
+	            name="%WasMQQueueDestinationUnit.label"
+	            eclass="WasMQQueueDestinationUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasDefaultMessagingConnectionFactoryUnitMeta" 
+	            icon="icons/pal/wasdfaltmessconfactor_pal.gif"           
+	            name="%WasDefaultMessagingConnectionFactoryUnit.label"
+	            eclass="WasDefaultMessagingConnectionFactoryUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasDefaultMessagingQueueConnectionFactoryUnitMeta"
+	            icon="icons/pal/wasdfaltmessconfactor_pal.gif"            
+	            name="%WasDefaultMessagingQueueConnectionFactoryUnit.label"
+	            eclass="WasDefaultMessagingQueueConnectionFactoryUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasDefaultMessagingTopicConnectionFactoryUnitMeta"          
+                icon="icons/dgm/wasdfaltmessconfactor_dgm.gif"
+	            name="%WasDefaultMessagingTopicConnectionFactoryUnit.label"
+	            eclass="WasDefaultMessagingTopicConnectionFactoryUnit">                      
+	        </metamodelType>
+	        
+	        <metamodelType
+	        	id="was.WasDefaultMessagingQueueDestinationUnitMeta"  
+	            icon="icons/pal/was_ds_16.gif"          
+	            name="%WasDefaultMessagingQueueDestinationUnit.label"
+	            eclass="WasDefaultMessagingQueueDestinationUnit">                      
+	        </metamodelType>
+	        
+	        <metamodelType
+	        	id="was.WasDefaultMessagingTopicDestinationUnitMeta"    
+	        	icon="icons/pal/was_ds_16.gif"        
+	            name="%WasDefaultMessagingTopicDestinationUnit.label"
+	            eclass="WasDefaultMessagingTopicDestinationUnit">                      
+	        </metamodelType>
+	        
+	        <metamodelType
+	        	id="was.WasJMSActivationSpecificationUnitMeta"    
+	            icon="icons/pal/wasjmsactivspcfctnunt_pal.gif"        
+	            name="%WasJMSActivationSpecificationUnit.label"
+	            eclass="WasJMSActivationSpecificationUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSibMediationUnitMeta"
+	            icon="icons/pal/wassibmed_pal.gif"
+	            name="%WasMediationUnit.label"
+	            eclass="WasSibMediationUnit">                      
+	        </metamodelType>	        
+	        
+	        <metamodelType
+	        	id="was.WasSibInboundPortUnitMeta"
+	            icon="icons/pal/wasinbndprt_pal.gif"
+	            name="%WasSibInboundPortUnit.label"
+	            eclass="WasSibInboundPortUnit">                      
+	        </metamodelType>	 
+	         <metamodelType
+	        	id="was.WasSibOutboundPortUnitMeta"
+	            icon="icons/pal/wasoutbndprt_pal.gif"
+	            name="%WasSibOutboundPortUnit.label"
+	            eclass="WasSibOutboundPortUnit">                      
+	        </metamodelType>       
+	        
+	        <metamodelType
+               eclass="WasNodeUnit"
+               id="was.WasNodeUnitMeta"
+               icon="icons/pal/node_pal.gif"
+               name="%WasNodeUnit.label">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasNodeGroupUnitMeta"  
+	        	icon="icons/pal/nodegrp_pal.gif"          
+	            name="%WasNodeGroupUnit.label"
+	            eclass="WasNodeGroupUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSibOutboundServiceUnitMeta" 
+	            icon="icons/pal/wasoutbndsrv_pal.gif"           
+	            name="%WasOutboundServiceUnit.label"
+	            eclass="WasSibOutboundServiceUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSIBusUnitMeta"  
+	            icon="icons/pal/wassv_pal.gif"          
+	            name="%WasSIBusUnit.label"
+	            eclass="WasSIBusUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasSystemUnitMeta" 
+				icon="icons/pal/wassytunit_pal.gif"           
+	            name="%WasSystemUnit.label"
+	            eclass="WasSystemUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasNodeWindowsServiceUnitMeta"
+	            icon="icons/pal/was_winsrvc_pal.gif"            
+	            name="%was.wasNodeWindowsService.Label"
+	            eclass="WasNodeWindowsServiceUnit">                      
+	        </metamodelType>
+	        <metamodelType
+	        	id="was.WasMessagingEngineUnitMeta"
+	            icon="icons/pal/was-messaging-engine_pal16.gif"            
+	            eclass="WasMessagingEngineUnit">                      
+	        </metamodelType>	        
+	        
+        </metamodel>     
+       
+        <!--Configuration Units-->
+        <!--bundle -->
+<!-- 
+        <specializationType
+        	id="was.WasNDApplicationServerBundle.6"              
+            icon="icons/dgm/dstrbutdcell_dgm.gif"
+            name="%was.WasNDApplicationServerBundle.6.Label"
+            kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+            edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.UnitGroupEditHelperAdvice">
+           	<specializes id="was.WasCellUnitMeta"/>
+           	<param name="semanticHint" value="unitGroup.was"/>
+           	<param name="templateURI" value="platform:/plugin/com.ibm.ccl.soa.deploy.was/templates/wasSystemND6withApplicationServerProfile.template"/>
+        </specializationType>
+        <specializationType
+        	id="was.WasNDApplicationServerBundle.6.conceptual"              
+            icon="icons/dgm/dstrbutdcell_dgm.gif"
+            name="%was.WasNDApplicationServerBundle.6.Label"
+            kind="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType"
+            edithelperadvice="com.ibm.ccl.soa.deploy.core.ui.edithelperadvice.UnitGroupEditHelperAdvice">
+           	<specializes id="was.WasCellUnitMeta"/>
+           	<param name="semanticHint" value="unitGroup.was"/>
+           	<param name="templateURI" value="platform:/plugin/com.ibm.ccl.soa.deploy.was/templates/wasSystemND6withApplicationServerProfileC.template"/>
+        </specializationType>
+-->
+        
+	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.was.ui.providers.WASEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+            	name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])" 
+            	value="was.WebsphereAppServerUnit, was.WasDatasourceUnit, was.WASJ2CAuthenticationUnit, was.ExtendedJdbcProviderUnit, was.DB2JdbcProviderUnit, was.DerbyJdbcProviderUnit, was.WasCellUnit, was.WasNodeUnit, was.WasNodeGroupUnit, was.WasSystemUnit, was.WasClusterUnit, was.WasDeploymentManager, was.WasSharedLibraryEntryUnit, was.WasClassLoaderConfigurationUnit, was.WasSubstitutionVariableUnit, was.WasNodeWindowsServiceUnit, was.WasWebServerUnit, was.WasDeploymentManagerUnit, was.WasDefaultMessagingConnectionFactoryUnit, was.WasSIBusUnit, was.WasDefaultMessagingQueueConnectionFactoryUnit, was.WasDefaultMessagingTopicConnectionFactoryUnit, was.WasDefaultMessagingQueueDestinationUnit, was.WasDefaultMessagingTopicDestinationUnit, was.WasJMSActivationSpecificationUnit, was.WasSibInboundServiceUnit, was.WasSibOutboundServiceUnit, was.WasSibInboundPortUnit, was.WasSibOutboundPortUnit, was.WasEndpointListenerUnit, was.WasSibDestinationUnit, was.WasSibMediationUnit, was.WasMessagingEngineUnit" >
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.was, configurationUnit.was, unitGroup.was"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="was.WebsphereAppServerUnit, was.WasDatasourceUnit, was.WASJ2CAuthenticationUnit, was.ExtendedJdbcProviderUnit, was.DB2JdbcProviderUnit, was.DerbyJdbcProviderUnit, was.WasCellUnit, was.WasNodeUnit, was.WasNodeGroupUnit, was.WasSystemUnit, was.WasClusterUnit, was.WasDeploymentManager, was.WasSharedLibraryEntryUnit, was.WasClassLoaderConfigurationUnit, was.WasSubstitutionVariableUnit, was.WasNodeWindowsServiceUnit, was.WasWebServerUnit, was.WasDeploymentManagerUnit, was.WasDefaultMessagingConnectionFactoryUnit, was.WasSIBusUnit, was.WasDefaultMessagingQueueConnectionFactoryUnit, was.WasDefaultMessagingTopicConnectionFactoryUnit, was.WasDefaultMessagingQueueDestinationUnit, was.WasDefaultMessagingTopicDestinationUnit, was.WasJMSActivationSpecificationUnit, was.WasSibInboundServiceUnit, was.WasSibOutboundServiceUnit, was.WasSibInboundPortUnit, was.WasSibOutboundPortUnit, was.WasEndpointListenerUnit, was.WasSibDestinationUnit, was.WasSibMediationUnit, was.WasMessagingEngineUnit" >
+            </method>
+         </object>   
+         <!--      
+         <object class="com.ibm.ccl.soa.deploy.core.ui.util.IUnitElementType(com.ibm.ccl.soa.deploy.core.ui)" id="NodeTypes">
+            <method name="getEClassName()" value="was.WebsphereAppServerUnit">
+            </method>
+         </object>  -->                                    
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.was, configurationUnit.was, unitGroup.was">
+         </context>  
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>       
+      </viewProvider>
+   </extension>
+   
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.was"
+            name="%wasActivity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.was"
+            name="%wasActivity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.was"
+            pattern="(?&lt;!.)was\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.was"
+            pattern="(?&lt;!.)was\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.was"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.was"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.was"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.was"/>
+      </extension>
+</plugin>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEWebContainer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereSessionTuningParams.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereHTTPTransport.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereWebContainer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.J2EEWebContainer">
+        <xsd:sequence>
+          <xsd:element name="defaultVirtualHostName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionAffinityTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionAffinityFailoverServer" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableServletCaching" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTTPTransports" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereHTTPTransport" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="threadPoolMinimumSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="threadPoolMaximumSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="threadPoolInactivityTimeoutMsecs" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="threadPoolIsGrowable" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionTuningParams" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereSessionTuningParams" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

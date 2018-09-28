@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="package_files/filelist.xml">
+<link rel=Edit-Time-Data href="package_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Deploy Core Editor &quot;Navigator Deploy Items&quot; Package API
+Documentation</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>jswanke</o:Author>
+  <o:LastAuthor>jswanke</o:LastAuthor>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>4</o:TotalTime>
+  <o:Created>2006-10-26T15:23:00Z</o:Created>
+  <o:LastSaved>2006-10-30T22:04:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>362</o:Words>
+  <o:Characters>2068</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>17</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2426</o:CharactersWithSpaces>
+  <o:Version>10.6735</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all
+href="http://dev.eclipse.org/default_style.css">
+<link rel=Stylesheet type="text/css" media=all href="styles/stp-core.css">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:28.0pt;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><![if mso 9]>
+<style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+</style>
+<![endif]>
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in;margin-left:
+8.5pt;margin-top:14.2pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><a name=top><span style='font-size:10.0pt;font-family:Arial'><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->The
+SOA Deploy Core Editor is extended by each domain to allow editing that
+domain&#8217;s model. <o:p></o:p></span></a></p>
+
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<h1 align=center style='text-align:center'><span style='mso-bookmark:top'>Deploy
+Core Editor &#8220;Navigator Deploy Items&#8221; Package API Documentation</span></h1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><span style='mso-bookmark:top'><b><span style='font-size:
+  10.0pt;font-family:Arial;color:white'>Abstract [</span></b></span><a
+  href="overview-summary.html"><span style='mso-bookmark:top'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:lightblue'>Index</span></b></span><span
+  style='mso-bookmark:top'></span></a><span style='mso-bookmark:top'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:white'>]</span></b></span><span
+  style='mso-bookmark:top'><b><span style='font-size:10.0pt;font-family:Arial'>
+  <o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:top'></span>
+ </tr>
+</table>
+
+<span style='mso-bookmark:top'></span>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>Contains Navigator Deploy Items Classes</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Navigator Deploy Items Classes[<a href="#top"><span
+  style='color:lightblue'>Top</span></a>]</span></b><b><span style='font-size:
+  10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>.</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><img
+  border=0 width=32 height=32 id="_x0000_i1025" src=SCAObject.jpg><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Useful Abstractions [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=501 style='width:376.1pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes;height:182.25pt'>
+  <td style='padding:.75pt .75pt .75pt .75pt;height:182.25pt'>
+  <table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+   style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+   <tr style='mso-yfti-irow:0;height:36.9pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployablesGroupContentProvider</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'>: <o:p></o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1026"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:1;height:36.9pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>DeployablesGroupLabelProvider</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'>: <o:p></o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:36.9pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1027"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:2;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>IVirtualNode:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1028"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:3;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>OtherProjectsNode:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1029"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:4;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>ProjectContentProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1030"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:5;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>ProjectLabelProvider:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1031"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:6;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>TopologyNode:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1032"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes;height:37.25pt'>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal><code><b><span style='font-size:10.0pt'>VirtualNode:</span></b></code><span
+    style='font-size:10.0pt;font-family:Arial'><o:p></o:p></span></p>
+    <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+    <p><o:p>&nbsp;</o:p></p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt;height:37.25pt'>
+    <p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-size:
+    10.0pt;font-family:Arial'><img border=0 width=32 height=32 id="_x0000_i1033"
+    src="../../../decorators/Composite.jpg"><o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='display:none;
+  mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This documentation is maintained by <b>John Swanke</b> <i>(jswanke{at}us.ibm.com)</i>.
+  </p>
+  <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>[<a href="overview-summary.html"><span style='color:lightblue'>Index</span></a>]
+  [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

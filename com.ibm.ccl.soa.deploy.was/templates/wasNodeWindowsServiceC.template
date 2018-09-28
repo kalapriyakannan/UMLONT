@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  displayName="WebSphereNodeWindowsService Template">
+  <was:unit.wasNodeWindowsServiceUnit displayName="WebSphere Windows Service" name="WebSphereNodeWindowsServiceUnit"  configurationUnit="true" conceptual="true">
+    <os:capability.windowsLocalService name="WindowsLocalService" displayName="Windows Local Service" linkType="any">
+          <core:attributeMetaData attributeName="serviceAccountPassword" encrypted="true" />   
+    </os:capability.windowsLocalService>             
+     
+    <core:requirement mutable="true" name="WebSphereNode" displayName="Host on WasNode when WasNode's hoster WasSystem is hosted on Windows Operating System" dmoType="was:WasNode" linkType="hosting"/>
+    <core:requirement mutable="true" name="userAccount" displayName="Depend on an user Account" dmoType="os:User" linkType="dependency"/>    
+     
+  </was:unit.wasNodeWindowsServiceUnit>
+</core:topology>

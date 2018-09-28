@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" 
+name="VMware ESX Template">
+  <core:annotation context="topology_root">
+     <core:detail key="root1" value="VMwareESX"/>   
+  </core:annotation>
+  <virtualization:unit.vmwareESXUnit name="VMwareESX" conceptual="false">
+    <virtualization:capability.vmwareESX name="VMwareESX" displayName="VMware ESX" linkType="any" os.type="vmnix"/>
+    <virtualization:capability.vmwareHypervisor displayName="VMware" name="VMware" linkType="any"/>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals name="cpuArchitecture" displayName="cpuArchitecture" attributeName="cpuArchitecture"  value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="VMwareESXHostsRoot" target="/root"/>    
+  </virtualization:unit.vmwareESXUnit>
+  <os:unit.user name="root" configurationUnit="true" conceptual="false">
+    <os:capability.user displayName="root" name="Root User" linkType="dependency" userId="root" >
+      <core:attributeMetaData attributeName="userPassword" encrypted="true" />      
+    </os:capability.user>
+    <core:requirement displayName="VMware ESX" mutable="true" name="VMwareESX" dmoType="virtualization:VMwareESX" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType"  value="vmnix"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:UserGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint" />      
+    </core:requirement>
+  </os:unit.user>       
+</core:topology>

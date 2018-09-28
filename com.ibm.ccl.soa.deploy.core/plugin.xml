@@ -1,0 +1,1507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+	<copyright>
+	</copyright>
+	
+	
+-->
+<plugin>
+	<extension-point
+		id="domains"
+		name="%extensionPoint.domains.name"
+		schema="schema/domains.exsd" />
+	<extension-point
+		id="topology"
+		name="%extensionPoint.topology.name"
+		schema="schema/topology.exsd" />
+	<extension-point
+		id="unitLifecycle"
+		name="%extensionPoint.unitLifecycle.name"
+		schema="schema/unitLifecycle.exsd" />
+	<extension-point
+		id="resolutionGenerators"
+		name="%extensionPoint.resolutionGenerators.name"
+		schema="schema/resolutionGenerators.exsd" />
+	<extension-point
+		id="constraints"
+		name="%extensionPoint.constraints.name"
+		schema="schema/constraints.exsd" />
+	<!-- Schemas-->
+	<!-- Genmodels -->
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.CorePackage"
+			genModel="models/ecore/core.genmodel" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/location/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.location.LocationPackage"
+			genModel="models/ecore/locationbinding/locationbinding.genmodel" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.constraint.ConstraintPackage"
+			genModel="models/ecore/constraint/constraint.genmodel" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/dynamictype/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.dynamictype.DynamictypePackage"
+			genModel="models/ecore/dynamictype/dynamictype.genmodel" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.genericsoftware.GenericsoftwarePackage" />
+	</extension>
+	<!-- Resource Factories -->
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			type="dp"
+			class="com.ibm.ccl.soa.deploy.core.util.CoreResourceFactoryImpl" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			type="topology"
+			class="com.ibm.ccl.soa.deploy.core.util.CoreResourceFactoryImpl" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			type="template"
+			class="com.ibm.ccl.soa.deploy.core.util.CoreResourceFactoryImpl" />
+		<parser
+			type="usertemplate"
+			class="com.ibm.ccl.soa.deploy.core.util.CoreResourceFactoryImpl" />
+	</extension>
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			type="tloc"
+			class="com.ibm.ccl.soa.deploy.location.util.LocationResourceFactoryImpl" />
+	</extension>
+	<!-- extension for the Existing Server Cat
+		egory runtimes -->
+	<!--
+		<extension
+		id="AppServerRuntimeSpecification"
+		name="AppServerRuntimeSpecification"
+		point="com.ibm.ccl.soa.deploy.core.RuntimeSpecification">
+		<runtimeSpecificationElement
+		categoryName="Application Servers"
+		runtimeCategoryHandler="com.ibm.ccl.soa.deploy.delegates.extension.server.AppServerRuntimeCategoryHandler"/>
+		</extension>
+		<extension
+		id="DatabaseServerRuntimeSpecification"
+		name="DatabaseServerRuntimeSpecification"
+		point="com.ibm.ccl.soa.deploy.core.RuntimeSpecification">
+		<runtimeSpecificationElement
+		categoryName="Database Servers"
+		runtimeCategoryHandler="com.ibm.ccl.soa.deploy.delegates.extension.server.DatabaseServerRuntimeCategoryHandler"/>
+		</extension>
+		
+		<extension
+		id="MessagingServerRuntimeSpecification"
+		name="MessagingServerRuntimeSpecification"
+		point="com.ibm.ccl.soa.deploy.core.RuntimeSpecification">
+		<runtimeSpecificationElement
+		categoryName="Messaging Servers"
+		runtimeCategoryHandler="com.ibm.ccl.soa.deploy.delegates.extension.server.MessagingServerRuntimeCategoryHandler"/>
+		</extension>
+	-->
+	<!-- extension for the discover deployable module operation -->
+	<extension point="org.eclipse.wst.common.frameworks.DataModelProviderExtension">
+		<DataModelProvider
+			class="com.ibm.ccl.soa.deploy.core.internal.datamodels.DeployTopologyExportDataModelProvider"
+			id="com.ibm.ccl.soa.deploy.core.internal.datamodels.DeployTopologyExportDataModelProvider" />
+	</extension>
+	<!-- extension for the deploy module adaptor-->
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory
+			adaptableType="com.ibm.ccl.soa.deploy.core.DeployModelObject"
+			class="com.ibm.ccl.soa.deploy.internal.core.DeployModelObjectAdapterFactory">
+			<adapter type="org.eclipse.core.resources.IFile" />
+			<adapter type="org.eclipse.core.resources.IResource" />
+		</factory>
+		<factory
+			adaptableType="com.ibm.ccl.soa.deploy.core.namespace.INamespaceElement"
+			class="com.ibm.ccl.soa.deploy.internal.core.namespace.NamespaceElementAdapterFactory">
+			<adapter type="org.eclipse.core.resources.IResource" />
+			<adapter type="org.eclipse.core.resources.IFolder" />
+			<adapter type="org.eclipse.core.resources.IContainer" />
+		</factory>
+	</extension>
+	<!--
+		<extension
+		point="com.ibm.ccl.soa.deploy.core.ItemProviderSpecification"
+		id="ItemProviderSpecification">
+		<itemProviderSpecificationElement 
+		name="BaseItemProvider"
+		displayName="BaseItemProvider"
+		displayIcon="./icons/baseitemprovider.gif"
+		itemProviderSpecificationHandler="com.ibm.ccl.soa.deploy.delegates.extension.BaseItemProviderSpecificationHandler"/>
+		</extension>    
+		<extension
+		point="com.ibm.ccl.soa.deploy.core.ItemProviderSpecification"
+		id="ItemProviderSpecification">
+		<itemProviderSpecificationElement 
+		name="AppdeployItemProvider"
+		displayName="AppdeployItemProvider"
+		displayIcon="./icons/appdeployitemprovider.gif"
+		itemProviderSpecificationHandler="com.ibm.ccl.soa.deploy.delegates.extension.AppdeployItemProviderSpecificationHandler"/>
+		</extension> 
+	-->
+	<extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory
+			uri="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.provider.CoreItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  <factory
+			uri="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.genericsoftware.provider.GenericsoftwareItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+	<extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory
+			uri="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.core.constraint.provider.ConstraintItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+	<!-- SOA deploy tool marker used to persist IDeployStatus on deploy model objects. -->
+	<extension
+		id="validator.marker.DeployMarker"
+		point="org.eclipse.core.resources.markers"
+		name="%extension.deployMarker">
+		<super type="org.eclipse.wst.validation.problemmarker" />
+		<persistent value="true" />
+		<attribute name="deployException" />
+		<attribute name="deployProblemType" />
+		<attribute name="deployValidatorID" />
+		<attribute name="deployObjectID" />
+		<attribute name="deployObjectType" />
+		<attribute name="deployPriority" />
+		<attribute name="deployStatusBundle" />
+		<attribute name="deployStatusClass" />
+		<attribute name="deployConstraints" />
+		<attribute name="deployAttributeName" />
+		<attribute name="deployAttributeExpectedValue" />
+		<attribute name="deployAttributeExpectedValueSourceObjectID" />
+		<attribute name="deployAttributeExpectedValueSourceObjectType" />
+		<attribute name="deployAttributeExpectedValueSourceAttributeName" />
+		<attribute name="deployCommunicationTargetDmo" />
+		<attribute name="deployActionParameters" />
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: WST validation support                                                   -->
+	<!-- =================================================================================== -->
+	<extension
+		id="topologyWstValidator"
+		name="%extension.topologyWstValidatorName"
+		point="org.eclipse.wst.validation.validator">
+		  
+		<validator>
+			    
+			<filter
+				objectClass="org.eclipse.core.resources.IFile"
+				nameFilter="*.topology" />
+			     
+			<markerId markerIdValue="deployMarker" />
+			<dependentValidator depValValue="true" />
+			<helper class="com.ibm.ccl.soa.deploy.internal.core.validator.wst.WstTopologyValidatorWorkbenchContext" />
+			     
+			<run class="com.ibm.ccl.soa.deploy.internal.core.validator.wst.WstTopologyValidator" />
+			   
+		</validator>
+		 
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: core domain                                                              -->
+	<!-- =================================================================================== -->
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain
+			id="com.ibm.ccl.soa.deploy.core.domain"
+			name="%extension.coreDomainRealizationMatcher"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<validator class="com.ibm.ccl.soa.deploy.internal.core.validator.AutoRealizationDomainValidator" />
+		</domain>		
+		<domain
+			id="com.ibm.ccl.soa.deploy.core.domain"
+			name="%extension.coreDomainRealizationMatcher"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<validator class="com.ibm.ccl.soa.deploy.internal.core.validator.GenericRequirementSatisfactionDomainValidator" />
+		</domain>
+		<domain
+			id="com.ibm.ccl.soa.deploy.core.domain"
+			name="%extension.coreDomainStructuralValidator"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<validator
+         class="com.ibm.ccl.soa.deploy.internal.core.validator.StructuralDomainValidator"/>
+		</domain> 		
+		<domain
+			id="com.ibm.ccl.soa.deploy.core.domain"
+			name="%extension.coreDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<validator class="com.ibm.ccl.soa.deploy.internal.core.validator.CoreDomainValidator" />
+			<!--X<resourceType id="deploy.conceptualNode"
+				name="%ConceptualNode.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/conceptualNode.template">
+				</resourceType>
+				<resourceTypeUIBinding
+				description="%ConceptualNode.Description"
+				label="%ConceptualNode.Label"
+				path="/applicationToolDrawer/"
+				smallIcon="icons/pal/conceptual_node_16.gif"
+				largeIcon="icons/pal/conceptual_node_20.gif"
+				resourceTypeId="deploy.conceptualNode">
+				</resourceTypeUIBinding>-->
+			<resourceType
+				id="deploy.unitGroup"
+				name="%UnitGroup.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/unitGroup.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%UnitGroup.Description"
+				label="%UnitGroup.Label"
+				path="/commontoolDrawer/genericStack"
+				smallIcon="icons/pal/unit_group_16.gif"
+				largeIcon="icons/pal/unit_group_20.gif"
+				resourceTypeId="deploy.unitGroup">
+			</resourceTypeUIBinding>
+			<resourceType
+				eclass="Service"
+				id="deploy.Service"
+				name="%Service.Label">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%Service.Description"
+				label="%Service.Label"
+				enablePalette="true"
+				smallIcon="icons/dgm/service_generic_dgm.gif"
+				largeIcon="icons/dgm/service_generic_dgm.gif"
+				resourceTypeId="deploy.Service">
+			</resourceTypeUIBinding>
+			<resourceType
+				eclass="Reference"
+				id="deploy.Reference"
+				name="%Reference.Label">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%Reference.Description"
+				label="%Reference.Label"
+				enablePalette="true"
+				smallIcon="icons/dgm/ref_generic_dgm.gif"
+				largeIcon="icons/dgm/ref_generic_dgm.gif"
+				resourceTypeId="deploy.Reference">
+			</resourceTypeUIBinding>
+			<resourceType
+				id="deploy.Import"
+				name="%Import.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/import.template">
+			</resourceType>
+			<!--<resourceTypeUIBinding
+				description="%Import.Description"
+				label="%Import.Label"
+				path="/applicationToolDrawer/"
+				smallIcon="icons/dgm/import.gif"
+				largeIcon="icons/dgm/import.gif"
+				resourceTypeId="deploy.Import">
+				</resourceTypeUIBinding> -->
+		</domain>
+		<domain
+			id="com.ibm.ccl.soa.deploy.genericsoftware.domain"
+			name="%extension.genericsoftwareDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/">
+			<!--<validator class="com.ibm.ccl.soa.deploy.genericsoftware.internal.validator.GenericsoftwareDomainValidator"/>-->
+			<resourceType
+				id="com.ibm.ccl.soa.deploy.core.genericsoftware.SoftwareInstall"
+				name="softwareInstall.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/softwareInstall.template">
+			</resourceType>
+			<resourceTypeUIBinding
+             	description="%softwareInstallTool.Description"
+             	label="%softwareInstallTool.Label"
+             	path="/commontoolDrawer/genericStack"
+             	enablePalette="true"
+             	smallIcon="icons/pal/SoftwareComponent_16.gif"
+             	largeIcon="icons/pal/SoftwareComponent_20.gif"
+            	resourceTypeId="com.ibm.ccl.soa.deploy.core.genericsoftware.SoftwareInstall">
+       		</resourceTypeUIBinding> 
+			<resourceType
+				id="com.ibm.ccl.soa.deploy.core.genericsoftware.SoftwarePatch"
+				name="softwarePatch.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.core/templates/softwarePatch.template">
+			</resourceType>
+			<resourceTypeUIBinding
+             	description="%softwarePatchTool.Description"
+             	label="%softwarePatchTool.Label"
+             	path="/commontoolDrawer/genericStack"
+             	enablePalette="true"
+             	smallIcon="icons/pal/SoftwareComponent_16.gif"
+             	largeIcon="icons/pal/SoftwareComponent_20.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.core.genericsoftware.SoftwarePatch">
+       		</resourceTypeUIBinding> 			
+		</domain>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: core expression property tester                                          -->
+	<!-- =================================================================================== -->
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployObjectPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.DeployModelObject"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="attributeEquals"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployObjectPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployStatusPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="problemType,severity,validatorID"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployStatusPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployAttributeStatusPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="attributeName"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployAttributeStatusPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.ide.DecoratorSemanticPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.Unit"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="isConceptualUnit,isGroup,isInstalled"
+			class="com.ibm.ccl.soa.deploy.core.propertytester.DecoratorSemanticPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.core.propertytester.TopologyPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.Topology"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="isTopologyImport"
+			class="com.ibm.ccl.soa.deploy.core.propertytester.TopologyPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.internal.core.validator.RequirementPropertyTester"
+			type="com.ibm.ccl.soa.deploy.core.Requirement"
+			namespace="com.ibm.ccl.soa.deploy.core"
+			properties="requirementDmoType,linkType"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.RequirementPropertyTester">
+		</propertyTester>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: software component unit filter                                      -->
+	<!-- =================================================================================== -->
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.internal.core.filter.SoftwareComponentFilter"
+			description="%SoftwareComponentFilter.description"
+			name="%SoftwareComponentFilter.name">
+			<inputEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.SoftwareComponent" />
+			</inputEnablement>
+		</unitFilter>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: deploy status resolution generators                                      -->
+	<!-- =================================================================================== -->
+	<extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator
+			id="DeployAttributeConstraintsResolutionGenerator"
+			name="%resolutionGenerator.DeployAttributeConstraintsResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.AttributeConstraintSolverResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="SetAllAttributesResolutionGenerator"
+			name="%resolutionGenerator.SetAllAttributesResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.SetAllAttributesResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeValueStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="DoNotPublishHostedUnitsResolutionGenerator"
+			name="%resolutionGenerator.DoNotPublishHostedUnitsResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DoNotPublishHostedUnitsResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.attributeName"
+					value="com.ibm.ccl.soa.deploy.core.Unit#publishIntent" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitDoNotPublishHostsPublishUnits" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="DeployUnitNotHostedResolutionGenerator"
+			name="%resolutionGenerator.DeployUnitNotHostedResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeployUnitNotHostedResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitNotHosted" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="NameNotUniqueMarkerResolutionGenerator"
+			name="%resolutionGenerator.NameNotUniqueMarkerResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.NameNotUniqueResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeNotUnique" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.attributeName"
+					value="com.ibm.ccl.soa.deploy.core.DeployModelObject#name" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="NameUndefinedResolutionGenerator"
+			name="%resolutionGenerator.NameUndefinedResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.NameUndefinedResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeUndefined" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.attributeName"
+					value="com.ibm.ccl.soa.deploy.core.DeployModelObject#name" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="GenericDependencyRequirementSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericDependencyRequirementSatisfactionResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericDependencyRequirementSatisfactionResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitDependencyRequirementUnmatched" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="GenericHostingRequirementSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericHostingRequirementSatisfactionResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericHostingRequirementSatisfactionResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitNotHosted" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="GenericRealizataionSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericRealizationSatisfactionResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericRealizationSatisfactionResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="ImportInstantationObjectNotPublicResolutionGenerator"
+			name="%resolutionGenerator.ImportInstantationObjectNotPublicResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.ImportInstantationObjectNotPublicResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.importInstantiationObjectNotPublic" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="ImportInstantiationObjectAttributeNotEditableResolutionGenerator"
+			name="%resolutionGenerator.ImportInstantiationObjectAttributeNotEditableResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.ImportInstantiationObjectAttributeNotEditableResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.importInstantiationObjectAttributeNotEditable" />
+			</enablement>
+		</resolutionGenerator>
+		<!-- Disable until heavy logic is moved into validator
+			<resolutionGenerator
+			id="GenericStackRealizationSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericStackRealizationSatisfactionResolutionGenerator"       
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericStackRealizationSatisfactionResolutionGenerator">
+			<enablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+			<test property="com.ibm.ccl.soa.deploy.core.problemType"
+			value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized"/>      
+			</enablement>
+			</resolutionGenerator>
+		-->
+		<!-- Consider enabling this if discovery cache is populated at resolution time.
+			<resolutionGenerator
+			id="GenericStackRealizationDownSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericStackRealizationDownSatisfactionResolutionGenerator"       
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericStackRealizationDownSatisfactionResolutionGenerator">
+			<enablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+			<test property="com.ibm.ccl.soa.deploy.core.problemType"
+			value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized"/>      
+			</enablement>
+			</resolutionGenerator>	
+		-->
+		<resolutionGenerator
+			id="GenericConnectedSetRealizationSatisfactionResolutionGenerator"
+			name="%resolutionGenerator.GenericConnectedSetRealizationSatisfactionResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericConnectedSetRealizationSatisfactionResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized" />
+			</enablement>
+		</resolutionGenerator>
+		<!-- replaced with newer resolutions
+			<resolutionGenerator
+			id="RealizeAllConceptualUnitsResolutionGenerator"
+			name="%resolutionGenerator.RealizeAllConceptualUnitsResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.RealizeAllConceptualUnitsResolutionGenerator">
+			<enablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/> 
+			<test property="com.ibm.ccl.soa.deploy.core.problemType"
+			value="com.ibm.ccl.soa.deploy.core.conceptualUnitNotRealized"/>      
+			</enablement>
+			</resolutionGenerator>
+		-->
+		<resolutionGenerator
+			id="GenericLogicalLinkCreationResolutionGenerator"
+			name="%resolutionGenerator.GenericLogicalLinkCreationResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.GenericLogicalLinkCreationResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="WrapperStatusResolutionGenerator"
+			name="%resolutionGenerator.WrapperStatusResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.WrapperStatusResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployWrapperStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="MultipleHostsResolutionGenerator"
+			name="%resolutionGenerator.MultipleHostsResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.MultipleHostsResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitMultipleHosts" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="UnitHostToBeUninstalledResolutionGenerator"
+			name="%resolutionGenerator.UnitHostToBeUninstalledResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.UnitHostToBeUninstalledResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitHostToBeUninstalled" />
+			</enablement>
+		</resolutionGenerator>
+		<!-- -->
+		<resolutionGenerator
+			id="DeleteCorruptedLinkResolutionGenerator"
+			name="%resolutionGenerator.DeleteCorruptedLinkResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.DeleteCorruptedLinkResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<!-- -->
+		<resolutionGenerator
+			id="MakeUnitPublicResolutionGenerator"
+			name="%resolutionGenerator.MakeUnitPublicResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.MakeUnitPublicResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitNotHosted" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="MakeRequirementPublicResolutionGenerator"
+			name="%resolutionGenerator.MakeRequirementPublicResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.MakeRequirementPublicResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.unitDependencyRequirementUnmatched" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="MakeAttributePublicEditableResolutionGenerator"
+			name="%resolutionGenerator.MakeAttributePublicEditableResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.MakeAttributePublicEditableResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeUndefined" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="SetAttributeResolutionGenerator"
+			name="%resolutionGenerator.SetAttributeResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.SetAttributeResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.SetInterfaceResolutionGenerator"
+			description="%resolutionGenerator.SetInterfaceResolutionGenerator_description"
+			id="SetInterfaceResolutionGenerator"
+			name="%resolutionGenerator.SetInterfaceResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"></instanceof>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.problemType"
+						value="com.ibm.ccl.soa.deploy.core.referenceLinkedInterfaceMismatch">
+					</test>
+				</and>
+			</enablement>
+		</resolutionGenerator>
+		<!-- communication constraint resolution generators -->
+		<resolutionGenerator
+			id="DeleteApplicationCommunicationConstraintResolutionGenerator"
+			name="%resolutionGenerator.DeleteApplicationCommunicationConstraintResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.DeleteApplicationCommunicationConstraintResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.IDeployCommunicationConstraintStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="AddNetworkCommunicationConstraintResolutionGenerator"
+			name="%resolutionGenerator.AddNetworkCommunicationConstraintResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.AddNetworkCommunicationConstraintResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.IDeployCommunicationConstraintStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="AddToNetworkCommunicationConstraintResolutionGenerator"
+			name="%resolutionGenerator.AddToNetworkCommunicationConstraintResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.AddToNetworkCommunicationConstraintResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.IDeployCommunicationConstraintStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="AddApplicationCommunicationConstraintChildResolutionGenerator"
+			name="%resolutionGenerator.AddApplicationCommunicationConstraintChildResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.AddApplicationCommunicationConstraintChildResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.IApplicationCommunicationConstraintChildDeployStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="AddMissingStereotypeResolutionGenerator"
+			name="%resolutionGenerator.AddMissingStereotypeResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.AddMissingStereotypeResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+					<or>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.problemType"
+							value="com.ibm.ccl.soa.deploy.core.realizationLinkSourceTargetStereotypeMismatch" />
+						<test
+							property="com.ibm.ccl.soa.deploy.core.problemType"
+							value="com.ibm.ccl.soa.deploy.core.realizationLinkUnitSourceTargetStereotypeMismatch" />
+						<test
+							property="com.ibm.ccl.soa.deploy.core.problemType"
+							value="com.ibm.ccl.soa.deploy.core.realizationLinkCapSourceTargetStereotypeMismatch" />
+					</or>
+				</and>
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator
+			id="PaletteConstraintResolutionGenerator"
+			name="%resolutionGenerator.PaletteConstraintResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.PaletteConstraintResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+					<test
+						property="com.ibm.ccl.soa.deploy.core.problemType"
+						value="com.ibm.ccl.soa.deploy.core.invalidResourceTypeId" />
+				</and>
+			</enablement>
+		</resolutionGenerator>
+		<!--Add resolution to update stereotypes based on the StereotypeConstraint -->
+		<resolutionGenerator
+			id="AddMissingStereotypeFromConstraintResolutionGenerator"
+			name="%resolutionGenerator.AddMissingStereotypeResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.AddMissingStereotypeFromConstraintResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+					<test
+						property="com.ibm.ccl.soa.deploy.core.problemType"
+						value="com.ibm.ccl.soa.deploy.core.stereotypeInclusionFailure" />
+				</and>
+			</enablement>
+		</resolutionGenerator>
+		<!-- Resolution to set the sourceAttributeName of a AttributePropagationConstraint targeting
+			a unit providing a Script capability -->
+		<resolutionGenerator
+			id="DeployAttributePropagationResolutionGenerator"
+			name="%resolutionGenerator.DeployAttributePropagationResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.AttributePropagationResolutionGenerator">
+			<enablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<or>
+					<test
+						property="com.ibm.ccl.soa.deploy.core.attributeName"
+						value="com.ibm.ccl.soa.deploy.core.constraint.AttributePropagationConstraint#sourceAttributeName" />
+					<test
+						property="com.ibm.ccl.soa.deploy.core.attributeName"
+						value="com.ibm.ccl.soa.deploy.core.constraint.AttributePropagationConstraint#targetAttributeName" />
+				</or>
+				<test
+					property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeUndefined" />
+			</enablement>
+		</resolutionGenerator>
+	</extension>
+	<!-- -->
+	<!-- MK changes -->
+	<!-- NM commented 
+		<extension
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<discoverer
+		class="com.ibm.ccl.soa.deploy.core.provider.discovery.TopologyTopologyDiscoverer"
+		description="%discoverer.description.1"
+		name="%discoverer.name.1"/>            
+		</extension>
+		
+		<extension
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<discoverer
+		class="com.ibm.ccl.soa.deploy.core.provider.discovery.CurrentTopologyDiscoverer"
+		description="%discoverer.description.0"
+		name="%discoverer.name.0"/>
+		</extension>
+	-->
+	<!--extension
+		point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+		class="com.ibm.ccl.soa.deploy.core.provider.UnitUnitProvider"
+		description="%extension.unitprovider.unitunitprovider"
+		name="%extension.unitprovider.unitunitprovider">
+		<inputEnablement>
+		<instanceof value="java.lang.Object"/>
+		</inputEnablement>
+		</unitProvider>
+		</extension-->
+	<!-- Decorator Semantic  -->
+	<extension
+		id="com.ibm.ccl.soa.deploy.core.topology"
+		name="%coreTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemantic
+			description="%businessApplicationDSDescription"
+			id="com.ibm.ccl.soa.deploy.core.bads"
+			icon="icons/view16/bus_topology.gif"
+			name="%businessApplicationDSName" />
+		<!-- <decoratorSemantic description="%infrastructureDSDescription"
+			id="com.ibm.ccl.soa.deploy.core.ids" icon="icons/view16/infrastructure_topo.gif"
+			name="%infrastructureDSName" />-->
+		<!-- Template design decorator semantic obsoleted by topology reuse support (contracts etc). -->
+		<decoratorSemantic
+			description="%templateDesignDSDescription"
+			id="com.ibm.ccl.soa.deploy.core.tdds"
+			icon="icons/view16/template_topology.gif"
+			name="%templateDesignDSName" />
+		<decoratorSemantic
+			description="%deploymentDSDescription"
+			id="com.ibm.ccl.soa.deploy.core.dds"
+			icon="icons/view16/deployment_topo.gif"
+			name="%deploymentDSName" />
+	</extension>
+	<!--  Decorator Semantic Pattern Binding-->
+	<extension
+		id="com.ibm.ccl.soa.deploy.core.topology"
+		name="%coreTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<typeContent>
+				<include pattern="com.ibm.ccl.soa.deploy.core.HostingLink" />
+				<include pattern="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+				<include pattern="com.ibm.ccl.soa.deploy.core.unit">
+					<enablement>
+						<test
+							property="com.ibm.ccl.soa.deploy.core.isConceptualUnit"
+							value="true"
+							forcePluginActivation="true" />
+					</enablement>
+				</include>
+				<include pattern="com.ibm.ccl.soa.deploy.core.SoftwareComponent" />
+			</typeContent>
+		</decoratorSemanticPatternBinding>
+		<!--	<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.core.ids">
+			<typeContent>
+			<include
+			pattern="com.ibm.ccl.soa.deploy.core.HostingLink" />
+			<include
+			pattern="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+			<include
+			pattern="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+			<include pattern="com.ibm.ccl.soa.deploy.core.unit">
+			<enablement>
+			<test
+			property="com.ibm.ccl.soa.deploy.core.isInstalled" value="true"
+			forcePluginActivation="true" />
+			</enablement>
+			
+			</include>
+			</typeContent>		
+			</decoratorSemanticPatternBinding>
+		-->
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.tdds">
+			<typeContent>
+				<include pattern=".*" />
+			</typeContent>
+		</decoratorSemanticPatternBinding>
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.dds">
+			<typeContent>
+				<include pattern=".*" />
+			</typeContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+	<!-- =================================================================================== -->
+	<!-- Extension: Topology Unit Provider                                                  -->
+	<!-- =================================================================================== -->
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.internal.core.topologyimport.TopologyImportProvider"
+			description="%core.topologyImportprovider.name"
+			name="%core.topologyImportprovider.description">
+			<inputEnablement>
+				<or>
+					<and>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.Topology" />
+						<and>
+							<test
+								property="com.ibm.ccl.soa.deploy.core.isTopologyImport"
+								value="true"
+								forcePluginActivation="true" />
+						</and>
+					</and>
+					<and>
+						<instanceof value="org.eclipse.core.resources.IFile" />
+						<and>
+							<test
+								property="org.eclipse.core.resources.extension"
+								value="topology"
+								forcePluginActivation="true" />
+						</and>
+					</and>
+				</or>
+			</inputEnablement>
+		</unitProvider>
+	</extension>
+	<extension point="org.eclipse.core.runtime.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.xml"
+			default-charset="UTF-8"
+			file-extensions="topology"
+			id="topologyModelContentType"
+			name="%topologyModelContentType"
+			priority="high">
+		</content-type>
+	</extension>
+	<!-- ====================================================================== -->
+	<!-- Extension: Constraints                                                 -->
+	<!-- ======================================================================= -->
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.EnumerationConstraint"
+			displayName="%constraints.Enumeration"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="EnumerationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.EnumerationConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.ExclusionConstraint"
+			displayName="%constraints.Exclusion"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="ExclusionConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.ExclusionConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.RangeConstraint"
+			displayName="%constraints.Range"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="RangeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.RangeConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.VersionConstraint"
+			displayName="%constraints.Version"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="VersionConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.VersionConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.EqualsConstraint"
+			displayName="%constraints.Equals"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="EqualsConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.EqualsConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.ProductIdentifierConstraint"
+			displayName="%constraints.ProductIdentifier"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="ProductIdentifierConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.ProductIdentifierConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or> 
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.AndConstraint"
+			displayName="%constraints.And"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="AndConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.AndConstraintValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.OrConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.NotConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.XorConstraint" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.OrConstraint"
+			displayName="%constraints.Or"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="OrConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.OrConstraintValidator" />
+			<parentEnablement> 
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<and>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+						<not>
+							<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.OrConstraint" />
+						</not> 
+					</and>
+				</or> 
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.NotConstraint"
+			displayName="%constraints.Not"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="NotConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.NotConstraintValidator" />
+			<parentEnablement> 
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<and>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+						<not>
+							<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.NotConstraintn" />
+						</not> 
+					</and>
+				</or> 
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.XorConstraint"
+			displayName="%constraints.Xor"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="XorConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.XorConstraintValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" /> 
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />  
+				</or> 				
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.GroupCardinalityConstraint"
+			displayName="%constraints.GroupCardinality"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="GroupCardinalityConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.GroupCardinalityConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.linkType"
+					value="member" />
+			</parentEnablement>
+			<contextEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+			</contextEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.MemberCardinalityConstraint"
+			displayName="%constraints.MemberCardinality"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="MemberCardinalityConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.MemberCardinalityConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+				<test
+					property="com.ibm.ccl.soa.deploy.core.linkType"
+					value="member" />
+			</parentEnablement>
+			<contextEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+			</contextEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.RequirementExpression"
+			displayName="%constraints.RequirementExpression"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+			type="RequirementExpression">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.RequirementExpressionValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.TypeConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.AndConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.OrConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.NotConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.XorConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability"></instanceof>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"></instanceof>
+				</or>
+			</parentEnablement>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.CollocationConstraint"
+			displayName="%constraints.Collocation"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CollocationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.CollocationConstraintValidator" />
+			<factory class="com.ibm.ccl.soa.deploy.core.constraint.impl.CollocationConstraintFactory" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.AntiCollocationConstraint"
+			displayName="%constraints.AntiCollocation"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CollocationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.CollocationConstraintValidator" />
+			<factory class="com.ibm.ccl.soa.deploy.core.constraint.impl.AntiCollocationConstraintFactory" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.DeferredHostingConstraint"
+			displayName="%constraints.DeferredHosting"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="DeferredHostingConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.DeferredHostingConstraintValidator" />
+			<!-- linkMatcher class="com.ibm.ccl.soa.deploy.internal.core.validator.matcher.DeferredHostingConstraintLinkMatcher"/ -->
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.TypeConstraint"
+			displayName="%constraints.Type"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="TypeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.TypeConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<!-- Stereotype Constraint -->
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.StereotypeConstraint"
+			displayName="%constraints.Stereotype"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="StereotypeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.StereotypeConstraintValidator" />
+		    <parentEnablement>
+		   		<not>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DeployLink" />
+				</not>
+		    </parentEnablement>
+			<contextEnablement>
+				<or>
+					<and>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+						<test property="com.ibm.ccl.soa.deploy.core.linkType" value="member" />
+					</and>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+				</or>
+			</contextEnablement>
+		</constraint>
+		<!-- Communication Constraints -->
+		<!-- MK: 12/21/2007: CommunicationConstraint changed to ApplicationCommunicationConstraint
+			<constraint  id="com.ibm.ccl.soa.deploy.core.constraint.CommunicationConstraint"
+			displayName="%constraint.displayName.0" 
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CommunicationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.CommunicationConstraintValidator"/>
+			<parentEnablement>
+			<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink"/>
+			</parentEnablement>
+			</constraint>
+		-->
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.ApplicationCommunicationProtocolConstraint"
+			displayName="%constraints.ApplicationProtocolConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="ApplicationCommunicationProtocolConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.ApplicationCommunicationProtocolConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.ApplicationCommunicationConstraint" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationPortConstraint"
+			displayName="%constraints.CommunicationPortConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CommunicationPortConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationPortConstraintValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.ApplicationCommunicationProtocolConstraint" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.NetworkCommunicationConstraint" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.TransmissionDelayConstraint"
+			displayName="%constraints.TransmissionDelayConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="TransmissionDelayConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.TransmissionDelayConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.BaseCommunicationConstraint" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationBandwidthConstraint"
+			displayName="%constraints.CommunicationBandwidthConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CommunicationBandwidthConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationBandwidthConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.BaseCommunicationConstraint" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationCostConstraint"
+			displayName="%constraints.CommunicationCostConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CommunicationCostConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationCostConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.BaseCommunicationConstraint" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationTypeConstraint"
+			displayName="%constraints.CommunicationTypeConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CommunicationTypeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.CommunicationTypeConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.BaseCommunicationConstraint" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.NetworkCommunicationConstraint"
+			displayName="%constraints.NetworkCommunicationConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="NetworkCommunicationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.communication.NetworkCommunicationConstraintValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<!-- Attribute Propagation Constraint Validator -->
+		<constraint
+			id="com.ibm.ccl.soa.deploy.constraint.AttributePropagationConstraint"
+			displayName="%constraints.AttributePropagation"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="AttributePropagationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.AttributePropagationConstraintValidator" />
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DeployLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+		</constraint>
+		<!-- Attribute Defined Constraint Validator -->
+		<constraint
+			id="com.ibm.ccl.soa.deploy.constraint.AttributeDefinedConstraint"
+			displayName="%constraints.AttributeDefined"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="AttributeDefinedConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.AttributeDefinedConstraintValidator" />
+			<contextEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.DeployModelObject" />
+			</contextEnablement>
+			<parentEnablement>
+				<or>									
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Capability" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" /> 
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint> 
+		<constraint
+			displayName="%_UI_RealizationConstraint_type"
+			id="com.ibm.ccl.soa.deploy.core.constraint.RealizationConstraint"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="RealizationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.RealizationConstraintValidator"></validator>
+			<contextEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />					
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>
+			<factory class="com.ibm.ccl.soa.deploy.core.constraint.RealizationConstraintFactory"></factory>
+		</constraint> 
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.PaletteConstraint"
+			displayName="%constraint.displayName.0"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="PaletteConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.constraint.validation.PaletteConstraintValidator" />
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Topology" />
+			</parentEnablement>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.CapacityConstraint"
+			displayName="%constraint.capacity.displayName"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="CapacityConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.CapacityConstraintValidator" />
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.HostingLink" />
+				</or> 
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />					
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.HostingLink" />
+					<!-- Requirement  and DeployLink --> 
+				</or>
+			</parentEnablement>
+		   <factory
+		         class="com.ibm.ccl.soa.deploy.core.constraint.CapacityConstraintFactory">
+		   </factory>
+		</constraint>
+		<constraint
+			id="com.ibm.ccl.soa.deploy.core.constraint.AttributeCapacityConstraint"
+			displayName="%constraint.attributeCapacity.displayName"
+			namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+			type="AttributeCapacityConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.core.validator.constraints.AttributeCapacityConstraintValidator" />
+			<contextEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+			</contextEnablement>
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.CapacityConstraint" />
+			</parentEnablement>
+		   <factory
+		         class="com.ibm.ccl.soa.deploy.core.constraint.AttributeCapacityConstraintFactory">
+		   </factory>
+		</constraint>		
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<file-association
+			content-type="org.eclipse.core.runtime.xml"
+			file-extensions="template">
+		</file-association>
+	</extension>
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.core.zephyr-core">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+	<!-- extension point="com.ibm.ccl.soa.deploy.core.constraints">
+				<constraint id="com.ibm.ccl.soa.deploy.core.constraint.UpdateConstraint"
+	             	 displayName="Update Constraint" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+                 	 type="UpdateConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.internal.core.validator.UpdateConstraintValidator"/>
+				<parentEnablement>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+			   </parentEnablement>
+		</constraint>
+	</extension -->
+</plugin>

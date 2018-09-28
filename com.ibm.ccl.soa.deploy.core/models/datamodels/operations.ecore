@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SOADeployDataModels"
+    nsURI="http://www.ibm.com/soa/deploy/core/1.0" nsPrefix="">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.core.datamodels"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.core.internal.datamodels"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployTopologyExportDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="This datamodel is used with the export of the topology."/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.infrastructure.operations.AbstractEMFScribblerOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologyFile" eType="#//TopologyFile">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The topology file to be exported. This property must be set as an IFile."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="archiveDestination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The destination location for the topology. This can be a folder location or a zip file, based on the export type supported by the exporter."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overwriteExisting" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This boolean property drives if the existing archive file should be overwritten or not."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exportSourceFiles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This property drives the export of the source files along with the binary files."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exportWithError" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This property allows to continue the export process even if there are validation errors."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topologyHasError" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This property is used to indicate if the topology being exported contains any validation error."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exportModules" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This property drives the option to export the modules of the topology."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exporter" eType="#//TopologyExporter">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The property provides the exporter class that is to be used for the topology export."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exportLogger" eType="#//DeployExportLogger">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This property provides the logger that is to be used to log the export errors."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scribblerDefinition" eType="ecore:EClass ../../../com.ibm.ccl.soa.infrastructure.emf/models/operations.ecore#//ScribblerDefinitionDatamodel">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Defines the Scribbler that should be used when executing&#xD;&#xA;the operation for the current Datamodel."/>
+        <details key="propertyName" value="SCRIBBLER_DEFINITION_MODEL"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedTopologyInUse"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This indicates when the exporter is exporting the imported topology contents."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exportOutput" eType="#//ExportOutput"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The property provides for the export output to be used for exporting the contents to."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createLocationBinding"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This indicates whether to extract the location binding file for the topology."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exportProjectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is the exported project name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createExportProject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This specifies whether to create the export project."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exportDiagramResourceIfPresent"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This specifies whether to export the topology diagram file."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExportOutput" instanceClassName="java.io.OutputStream"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TopologyFile" instanceClassName="org.eclipse.core.resources.IFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployExportLogger" instanceClassName="com.ibm.ccl.soa.deploy.core.export.DeployExportLogger"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TopologyExporter" instanceClassName="com.ibm.ccl.soa.deploy.core.TopologyExporter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateTopologyDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="This data model is used to create a new Topology.  This data model will allow you to &#xD;&#xA;set a project location as well as the source folder and namespace for the new topology. "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contractType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The contractType determines which kind of &#xD;&#xA;ConfigurationContract to add to the Topology.&#xD;&#xA;&#xD;&#xA;The string should represent the fully qualified name&#xD;&#xA;of the actual model type (e.g. &#xD;&#xA;IdentityContract.class.getCanonicalName())."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topologyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="A name for the new Topology."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topologyDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="An optional description for the topology.  The default is a simple string&#xD;&#xA;indicating the timestamp that the topology was created."/>
+        <details key="required" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoratorSemantic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="An optional decoratorSemantic name.  This must be a valid decorator semantic if it is set.  If no&#xD;&#xA;value is set then it defaults to null.  A validation check will be made against the value to ensure that&#xD;&#xA;it is a valid decorator semantic."/>
+        <details key="required" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoratorSemanticDescription"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is a READ-ONLY property used to obtain the description for the selected&#xD;&#xA;decoratorSemantic."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is the path to the root folder for the topologies.  The path must be at least&#xD;&#xA;one segment long where the first segment is a valid project name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespacePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is the path for the namespace to be used for the new Topology.  This &#xD;&#xA;property is optional.  If a value is not set then the defaul will be an empty &#xD;&#xA;namespace.  This means the topology will be created directly in the set&#xD;&#xA;sourceFolder."/>
+        <details key="required" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologyFile" eType="#//TopologyFile"
+        changeable="false">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is a READ-ONLY field that will return the computed file for the new topology&#xD;&#xA;based on the project name, source folder, namespace path, and topology name."/>
+        <details key="readOnly" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SynchronizationDatamodel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="The SynchronizationDatamodel is used &#xD;&#xA;by the SynchronizationRefactoringWizard."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topology" eType="#//Topology"
+        defaultValueLiteral="">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The topology that is the target &#xD;&#xA;of the implementation operation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" eType="#//UnitArray">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The set of components from the associated&#xD;&#xA;topology that should be implemented or&#xD;&#xA;reflected. This field will be empty if creating an &#xD;&#xA;Import Change."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stubs" eType="#//TopologyUnitStubsArray">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The set of stubs from some external selection&#xD;&#xA;that should be imported. This field will be empty &#xD;&#xA;if creating an Implementation or Reflection Change."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Topology" instanceClassName="com.ibm.ccl.soa.deploy.core.Topology"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareComponent" instanceClassName="com.ibm.ccl.soa.deploy.core.SoftwareComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitArray" instanceClassName="com.ibm.ccl.soa.deploy.core.Unit[]"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TopologyUnitStubsArray" instanceClassName="com.ibm.ccl.soa.deploy.core.TopologyUnitStub[]"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImportToTopologyDatamodel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologyFile" eType="#//TopologyFile">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The Topology File that will contain the imported unit. The&#xD;&#xA;Topology File must exist and must contain a valid Topology."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" eType="#//ResourceArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceArray" instanceClassName="org.eclipse.core.resources.IResource[]"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateNamespaceDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="This data model is used to create a new namespace within a project in the workspace."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is the path to the root folder for the topologies.  The path must be at least&#xD;&#xA;one segment long where the first segment is a valid project name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespacePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="This is the path for the namespace.  This property is optional.  If a value&#xD;&#xA; is not set then the defaul will be an empty namespace. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

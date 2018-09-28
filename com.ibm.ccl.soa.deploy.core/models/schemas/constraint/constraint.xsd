@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="ConstraintRoot"
+	ecore:name="constraint"
+	ecore:package="com.ibm.ccl.soa.deploy.core.constraint"
+	ecore:nsPrefix="constraint">
+	<annotation>
+		<documentation>
+		    The constraint model for the Rational Deployment Architecture Platform.
+		</documentation>
+	</annotation>
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../core.xsd" />
+
+	<!-- Abstract type Boolean Operator -->
+	<complexType name="BooleanOperator" abstract="true">
+		<annotation>
+			<documentation>
+			    Abstract parent type of all constraint types representing boolean operators.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Constraint"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.or" substitutionGroup="core:constraint" type="constraint:OrConstraint"/>
+	<complexType name="OrConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing boolean operator 'OR'.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:BooleanOperator"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.and" substitutionGroup="core:constraint" type="constraint:AndConstraint"/>
+	<complexType name="AndConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing boolean operator 'AND'.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:BooleanOperator"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.not" substitutionGroup="core:constraint" type="constraint:NotConstraint"/>
+	<complexType name="NotConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing boolean operator 'NOT'.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:BooleanOperator"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.xor" substitutionGroup="core:constraint" type="constraint:XorConstraint"/>
+	<complexType name="XorConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing boolean operator 'XOR'.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:BooleanOperator"/>
+		</complexContent>
+	</complexType>
+	
+	<!-- Abstract type Structural Constraint -->
+	<complexType name="StructuralConstraint" abstract="true">
+		<annotation>
+			<documentation>
+			    Abstract parent type of all constraint types representing structural constraints.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Constraint"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.deferredHosting" substitutionGroup="core:constraint" type="constraint:DeferredHostingConstraint"/>
+	<complexType name="DeferredHostingConstraint">
+		<annotation>
+			<documentation>
+			    Structural constraint representing the deferred hosting relationship (between two units). 
+			    This relationship indicates that one of the units (the source of the (constraint) link that 
+			    contains the constraint) is hosted on the other unit (the target of the link that contains
+			    the constraint), not necessarily directly, but potentially through a chain of other 
+			    units (i.e., the hosting stack).
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:StructuralConstraint"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.collocation" substitutionGroup="core:constraint" type="constraint:CollocationConstraint"/>
+	<complexType name="CollocationConstraint">
+		<annotation>
+			<documentation>
+			    Structural constraint representing collocation and anti-collocation of two units.
+			    Indicates that two units should be collocated/anti-collocated at a certain level 
+			    of their hosting stacks.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:StructuralConstraint">
+				<attribute name="type" type="constraint:CollocationConstraintTypes" use="required">
+				<annotation>
+					<documentation>
+	    			Type of the collocation: 'collocation' or 'anti-collocation'.
+					</documentation>
+				</annotation>
+				</attribute>
+				<attribute name="capabilityType" type="QName" use="optional">
+				<annotation>
+					<documentation>
+					Indicates capability type, such that hosting stacks converge ('collocation') or do not converge 
+					(anti-collocation) at every occurrence of units with the given capability type on both sides
+					of the hosting stack.
+					</documentation>
+				</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--                                          -->
+	<!-- Limit the valid options for realization  -->
+    <!--                                          -->		
+    <element name="constraint.realization" substitutionGroup="core:constraint" type="constraint:RealizationConstraint"/>	
+	<complexType name="RealizationConstraint"> 
+		<annotation>
+			<documentation>
+			    Defines restrictions to the realization logic which 
+			    validates whether a given realization is valid. In 
+			    particular, expects the user of nested Boolean or 
+			    Type Constraints.		  
+			</documentation>
+		</annotation> 
+		<complexContent>
+			<extension base="core:Constraint"/>
+		</complexContent>
+	</complexType>
+
+    <!--                                          -->
+    <!-- Abstract Attribute Value Constraint type -->
+    <!--                                          -->
+    <complexType name="AttributeValueConstraint" abstract="true">
+		<annotation>
+			<documentation>
+			    Abstract parent type of all constraint types representing attribute value constraints.
+			</documentation>
+		</annotation>
+    	<complexContent>
+        	<extension base="core:Constraint">
+          		<attribute name="attributeName" type="string" use="required">
+          			<annotation>
+          				<documentation>
+          				Name of the attribute on the {@link Capability} or {@link Unit}, to which this constraint applies.
+          				</documentation>
+          			</annotation>
+          		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+
+    <!--                        -->
+    <!--   Equals constraint     -->
+    <!--                        -->
+    <element name="constraint.equals" substitutionGroup="core:constraint" type="constraint:EqualsConstraint"/>		
+    <complexType name="EqualsConstraint">
+    	<annotation>
+			<documentation>
+				Constraint that specifies the value of an attribute.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint">
+          		<attribute name="value" type="string" use="required">
+			    	<annotation>
+						<documentation>The value of the attribute.</documentation>
+					</annotation>
+          		</attribute>
+          	</extension>
+        </complexContent>
+    </complexType>
+
+    <!--                        -->
+    <!--   Range constraint     -->
+    <!--                        -->
+    <element name="constraint.range" substitutionGroup="core:constraint" type="constraint:RangeConstraint"/>		
+    <complexType name="RangeConstraint">
+    	<annotation>
+			<documentation>
+				Constraint that specifies valid attribute value range. Not necessarily numbers, any comparable types.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint">
+          		<attribute name="minValue" type="string" use="optional">
+			    	<annotation>
+						<documentation>
+						The minimum value of the range. No minimum value is specified, if ommited.
+						</documentation>
+					</annotation>
+          		</attribute>
+          		<attribute name="minValueInclusive" type="boolean" use="optional" default="true">
+			    	<annotation>
+						<documentation>
+						Is minimum value is included in the range.
+						</documentation>
+					</annotation>
+          		</attribute>
+          		<attribute name="maxValue" type="string" use="optional">
+			    	<annotation>
+						<documentation>
+						The maximum value of the range. No maximum value is specified, if ommited.
+						</documentation>
+					</annotation>
+          		</attribute>
+          		<attribute name="maxValueInclusive" type="boolean" use="optional" default="true">
+			    	<annotation>
+						<documentation>
+						Is maximum value is included in the range.
+						</documentation>
+					</annotation>
+          		</attribute>
+          	</extension>
+        </complexContent>
+    </complexType>
+
+    <!--                        -->
+    <!--   Version constraint   -->
+    <!--                        -->
+    <element name="constraint.version" substitutionGroup="core:constraint" type="constraint:VersionConstraint"/>
+    <complexType name="VersionConstraint">
+    	<annotation>
+			<documentation>Constraint that restricts the version number.</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint">
+          		<attribute name="value" type="string" use="required">
+          			<annotation>
+          				<documentation>Version string specification, e.g., '1.1.2.x'; '1.100+'.</documentation>
+          			</annotation>
+          		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+    
+   <!--                        -->
+    <!--   Product Identifier constraint   -->
+    <!--                        -->
+    <element name="constraint.productIdentifier" substitutionGroup="core:constraint" type="constraint:ProductIdentifierConstraint"/>
+    <complexType name="ProductIdentifierConstraint">
+    	<annotation>
+			<documentation>Constraint that specifies a product identifier.</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+        	    <attribute name="productIdentifier" type="string" use="required">
+          			<annotation>
+          				<documentation>String representation of the product selection.</documentation>
+          			</annotation>
+          		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+
+    <!--                     -->
+    <!--  'Value' element    -->
+    <!--                     -->
+    <element name="value" type="constraint:SingleValue"/>		    
+    <complexType name="SingleValue">
+    	<annotation>
+			<documentation>
+			Represents a single value (of an attribute). 
+			Used as a child element in 'Enumeration' and 'Exclusuion' constraints.
+			</documentation>
+		</annotation>
+        <attribute name="value" type="string" use="required">
+	    	<annotation>
+				<documentation>
+				The value itself. 
+				</documentation>
+			</annotation>
+        </attribute>
+        <attribute name="description" type="string" use="optional">
+	    	<annotation>
+				<documentation>
+				Description of the value (optional). 
+				</documentation>
+			</annotation>
+        </attribute>
+    </complexType>
+
+    <!--                           -->
+    <!--  Enumeration constraint   -->
+    <!--                           -->
+    <element name="constraint.enumeration" substitutionGroup="core:constraint" type="constraint:EnumerationConstraint"/>		    
+    <complexType name="EnumerationConstraint">
+    	<annotation>
+			<documentation>
+			The value of the attribute should be any one from the given set.
+			The set of valid values is represented as a sequence of child elements of type 'SingleValue'.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint">
+        	<sequence>
+        		<element name="value" minOccurs="1" maxOccurs="unbounded" type="constraint:SingleValue" ecore:name="values">
+    			<annotation>
+					<documentation>
+					The set of valid values is represented as a sequence of child elements of type 'SingleValue'.
+					</documentation>
+				</annotation>
+        		</element>
+			</sequence>
+        	</extension>
+    	</complexContent>
+    </complexType>
+
+    <!--                         -->
+    <!--  Exclusion constraint   -->
+    <!--                         -->
+    <element name="constraint.exclusion" substitutionGroup="core:constraint" type="constraint:ExclusionConstraint"/>
+    <complexType name="ExclusionConstraint">
+    	<annotation>
+			<documentation>
+			The value of the attribute SHOULD NOT be one from the given set.
+			The set of INVALID values is represented as a sequence of child elements of type 'SingleValue'.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint">
+        	<sequence>
+        		<element name="value" minOccurs="1" maxOccurs="unbounded" type="constraint:SingleValue" ecore:name="values">
+    			<annotation>
+					<documentation>
+					The set of INVALID values is represented as a sequence of child elements of type 'SingleValue'.
+					</documentation>
+				</annotation>
+        		</element>
+			</sequence>
+        	</extension>
+    	</complexContent>
+    </complexType>
+
+    <!--                                -->
+    <!--  GroupCardinality constraint   -->
+    <!--                                -->
+    <element name="constraint.groupCardinality" substitutionGroup="core:constraint" type="constraint:GroupCardinalityConstraint"/>		
+    	<annotation>
+			<documentation>
+				Constraints the number of groups (incoming member links).
+			</documentation>
+		</annotation>
+    <complexType name="GroupCardinalityConstraint">
+      <complexContent>
+        <extension base="core:Constraint" >
+          <!--   attribute name="value" type="string" use="required">
+          	<annotation><documentation>Cardinality expression: 'N..M', '*': infinity.</documentation></annotation>
+          </attribute -->
+          <attribute name="minValue" type="string" use="optional" default="0">
+    	<annotation>
+			<documentation>
+				The minimum number of groups.
+			</documentation>
+		</annotation>
+          </attribute>
+  		  <attribute name="maxValue" type="string" use="optional" default="unbounded">
+    	<annotation>
+			<documentation>
+				The maximum number of groups.
+			</documentation>
+		</annotation>
+  		  </attribute>
+        </extension>
+     </complexContent>
+    </complexType>
+
+    <!--                                 -->
+    <!--  MemberCardinality constraint   -->
+    <!--                                 -->
+    <element name="constraint.memberCardinality" substitutionGroup="core:constraint" type="constraint:MemberCardinalityConstraint"/>		
+    	<annotation>
+			<documentation>
+				Constraints the number of members (outgoing member links).
+			</documentation>
+		</annotation>
+    <complexType name="MemberCardinalityConstraint">
+      <complexContent>
+        <extension base="core:Constraint" >
+          <!-- attribute name="value" type="string" use="required">
+          	<annotation><documentation>Cardinality expression: 'N..M', '*': infinity.</documentation></annotation>
+          </attribute -->
+          <attribute name="minValue" type="string" use="optional" default="0">
+    	<annotation>
+			<documentation>
+				The minimum number of members.
+			</documentation>
+		</annotation>
+          </attribute>
+  		  <attribute name="maxValue" type="string" use="optional" default="unbounded">
+    	<annotation>
+			<documentation>
+				The maximum number of members.
+			</documentation>
+		</annotation>
+  		  </attribute>
+        </extension>
+     </complexContent>
+    </complexType>
+    
+    <!--                                              -->
+    <!--  Constraint that restrict the type of a DMO  -->
+    <!--                                              -->
+	<element name="constraint.type" substitutionGroup="core:constraint" type="constraint:TypeConstraint"/>
+	<complexType name="TypeConstraint">
+    	<annotation>
+			<documentation>
+			Constraint that restricts the type of the context DMO, which is being validated.
+			The primary intent to use TypeConstraint is as a child of another constraint, which would define 
+			the semantics of the child TypeConstraint constraint and would supply the right validation context.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Constraint">
+				<attribute name="dmoType" type="QName" use="required">
+			    	<annotation>
+						<documentation>
+						Specifies the type (e.g., 'namespace:TypeName') of a Topology Model Object.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="constraint.basecommunication" substitutionGroup="core:constraint" type="constraint:BaseCommunicationConstraint"/>
+	<complexType name="BaseCommunicationConstraint">
+    	<annotation>
+			<documentation>
+				Idenitifies requirement for communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+          		<attribute name="respectLinkDirection" type="boolean" use="optional" default="true">
+			    	<annotation>
+						<documentation>
+							When true, the originator of the communication is the source of the link.
+							Otherwise, the originator is the target of the link.
+							By default, this should be true.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.applicationcommunication" substitutionGroup="core:constraint" type="constraint:ApplicationCommunicationConstraint"/>
+	<complexType name="ApplicationCommunicationConstraint">
+    	<annotation>
+			<documentation>
+				Idenitifies requirement for application level communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:BaseCommunicationConstraint">
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.networkcommunication" substitutionGroup="core:constraint" type="constraint:NetworkCommunicationConstraint"/>
+	<complexType name="NetworkCommunicationConstraint">
+    	<annotation>
+			<documentation>
+				Idenitifies requirement for network level communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:BaseCommunicationConstraint">
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<complexType name="CommunicationChildConstraint" abstract="true">
+		<annotation>
+			<documentation>
+			    Abstract type for a communications child constriant.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Constraint"/>
+		</complexContent>
+	</complexType>
+
+	<element name="constraint.applicationprotocol" substitutionGroup="core:constraint" type="constraint:ApplicationCommunicationProtocolConstraint"/>
+	<complexType name="ApplicationCommunicationProtocolConstraint">
+    	<annotation>
+			<documentation>
+				Specifies the application protocol of required communication.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="applicationLayerProtocol" type="string">
+			    	<annotation>
+						<documentation>
+							The name of the application layer protocol.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.communicationport" substitutionGroup="core:constraint" type="constraint:CommunicationPortConstraint"/>
+	<complexType name="CommunicationPortConstraint">
+    	<annotation>
+			<documentation>
+				Specifies the (TCP/UDP) port of required communication.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="port" type="int" use="required">
+			    	<annotation>
+						<documentation>
+							The (TCP/UDP) port of required communication.
+						</documentation>
+					</annotation>
+				</attribute>
+          		<attribute name="isTarget" type="boolean" use="optional" default="true">
+			    	<annotation>
+						<documentation>
+							Flag identifying to which communication endpoint port constraint applies. This flag
+							is interpreted together with the respectLinkDirection flag on the parent BaseCommunicationConstraint.
+							Their meaning is:<ul>
+							<li><tt>respectLinkDirection = true</tt> and <tt>isTarget = true</tt>: target must be able to accept connections on <tt>port</tt></li>
+							<li><tt>respectLinkDirection = true</tt> and <tt>isTarget = false</tt>: source must be able to send messages on <tt>port</tt></li>
+							<li><tt>respectLinkDirection = false</tt> and <tt>isTarget = true</tt>: target must be able to send messages on <tt>port</tt></li>
+							<li><tt>respectLinkDirection = false</tt> and <tt>isTarget = false</tt>: source must be able to receive messages on <tt>port</tt></li>
+							</ul>
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.synchronouscommunication" substitutionGroup="core:constraint" type="constraint:SynchronousCommunicationConstraint"/>
+	<complexType name="SynchronousCommunicationConstraint">
+    	<annotation>
+			<documentation>
+				Specifies whether or not the communication is synchronous.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+          		<attribute name="synchronous" type="boolean" default="true">
+			    	<annotation>
+						<documentation>
+							Flag indicating whether or not communication is synchronous.  Default is true.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.transmissiondelay" substitutionGroup="core:constraint" type="constraint:TransmissionDelayConstraint"/>
+	<complexType name="TransmissionDelayConstraint">
+    	<annotation>
+			<documentation>
+				Constrains the acceptable transmission delay for communications.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="delay" type="int" use="required">
+			    	<annotation>
+						<documentation>
+							Acceptable delay in milliseconds.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.communicationbandwidth" substitutionGroup="core:constraint" type="constraint:CommunicationBandwidthConstraint"/>
+	<complexType name="CommunicationBandwidthConstraint">
+    	<annotation>
+			<documentation>
+				Expresses a required bandwidth for communications.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="bandwidth" type="int" use="required">
+			    	<annotation>
+						<documentation>
+							Required bandwidth in bits per second.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.communicationcost" substitutionGroup="core:constraint" type="constraint:CommunicationCostConstraint"/>
+	<complexType name="CommunicationCostConstraint">
+    	<annotation>
+			<documentation>
+				Expresses a required maximum cost for communications.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="cost" type="int" use="required">
+			    	<annotation>
+						<documentation>
+							Maximum allowable cost in dollars.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.communicationredundancy" substitutionGroup="core:constraint" type="constraint:CommunicationRedundancyConstraint"/>
+	<complexType name="CommunicationRedundancyConstraint">
+    	<annotation>
+			<documentation>
+				Expresses a required mimimum redundancy for communication.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="redundancy" type="int" default="1">
+			    	<annotation>
+						<documentation>
+							Minimum allowable communication path redundancy.
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+	<element name="constraint.communicationtype" substitutionGroup="core:constraint" type="constraint:CommunicationTypeConstraint"/>
+	<complexType name="CommunicationTypeConstraint">
+    	<annotation>
+			<documentation>
+				Communication type required.
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:CommunicationChildConstraint">
+          		<attribute name="type" type="constraint:CommunicationTypeTypes" default="LAN">
+			    	<annotation>
+						<documentation>
+							Communication type
+						</documentation>
+					</annotation>
+				</attribute>
+        	</extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="CollocationConstraintTypes">		
+    	<annotation>
+			<documentation>
+				The types of collocation: 'COLLOCATION' and 'ANTI-COLLOCATION'
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="collocation">
+    	<annotation>
+			<documentation>
+				Represents the collocation constraint.
+			</documentation>
+		</annotation>
+		</enumeration>
+        <enumeration value="anticollocation">
+    	<annotation>
+			<documentation>
+				Represents the anti-collocation constraint.
+			</documentation>
+		</annotation>
+        </enumeration>
+	  </restriction>
+    </simpleType>
+
+    <simpleType name="CommunicationTypeTypes">		
+    	<annotation>
+			<documentation>
+				The types of communication links: 'LAN', 'WAN', ...
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="LAN">
+    	<annotation>
+			<documentation>
+				Represents a LAN connection.
+			</documentation>
+		</annotation>
+		</enumeration>
+        <enumeration value="WAN">
+    	<annotation>
+			<documentation>
+				Represents a WAN connection.
+			</documentation>
+		</annotation>
+        </enumeration>
+	  </restriction>
+    </simpleType>
+    
+    <!-- Attribute Propagation Constraint -->
+    <element name="constraint.attributePropagation" substitutionGroup="core:constraint" type="constraint:AttributePropagationConstraint"/>
+    <complexType name="AttributePropagationConstraint">
+    	<annotation>
+			<documentation>
+			A constraint that propagates an attribute value from one Topology Model object to another.
+			<p>
+			The constraint context determines the base source and the base target objects for the attribute propagation,
+			as described in the following table.
+			</p>
+			<p>
+			<table>
+			<tr>
+			<th>Context</th><th>Base Source</th><th>Base Target</th>
+			</tr>
+			<tr>
+			<td>Dependency link</td><td>Link source's (i.e., requirement's) unit</td><td>Link target (capability)</td>
+			</tr>
+			<tr>
+			<td>Other deploy link</td><td>Link source</td><td>Link target</td>
+			</tr>
+			<tr>
+			<td>Requirement</td><td>Requirement unit</td><td>Requirement-associated link peer.
+			   <p>The link peer is defined per {@link com.ibm.ccl.soa.deploy.core.RequirementLinkTypes} type:
+			   <ul>
+			   <li>{@link com.ibm.ccl.soa.deploy.core.RequirementLinkTypes#DEPENDENCY}: dependency link target capability.</li>
+			   <li>{@link com.ibm.ccl.soa.deploy.core.RequirementLinkTypes#HOSTING}: hosting link source (host) units.</li>
+			   <li>{@link com.ibm.ccl.soa.deploy.core.RequirementLinkTypes#MEMBER}: member links are from group to member.
+			   If {@link com.ibm.ccl.soa.deploy.core.Unit#isGroup()} then the peers are the member link targets, otherwise it
+			   is the member link sources.</li>
+			   <li>{@link com.ibm.ccl.soa.deploy.core.RequirementLinkTypes#ANY}: undefined (validation indicates as an error).</li>.
+			   </ul>
+			   </p></td>
+			</tr>
+			<tr>
+			<td>Other object</td><td>Context object</td><td>Context object</td>
+			</tr>
+			</table>
+			</p>
+			<p>
+			The {@link #isRespectLinkDirection()} is false, then the computed source and target objects are
+			swapped.
+			</p>
+			<p>
+			The constraint further supports navigation from the computed base source and base target objects
+			using the attributes {@link #getSourceObjectURI()} and {@link #getTargetObjectURI()}.  Their value is used
+			compute the source and target objects by using {@link com.ibm.ccl.soa.deploy.core.DeployModelObject#resolve(String)}.
+			The navigation can be relative path ({@link com.ibm.ccl.soa.deploy.core.DeployModelObject#getRelativePath(com.ibm.ccl.soa.deploy.core.DeployModelObject)}),
+			or an absolute path ({@link com.ibm.ccl.soa.deploy.core.DeployModelObject#getFullPath()}).
+			</p>
+			<p>
+			Further, validation computes final realization of the source and target objects, and uses them 
+			as actual source and target objects. 
+			</p>
+			<p>
+			Once the source and target objects have been computed, the attributes which are propagated from/to are
+			identified using {@link #getSourceAttributeName()}, and {@link #getTargetAttributeName()}. 
+			</p>
+			<p>
+			Certain placement of the constraint (e.g., on a MEMBER Requirement) makes possible several DMOs 
+			as source or target objects. In this case, the validation logic enforces pair-wise propagation 
+			between every source and every target. If there is more than one source, and the values of 
+			the attributes are different, there will be a conflict.
+			</p>
+			<p>
+			The attribute propagation logic implements a flexible equality comparison.  {@link Object#equals(Object} is relaxed
+			as follows:
+			<ul>
+			<li> Null is treated as equal to an empty string </li>
+			<li> If the two endpoints are not assignable, then their string representations are also compared.  This allows one
+			     to propagate an {@link Integer} value	into a {@link String} value by invoking {@link Integer#toString()} to convert.</li>
+			</ul>
+			</p>
+			</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+        		<attribute name="sourceObjectURI" type="anyURI" use="optional" ecore:name="sourceObjectURI">
+        			<annotation>
+        				<documentation>Optional relative or absolute path from the computed base source of the propagation constraint.
+        				<p>
+        			    If this attribute is not set, then the base rules for evaluating the attribute propagation source,
+        			    as described in the class documentation ({@link AttributePropagationConstraint}).
+        				</p>
+        				</documentation>
+        			</annotation>
+        		</attribute>
+        		<attribute name="targetObjectURI" type="anyURI" use="optional" ecore:name="targetObjectURI">
+        			<annotation>
+        				<documentation>Optional relative or absolute path from the computed base target of the propagation constraint.
+        				<p>
+        			    If this attribute is not set, then the base rules for evaluating the attribute propagation target,
+        			    as described in the class documentation ({@link AttributePropagationConstraint}).
+        				</p>
+        				</documentation>
+        			</annotation>
+        		</attribute>
+          		<attribute name="sourceAttributeName" type="string" use="required">
+          			<annotation>
+          				<documentation>Name of the source attribute.
+          				<p>
+          				The name may refer to a static XSD/EMF attribute, or an {@link com.ibm.ccl.soa.deploy.core.ExtendedAttribute}.
+          				</p>
+          				</documentation>
+          			</annotation>
+        		</attribute>
+          		<attribute name="targetAttributeName" type="string" use="required">
+          			<annotation>
+          				<documentation>Name of the target attribute.
+          				<p>
+          				The name may refer to a static XSD/EMF attribute, or an {@link com.ibm.ccl.soa.deploy.core.ExtendedAttribute}.
+          				</p>
+          				</documentation>
+          			</annotation>
+          		</attribute>
+          		<attribute name="respectLinkDirection" type="boolean" use="optional" default="true">
+          			<annotation>
+          				<documentation>
+          					True if the link direction should specify the propagation direction, false otherwise.
+          					<p>
+          					Applicable if the constraint is defined over a {@link com.ibm.ccl.soa.deploy.core.Requirement} or
+          					an {@link com.ibm.ccl.soa.deploy.core.DeployLink}.  If the value is set to true, then the context
+          					or implied context link's direction specifies the propagation direction.  Otherwise the reverse
+          					direction is used.
+          					</p>
+          					<p>
+          					For example, dependency links typically are used to express a propagation from the target capability
+          					to a capability of the requirement's unit.  In such cases, the link direction is reverse to the
+          					propagation direction, and the value of this attribute will be false.
+          					</p>
+          				</documentation>
+          			</annotation>
+          		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+    
+    <!--Attribute Defined Constraint -->
+    <element name="constraint.attrdef" substitutionGroup="core:constraint" type="constraint:AttributeDefinedConstraint"/>
+    <complexType name="AttributeDefinedConstraint">
+    	<annotation>
+			<documentation>A constraint that the attribute of a Topology Model object is not null, or empty (for strings).</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="constraint:AttributeValueConstraint"/>
+    	</complexContent>
+    </complexType>
+    
+   <!--Palette Constraint -->
+    <element name="constraint.palette" substitutionGroup="core:constraint" type="constraint:PaletteConstraint"/>
+    <complexType name="PaletteConstraint">
+    	<annotation>
+			<documentation>A constraint that denotes this topology is a dynamic palette entry.</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+        	    <attribute name="resourceTypeId" type="string" use="required">
+        			<annotation>
+        				<documentation>Resource type id of the palette entry.  Used to locate palette information in the dynamic types registry.
+        				</documentation>
+        			</annotation>
+        		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+   
+    <!--Stereotype Constraint -->
+    <element name="constraint.stereotype" substitutionGroup="core:constraint" type="constraint:StereotypeConstraint"/>
+    <complexType name="StereotypeConstraint">
+    	<annotation>
+			<documentation>A constraint that detects the existence of stereotype keys.</documentation>
+		</annotation>
+		<complexContent>
+        	<extension base="core:Constraint">
+        	    <attribute name="includes" type="string" use="required">
+        			<annotation>
+        				<documentation>A comma separated list of stereotype tags that will be tested for inclusion.</documentation>
+        			</annotation>
+        		</attribute>
+        	</extension>
+    	</complexContent>
+    </complexType>
+    
+        <!--Capacity Constraint -->
+    <element name="constraint.capacity"
+    	substitutionGroup="core:constraint"
+    	type="constraint:CapacityConstraint" />
+    <complexType name="CapacityConstraint">
+    	<annotation>
+    		<documentation>
+    			Describes requirements on a target down the hosting
+    			stack to ensure that certain capacities can be met when
+    			many hostees compete for resources.
+    		</documentation>
+    	</annotation>
+    	<complexContent>
+    		<extension base="constraint:TypeConstraint">  
+				<!--  should contain AttributeCapacityConstraints -->			
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="constraint.capacityRestriction"
+    	substitutionGroup="core:constraint"
+    	type="constraint:AttributeCapacityConstraint" />
+    <complexType name="AttributeCapacityConstraint">
+    	<annotation>
+    		<documentation>
+    			Describes requirements on a target down the hosting
+    			stack to ensure that certain capacities can be met when
+    			many hostees compete for resources.
+    		</documentation>
+    	</annotation>
+    	<complexContent>
+    		<extension base="constraint:AttributeValueConstraint">
+    			<attribute name="value" type="string" use="required">
+    				<annotation>
+    					<documentation>
+    						The expected value of the scoped attribute.
+    					</documentation>
+    				</annotation>
+    			</attribute>
+    			<attribute name="exclusive" type="boolean"
+    				use="optional">
+    				<annotation>
+    					<documentation>
+    						Determines whether the value given for the
+    						scoped attribute value must be exclusively
+    						allocated to this constraint or may be
+    						shared among others. For example, if
+    						"exclusive=true" is specified on
+    						"memorySize=256M", then 256M must be
+    						allocated only for the owner of the
+    						CapacityConstraint. A second
+    						CapacityConstraint with the same settings
+    						would mean that the final scoped target
+    						(e.g. a Server) must have at least 512M
+    						specified for memorySize in order to be
+    						valid.
+    					</documentation>
+    				</annotation>
+    			</attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+</schema>

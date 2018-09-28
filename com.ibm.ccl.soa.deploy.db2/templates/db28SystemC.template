@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" name="DB2 8 Template">
+  <db2:unit.db2SystemUnit displayName="DB2 System" name="DB2System" conceptual="true">
+    <db2:capability.db2JdbcDriver name="DB2 Legacy CLI-based Type 2 JDBC Driver" 
+    		displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" 
+    		linkType="dependency" 
+    		classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" 
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" 
+    		displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" 
+    		linkType="dependency" 
+    		classname="COM.ibm.db2.jdbc.DB2XADataSource"  
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider - JDBC type 2" 
+    		displayName="DB2 Universal JDBC Driver Provider" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource"  
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" 
+    		displayName="DB2 Universal JDBC Driver Provider (XA)" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2XADataSource"  
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider - JDBC type 4" 
+    		displayName="DB2 Universal JDBC Driver Provider" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource"  
+    		jdbcType="4"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" 
+    		displayName="DB2 Universal JDBC Driver Provider (XA)" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2XADataSource"  
+    		jdbcType="4"/>
+    <db2:capability.db2System name="DB2 System" displayName="DB2 System" linkType="any" db2Version="8" />
+    <core:requirement mutable="true" name="Operating System" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2:unit.db2SystemUnit>
+</core:topology>

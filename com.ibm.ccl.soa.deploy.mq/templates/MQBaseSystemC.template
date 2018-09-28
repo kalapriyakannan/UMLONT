@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/"
+name="MQBaseSystem Template">
+  <mq:unit.MQBaseSystemUnit name="MQBaseSystem" displayName="MQ Base System" configurationUnit="true" conceptual="true">
+    <mq:capability.MQBaseSystem name="MQBaseSystem" linkType="any"/>
+    <core:requirement name="optionalHostingReq" dmoType="os:OperatingSystem" linkType="hosting" use="required"/>  
+  </mq:unit.MQBaseSystemUnit>
+</core:topology>

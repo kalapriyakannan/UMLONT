@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" name="WindowsXP Template">
+  <core:annotation context="topology_root">
+     <core:detail key="root1" value="WindowsXP"/>   
+  </core:annotation>
+  <os:unit.windowsOperatingSystemUnit name="WindowsXP" conceptual="true">
+    <os:capability.windowsOperatingSystem name="WindowsXP" displayName="Windows XP" linkType="any" os.type="Windows" os.version="XP"/>
+	<os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false" />      
+    </os:capability.windowsDirectory>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals name="cpuArchitecture" displayName="cpuArchitecture" attributeName="cpuArchitecture"  value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="WindowsXPHostsAdministrators" target="/Administrators"/>    
+    <core:link.hosting name="WindowsXPHostsAdministrator" target="/Administrator"/>            
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalGroup name="Administrators" configurationUnit="true" conceptual="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinalityConstraint" />     
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators" target="/Administrator"/>      
+  </os:unit.windowsLocalGroup>  
+  <os:unit.windowsLocalUser name="Administrator" configurationUnit="true" conceptual="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" >
+      <core:attributeMetaData attributeName="userPassword" encrypted="true" />      
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint" />
+    </core:requirement>   
+  </os:unit.windowsLocalUser>
+</core:topology>

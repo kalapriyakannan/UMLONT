@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	name="IHS Server Template">
+	<core:annotation
+		context="topology_root">
+		<core:detail key="root1"
+			value="IHSAdminServer" />
+	</core:annotation>		
+	<ihs:unit.ihsServerUnit displayName="IHS Admin Server" name="IHSAdminServer">
+		<ihs:capability.ihsServer name="IHS Server" configFile="c:\Program Files\IBM HTTP Server\conf\admin.conf"
+			displayName="IHS Server" linkType="any" secure="false" />
+		<os:capability.windowsLocalService name="Windows IHS Service"
+			displayName="Windows IHS Service" linkType="any" ServiceName="IBMHTTPAdministration6.0"
+			StartupType="Automatic" LogOnAsSystem="true" >
+	      <core:attributeMetaData 
+	      		attributeName="serviceAccountPassword" encrypted="true" />  			
+		</os:capability.windowsLocalService>			
+		<os:capability.portConsumer name="Port Consumer"
+			displayName="Port Consumer" linkType="any" />
+		<core:requirement mutable="true" name="IHS System"
+			displayName="IHS System" dmoType="ihs:IhsSystem" linkType="hosting" />
+    	<core:requirement mutable="true" name="ServiceAccountUser" 
+    		displayName="ServiceAccountUser" dmoType="os:WindowsLocalUser" linkType="dependency"/>					
+		<core:link.hosting 
+			name="IHSServerHostsportConfiguration" target="/portConfiguration"/>    			
+	</ihs:unit.ihsServerUnit>
+	<os:unit.portConfigUnit displayName="Port Configuration"
+		name="portConfiguration" configurationUnit="true">
+		<os:capability.port displayName="instanceConnectionPort"
+			name="adminPort" linkType="dependency" transportLayerProtocol="TCP"
+			port="8008" portName="adminPort">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<core:requirement displayName="PortConsumer" name="PortConsumer"
+			linkType="hosting" dmoType="os:PortConsumer" />
+	</os:unit.portConfigUnit>
+</core:topology>

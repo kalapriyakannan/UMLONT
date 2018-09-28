@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+name="VirtualImage Template">
+  <virtualization:unit.virtualImageUnit name="Virtual Image" displayName="Virtual Image" configurationUnit="false" conceptual="true">
+    <virtualization:capability.virtualImage name="VirtualImage" linkType="any"/>
+    <virtualization:capability.virtualServerDef name="Virtual Server Definition" linkType="any"/>
+    <core:requirement name="HostingReq" dmoType="virtualization:Hypervisor" linkType="hosting" use="required">
+    </core:requirement>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:ServerUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="1"/>
+    </core:requirement>    
+  </virtualization:unit.virtualImageUnit>
+</core:topology>

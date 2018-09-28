@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.domaingen/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.domaingen" modelName="CdmNet" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="cdmBase.genmodel#//cdmbase ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/cdmNet.xsd</foreignModel>
+  <genPackages prefix="Cdmnet" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="cdmnet.ecore#/">
+    <genClasses ecoreClass="cdmnet.ecore#//Acl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Acl/aclIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Acl/aclName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Acl/aclStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//AclFunction"/>
+    <genClasses ecoreClass="cdmnet.ecore#//AclFunctionUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//AclUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPRealServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPRealServer/memberPriority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPRealServer/memberRatio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPRealServer/realServerGroupName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPRealServerGroup"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPRealServerGroupUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPRealServerUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVip"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVipFunction"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVipFunctionUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVipUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVirtualService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/forwardingEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/mayUseProxy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/poolName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/rule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/virtualServiceARPEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/virtualServiceMaxConn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/virtualServiceTransalateAddressEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVirtualService/virtualServiceTransalatePortEnabled"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVirtualServiceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVlan">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVlan/allowProxyARP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVlan/portLockDown"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BigIPVlan/snatAutomapEnabled"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//BigIPVlanUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//BindAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BindAddress/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BindAddress/portNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//BindAddress/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//BindAddressUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Bridge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Bridge/bridgeId"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//BridgeUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//CdmNetRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//CdmNetRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityAcl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityAclFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPRealServer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPRealServerGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPVip"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPVipFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPVirtualService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBigIPVlan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBindAddress"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityBridge"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityCustomBindAddress"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityFirewall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityFqdn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpAddress"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpNetwork"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpRoute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpV4Address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityIpV6Address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityL2Interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityLoadBalancer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityLogicalConnection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityNetBIOSProtocolEndpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityNetworkService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityProtocolEndpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityRealServer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityRealServerGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityRouter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityRule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilitySegment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilitySNAProtocolEndpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilitySPXProtocolEndpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityTcpConnection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityTcpPort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityTransport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityTransportEndpoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityUdpPort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityVip"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityVipFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityVirtualService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityVlan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/capabilityVlanInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitAclFunctionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitAclUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPRealServerGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPRealServerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPVipFunctionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPVipUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPVirtualServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBigIPVlanUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBindAddressUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitBridgeUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitCustomBindAddressUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitFirewallUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitFqdnUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpAddressUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpInterfaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpNetworkUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpRouteUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpV4AddressUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitIpV6AddressUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitL2InterfaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitLoadBalancerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitLogicalConnectionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitNetBIOSProtocolEndpointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitNetworkServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitProtocolEndpointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitRealServerGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitRealServerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitRouterUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitRuleUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitSegmentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitSNAProtocolEndpointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitSPXProtocolEndpointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitTcpConnectionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitTcpPortUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitTransportEndpointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitTransportUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitUdpPortUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitVipFunctionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitVipUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitVirtualServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitVlanInterfaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmnet.ecore#//CdmNetRoot/unitVlanUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//CustomBindAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//CustomBindAddress/customPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//CustomBindAddress/customType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//CustomBindAddressUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Firewall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwFilterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwMajor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwMinor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwModuleState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwProduct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Firewall/fwVersionInfo"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//FirewallUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Fqdn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Fqdn/fqdn"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//FqdnUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpAddress/addressSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpAddress/dotNotation"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//IpAddressUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpInterface/portList"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//IpInterfaceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpNetwork">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpNetwork/netmask"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpNetwork/subnetAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpNetwork/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//IpNetworkUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpRoute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//IpRoute/protocol"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//IpRouteUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpV4Address"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpV4AddressUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpV6Address"/>
+    <genClasses ecoreClass="cdmnet.ecore#//IpV6AddressUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//L2Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/autoNegotiation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/broadcast"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/cdpRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/duplex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/encapsulation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/hwAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/loopback"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/mtu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/private"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/promiscuous"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//L2Interface/speed"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//L2InterfaceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//LoadBalancer"/>
+    <genClasses ecoreClass="cdmnet.ecore#//LoadBalancerUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//LogicalConnection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//LogicalConnection/fromIp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//LogicalConnection/fromPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//LogicalConnection/toIp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//LogicalConnection/toPort"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//LogicalConnectionUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//NetBIOSProtocolEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//NetBIOSProtocolEndpoint/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//NetBIOSProtocolEndpoint/scopeID"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//NetBIOSProtocolEndpointUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//NetworkService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//NetworkService/serviceName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//NetworkServiceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//ProtocolEndpoint"/>
+    <genClasses ecoreClass="cdmnet.ecore#//ProtocolEndpointUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//RealServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//RealServer/loadBalancingWeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//RealServer/realPort"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//RealServerGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//RealServerGroup/loadBalancingAlgorithm"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//RealServerGroupUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//RealServerUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Router">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Router/forwarding"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//RouterUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Rule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/destEndingPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/destStartingPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/direction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/directionIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/intfIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/intfName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/ipProtocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/ruleAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/ruleIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/srcEndingPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/srcStartingPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Rule/typeOfService"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//RuleUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Segment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Segment/layer1Type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Segment/mTU"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//SegmentUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//SNAProtocolEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//SNAProtocolEndpoint/nAUName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//SNAProtocolEndpoint/netID"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//SNAProtocolEndpointUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//SPXProtocolEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//SPXProtocolEndpoint/networkNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//SPXProtocolEndpoint/nodeNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//SPXProtocolEndpointUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TcpConnection"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TcpConnectionUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TcpPort"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TcpPortUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Transport"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TransportEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//TransportEndpoint/portNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//TransportEndpointUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//TransportUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//UdpPort"/>
+    <genClasses ecoreClass="cdmnet.ecore#//UdpPortUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Vip"/>
+    <genClasses ecoreClass="cdmnet.ecore#//VipFunction"/>
+    <genClasses ecoreClass="cdmnet.ecore#//VipFunctionUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//VipUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//VirtualService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//VirtualService/virtualPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//VirtualService/virtualPortType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//VirtualServiceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//Vlan">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Vlan/mgmtDomainName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Vlan/vlanId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//Vlan/vlanName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//VlanInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmnet.ecore#//VlanInterface/trunkInterface"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmnet.ecore#//VlanInterfaceUnit"/>
+    <genClasses ecoreClass="cdmnet.ecore#//VlanUnit"/>
+  </genPackages>
+</genmodel:GenModel>

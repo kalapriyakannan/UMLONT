@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DirectoryAssistance.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.DominoNamingContext">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.lotus.DirectoryAssistance" nillable="true" minOccurs="0"/>
+          <xsd:element name="contextNo" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="orgUnit4" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="orgUnit3" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="orgUnit2" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="orgUnit1" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="organization" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="country" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enabled" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="trusted" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

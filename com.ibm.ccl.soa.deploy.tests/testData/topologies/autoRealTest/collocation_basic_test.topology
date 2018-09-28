@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Created on Friday, June 6, 2008 1:12:10 PM EDT" displayName="Test" name="Test" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds">
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System" name="DB2System" conceptual="true">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.constraint name="cl0" source="/DB2System" target="/WebSphereSystemUnitBase">
+      <constraint:constraint.collocation name="c0" capabilityType="os:OperatingSystem" type="collocation"/>
+    </core:link.constraint>
+  </db2Deploy:unit.db2SystemUnit>
+  <was:unit.wasSystemUnit displayName="WebSphere 6.0 Base System" name="WebSphereSystemUnitBase" conceptual="true">
+    <was:capability.wasSystem displayName="WebSphere 6.0 Base System" name="WebSphere6System" linkType="any" wasEdition="Base" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </was:unit.wasSystemUnit>
+  <os:unit.windowsOperatingSystemUnit name="Windows20000">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows20000HostsDB2System0" source="/Windows20000" target="/DB2System0"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsOperatingSystemUnit displayName="" name="Windows20001">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" hostname="ValidHost" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows20001HostsDB2System1" source="/Windows20001" target="/DB2System1"/>
+    <core:link.hosting name="Windows20001HostsWebSphereSystemUnitBase0" source="/Windows20001" target="/WebSphereSystemUnitBase0"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsOperatingSystemUnit name="Windows2000">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows2000HostsWebSphereSystemUnitBase1" source="/Windows2000" target="/WebSphereSystemUnitBase1"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System2" name="DB2System0">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System3" name="DB2System1">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <was:unit.wasSystemUnit displayName="WebSphere 6.0 Base System2" name="WebSphereSystemUnitBase0">
+    <was:capability.wasSystem displayName="WebSphere 6.0 Base System" name="WebSphereSystem" linkType="any" installerDir="C:\" wasEdition="Base" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WebSphere 6.0 Base System3" name="WebSphereSystemUnitBase1">
+    <was:capability.wasSystem displayName="WebSphere 6.0 Base System" name="WebSphereSystem" linkType="any" installerDir="C:\" wasEdition="Base" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </was:unit.wasSystemUnit>
+  <os:unit.windowsOperatingSystemUnit name="Windows20002">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows20002HostsWebSphereSystemUnitBase2" source="/Windows20002" target="/WebSphereSystemUnitBase2"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsOperatingSystemUnit name="Windows20003">
+    <os:capability.windowsOperatingSystem displayName="Windows 2000" name="Windows2000" linkType="any" os.type="Windows" os.version="2000"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="Windows20003HostsDB2System2" source="/Windows20003" target="/DB2System2"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <was:unit.wasSystemUnit displayName="WebSphere 6.0 Base System4" name="WebSphereSystemUnitBase2">
+    <was:capability.wasSystem displayName="WebSphere 6.0 Base System" name="WebSphereSystem" linkType="any" installerDir="C:\" wasEdition="Base" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </was:unit.wasSystemUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System4" name="DB2System2">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" name="DB2 Legacy CLI-based Type 2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" name="DB2 Legacy-CLI based Type 2 JDBC Driver (XA)" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="2"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider" name="DB2 Universal JDBC Driver Provider - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 Universal JDBC Driver Provider (XA)" name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" linkType="dependency" classname="com.ibm.db2.jcc.DB2XADataSource" classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" jdbcType="4"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <core:contract.explicit displayName="Make All Units Private By Default" name="ExplicitContract0" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

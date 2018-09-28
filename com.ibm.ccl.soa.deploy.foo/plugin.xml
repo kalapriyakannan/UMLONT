@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/Zephyr/foo/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.foo.provider.FooItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/Zephyr/foo/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.foo.FooPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="foo"
+       class="com.ibm.ccl.soa.deploy.foo.util.FooResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.foo.domain"
+       name="%extension.fooDomain"
+       targetNamespace="http://www.ibm.com/Zephyr/foo/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.foo.internal.validator.FooDomainValidator"/>
+       <resourceType
+             id="foo.FooBaseSystem.conceptual"
+             name="FooBaseSystem"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.foo/templates/FooBaseSystemC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%fooFooBaseSystemTool.Description"
+             label="%fooFooBaseSystemTool.Label"
+             path="/serverSoftwareDrawer/fooStack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="foo.FooBaseSystem.conceptual">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

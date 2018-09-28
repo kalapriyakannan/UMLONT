@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/net/vip/RealServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.net.vip.bigip.BigIPRealServer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.net.vip.RealServer">
+        <xsd:sequence>
+          <xsd:element name="memberRatio" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="memberPriority" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="realServerGroupName" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

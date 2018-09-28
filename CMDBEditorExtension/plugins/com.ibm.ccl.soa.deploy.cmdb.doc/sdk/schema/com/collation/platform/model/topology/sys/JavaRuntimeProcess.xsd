@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/sys/RuntimeProcess.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.JavaRuntimeProcess">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.RuntimeProcess">
+        <xsd:sequence>
+          <xsd:element name="javaClassName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="hotSpotEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="classPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="JVMVersion" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="incrementalGCEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="initialHeapSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxHeapSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="stackSize" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.domaingen/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.domaingen" modelName="CmdSys" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="cdmBase.genmodel#//cdmbase ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/cdmSys.xsd</foreignModel>
+  <genPackages prefix="Cdmsys" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" loadInitialization="true" literalsInterface="false"
+      ecorePackage="cdmsys.ecore#/">
+    <genClasses ecoreClass="cdmsys.ecore#//ActiveDirectory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/initRecvTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxConnections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxConnIdleTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxDatagramRecv"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxNotificationPerConn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxPageSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxPoolThreads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxQueryDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxReceiveBuffer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxResultSetSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxTempTableSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/maxValRange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/rootDomain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/schemaVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/serviceXML"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ActiveDirectory/workingDirectory"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ActiveDirectoryUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AddressSpace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/allocations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/jobFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/jobName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/jobType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/jobUserid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/pgm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/pgmParm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/procStep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//AddressSpace/stepName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//AddressSpaceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Aix"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AixKernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AixKernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AixUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AixUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//AixUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//BusinessSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//BusinessSystem/businessImpact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//BusinessSystem/businessPriority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//BusinessSystem/businessRole"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//BusinessSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CdmSysRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CdmSysRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityActiveDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityAddressSpace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityAix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityAixKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityAixUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityBusinessSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCICSFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCICSProgram"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCICSRegion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCICSTransaction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCIMSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCiscoPixComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityComputerSystemCluster"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityControlSoftware"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityCPU"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDarwin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDarwinUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDB2DataSharingGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDB2Subsystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDNSLookup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDNSResolveEntry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDNSSAP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDNSService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDosUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityDynamicSystemDomain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityFileSystemExport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityFileSystemService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityFreeBSD"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityFreeBSDUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericFirewall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericLoadBalancer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericRouter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityGenericSwitch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityHMC"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityHpUx"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityHpUxKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityHpUxUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityI5GroupProfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityI5OperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityI5OSSoftwareComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityI5Profile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityI5UserProfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIMSDatabase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIMSProgram"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIMSSubsystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIMSSysplexGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIMSTransaction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIpso"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIPSOUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityITSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityIVM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityJavaRuntimeProcess"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLDAPSAP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLDAPService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLinux"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLinuxKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLinuxRPM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLinuxUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLocalFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityLPAR"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityMacOS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityMacOSKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityManagement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityMemory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityMQSubsystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNamingContext"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNetware"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNetwareUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNFSExport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNFSFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNFSSAP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityNFSService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityOpenVms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityOpenVmsFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityOpenVmsUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityOperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityPrinter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityPrinterQueue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityProcessFileSystemMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityRemoteFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityServiceAccessPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityServiceGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMBExport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMBFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMBSAP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMBService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMTPSAP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySMTPService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySnmpSystemGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySoftwarePatch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySoftwareService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySolaris"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySolarisFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySolarisKernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySolarisPackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySolarisPatch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySunFireComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySunSPARCUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySunSPARCVirtualComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySysplex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySysplexGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySystemController"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilitySystemPComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityTru64"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityTru64KernelDriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityUnix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityUnixFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityUnixProcess"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityVeritasStorageService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityVIOS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityVirtualComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityVmwareESX"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityVmwareUnitaryComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityWindowsComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityWindowsFileSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityWindowsOperatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityWindowsService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZCouplingFacility"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZLinux"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZOS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZReportFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZSeriesComputerSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZVM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/capabilityZVMGuest"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitActiveDirectoryUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitAddressSpaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitAixKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitAixUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitAixUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitBusinessSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCICSFileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCICSProgramUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCICSRegionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCICSTransactionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCIMSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCiscoPixComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitComputerSystemClusterUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitControlSoftwareUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitCPUUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDarwinUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDarwinUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDB2DataSharingGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDB2SubsystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDirectoryUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDNSLookupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDNSResolveEntryUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDNSSAPUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDNSServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDosUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDosUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitDynamicSystemDomainUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitFileSystemExportUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitFileSystemServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitFreeBSDUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitFreeBSDUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericFirewallUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericLoadBalancerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericRouterUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitGenericSwitchUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitHMCUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitHpUxKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitHpUxUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitHpUxUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitI5GroupProfileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitI5OperatingSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitI5OSSoftwareComponentUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitI5ProfileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitI5UserProfileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIMSDatabaseUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIMSProgramUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIMSSubsystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIMSSysplexGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIMSTransactionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIpsoUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIPSOUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitITSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitIVMUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitJavaRuntimeProcessUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLDAPSAPUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLDAPServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLinuxKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLinuxRPMUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLinuxUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLinuxUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLocalFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitLPARUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitMacOSKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitMacOSUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitManagementUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitMemoryUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitMQSubsystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNamingContextUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNetwareUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNetwareUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNFSExportUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNFSFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNFSSAPUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitNFSServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitOpenVmsFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitOpenVmsUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitOpenVmsUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitOperatingSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitPrinterQueueUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitPrinterUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitProcessFileSystemMappingUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitRemoteFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitServiceAccessPointUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitServiceGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMBExportUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMBFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMBSAPUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMBServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMTPSAPUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSMTPServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSnmpSystemGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSoftwarePatchUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSoftwareServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSolarisFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSolarisKernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSolarisPackageUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSolarisPatchUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSolarisUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSunFireComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSunSPARCUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSunSPARCVirtualComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSysplexGroupUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSysplexUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSystemControllerUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitSystemPComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitTru64KernelDriverUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitTru64Unit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitUnixFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitUnixProcessUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitUnixUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitVeritasStorageServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitVIOSUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitVirtualComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitVmwareESXUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitVmwareUnitaryComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitWindowsComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitWindowsFileSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitWindowsOperatingSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitWindowsServiceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZCouplingFacilityUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZLinuxUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZOSUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZReportFileUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZSeriesComputerSystemUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZVMGuestUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cdmsys.ecore#//CdmSysRoot/unitZVMUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSFile/datasets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSFile/dDName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSFileUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSProgram"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSProgramUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSRegion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/aCBName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/applID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/filesChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/gRName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/jobName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/netID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/programsChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/sIT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/sITOverrides"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/transactionsChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CICSRegion/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSRegionUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSTransaction"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CICSTransactionUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CIMSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CIMSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CiscoPixComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CiscoPixComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/architecture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/autoStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cdpDeviceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUCoresEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUCoresInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUDiesEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUDiesInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUSpeed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/cPUType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/fqdn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/isVMIDanLPAR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/memorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/numCPUs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/primaryMACAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/processCapacityUnits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/processingCapacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/rOMVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/serialNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/signature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/systemBoardUUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/systemId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/virtual"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystem/vMID"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ComputerSystemCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ComputerSystemCluster/loadBalancer"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ComputerSystemClusterUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ControlSoftware">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ControlSoftware/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ControlSoftwareUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//CPU">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUCoresEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUCoresInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUDiesEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUDiesInstalled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUSpeed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/cPUType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/externalCache"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/identifyingNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/numCPUs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//CPU/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//CPUUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Darwin"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DarwinUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DarwinUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DarwinUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DB2DataSharingGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/groupAttachName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/sysColumnsMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/sysDatabaseMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/sysIndexesMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/sysTableMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2DataSharingGroup/sysTableSpaceMaxAlteredTs"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//DB2DataSharingGroupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DB2Subsystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/commandPrefixName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/controllingAddressSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/subsystemName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/sysColumnsMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/sysDatabaseMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/sysIndexesMaxAlteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/sysTablesMaxAlteredTS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/sysTableSpaceMaxalteredTs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DB2Subsystem/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//DB2SubsystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Directory"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DirectoryUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSLookup"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSLookupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSResolveEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DNSResolveEntry/searchOrder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DNSResolveEntry/serverIp"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSResolveEntryUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSSAP"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSSAPUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DNSServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Dos"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DosUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DosUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DosUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//DynamicSystemDomain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//DynamicSystemDomain/numAvailableCPUs"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//DynamicSystemDomainUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//FileSystem/availableSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//FileSystem/capacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//FileSystem/mountPoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//FileSystem/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystemExport"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystemExportUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystemService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystemServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FreeBSD"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FreeBSDUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FreeBSDUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//FreeBSDUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//GenericComputerSystem/genericType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericFirewall"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericFirewallUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericLoadBalancer"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericLoadBalancerUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericRouter"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericRouterUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//GenericService/genericType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericSwitch"/>
+    <genClasses ecoreClass="cdmsys.ecore#//GenericSwitchUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HMC"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HMCUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUx"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUxKernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUxKernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUxUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUxUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//HpUxUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5GroupProfile"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5GroupProfileUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5OperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQABNORMSW"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQACTJOB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQADLACTJ"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQAUDCTL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQBASACTLVL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQBASPOOL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQCCSID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQCONSOLE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQDEVRCYACN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQDYNPTYADJ"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQDYNPTYSCD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQIPLSTS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQIPLTYPE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQLANGID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQLOCALE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQMAXACTLVL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQMAXJOB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQMCHPOOL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQModel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQPWDEXPITV"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQPWDLVL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQPWDVLDPGM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQPWRRSTIPL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQRMTIPL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQRMTSIGN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQSECURITY"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQSPCENV"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQSRLNBR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OperatingSystem/sysValQSTRUPPGM"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//I5OperatingSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5OSSoftwareComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OSSoftwareComponent/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OSSoftwareComponent/option"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5OSSoftwareComponent/release"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//I5OSSoftwareComponentUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5Profile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5Profile/initialMenu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5Profile/initialProgram"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5Profile/limitCapabilities"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5Profile/profileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//I5Profile/specialAuthority"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//I5ProfileUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5UserProfile"/>
+    <genClasses ecoreClass="cdmsys.ecore#//I5UserProfileUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSDatabase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSDatabase/iMSDatabaseType"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSDatabaseUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSProgram"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSProgramUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSSubsystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/commandPrefixName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/controllingAddressSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/cQSGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/databasesChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/iMSPlexGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/iMSSubsysType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/iRLMGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/programsChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/subsystemname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/transactionsChecksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//IMSSubsystem/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSSubsystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSSysplexGroup"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSSysplexGroupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSTransaction"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IMSTransactionUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Ipso"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IpsoUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IPSOUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IPSOUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ITSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ITSystem/contact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ITSystem/uRL"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ITSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IVM"/>
+    <genClasses ecoreClass="cdmsys.ecore#//IVMUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//JavaRuntimeProcess">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/classPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/hotSpotEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/incrementalGCEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/initialHeapSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/javaClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/jVMVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/maxHeapSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//JavaRuntimeProcess/stackSize"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//JavaRuntimeProcessUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//KernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//KernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LDAPSAP">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPSAP/lDAPVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPSAP/threads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPSAP/totalConnections"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//LDAPSAPUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LDAPService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPService/lDAPVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPService/threads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LDAPService/totalConnections"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//LDAPServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Linux"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxKernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxKernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxRPM"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxRPMUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LinuxUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LocalFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LocalFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//LPAR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//LPAR/lPARID"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//LPARUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//MacOS"/>
+    <genClasses ecoreClass="cdmsys.ecore#//MacOSKernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//MacOSKernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//MacOSUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Management"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ManagementUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Memory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/baseAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/memorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Memory/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//MemoryUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//MQSubsystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/commandPrefixName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/controllingAddressSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/subsystemName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//MQSubsystem/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//MQSubsystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NamingContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//NamingContext/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//NamingContext/value"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//NamingContextUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Netware"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NetwareUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NetwareUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NetwareUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSExport"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSExportUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSSAP"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSSAPUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//NFSServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVms"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVmsFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVmsFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVmsUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVmsUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OpenVmsUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//OperatingSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/bootTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/charset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/currentTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/fQDN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/kernelArchitecture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/kernelVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/locale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/oSConfidence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/osId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/oSMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/oSName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/oSVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/systemGuid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/versionString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//OperatingSystem/virtualMemorySize"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//OperatingSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Printer"/>
+    <genClasses ecoreClass="cdmsys.ecore#//PrinterQueue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//PrinterQueue/queueName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//PrinterQueueUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//PrinterUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ProcessFileSystemMapping"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ProcessFileSystemMappingUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//RemoteFileSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//RemoteFileSystem/exportName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//RemoteFileSystem/serverName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//RemoteFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Service/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Service/productVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Service/vendorName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ServiceAccessPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ServiceAccessPoint/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ServiceAccessPoint/productVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ServiceAccessPoint/vendorName"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ServiceAccessPointUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ServiceGroup"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ServiceGroupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBExport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SMBExport/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SMBExport/type"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBExportUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBSAP"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBSAPUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMBServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMTPSAP"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMTPSAPUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMTPService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SMTPServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SnmpSystemGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SnmpSystemGroup/sysContact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SnmpSystemGroup/sysDescr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SnmpSystemGroup/sysLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SnmpSystemGroup/sysName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SnmpSystemGroup/sysObjectId"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SnmpSystemGroupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SoftwarePatch"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SoftwarePatchUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SoftwareService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SoftwareService/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SoftwareService/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SoftwareService/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SoftwareService/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SoftwareService/softwareVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SoftwareServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Solaris"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisKernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisKernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisPackage"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisPackageUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisPatch"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisPatchUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SolarisUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SunFireComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SunFireComputerSystem/numIOBoards"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SunFireComputerSystem/numSystemBoards"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SunFireComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SunSPARCUnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SunSPARCUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SunSPARCVirtualComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SunSPARCVirtualComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Sysplex"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SysplexGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SysplexGroup/groupFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SysplexGroupUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SysplexUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SystemController">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/buildLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/controllerRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/majorVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemController/versionString"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SystemControllerUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//SystemPComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//SystemPComputerSystem/hardwarePlatform"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//SystemPComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Tru64"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Tru64KernelDriver"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Tru64KernelDriverUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Tru64Unit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnitaryComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//Unix">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/architecture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/calloutTableSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/clockTicksPerSecond"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/kernelBitSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/libcName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/libcVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxAsyncIOPriorityDecrease"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxGroupsPerUser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxLoginNameLen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxMsgPrioritiesSupported"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxOpenFilesPerProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxOpenMsgQueueDescriptorsPerProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxPasswordLen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxPIDValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxProcesses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxProcessesPerUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxProcessesPerUser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxQueuedAsyncIORequests"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxQueuedSignals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxStdioStreamsPerProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxTimersPerProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/maxUsers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/numPhysicalMemFreePages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/numPhysicalMemPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/oSDistribution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/processMemLocking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportAsyncIO"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportFsync"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportMemProtection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportMsgPassing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportPOSIXThreads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportProcessScheduling"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportRangeMemLocking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportRealtimeSignals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/supportSharedMemObjects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/systemMemPageSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//Unix/virtualAddressCacheSize"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//UnixFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnixFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnixProcess"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnixProcessUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//UnixUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VeritasStorageService"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VeritasStorageServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VIOS"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VIOSUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VirtualComputerSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VirtualComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VmwareESX"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VmwareESXUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//VmwareUnitaryComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//VmwareUnitaryComputerSystem/availableMemoryForAllVMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//VmwareUnitaryComputerSystem/currentMemoryForAllVMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//VmwareUnitaryComputerSystem/maxVMMemorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//VmwareUnitaryComputerSystem/serviceConsoleMemorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//VmwareUnitaryComputerSystem/swapMemorySize"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//VmwareUnitaryComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsComputerSystem/serverFlags"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsFileSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsFileSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsOperatingSystem"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsOperatingSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/account"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/canBePaused"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/canBeStopped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/desktopInteract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/errorControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/exitCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/operatingState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/pathName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/processId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/serviceSpecificCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/serviceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/started"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//WindowsService/startMode"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//WindowsServiceUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZCouplingFacility"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZCouplingFacilityUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZLinux"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZLinuxUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZOS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/dynamicAPF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/dynamicEXIT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/dynamicLNKLST"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/dynamicLNKLSTName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/fmid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iODFDataset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iODFEDT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iODFTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iODFVolume"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iPLParmDataset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iPLParmDevice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iPLParmMember"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iPLParmVolume"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/iPLTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/jESNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/masterCatalogDataset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/masterCatalogVolume"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/netID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/netidSSCP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibALLOC"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibBPXPRM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCEEPRM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCLOCK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCOMMND"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCONSOL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCOUPLE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCSVRTL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibCUNUNI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibDEVSUP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibDIAG"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibEXIT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibGRSCNF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibGRSRNL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEAAPF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEAFIX"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEALPA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEAOPT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEAPAK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEASVC"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEASYM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEASYS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIECIOS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIEFSSN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIFAPRD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIGDSMS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibIKJTSO"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibLNKLST"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibLOAD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibLPALST"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibMembers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibMSTJCL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibPROG"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibSCHED"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibSMFPRM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibSPXPRM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/parmlibVATLST"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/primaryJES"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/processCapacityUnits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/processingCapacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/securityPackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/sMFID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/sSCP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZOS/sysResVolume"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ZOSUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZReportFile"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZReportFileUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZSeriesComputerSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cdmsys.ecore#//ZSeriesComputerSystem/modelID"/>
+    </genClasses>
+    <genClasses ecoreClass="cdmsys.ecore#//ZSeriesComputerSystemUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZVM"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZVMGuest"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZVMGuestUnit"/>
+    <genClasses ecoreClass="cdmsys.ecore#//ZVMUnit"/>
+  </genPackages>
+</genmodel:GenModel>

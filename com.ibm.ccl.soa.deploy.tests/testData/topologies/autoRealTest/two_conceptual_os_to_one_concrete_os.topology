@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" description="Created on Saturday, April 12, 2008 11:28:44 AM EDT" displayName="RealizationSamples6" name="RealizationSamples6" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds">
+  <server:unit.serverUnit displayName="x86 Server" name="x86 Server" conceptual="true">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsGenericOS1" source="/x86 Server" target="/GenericOS1"/>
+    <core:link.hosting name="x86 ServerHostsGenericOS0" source="/x86 Server" target="/GenericOS0"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit description="xjk" displayName="x86 Server2" name="x86 Server0" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 Server0HostsGenericOS" source="/x86 Server0" target="/GenericOS"/>
+  </server:unit.serverUnit>
+  <os:unit.operatingSystemUnit name="GenericOS" conceptual="false">
+    <os:capability.operatingSystem displayName="Generic OS" name="OS" linkType="any"/>
+    <os:capability.directory displayName="directory" name="directory" linkType="any" FixedPath="">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.directory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting"/>
+  </os:unit.operatingSystemUnit>
+  <os:unit.operatingSystemUnit name="GenericOS0" conceptual="true">
+    <os:capability.operatingSystem displayName="Generic OS" name="OS" linkType="any"/>
+    <os:capability.directory displayName="directory" name="directory" linkType="any" FixedPath="">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.directory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting"/>
+  </os:unit.operatingSystemUnit>
+  <os:unit.operatingSystemUnit name="GenericOS1" conceptual="true">
+    <os:capability.operatingSystem displayName="Generic OS" name="OS" linkType="any"/>
+    <os:capability.directory displayName="directory" name="directory" linkType="any" FixedPath="">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.directory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting"/>
+  </os:unit.operatingSystemUnit>
+  <core:contract.explicit displayName="Make All Units Private By Default" name="ExplicitContract0" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!-- LDAP Domain Extension UI Plugin Manifest
+
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.6 2008/06/25 22:30:45 mdelder Exp $
+-->
+
+<plugin>
+
+	<!-- Deploy Core Presentation Edit Part Providers:
+
+		The EditPart service is a factory of editparts given a model and a context. An
+		EditPart provider will extend the service by providing for new editparts or
+		existing ones using a different combination of a model and a context.
+
+
+
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.ldap.ui.providers.LdapEditPartProvider">
+
+			<Priority name="Medium" />
+			<context views="Nodes" />
+
+			<object id="Nodes" class="org.eclipse.gmf.runtime.notation.Node">
+				<staticMethod name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="ldap.LdapServerUnit, ldap.LdapSuffixUnit, ldap.LdapEntryUnit" />
+			</object>
+
+		</editpartProvider>
+
+	</extension>
+
+	  -->
+	  
+	<!-- Presentation View Providers:
+
+	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+
+		  GMF wraps the real semantic objects in EObjectAdapters.  These adapters
+			implement IProxyEObject.getProxyClassID() to return the EMF package dot EMF
+			class of the real object.  The correct value below lets GMF know to load the
+			correct plugins for your views the first time they are created w/o using the
+			palette tools.  
+
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+
+			<Priority name="Medium" />
+
+			<context elements="Nodes" viewClass="org.eclipse.gmf.runtime.notation.Node" />
+
+			<object id="Nodes"
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)">
+				<method name="getProxyClassID()"
+					value="ldap.LdapServerUnit, ldap.LdapSuffixUnit, ldap.LdapEntryUnit" />
+			</object>
+
+		</viewProvider>
+
+	</extension>
+ -->
+
+	<!-- Presentation Palette Providers: 
+	 -->
+
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders"> 
+ 
+		<paletteProvider 
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+
+			<Priority name="Medium" /> 
+			<editor id="DeployCoreEditor" /> 
+
+			  Contribute an LDAP stack to the Configuration drawer.  
+
+			<contribution 
+				 factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+
+				<entry id="ldap" kind="stack" path="/serverSoftwareDrawer/" 
+					   label="%paletteLDAPStack.label" description="%paletteLDAPStack.desc" />
+					   
+				<entry id="ldapConfStack" kind="stack" path="/configurationDrawer/" 
+					   label="%paletteConfStack.label" description="%paletteConfStack.desc" />
+
+			</contribution>
+
+		</paletteProvider>
+
+	</extension>
+	 
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">      
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.ldap"
+            name="%activityLDAP.label" />
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.ldap"
+            name="%activityLDAP.label" />
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.ldap"
+            pattern="com\.ibm\.rational\.deployment\.ldap\.[\w.-]*\.infra" />
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.ldap"
+            pattern="com\.ibm\.rational\.deployment\.ldap\.[\w.-]*\.conceptual" />
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.ldap"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.ldap"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/> 
+   </extension>
+   <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.ldap"/>
+      <activity ref="com.ibm.rational.deployment.activity.physical.ldap"/>
+   </extension>
+
+</plugin>
+

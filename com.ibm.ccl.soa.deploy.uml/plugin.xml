@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.33 2008/07/14 18:03:47 chadh Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.uml.provider.UmlItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.uml.UmlPackage"
+       genModel = "models/ecore/umlDomain.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="zuml"
+       class="com.ibm.ccl.soa.deploy.uml.util.UmlResourceFactoryImpl" />
+  </extension>
+  
+  
+  <!-- Register a core domain validator to trigger custom validation of CorePackage#getSoftwareComponent() -->
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.domains">
+     <domain
+           id="com.ibm.ccl.soa.deploy.uml.core.domain"
+           name="%extension.umlDomainCore"
+           targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">    
+		<validator class="com.ibm.ccl.soa.deploy.uml.internal.validator.UMLCoreTypeDomainValidator"/>
+  	</domain>
+  </extension>
+  
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.domains">
+     <domain
+           id="com.ibm.ccl.soa.deploy.uml.domain"
+           name="%extension.umlDomain"
+           targetNamespace="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/">
+           	<!-- Domain validator for the UML domain (CorePackage#getSoftwareComponent() validated by CoreSoftwareComponentDomainValidator -->
+			<validator class="com.ibm.ccl.soa.deploy.uml.internal.validator.UMLDomainValidator"/>
+      <!--<resourceType
+              description="%uml.UmlComponent.description"
+              id="uml.umlComponent"
+              name="%uml.UmlComponent.name"
+              templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.uml/templates/umlComponent.template">
+        </resourceType>
+         <resourceTypeUIBinding
+			description="%uml.UmlComponent.description"
+			largeIcon="icons/pal/uml_cmpnt_pal20.gif"
+			smallIcon="icons/pal/uml_cmpnt_pal16.gif"
+            label="%uml.UmlComponent.name"
+			path="/applicationToolDrawer/umlElementStack"				
+			resourceTypeId="uml.umlComponent">
+		</resourceTypeUIBinding>-->
+        <resourceType
+              description="%uml.UmlComponent.description"
+              id="com.ibm.rational.deployment.uml.umlComponent"
+              name="%uml.UmlComponent.name"
+              templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.uml/templates/umlComponentC.template">
+        </resourceType>
+        <resourceTypeUIBinding
+			description="%uml.UmlComponent.description"
+			largeIcon="icons/pal/uml_cmpnt_pal20.gif"
+			smallIcon="icons/pal/uml_cmpnt_pal16.gif"
+            label="%uml.UmlComponent.name"
+			path="/applicationToolDrawer/umlElementStack"				
+			resourceTypeId="com.ibm.rational.deployment.uml.umlComponent">
+		</resourceTypeUIBinding>
+		<resourceType
+            description="%uml.UmlActor.description"
+            id="com.ibm.rational.deployment.uml.umlActor"
+            name="%uml.UmlActor.name"
+            templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.uml/templates/umlActor.template">
+        </resourceType>
+        <resourceTypeUIBinding
+			description="%uml.UmlActor.description"
+			largeIcon="icons/pal/actor_20.gif"
+			smallIcon="icons/pal/actor_16.gif"
+            label="%uml.UmlActor.name"
+			path="/applicationToolDrawer/umlElementStack"				
+			resourceTypeId="com.ibm.rational.deployment.uml.umlActor">
+		</resourceTypeUIBinding>
+        <capabilityProvider
+              class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLComponentCapabilityProvider"
+              description="%uml.umlComponentCapabilityProvider.description"
+              name="com.ibm.ccl.soa.deploy.uml.ComponentCapabilityProvider">
+           <inputEnablement>
+              <instanceof
+                    value="org.eclipse.uml2.uml.Component">
+              </instanceof>
+          </inputEnablement>
+          <outputEnablement>
+              <instanceof
+                    value="com.ibm.ccl.soa.deploy.uml.UMLComponent">
+              </instanceof>
+          </outputEnablement>
+        </capabilityProvider>
+          <capabilityProvider
+              class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLActorCapabilityProvider"
+              description="%uml.umlActorCapabilityProvider.description"
+              name="com.ibm.ccl.soa.deploy.uml.ActorCapabilityProvider">
+           <inputEnablement>
+              <instanceof
+                    value="org.eclipse.uml2.uml.Actor">
+              </instanceof>
+          </inputEnablement>
+          <outputEnablement>
+              <instanceof
+                    value="com.ibm.ccl.soa.deploy.uml.UMLActor">
+              </instanceof>
+          </outputEnablement>
+        </capabilityProvider>
+       <capabilityProvider
+              class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLInterfaceCapabilityProvider"
+              description="%uml.umlInterfaceCapabilityProvider.description"
+              name="com.ibm.ccl.soa.deploy.uml.InterfaceCapabilityProvider">
+           <inputEnablement>
+              <instanceof
+                    value="org.eclipse.uml2.uml.Interface">
+              </instanceof>
+          </inputEnablement>
+          <outputEnablement>
+              <instanceof
+                    value="com.ibm.ccl.soa.deploy.uml.UMLInterface">
+              </instanceof>
+          </outputEnablement>
+        </capabilityProvider>
+        <capabilityProvider
+              class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLPackageCapabilityProvider"
+              description="%uml.umlPackageCapabilityProvider.description"
+              name="com.ibm.ccl.soa.deploy.uml.PackageCapabilityProvider">
+           <inputEnablement>
+              <instanceof
+                    value="org.eclipse.uml2.uml.Package">
+              </instanceof>
+          </inputEnablement>
+          <outputEnablement>
+              <instanceof
+                    value="com.ibm.ccl.soa.deploy.uml.UMLPackageCap">
+              </instanceof>
+          </outputEnablement>
+        </capabilityProvider>
+
+     </domain>
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+     <unitProvider
+           class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLComponentUnitProvider"
+           name="%UMLComponentUnitProviderName">
+        <inputEnablement>
+        	<or>
+				<and>
+					<instanceof
+						value="com.ibm.xtools.uml.navigator.ModelServerElement" />
+					<test
+						property="com.ibm.ccl.soa.deploy.uml.isComponent"
+						forcePluginActivation="true" />
+				</and>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.SoftwareComponent"/>
+			</or>
+		</inputEnablement>
+     </unitProvider>
+     <unitProvider
+           class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLActorUnitProvider"
+           name="%UMLActorUnitProviderName">
+        <inputEnablement>
+        	<or>
+				<and>
+					<instanceof
+						value="com.ibm.xtools.uml.navigator.ModelServerElement" />
+					<test
+						property="com.ibm.ccl.soa.deploy.uml.isActor"
+						forcePluginActivation="true" />
+				</and>
+				<instanceof value="com.ibm.ccl.soa.deploy.uml.UMLActorUnit"/>
+			</or>
+		</inputEnablement>
+     </unitProvider>
+     <unitProvider
+           class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLNodeUnitProvider"
+           name="%UMLNodeUnitProviderName">
+        <inputEnablement>
+        	<or>
+				<and>
+					<instanceof
+						value="com.ibm.xtools.uml.navigator.ModelServerElement" />
+					<test
+						property="com.ibm.ccl.soa.deploy.uml.isNode"
+						forcePluginActivation="true" />
+				</and>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.ConceptualNode"/>
+			</or>
+		</inputEnablement>
+     </unitProvider>
+     <unitProvider
+			class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLInteractionProvider"
+			name="%UMLInteractionProviderName">
+			<inputEnablement>
+				<or>
+					<and>
+						<instanceof
+							value="org.eclipse.core.resources.IFile" />
+						<test
+							property="org.eclipse.core.resources.extension" value="dnx"
+							forcePluginActivation="true" />
+					</and>
+					<and>
+						<instanceof
+							value="com.ibm.xtools.uml.navigator.FileViewerElement" />
+						<test
+							property="com.ibm.ccl.soa.deploy.uml.isDnxFile"
+							forcePluginActivation="true" />
+					</and>	
+					<and>
+						<instanceof
+							value="com.ibm.xtools.uml.navigator.ModelServerElement" />
+						<or>
+							<test
+								property="com.ibm.ccl.soa.deploy.uml.isDiagram"
+								forcePluginActivation="true" />
+								
+							<test
+								property="com.ibm.ccl.soa.deploy.uml.isInteraction"
+								forcePluginActivation="true" />
+							<test
+								property="com.ibm.ccl.soa.deploy.uml.isCollaboration"
+								forcePluginActivation="true" />
+						</or>
+					</and>
+				</or>
+			</inputEnablement>
+		</unitProvider>
+  </extension>
+
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.uml.UMLElementPropertyTester"
+			type="com.ibm.xtools.uml.navigator.ModelServerElement"
+			namespace="com.ibm.ccl.soa.deploy.uml"
+			properties="isComponent,isActor,isNode"
+			class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLElementPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.uml.InteractionPropertyTester"
+			type="com.ibm.xtools.uml.navigator.ModelServerElement"
+			namespace="com.ibm.ccl.soa.deploy.uml"
+			properties="isDiagram,isInteraction,isCollaboration"
+			class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLElementPropertyTester">
+		</propertyTester>
+		<propertyTester
+			id="com.ibm.ccl.soa.deploy.uml.DnxFilePropertyTester"
+			type="com.ibm.xtools.uml.navigator.FileViewerElement"
+			namespace="com.ibm.ccl.soa.deploy.uml"
+			properties="isDnxFile"
+			class="com.ibm.ccl.soa.deploy.uml.internal.provider.UMLFilePropertyTester">
+		</propertyTester>
+  <propertyTester
+        class="com.ibm.ccl.soa.deploy.uml.ui.internal.provider.UMLArtifactPropertyTester"
+        id="com.ibm.ccl.soa.deploy.uml.UMLArtifactPropertyTester"
+        namespace="com.ibm.ccl.soa.deploy.uml"
+        properties="containsUMLArtifact"
+        type="com.ibm.ccl.soa.deploy.core.DeployModelObject">
+  </propertyTester>
+	</extension>
+	
+	<extension
+       point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+	    <resolutionGenerator
+	          class="com.ibm.ccl.soa.deploy.uml.internal.validator.resolution.UMLResolutionGenerator"
+	          id="com.ibm.ccl.soa.deploy.uml.resolutionGenerator"
+			  name="%umlResolution.label">
+	    </resolutionGenerator>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+				<constraint id="com.ibm.ccl.soa.deploy.uml.UMLInteractionConstraint"
+	             	 displayName="%constraint.displayName.0" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/"
+                 	 type="UMLInteractionConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.uml.internal.validator.UMLInteractionConstraintValidator"/>
+				<parentEnablement>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Topology"/>
+			   </parentEnablement>
+		</constraint>
+	</extension>
+
+ <extension
+         point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+                 <unitFilter
+		     class="com.ibm.ccl.soa.deploy.uml.internal.filter.ComponentUnitUmlFilter"
+		     description="%componentUnitUmlFilterDesc"
+		     name="%componentUnitUmlFilterName">
+		    <inputEnablement>
+		      <instanceof
+		         value="com.ibm.ccl.soa.deploy.core.SoftwareComponent" />
+		    </inputEnablement>
+  		</unitFilter>
+  		
+  		<unitFilter
+		     class="com.ibm.ccl.soa.deploy.uml.internal.filter.NodeUnitUmlFilter"
+		     description="%nodeUnitUmlFilterDesc"
+		     name="%nodeUnitUmlFilterName">
+		    <inputEnablement>
+		      <instanceof
+		         value="com.ibm.ccl.soa.deploy.analysis.NodeUnit" />
+		    </inputEnablement>
+  		</unitFilter>
+    </extension>
+    
+     <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.uml">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.uml/models/schemas/umlDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>    
+    
+    
+</plugin>

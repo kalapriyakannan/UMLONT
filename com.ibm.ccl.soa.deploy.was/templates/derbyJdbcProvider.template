@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="Derby JDBCProvider Template">
+  <was:unit.derbyJdbcProviderUnit name="DerbyJDBCProvider" configurationUnit="true">
+    <was:capability.derbyJdbcProvider name="Derby JDBC Provider" displayName="Derby JDBC Provider" linkType="any" implementationClassName="COM.ibm.db2.jdbc.DerbyXADataSource" providerType="Derby Universal JDBC Driver Provider"/>
+    <!-- Invalid dmoType -->    
+    <!-- <core:requirement mutable="true" use="optional" name="Derby JDBC Driver" displayName="Derby JDBC Driver" dmoType="db2Deploy:DerbyJdbcDriver" linkType="dependency"/> -->
+    <core:requirement mutable="true" name="WebSphereConfigurationContainer" displayName="WebSphereConfigurationContainer" dmoType="was:WasConfigurationContainer" linkType="hosting"/>
+  </was:unit.derbyJdbcProviderUnit>
+</core:topology>

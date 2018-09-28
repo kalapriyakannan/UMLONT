@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.2 2007/02/23 15:28:00 danberg Exp $
+-->
+
+<plugin>
+   <extension-point id="handlers" name="%handlersExtensionPointName" schema="schema/handlers.exsd"/>
+   <!-- These were from the SAF from SCA but are not used here -->
+   <!--
+   <extension-point id="context" name="%contextExtensionPointName" schema="schema/context.exsd"/>
+   <extension-point id="contextExtension" name="%contextExtensionExtensionPointName" schema="schema/contextExtension.exsd"/>
+    -->
+	
+	<extension
+		point="org.eclipse.wst.common.frameworks.DataModelProviderExtension">
+		<DataModelProvider
+            class="com.ibm.ccl.soa.core.component.internal.operations.BindingDeletionDataModelProvider"
+            id="com.ibm.ccl.soa.core.component.internal.operations.BindingDeletionDataModelProvider"/>
+	</extension>
+
+</plugin>
+

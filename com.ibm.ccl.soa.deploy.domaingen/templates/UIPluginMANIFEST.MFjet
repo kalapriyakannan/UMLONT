@@ -1,0 +1,27 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UIPluginManifestTemplate" %>
+<% List args=(List) argument; %>
+<% String uiPackagePrefix=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String nonUIBundleId=(String)args.get(2); %>
+<% String uiBundleId=(String)args.get(3); %>
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: <%=uiBundleId%>;singleton:=true
+Bundle-Version: 1.0.0.qualified
+Bundle-Activator: <%=uiPackagePrefix%>.Activator
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: <%=uiPackagePrefix%>,
+ <%=uiPackagePrefix%>.editparts,
+ <%=uiPackagePrefix%>.figures,
+ <%=uiPackagePrefix%>.providers
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ <%=nonUIBundleId%>,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.gmf.runtime.diagram.ui.providers,
+ com.ibm.ccl.soa.deploy.core.ui,
+ com.ibm.ccl.soa.deploy.core
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Eclipse-LazyStart: true

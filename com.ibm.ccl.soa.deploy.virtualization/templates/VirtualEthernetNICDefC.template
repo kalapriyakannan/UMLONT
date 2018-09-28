@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+name="VirtualEthernetNICDef Template">
+  <virtualization:unit.virtualEthernetNICDefUnit name="VirtualEthernetNICDef" configurationUnit="true" conceptual="true">
+    <virtualization:capability.virtualEthernetNICDef name="VirtualEthernetNICDef" linkType="dependency"/>
+    <core:requirement name="HostingReq" dmoType="virtualization:VirtualServerDef" linkType="hosting" use="required"/>  
+    <core:requirement name="DependencyReq" dmoType="net:L2Interface" linkType="dependency" use="optional"/>  
+  </virtualization:unit.virtualEthernetNICDefUnit>
+</core:topology>

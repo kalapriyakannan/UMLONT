@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.j2ee/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.j2ee/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.j2ee" modelName="J2ee" nonNLSMarkers="true"
+    rootExtendsInterface="" featureMapWrapperClass="" codeFormatting="true" importerID="org.eclipse.xsd.ecore.importer"
+    usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/j2eeDomain.xsd</foreignModel>
+  <genPackages prefix="J2ee" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="j2ee.ecore#/">
+    <genEnums ecoreEnum="j2ee.ecore#//EJBContainerVersion">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//EJBContainerVersion/_11"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//EJBContainerVersion/_20"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//EJBContainerVersion/_21"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//EJBContainerVersion/_30"/>
+    </genEnums>
+    <genEnums ecoreEnum="j2ee.ecore#//J2EEContainerVersion">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//J2EEContainerVersion/_12"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//J2EEContainerVersion/_13"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//J2EEContainerVersion/_14"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//J2EEContainerVersion/_50"/>
+    </genEnums>
+    <genEnums ecoreEnum="j2ee.ecore#//JCAContainerVersion">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JCAContainerVersion/_10"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JCAContainerVersion/_15"/>
+    </genEnums>
+    <genEnums ecoreEnum="j2ee.ecore#//JSPContainerVersion">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JSPContainerVersion/_11"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JSPContainerVersion/_12"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JSPContainerVersion/_20"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//JSPContainerVersion/_21"/>
+    </genEnums>
+    <genEnums ecoreEnum="j2ee.ecore#//ServletContainerVersion">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//ServletContainerVersion/_22"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//ServletContainerVersion/_23"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//ServletContainerVersion/_24"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//ServletContainerVersion/_25"/>
+    </genEnums>
+    <genEnums ecoreEnum="j2ee.ecore#//Vicinity">
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//Vicinity/local"/>
+      <genEnumLiterals ecoreEnumLiteral="j2ee.ecore#//Vicinity/remote"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="j2ee.ecore#//EJBContainerVersionObject"/>
+    <genDataTypes ecoreDataType="j2ee.ecore#//J2EEContainerVersionObject"/>
+    <genDataTypes ecoreDataType="j2ee.ecore#//JCAContainerVersionObject"/>
+    <genDataTypes ecoreDataType="j2ee.ecore#//JSPContainerVersionObject"/>
+    <genDataTypes ecoreDataType="j2ee.ecore#//ServletContainerVersionObject"/>
+    <genDataTypes ecoreDataType="j2ee.ecore#//VicinityObject"/>
+    <genClasses ecoreClass="j2ee.ecore#//AppClient"/>
+    <genClasses ecoreClass="j2ee.ecore#//AppClientModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//EarModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//EARModuleCapability"/>
+    <genClasses ecoreClass="j2ee.ecore#//EJB">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EJB/interface"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//EJBContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EJBContainer/containerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//EjbModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//EJBModuleCapability"/>
+    <genClasses ecoreClass="j2ee.ecore#//EnterpriseBeanService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference j2ee.ecore#//EnterpriseBeanService/homeInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EnterpriseBeanService/ejbName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EnterpriseBeanService/jndiName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EnterpriseBeanService/vicinity"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//EntityService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//EntityService/managed"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//GenericJ2eeServer"/>
+    <genClasses ecoreClass="j2ee.ecore#//GenericWebServer"/>
+    <genClasses ecoreClass="j2ee.ecore#//J2CAuthenticationDataEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2CAuthenticationDataEntry/alias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2CAuthenticationDataEntry/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2CAuthenticationDataEntry/userId"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="j2ee.ecore#//J2CAuthenticationUnit"/>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEContainer/containerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEDatasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/datasourceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/dbName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/jndiName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/usedForCmp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDatasource/username"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEDeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityAppClientModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityEarModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityEjb"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityEjbContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityEjbModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeDatasource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeResourceEnvironmentRequirement"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeResourceRequirement"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeSecurityRole"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJ2eeServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJarModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJcaContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJcaModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityJspContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityServletContainer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/capabilityWebModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/componentEar"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/componentEjb"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/componentJar"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/componentWeb"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/interfaceJava"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/interfaceUrl"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/interfaceWsdl"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/serviceEntity"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/serviceServlet"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/serviceSession"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/serviceWs"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/unitAppClient"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/unitJ2eeServer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/unitJ2eeServerUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/unitJcaModule"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference j2ee.ecore#//J2EEDeployRoot/unitWebServer"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEModuleCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEModuleCapability/moduleName"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEResourceEnvironmentRequirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEResourceEnvironmentRequirement/jndiName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEResourceEnvironmentRequirement/type"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEResourceRequirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEResourceRequirement/jndiName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EEResourceRequirement/type"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EESecurityRole">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//J2EESecurityRole/role"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEServer"/>
+    <genClasses ecoreClass="j2ee.ecore#//J2EEServerUnit"/>
+    <genClasses ecoreClass="j2ee.ecore#//JarModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//JarModuleCapability"/>
+    <genClasses ecoreClass="j2ee.ecore#//JavaInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//JavaInterface/interface"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//JCAContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//JCAContainer/containerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//JCAModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//JCAModuleCapability"/>
+    <genClasses ecoreClass="j2ee.ecore#//JSPContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//JSPContainer/containerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//ServletContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//ServletContainer/containerVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//SessionService"/>
+    <genClasses ecoreClass="j2ee.ecore#//URLInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//URLInterface/paramName"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//URLService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//URLService/urlPattern"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//WebModule"/>
+    <genClasses ecoreClass="j2ee.ecore#//WebModuleCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//WebModuleCapability/contextRoot"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//WebService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//WebService/endpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="j2ee.ecore#//WSDLInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute j2ee.ecore#//WSDLInterface/typeUri"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

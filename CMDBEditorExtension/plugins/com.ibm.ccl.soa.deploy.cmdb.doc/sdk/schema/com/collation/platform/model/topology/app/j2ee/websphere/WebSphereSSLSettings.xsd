@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/SSLSettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereGlobalSecuritySettings.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereSSLSettings">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.SSLSettings">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereGlobalSecuritySettings" nillable="true" minOccurs="0"/>
+          <xsd:element name="alias" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="default" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="keyFileName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="keyFileFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientKeyAlias" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverKeyAlias" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="trustFileName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="trustFileFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientAuthentication" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="securityLevel" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enableCryptoHardwareSupport" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

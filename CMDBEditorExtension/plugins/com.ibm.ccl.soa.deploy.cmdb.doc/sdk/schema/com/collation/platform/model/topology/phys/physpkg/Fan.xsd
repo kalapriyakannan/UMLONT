@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/PhysicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/phys/physpkg/Sensor.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/phys/physpkg/PhysicalPackage.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.phys.physpkg.Fan">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.PhysicalElement">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.phys.physpkg.PhysicalPackage" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="relativePosition" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="manufacturer" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="model" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serialNumber" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="HWRevision" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="FWRevision" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SWRevision" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sensors" type="coll:com.collation.platform.model.topology.phys.physpkg.Sensor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

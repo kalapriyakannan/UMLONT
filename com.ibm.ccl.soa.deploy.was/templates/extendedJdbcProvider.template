@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="Extended JDBCProvider Template">
+  <was:unit.extendedJdbcProviderUnit name="ExtendedJDBCProvider" configurationUnit="true">
+    <was:capability.extendedJdbcProvider name="Extended JDBC Provider" displayName="Extended JDBC Provider" linkType="any" implementationClassName="COM.ibm.db2.jdbc.ExtendedXADataSource" providerType="Extended Universal JDBC Driver Provider"/>
+    <!-- Invalid dmoType -->
+    <!-- <core:requirement mutable="true" use="optional" name="Extended JDBC Driver" displayName="Extended JDBC Driver" dmoType="db2Deploy:ExtendedJdbcDriver" linkType="dependency"/> -->
+    <core:requirement mutable="true" name="WebSphereConfigurationContainer" displayName="WebSphereConfigurationContainer" dmoType="was:WasConfigurationContainer" linkType="hosting"/>
+  </was:unit.extendedJdbcProviderUnit>
+</core:topology>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:documentRoot="DeployCoreRoot" ecore:name="core" ecore:nsPrefix="core" ecore:package="com.ibm.ccl.soa.deploy.core" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+
+    <include schemaLocation="base.xsd"/>
+ 
+	<element ecore:featureMap="interfaceGroup" name="interface" type="core:Interface"/>
+	<complexType abstract="true" name="Interface">
+		<annotation>
+			<documentation xml:lang="en">
+				An Interface describes a business level contract between
+				two parties.
+			</documentation>
+		</annotation>
+	</complexType>
+
+	<element name="service" substitutionGroup="core:capability" type="core:Service"/>
+	<complexType name="Service">
+		<annotation>
+			<documentation xml:lang="en">
+				A Service declares an interface that is supported by the
+				implementation that backs the {@link
+				ApplicationComponent}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability">
+				<sequence>
+					<element ecore:name="interface" maxOccurs="1" minOccurs="1" ref="core:interface">
+						<annotation>
+                			<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+               				<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+						</annotation>
+					</element>
+				</sequence>
+				<!--  Does it make sense to have a buildVersion and a serviceVersion ?  -->
+				<attribute name="version" type="core:ServiceVersion"/>
+				<attribute name="protocol" type="xsd:string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="reference" substitutionGroup="core:requirement" type="core:Reference"/>
+	<complexType name="Reference">
+		<annotation>
+			<documentation xml:lang="en">
+				A Reference declares an interface that is required by
+				the implementation that backs the {@link
+				ApplicationComponent} in order to function properly.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Requirement">
+				<sequence>
+					<element ecore:name="interface" maxOccurs="1" minOccurs="1" ref="core:interface">
+						<annotation>
+                			<appinfo ecore:key="suppressedGetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+               				<appinfo ecore:key="suppressedSetVisibility" source="http://www.eclipse.org/emf/2002/GenModel">true</appinfo>
+						</annotation>
+					</element>
+				</sequence>
+				<attribute name="range" type="core:ServiceRange"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="softwareComponent" substitutionGroup="core:baseComponent" type="core:SoftwareComponent"/>
+	<complexType name="SoftwareComponent">
+		<annotation>
+			<documentation xml:lang="en">
+				A SoftwareComponent is a application level
+				configuration of a particular Business Module. A
+				Business Module is any deployable unit of function that
+				provides Services and requires References. A Business
+				Module may be instantiated multiple times in the same
+				{@link Topology}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:BaseComponentUnit"/>
+		</complexContent>
+	</complexType>
+	
+
+<!-- 
+	<complexType name="ApplicationContract">
+		<annotation>
+			<documentation>
+				An ApplicationContract is a business level contract that
+				describes the set of {@link Service}s and {@link
+				Reference}s required by the implementation of a
+				particular {@link ApplicationComponent}.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:UnitContract"></extension>
+		</complexContent>
+	</complexType>
+ -->
+
+    <simpleType name="ServiceVersion">
+    	<restriction base="string">
+      <pattern value="[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"/>
+    </restriction>
+    </simpleType>
+    
+    
+    <simpleType name="ServiceRange">
+    	<restriction base="string">
+      <pattern value="[\[\(][0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\,[0-9]{1,3}\,[ ]+[0-9]{1,3}\.[0-9]{1,3}[\)\]]"/>
+    </restriction>
+    </simpleType>
+</schema>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+	xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"	
+	xmlns:http="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"		
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="IHSDeployRoot"
+	ecore:name="ihs" ecore:package="com.ibm.ccl.soa.deploy.ihs"
+	ecore:nsPrefix="ihs">
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.os/models/schemas/os.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.http/models/schemas/httpDomain.xsd" />
+
+	<!-- Unit types -->
+	<element name="unit.ihsWasModuleUnit" substitutionGroup="core:unit" type="ihs:IhsWasModuleUnit" />
+	<complexType name="IhsWasModuleUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.ihsWasAdminModuleUnit" substitutionGroup="core:unit" type="ihs:IhsWasAdminModuleUnit" />
+	<complexType name="IhsWasAdminModuleUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>	
+
+	<element name="unit.ihsServerUnit" substitutionGroup="core:unit" type="ihs:IhsServerUnit" />
+	<complexType name="IhsServerUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="http:HttpServerUnit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.ihsSystemUnit" substitutionGroup="core:unit" type="ihs:IhsSystemUnit" />
+	<complexType name="IhsSystemUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit"/>
+		</complexContent>
+	</complexType>		
+
+	<element name="unit.ihsUserUnit" substitutionGroup="core:unit" type="ihs:IhsUserUnit" />
+	<complexType name="IhsUserUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="http:HttpUserUnit"/>
+		</complexContent>
+	</complexType>	
+	
+<!-- Capability types -->
+
+	<element name="capability.ihsSystem"
+		substitutionGroup="core:capability" type="ihs:IhsSystem" />
+	<complexType name="IhsSystem">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >
+				<attribute name="installLocation" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>		
+	
+
+	<element name="capability.ihsServer"
+		substitutionGroup="core:capability" type="ihs:IhsServer" />
+	<complexType name="IhsServer">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="http:HttpServer" >
+				<attribute name="secure" type="boolean">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>	
+				<attribute name="configFile" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>				
+				</attribute>			
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<element name="capability.windowsIhsSystem"
+		substitutionGroup="core:capability" type="ihs:WindowsIhsSystem" />
+	<complexType name="WindowsIhsSystem">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ihs:IhsSystem" >
+			</extension>
+		</complexContent>
+	</complexType>			
+	
+
+	<element name="capability.linuxIhsSystem"
+		substitutionGroup="core:capability" type="ihs:LinuxIhsSystem" />
+	<complexType name="LinuxIhsSystem">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ihs:IhsSystem" >
+			</extension>
+		</complexContent>
+	</complexType>		
+	
+
+	<element name="capability.ihsModule"
+		substitutionGroup="core:capability" type="ihs:IhsModule" />
+	<complexType name="IhsModule">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >
+				<attribute name="moduleName" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>			
+				<attribute name="location" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>				
+			</extension>
+		</complexContent>
+	</complexType>				
+	
+	
+	<element name="capability.ihsWasModule"
+		substitutionGroup="core:capability" type="ihs:IhsWasModule" />
+	<complexType name="IhsWasModule">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ihs:IhsModule" >
+				<attribute name="configFile" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>			
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<element name="capability.ihsWasAdminModule"
+		substitutionGroup="core:capability" type="ihs:IhsWasAdminModule" />
+	<complexType name="IhsWasAdminModule">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="ihs:IhsModule" >
+				<attribute name="userFile" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>			
+			</extension>
+		</complexContent>
+	</complexType>		
+
+	<element name="capability.ihsUser"
+		substitutionGroup="core:capability" type="ihs:IhsUser" />
+	<complexType name="IhsUser">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="http:HttpUser" >
+			</extension>
+		</complexContent>
+	</complexType>	
+
+	<element name="capability.ihsUserRepository"
+		substitutionGroup="core:capability" type="ihs:IhsUserRepository" />
+	<complexType name="IhsUserRepository">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Capability" >
+				<attribute name="passwordFile" type="string"/>			
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<!-- Enumerations -->	
+
+    <simpleType name="IHSServerPortNames">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="httpPort"/>
+			<enumeration value="adminPort"/>			
+		</restriction>
+	</simpleType>	
+</schema>

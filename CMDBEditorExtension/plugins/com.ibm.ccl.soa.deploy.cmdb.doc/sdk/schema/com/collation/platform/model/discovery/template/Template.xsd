@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/ModelObject.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/template/FileCapture.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/template/FilterSet.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.discovery.template.Template">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.ModelObject">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="type" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="internal" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="filterSet" type="coll:com.collation.platform.model.discovery.template.FilterSet" nillable="true" minOccurs="0"/>
+          <xsd:element name="index" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="order" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="fileCaptureList" type="coll:com.collation.platform.model.discovery.template.FileCapture" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="enabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="action" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="iconName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="source" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="seedClass" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="templateActionClass" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

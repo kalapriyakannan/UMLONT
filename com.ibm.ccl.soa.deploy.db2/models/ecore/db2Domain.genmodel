@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.db2/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.db2/src" modelPluginID="com.ibm.ccl.soa.deploy.db2"
+    modelName="Db2Domain" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    usedGenPackages="../../../com.ibm.ccl.soa.deploy.database/models/ecore/databaseDomain.genmodel#//database ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core ../../../com.ibm.ccl.soa.deploy.java/models/ecore/java.genmodel#//java ../../../com.ibm.ccl.soa.deploy.os/models/ecore/os.genmodel#//os platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/db2Domain.xsd</foreignModel>
+  <genPackages prefix="Db2" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="db2.ecore#/">
+    <genEnums ecoreEnum="db2.ecore#//AuthenticationTypeType">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/SERVER"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/CLIENT"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/SERVERENCRYPT"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/DATAENCRYPT"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/DATAENCRYPTCMP"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/KERBEROS"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/KRBSERVERENCRYPT"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/GSSPLUGIN"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//AuthenticationTypeType/GSSSERVERENCRYPT"/>
+    </genEnums>
+    <genEnums ecoreEnum="db2.ecore#//DB2InstancePortNames">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//DB2InstancePortNames/instanceConnectionPort"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//DB2InstancePortNames/instanceInterruptPort"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//DB2InstancePortNames/instanceFCMPort"/>
+    </genEnums>
+    <genEnums ecoreEnum="db2.ecore#//PageSizeType">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//PageSizeType/_4096"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//PageSizeType/_8192"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//PageSizeType/_16384"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//PageSizeType/_32768"/>
+    </genEnums>
+    <genEnums ecoreEnum="db2.ecore#//UnixInstanceTypeType">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//UnixInstanceTypeType/Client"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//UnixInstanceTypeType/ESE"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//UnixInstanceTypeType/WSE"/>
+    </genEnums>
+    <genEnums ecoreEnum="db2.ecore#//WindowsInstanceTypeType">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WindowsInstanceTypeType/Client"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WindowsInstanceTypeType/Standalone"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WindowsInstanceTypeType/ESE"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WindowsInstanceTypeType/WSE"/>
+    </genEnums>
+    <genEnums ecoreEnum="db2.ecore#//WordWidthType">
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WordWidthType/_31"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WordWidthType/_32"/>
+      <genEnumLiterals ecoreEnumLiteral="db2.ecore#//WordWidthType/_64"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="db2.ecore#//AuthenticationTypeTypeObject"/>
+    <genDataTypes ecoreDataType="db2.ecore#//DB2InstancePortNamesObject"/>
+    <genDataTypes ecoreDataType="db2.ecore#//PageSizeTypeObject"/>
+    <genDataTypes ecoreDataType="db2.ecore#//UnixInstanceTypeTypeObject"/>
+    <genDataTypes ecoreDataType="db2.ecore#//WindowsInstanceTypeTypeObject"/>
+    <genDataTypes ecoreDataType="db2.ecore#//WordWidthTypeObject"/>
+    <genClasses ecoreClass="db2.ecore#//DB2AdminClient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2AdminClient/db2ProductLang"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2AdminClientUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2AdminServer"/>
+    <genClasses ecoreClass="db2.ecore#//DB2AdminServerUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2AppDevelClient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2AppDevelClient/db2ProductLang"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2AppDevelClientUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2BaseClientUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2BaseInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2BaseInstance/db2InstanceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2BaseInstance/db2Version"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2CatalogedNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2CatalogedNode/dasLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2CatalogedNode/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2CatalogedNode/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2CatalogedNode/nodeType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2CatalogedNode/port"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2CatalogUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2Client">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Client/db2ClientVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Client/installDir"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2ClientInstance"/>
+    <genClasses ecoreClass="db2.ecore#//DB2ClientInstanceUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2Database">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/catalogSp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/codeSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/createPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/db2Version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/dbAlias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/dbDrive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/dbName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/dftExtentSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/pageSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/tempSp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/territory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Database/userSp"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2DatabaseUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2DDLArtifact"/>
+    <genClasses ecoreClass="db2.ecore#//Db2DeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute db2.ecore#//Db2DeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2AdminClient"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2AdminServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2AppDevelClient"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2BaseInstance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2CatalogedNode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2Client"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2ClientInstance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2Database"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2Instance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2JdbcDriver"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityDb2System"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityUnixDb2AdminServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityUnixDb2ClientInstance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityUnixDb2Instance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityUnixDb2System"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityWindowsDb2AdminServer"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityWindowsDb2ClientInstance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityWindowsDb2Instance"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/capabilityWindowsDb2System"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2AdminClientUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2AdminServerUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2AppDevelClientUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2BaseClientUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2CatalogUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2ClientInstanceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2DatabaseUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2ddl"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2InstanceUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2NodeCatalogUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2RuntimeClientUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference db2.ecore#//Db2DeployRoot/unitDb2SystemUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2Instance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Instance/autoStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Instance/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Instance/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Instance/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2Instance/username"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2InstanceUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2JdbcDriver">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2JdbcDriver/classname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2JdbcDriver/classpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2JdbcDriver/driverPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2JdbcDriver/jdbcType"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2NodeCatalogUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2RuntimeClientUnit"/>
+    <genClasses ecoreClass="db2.ecore#//DB2System">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2System/db2ProductLang"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2System/db2Version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//DB2System/installDir"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//DB2SystemUnit"/>
+    <genClasses ecoreClass="db2.ecore#//UnixDB2AdminServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2AdminServer/dasGID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2AdminServer/dasGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2AdminServer/dasUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2AdminServer/dasUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2AdminServer/dasUserPassword"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//UnixDB2ClientInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/authenticationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/fencedGID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/fencedGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/fencedUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/fencedUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/fencedUserPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/gID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/groupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/instanceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/uID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2ClientInstance/wordWidth"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//UnixDB2Instance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/authenticationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/fencedGID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/fencedGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/fencedUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/fencedUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/fencedUserPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/gID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/groupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/instanceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/uID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//UnixDB2Instance/wordWidth"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//UnixDB2System"/>
+    <genClasses ecoreClass="db2.ecore#//WindowsDB2AdminServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2AdminServer/dasDomain"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//WindowsDB2ClientInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2ClientInstance/defaultInstance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2ClientInstance/instanceType"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//WindowsDB2Instance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2Instance/defaultInstance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2Instance/instanceType"/>
+    </genClasses>
+    <genClasses ecoreClass="db2.ecore#//WindowsDB2System">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2System/adminGroupName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2System/extendedSecurity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db2.ecore#//WindowsDB2System/userGroupName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

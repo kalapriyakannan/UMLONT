@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.4 2008/05/26 19:44:05 mdelder Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/net/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.net.provider.NetItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.net.NetPackage" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="net"
+       class="com.ibm.ccl.soa.deploy.net.util.NetResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.net.domain"
+       name="%extension.netDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.net.internal.validator.NetDomainValidator"/>
+       <resourceType
+             id="net.IpInterface.infra"
+             name="IpInterface"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.net/templates/IpInterface.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%netIpInterfaceTool.Description"
+             label="%netIpInterfaceTool.Label"
+             path="/operatingSystemDrawer"
+             smallIcon="icons/pal/ip-interface_pal16.gif"
+             largeIcon="icons/pal/ip-interface_pal20.gif"
+             resourceTypeId="net.IpInterface.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="net.L2Interface.infra"
+             name="L2Interface"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.net/templates/L2Interface.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%netL2InterfaceTool.Description"
+             label="%netL2InterfaceTool.Label"
+             path="/physicalServerDrawer"
+             smallIcon="icons/pal/l2-interface_pal16.gif"
+             largeIcon="icons/pal/l2-interface_pal20.gif"
+             resourceTypeId="net.L2Interface.infra">
+       </resourceTypeUIBinding>       
+    </domain>
+  </extension>
+    
+
+</plugin>

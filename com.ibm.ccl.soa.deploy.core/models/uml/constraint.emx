@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:XSDProfile="http:///schemas/XSDProfile/100" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http:///schemas/XSDProfile/100 pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?">
+  <uml:Package xmi:id="_roYY4h0XEd2PVptWKxm7UQ" name="constraint">
+    <eAnnotations xmi:id="_roYY4x0XEd2PVptWKxm7UQ" source="uml2.diagrams" references="_roYY5B0XEd2PVptWKxm7UQ">
+      <contents xmi:type="notation:Diagram" xmi:id="_roYY5B0XEd2PVptWKxm7UQ" type="Freeform" name="Main">
+        <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_roYY5R0XEd2PVptWKxm7UQ"/>
+      </contents>
+    </eAnnotations>
+    <ownedComment xmi:id="_N2pqIB1GEd2rLuWewxVuyA">
+      <body>
+		    The constraint model for SOA Deploy.
+		</body>
+    </ownedComment>
+    <ownedComment xmi:id="_N2pqIR1GEd2rLuWewxVuyA">
+      <body>
+				Constraints the number of groups (incoming member links).
+			</body>
+    </ownedComment>
+    <ownedComment xmi:id="_N2pqIx1GEd2rLuWewxVuyA">
+      <body>
+				Constraints the number of members (outgoing member links).
+			</body>
+    </ownedComment>
+    <ownedComment xmi:id="_N2pqJB1GEd2rLuWewxVuyA">
+      <body>
+		    The Topology Definition Model (TDM) defines a core set of concepts to describe
+		    Enterprise Architectures from the Software Applications down to the hardware 
+		    requirements. The model is inherently extensible, allowing technology specific
+		    domains to define their own types. At a high level, the model is orgainzed into
+		    {@link Topology topologies}, which contain {@link Unit}s. A Unit contain 
+		    {@link Capability capabilities}, {@Requirement requirements}, and four types 
+		    of links ({@link DependencyLink  dependency links}, {@link HostingLink  hosting links},
+		    {@link ConstraintLink  constraint links}, {@link MemberLink  member links}. In 
+		    addition, the model defines the notion of {@link Constraint constraints} which 
+		    can be added to Units or Contraint Links in order to describe requirements on 
+		    target application or environment. 
+		</body>
+    </ownedComment>
+    <ownedComment xmi:id="_N2pqIh1GEd2rLuWewxVuyA">
+      <body>
+				An object that can be part of a deployable module.  See {@link FileArtifact}.
+			</body>
+    </ownedComment>
+    <packageImport xmi:id="_N2pqJR1GEd2rLuWewxVuyA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF4CkGEdmDdasWev0kGA?XSDDataTypes?"/>
+    </packageImport>
+    <packageImport xmi:id="_roYY5h0XEd2PVptWKxm7UQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Ux1GEd2rLuWewxVuyA" name="CollocationConstraintTypes">
+      <ownedComment xmi:id="_N2f5VB1GEd2rLuWewxVuyA">
+        <body>
+				The types of collocation: 'COLLOCATION' and 'ANTI-COLLOCATION'
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5VR1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2f5Vh1GEd2rLuWewxVuyA" name="collocation" type="_N2f5Ux1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2f5Vx1GEd2rLuWewxVuyA">
+          <body>
+				Represents the collocation constraint.
+			</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2f5WB1GEd2rLuWewxVuyA" name="anticollocation" type="_N2f5Ux1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2f5WR1GEd2rLuWewxVuyA">
+          <body>
+				Represents the anti-collocation constraint.
+			</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-QR1GEd2rLuWewxVuyA" name="CommunicationTypeTypes">
+      <ownedComment xmi:id="_N2M-Qh1GEd2rLuWewxVuyA">
+        <body>
+				The types of communication links: 'LAN', 'WAN', ...
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2M-Qx1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2M-RB1GEd2rLuWewxVuyA" name="LAN" type="_N2M-QR1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2M-RR1GEd2rLuWewxVuyA">
+          <body>
+				Represents a LAN connection.
+			</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2M-Rh1GEd2rLuWewxVuyA" name="WAN" type="_N2M-QR1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2M-Rx1GEd2rLuWewxVuyA">
+          <body>
+				Represents a WAN connection.
+			</body>
+        </ownedComment>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5ax1GEd2rLuWewxVuyA" name="BooleanOperator" isAbstract="true">
+      <ownedComment xmi:id="_N2f5bB1GEd2rLuWewxVuyA">
+        <body>
+			    Abstract parent type of all constraint types representing boolean operators.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jNR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2f5bR1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5fR1GEd2rLuWewxVuyA" name="OrConstraint">
+      <ownedComment xmi:id="_N2f5fh1GEd2rLuWewxVuyA">
+        <body>
+			    Constraint representing boolean operator 'OR'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5fx1GEd2rLuWewxVuyA" general="_N2f5ax1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5eB1GEd2rLuWewxVuyA" name="AndConstraint">
+      <ownedComment xmi:id="_N2f5eR1GEd2rLuWewxVuyA">
+        <body>
+			    Constraint representing boolean operator 'AND'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5eh1GEd2rLuWewxVuyA" general="_N2f5ax1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5cx1GEd2rLuWewxVuyA" name="NotConstraint">
+      <ownedComment xmi:id="_N2f5dB1GEd2rLuWewxVuyA">
+        <body>
+			    Constraint representing boolean operator 'NOT'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5dR1GEd2rLuWewxVuyA" general="_N2f5ax1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5bh1GEd2rLuWewxVuyA" name="XorConstraint">
+      <ownedComment xmi:id="_N2f5bx1GEd2rLuWewxVuyA">
+        <body>
+			    Constraint representing boolean operator 'XOR'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5cB1GEd2rLuWewxVuyA" general="_N2f5ax1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Wh1GEd2rLuWewxVuyA" name="StructuralConstraint" isAbstract="true">
+      <ownedComment xmi:id="_N2f5Wx1GEd2rLuWewxVuyA">
+        <body>
+			    Abstract parent type of all constraint types representing structural constraints.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jMB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2f5XB1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Zh1GEd2rLuWewxVuyA" name="DeferredHostingConstraint">
+      <ownedComment xmi:id="_N2f5Zx1GEd2rLuWewxVuyA">
+        <body>
+			    Structural constraint representing the deferred hosting relationship (between two units). 
+			    This relationship indicates that one of the units (the source of the (constraint) link that 
+			    contains the constraint) is hosted on the other unit (the target of the link that contains
+			    the constraint), not necessarily directly, but potentially through a chain of other 
+			    units (i.e., the hosting stack).
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5aB1GEd2rLuWewxVuyA" general="_N2f5Wh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5XR1GEd2rLuWewxVuyA" name="CollocationConstraint">
+      <ownedComment xmi:id="_N2f5Xh1GEd2rLuWewxVuyA">
+        <body>
+			    Structural constraint representing collocation and anti-collocation of two units.
+			    Indicates that two units should be collocated/anti-collocated at a certain level 
+			    of their hosting stacks.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5Xx1GEd2rLuWewxVuyA" general="_N2f5Wh1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2f5YB1GEd2rLuWewxVuyA" name="type" type="_N2f5Ux1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2f5YR1GEd2rLuWewxVuyA">
+          <body>
+	    			Type of the collocation: 'collocation' or 'anti-collocation'.
+					</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2f5Yh1GEd2rLuWewxVuyA" name="capabilityType">
+        <ownedComment xmi:id="_N2f5Yx1GEd2rLuWewxVuyA">
+          <body>
+					Indicates capability type, such that hosting stacks converge ('collocation') or do not converge 
+					(anti-collocation) at every occurrence of units with the given capability type on both sides
+					of the hosting stack.
+					</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBCkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/QName?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Th1GEd2rLuWewxVuyA" name="RealizationConstraint">
+      <ownedComment xmi:id="_N2f5Tx1GEd2rLuWewxVuyA">
+        <body>
+			    Defines restrictions to the realization logic which 
+			    validates whether a given realization is valid. In 
+			    particular, expects the user of nested Boolean or 
+			    Type Constraints.		  
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jNh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2f5UB1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-MB1GEd2rLuWewxVuyA" name="AttributeValueConstraint" isAbstract="true">
+      <ownedComment xmi:id="_N2M-MR1GEd2rLuWewxVuyA">
+        <body>
+			    Abstract parent type of all constraint types representing attribute value constraints.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-cwyMx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2M-Mh1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2M-Mx1GEd2rLuWewxVuyA" name="attributeName">
+        <ownedComment xmi:id="_N2M-NB1GEd2rLuWewxVuyA">
+          <body>
+          				Name of the attribute on the {@link Capability} or {@link Unit}, to which this constraint applies.
+          				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Rx1GEd2rLuWewxVuyA" name="EqualsConstraint">
+      <ownedComment xmi:id="_N2f5SB1GEd2rLuWewxVuyA">
+        <body>
+				Constraint that specifies the value of an attribute.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5SR1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2f5Sh1GEd2rLuWewxVuyA" name="value">
+        <ownedComment xmi:id="_N2f5Sx1GEd2rLuWewxVuyA">
+          <body>The value of the attribute.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5OB1GEd2rLuWewxVuyA" name="RangeConstraint">
+      <ownedComment xmi:id="_N2f5OR1GEd2rLuWewxVuyA">
+        <body>
+				Constraint that specifies valid attribute value range. Not necessarily numbers, any comparable types.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5Oh1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2f5Ox1GEd2rLuWewxVuyA" name="minValue">
+        <ownedComment xmi:id="_N2f5PB1GEd2rLuWewxVuyA">
+          <body>
+						The minimum value of the range. No minimum value is specified, if ommited.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2f5PR1GEd2rLuWewxVuyA" name="minValueInclusive">
+        <ownedComment xmi:id="_N2f5Ph1GEd2rLuWewxVuyA">
+          <body>
+						Is minimum value is included in the range.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2f5Px1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2f5QB1GEd2rLuWewxVuyA" name="maxValue">
+        <ownedComment xmi:id="_N2f5QR1GEd2rLuWewxVuyA">
+          <body>
+						The maximum value of the range. No maximum value is specified, if ommited.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2f5Qh1GEd2rLuWewxVuyA" name="maxValueInclusive">
+        <ownedComment xmi:id="_N2f5Qx1GEd2rLuWewxVuyA">
+          <body>
+						Is maximum value is included in the range.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2f5RB1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5MR1GEd2rLuWewxVuyA" name="VersionConstraint">
+      <ownedComment xmi:id="_N2f5Mh1GEd2rLuWewxVuyA">
+        <body>Constraint that restricts the version number.</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5Mx1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2f5NB1GEd2rLuWewxVuyA" name="value">
+        <ownedComment xmi:id="_N2f5NR1GEd2rLuWewxVuyA">
+          <body>Version string specification, e.g., '1.1.2.x'; '1.100+'.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Kh1GEd2rLuWewxVuyA" name="ProductIdentifierConstraint">
+      <ownedComment xmi:id="_N2f5Kx1GEd2rLuWewxVuyA">
+        <body>Constraint that specifies a product identifier.</body>
+      </ownedComment>
+      <generalization xmi:id="_-cwyMR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2f5LB1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2f5LR1GEd2rLuWewxVuyA" name="productIdentifier">
+        <ownedComment xmi:id="_N2f5Lh1GEd2rLuWewxVuyA">
+          <body>String representation of the product selection.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvjB1GEd2rLuWewxVuyA" name="SingleValue">
+      <ownedComment xmi:id="_N2WvjR1GEd2rLuWewxVuyA">
+        <body>
+			Represents a single value (of an attribute). 
+			Used as a child element in 'Enumeration' and 'Exclusuion' constraints.
+			</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_N2Wvjh1GEd2rLuWewxVuyA" name="value">
+        <ownedComment xmi:id="_N2Wvjx1GEd2rLuWewxVuyA">
+          <body>
+				The value itself. 
+				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2WvkB1GEd2rLuWewxVuyA" name="description">
+        <ownedComment xmi:id="_N2WvkR1GEd2rLuWewxVuyA">
+          <body>
+				Description of the value (optional). 
+				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5IB1GEd2rLuWewxVuyA" name="EnumerationConstraint">
+      <ownedComment xmi:id="_N2f5IR1GEd2rLuWewxVuyA">
+        <body>
+			The value of the attribute should be any one from the given set.
+			The set of valid values is represented as a sequence of child elements of type 'SingleValue'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2f5Ih1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2f5Ix1GEd2rLuWewxVuyA" name="value" type="_N2WvjB1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2f5JB1GEd2rLuWewxVuyA">
+          <body>
+					The set of valid values is represented as a sequence of child elements of type 'SingleValue'.
+					</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N2f5JR1GEd2rLuWewxVuyA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvkh1GEd2rLuWewxVuyA" name="ExclusionConstraint">
+      <ownedComment xmi:id="_N2Wvkx1GEd2rLuWewxVuyA">
+        <body>
+			The value of the attribute SHOULD NOT be one from the given set.
+			The set of INVALID values is represented as a sequence of child elements of type 'SingleValue'.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvlB1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvlR1GEd2rLuWewxVuyA" name="value" type="_N2WvjB1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2Wvlh1GEd2rLuWewxVuyA">
+          <body>
+					The set of INVALID values is represented as a sequence of child elements of type 'SingleValue'.
+					</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N2Wvlx1GEd2rLuWewxVuyA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvgh1GEd2rLuWewxVuyA" name="GroupCardinalityConstraint">
+      <generalization xmi:id="_-cwyNB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2Wvgx1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2WvhB1GEd2rLuWewxVuyA" name="minValue">
+        <ownedComment xmi:id="_N2WvhR1GEd2rLuWewxVuyA">
+          <body>
+				The minimum number of groups.
+			</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2Wvhh1GEd2rLuWewxVuyA" value="0"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2Wvhx1GEd2rLuWewxVuyA" name="maxValue">
+        <ownedComment xmi:id="_N2WviB1GEd2rLuWewxVuyA">
+          <body>
+				The maximum number of groups.
+			</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WviR1GEd2rLuWewxVuyA" value="unbounded"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WveB1GEd2rLuWewxVuyA" name="MemberCardinalityConstraint">
+      <generalization xmi:id="_-c6jMx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2WveR1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2Wveh1GEd2rLuWewxVuyA" name="minValue">
+        <ownedComment xmi:id="_N2Wvex1GEd2rLuWewxVuyA">
+          <body>
+				The minimum number of members.
+			</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WvfB1GEd2rLuWewxVuyA" value="0"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2WvfR1GEd2rLuWewxVuyA" name="maxValue">
+        <ownedComment xmi:id="_N2Wvfh1GEd2rLuWewxVuyA">
+          <body>
+				The maximum number of members.
+			</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2Wvfx1GEd2rLuWewxVuyA" value="unbounded"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvcR1GEd2rLuWewxVuyA" name="TypeConstraint">
+      <ownedComment xmi:id="_N2Wvch1GEd2rLuWewxVuyA">
+        <body>
+			Constraint that restricts the type of the context DMO, which is being validated.
+			The primary intent to use TypeConstraint is as a child of another constraint, which would define 
+			the semantics of the child TypeConstraint constraint and would supply the right validation context.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jMR1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2Wvcx1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2WvdB1GEd2rLuWewxVuyA" name="dmoType">
+        <ownedComment xmi:id="_N2WvdR1GEd2rLuWewxVuyA">
+          <body>
+						Specifies the type (e.g., 'namespace:TypeName') of a Deploy Model Object.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBCkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/QName?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvWB1GEd2rLuWewxVuyA" name="BaseCommunicationConstraint">
+      <ownedComment xmi:id="_N2WvWR1GEd2rLuWewxVuyA">
+        <body>
+				Idenitifies requirement for communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jNx1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2WvWh1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2WvWx1GEd2rLuWewxVuyA" name="respectLinkDirection">
+        <ownedComment xmi:id="_N2WvXB1GEd2rLuWewxVuyA">
+          <body>
+							When true, the originator of the communication is the source of the link.
+							Otherwise, the originator is the target of the link.
+							By default, this should be true.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WvXR1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvbB1GEd2rLuWewxVuyA" name="ApplicationCommunicationConstraint">
+      <ownedComment xmi:id="_N2WvbR1GEd2rLuWewxVuyA">
+        <body>
+				Idenitifies requirement for application level communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2Wvbh1GEd2rLuWewxVuyA" general="_N2WvWB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvXh1GEd2rLuWewxVuyA" name="NetworkCommunicationConstraint">
+      <ownedComment xmi:id="_N2WvXx1GEd2rLuWewxVuyA">
+        <body>
+				Idenitifies requirement for network level communication between elements. In general this is between units. 
+				However, it may be expressed on dependency link between a requirement and a capability.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvYB1GEd2rLuWewxVuyA" general="_N2WvWB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-SB1GEd2rLuWewxVuyA" name="CommunicationChildConstraint" isAbstract="true">
+      <ownedComment xmi:id="_N2M-SR1GEd2rLuWewxVuyA">
+        <body>
+			    Abstract type for a communications child constriant.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jNB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2M-Sh1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvYx1GEd2rLuWewxVuyA" name="ApplicationCommunicationProtocolConstraint">
+      <ownedComment xmi:id="_N2WvZB1GEd2rLuWewxVuyA">
+        <body>
+				Specifies the application protocol of required communication.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvZR1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvZh1GEd2rLuWewxVuyA" name="applicationLayerProtocol">
+        <ownedComment xmi:id="_N2WvZx1GEd2rLuWewxVuyA">
+          <body>
+							The name of the application layer protocol.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvRh1GEd2rLuWewxVuyA" name="CommunicationPortConstraint">
+      <ownedComment xmi:id="_N2WvRx1GEd2rLuWewxVuyA">
+        <body>
+				Specifies the (TCP/UDP) port of required communication.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvSB1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvSR1GEd2rLuWewxVuyA" name="port">
+        <ownedComment xmi:id="_N2WvSh1GEd2rLuWewxVuyA">
+          <body>
+							The (TCP/UDP) port of required communication.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGDykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/int?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2WvSx1GEd2rLuWewxVuyA" name="isTarget">
+        <ownedComment xmi:id="_N2WvTB1GEd2rLuWewxVuyA">
+          <body>
+							Flag identifying to which communication endpoint port constraint applies. This flag
+							is interpreted together with the respectLinkDirection flag on the parent BaseCommunicationConstraint.
+							Their meaning is:</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WvTR1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvUB1GEd2rLuWewxVuyA" name="SynchronousCommunicationConstraint">
+      <ownedComment xmi:id="_N2WvUR1GEd2rLuWewxVuyA">
+        <body>
+				Specifies whether or not the communication is synchronous.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-cwyMh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2WvUh1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2WvUx1GEd2rLuWewxVuyA" name="synchronous">
+        <ownedComment xmi:id="_N2WvVB1GEd2rLuWewxVuyA">
+          <body>
+							Flag indicating whether or not communication is synchronous.  Default is true.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WvVR1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvOB1GEd2rLuWewxVuyA" name="TransmissionDelayConstraint">
+      <ownedComment xmi:id="_N2WvOR1GEd2rLuWewxVuyA">
+        <body>
+				Constrains the acceptable transmission delay for communications.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvOh1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvOx1GEd2rLuWewxVuyA" name="delay">
+        <ownedComment xmi:id="_N2WvPB1GEd2rLuWewxVuyA">
+          <body>
+							Acceptable delay in milliseconds.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGDykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/int?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvPx1GEd2rLuWewxVuyA" name="CommunicationBandwidthConstraint">
+      <ownedComment xmi:id="_N2WvQB1GEd2rLuWewxVuyA">
+        <body>
+				Expresses a required bandwidth for communications.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvQR1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvQh1GEd2rLuWewxVuyA" name="bandwidth">
+        <ownedComment xmi:id="_N2WvQx1GEd2rLuWewxVuyA">
+          <body>
+							Required bandwidth in bits per second.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGDykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/int?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-Yx1GEd2rLuWewxVuyA" name="CommunicationCostConstraint">
+      <ownedComment xmi:id="_N2M-ZB1GEd2rLuWewxVuyA">
+        <body>
+				Expresses a required maximum cost for communications.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2M-ZR1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2M-Zh1GEd2rLuWewxVuyA" name="cost">
+        <ownedComment xmi:id="_N2M-Zx1GEd2rLuWewxVuyA">
+          <body>
+							Maximum allowable cost in dollars.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGDykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/int?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvMB1GEd2rLuWewxVuyA" name="CommunicationRedundancyConstraint">
+      <ownedComment xmi:id="_N2WvMR1GEd2rLuWewxVuyA">
+        <body>
+				Expresses a required mimimum redundancy for communication.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2WvMh1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2WvMx1GEd2rLuWewxVuyA" name="redundancy">
+        <ownedComment xmi:id="_N2WvNB1GEd2rLuWewxVuyA">
+          <body>
+							Minimum allowable communication path redundancy.
+						</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGDykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/int?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2WvNR1GEd2rLuWewxVuyA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-Sx1GEd2rLuWewxVuyA" name="CommunicationTypeConstraint">
+      <ownedComment xmi:id="_N2M-TB1GEd2rLuWewxVuyA">
+        <body>
+				Communication type required.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_N2M-TR1GEd2rLuWewxVuyA" general="_N2M-SB1GEd2rLuWewxVuyA"/>
+      <ownedAttribute xmi:id="_N2M-Th1GEd2rLuWewxVuyA" name="type" type="_N2M-QR1GEd2rLuWewxVuyA">
+        <ownedComment xmi:id="_N2M-Tx1GEd2rLuWewxVuyA">
+          <body>
+							Communication type
+						</body>
+        </ownedComment>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2M-UB1GEd2rLuWewxVuyA" value="LAN"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-Ux1GEd2rLuWewxVuyA" name="AttributePropagationConstraint">
+      <ownedComment xmi:id="_N2M-VB1GEd2rLuWewxVuyA">
+        <body>
+			A constraint that propagates an attribute value from one deploy model object to another.
+			</body>
+      </ownedComment>
+      <generalization xmi:id="_-c6jMh1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2M-VR1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2M-Vh1GEd2rLuWewxVuyA" name="sourceObjectURI">
+        <ownedComment xmi:id="_N2M-Vx1GEd2rLuWewxVuyA">
+          <body>Optional relative or absolute path from the computed base source of the propagation constraint.
+        				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBSkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/anyURI?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2M-WB1GEd2rLuWewxVuyA" name="targetObjectURI">
+        <ownedComment xmi:id="_N2M-WR1GEd2rLuWewxVuyA">
+          <body>Optional relative or absolute path from the computed base target of the propagation constraint.
+        				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKGBSkGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/anyURI?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2M-Wh1GEd2rLuWewxVuyA" name="sourceAttributeName">
+        <ownedComment xmi:id="_N2M-Wx1GEd2rLuWewxVuyA">
+          <body>Name of the source attribute.
+          				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2M-XB1GEd2rLuWewxVuyA" name="targetAttributeName">
+        <ownedComment xmi:id="_N2M-XR1GEd2rLuWewxVuyA">
+          <body>Name of the target attribute.
+          				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_N2M-Xh1GEd2rLuWewxVuyA" name="respectLinkDirection">
+        <ownedComment xmi:id="_N2M-Xx1GEd2rLuWewxVuyA">
+          <body>
+          					True if the link direction should specify the propagation direction, false otherwise.
+          					</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF9ykGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/boolean?"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_N2M-YB1GEd2rLuWewxVuyA" value="true"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-NR1GEd2rLuWewxVuyA" name="AttributeDefinedConstraint">
+      <ownedComment xmi:id="_N2M-Nh1GEd2rLuWewxVuyA">
+        <body>A constraint that the attribute of a deploy model object is not null, or empty (for strings).</body>
+      </ownedComment>
+      <generalization xmi:id="_N2M-Nx1GEd2rLuWewxVuyA" general="_N2M-MB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-Oh1GEd2rLuWewxVuyA" name="PaletteConstraint">
+      <ownedComment xmi:id="_N2M-Ox1GEd2rLuWewxVuyA">
+        <body>A constraint that denotes this topology is a dynamic palette entry.</body>
+      </ownedComment>
+      <generalization xmi:id="_-cwyMB1JEd2wSNOXElmm7w">
+        <general xmi:type="uml:Class" href="core.emx#_9uuAdx1JEd2wSNOXElmm7w"/>
+      </generalization>
+      <generalization xmi:id="_N2M-PB1GEd2rLuWewxVuyA">
+        <general xmi:type="uml:Class" href="core.emx#_NN95ix1GEd2rLuWewxVuyA"/>
+      </generalization>
+      <ownedAttribute xmi:id="_N2M-PR1GEd2rLuWewxVuyA" name="resourceTypeId">
+        <ownedComment xmi:id="_N2M-Ph1GEd2rLuWewxVuyA">
+          <body>Resource type id of the palette entry.  Used to locate palette information in the dynamic types registry.
+        				</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5gB1GEd2rLuWewxVuyA" name="constraint.or">
+      <ownedAttribute xmi:id="_N2f5gR1GEd2rLuWewxVuyA" name="constraint.or" type="_N2f5fR1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5ex1GEd2rLuWewxVuyA" name="constraint.and">
+      <ownedAttribute xmi:id="_N2f5fB1GEd2rLuWewxVuyA" name="constraint.and" type="_N2f5eB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5dh1GEd2rLuWewxVuyA" name="constraint.not">
+      <ownedAttribute xmi:id="_N2f5dx1GEd2rLuWewxVuyA" name="constraint.not" type="_N2f5cx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5cR1GEd2rLuWewxVuyA" name="constraint.xor">
+      <ownedAttribute xmi:id="_N2f5ch1GEd2rLuWewxVuyA" name="constraint.xor" type="_N2f5bh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5aR1GEd2rLuWewxVuyA" name="constraint.deferredHosting">
+      <ownedAttribute xmi:id="_N2f5ah1GEd2rLuWewxVuyA" name="constraint.deferredHosting" type="_N2f5Zh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5ZB1GEd2rLuWewxVuyA" name="constraint.collocation">
+      <ownedAttribute xmi:id="_N2f5ZR1GEd2rLuWewxVuyA" name="constraint.collocation" type="_N2f5XR1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5UR1GEd2rLuWewxVuyA" name="constraint.realization">
+      <ownedAttribute xmi:id="_N2f5Uh1GEd2rLuWewxVuyA" name="constraint.realization" type="_N2f5Th1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5TB1GEd2rLuWewxVuyA" name="constraint.equals">
+      <ownedAttribute xmi:id="_N2f5TR1GEd2rLuWewxVuyA" name="constraint.equals" type="_N2f5Rx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5RR1GEd2rLuWewxVuyA" name="constraint.range">
+      <ownedAttribute xmi:id="_N2f5Rh1GEd2rLuWewxVuyA" name="constraint.range" type="_N2f5OB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Nh1GEd2rLuWewxVuyA" name="constraint.version">
+      <ownedAttribute xmi:id="_N2f5Nx1GEd2rLuWewxVuyA" name="constraint.version" type="_N2f5MR1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Lx1GEd2rLuWewxVuyA" name="constraint.productIdentifier">
+      <ownedAttribute xmi:id="_N2f5MB1GEd2rLuWewxVuyA" name="constraint.productIdentifier" type="_N2f5Kh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5KB1GEd2rLuWewxVuyA" name="value">
+      <ownedAttribute xmi:id="_N2f5KR1GEd2rLuWewxVuyA" name="value" type="_N2WvjB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2f5Jh1GEd2rLuWewxVuyA" name="constraint.enumeration">
+      <ownedAttribute xmi:id="_N2f5Jx1GEd2rLuWewxVuyA" name="constraint.enumeration" type="_N2f5IB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvmB1GEd2rLuWewxVuyA" name="constraint.exclusion">
+      <ownedAttribute xmi:id="_N2WvmR1GEd2rLuWewxVuyA" name="constraint.exclusion" type="_N2Wvkh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvih1GEd2rLuWewxVuyA" name="constraint.groupCardinality">
+      <ownedAttribute xmi:id="_N2Wvix1GEd2rLuWewxVuyA" name="constraint.groupCardinality" type="_N2Wvgh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvgB1GEd2rLuWewxVuyA" name="constraint.memberCardinality">
+      <ownedAttribute xmi:id="_N2WvgR1GEd2rLuWewxVuyA" name="constraint.memberCardinality" type="_N2WveB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvdh1GEd2rLuWewxVuyA" name="constraint.type">
+      <ownedAttribute xmi:id="_N2Wvdx1GEd2rLuWewxVuyA" name="constraint.type" type="_N2WvcR1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvah1GEd2rLuWewxVuyA" name="constraint.basecommunication">
+      <ownedAttribute xmi:id="_N2Wvax1GEd2rLuWewxVuyA" name="constraint.basecommunication" type="_N2WvWB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2Wvbx1GEd2rLuWewxVuyA" name="constraint.applicationcommunication">
+      <ownedAttribute xmi:id="_N2WvcB1GEd2rLuWewxVuyA" name="constraint.applicationcommunication" type="_N2WvbB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvYR1GEd2rLuWewxVuyA" name="constraint.networkcommunication">
+      <ownedAttribute xmi:id="_N2WvYh1GEd2rLuWewxVuyA" name="constraint.networkcommunication" type="_N2WvXh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvaB1GEd2rLuWewxVuyA" name="constraint.applicationprotocol">
+      <ownedAttribute xmi:id="_N2WvaR1GEd2rLuWewxVuyA" name="constraint.applicationprotocol" type="_N2WvYx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvTh1GEd2rLuWewxVuyA" name="constraint.communicationport">
+      <ownedAttribute xmi:id="_N2WvTx1GEd2rLuWewxVuyA" name="constraint.communicationport" type="_N2WvRh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvVh1GEd2rLuWewxVuyA" name="constraint.synchronouscommunication">
+      <ownedAttribute xmi:id="_N2WvVx1GEd2rLuWewxVuyA" name="constraint.synchronouscommunication" type="_N2WvUB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvPR1GEd2rLuWewxVuyA" name="constraint.transmissiondelay">
+      <ownedAttribute xmi:id="_N2WvPh1GEd2rLuWewxVuyA" name="constraint.transmissiondelay" type="_N2WvOB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvRB1GEd2rLuWewxVuyA" name="constraint.communicationbandwidth">
+      <ownedAttribute xmi:id="_N2WvRR1GEd2rLuWewxVuyA" name="constraint.communicationbandwidth" type="_N2WvPx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-aB1GEd2rLuWewxVuyA" name="constraint.communicationcost">
+      <ownedAttribute xmi:id="_N2M-aR1GEd2rLuWewxVuyA" name="constraint.communicationcost" type="_N2M-Yx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2WvNh1GEd2rLuWewxVuyA" name="constraint.communicationredundancy">
+      <ownedAttribute xmi:id="_N2WvNx1GEd2rLuWewxVuyA" name="constraint.communicationredundancy" type="_N2WvMB1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-UR1GEd2rLuWewxVuyA" name="constraint.communicationtype">
+      <ownedAttribute xmi:id="_N2M-Uh1GEd2rLuWewxVuyA" name="constraint.communicationtype" type="_N2M-Sx1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-YR1GEd2rLuWewxVuyA" name="constraint.attributePropagation">
+      <ownedAttribute xmi:id="_N2M-Yh1GEd2rLuWewxVuyA" name="constraint.attributePropagation" type="_N2M-Ux1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-OB1GEd2rLuWewxVuyA" name="constraint.attrdef">
+      <ownedAttribute xmi:id="_N2M-OR1GEd2rLuWewxVuyA" name="constraint.attrdef" type="_N2M-NR1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N2M-Px1GEd2rLuWewxVuyA" name="constraint.palette">
+      <ownedAttribute xmi:id="_N2M-QB1GEd2rLuWewxVuyA" name="constraint.palette" type="_N2M-Oh1GEd2rLuWewxVuyA"/>
+    </packagedElement>
+    <profileApplication xmi:id="_N2f5gh1GEd2rLuWewxVuyA">
+      <eAnnotations xmi:id="_N2f5gx1GEd2rLuWewxVuyA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.ibm.xtools.uml.msl/profiles/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_N2f5hB1GEd2rLuWewxVuyA">
+      <eAnnotations xmi:id="_N2f5hR1GEd2rLuWewxVuyA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://XSD_PROFILES/XSDProfile.epx#_w1-ykSkOEdmj4ajjgbmSxQ?XSDProfile?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_roYY5x0XEd2PVptWKxm7UQ">
+      <eAnnotations xmi:id="_roYY6B0XEd2PVptWKxm7UQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_roYY6R0XEd2PVptWKxm7UQ">
+      <eAnnotations xmi:id="_roYY6h0XEd2PVptWKxm7UQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_roYY6x0XEd2PVptWKxm7UQ">
+      <eAnnotations xmi:id="_roYY7B0XEd2PVptWKxm7UQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+  </uml:Package>
+  <XSDProfile:annotation xmi:id="_N2pqJx1GEd2rLuWewxVuyA" base_Comment="_N2pqIB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N2pqKR1GEd2rLuWewxVuyA" base_Comment="_N2pqIB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N2zbIR1GEd2rLuWewxVuyA" base_Comment="_N2pqIR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N2zbIx1GEd2rLuWewxVuyA" base_Comment="_N2pqIR1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N2zbJR1GEd2rLuWewxVuyA" base_Comment="_N2M-Ph1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_N28lER1GEd2rLuWewxVuyA" base_Property="_N2M-PR1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:restriction xmi:id="_N28lEx1GEd2rLuWewxVuyA" base_Generalization="_N2M-PB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N28lFR1GEd2rLuWewxVuyA" base_Comment="_N2M-Ph1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:complexType xmi:id="_N3GWER1GEd2rLuWewxVuyA" base_Class="_N2M-Oh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N3GWEx1GEd2rLuWewxVuyA" base_Generalization="_N2M-Nx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N3GWFR1GEd2rLuWewxVuyA" base_Comment="_N2M-Ox1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N3QHER1GEd2rLuWewxVuyA" base_Comment="_N2M-Ox1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N3QHEx1GEd2rLuWewxVuyA" base_Class="_N2M-NR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N3QHFR1GEd2rLuWewxVuyA" base_Generalization="_N2M-VR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N3ZRAR1GEd2rLuWewxVuyA" base_Comment="_N2M-Nh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N3ZRAx1GEd2rLuWewxVuyA" base_Comment="_N2M-Nh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:global xmi:id="_N3jCAR1GEd2rLuWewxVuyA" base_Class="_N2f5cR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N3jCAx1GEd2rLuWewxVuyA" base_Property="_N2f5ch1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N3jCBR1GEd2rLuWewxVuyA" base_Class="_N2f5aR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N3sL8R1GEd2rLuWewxVuyA" base_Property="_N2f5ah1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N3sL8x1GEd2rLuWewxVuyA" base_Class="_N2f5ex1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N3sL9R1GEd2rLuWewxVuyA" base_Property="_N2f5fB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N3188R1GEd2rLuWewxVuyA" base_Class="_N2f5dh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N3188x1GEd2rLuWewxVuyA" base_Property="_N2f5dx1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N3189R1GEd2rLuWewxVuyA" base_Comment="_N2pqIh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N3_t8R1GEd2rLuWewxVuyA" base_Comment="_N2pqIh1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:global xmi:id="_N3_t8x1GEd2rLuWewxVuyA" base_Class="_N2f5gB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N3_t9R1GEd2rLuWewxVuyA" base_Property="_N2f5gR1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N4I34R1GEd2rLuWewxVuyA" base_Comment="_N2pqIx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N4I34x1GEd2rLuWewxVuyA" base_Comment="_N2pqIx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N4I35R1GEd2rLuWewxVuyA" base_Comment="_N2pqJB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N4So4R1GEd2rLuWewxVuyA" base_Comment="_N2pqJB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:element xmi:id="_N4So4x1GEd2rLuWewxVuyA" base_Property="_N2f5Jx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N4So5R1GEd2rLuWewxVuyA" base_Class="_N2f5Jh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N4cZ4R1GEd2rLuWewxVuyA" base_Property="_N2f5KR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N4cZ4x1GEd2rLuWewxVuyA" base_Class="_N2f5KB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N4cZ5R1GEd2rLuWewxVuyA" base_Property="_N2f5MB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N4lj0R1GEd2rLuWewxVuyA" base_Class="_N2f5Lx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N4lj0x1GEd2rLuWewxVuyA" base_Property="_N2f5Nx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N4vU0R1GEd2rLuWewxVuyA" base_Class="_N2f5Nh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N4vU0x1GEd2rLuWewxVuyA" base_Property="_N2f5Rh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N4vU1R1GEd2rLuWewxVuyA" base_Class="_N2f5RR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N44ewR1GEd2rLuWewxVuyA" base_Property="_N2f5TR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N44ewx1GEd2rLuWewxVuyA" base_Class="_N2f5TB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N44exR1GEd2rLuWewxVuyA" base_Property="_N2f5Uh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5CPwR1GEd2rLuWewxVuyA" base_Class="_N2f5UR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5CPwx1GEd2rLuWewxVuyA" base_Property="_N2f5ZR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5CPxR1GEd2rLuWewxVuyA" base_Class="_N2f5ZB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:global xmi:id="_N5MAwR1GEd2rLuWewxVuyA" base_Class="_N2WvaB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5MAwx1GEd2rLuWewxVuyA" base_Property="_N2WvaR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5MAxR1GEd2rLuWewxVuyA" base_Class="_N2WvYR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5VKsR1GEd2rLuWewxVuyA" base_Property="_N2WvYh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5VKsx1GEd2rLuWewxVuyA" base_Class="_N2Wvbx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5VKtR1GEd2rLuWewxVuyA" base_Property="_N2WvcB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5e7sR1GEd2rLuWewxVuyA" base_Class="_N2Wvah1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5e7sx1GEd2rLuWewxVuyA" base_Property="_N2Wvax1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5e7tR1GEd2rLuWewxVuyA" base_Class="_N2Wvdh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5ossR1GEd2rLuWewxVuyA" base_Property="_N2Wvdx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5ossx1GEd2rLuWewxVuyA" base_Class="_N2WvgB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5ostR1GEd2rLuWewxVuyA" base_Property="_N2WvgR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5x2oR1GEd2rLuWewxVuyA" base_Class="_N2Wvih1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N5x2ox1GEd2rLuWewxVuyA" base_Property="_N2Wvix1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N5x2pR1GEd2rLuWewxVuyA" base_Class="_N2WvmB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N57noR1GEd2rLuWewxVuyA" base_Property="_N2WvmR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:element xmi:id="_N57nox1GEd2rLuWewxVuyA" base_Property="_N2M-aR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6ExkR1GEd2rLuWewxVuyA" base_Class="_N2M-aB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6Exkx1GEd2rLuWewxVuyA" base_Property="_N2WvNx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6ExlR1GEd2rLuWewxVuyA" base_Class="_N2WvNh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6OikR1GEd2rLuWewxVuyA" base_Property="_N2M-Uh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6Oikx1GEd2rLuWewxVuyA" base_Class="_N2M-UR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6OilR1GEd2rLuWewxVuyA" base_Property="_N2M-Yh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6YTkR1GEd2rLuWewxVuyA" base_Class="_N2M-YR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6YTkx1GEd2rLuWewxVuyA" base_Property="_N2WvTx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6YTlR1GEd2rLuWewxVuyA" base_Class="_N2WvTh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6hdgR1GEd2rLuWewxVuyA" base_Property="_N2WvVx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6hdgx1GEd2rLuWewxVuyA" base_Class="_N2WvVh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6hdhR1GEd2rLuWewxVuyA" base_Property="_N2WvPh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6rOgR1GEd2rLuWewxVuyA" base_Class="_N2WvPR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6rOgx1GEd2rLuWewxVuyA" base_Property="_N2WvRR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N6rOhR1GEd2rLuWewxVuyA" base_Class="_N2WvRB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:global xmi:id="_N60_gR1GEd2rLuWewxVuyA" base_Class="_N2M-OB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N60_gx1GEd2rLuWewxVuyA" base_Property="_N2M-OR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:global xmi:id="_N60_hR1GEd2rLuWewxVuyA" base_Class="_N2M-Px1GEd2rLuWewxVuyA"/>
+  <XSDProfile:element xmi:id="_N6-JcR1GEd2rLuWewxVuyA" base_Property="_N2M-QB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_N6-Jcx1GEd2rLuWewxVuyA" base_Class="_N2f5XR1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N6-JdR1GEd2rLuWewxVuyA" base_Comment="_N2f5Xh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N7H6cR1GEd2rLuWewxVuyA" base_Comment="_N2f5Xh1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_N7H6cx1GEd2rLuWewxVuyA" base_Property="_N2f5YB1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <Default:Documentation xmi:id="_N7H6dR1GEd2rLuWewxVuyA" base_Comment="_N2f5YR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N7REYR1GEd2rLuWewxVuyA" base_Comment="_N2f5YR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_N7REYx1GEd2rLuWewxVuyA" base_Property="_N2f5Yh1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N7REZR1GEd2rLuWewxVuyA" base_Comment="_N2f5Yx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N7a1YR1GEd2rLuWewxVuyA" base_Class="_N2f5Wh1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N7a1Yx1GEd2rLuWewxVuyA" base_Comment="_N2f5Wx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N7kmYR1GEd2rLuWewxVuyA" base_Comment="_N2f5Wx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N7kmYx1GEd2rLuWewxVuyA" base_Generalization="_N2f5XB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N7kmZR1GEd2rLuWewxVuyA" base_Class="_N2f5Zh1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N7twUR1GEd2rLuWewxVuyA" base_Comment="_N2f5Zx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N7twUx1GEd2rLuWewxVuyA" base_Comment="_N2f5Zx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N7twVR1GEd2rLuWewxVuyA" base_Generalization="_N2f5aB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N73hUR1GEd2rLuWewxVuyA" base_Comment="_N2f5dB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N73hUx1GEd2rLuWewxVuyA" base_Class="_N2f5cx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N73hVR1GEd2rLuWewxVuyA" base_Generalization="_N2f5dR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8BSUR1GEd2rLuWewxVuyA" base_Comment="_N2f5dB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N8BSUx1GEd2rLuWewxVuyA" base_Comment="_N2f5bx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N8BSVR1GEd2rLuWewxVuyA" base_Class="_N2f5bh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N8KcQR1GEd2rLuWewxVuyA" base_Generalization="_N2f5cB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8KcQx1GEd2rLuWewxVuyA" base_Comment="_N2f5bx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N8KcRR1GEd2rLuWewxVuyA" base_Comment="_N2f5fh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N8UNQR1GEd2rLuWewxVuyA" base_Class="_N2f5fR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N8UNQx1GEd2rLuWewxVuyA" base_Generalization="_N2f5fx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8UNRR1GEd2rLuWewxVuyA" base_Comment="_N2f5fh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N8dXMR1GEd2rLuWewxVuyA" base_Comment="_N2f5eR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N8dXMx1GEd2rLuWewxVuyA" base_Class="_N2f5eB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N8dXNR1GEd2rLuWewxVuyA" base_Generalization="_N2f5eh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8nIMR1GEd2rLuWewxVuyA" base_Comment="_N2f5eR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_N8nIMx1GEd2rLuWewxVuyA" base_Comment="_N2M-Rx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N8nINR1GEd2rLuWewxVuyA" base_Generalization="_N2M-Qx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8w5MR1GEd2rLuWewxVuyA" base_Comment="_N2M-RR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N8w5Mx1GEd2rLuWewxVuyA" base_Comment="_N2M-Rx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N8w5NR1GEd2rLuWewxVuyA" base_Comment="_N2f5bB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N86DIR1GEd2rLuWewxVuyA" base_Generalization="_N2f5bR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N86DIx1GEd2rLuWewxVuyA" base_Class="_N2f5ax1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N86DJR1GEd2rLuWewxVuyA" base_Comment="_N2f5bB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N9D0IR1GEd2rLuWewxVuyA" base_Comment="_N2f5WR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N9D0Ix1GEd2rLuWewxVuyA" base_Generalization="_N2f5VR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N9D0JR1GEd2rLuWewxVuyA" base_Comment="_N2f5Vx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N9NlIR1GEd2rLuWewxVuyA" base_Comment="_N2f5WR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N9NlIx1GEd2rLuWewxVuyA" base_Comment="_N2M-Qh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N9WvER1GEd2rLuWewxVuyA" base_Comment="_N2M-RR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:enumeration xmi:id="_N9WvEx1GEd2rLuWewxVuyA" base_Class="_N2M-QR1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N9WvFR1GEd2rLuWewxVuyA" base_Comment="_N2M-Qh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:schema xmi:id="_N9ggER1GEd2rLuWewxVuyA" base_Package="_roYY4h0XEd2PVptWKxm7UQ" targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" targetNamespacePrefix="constraint" elementFormDefault="qualified" attributeFormDefault="unqualified"/>
+  <Default:Documentation xmi:id="_N9ggEx1GEd2rLuWewxVuyA" base_Comment="_N2f5Vx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N9ggFR1GEd2rLuWewxVuyA" base_Comment="_N2f5VB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N9pqAR1GEd2rLuWewxVuyA" base_Comment="_N2f5VB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:enumeration xmi:id="_N9pqAx1GEd2rLuWewxVuyA" base_Class="_N2f5Ux1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N9pqBR1GEd2rLuWewxVuyA" base_Comment="_N2f5IR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N9zbAR1GEd2rLuWewxVuyA" base_Comment="_N2f5IR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:element xmi:id="_N9zbAx1GEd2rLuWewxVuyA" base_Property="_N2f5Ix1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N9zbBR1GEd2rLuWewxVuyA" base_Comment="_N2f5JB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_N99MAR1GEd2rLuWewxVuyA" base_Property="_N2WvkB1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N99MAx1GEd2rLuWewxVuyA" base_Comment="_N2WvkR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N99MBR1GEd2rLuWewxVuyA" base_Comment="_N2WvkR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:complexType xmi:id="_N-GV8R1GEd2rLuWewxVuyA" base_Class="_N2f5IB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N-GV8x1GEd2rLuWewxVuyA" base_Comment="_N2WvjR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_N-GV9R1GEd2rLuWewxVuyA" base_Property="_N2Wvjh1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <Default:Documentation xmi:id="_N-QG8R1GEd2rLuWewxVuyA" base_Comment="_N2Wvjx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N-QG8x1GEd2rLuWewxVuyA" base_Comment="_N2Wvjx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_N-QG9R1GEd2rLuWewxVuyA" base_Comment="_N2f5Lh1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_N-Z38R1GEd2rLuWewxVuyA" base_Generalization="_N2f5LB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N-Z38x1GEd2rLuWewxVuyA" base_Class="_N2WvjB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N-Z39R1GEd2rLuWewxVuyA" base_Comment="_N2WvjR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N-jB4R1GEd2rLuWewxVuyA" base_Comment="_N2f5Kx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N-jB4x1GEd2rLuWewxVuyA" base_Comment="_N2f5Kx1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N-jB5R1GEd2rLuWewxVuyA" base_Comment="_N2f5Lh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_N-sy4R1GEd2rLuWewxVuyA" base_Property="_N2f5LR1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_N-sy4x1GEd2rLuWewxVuyA" base_Comment="_N2f5NR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N-180R1GEd2rLuWewxVuyA" base_Comment="_N2f5NR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N-180x1GEd2rLuWewxVuyA" base_Class="_N2f5Kh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_N-181R1GEd2rLuWewxVuyA" base_Generalization="_N2f5Mx1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N-_t0R1GEd2rLuWewxVuyA" base_Comment="_N2f5Mh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_N-_t0x1GEd2rLuWewxVuyA" base_Class="_N2f5MR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_N-_t1R1GEd2rLuWewxVuyA" base_Property="_N2f5NB1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_N_Je0R1GEd2rLuWewxVuyA" base_Comment="_N2f5Mh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N_Je0x1GEd2rLuWewxVuyA" base_Comment="_N2f5Qx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_N_Je1R1GEd2rLuWewxVuyA" base_Property="_N2f5Qh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_N_SowR1GEd2rLuWewxVuyA" base_Generalization="_N2f5Oh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N_Sowx1GEd2rLuWewxVuyA" base_Comment="_N2f5Qx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_N_SoxR1GEd2rLuWewxVuyA" base_Comment="_N2f5QR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N_cZwR1GEd2rLuWewxVuyA" base_Comment="_N2f5QR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_N_cZwx1GEd2rLuWewxVuyA" base_Comment="_N2f5Ph1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_N_cZxR1GEd2rLuWewxVuyA" base_Property="_N2f5QB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_N_mKwR1GEd2rLuWewxVuyA" base_Property="_N2f5PR1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_N_mKwx1GEd2rLuWewxVuyA" base_Comment="_N2f5Ph1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N_mKxR1GEd2rLuWewxVuyA" base_Comment="_N2f5PB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_N_vUsR1GEd2rLuWewxVuyA" base_Comment="_N2f5PB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_N_vUsx1GEd2rLuWewxVuyA" base_Comment="_N2f5OR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_N_5FsR1GEd2rLuWewxVuyA" base_Property="_N2f5Ox1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_N_5Fsx1GEd2rLuWewxVuyA" base_Class="_N2f5OB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_N_5FtR1GEd2rLuWewxVuyA" base_Comment="_N2f5OR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OACPoR1GEd2rLuWewxVuyA" base_Comment="_N2f5Sx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OACPox1GEd2rLuWewxVuyA" base_Generalization="_N2f5SR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OACPpR1GEd2rLuWewxVuyA" base_Property="_N2f5Sh1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <Default:Documentation xmi:id="_OAMAoR1GEd2rLuWewxVuyA" base_Comment="_N2f5Sx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OAMAox1GEd2rLuWewxVuyA" base_Comment="_N2f5SB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OAMApR1GEd2rLuWewxVuyA" base_Comment="_N2f5SB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OAVxoR1GEd2rLuWewxVuyA" base_Class="_N2f5Rx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OAVxox1GEd2rLuWewxVuyA" base_Generalization="_N2M-Mh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OAVxpR1GEd2rLuWewxVuyA" base_Comment="_N2M-NB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OAe7kR1GEd2rLuWewxVuyA" base_Comment="_N2M-NB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OAe7kx1GEd2rLuWewxVuyA" base_Property="_N2M-Mx1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_OAe7lR1GEd2rLuWewxVuyA" base_Comment="_N2M-MR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OAoskR1GEd2rLuWewxVuyA" base_Comment="_N2M-MR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OAoskx1GEd2rLuWewxVuyA" base_Class="_N2M-MB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OAoslR1GEd2rLuWewxVuyA" base_Generalization="_N2f5UB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OAydkR1GEd2rLuWewxVuyA" base_Comment="_N2f5Tx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OAydkx1GEd2rLuWewxVuyA" base_Comment="_N2f5Tx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OA7ngR1GEd2rLuWewxVuyA" base_Class="_N2f5Th1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OA7ngx1GEd2rLuWewxVuyA" base_Generalization="_N2f5Xx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OA7nhR1GEd2rLuWewxVuyA" base_Comment="_N2f5Yx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_OBFYgR1GEd2rLuWewxVuyA" base_Comment="_N2M-SR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OBFYgx1GEd2rLuWewxVuyA" base_Comment="_N2M-SR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OBFYhR1GEd2rLuWewxVuyA" base_Class="_N2WvYx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OBOicR1GEd2rLuWewxVuyA" base_Generalization="_N2M-Sh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OBOicx1GEd2rLuWewxVuyA" base_Comment="_N2WvZB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OBOidR1GEd2rLuWewxVuyA" base_Comment="_N2WvZB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OBYTcR1GEd2rLuWewxVuyA" base_Comment="_N2WvZx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OBYTcx1GEd2rLuWewxVuyA" base_Property="_N2WvZh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:restriction xmi:id="_OBYTdR1GEd2rLuWewxVuyA" base_Generalization="_N2WvZR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OBiEcR1GEd2rLuWewxVuyA" base_Comment="_N2WvZx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OBiEcx1GEd2rLuWewxVuyA" base_Comment="_N2WvRx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OBiEdR1GEd2rLuWewxVuyA" base_Class="_N2WvRh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OBrOYR1GEd2rLuWewxVuyA" base_Property="_N2WvSR1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_OBrOYx1GEd2rLuWewxVuyA" base_Comment="_N2WvRx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_OBrOZR1GEd2rLuWewxVuyA" base_Comment="_N2WvSh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OB0_YR1GEd2rLuWewxVuyA" base_Comment="_N2WvSh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OB0_Yx1GEd2rLuWewxVuyA" base_Class="_N2WvWB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OB0_ZR1GEd2rLuWewxVuyA" base_Comment="_N2WvWR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OB-wYR1GEd2rLuWewxVuyA" base_Comment="_N2WvWR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OB-wYx1GEd2rLuWewxVuyA" base_Property="_N2WvWx1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_OB-wZR1GEd2rLuWewxVuyA" base_Comment="_N2WvXB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OCH6UR1GEd2rLuWewxVuyA" base_Comment="_N2WvXB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OCH6Ux1GEd2rLuWewxVuyA" base_Generalization="_N2WvWh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OCH6VR1GEd2rLuWewxVuyA" base_Class="_N2WvbB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OCRrUR1GEd2rLuWewxVuyA" base_Comment="_N2WvbR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OCRrUx1GEd2rLuWewxVuyA" base_Comment="_N2WvbR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OCRrVR1GEd2rLuWewxVuyA" base_Generalization="_N2Wvbh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OCa1QR1GEd2rLuWewxVuyA" base_Class="_N2WvXh1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OCa1Qx1GEd2rLuWewxVuyA" base_Comment="_N2WvXx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OCkmQR1GEd2rLuWewxVuyA" base_Comment="_N2WvXx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OCkmQx1GEd2rLuWewxVuyA" base_Generalization="_N2WvYB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OCkmRR1GEd2rLuWewxVuyA" base_Class="_N2M-SB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OCuXQR1GEd2rLuWewxVuyA" base_Comment="_N2Wvex1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OCuXQx1GEd2rLuWewxVuyA" base_Property="_N2Wveh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_OCuXRR1GEd2rLuWewxVuyA" base_Class="_N2WveB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OC3hMR1GEd2rLuWewxVuyA" base_Generalization="_N2Wvgx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OC3hMx1GEd2rLuWewxVuyA" base_Comment="_N2Wvfh1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OC3hNR1GEd2rLuWewxVuyA" base_Comment="_N2Wvfh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_ODBSMR1GEd2rLuWewxVuyA" base_Property="_N2WvfR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:annotation xmi:id="_ODBSMx1GEd2rLuWewxVuyA" base_Comment="_N2Wvex1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_ODBSNR1GEd2rLuWewxVuyA" base_Comment="_N2Wvch1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_ODLDMR1GEd2rLuWewxVuyA" base_Comment="_N2Wvch1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_ODLDMx1GEd2rLuWewxVuyA" base_Class="_N2WvcR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_ODLDNR1GEd2rLuWewxVuyA" base_Generalization="_N2WveR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_ODUNIR1GEd2rLuWewxVuyA" base_Generalization="_N2Wvcx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_ODUNIx1GEd2rLuWewxVuyA" base_Comment="_N2WvdR1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_ODUNJR1GEd2rLuWewxVuyA" base_Comment="_N2WvdR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_ODd-IR1GEd2rLuWewxVuyA" base_Property="_N2WvdB1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:complexType xmi:id="_ODd-Ix1GEd2rLuWewxVuyA" base_Class="_N2Wvkh1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_ODd-JR1GEd2rLuWewxVuyA" base_Comment="_N2Wvkx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_ODnIER1GEd2rLuWewxVuyA" base_Comment="_N2f5JB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_ODnIEx1GEd2rLuWewxVuyA" base_Generalization="_N2f5Ih1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_ODnIFR1GEd2rLuWewxVuyA" base_Comment="_N2Wvlh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_ODw5ER1GEd2rLuWewxVuyA" base_Comment="_N2Wvlh1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_ODw5Ex1GEd2rLuWewxVuyA" base_Comment="_N2Wvkx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:element xmi:id="_OD6qER1GEd2rLuWewxVuyA" base_Property="_N2WvlR1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_OD6qEx1GEd2rLuWewxVuyA" base_Property="_N2WvhB1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_OD6qFR1GEd2rLuWewxVuyA" base_Comment="_N2WvhR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OED0AR1GEd2rLuWewxVuyA" base_Generalization="_N2WvlB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OED0Ax1GEd2rLuWewxVuyA" base_Class="_N2Wvgh1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OED0BR1GEd2rLuWewxVuyA" base_Comment="_N2WviB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OENlAR1GEd2rLuWewxVuyA" base_Comment="_N2WviB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_OENlAx1GEd2rLuWewxVuyA" base_Comment="_N2WvhR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OENlBR1GEd2rLuWewxVuyA" base_Property="_N2Wvhx1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_OEXWAR1GEd2rLuWewxVuyA" base_Comment="_N2M-WR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OEXWAx1GEd2rLuWewxVuyA" base_Property="_N2M-WB1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:attribute xmi:id="_OEXWBR1GEd2rLuWewxVuyA" base_Property="_N2M-Wh1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_OEgf8R1GEd2rLuWewxVuyA" base_Comment="_N2M-WR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OEgf8x1GEd2rLuWewxVuyA" base_Property="_N2M-Vh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:annotation xmi:id="_OEgf9R1GEd2rLuWewxVuyA" base_Comment="_N2M-VB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_OEqQ8R1GEd2rLuWewxVuyA" base_Comment="_N2M-Vx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OEqQ8x1GEd2rLuWewxVuyA" base_Comment="_N2M-Vx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OEqQ9R1GEd2rLuWewxVuyA" base_Property="_N2M-Xh1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:annotation xmi:id="_OEza4R1GEd2rLuWewxVuyA" base_Comment="_N2M-XR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:annotation xmi:id="_OEza4x1GEd2rLuWewxVuyA" base_Comment="_N2M-Xx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OEza5R1GEd2rLuWewxVuyA" base_Comment="_N2M-Xx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OE9L4R1GEd2rLuWewxVuyA" base_Comment="_N2M-Wx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OE9L4x1GEd2rLuWewxVuyA" base_Comment="_N2M-Wx1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OE9L5R1GEd2rLuWewxVuyA" base_Comment="_N2M-XR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OFG84R1GEd2rLuWewxVuyA" base_Property="_N2M-XB1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <Default:Documentation xmi:id="_OFG84x1GEd2rLuWewxVuyA" base_Comment="_N2WvNB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OFQG0R1GEd2rLuWewxVuyA" base_Comment="_N2WvNB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OFQG0x1GEd2rLuWewxVuyA" base_Generalization="_N2WvMh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OFQG1R1GEd2rLuWewxVuyA" base_Class="_N2M-Sx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OFZ30R1GEd2rLuWewxVuyA" base_Class="_N2WvMB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OFZ30x1GEd2rLuWewxVuyA" base_Comment="_N2WvMR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OFZ31R1GEd2rLuWewxVuyA" base_Comment="_N2WvMR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OFjo0R1GEd2rLuWewxVuyA" base_Property="_N2WvMx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:annotation xmi:id="_OFjo0x1GEd2rLuWewxVuyA" base_Comment="_N2M-Tx1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OFjo1R1GEd2rLuWewxVuyA" base_Generalization="_N2M-TR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OFsywR1GEd2rLuWewxVuyA" base_Class="_N2M-Ux1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OFsywx1GEd2rLuWewxVuyA" base_Comment="_N2M-VB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OFsyxR1GEd2rLuWewxVuyA" base_Comment="_N2M-TB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OF2jwR1GEd2rLuWewxVuyA" base_Comment="_N2M-TB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OF2jwx1GEd2rLuWewxVuyA" base_Property="_N2M-Th1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_OF2jxR1GEd2rLuWewxVuyA" base_Comment="_N2M-Tx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OF_tsR1GEd2rLuWewxVuyA" base_Comment="_N2WvQx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OF_tsx1GEd2rLuWewxVuyA" base_Comment="_N2WvQx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OF_ttR1GEd2rLuWewxVuyA" base_Property="_N2WvQh1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_OGJesR1GEd2rLuWewxVuyA" base_Comment="_N2WvQB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OGJesx1GEd2rLuWewxVuyA" base_Comment="_N2WvQB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OGJetR1GEd2rLuWewxVuyA" base_Class="_N2WvPx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OGTPsR1GEd2rLuWewxVuyA" base_Generalization="_N2WvOh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OGTPsx1GEd2rLuWewxVuyA" base_Comment="_N2WvPB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OGTPtR1GEd2rLuWewxVuyA" base_Generalization="_N2M-ZR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OGcZoR1GEd2rLuWewxVuyA" base_Comment="_N2M-Zx1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OGcZox1GEd2rLuWewxVuyA" base_Comment="_N2M-Zx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OGcZpR1GEd2rLuWewxVuyA" base_Property="_N2M-Zh1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <XSDProfile:annotation xmi:id="_OGmKoR1GEd2rLuWewxVuyA" base_Comment="_N2M-ZB1GEd2rLuWewxVuyA" language="" source=""/>
+  <Default:Documentation xmi:id="_OGmKox1GEd2rLuWewxVuyA" base_Comment="_N2M-ZB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OGmKpR1GEd2rLuWewxVuyA" base_Class="_N2M-Yx1GEd2rLuWewxVuyA"/>
+  <XSDProfile:restriction xmi:id="_OGv7oR1GEd2rLuWewxVuyA" base_Generalization="_N2WvQR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OGv7ox1GEd2rLuWewxVuyA" base_Comment="_N2WvUR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:attribute xmi:id="_OGv7pR1GEd2rLuWewxVuyA" base_Property="_N2WvUx1GEd2rLuWewxVuyA" form="qualified"/>
+  <XSDProfile:complexType xmi:id="_OG5FkR1GEd2rLuWewxVuyA" base_Class="_N2WvUB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OG5Fkx1GEd2rLuWewxVuyA" base_Comment="_N2WvUR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OHC2kR1GEd2rLuWewxVuyA" base_Comment="_N2WvTB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OHC2kx1GEd2rLuWewxVuyA" base_Generalization="_N2WvSB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OHC2lR1GEd2rLuWewxVuyA" base_Property="_N2WvSx1GEd2rLuWewxVuyA" form="qualified"/>
+  <Default:Documentation xmi:id="_OHMAgR1GEd2rLuWewxVuyA" base_Comment="_N2WvTB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:attribute xmi:id="_OHMAgx1GEd2rLuWewxVuyA" base_Property="_N2WvOx1GEd2rLuWewxVuyA" form="qualified" use="required"/>
+  <Default:Documentation xmi:id="_OHMAhR1GEd2rLuWewxVuyA" base_Comment="_N2WvPB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OHVxgR1GEd2rLuWewxVuyA" base_Comment="_N2WvOR1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OHVxgx1GEd2rLuWewxVuyA" base_Comment="_N2WvOR1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_OHVxhR1GEd2rLuWewxVuyA" base_Generalization="_N2WvUh1GEd2rLuWewxVuyA"/>
+  <XSDProfile:complexType xmi:id="_OHfigR1GEd2rLuWewxVuyA" base_Class="_N2WvOB1GEd2rLuWewxVuyA"/>
+  <Default:Documentation xmi:id="_OHfigx1GEd2rLuWewxVuyA" base_Comment="_N2WvVB1GEd2rLuWewxVuyA"/>
+  <XSDProfile:annotation xmi:id="_OHfihR1GEd2rLuWewxVuyA" base_Comment="_N2WvVB1GEd2rLuWewxVuyA" language="" source=""/>
+  <XSDProfile:restriction xmi:id="_-c6jOR1JEd2wSNOXElmm7w" base_Generalization="_-c6jNh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-c6jOx1JEd2wSNOXElmm7w" base_Generalization="_-cwyMh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dEUMR1JEd2wSNOXElmm7w" base_Generalization="_-cwyNB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dEUMx1JEd2wSNOXElmm7w" base_Generalization="_-cwyMx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dEUNR1JEd2wSNOXElmm7w" base_Generalization="_-c6jMR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dNeIR1JEd2wSNOXElmm7w" base_Generalization="_-c6jMx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dNeIx1JEd2wSNOXElmm7w" base_Generalization="_-c6jNR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dNeJR1JEd2wSNOXElmm7w" base_Generalization="_-c6jNx1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dXPIR1JEd2wSNOXElmm7w" base_Generalization="_-c6jMh1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dXPIx1JEd2wSNOXElmm7w" base_Generalization="_-cwyMB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dXPJR1JEd2wSNOXElmm7w" base_Generalization="_-cwyMR1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dhAIR1JEd2wSNOXElmm7w" base_Generalization="_-c6jMB1JEd2wSNOXElmm7w"/>
+  <XSDProfile:restriction xmi:id="_-dhAIx1JEd2wSNOXElmm7w" base_Generalization="_-c6jNB1JEd2wSNOXElmm7w"/>
+</xmi:XMI>

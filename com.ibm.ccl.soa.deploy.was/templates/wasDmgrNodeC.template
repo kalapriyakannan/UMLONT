@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  
+displayName="WebSphereNodeUnit Template">
+  <was:unit.wasNodeUnit name="WebSphereDmgrNode" conceptual="true">
+    <was:capability.wasNode name="Provide WAS Node" profileType="dmgr" displayName="Provide WAS 6 Dmgr Node" wasVersion="6.0" linkType="any" isManaged="false">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>    
+      <core:attributeMetaData attributeName="isManaged" mutable="false"/> 
+      <core:attributeMetaData attributeName="profileType" mutable="false"/> 
+    </was:capability.wasNode>
+
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>    
+    <was:capability.wasConfigurationContainer displayName="ConfigurationContainer" name="Provide_ConfigurationContainerCapability" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="SharedLibraryContainer" name="Provide_SharedlibraryContainerCapablity" linkType="any"/>
+    
+    <core:requirement mutable="true" name="A hosting WAS system" displayName="Host on WAS system" dmoType="was:WasSystem" linkType="hosting">
+		<constraint:constraint.equals name="nd" attributeName="wasEdition" value="Network Deployment"/>
+	</core:requirement>
+    <core:requirement mutable="true" name="member of one NodeGroup" displayName="member of one NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="unbounded"/>
+    </core:requirement>
+    <core:requirement mutable="true" name="Must contained by Cell" displayName="Must contained by Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+   
+  </was:unit.wasNodeUnit>
+</core:topology>

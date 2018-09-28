@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangePublicFolder.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangePublicFolderStore.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangeFolderTree.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangeScheduleInterval.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.messaging.exchange.ExchangePublicFolder">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="path" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="usePublicStoreAgeLimits" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="URL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicationStyle" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="friendlyURL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="ADProxyPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="perUserReadDisabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="warningLimit" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="creationTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="hasLocalReplica" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="publishInAddressBook" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="deletedItemLifetime" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="mailEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="usePublicStoreDeletedLifetime" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="children" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangePublicFolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="folderTree" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangeFolderTree" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicaAgeLimit" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicationSchedules" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangeScheduleInterval" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="maximumItemSize" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="folderComment" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="publicFolderName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="targetAddress" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="normalFolder" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="secureInSite" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicaList" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangePublicFolderStore" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="addressBookName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="storageLimitStyle" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="replicationMessagePriority" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="prohibitPostLimit" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangePublicFolder" nillable="true" minOccurs="0"/>
+          <xsd:element name="searchFolder" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="administrativeNote" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.LotusConfig">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.lotus.DominoServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="port" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="portStatus" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="authenticationOptions" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="enforceServerAccessSettings" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="nameAndPassword" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="anonymous" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLPortNumber" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLPortStatus" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientCertificate" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLNameAndPassword" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLAnonymous" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="type" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLAuthenticationOptions" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="additionalFields" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

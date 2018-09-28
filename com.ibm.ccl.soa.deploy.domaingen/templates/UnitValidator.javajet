@@ -1,0 +1,77 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UnitValidatorTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String unitValidatorPackage=(String)args.get(2); %>
+<% String classNamePrefix=(String)args.get(3); %>
+<% String superClassNamePrefix=(String)args.get(4); %>
+<% String fullSuperUnitValidatorClassName=(String)args.get(5); %>
+/*******************************************************************************
+ * Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM. All rights reserved.
+ *  
+ * US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ * Schedule Contract with IBM Corp.
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
+ *******************************************************************************/
+package <%=modelPackage%>.internal.validator;
+
+import org.eclipse.emf.ecore.EClass;
+
+import com.ibm.ccl.soa.deploy.core.CapabilityLinkTypes;
+import com.ibm.ccl.soa.deploy.core.Unit;
+import com.ibm.ccl.soa.deploy.core.validator.IDeployReporter;
+import com.ibm.ccl.soa.deploy.core.validator.IDeployValidationContext;
+<% if (superClassNamePrefix.length() == 0) { %>
+import com.ibm.ccl.soa.deploy.core.validator.pattern.UnitValidator;
+<% } else { %>
+import <%=fullSuperUnitValidatorClassName%>;
+<% } %>
+import <%=modelPackage%>.<%=ucModelPackagePrefix%>Package;
+
+/**
+ * Validates {@link <%=classNamePrefix%>Unit}.
+ * <p>
+ * Validator IDs:
+ * <ul>
+ * </ul>
+ */
+public class <%=classNamePrefix%>UnitValidator extends <%=superClassNamePrefix%>UnitValidator {
+
+	/**
+	 * Construct a {@link <%=classNamePrefix%>Unit} instance validator.
+	 */
+	public <%=classNamePrefix%>UnitValidator() {
+		this(<%=ucModelPackagePrefix%>Package.eINSTANCE.get<%=classNamePrefix%>Unit());
+
+	}
+
+	/**
+	 * Construct a {@link <%=classNamePrefix%>Unit} subtype validator.
+	 * 
+	 * @param unitType
+	 *           a subtype of {@link <%=classNamePrefix%>Unit}.
+	 */
+	protected <%=classNamePrefix%>UnitValidator(EClass unitType) {
+		super(unitType);
+		assert <%=ucModelPackagePrefix%>Package.eINSTANCE.get<%=classNamePrefix%>Unit().isSuperTypeOf(unitType);
+
+		//
+		// Constraints on capabilities and requirement types.
+		//
+		addCapabilityTypeConstraint(<%=ucModelPackagePrefix%>Package.eINSTANCE.get<%=classNamePrefix%>(),
+				CapabilityLinkTypes.ANY_LITERAL, 1, 1);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.ibm.ccl.soa.deploy.core.validator.pattern.UnitValidator#validate(com.ibm.ccl.soa.deploy.core.Unit,
+	 *      com.ibm.ccl.soa.deploy.core.validator.IDeployValidationContext,
+	 *      com.ibm.ccl.soa.deploy.core.validator.IDeployReporter)
+	 */
+	@Override
+	public void validateUnit(Unit unit, IDeployValidationContext context, IDeployReporter reporter) {
+		super.validateUnit(unit, context, reporter);
+	}
+}

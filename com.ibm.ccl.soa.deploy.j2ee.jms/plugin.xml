@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.8 2008/05/29 14:42:48 nmakin Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.j2ee.jms.provider.JmsItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.j2ee.jms.JmsPackage"
+       genModel = "models/ecore/jms.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="jms"
+       class="com.ibm.ccl.soa.deploy.j2ee.jms.util.JmsResourceFactoryImpl" />
+  </extension>
+  
+    <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.j2ee.jms.domain"
+       name="%extension.jmsDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.j2ee.jms.internal.validator.JMSDomainValidator"/>
+
+       <resourceType
+             id="jms.activationspecification.conceptual"
+             name="%jms.ActivationSpecification.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/templates/JMSActivationSpecificationC.template">
+       </resourceType>
+	    <resourceTypeUIBinding
+				description="%jms.ActivationSpecification.Description"
+				label="%jms.ActivationSpecification.Label"
+				path="/applicationToolDrawer/jmsStack"
+	        	largeIcon="icons/pal/jms-activate-spec_pal20.gif"
+	        	smallIcon="icons/pal/jms-activate-spec_pal16.gif"
+             	resourceTypeId="jms.activationspecification.conceptual">
+		 </resourceTypeUIBinding>
+       <resourceType
+             id="jms.queueCF.conceptual"
+             name="%jms.QueueConnectionFactory.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/templates/JMSQueueConnectionFactoryC.template">
+       </resourceType>
+	    <resourceTypeUIBinding
+				description="%jms.QueueConnectionFactory.Description"
+				label="%jms.QueueConnectionFactory.Label"
+				path="/applicationToolDrawer/jmsStack"
+	        	largeIcon="icons/pal/jms-queue-connx-fctr_pal20.gif"
+	        	smallIcon="icons/pal/jms-queue-connx-fctr_pal16.gif"
+             	resourceTypeId="jms.queueCF.conceptual">
+		 </resourceTypeUIBinding>
+       <resourceType
+             id="jms.queueDestination.conceptual"
+             name="%jms.QueueDestination.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/templates/JMSQueueDestinationC.template">
+       </resourceType>
+	    <resourceTypeUIBinding
+				description="%jms.QueueDestination.Description"
+				label="%jms.QueueDestination.Label"
+				path="/applicationToolDrawer/jmsStack"
+	        	largeIcon="icons/pal/jms-qeue-dstntn_pal20.gif"
+	        	smallIcon="icons/pal/jms-qeue-dstntn_pal16.gif"
+             	resourceTypeId="jms.queueDestination.conceptual">
+		 </resourceTypeUIBinding>
+       <resourceType
+             id="jms.topicCF.conceptual"
+             name="%jms.TopicConnectionFactory.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/templates/JMSTopicConnectionFactoryC.template">
+       </resourceType>
+	    <resourceTypeUIBinding
+				description="%jms.TopicConnectionFactory.Description"
+				label="%jms.TopicConnectionFactory.Label"
+				path="/applicationToolDrawer/jmsStack"
+	        	largeIcon="icons/pal/jms-tpc-cnx-factory_pal20.gif"
+	        	smallIcon="icons/pal/jms-tpc-cnx-factory_pal16.gif"
+             	resourceTypeId="jms.topicCF.conceptual">
+		 </resourceTypeUIBinding>
+       <resourceType
+             id="jms.topicDestination.conceptual"
+             name="%jms.TopicDestination.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/templates/JMSTopicDestinationC.template">
+       </resourceType>
+	    <resourceTypeUIBinding
+				description="%jms.TopicDestination.Description"
+				label="%jms.TopicDestination.Label"
+				path="/applicationToolDrawer/jmsStack"
+	        	largeIcon="icons/pal/jms-tpc-destination_pal20.gif"
+	        	smallIcon="icons/pal/jms-tpc-destination_pal16.gif"
+             	resourceTypeId="jms.topicDestination.conceptual">
+		 </resourceTypeUIBinding>
+       
+
+    </domain>
+
+
+  </extension>
+
+    <!-- Business Application Decorator Semantic -->
+<extension 
+         point="com.ibm.ccl.soa.deploy.core.topology">
+	<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+		<validatorContent>
+			<include pattern="com.ibm.ccl.soa.deploy.j2ee.jms.internal.validator.JMSDomainValidator"/>
+		</validatorContent>
+	</decoratorSemanticPatternBinding>
+</extension>
+	
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.j2ee.jms">
+			<public
+				publicId="com.ibm.ccl.soa.deploy.deploy.j2ee.jms"
+				uri="models/schemas/jmsDomain.xsd"
+				webURL="jms://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/">
+			</public>
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.j2ee.jms/models/schemas/jmsDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>	
+</plugin>
+

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.core/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.core/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.core" templateDirectory="" redirection=""
+    modelName="DeployCore" nonNLSMarkers="true" rootImplementsInterface="" suppressEMFTypes="true"
+    booleanFlagsField="" importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/base.xsd</foreignModel>
+  <genPackages prefix="Core" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="core.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//CapabilityLinkTypes">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//CapabilityLinkTypes/hosting"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//CapabilityLinkTypes/dependency"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//CapabilityLinkTypes/any"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//InstallState">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//InstallState/installed"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//InstallState/notInstalled"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//InstallState/unknown"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//PublishIntent">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//PublishIntent/publish"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//PublishIntent/doNotPublish"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//PublishIntent/unknown"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//RequirementExpressionUsage">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementExpressionUsage/required"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementExpressionUsage/optional"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementExpressionUsage/prohibited"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//RequirementLinkTypes">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementLinkTypes/hosting"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementLinkTypes/dependency"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementLinkTypes/member"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementLinkTypes/any"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//RequirementUsage">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementUsage/required"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementUsage/optional"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//RequirementUsage/prohibited"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="core.ecore#//Visibility">
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//Visibility/private"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//Visibility/public"/>
+      <genEnumLiterals ecoreEnumLiteral="core.ecore#//Visibility/publicEditable"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="core.ecore#//CapabilityLinkTypesObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//GenericVersionString"/>
+    <genDataTypes ecoreDataType="core.ecore#//InstallStateObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//IStatus"/>
+    <genDataTypes ecoreDataType="core.ecore#//PortType"/>
+    <genDataTypes ecoreDataType="core.ecore#//PublishIntentObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//RequirementExpressionUsageObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//RequirementLinkTypesObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//RequirementUsageObject"/>
+    <genDataTypes ecoreDataType="core.ecore#//ServiceRange"/>
+    <genDataTypes ecoreDataType="core.ecore#//ServiceVersion"/>
+    <genDataTypes ecoreDataType="core.ecore#//VersionRange"/>
+    <genDataTypes ecoreDataType="core.ecore#//VersionString"/>
+    <genDataTypes ecoreDataType="core.ecore#//VisibilityObject"/>
+    <genClasses ecoreClass="core.ecore#//Annotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Annotation/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Annotation/details"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Annotation/context"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="core.ecore#//Artifact"/>
+    <genClasses ecoreClass="core.ecore#//AttributeMetaData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/attributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/encrypted"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/encryptionRequired"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/mutable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//AttributeMetaData/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Augmentation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Augmentation/additions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Augmentation/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Augmentation/select"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//BaseComponentUnit"/>
+    <genClasses ecoreClass="core.ecore#//BundleCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//BundleCapability/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//BundleCapability/version"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Capability">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Capability/stereotypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Capability/buildVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Capability/linkType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Capability/origin"/>
+      <genOperations ecoreOperation="core.ecore#//Capability/isVisible"/>
+      <genOperations ecoreOperation="core.ecore#//Capability/isPublic"/>
+      <genOperations ecoreOperation="core.ecore#//Capability/isPublicEditable"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//CommunicationCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//CommunicationCapability/applicationLayerProtocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//CommunicationCapability/port"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//ConceptualNode"/>
+    <genClasses image="false" ecoreClass="core.ecore#//ConfigurationContract"/>
+    <genClasses image="false" ecoreClass="core.ecore#//Constraint"/>
+    <genClasses ecoreClass="core.ecore#//ConstraintLink">
+      <genOperations ecoreOperation="core.ecore#//ConstraintLink/getSource"/>
+      <genOperations ecoreOperation="core.ecore#//ConstraintLink/setSource">
+        <genParameters ecoreParameter="core.ecore#//ConstraintLink/setSource/source"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//ConstraintLink/getTarget"/>
+      <genOperations ecoreOperation="core.ecore#//ConstraintLink/setTarget">
+        <genParameters ecoreParameter="core.ecore#//ConstraintLink/setTarget/target"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//DependencyLink">
+      <genOperations ecoreOperation="core.ecore#//DependencyLink/getSource"/>
+      <genOperations ecoreOperation="core.ecore#//DependencyLink/getTarget"/>
+      <genOperations ecoreOperation="core.ecore#//DependencyLink/setTarget">
+        <genParameters ecoreParameter="core.ecore#//DependencyLink/setTarget/capability"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//DeployCoreRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployCoreRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/annotation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/artifact"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/artifactFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/baseComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/unit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/capability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/capabilityBundle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/capabilityCommunication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/configTopology"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/constraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/contractExplicit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/contractTopology"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/deployModelObject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/import"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/instantiation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkDependency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkDeploy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkHosting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkMember"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/linkRealization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/requirement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/reqExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/service"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/softwareComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/stereotype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/topology"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployCoreRoot/unitConceptualNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployCoreRoot/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//DeployLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployLink/sourceURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployLink/targetURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="core.ecore#//DeployModelObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployModelObject/annotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployModelObject/attributeMetaData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//DeployModelObject/extendedAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/artifactGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployModelObject/artifacts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/constraintGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployModelObject/constraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/displayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/mutable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObject/name"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getConstraints"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getExtendedAttribute">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/getExtendedAttribute/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getConstraint">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/getConstraint/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/findAnnotation">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/findAnnotation/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getParent"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getStatus"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/addStatus">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/addStatus/aNewStatus"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/clearStatus"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getContainedModelObjects"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getTopology"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getFullPath"/>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/getRelativePath">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/getRelativePath/relativeObject"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//DeployModelObject/resolve">
+        <genParameters ecoreParameter="core.ecore#//DeployModelObject/resolve/path"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//DeployModelObjectSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//DeployModelObjectSet/deployModelObjectGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//DeployModelObjectSet/deployModelObject"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//ExplicitContract">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExplicitContract/exportedUnits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExplicitContract/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//ExplicitContract/defaultConceptualPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//ExplicitContract/defaultPolicy"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Exported">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Exported/configurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Exported/linkable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Exported/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Exported/path"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//ExportedUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExportedUnit/exportedCapabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExportedUnit/exportedRequirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExportedUnit/exportedProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//ExportedUnit/constraintGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//ExportedUnit/augmentedConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//ExtendedAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//ExtendedAttribute/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//ExtendedAttribute/name"/>
+      <genOperations ecoreOperation="core.ecore#//ExtendedAttribute/getValue"/>
+      <genOperations ecoreOperation="core.ecore#//ExtendedAttribute/setValue">
+        <genParameters ecoreParameter="core.ecore#//ExtendedAttribute/setValue/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//ExtendedAttribute/getInstanceType"/>
+      <genOperations ecoreOperation="core.ecore#//ExtendedAttribute/setInstanceType">
+        <genParameters ecoreParameter="core.ecore#//ExtendedAttribute/setInstanceType/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//ExtendedAttribute/getContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//FileArtifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//FileArtifact/fileURIs"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//HostingLink"/>
+    <genClasses ecoreClass="core.ecore#//Import">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Import/instanceConfiguration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Import/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Import/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Import/reexported"/>
+      <genOperations ecoreOperation="core.ecore#//Import/resolveImport"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//InstanceConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//InstanceConfiguration/instantiations"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//InstanceConfiguration/imported"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Instantiation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Instantiation/configuredCapabilityGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Instantiation/configuredCapabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Instantiation/configuredRequirementsGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Instantiation/configuredRequirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Instantiation/configuredProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Instantiation/augmentationGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Instantiation/augmentations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Instantiation/referenced"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="core.ecore#//Interface"/>
+    <genClasses ecoreClass="core.ecore#//MemberLink"/>
+    <genClasses ecoreClass="core.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Property/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Property/select"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//RealizationLink">
+      <genOperations ecoreOperation="core.ecore#//RealizationLink/getSource"/>
+      <genOperations ecoreOperation="core.ecore#//RealizationLink/setSource">
+        <genParameters ecoreParameter="core.ecore#//RealizationLink/setSource/capability"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//RealizationLink/getTarget"/>
+      <genOperations ecoreOperation="core.ecore#//RealizationLink/setTarget">
+        <genParameters ecoreParameter="core.ecore#//RealizationLink/setTarget/target"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Reference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Reference/interfaceGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Reference/interface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Reference/range"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Requirement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Requirement/dependencyLinkGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Requirement/link"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Requirement/dmoType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Requirement/extends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Requirement/linkType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Requirement/use"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/getDmoEType"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/setDmoEType">
+        <genParameters ecoreParameter="core.ecore#//Requirement/setDmoEType/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//Requirement/getLink"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/setLink">
+        <genParameters ecoreParameter="core.ecore#//Requirement/setLink/link"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//Requirement/getExpressions"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/isVisible"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/isPublic"/>
+      <genOperations ecoreOperation="core.ecore#//Requirement/isPublicEditable"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//RequirementExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//RequirementExpression/attributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//RequirementExpression/interpreter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//RequirementExpression/use"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//RequirementExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Service">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Service/interfaceGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Service/interface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Service/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Service/version"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//SoftwareComponent"/>
+    <genClasses ecoreClass="core.ecore#//Stereotype">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Stereotype/keyword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Stereotype/profile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Stereotype/required"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//StringToStringEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//StringToStringEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//StringToStringEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Topology">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Topology/unitGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Topology/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Topology/unitLinksGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Topology/unitLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Topology/constraintLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Topology/dependencyLinkGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Topology/dependencyLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Topology/realizationLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Topology/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Topology/configurationContractGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Topology/configurationContract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Topology/decoratorSemantic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Topology/mutabilityConfigurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Topology/namespace"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/getUnits"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/getGroups"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/getConfigurations"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/getConceptualUnits"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/getDependencyLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/findAllDependencyLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/findAllConstraintLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/findAllHostingLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/findAllRealizationLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Topology/findAllMemberLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//Unit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Unit/capabilityGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Unit/capabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Unit/requirementGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Unit/requirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute core.ecore#//Unit/unitLinksGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference core.ecore#//Unit/unitLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Unit/constraintLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Unit/realizationLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference core.ecore#//Unit/stereotypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/buildVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/conceptual"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/configurationUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/goalInstallState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/initInstallState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/origin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute core.ecore#//Unit/publishIntent"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getHostingOrAnyRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getDependencyOrAnyRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyAnyRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyHostingRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyDependencyRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyMemberRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getMemberOrAnyRequirements"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyHostingCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyDependencyCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getHostingOrAnyCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getDependencyOrAnyCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getOnlyAnyCapabilities"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/isBound"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/isGroup"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/isVisible"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/isPublic"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/isPublicEditable"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getUnitLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getHostingLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getMemberLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getConstraintLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getRealizationLinks"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getSpecializedTypeId"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getArtifacts"/>
+      <genOperations ecoreOperation="core.ecore#//Unit/getDependencyLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="core.ecore#//UnitLink">
+      <genOperations ecoreOperation="core.ecore#//UnitLink/getSource"/>
+      <genOperations ecoreOperation="core.ecore#//UnitLink/setSource">
+        <genParameters ecoreParameter="core.ecore#//UnitLink/setSource/capability"/>
+      </genOperations>
+      <genOperations ecoreOperation="core.ecore#//UnitLink/getTarget"/>
+      <genOperations ecoreOperation="core.ecore#//UnitLink/setTarget">
+        <genParameters ecoreParameter="core.ecore#//UnitLink/setTarget/target"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.analysis.provider.AnalysisItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.analysis.AnalysisPackage"
+       genModel = "models/ecore/analysisDomain.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="analysis"
+       class="com.ibm.ccl.soa.deploy.analysis.util.AnalysisResourceFactoryImpl" />
+  </extension>
+ <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.analysis.domain"
+       name="%extension.analysisDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.AnalysisDomainValidator"/>      
+      <resourceType
+             id="analysis.Node"
+             name="%analysis.Node.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/node.template">
+       </resourceType>       
+       <resourceType
+             id="analysis.Location"
+             name="%analysis.Location.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/location.template">
+       </resourceType>       
+        <resourceType
+             id="analysis.DeploymentUnit"
+             name="%analysis.DeploymentUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/deploymentUnit.template">
+       </resourceType>       
+       <resourceType
+             id="analysis.PresentationDeploymentUnit"
+             name="%analysis.PresentationDeploymentUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/presentationDeploymentUnit.template">
+       </resourceType>       
+        <resourceType
+             id="analysis.ExecutionDeploymentUnit"
+             name="%analysis.ExecutionDeploymentUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/executionDeploymentUnit.template">
+       </resourceType>       
+       <resourceType
+             id="analysis.DataDeploymentUnit"
+             name="%analysis.DataDeploymentUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/templates/dataDeploymentUnit.template">
+       </resourceType>       
+    </domain>
+  </extension>
+       <extension
+         point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+                 <unitFilter
+		     class="com.ibm.ccl.soa.deploy.analysis.internal.filter.ComponentUnitFilter"
+		     description=" This is a Analysis domain ComponentUnitFilter "
+		     name="ComponentUnitFilter">
+		    <inputEnablement>
+		      <instanceof
+		         value="com.ibm.ccl.soa.deploy.core.SoftwareComponent" />
+		    </inputEnablement>
+  		</unitFilter>
+  		<unitFilter
+		     class="com.ibm.ccl.soa.deploy.analysis.internal.filter.LocationUnitFilter"
+		     description=" This is a analysis domain LocationUnitFilter "
+		     name="LocationUnitFilter">
+		    <inputEnablement>
+		      <instanceof
+		         value="com.ibm.ccl.soa.deploy.analysis.LocationUnit" />
+		    </inputEnablement>
+  		</unitFilter>
+  		<unitFilter
+		     class="com.ibm.ccl.soa.deploy.analysis.internal.filter.NodeUnitFilter"
+		     description=" This is a analysis domain NodeUnitFilter "
+		     name="NodeUnitFilter">
+		    <inputEnablement>
+		      <instanceof
+		         value="com.ibm.ccl.soa.deploy.analysis.NodeUnit" />
+		    </inputEnablement>
+  		</unitFilter>
+    </extension>
+  
+  <!-- Analysis Decorator Semantic  -->
+	<extension id="com.ibm.ccl.soa.deploy.analysis.topology"
+		name="com.ibm.ccl.soa.deploy.analysis.topology"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+
+		<decoratorSemantic
+			description="%analysisDSDescription"
+			id="com.ibm.ccl.soa.deploy.analysis.ads"
+			icon="icons/view16/ads_topology.gif"
+			name="%analysisDSName" />
+
+		<decoratorSemanticPatternBinding
+			decoratorSemanticId="com.ibm.ccl.soa.deploy.analysis.ads">		
+			<typeContent>
+				<include pattern=".*" />
+			</typeContent>	
+		</decoratorSemanticPatternBinding>
+
+	</extension>
+	 <!-- Constraint Definition  -->
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.AvailabilityConstraint"
+	             	 displayName="%constraints.Availability" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="AvailabilityConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.AvailabilityConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>			
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.ExpectedLifespanConstraint"
+	             	 displayName="%constraints.ExpectedLifespan" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="ExpectedLifespanConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.ExpectedLifespanConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.SizePerSubmissionConstraint"
+	             	 displayName="%constraints.SizePerSubmission" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="SizePerSubmissionConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.SizePerSubmissionConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.ResponseTimeConstraint"
+	             	 displayName="%constraints.ResponseTime" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="ResponseTimeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.ResponseTimeConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.PeakLoadConstraint"
+	             	 displayName="%constraints.PeakLoad" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="PeakLoadConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.PeakLoadConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.DailyLoadConstraint"
+	             	 displayName="%constraints.DailyLoad" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="DailyLoadConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.DailyLoadConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.UsageWindowPerDayConstraint"
+	             	 displayName="%constraints.UsageWindowPerDay" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="UsageWindowPerDayConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.UsageWindowPerDayConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.ExpectedVolumeConstraint"
+	             	 displayName="%constraints.ExpectedVolume" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="ExpectedVolumeConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.ExpectedVolumeConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.ExecutionServiceConstraint"
+	             	 displayName="%constraints.ExecutionService" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="ExecutionServiceConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.ExecutionServiceConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.DataServiceConstraint"
+	             	 displayName="%constraints.DataService" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+                 	 type="DataServiceConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.DataServiceConstraintValidator"/>
+			<contextEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+				</or>
+			</contextEnablement>
+			<parentEnablement>
+				<or>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.Unit" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.constraint.Parentable" />
+				</or>
+			</parentEnablement>		
+		</constraint>
+		
+		<constraint  id="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.LocationApplicationCommunicationConstraint"
+	             	 displayName="%constraints.LocationApplicationCommunication" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+                 	 type="ApplicationCommunicationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.analysis.internal.validator.constraints.LocationApplicationCommunicationConstraintValidator"/>
+				<parentEnablement>
+				    <or>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink"/>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink"/>
+					</or>
+			   </parentEnablement>
+		</constraint>
+		
+	</extension>
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.analysis">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.analysis/models/schemas/analysisDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>

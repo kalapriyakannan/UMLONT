@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/"
+name="MQTopicConnectionFactory Template">
+  <mq:unit.MQTopicConnectionFactoryUnit name="MQTopicConnectionFactory" configurationUnit="false" conceptual="true">
+    <mq:capability.MQTopicConnectionFactory name="MQTopicConnectionFactory" linkType="any"/>
+    <core:requirement name="optionalHostingReq" dmoType="core:Capability" linkType="hosting" use="optional"/>  
+  </mq:unit.MQTopicConnectionFactoryUnit>
+</core:topology>

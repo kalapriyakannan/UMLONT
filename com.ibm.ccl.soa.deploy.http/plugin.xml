@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.9 2008/05/29 14:41:56 nmakin Exp $
+-->
+
+<plugin>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.http.provider.HttpItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.http.HttpPackage"
+			genModel="models/ecore/http.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="http"
+			class="com.ibm.ccl.soa.deploy.http.util.HttpResourceFactoryImpl" />
+	</extension>
+	
+		<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.http.domain"
+			name="%extension.httpDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.http.validator.HttpDomainValidator" />
+				
+			<resourceType
+	        	id="http.httpServer.conceptual"
+	            name="%httpServer.spec.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.http/templates/httpServerC.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%httpServerUnitTool.Desc"
+	            label="%httpServer.spec.Label"
+			    path="/applicationToolDrawer"	
+				largeIcon="icons/pal/http-server_pal20.gif"
+				smallIcon="icons/pal/http-server_pal16.gif"
+             	resourceTypeId="http.httpServer.conceptual">
+			</resourceTypeUIBinding>
+			
+			<resourceType
+	        	id="http.staticWebComponent.conceptual"
+	            name="%staticWeb.spec.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.http/templates/staticWebComponentC.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%staticWebUnitTool.Desc"
+	            label="%staticWeb.spec.Label"
+			    path="/applicationToolDrawer/businessComponentStack"	
+				largeIcon="icons/pal/static-web-cmp_pal16.gif"
+				smallIcon="icons/pal/static-web-cmp_pal20.gif"
+             	resourceTypeId="http.staticWebComponent.conceptual">
+			</resourceTypeUIBinding>
+			<resourceType
+	        	id="http.staticWebComponent.infra"
+	            name="%staticWeb.spec.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.http/templates/staticWebComponent.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%staticWebUnitTool.Desc"
+	            label="%staticWeb.spec.Label"
+			    path="/applicationToolDrawer/businessComponentStack"	
+				largeIcon="icons/pal/static-web-cmp_pal16.gif"
+				smallIcon="icons/pal/static-web-cmp_pal20.gif"
+             	resourceTypeId="http.staticWebComponent.infra">
+			</resourceTypeUIBinding>
+		</domain>
+	</extension>
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.http">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/http/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.http/models/schemas/httpDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

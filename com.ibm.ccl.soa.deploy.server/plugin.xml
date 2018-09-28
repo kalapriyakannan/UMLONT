@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.18 2008/07/10 19:47:11 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.server.provider.ServerItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.server.ServerPackage"
+       genModel = "models/ecore/server.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="server"
+       class="com.ibm.ccl.soa.deploy.server.util.ServerResourceFactoryImpl" />
+  </extension>
+
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.server.domain"
+       name="%extension.serverDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.server.internal.validator.ServerDomainValidator"/>
+       <resourceType
+             id="server.intel_x86.infra"
+             name="%intelPhysicalServerTool.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.server/templates/x86Server.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%intelPhysicalServerTool.Description"
+             label="%intelPhysicalServerTool.Label"
+             path="/physicalServerDrawer"
+             smallIcon="icons/pal/x86_server_16.gif"
+             largeIcon="icons/pal/x86_server_20.gif"
+             resourceTypeId="server.intel_x86.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="server.intel_x86.conceptual"
+             name="%intelPhysicalServerTool.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.server/templates/x86ServerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%intelPhysicalServerTool.Description"
+             label="%intelPhysicalServerTool.Label"
+             path="/physicalServerDrawer"
+             smallIcon="icons/pal/x86_server_16.gif"
+             largeIcon="icons/pal/x86_server_20.gif"
+             resourceTypeId="server.intel_x86.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="server.power.infra"
+             name="%powerPhysicalServerTool.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.server/templates/powerServer.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%powerPhysicalServerTool.Description"
+             label="%powerPhysicalServerTool.Label"
+             path="/physicalServerDrawer"
+              smallIcon="icons/pal/power-server_pal16.gif"
+             largeIcon="icons/pal/power-server_pal20.gif"
+             resourceTypeId="server.power.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="server.power.conceptual"
+             name="%powerPhysicalServerTool.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.server/templates/powerServerC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%powerPhysicalServerTool.Description"
+             label="%powerPhysicalServerTool.Label"
+             path="/physicalServerDrawer"
+              smallIcon="icons/pal/power-server_pal16.gif"
+             largeIcon="icons/pal/power-server_pal20.gif"
+             resourceTypeId="server.power.conceptual">
+       </resourceTypeUIBinding>       
+       <resourceType
+             id="server.base.conceptual"
+             name="%genericPhysicalServerTool.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.server/templates/serverC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%genericPhysicalServerTool.Description"
+             label="%genericPhysicalServerTool.Label"
+             path="/physicalServerDrawer"
+             smallIcon="icons/pal/server-pal16.gif"
+             largeIcon="icons/pal/server-pal20.gif"
+             resourceTypeId="server.base.conceptual">
+       </resourceTypeUIBinding>
+    </domain>
+  </extension>
+  <extension
+        point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+     <adapterFactory
+           className="com.ibm.ccl.soa.deploy.server.provider.ServerItemProviderAdapterFactory"
+           functionGroupID="com.ibm.ccl.soa.deploy.server"
+           id="com.ibm.ccl.soa.deploy.server.provider.ServerItemProviderAdapterFactory"
+           packageURI="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/">
+     </adapterFactory>
+  </extension>
+  
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.server.internal.filter.ServerUnitFilter"
+           description="%serverunitfilter.description"
+           name="%serverunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.server.ServerUnit"/>
+        </inputEnablement>
+     </unitFilter>
+  </extension>
+    <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.server">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.server/models/schemas/server.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

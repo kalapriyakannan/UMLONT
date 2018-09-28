@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/sms/SMSHierarchy.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.sms.SMSReports">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="reportID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="securityKey" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="YColLabel" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="graphCaption" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="graphXCol" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="XColLabel" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="graphYCol" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="category" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="comment" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="graphType" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="statusMessageDetailSource" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="SQLQuery" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="numPrompts" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMSHierarchy" type="coll:com.collation.platform.model.topology.app.sms.SMSHierarchy" nillable="true" minOccurs="0"/>
+          <xsd:element name="machineDetail" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="machineSource" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="refreshInternal" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

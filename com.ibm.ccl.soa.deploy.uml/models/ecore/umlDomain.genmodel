@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.uml/src"
+    creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.uml/src" modelPluginID="com.ibm.ccl.soa.deploy.uml"
+    modelName="UmlDomain" editPluginClass="com.ibm.ccl.soa.deploy.uml.provider.UmlDomainEditPlugin"
+    nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer" providerRootExtendsClass=""
+    usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/umlDomain.xsd</foreignModel>
+  <genPackages prefix="Uml" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="uml.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="uml.ecore#//UMLVisibilityKind">
+      <genEnumLiterals ecoreEnumLiteral="uml.ecore#//UMLVisibilityKind/public"/>
+      <genEnumLiterals ecoreEnumLiteral="uml.ecore#//UMLVisibilityKind/protected"/>
+      <genEnumLiterals ecoreEnumLiteral="uml.ecore#//UMLVisibilityKind/private"/>
+      <genEnumLiterals ecoreEnumLiteral="uml.ecore#//UMLVisibilityKind/package"/>
+      <genEnumLiterals ecoreEnumLiteral="uml.ecore#//UMLVisibilityKind/undefined"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="uml.ecore#//UMLVisibilityKindObject"/>
+    <genClasses ecoreClass="uml.ecore#//UMLActor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLActor/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLActor/leaf"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLActorUnit"/>
+    <genClasses ecoreClass="uml.ecore#//UMLComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLComponent/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLComponent/leaf"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLDeployRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/artifactUmlElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/capabilityUmlActor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/capabilityUmlComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/capabilityUmlInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/capabilityUmlPackageCap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/constraintUmlInteraction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/unitUmlActorUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/unitUmlInterfaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uml.ecore#//UMLDeployRoot/unitUmlPackageUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLElementArtifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLElementArtifact/qualifiedName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLElementArtifact/resourceURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="uml.ecore#//UMLElementCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLElementCapability/umlVisibilityKind"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLInteractionConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLInteractionConstraint/interactionQName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLInteractionConstraint/resourceURI"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLInterface/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLInterface/leaf"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLInterfaceUnit"/>
+    <genClasses ecoreClass="uml.ecore#//UMLPackageCap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uml.ecore#//UMLPackageCap/canonical"/>
+    </genClasses>
+    <genClasses ecoreClass="uml.ecore#//UMLPackageUnit"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" 
+
+name="SUSELinux Template">
+  <core:annotation context="topology_root">
+     <core:detail key="root1" value="SUSELinuxServer9"/>   
+  </core:annotation>
+  <os:unit.linuxOperatingSystemUnit name="SUSELinuxServer9" conceptual="true">
+    <os:capability.suseLinuxOperatingSystem name="SUSELinux" displayName="SUSE Linux Server 9" linkType="any" os.type="Linux" os.distribution="SuSE" os.version="9"/>
+	<os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false" />      
+    </os:capability.unixDirectory>
+    <core:requirement mutable="true" name="Server" displayName="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals name="cpuArchitecture" displayName="cpuArchitecture" attributeName="cpuArchitecture"  value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="SUSELinuxHostsRoot" target="/root"/>    
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxLocalUser name="root" configurationUnit="true" conceptual="true">
+    <os:capability.suseLinuxLocalUser displayName="root" name="SUSELinuxLocalUser" linkType="dependency" userId="root" >
+      <core:attributeMetaData attributeName="userPassword" encrypted="true" />      
+    </os:capability.suseLinuxLocalUser>
+    <core:requirement displayName="SUSELinux Operating System" mutable="true" name="SUSELinuxOperatingSystem" dmoType="os:SUSELinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType"  value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint" />      
+    </core:requirement>
+  </os:unit.linuxLocalUser>       
+</core:topology>

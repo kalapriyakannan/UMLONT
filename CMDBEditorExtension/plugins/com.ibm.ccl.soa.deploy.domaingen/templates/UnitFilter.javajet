@@ -1,0 +1,54 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UnitFilterTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String typeName=(String)args.get(2); %>
+/***************************************************************************************************
+ * Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM. All rights
+ * reserved.
+ * 
+ * US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ * Schedule Contract with IBM Corp.
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
+ **************************************************************************************************/
+
+package <%=modelPackage%>.internal.filter;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import com.ibm.ccl.soa.deploy.core.Unit;
+import com.ibm.ccl.soa.deploy.core.UnitFilter;
+import com.ibm.ccl.soa.deploy.core.validator.ValidatorUtils;
+import <%=modelPackage%>.I<%=ucModelPackagePrefix%>TemplateConstants;
+import <%=modelPackage%>.<%=typeName%>Unit;
+import <%=modelPackage%>.*;
+import <%=modelPackage%>.<%=ucModelPackagePrefix%>Package;
+
+/**
+ * Suggests {@link Unit} types to be contained by an {@link <%=typeName%>Unit}.
+ * 
+ * &lt;unitFilter&gt; registered on the <code>com.ibm.ccl.soa.deploy.core.unitLifecycle</code>
+ * extension.
+ * 
+ * @see <%=typeName%>Unit
+ */
+public class <%=typeName%>UnitFilter extends UnitFilter {
+
+	/**
+	 * Add constants from I<%=ucModelPackagePrefix%>TemplateConstants, representing ids for classes to be 
+	 * presented as possible hostees by ModelingAssistant to this list
+	 */
+	private final static List<String> generic<%=typeName%>HostingUnitTypes = Collections
+			.unmodifiableList(Arrays.asList(new String[] {}));
+
+	/**
+	 * Clients don't call this directly; it should be called through DeployableUnitElementUIService
+	 * or GMF's ModelingAssistantService.
+	 */
+	public List<String> getAllowableHostingUnitTypes(Unit anInputUnit) {
+		return generic<%=typeName%>HostingUnitTypes;
+	}
+} // end class <%=typeName%>UnitFilter

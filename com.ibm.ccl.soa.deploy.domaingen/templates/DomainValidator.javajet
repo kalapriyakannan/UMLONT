@@ -1,0 +1,46 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="DomainValidatorTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String validatorPackage=(String)args.get(2); %>
+/*******************************************************************************
+ * Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM. All rights reserved.
+ *  
+ * US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ * Schedule Contract with IBM Corp.
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
+ *******************************************************************************/
+package <%=modelPackage%>.internal.validator;
+
+import com.ibm.ccl.soa.deploy.core.validator.matcher.DomainMatcher;
+import com.ibm.ccl.soa.deploy.core.validator.pattern.UnitDomainValidator;
+import <%=modelPackage%>.<%=ucModelPackagePrefix%>Package;
+<% for (int i=3; i<args.size(); ++i) { %>
+import <%=modelPackage%>.internal.validator.<%=args.get(i)%>UnitValidator;
+<% } %>
+import <%=modelPackage%>.internal.validator.matcher.<%=ucModelPackagePrefix%>DomainMatcher;
+
+/**
+ * Validates objects in the {@link <%=ucModelPackagePrefix%>Package} deploy domain.
+ */
+public class <%=ucModelPackagePrefix%>DomainValidator extends UnitDomainValidator {
+
+	/**
+	 * Construct a {@link <%=ucModelPackagePrefix%>Package} domain validator.
+	 */
+	public <%=ucModelPackagePrefix%>DomainValidator() {
+		super(<%=ucModelPackagePrefix%>Package.eINSTANCE);
+		
+<% for (int i=3; i<args.size(); ++i) { %>
+		addValidator(new <%=args.get(i)%>UnitValidator());
+<% } %>
+	}
+
+	/*
+	 * @see com.ibm.ccl.soa.deploy.core.validator.DomainValidator#createDomainMatcher()
+	 */
+	protected DomainMatcher createDomainMatcher() {
+		return new <%=ucModelPackagePrefix%>DomainMatcher();
+	}
+}

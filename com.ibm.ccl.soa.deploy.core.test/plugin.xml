@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.15 2007/12/12 18:53:38 blancett Exp $
+-->
+
+<plugin>
+
+	<!-- Unit test topology discoverer. -->
+	<extension point="com.ibm.ccl.soa.deploy.core.topology">
+		<discoverer
+			class="com.ibm.ccl.soa.deploy.core.test.provider.JUnitTopologyDiscoverer"
+			description="Unit Test Topology Discoverer"
+			name="JUnitTopologyDiscoverer" />
+	</extension>
+
+	<!-- Unit test topology provider. -->
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.core.test.provider.JUnitTopologyProvider"
+			description="Unit Test Topology Provider"
+			name="JUnitTopologyProvider">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.test.provider.JUnitObjectPathReference" />
+			</inputEnablement>
+		</unitProvider>
+	</extension>
+
+	<!-- =================================================================================== -->
+	<!-- Resolution extension point tests                                                    -->
+	<!-- =================================================================================== -->
+
+	<extension
+		point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator id="DeployModelObject.name.setRandom"
+			name="Set the name of a deploy model object to a random value"
+			class="com.ibm.ccl.soa.deploy.core.test.validator.resolution.RandomNameResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+					<with variable="deployObject">
+						<test
+							property="com.ibm.ccl.soa.deploy.core.attributeEquals"
+							args="name"
+							value="com.ibm.ccl.soa.deploy.core.test.validator.resolution.RandomNameResolutionGenerator" />
+					</with>
+				</and>
+			</enablement>
+		</resolutionGenerator>
+
+		<resolutionGenerator id="ProblemTypeFilterTest"
+			name="Test the filtering of status by a magic problem type"
+			class="com.ibm.ccl.soa.deploy.core.test.validator.resolution.ProblemTypeResolutionGenerator">
+			<enablement>
+				<and>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+					<test
+						property="com.ibm.ccl.soa.deploy.core.problemType"
+						value="com.ibm.ccl.soa.deploy.core.test.validator.resolution.ProblemTypeFilterTest" />
+				</and>
+			</enablement>
+		</resolutionGenerator>
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.core.test.TestDomain"
+			name="name"
+			targetNamespace="com.ibm.ccl.soa.deploy.core.test.domain3">
+			<capabilityProvider
+				class="com.ibm.ccl.soa.deploy.core.test.synchronization.TestUnitCapabilityProvider"
+				name="com.ibm.ccl.soa.deploy.core.test.testCapabilityProvider">
+				<outputEnablement>
+					<instanceof
+						value="com.ibm.ccl.soa.deploy.core.test.synchronization.SynchronizationTests$TestUnit" />
+				</outputEnablement>
+			</capabilityProvider>
+		</domain>
+		<synchronizationParticipant
+			class="com.ibm.ccl.soa.deploy.core.test.synchronization.TestUnitImplementationParticipant"
+			id="com.ibm.ccl.soa.deploy.core.test.testImplementationParticipant">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.test.synchronization.SynchronizationTests$TestUnit" />
+			</inputEnablement>
+		</synchronizationParticipant>
+	</extension>
+	<!-- -->
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+      <domain
+       id="com.ibm.ccl.soa.deploy.core.test.linkTestDomain"
+       name="Implicit Link Test Domain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.core.test.validator.matcher.implicitlinks.ILDomainValidator"/>
+      </domain>
+    </extension>
+    <!-- -->
+	
+
+	<!-- Used to test resolutions on all markers
+		<extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator
+		id="DeployModelObject.name.setRandom2"
+		name="Set the name of a deploy model object to a random value"
+		class="com.ibm.ccl.soa.deploy.core.test.validator.resolution.RandomNameResolutionGenerator">
+		<enablement>
+		<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+		</enablement>
+		</resolutionGenerator>
+		</extension>
+	-->
+
+	<!-- Used to test no resolutions
+		<extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator
+		id="DeployModelObject.name.setRandom2"
+		name="Set the name of a deploy model object to a random value"
+		class="com.ibm.ccl.soa.deploy.core.test.validator.resolution.NullResolutionGenerator">
+		<enablement>
+		<instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+		</enablement>
+		</resolutionGenerator>
+		</extension>
+	-->
+	
+		<!-- Unit test amplifier provider. -->
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitAmplifier
+			class="com.ibm.ccl.deploy.core.test.amplifier.JUnitUnitAmplifier"
+			label="Foo value:"
+			description="For test purposes this amplifier will change the display name of the unit from the selected value."
+			name="Unit Amplifier Test">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.Unit" />
+			</inputEnablement>
+		</unitAmplifier>
+	</extension>
+</plugin>

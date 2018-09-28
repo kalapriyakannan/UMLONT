@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.virtualization/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.virtualization/src" modelPluginID="com.ibm.ccl.soa.deploy.virtualization"
+    modelName="Virtualization" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../com.ibm.ccl.soa.deploy.net/models/ecore/net.genmodel#//net ../../../com.ibm.ccl.soa.deploy.os/models/ecore/os.genmodel#//os ../../../com.ibm.ccl.soa.deploy.server/models/ecore/server.genmodel#//server">
+  <foreignModel>../schemas/virtualization.xsd</foreignModel>
+  <genPackages prefix="Virtualization" basePackage="com.ibm.ccl.soa.deploy" resource="XML"
+      disposableProviderFactory="true" ecorePackage="virtualization.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="virtualization.ecore#//DesiredSnapshotStateType">
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//DesiredSnapshotStateType/unknown"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//DesiredSnapshotStateType/active"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//DesiredSnapshotStateType/revert"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="virtualization.ecore#//VirtualNetworkConnectionType">
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VirtualNetworkConnectionType/bridged"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VirtualNetworkConnectionType/nat"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VirtualNetworkConnectionType/hostOnly"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VirtualNetworkConnectionType/custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="virtualization.ecore#//VMwareSCSIControllerType">
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VMwareSCSIControllerType/buslogic"/>
+      <genEnumLiterals ecoreEnumLiteral="virtualization.ecore#//VMwareSCSIControllerType/lsilogic"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="virtualization.ecore#//DesiredSnapshotStateTypeObject"/>
+    <genDataTypes ecoreDataType="virtualization.ecore#//VirtualNetworkConnectionTypeObject"/>
+    <genDataTypes ecoreDataType="virtualization.ecore#//VMwareSCSIControllerTypeObject"/>
+    <genClasses ecoreClass="virtualization.ecore#//Hypervisor"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualDiskDef"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualDiskDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualDiskSnapshot"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualDiskSnapshotUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualEthernetNICDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualEthernetNICDef/macAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualEthernetNICDef/virtualConnectionType"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualEthernetNICDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImage/createdWithVMTool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImage/dateCreated"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImage/dateLastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImage/notes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImage/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualImageCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualImageCollection/collectionId"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualImageCollectionUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualImageSnapshotContainer"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualImageUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualizationRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualizationRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityHypervisor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualDiskDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualDiskSnapshot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualEthernetNICDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualImage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualImageCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualImageSnapshotContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualServerDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVirtualServerSnapshot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareESX"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareHypervisor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualDiskDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualDiskSnapshot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualEthernetNICDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualIDEDiskDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualImage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualImageSnapshotContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualSCSIDiskDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualServerDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityVmwareVirtualServerSnapshot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityXenHypervisor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityXenVirtualDiskDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityXenVirtualEthernetNICDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityXenVirtualImage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/capabilityXenVirtualServerDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualDiskDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualDiskSnapshotUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualEthernetNICDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualImageCollectionUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualImageUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVirtualServerSnapshotUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareESXUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareVirtualDiskDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareVirtualDiskSnapshotUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareVirtualEthernetNICDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareVirtualImageUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitVmwareVirtualServerSnapshotUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitXenVirtualDiskDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitXenVirtualEthernetNICDefUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference virtualization.ecore#//VirtualizationRoot/unitXenVirtualImageUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualServerDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualServerDef/memorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualServerDef/vcpus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VirtualServerDef/virtualHWFamily"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualServerSnapshot"/>
+    <genClasses ecoreClass="virtualization.ecore#//VirtualServerSnapshotUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareESX"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareESXUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareHypervisor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareHypervisor/vmwareProduct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareHypervisor/vmwareVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualDiskDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/autodetect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/deviceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/diskMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/fileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/present"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskDef/startConnected"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualDiskDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualDiskSnapshot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskSnapshot/diskFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskSnapshot/diskNum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualDiskSnapshot/snapshotDiskFileName"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualDiskSnapshotUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualEthernetNICDef"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualEthernetNICDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualIDEDiskDef"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualImage/configVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualImage/vmxFile"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualImageSnapshotContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualImageSnapshotContainer/currentSnapshotUid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualImageSnapshotContainer/lastSnapshotUid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualImageSnapshotContainer/numSnapshots"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualImageUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualSCSIDiskDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualSCSIDiskDef/controllerNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualSCSIDiskDef/controllerType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualSCSIDiskDef/deviceNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualServerDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerDef/guestOS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerDef/virtualHWVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualServerSnapshot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/createTimeHigh"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/createTimeLow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/current"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/desiredSnapshotState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/filename"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/numDisks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/parentSnapshotUid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/snapshotType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//VMwareVirtualServerSnapshot/uid"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//VMwareVirtualServerSnapshotUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//XenHypervisor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenHypervisor/xenVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualDiskDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualDiskDef/backendDev"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualDiskDef/frontendDev"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualDiskDef/mode"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualDiskDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualEthernetNICDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualEthernetNICDef/networkBridge"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualEthernetNICDefUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualImage/domainConfigFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute virtualization.ecore#//XenVirtualImage/domainName"/>
+    </genClasses>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualImageUnit"/>
+    <genClasses ecoreClass="virtualization.ecore#//XenVirtualServerDef"/>
+  </genPackages>
+</genmodel:GenModel>

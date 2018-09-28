@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/CIMSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/SystemSpecificCollection.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/process/OrganizationalEntity.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/zOS/SysplexGroup.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/zOS/ZCouplingFacility.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.zOS.Sysplex">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.CIMSystem">
+        <xsd:sequence>
+          <xsd:element name="couplingFacilities" type="coll:com.collation.platform.model.topology.sys.zOS.ZCouplingFacility" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="owner" type="coll:com.collation.platform.model.topology.process.OrganizationalEntity" nillable="true" minOccurs="0"/>
+          <xsd:element name="members" type="coll:com.collation.platform.model.topology.core.SystemSpecificCollection" nillable="true" minOccurs="0"/>
+          <xsd:element name="groups" type="coll:com.collation.platform.model.topology.sys.zOS.SysplexGroup" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/web/WebContainer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/web/apache/ApacheGlobalSSLSettings.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.web.apache.ApacheWebContainer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.web.WebContainer">
+        <xsd:sequence>
+          <xsd:element name="serverType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="acceptMutex" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="keepAlive" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="keepAliveTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="limitRequestBody" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="limitRequestFields" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="limitRequestFieldSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="limitRequestLine" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="listenBacklog" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxClients" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxKeepAliveRequests" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxSpareServers" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="minSpareServers" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sendBufferSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="startServers" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="timeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="coreDumpDirectory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="lockFile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pidFile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="scoreBoardFile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sslSettings" type="coll:com.collation.platform.model.topology.app.web.apache.ApacheGlobalSSLSettings" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

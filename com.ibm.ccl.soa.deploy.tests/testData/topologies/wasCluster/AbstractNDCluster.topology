@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Created on Wed 2007.05.16 at 04:38:27 PM EDT" displayName="AbstractNDCluster" name="AbstractNDCluster" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds">
+  <was:unit.wasClusterUnit name="Was6Cluster" conceptual="true">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasCluster displayName="Provide a WAS 6.0 cluster" name="Provide a WAS 6.0 Cluster" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WAS NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency"/>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="WasCell" mutable="true" name="WasCell" dmoType="was:WasCell" linkType="hosting"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+  </was:unit.wasClusterUnit>
+  <core:contract.explicit name="con0" defaultConceptualPolicy="public" defaultPolicy="public"/>
+</core:topology>

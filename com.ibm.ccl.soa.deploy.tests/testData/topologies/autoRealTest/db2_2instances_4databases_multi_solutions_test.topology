@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" description="xCreated on Thursday, April 3, 2008 3:34:55 PM EDTxxxkkxk" displayName="RealizationSamples" name="RealizationSamples" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds">
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System2" name="DB2System0" conceptual="true">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System0" target="/DB2Instance1"/>
+    <core:link.hosting name="hl1" source="/DB2System0" target="/DB2Instance2"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <db2Deploy:unit.db2InstanceUnit displayName="" name="DB2Instance1" conceptual="true">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST1">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="hl0" source="/DB2Instance1" target="/DB2Database"/>
+    <core:link.hosting name="hl1" source="/DB2Instance1" target="/DB2Database0"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <db2Deploy:unit.db2InstanceUnit displayName="" name="DB2Instance2" conceptual="true">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST2">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="hl0" source="/DB2Instance2" target="/DB2Database1"/>
+    <core:link.hosting name="hl1" source="/DB2Instance2" target="/DB2Database2"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System32" name="DB2System10" conceptual="false">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System10" target="/DB2Instance30"/>
+    <core:link.hosting name="hl1" source="/DB2System10" target="/DB2Instance50"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <db2Deploy:unit.db2InstanceUnit displayName="" name="DB2Instance50">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST1" db2Version="8" autoStart="false" port="50000">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="hl0" source="/DB2Instance50" target="/DB2Database3"/>
+    <core:link.hosting name="hl1" source="/DB2Instance50" target="/DB2Database4"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <db2Deploy:unit.db2InstanceUnit displayName="" name="DB2Instance30">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST2" db2Version="8" autoStart="false" port="50000">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="hl0" source="/DB2Instance30" target="/DB2Database5"/>
+    <core:link.hosting name="hl2" source="/DB2Instance30" target="/DB2Database7"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database" conceptual="true">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" dbName="db2"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database0" conceptual="true">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" dbName="db1"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database1" conceptual="true">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" dbName="db3"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database2" conceptual="true">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" dbName="db4"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database3">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" db2Version="8" dbName="db2"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database4">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" db2Version="8" dbName="db1"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database5">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" db2Version="8" dbName="db3"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <db2Deploy:unit.db2DatabaseUnit displayName="" name="DB2Database7">
+    <db2Deploy:capability.db2Database displayName="DB2 Database" name="DB2 Database" linkType="any" db2Version="8" dbName="db4"/>
+    <core:requirement displayName="DB2 Instance" mutable="true" name="DB2 Instance" dmoType="db2Deploy:DB2Instance" linkType="hosting">
+      <constraint:constraint.version displayName="db2Version" name="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2DatabaseUnit>
+  <core:contract.explicit displayName="Make All Units Private By Default" name="ExplicitContract0" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

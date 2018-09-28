@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/zephyr/osgi/1.0.0" 
+       class = "com.ibm.ccl.soa.deploy.osgi.provider.OsgiItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+    <extender 
+       uri = "http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.osgi.provider.OsgiItemProviderAdapterFactory$CoreChildCreationExtender" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/zephyr/osgi/1.0.0"
+       class = "com.ibm.ccl.soa.deploy.osgi.OsgiPackage"
+       genModel = "models/ecore/osgiDomain.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="osgi"
+       class="com.ibm.ccl.soa.deploy.osgi.util.OsgiResourceFactoryImpl" />
+  </extension>
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.domains">
+     <domain
+           description="Provides a Zephyr Domain model for the OSGI domain"
+           id="com.ibm.ccl.soa.deploy.osgi"
+           name="OSGi Domain Model"
+           targetNamespace="http://www.ibm.com/zephyr/osgi/1.0.0">
+     <resourceType
+      description="Provides an OSGI Bundle with the default configuration settings"
+      id="deploy.OSGiBundle"
+      name="OSGI Bundle"
+	  templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.osgi/templates/osgibundle.template">
+    </resourceType>
+     
+     <resourceType id="deploy.OSGiLibrary"
+        name="OSGi Classpath Library Configuration"
+		templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.osgi/templates/osgiLibrary.template">
+        </resourceType>
+        
+        <resourceTypeUIBinding enablePalette="true" label="OSGi Bundle"
+            path="/applicationToolDrawer/businessComponentStack"
+            largeIcon="c:/kalapriya/test.gif"
+            smallIcon="c:/kalapriya/test.gif"
+            resourceTypeId="deploy.OSGiBundle">
+        </resourceTypeUIBinding>
+
+        <resourceTypeUIBinding enablePalette="true" label="OSGi Library"
+            path="/applicationToolDrawer/businessComponentStack"
+            largeIcon="c:/kalapriya/test.gif"
+            smallIcon="c:/kalapriya/test.gif"
+            resourceTypeId="deploy.OSGiLibrary">
+        </resourceTypeUIBinding>
+        
+           
+     </domain>
+  </extension>
+  
+
+</plugin>

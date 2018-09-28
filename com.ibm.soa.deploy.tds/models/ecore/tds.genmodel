@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.soa.deploy.tds/src"
+    editDirectory="/com.ibm.soa.deploy.tds/src" modelPluginID="com.ibm.soa.deploy.tds"
+    modelName="Tds" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/tdsdomain.xsd</foreignModel>
+  <genPackages prefix="tds" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="tds.ecore#/">
+    <genClasses ecoreClass="tds.ecore#//TdsBaseSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tds.ecore#//TdsBaseSystem/installLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tds.ecore#//TdsBaseSystem/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tds.ecore#//TdsBaseSystem/wonderful"/>
+    </genClasses>
+    <genClasses ecoreClass="tds.ecore#//TdsBaseSystemUnit"/>
+    <genClasses ecoreClass="tds.ecore#//TDSRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute tds.ecore#//TDSRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tds.ecore#//TDSRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tds.ecore#//TDSRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tds.ecore#//TDSRoot/capabilityTdsBaseSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tds.ecore#//TDSRoot/unitTdsBaseSystemUnit"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangeProtocolVirtualServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/messaging/exchange/ExchangeQueue.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.messaging.exchange.ExchangeLink">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="linkID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="protocolName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="linkName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="actionFreeze" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangeProtocolVirtualServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="actionThaw" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="queues" type="coll:com.collation.platform.model.topology.app.messaging.exchange.ExchangeQueue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="actionKick" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

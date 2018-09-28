@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Core Deployment Modeling Platform Model</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The  IBM Deployment Modeling Platform provides models and tooling elements to 
+construct validatable metamodels of the Topology Definition Model (TDM).  
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top" href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512"> 
+<h1 ALIGN="CENTER">IBM Deployment Modeling Platform Overview Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>
+		The IBM Deployment Modeling Platform defines an EMF-based model that describes business
+		and server elements for large scale Enterprise Architecture deployments. Several extension
+		points are also defined for extenders to build on top of the platform, including describing
+		new types of business modules and servers.
+		</p>
+		<p>The model describes a single domain, but covers aspects of both server configurations and logical application dependencies. The model may be broken into multiple schemas for organizational purposes, but only one namespace and one logical EMF model is described. </p>
+		<!--  Leave this paragraph  -->
+		<p>In this document, concepts are enclosed by italics (<i>like
+		this</i>), references to types or methods in the Java API are enclosed by
+		fixed-width fonts (<code>like this</code>), and references to elements
+		in the schemas are enclosed in angle brackets(&lt;likethis /&gt;).</p>
+		</td>
+	</tr>
+</table> 
+ 
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Available subdesigns [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>Some designs are broken out for maintaintability. These are listed below:</p>
+		<ol>
+			<li><a href="11495_package.html">[UI] Creation of decoratorSemantic Topology</a></li>
+		</ol>
+		</td>
+	</tr>
+</table> 
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Core Model: Unit [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		A <i>Unit</i> defines an isolated grouping of <i>Capabilities</i> and <i>Requirements</i>.
+		<b>TODO: Add more details of core model</b>
+		</td>
+	</tr>
+</table>
+
+<!-- Begin LOGICAL REQUIREMENTS -->
+<table width="100%">
+	<tr>
+		<a name="logicalRequirements"/>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Core Model: Logical Requirements [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>A <i>Requirement</i> defines an a need on a given <i>Capability</i> type or an attribute on a <i>Unit</i> (these are called <i>dmoTypes</i>).
+		The Requirement can have zero or more <i>RequirementExpressions</i> that are associated with the <i>dmoType</i>.  These expressions are evaluated to ensure that the 
+		<i>Link</i> associated with the <i>Requirement</i> is valid.
+		</p>
+		<p><a href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=12364">M4 Line Item</a></p>
+		
+		<p><i>Requirement</i> needs to be modified to allow for the ability to associate a logical <i>Requirement</i> with a physical
+		<i>Requirement</i> at a conceptual level.  This design proposes that a new boolean attribute named <i>logical</i> be added to
+		<i>Requirement</i> and a new bi-directional association is added named <i>physcialRequirement</i>.
+		</p>
+		<p><IMG border="0" src="LogicalRequirement.jpg"></p>
+		
+		<p><b>Rules for logical Requirements:</b></p>
+		<ol>
+		  <li>The <i>physicalRequirement</i> relationship is only valid if the <i>logical</i> field is set to <b>true</b>.</li>
+		  <li>If a <i>Unit</i> is marked as <b>conceptual</b> then the <i>phsycicalRequirement</i> relationship does not need to be set for a 
+		  logical Requirement.</li>
+		  <li>If a <i>Unit</i> is NOT marked as <b>conceptual</b> then the <i>physicalRequirement</i> relationship MUST be defined.</li>
+		  <li>The associated Requirements with the <i>physicalRequirement</i> association must be contained by the same <i>Unit</i>.</li>
+		</ol>
+		
+		<b>ISSUES:</b>
+		<ol>
+		  <li>Should we enforce that a <i>LogicalLink</i> is used for a <i>logical</i> Requirement?
+		  If so, what happens if the user changes the value of the <i>logical</i> flag?  Does the link change or is there a validation for the
+		  wrong type of link?</li>
+		</ol>
+		</td>
+	</tr>
+</table>  
+<!-- End LOGICAL REQUIREMENTS -->
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Business Model: Software
+		Components [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The Business Application Domain defines the concepts and abstractions that
+		an Enterprise Application Architect needs in order to model the service contracts 
+		that are exposed and required to instnatiate and run the components, as well 
+		as dependency relationships needed for building and deploying the application.
+		</p>
+		<p><a href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11512">M3 Design Review Lineitem</a></p>
+
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Business Model: Software
+		Components [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>A <i>SoftwareComponent</i> is a specialized Deployment Unit that 
+		describes an indivisible set of <i>Service</i>s and <i>Reference</i>s 
+		corresponding to a technology-specific business module and 
+		may declare <i>DependencyLinks</i> that refer to other (target) 
+		<i>SoftwareComponents</i>. A <i>SoftwareComponent</i>
+		may not be further decomposed (hence the indivisibility) by the
+		Business Application Domain model. [A future enhancement may allow
+		Composite Units (like <i>unit.composite</i>) that describe reusable
+		configurations of <i>SoftwareComponents</i> and <i>Units</i>.] 
+		</p>
+		<p>
+		A <i>SoftwareComponent</i> describes:</p>
+		<ol>
+			<li>
+				<p>
+				<i>A buildable component</i>: A SoftwareComponent in our model is a grouping of
+				artifacts that a build system could use to coordinate the compilation of artifacts. 
+				</p>
+			</li>
+			<li>
+				<p>
+				<i>An atomic business contract</i>: A SoftwareComponent may describe Services and
+				References that it exposes; or it may expose no Services/References. However, we
+				will not model the internals of the SoftwareComponent with any greater level of
+				detail than the outer Service contract it exposes; even if empty. Like <i>Unit</i>, 
+				<i>SoftwareComponent</i> may also expose <i>Capabilities</i> or <i>Requirements</i> 
+				that do not conform to a well known business contract. 
+				</p>
+			</li>
+			<li>
+				<p>
+				<i>Packaging/Build dependencies through <i>DependencyLinks</i></i>: A set of
+				<i>SoftwareComponents</i> (like an EAR Module "contains" an EJB Module) will be
+				captured by <i>DependencyLinks</i> from <i>Requirements</i> to <i>BundleCapabilities</i>, allowing
+				decisions about how the artifacts are to be packaged left up to a
+				Builder/Deployer role. For instance, a <i>WebModule</i> (specialization of <i>SoftwareComponent</i>) may have
+				<i>DependencyLink</i> to a <i>UtilityJar</i> (specialization of <i>SoftwareComponent</i>). 
+				</p>
+				<p>
+				A packager may choose to put the built utility jar under the WEB-INF/lib or in a shared 
+				libraries folder on the Web Container using some other packaging-related metamodel. 
+				Modeling the dependency as "containment" in our model would 
+				circumvent the ability to break this module out without modifying the architecture model. 
+				Furthermore, our <i>HostingLinks</i> are not designed to describe subunits as their source; 
+				hence we could not break out the modules "within" an EAR to different servers. Under our
+				current approach of using <i>DependencyLinks</i> to describe what module an EAR depends
+				on, each module could be hosted to a different server, assuming the business
+				dependencies between them allow it. 
+				</p>
+			</li>
+		</ol> 
+		<IMG border="0" src="SoftwareComponent.jpg"> 
+		<p>
+		Each <i>SoftwareComponent</i> is specialized based on the backing technology 
+		and defines information about its backing implementation. Unlike the SCA model, 
+		there is no specific specialized <i>Implementation</i> model element. A resolution 
+		framework (UnitProvider) will allow different technology types to accept their 
+		components and determine a set of <i>Services</i> and <i>References</i> 
+		provided/required. The <i>SoftwareComponent</i> must provide enough information 
+		for the technology specific resolvers to locate the artifacts required to derive the 
+		set of <i>Services</i> and <i>References</i>. In addition, configurable elements 
+		of the technology type (e.g. <i>displayName</i>) may be exposed as attributes or 
+		elements on the specialized type to provide functionality similar to SCA's <i>Properties</i>.		
+		</p>
+		<p>The <i>SoftwareComponent</i> elements will be of the form <b>component.xxx</b> 
+		where "xxx" is a suffix chosen by the technology domain providing the element definition. The
+		subtypes of <i>SoftwareComponents</i> should follow a naming convention that is most
+		appropriate for their specific domain.</p> 
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Business Model: Service Logic Agreements [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p></p>
+		<p>
+		A <i>Service</i> coordinates its individual contract with a <i>Reference</i> via an <i>Interface</i>.  <i>Services</i>
+		are specialized based on the specific middleware or communication technology (e.g. <i>service.ejb</i> or <i>service.ws</i>)
+		and may imply certain <i>CommunicationCapabilities</i> on nodes which host them.
+		<i>References</i> may eventually be specialized, but in the short term will be implemented as just "vanilla" 
+		types that declare a required <i>Interface</i>.
+		</p>
+		<p>
+		An <i>Interface</i> represents a set of logical business operations for a particular programming language or 
+		model. Examples of <i>Interfaces</i> include <i>interface.java</i> and <i>interface.ddl</i>. An <i>Interface</i> 
+		does not necessarily imply how the service is exposed; since something like <i>interface.java</i> 
+		might be used for both <i>service.ejb</i> and <i>service.sca</i>. The actual set of logical business operations is 
+		not captured directly by the Business Application Domain model. 
+		</p>		
+		<img border="0" src="ServiceContract.jpg">
+		<p>
+		A matching framework will be used to compare <i>Interfaces</i> of the same technology type. Some <i>Interface
+		</i>types may describe a normalization to some common <i>Interface</i> type (e.g. <i>interface.wsdl</i>) in order 
+		to match <i>interfaces</i> of different technology types, but only where that kind of flexibility is allowed. Matching rules for 
+		different technology types may vary; where some matching semantics may require a matching type/package/version 
+		(e.g. <i>interface.java</i>), others may only require that the target provide a superset of the required operations from the 
+		source (e.g. <i>interface.wsdl</i>). 
+		</p>
+		<p>
+		We anticipate the creation of <i>Services/References/Interfaces</i> from the editor might use the SOA Assembly 
+		Framework (SAF) to provide for the creation of specialized model types. It's likely that the SAF will piggyback or 
+		integrate with the UnitProvider framework.
+		</p>
+		</td> 		
+	</tr>
+</table> 
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Business Model: Bundle Capabilities [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>Post-M3, we will discuss adding an abstraction layer to provide a common base
+		type, of the form <code>BundleCapability</code> which any <i>SoftwareComponent</i> may export.
+		These are intended to be used as they are today, to express requirements between
+		<i>SoftwareComponents</i>; they do not imply packaging (as a <i>DependencyLink</i> from a
+		<i>WebModule</i> to a <i>UtilityJarCapability</i> doesn't imply whether the utility jar will
+		be deployed as part of the <b>lib/</b> directory of the web module or as a shared
+		library in the Web Container). They are dependencies that can be used to model
+		build graphs and validate deployment scenarios.		
+		</p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Business Model: Testing Requrements [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>The Business Application Domain API will be tested by verifying the following: </p>
+		<ul>
+			<li>A Service and Reference match if the Reference defines a compatible Interface with the Service. </li>
+			<li>A SoftwareComponent should be accessible from the palette or for any Java EE Module.</li>
+		</ul>
+		</td>
+	</tr>
+</table>
+
+<!-- Begin MULTIPLE DEPENDENCY LINKS FROM A REQUIREMENT -->
+<table width="100%">
+	<tr>
+		<a name="logicalRequirements"/>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Core Model: Multiple Dependency Links From a Requirement [<a style="color: lightblue;" href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>A <a href="../Requirement.html">requirement</a> defines a need on a 
+		given <a href="../Capability.html">capability</a> type and may require 
+		that a set of <a href="../RequirementExpression.html">RequirementExpressions</a>
+		be satisfied.</p>
+		Traditionally, a single <a href="../DependencyLink.html">dependency link</a>
+		links a requirement to a satisfying capability.
+		In some cases, a unit is dependent on a number of other units.  
+		This dependency can be expressed using multiple requirements.
+		However, it is often not known in advance how many such requirements there are.
+		For example, a class loader depends on one or more shared libraries.
+		This number is variable and depends on how the user wishes to configure the class loader.
+		</p>
+		<p><b>Use Cases</b>
+		<ol>
+		   <li>Class loader dependencies on shared libraries.</li>
+		   <li>Shared library dependencies on utility jars.</li>
+		   <li>Authentication entry dependencies on a user.</li>
+		   <li>Datasource requirements on a database in a cluster.</li>
+		</ol>
+		<p><b>Options</b>
+		<ol>
+		   <li>Do not create dependency links.  Use Domain specific validation to ensure that the
+		   relationship between the units is satisfied.  This is done, for example for the relationship
+		   between a J2CAuthenticationEntry and a user on a targert OS.  Because the entry could be
+		   used to refer to the same user on multiple OSes, no link is created.  Data source validation
+		   ensures that the user identified in the authentication entry is present on the OS of the 
+		   machine hosting the target database.</li>
+		   <li>Dynamically create the requirement when a link is desired.  This approach provides no
+		   good way to delete the requirement when the link is deleted.  In this case, a bit on the 
+		   requirement could be used indicate that it is a "dynamic" requirement that should not 
+		   exist without a valid dependency link.</li>
+		   <li>Allow a Requirement to have multiple dependency links.  For a dependency link to be
+		   valid, the requirement would need to be satisfied by the target capability of the link.
+		   In this case, the requirement need not be removed when a link is removed. On the other
+		   hand, this approach does not provide a means to ensure that the right number of dependency
+		   links are satisfied.
+		</ol>
+		<p><b>Design</b>
+		</br>
+		Use the third approach:
+		<ol>
+		   <li>Add boolean field "allowMultipleDependencies" to Requirement</li>
+		   <li>Change Requirement to return a list of DependencyLinks</li>
+		   <li>Rewrite Requirement#getLink() to return the single link if only one is present 
+		   and to return an exception if more than one is present.</li>
+		   <li>Introduce getLinks() that returns a list of DependencyLink
+		   <li>Add (core) validation that checks:
+		      <ul>
+		         <li>At most one link is present if <tt>allowMultipleDependencies</tt> is <tt>false</tt>.
+		         <li>When <tt>allowMultipleDependencies</tt> is <tt>true</tt> ensure that
+                 each target Capability satisfies the source Requirement.</li>
+		      </ul>
+		   </li> 
+		   <li>Modify DependencyLinkMatcher to allow more than one link from a Requirement where 
+		   <tt>allowsMultipleDependencies</tt> is <tt>true</tt></li>
+		   <li>Ensure proxy layer support for multiple links.</li>
+		   <li>Ensure error markers are on the links; not the source unit.</li>
+		   <li>Enable UI to visualize multiple links</li>
+		   <li>Modify property pages to show multiple links</li>
+		</ol>  
+		</p>
+		</td>
+	</tr>
+</table>  
+<!-- End MULTIPLE DEPENDENCY LINKS FROM A REQUIREMENT -->
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Michael D. Elder</b> <i>(mdelder{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

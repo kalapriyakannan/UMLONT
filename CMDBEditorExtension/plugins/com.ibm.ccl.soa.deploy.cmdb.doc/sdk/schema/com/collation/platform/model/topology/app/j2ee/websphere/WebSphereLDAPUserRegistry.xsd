@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/websphere/WebSphereUserRegistry.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.websphere.WebSphereLDAPUserRegistry">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.websphere.WebSphereUserRegistry">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="baseDN" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="bindDN" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="searchTimeout" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="monitorInterval" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="reuseConnection" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sslEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sslConfig" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

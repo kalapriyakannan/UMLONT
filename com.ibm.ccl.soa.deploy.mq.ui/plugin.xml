@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%mqStack.Label" 
+            		kind="stack" 
+            		description="%mqStack.Description" 
+            		small_icon="icons/pal/placeholder_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="mqStack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.ibm.ccl.soa.deploy.mq.ui.providers.MqEditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="mq.MQActivationSpecificationUnit, mq.MQBaseSystemUnit, mq.MQConnectionFactoriesUnit, mq.MQListenerUnit, mq.MQMessageListnerServicePortUnit, mq.MQMessagingProviderUnit, mq.MQQueueChannelUnit, mq.MQQueueConnectionFactoryUnit, mq.MQQueueDestinationUnit, mq.MQQueueManagerUnit, mq.MQQueueUnit, mq.MQTopicConnectionFactoryUnit, mq.MQTopicDestinationUnit">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.mq, configurationUnit.mq"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="mq.MQActivationSpecificationUnit, mq.MQBaseSystemUnit, mq.MQConnectionFactoriesUnit, mq.MQListenerUnit, mq.MQMessageListnerServicePortUnit, mq.MQMessagingProviderUnit, mq.MQQueueChannelUnit, mq.MQQueueConnectionFactoryUnit, mq.MQQueueDestinationUnit, mq.MQQueueManagerUnit, mq.MQQueueUnit, mq.MQTopicConnectionFactoryUnit, mq.MQTopicDestinationUnit">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.mq, configurationUnit.mq">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="http://www.ibm.com/Zephyr/mq/1.0.0/">
+	    	<metamodelType
+	        	id="mq.ModelObjectUnit"            
+	            name="%ModelObjectUnit.label"
+	            icon="icons/pal/placeholder_16.gif"
+	            eclass="ModelObjectUnit"/>        
+        </metamodel> 
+	</extension>
+   
+
+</plugin>

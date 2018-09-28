@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:genericsoftware="http://www.ibm.com/ccl/soa/deploy/genericsoftware/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	name="SoftwareInstall Template">
+	<genericsoftware:unit.softwareInstallUnit name="SoftwareInstall"
+		configurationUnit="false" conceptual="false">
+		<genericsoftware:capability.softwareInstall
+			name="SoftwareInstall" linkType="any" />
+		<genericsoftware:capability.version name="Version"
+			linkType="any" />
+		<core:requirement name="HostingReq" dmoType="os:OperatingSystem"
+			linkType="hosting" use="required" />
+	</genericsoftware:unit.softwareInstallUnit>
+</core:topology>

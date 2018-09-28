@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<core:topology name="OSGi Bundle Template"
+	xmlns:osgi="http://www.ibm.com/zephyr/osgi/1.0.0"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/zephyr/osgi/1.0.0 
+		../models/schemas/osgiDomain.xsd 					   
+		http://www.ibm.com/ccl/soa/deploy/core/1.0.0/
+platform:/plugin/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"> 
+				   
+<!-- Insert your template content here -->
+<osgi:component.bundle name="OSGiBundle" conceptual="false"
+	displayName="OSGi Bundle" goalInstallState="unknown"
+	initInstallState="unknown" mutable="true" publishIntent="publish"
+	eclipseLazyStart="true" localization="plugin" manifestVersion="2"
+	singleton="true" vendor="">
+
+</osgi:component.bundle>	
+
+<osgi:unit.osgiLibrary name="OSGiLibrary"
+	displayName="OSGi Classpath Library" conceptual="false"
+	configurationUnit="true"
+	description="Provides a Library config for default library (.-> /src)">
+	<osgi:source>/src</osgi:source>
+	<osgi:output>.</osgi:output>
+</osgi:unit.osgiLibrary>
+
+<core:link.hosting name="HostingLink" source="/OSGiBundle" target="/OSGiLibrary" />
+
+
+</core:topology>

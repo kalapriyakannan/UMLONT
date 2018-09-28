@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamodels:datamodels-config
+	xmlns:datamodels="http://www.eclipse.org/webtools/datamodels/0.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.eclipse.org/webtools/datamodels/0.1"
+	modelFile="DeployResolutionDataModel.ecore">
+	
+	 <custom-templates>
+      <!-- look for templates in this directory -->
+      <path workspace="../../../../StandardTemplates/templates"/>
+   </custom-templates>
+	
+	<!-- Output location for non-UI aware code, and 
+			the core Datamodels implementation files -->
+	<core-project name="com.ibm.ccl.soa.deploy.core" target-folder="src" />
+	
+	<!-- Output location for UI aware code, in this case, the 
+			UI-aware facades that extend the core typesafe facades. -->
+	<ui-project name="com.ibm.ccl.soa.deploy.core.ui" target-folder="ui" />
+	
+</datamodels:datamodels-config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.osgi/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.osgi/src" modelPluginID="com.ibm.ccl.soa.deploy.osgi"
+    modelName="OsgiDomain" nonNLSMarkers="true" suppressEMFTypes="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="platform:/plugin/com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/osgiDomain.xsd</foreignModel>
+  <genPackages prefix="Osgi" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="osgi.ecore#/">
+    <genClasses ecoreClass="osgi.ecore#//BundleCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleCapability/symbolicName"/>
+    </genClasses>
+    <genClasses ecoreClass="osgi.ecore#//BundleComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/activator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/eclipseLazyStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/localization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/manifestVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/singleton"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//BundleComponent/vendor"/>
+    </genClasses>
+    <genClasses ecoreClass="osgi.ecore#//ExportedPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//ExportedPackage/friend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//ExportedPackage/internal"/>
+    </genClasses>
+    <genClasses ecoreClass="osgi.ecore#//Library">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//Library/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//Library/output"/>
+    </genClasses>
+    <genClasses ecoreClass="osgi.ecore#//OSGiRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute osgi.ecore#//OSGiRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/capabilityApiPackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/capabilityOsgiBundle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/componentBundle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference osgi.ecore#//OSGiRoot/unitOsgiLibrary"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

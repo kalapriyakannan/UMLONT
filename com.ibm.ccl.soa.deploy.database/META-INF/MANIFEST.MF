@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.ibm.ccl.soa.deploy.database; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.ibm.ccl.soa.deploy.database.DatabaseDeployPlugin
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: com.ibm.ccl.soa.deploy.database,
+ com.ibm.ccl.soa.deploy.database.impl,
+ com.ibm.ccl.soa.deploy.database.internal.provider;x-friends:="com.ibm.ccl.soa.deploy.ide.ui",
+ com.ibm.ccl.soa.deploy.database.provider,
+ com.ibm.ccl.soa.deploy.database.util
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)",
+ org.eclipse.emf.ecore;bundle-version="[2.4.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)";visibility:=reexport,
+ com.ibm.ccl.soa.deploy.core;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.edit;bundle-version="[2.4.0,3.0.0)";visibility:=reexport,
+ org.eclipse.gmf.runtime.emf.core;bundle-version="[1.1.0,2.0.0)",
+ com.ibm.ccl.soa.deploy.saf;bundle-version="[1.0.0,2.0.0)"
+Eclipse-LazyStart: true
+

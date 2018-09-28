@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+	<!-- Palette Provider FOR GENERIC ONLY -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution
+				factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+			</contribution>
+		</paletteProvider>
+	</extension>
+	
+	<!-- Define 'deploygeneric.hostingrelationship' and 'deploygeneric.dependencyrelationship'
+		in the core namespace, not in generic, because the EClass is in core. -->
+	<!--extension
+		point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+			<metamodelType id="deploygeneric.hostingrelationship"
+				name="%HostingLink.Label"
+				icon="platform:/plugin/com.ibm.ccl.soa.deploy.core.ui/icons/dgm/hstlnk_dgm.gif"
+				eclass="HostingLink"
+				edithelper="com.ibm.ccl.soa.deploy.generic.ui.edithelpers.HostingRelationshipEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param name="semanticHint" value="HostingLink" />
+			</metamodelType>
+
+			<metamodelType id="deploygeneric.dependencyrelationship"
+				name="%DependencyLink.Label"
+				icon="platform:/plugin/com.ibm.ccl.soa.deploy.core.ui/icons/dgm/depndlnk_dgm.gif"
+				eclass="DependencyLink"
+				edithelper="com.ibm.ccl.soa.deploy.generic.ui.edithelpers.DependencyRelationshipEditHelper"
+				kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+				<param name="semanticHint" value="DependencyLink" />
+			</metamodelType>
+
+		</metamodel>
+	</extension-->
+
+	<!-- Deploy Core Editpart Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.generic.ui.providers.GenericEditPartProvider">
+			<Priority name="Medium"></Priority>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+
+				<!-- The values are epackage dot eclass -->
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="generic.GenericUnit">
+				</staticMethod>
+			</object>
+
+			<!-- the values are (usually? always?) semantic hints -->
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()"
+					value="module.generic" />
+			</object>
+			<context views="NodesByType, Nodes"></context>
+		</editpartProvider>
+	</extension>
+
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+
+			<!-- GMF wraps the real semantic objects in EObjectAdapters.  These adapters implement
+				IProxyEObject.getProxyClassID() to return the EMF package dot EMF class of the real
+				object.  The correct value below lets GMF know to load the correct plugins for your
+				views the first time they are created w/o using the palette tools. -->
+
+			<!-- These class ids are local-package DOT classname -->
+
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method name="getProxyClassID()"
+					value="generic.GenericUnit">
+				</method>
+			</object>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="module.generic">
+			</context>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="" elements="Nodes">
+			</context>
+		</viewProvider>
+	</extension>
+
+	<!-- property page: tabs.  Note contributorId matches the *editor*, not the project, id. -->
+	<extension
+		point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+		<propertyTabs
+			contributorId="com.ibm.ccl.soa.deploy.core.ui.properties">
+			<propertyTab label="%Generic"
+				afterTab="property.tab.ModulePropertySection" category="Units"
+				id="property.tab.GenericPropertyTab">
+			</propertyTab>
+		</propertyTabs>
+	</extension>
+
+	<!-- adapter factory for the emf objects -->
+	<extension
+		point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+		<adapterFactory
+			className="com.ibm.ccl.soa.deploy.generic.provider.GenericItemProviderAdapterFactory"
+			functionGroupID="com.ibm.ccl.soa.deploy.generic"
+			id="com.ibm.ccl.soa.deploy.generic.provider.GenericItemProviderAdapterFactory"
+			packageURI="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/">
+		</adapterFactory>
+	</extension>
+ 
+	<!-- Palette Provider -->
+   	<extension 
+   		id="wasPaletteProvider" 
+   		name="%ext.wasPaletteProvider" 
+   		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        
+		        	        
+		        <!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+		    </contribution>
+      	</paletteProvider>
+   	</extension>
+</plugin>

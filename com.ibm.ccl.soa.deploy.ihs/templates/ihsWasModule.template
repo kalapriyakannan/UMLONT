@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"	
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"		
+	xmlns:wasihs="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"			
+	name="IHS WAS Module Template">
+	<ihs:unit.ihsWasModuleUnit displayName="IHS WAS Module"
+		name="IHSWASModule" configurationUnit="true" >
+		<ihs:capability.ihsWasModule name="IHS WAS Module"
+			displayName="IHS WAS Module" linkType="any" />
+		<was:capability.wasPluginRedirection mutable="true"
+			name="WebSphere Plugin Redirection" displayName="WebSphere Plugin Redirection"
+			linkType="dependency" />
+		<core:requirement mutable="true"
+			name="IHS Server" displayName="IHS Server"
+			dmoType="ihs:IhsServer" linkType="hosting" />
+		<core:requirement mutable="true"
+			name="IHS WAS Plugin" displayName="IHS WAS Plugin"
+			dmoType="wasihs:IhsWasPlugin" linkType="dependency" />				
+	</ihs:unit.ihsWasModuleUnit>
+</core:topology>

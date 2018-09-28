@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" name="DB2 8 Template">
+  <db2:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client" name="DB2RuntimeClient">
+    <db2:capability.db2Client name="DB2 Client" displayName="DB2 Client" linkType="any" db2ClientVersion="8.2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Legacy CLI-based Type 2 JDBC Driver" 
+    		displayName="DB2 Legacy CLI-based Type 2 JDBC Driver" 
+    		linkType="dependency" 
+    		classname="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource" 
+    		classpath="C:/IBM/SQLLIB/db2java.zip" 
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" 
+    		displayName="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)" 
+    		linkType="dependency" 
+    		classname="COM.ibm.db2.jdbc.DB2XADataSource" 
+    		classpath="C:/IBM/SQLLIB/db2java.zip" 
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider - JDBC type 2" 
+    		displayName="DB2 Universal JDBC Driver Provider" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" 
+    		classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" 
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 2" 
+    		displayName="DB2 Universal JDBC Driver Provider (XA)" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2XADataSource" 
+    		classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" 
+    		jdbcType="2"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider - JDBC type 4" 
+    		displayName="DB2 Universal JDBC Driver Provider" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" 
+    		classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" 
+    		jdbcType="4"/>
+    <db2:capability.db2JdbcDriver name="DB2 Universal JDBC Driver Provider (XA) - JDBC type 4" 
+    		displayName="DB2 Universal JDBC Driver Provider (XA)" 
+    		linkType="dependency" 
+    		classname="com.ibm.db2.jcc.DB2XADataSource" 
+    		classpath="C:/IBM/SQLLIB/db2jcc.jar;C:/IBM/SQLLIB/db2jcc_license_cu.jar;C:/IBM/SQLLIB/db2jcc_license_cisuz.jar" 
+    		jdbcType="4"/>
+    <core:requirement mutable="true" name="Operating System" displayName="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+  </db2:unit.db2RuntimeClientUnit>
+</core:topology>

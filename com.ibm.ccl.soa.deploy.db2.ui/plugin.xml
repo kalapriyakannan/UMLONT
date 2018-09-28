@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	$Id: plugin.xml,v 1.53 2008/05/27 14:03:20 mdelder Exp $
+-->
+
+<plugin>
+
+	<!-- Palette Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution
+				factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+
+				<!--Templates - these are unit instances of types that already have some preconfigured aspects. -->
+				<entry label="%db2DataBaseStack.Label" kind="stack"
+					description="%db2DataBaseStack.Description"
+					large_icon="icons/pal/db2_20.gif" small_icon="icons/pal/db2_16.gif"
+					path="/serverSoftwareDrawer/" id="db2DataBaseStack">
+				</entry>
+				<entry label="%db2ConfigurationStack.Label" kind="stack"
+					description="%db2ConfigurationStack.Description"
+					large_icon="icons/pal/db2_20.gif" small_icon="icons/pal/db2_16.gif"
+					path="/configurationDrawer/" id="db2ConfigurationStack">
+				</entry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+
+	<!-- Core Element Types and custom Factory -->
+	<extension
+		point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel
+			nsURI="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/">
+			<metamodelType id="db2.DB2InstanceUnit"
+				icon="icons/pal/db2instance_pal16.gif"
+				name="%DB2InstanceUnit.label" eclass="DB2InstanceUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2ClientInstanceUnit"
+				name="%DB2ClientInstanceUnit.label"
+				icon="icons/pal/db2instance_pal16.gif"
+				eclass="DB2ClientInstanceUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2SystemUnit"
+				icon="icons/pal/db2system_pal16.gif"
+				name="%DB2SystemUnit.label" eclass="DB2SystemUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2RuntimeClientUnit"
+				icon="icons/pal/db2client_pal16.gif"
+				name="%DB2RuntimeClientUnit.label" eclass="DB2RuntimeClientUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2DatabaseUnitMeta"
+				icon="icons/pal/db2database_pal16.gif"
+				name="%DB2DatabaseUnitMeta.label" eclass="DB2DatabaseUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2CatalogUnitMeta"
+				icon="icons/pal/db2catalog_pal16.gif"
+				name="%DB2CatalogUnit.label" eclass="DB2CatalogUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2NodeCatalogUnitMeta"
+				icon="icons/pal/db2ndcatalog_pal16.gif"
+				name="%DB2NodeCatalogUnit.label" eclass="DB2NodeCatalogUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2AdminClientUnit"
+				name="%DB2AdminClientUnit.label" eclass="DB2AdminClientUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2AdminServerUnit"
+				name="%DB2AdminServerUnit.label" eclass="DB2AdminServerUnit">
+			</metamodelType>
+			<metamodelType id="db2.DB2AppDevelClientUnit"
+				name="%DB2AppDevelClientUnit.label"
+				eclass="DB2AppDevelClientUnit">
+			</metamodelType>
+		</metamodel>
+	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.db2.ui.providers.DB2EditPartProvider">
+			<Priority name="Medium"></Priority>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+
+				<!-- The values are epackage dot eclass -->
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="db2.DB2InstanceUnit, db2.DB2ClientInstanceUnit, db2.DB2SystemUnit, db2.DB2RuntimeClientUnit, db2.DB2DatabaseUnit, db2.DB2CatalogUnit, db2.DB2NodeCatalogUnit, db2.DB2AppDevelClientUnit, db2.DB2AdminServerUnit, db2.DB2AdminClientUnit">
+				</staticMethod>
+			</object>
+
+			<!-- the values are (usually? always?) semantic hints -->
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()"
+					value="module.db2, configurationUnit.db2" />
+			</object>
+			<context views="NodesByType, Nodes"></context>
+		</editpartProvider>
+	</extension>
+
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+
+			<!-- GMF wraps the real semantic objects in EObjectAdapters.  These adapters implement
+				IProxyEObject.getProxyClassID() to return the EMF package dot EMF class of the real
+				object.  The correct value below lets GMF know to load the correct plugins for your
+				views the first time they are created w/o using the palette tools. -->
+
+			<!-- These class ids are local-package DOT classname -->
+
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method name="getProxyClassID()"
+					value="db2.DB2InstanceUnit, db2.DB2ClientInstanceUnit, db2.DB2SystemUnit, db2.DB2RuntimeClientUnit, db2.DB2DatabaseUnit, db2.DB2CatalogUnit, db2.DB2NodeCatalogUnit, db2.DB2AppDevelClientUnit, db2.DB2AdminServerUnit, db2.DB2AdminClientUnit">
+				</method>
+			</object>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="module.db2, configurationUnit.db2">
+			</context>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="" elements="Nodes">
+			</context>
+		</viewProvider>
+	</extension>
+
+
+	<!-- =================================================================================== -->
+	<!-- Extension: deploy status resolution generators                                      -->
+	<!-- =================================================================================== -->
+
+	<extension
+		point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+		<resolutionGenerator
+			id="GUIDB2AdminUseridCreationResolutionGenerator"
+			name="%resolutionGenerator.GUIDB2AdminUseridCreationResolutionGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.db2.ui.validator.resolution.GUIDB2AdminUseridCreationResolutionGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus" />
+			</enablement>
+		</resolutionGenerator>
+		<resolutionGenerator id="SelectSQLUserIDGenerator"
+			name="%resolutionGenerator.SelectSQLUserIDGenerator"
+			class="com.ibm.ccl.soa.deploy.internal.db2.ui.validator.resolution.SelectSQLUserIDGenerator">
+			<enablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus" />
+				<test property="com.ibm.ccl.soa.deploy.core.problemType"
+					value="com.ibm.ccl.soa.deploy.core.objectAttributeInvalid" />
+			</enablement>
+		</resolutionGenerator>
+	</extension>
+
+	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.rational.deployment.activity.physical.db2"
+            name="%db2Activity.label"/>
+      <activity
+            id="com.ibm.rational.deployment.activity.infrastructure.db2"
+            name="%db2Activity.label"/>
+     <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.physical.db2"
+            pattern="(?&lt;!.)db2\.[\w.-]*\.conceptual">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.db2"
+            pattern="(?&lt;!.)db2\.[\w.-]*\.infra">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.physical.db2"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.physical"/>
+      <categoryActivityBinding
+            activityId="com.ibm.rational.deployment.activity.infrastructure.db2"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.infrastructure"/>
+   </extension>
+   <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.rational.deployment.activity.physical.db2"/>  
+      <activity ref="com.ibm.rational.deployment.activity.infrastructure.db2"/>
+   </extension>
+</plugin>
+

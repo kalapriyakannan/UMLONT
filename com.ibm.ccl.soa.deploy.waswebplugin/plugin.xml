@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.16 2008/05/29 14:42:56 nmakin Exp $
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory
+       uri = "http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.waswebplugin.provider.WaswebpluginItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.waswebplugin.WaswebpluginPackage"
+       genModel = "models/ecore/weswebpluginDomain.genmodel" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="waswebplugin"
+       class="com.ibm.ccl.soa.deploy.waswebplugin.util.WaswebpluginResourceFactoryImpl" />
+  </extension>
+
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.waswebplugin.domain"
+       name="%extension.waswebpluginDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.waswebplugin.validator.WasWebPluginDomainValidator"/>
+       <resourceType
+             id="com.ibm.ccl.soa.deploy.waswebplugin.IhsWasPluginUnitTool.infra"
+             name="%ihs.ihsWasPluginUnitTool.spec.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.waswebplugin/templates/ihsWasPlugin.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%ihsWasPluginUnitTool.Description"
+             label="%ihs.ihsWasPluginUnitTool.spec.Label"
+             path="/serverSoftwareDrawer/websphereAppServerPluginStack"
+	         largeIcon="icons/pal/ihs_plugin_pal20.gif"
+	         smallIcon="icons/pal/ihs_plugin_pal16.gif"
+             resourceTypeId="com.ibm.ccl.soa.deploy.waswebplugin.IhsWasPluginUnitTool.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="com.ibm.ccl.soa.deploy.waswebplugin.IhsWasPluginUnitTool.conceptual"
+             name="%ihs.ihsWasPluginUnitTool.spec.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.waswebplugin/templates/ihsWasPluginC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%ihsWasPluginUnitTool.Description"
+             label="%ihs.ihsWasPluginUnitTool.spec.Label"
+             path="/serverSoftwareDrawer/websphereAppServerPluginStack"
+	         largeIcon="icons/pal/ihs_plugin_pal20.gif"
+	         smallIcon="icons/pal/ihs_plugin_pal16.gif"
+             resourceTypeId="com.ibm.ccl.soa.deploy.waswebplugin.IhsWasPluginUnitTool.conceptual">
+       </resourceTypeUIBinding>
+    </domain>
+  </extension> 
+
+  <!-- Deploy resolution generators -->
+  <extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">
+  
+    <resolutionGenerator
+       id="IhsWasPluginConfigurationResolutionGenerator"
+       name="%resolutionGenerator.IhsWasPluginConfigurationResolutionGenerator"
+       class="com.ibm.ccl.soa.deploy.waswebplugin.internal.resolution.IhsWasPluginConfigurationResolutionGenerator">
+       <enablement>
+         <instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+         <test property="com.ibm.ccl.soa.deploy.core.problemType"
+               value="com.ibm.ccl.soa.deploy.waswebplugin.ihsWasPluginModuleConfigurationError"/> 
+       </enablement>
+    </resolutionGenerator>
+    
+    <resolutionGenerator
+       id="MissingIhsUserResolutionGenerator"
+       name="%resolutionGenerator.MissingIhsUserResolutionGenerator"
+       class="com.ibm.ccl.soa.deploy.waswebplugin.internal.resolution.MissingIhsUserResolutionGenerator">
+       <enablement>
+         <instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/>
+         <test property="com.ibm.ccl.soa.deploy.core.problemType"
+               value="com.ibm.ccl.soa.deploy.waswebplugin.ihsWasPluginAdminModuleHasNoUser"/> 
+       </enablement>
+    </resolutionGenerator>
+    
+    <resolutionGenerator
+       id="ConfigureWasWebServerToIhsResolutionGenerator"
+       name="%resolutionGenerator.ConfigureWasWebServerToIhsResolutionGenerator"
+       class="com.ibm.ccl.soa.deploy.waswebplugin.validator.resolution.ConfigureWasWebServerToIhsResolutionGenerator">
+       <enablement>
+         <instanceof value="com.ibm.ccl.soa.deploy.waswebplugin.validator.status.WasWebServerToIhsStatus"/>
+         <test property="com.ibm.ccl.soa.deploy.core.problemType"
+               value="com.ibm.ccl.soa.deploy.waswebplugin.wasWebServerToIhsConstraintFails"/> 
+       </enablement>
+    </resolutionGenerator>
+    
+  </extension>  
+
+	<!-- Constraints -->
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.waswebplugin.WasWebServerToIhsConstraint"
+	             	 displayName="%constraints.WasWebServerToIhsConstraint" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+                 	 type="WasWebServerToIhsConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.waswebplugin.validator.constraint.WasWebServerToIhsConstraintValidator"/>
+			<linkMatcher class="com.ibm.ccl.soa.deploy.waswebplugin.validator.matcher.WasWebServerToIhsConstraintLinkMatcher"/>
+			<parentEnablement>
+				<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink"/>
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.source">
+	            	<instanceof value="com.ibm.ccl.soa.deploy.was.WasWebServerUnit"/>
+            	</resolve>
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.target">
+				    <or>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.ihs.IhsServerUnit"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.ihs.IhsSystemUnit"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.waswebplugin.IhsWasPluginUnit"/>
+	            	</or>
+            	</resolve>
+			</parentEnablement>
+		</constraint>
+	</extension>
+
+ <extension
+       point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+    <adapterFactory
+          className="com.ibm.ccl.soa.deploy.waswebplugin.provider.WaswebpluginItemProviderAdapterFactory"
+          functionGroupID="com.ibm.ccl.soa.deploy.waswebplugin"
+          id="com.ibm.ccl.soa.deploy.waswebplugin.provider.WaswebpluginItemProviderAdapterFactory"
+          packageURI="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/">
+    </adapterFactory>
+ </extension>
+	
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.waswebplugin">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/waswebplugin/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.waswebplugin/models/schemas/wasIhsDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension> 
+
+</plugin>
+

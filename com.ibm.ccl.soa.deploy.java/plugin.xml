@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.9 2008/05/29 14:42:18 nmakin Exp $
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.java.JavaPackage"
+       genModel = "models/ecore/java.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="java" 
+       class="com.ibm.ccl.soa.deploy.java.util.JavaResourceFactoryImpl" />
+  </extension>
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.java.provider.JavaItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.java.domain"
+       name="%extension.javaDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.java.internal.validator.JavaDomainValidator"/>
+    </domain>
+  </extension> 
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.java">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.java/models/schemas/javaDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

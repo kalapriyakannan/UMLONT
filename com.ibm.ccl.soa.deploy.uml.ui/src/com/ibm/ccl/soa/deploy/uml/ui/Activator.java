@@ -1,0 +1,153 @@
+package com.ibm.ccl.soa.deploy.uml.ui;
+
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Plugin;
+import org.eclipse.core.runtime.Status;
+import org.osgi.framework.BundleContext;
+
+/**
+ * The activator class controls the plug-in life cycle
+ */
+public class Activator extends Plugin {
+
+	// The plug-in ID
+	public static final String PLUGIN_ID = "com.ibm.ccl.soa.deploy.uml.ui"; //$NON-NLS-1$
+
+	// The shared instance
+	private static Activator plugin;
+
+	/**
+	 * The constructor
+	 */
+	public Activator() {
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.core.runtime.Plugins#start(org.osgi.framework.BundleContext)
+	 */
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
+		plugin = this;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+	 */
+	public void stop(BundleContext context) throws Exception {
+		plugin = null;
+		super.stop(context);
+	}
+
+	/**
+	 * Returns the shared instance
+	 * 
+	 * @return the shared instance
+	 */
+	public static Activator getDefault() {
+		return plugin;
+	}
+
+	/**
+	 * Log an error using the plugin id of the DeployCorePlugin.
+	 * 
+	 * @param aCode
+	 *           A message code for the created status
+	 * @param aMessage
+	 *           A message describing the error
+	 * @param anException
+	 *           An exception that was thrown, if any.
+	 */
+	public static void logError(int aCode, String aMessage, Throwable anException) {
+		getDefault().getLog().log(createErrorStatus(aCode, aMessage, anException));
+	}
+
+	/**
+	 * Log an error using the plugin id of the DeployCorePlugin.
+	 * 
+	 * @param aCode
+	 *           A message code for the created status
+	 * @param aMessage
+	 *           A message describing the error
+	 * @param anException
+	 *           An exception that was thrown, if any.
+	 */
+	public static void logError(int aCode, String aMessage, ExecutionException anException) {
+		if (anException != null) {
+			if (anException.getCause() != null) {
+				getDefault().getLog().log(
+						createErrorStatus(aCode, anException.getCause().getMessage(), anException
+								.getCause()));
+			}
+		} else {
+			getDefault().getLog().log(createErrorStatus(aCode, aMessage, anException));
+		}
+	}
+
+	/**
+	 * Log an error using the plugin id of the DeployCorePlugin
+	 * 
+	 * @param severity
+	 *           The severity of message (see {@link IStatus}).
+	 * @param aCode
+	 *           A message code for the created status
+	 * @param aMessage
+	 *           A message describing the error
+	 * @param anException
+	 *           An exception that was thrown, if any.
+	 */
+	public static void log(int severity, int aCode, String aMessage, Throwable anException) {
+		log(createStatus(severity, aCode, aMessage, anException));
+	}
+
+	/**
+	 * Publish the status to the log.
+	 * 
+	 * @param aStatus
+	 *           The status to publish to the log.
+	 */
+	public static void log(IStatus aStatus) {
+		getDefault().getLog().log(aStatus);
+	}
+
+	/**
+	 * Create a status using the DeployCorePlugin's id.
+	 * 
+	 * @param severity
+	 *           The severity of message (see {@link IStatus}).
+	 * @param aCode
+	 *           A message code for the created status
+	 * @param aMessage
+	 *           A message describing the error
+	 * @param anException
+	 *           An exception that was thrown, if any.
+	 * @return The created status
+	 */
+	public static IStatus createStatus(int severity, int aCode, String aMessage,
+			Throwable anException) {
+		if (aMessage == null) {
+			aMessage = ""; //$NON-NLS-1$
+		}
+		return new Status(severity, PLUGIN_ID, aCode, aMessage, anException);
+	}
+
+	/**
+	 * Create a status with the severity set to {@link IStatus#ERROR}.
+	 * 
+	 * @param aCode
+	 *           A message code for the created status
+	 * @param aMessage
+	 *           A message describing the error
+	 * @param anException
+	 *           An exception that was thrown, if any.
+	 * @return The created status
+	 */
+	public static IStatus createErrorStatus(int aCode, String aMessage, Throwable anException) {
+		return createStatus(IStatus.ERROR, aCode, aMessage, anException);
+	}
+
+}

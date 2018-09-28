@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.7 2008/05/29 14:42:43 nmakin Exp $
+-->
+
+<plugin>
+	
+	<extension point="org.eclipse.emf.ecore.generated_package">
+    	<package 
+      		 uri = "http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/" 
+       		class = "com.ibm.ccl.soa.deploy.was.db2.WasDb2Package"
+       		genModel = "models/schemas/wasdb2.genmodel" /> 
+	</extension>
+	
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+		<constraint  id="com.ibm.ccl.soa.deploy.was.db2.constraint.DatasourceSatisfactionConstraint"
+	             	 displayName="%constraints.DatasourceSatisfactionConstraint" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/"
+                 	 type="DatasourceSatisfactionConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.was.db2.validator.constraint.DatasourceSatisfactionConstraintValidator"/>
+			<linkMatcher class="com.ibm.ccl.soa.deploy.was.db2.internal.validator.matcher.DatasourceSatisfactionConstraintLinkMatcher"/>
+			<parentEnablement>
+				<!-- link should be of a certaint type -->
+				<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink"/>
+
+				<!-- restrictions on link source -->
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.source">
+	            	<instanceof value="com.ibm.ccl.soa.deploy.core.Requirement"/>
+					<test property="com.ibm.ccl.soa.deploy.core.requirementDmoType" 
+						  value="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/:J2EEDatasource"/>
+            	</resolve>
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.sourceUnit">
+				    <or>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.j2ee.EarModule"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.j2ee.EjbModule"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.j2ee.WebModule"/>
+	            	</or>
+            	</resolve>
+
+				<!-- restrictions on link target -->
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.target">
+				    <or>
+	            	    <instanceof value="com.ibm.ccl.soa.deploy.database.Database"/>
+	            	    <instanceof value="com.ibm.ccl.soa.deploy.database.DatabaseUnit"/>
+	            	    <instanceof value="com.ibm.ccl.soa.deploy.database.DatabaseDefinition"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.database.DatabaseComponent"/>
+				    </or>
+				</resolve>
+				<resolve variable="com.ibm.ccl.soa.deploy.DeployLink.targetUnit">
+				    <or>
+	            	    <instanceof value="com.ibm.ccl.soa.deploy.database.DatabaseUnit"/>
+	            		<instanceof value="com.ibm.ccl.soa.deploy.database.DatabaseComponent"/>
+				    </or>
+				</resolve>
+			</parentEnablement>
+		</constraint>
+	</extension>
+	
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.was.db2">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.was.db2/models/schemas/wasdb2.xsd">
+			</uri>
+		</catalogContribution>
+	</extension> 
+	
+</plugin>

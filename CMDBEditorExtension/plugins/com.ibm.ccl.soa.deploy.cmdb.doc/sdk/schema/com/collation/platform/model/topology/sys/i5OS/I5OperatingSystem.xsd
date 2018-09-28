@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/OperatingSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/i5OS/I5OSSoftwareComponent.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/i5OS/I5Profile.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.i5OS.I5OperatingSystem">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.OperatingSystem">
+        <xsd:sequence>
+          <xsd:element name="sysValQSECURITY" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQAUDCTL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQSPCENV" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="i5Components" type="coll:com.collation.platform.model.topology.sys.i5OS.I5OSSoftwareComponent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="sysValQRMTIPL" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQMAXJOB" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQCCSID" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="profiles" type="coll:com.collation.platform.model.topology.sys.i5OS.I5Profile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="sysValQPWDLVL" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQLANGID" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQPWDVLDPGM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQSTRUPPGM" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQCONSOLE" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQDYNPTYADJ" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQPWRRSTIPL" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQLOCALE" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQPWDEXPITV" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQIPLSTS" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQDEVRCYACN" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQRMTSIGN" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQBASACTLVL" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQBASPOOL" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQABNORMSW" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQDYNPTYSCD" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQIPLTYPE" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQACTJOB" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQADLACTJ" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQModel" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQSRLNBR" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQMCHPOOL" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="sysValQMAXACTLVL" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

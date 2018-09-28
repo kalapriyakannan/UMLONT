@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Created on Fri 2007.05.25 at 02:59:46 PM EDT" displayName="Infra1Large" name="Infra1Large" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds" namespace="infra">
+  <was:unit.wasNodeGroupUnit name="WasNodeGroup" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup displayName="Provide WAS Node Group" name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup" target="/WasNode"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasNodeUnit name="WasNode" conceptual="false">
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" nodeName="node1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..*"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:link.hosting name="hostedCell" source="/WasNode" target="/was6StandaloneServerCell"/>
+    <core:link.hosting name="hostedServer" source="/WasNode" target="/WAS6Server"/>
+  </was:unit.wasNodeUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <was:unit.wasCellUnit name="was6StandaloneServerCell" conceptual="false" configurationUnit="true">
+    <was:capability.wasCell displayName="WAS 6.0 StandAlone Cell" name="WAS6StandAloneCell" linkType="any" cellName="cell1" isDistributed="false" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCell>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <core:requirement displayName="Nodes in the Cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..2"/>
+    </core:requirement>
+    <core:requirement displayName="Node Groups in the Cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6StandaloneServerCell" target="/WasNodeGroup"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6StandaloneServerCell" target="/WasNode"/>
+  </was:unit.wasCellUnit>
+  <was:unit.wasAppServer name="WAS6Server" conceptual="false">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="Was 6.0 Server" name="Was Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <core:req_expr name="wasVersion" attributeName="wasVersion" interpreter="Version" use="required" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="optional" value="0..1"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.hosting name="ports" source="/WAS6Server" target="/portConfiguration"/>
+    <core:link.hosting name="ServerClassLoader" source="/WAS6Server" target="/ServerClassLoader"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy" name="ServerClassLoader" conceptual="false" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="wasServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 System" name="WasSystemUnit" conceptual="false">
+    <was:capability.wasSystem displayName="WAS 6.0 System" name="WASSystem" linkType="any" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasNode" source="/WasSystemUnit" target="/WasNode"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasNodeGroupUnit name="WasNodeGroup0" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup displayName="Provide WAS Node Group" name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup0" target="/WasNode0"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasNodeUnit name="WasNode0" conceptual="false">
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" nodeName="node1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..*"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:link.hosting name="hostedCell" source="/WasNode0" target="/was6StandaloneServerCell0"/>
+    <core:link.hosting name="hostedServer" source="/WasNode0" target="/WAS6Server0"/>
+  </was:unit.wasNodeUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/a" name="portConfiguration0" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <was:unit.wasCellUnit name="was6StandaloneServerCell0" conceptual="false" configurationUnit="true">
+    <was:capability.wasCell displayName="WAS 6.0 StandAlone Cell" name="WAS6StandAloneCell" linkType="any" cellName="cell1" isDistributed="false" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCell>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <core:requirement displayName="Nodes in the Cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..2"/>
+    </core:requirement>
+    <core:requirement displayName="Node Groups in the Cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6StandaloneServerCell0" target="/WasNodeGroup0"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6StandaloneServerCell0" target="/WasNode0"/>
+  </was:unit.wasCellUnit>
+  <was:unit.wasAppServer name="WAS6Server0" conceptual="false">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="Was 6.0 Server" name="Was Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <core:req_expr name="wasVersion" attributeName="wasVersion" interpreter="Version" use="required" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="optional" value="0..1"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.hosting name="ports" source="/WAS6Server0" target="/portConfiguration0"/>
+    <core:link.hosting name="ServerClassLoader" source="/WAS6Server0" target="/ServerClassLoader0"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy/a" name="ServerClassLoader0" conceptual="false" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="wasServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 System/a" name="WasSystemUnit0" conceptual="false">
+    <was:capability.wasSystem displayName="WAS 6.0 System" name="WASSystem" linkType="any" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasNode" source="/WasSystemUnit0" target="/WasNode0"/>
+  </was:unit.wasSystemUnit>
+  <server:unit.serverUnit displayName="x86 Server" name="x86 Server" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer20030"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server/a" name="x86 Server0" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer2003"/>
+  </server:unit.serverUnit>
+  <was:unit.wasNodeGroupUnit name="WasNodeGroup1" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup displayName="Provide WAS Node Group" name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup1" target="/WasNode1"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasNodeUnit name="WasNode1" conceptual="false">
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" nodeName="node1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..*"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:link.hosting name="hostedCell" source="/WasNode1" target="/was6StandaloneServerCell1"/>
+    <core:link.hosting name="hostedServer" source="/WasNode1" target="/WAS6Server1"/>
+  </was:unit.wasNodeUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/b" name="portConfiguration1" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <was:unit.wasCellUnit name="was6StandaloneServerCell1" conceptual="false" configurationUnit="true">
+    <was:capability.wasCell displayName="WAS 6.0 StandAlone Cell" name="WAS6StandAloneCell" linkType="any" cellName="cell1" isDistributed="false" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCell>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <core:requirement displayName="Nodes in the Cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..2"/>
+    </core:requirement>
+    <core:requirement displayName="Node Groups in the Cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6StandaloneServerCell1" target="/WasNodeGroup1"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6StandaloneServerCell1" target="/WasNode1"/>
+  </was:unit.wasCellUnit>
+  <was:unit.wasAppServer name="WAS6Server1" conceptual="false">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="Was 6.0 Server" name="Was Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <core:req_expr name="wasVersion" attributeName="wasVersion" interpreter="Version" use="required" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="optional" value="0..1"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.hosting name="ports" source="/WAS6Server1" target="/portConfiguration1"/>
+    <core:link.hosting name="ServerClassLoader" source="/WAS6Server1" target="/ServerClassLoader1"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy/b" name="ServerClassLoader1" conceptual="false" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="wasServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 System/b" name="WasSystemUnit1" conceptual="false">
+    <was:capability.wasSystem displayName="WAS 6.0 System" name="WASSystem" linkType="any" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasNode" source="/WasSystemUnit1" target="/WasNode1"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasNodeGroupUnit name="WasNodeGroup2" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup displayName="Provide WAS Node Group" name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup2" target="/WasNode2"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasNodeUnit name="WasNode2" conceptual="false">
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" nodeName="node1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..*"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:link.hosting name="hostedCell" source="/WasNode2" target="/was6StandaloneServerCell2"/>
+    <core:link.hosting name="hostedServer" source="/WasNode2" target="/WAS6Server2"/>
+  </was:unit.wasNodeUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/c" name="portConfiguration2" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <was:unit.wasCellUnit name="was6StandaloneServerCell2" conceptual="false" configurationUnit="true">
+    <was:capability.wasCell displayName="WAS 6.0 StandAlone Cell" name="WAS6StandAloneCell" linkType="any" cellName="cell1" isDistributed="false" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCell>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <core:requirement displayName="Nodes in the Cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..2"/>
+    </core:requirement>
+    <core:requirement displayName="Node Groups in the Cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="required" value="1..1"/>
+    </core:requirement>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6StandaloneServerCell2" target="/WasNodeGroup2"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6StandaloneServerCell2" target="/WasNode2"/>
+  </was:unit.wasCellUnit>
+  <was:unit.wasAppServer name="WAS6Server2" conceptual="false">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="Was 6.0 Server" name="Was Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <core:req_expr name="wasVersion" attributeName="wasVersion" interpreter="Version" use="required" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <core:req_expr name="InCard" interpreter="InCardinality" use="optional" value="0..1"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.hosting name="ports" source="/WAS6Server2" target="/portConfiguration2"/>
+    <core:link.hosting name="ServerClassLoader" source="/WAS6Server2" target="/ServerClassLoader2"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy/c" name="ServerClassLoader2" conceptual="false" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="wasServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 System/c" name="WasSystemUnit2" conceptual="false">
+    <was:capability.wasSystem displayName="WAS 6.0 System" name="WASSystem" linkType="any" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasNode" source="/WasSystemUnit2" target="/WasNode2"/>
+  </was:unit.wasSystemUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System" name="DB2System" conceptual="false">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System" target="/DB2Instance"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/d" name="portConfiguration3" configurationUnit="true">
+    <os:capability.port displayName="instanceConnectionPort" name="instanceConnectionPort" linkType="dependency" port="50000" portName="instanceConnectionPort" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST" db2Version="8.2" autoStart="false" hostname="WASHost1" password="zPgAJCHOh6Na" port="50000" username="db2admin">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency">
+      <core:link.dependency name="DependencyLink0" target="/WindowsUser/WindowsLocalUser"/>
+    </core:requirement>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <core:req_expr displayName="db2Version" name="db2Version" attributeName="db2Version" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="DB2InstanceHostsportConfiguration" source="/DB2Instance" target="/portConfiguration3"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <server:unit.serverUnit displayName="x86 Server/b" name="x86 Server1" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer20032"/>
+  </server:unit.serverUnit>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System/a" name="DB2System0" conceptual="false">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System0" target="/DB2Instance0"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance0">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST" db2Version="8.2" autoStart="false" hostname="WASHost2" password="zPgAJCHOh6Na" port="50000" username="db2admin">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency">
+      <core:link.dependency name="DependencyLink0" target="/WindowsUser0/WindowsLocalUser"/>
+    </core:requirement>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <core:req_expr displayName="db2Version" name="db2Version" attributeName="db2Version" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="DB2InstanceHostsportConfiguration" source="/DB2Instance0" target="/portConfiguration4"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/e" name="portConfiguration4" configurationUnit="true">
+    <os:capability.port displayName="instanceConnectionPort" name="instanceConnectionPort" linkType="dependency" port="50000" portName="instanceConnectionPort" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <server:unit.serverUnit displayName="x86 Server/c" name="x86 Server2" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer20031"/>
+  </server:unit.serverUnit>
+  <db2Deploy:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client" name="DB2RuntimeClient" conceptual="false">
+    <db2Deploy:capability.db2Client displayName="DB2 Client" name="DB2 Client" linkType="any" db2ClientVersion="8"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2RuntimeClient" target="/DB2ClientInstance"/>
+  </db2Deploy:unit.db2RuntimeClientUnit>
+  <db2Deploy:unit.db2ClientInstanceUnit name="DB2ClientInstance">
+    <db2Deploy:capability.db2ClientInstance displayName="DB2 Client Instance" name="DB2 Client Instance" linkType="any" db2InstanceName="DB2" db2Version="8"/>
+    <core:requirement displayName="DB2 Client" mutable="true" name="DB2 Client" dmoType="db2Deploy:DB2Client" linkType="hosting">
+      <core:req_expr displayName="db2ClientVersion" name="db2ClientVersion" attributeName="db2ClientVersion" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2ClientInstanceUnit>
+  <db2Deploy:unit.db2RuntimeClientUnit displayName="DB2 Runtime Client/a" name="DB2RuntimeClient0" conceptual="false">
+    <db2Deploy:capability.db2Client displayName="DB2 Client" name="DB2 Client" linkType="any" db2ClientVersion="8"/>
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2RuntimeClient0" target="/DB2ClientInstance0"/>
+  </db2Deploy:unit.db2RuntimeClientUnit>
+  <db2Deploy:unit.db2ClientInstanceUnit name="DB2ClientInstance0">
+    <db2Deploy:capability.db2ClientInstance displayName="DB2 Client Instance" name="DB2 Client Instance" linkType="any" db2InstanceName="DB2" db2Version="8"/>
+    <core:requirement displayName="DB2 Client" mutable="true" name="DB2 Client" dmoType="db2Deploy:DB2Client" linkType="hosting">
+      <core:req_expr displayName="db2ClientVersion" name="db2ClientVersion" attributeName="db2ClientVersion" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+  </db2Deploy:unit.db2ClientInstanceUnit>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer2003" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="WASHost2" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <core:req_expr displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" interpreter="Equals" use="required" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="HostingLink4" source="/WindowsServer2003" target="/Administrators0"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer2003" target="/PowerUsers0"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer2003" target="/Users0"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer2003" target="/Guests0"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer2003" target="/Administrator0"/>
+    <core:link.hosting name="HostingLink0" target="/DB2System0"/>
+    <core:link.hosting name="HostingLink1" target="/WasSystemUnit0"/>
+    <core:link.hosting name="HostingLink2" target="/WindowsUser0"/>
+    <core:link.hosting name="HostingLink3" target="/WindowsUserGroup0"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalUser name="Administrator0" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup name="Guests0" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers0" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Administrators0" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators0" target="/Administrator0"/>
+    <core:link.member name="MemberLink0" source="/Administrators0" target="/WindowsUser0"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Users0" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer20030" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="WASHost1" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <core:req_expr displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" interpreter="Equals" use="required" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="HostingLink4" source="/WindowsServer20030" target="/Administrators"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer20030" target="/PowerUsers"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer20030" target="/Users"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer20030" target="/Guests"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer20030" target="/Administrator"/>
+    <core:link.hosting name="HostingLink0" target="/DB2System"/>
+    <core:link.hosting name="HostingLink1" target="/WasSystemUnit"/>
+    <core:link.hosting name="HostingLink2" target="/WindowsUser"/>
+    <core:link.hosting name="HostingLink3" target="/WindowsUserGroup"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalUser name="Administrator" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup name="Guests" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Administrators" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators" target="/Administrator"/>
+    <core:link.member name="MemberLink0" source="/Administrators" target="/WindowsUser"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Users" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer20031" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="WASHost3" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <core:req_expr displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" interpreter="Equals" use="required" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="WindowsServer2003HostsAdministrators" source="/WindowsServer20031" target="/Administrators2"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer20031" target="/PowerUsers2"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer20031" target="/Users2"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer20031" target="/Guests2"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer20031" target="/Administrator2"/>
+    <core:link.hosting name="HostingLink0" target="/DB2RuntimeClient0"/>
+    <core:link.hosting name="HostingLink1" target="/WasSystemUnit2"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalUser name="Administrator2" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup name="Guests2" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers2" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Administrators2" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators2" target="/Administrator2"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Users2" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer20032" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="WASHost4" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <core:req_expr displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" interpreter="Equals" use="required" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="WindowsServer2003HostsAdministrators" source="/WindowsServer20032" target="/Administrators1"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer20032" target="/PowerUsers1"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer20032" target="/Users1"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer20032" target="/Guests1"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer20032" target="/Administrator1"/>
+    <core:link.hosting name="HostingLink0" target="/DB2RuntimeClient"/>
+    <core:link.hosting name="HostingLink1" target="/WasSystemUnit1"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalUser name="Administrator1" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup name="Guests1" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers1" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Administrators1" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators1" target="/Administrator1"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Users1" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalUser name="WindowsUser" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="db2admin" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup displayName="DB2ADMNS" name="WindowsUserGroup" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="WindowsLocalGroup" linkType="dependency" groupName="DB2ADMNS"/>
+    <core:requirement displayName="UserGroup Membership" mutable="true" name="UserGroup Membership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="MemberLink0" source="/WindowsUserGroup" target="/WindowsUser"/>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalUser name="WindowsUser0" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="db2admin" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup displayName="DB2ADMNS" name="WindowsUserGroup0" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="WindowsLocalGroup" linkType="dependency" groupName="DB2ADMNS"/>
+    <core:requirement displayName="UserGroup Membership" mutable="true" name="UserGroup Membership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="MemberLink0" source="/WindowsUserGroup0" target="/WindowsUser0"/>
+  </os:unit.windowsLocalGroup>
+  <db2Deploy:unit.db2SystemUnit displayName="DB2 System/b" name="DB2System1" conceptual="false">
+    <db2Deploy:capability.db2JdbcDriver displayName="DB2 JDBC Driver" name="DB2 JDBC Driver" linkType="dependency" classname="COM.ibm.db2.jdbc.DB2XADataSource" classpath="C:/Program Files/IBM/SQLLIB/java/db2java.zip" jdbcType="2"/>
+    <db2Deploy:capability.db2System displayName="DB2 System" name="DB2 System" linkType="any" db2Version="8.2"/>
+    <core:requirement displayName="Operating System" mutable="true" name="Operating System" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="hl0" source="/DB2System1" target="/DB2Instance1"/>
+  </db2Deploy:unit.db2SystemUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration/f" name="portConfiguration5" configurationUnit="true">
+    <os:capability.port displayName="instanceConnectionPort" name="instanceConnectionPort" linkType="dependency" port="50000" portName="instanceConnectionPort" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance1">
+    <db2Deploy:capability.db2Instance displayName="DB2 Instance" name="DB2 Instance" linkType="any" db2InstanceName="DB2INST" db2Version="8.2" autoStart="false" hostname="DB2Host1" password="zPgAJCHOh6Na" port="50000" username="db2admin">
+      <core:attributeMetaData attributeName="password" encrypted="true"/>
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="DB2 User" mutable="true" name="DB2 User" dmoType="os:User" linkType="dependency">
+      <core:link.dependency name="DependencyLink0" target="/WindowsUser1/WindowsLocalUser"/>
+    </core:requirement>
+    <core:requirement displayName="DB2 System" mutable="true" name="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <core:req_expr displayName="db2Version" name="db2Version" attributeName="db2Version" interpreter="Version" use="required" value="8.x"/>
+    </core:requirement>
+    <core:link.hosting name="DB2InstanceHostsportConfiguration" source="/DB2Instance1" target="/portConfiguration5"/>
+  </db2Deploy:unit.db2InstanceUnit>
+  <os:unit.windowsOperatingSystemUnit name="WindowsServer20033" conceptual="false">
+    <os:capability.windowsOperatingSystem displayName="Windows Server 2003" name="WindowsServer2003" linkType="any" hostname="DB2Host1" os.type="Windows" os.version="2003"/>
+    <os:capability.windowsDirectory displayName="directory" name="directory" linkType="any" FixedPath="C:\">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.windowsDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <core:req_expr displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" interpreter="Equals" use="required" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="HostingLink3" source="/WindowsServer20033" target="/Administrators3"/>
+    <core:link.hosting name="WindowsServer2003HostsPowerUsers" source="/WindowsServer20033" target="/PowerUsers3"/>
+    <core:link.hosting name="WindowsServer2003HostsUsers" source="/WindowsServer20033" target="/Users3"/>
+    <core:link.hosting name="WindowsServer2003HostsGuests" source="/WindowsServer20033" target="/Guests3"/>
+    <core:link.hosting name="WindowsServer2003HostsAdministrator" source="/WindowsServer20033" target="/Administrator3"/>
+    <core:link.hosting name="HostingLink0" target="/DB2System1"/>
+    <core:link.hosting name="HostingLink1" target="/WindowsUser1"/>
+    <core:link.hosting name="HostingLink2" target="/WindowsUserGroup1"/>
+  </os:unit.windowsOperatingSystemUnit>
+  <os:unit.windowsLocalGroup name="Users3" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Users" linkType="dependency" groupName="Users"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="PowerUsers3" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="PowerUsers" linkType="dependency" groupName="PowerUsers"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalGroup name="Guests3" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Guests" linkType="dependency" groupName="Guests"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+  </os:unit.windowsLocalGroup>
+  <os:unit.windowsLocalUser name="Administrator3" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="Administrator" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup name="Administrators3" conceptual="false" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="Administrators" linkType="dependency" groupName="Administrators"/>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="AdministratorsContainsAdministrator" source="/Administrators3" target="/Administrator3"/>
+    <core:link.member name="MemberLink0" source="/Administrators3" target="/WindowsUser1"/>
+  </os:unit.windowsLocalGroup>
+  <server:unit.serverUnit displayName="x86 Server/d" name="x86 Server3" conceptual="false">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="HostingLink0" target="/WindowsServer20033"/>
+  </server:unit.serverUnit>
+  <os:unit.windowsLocalUser name="WindowsUser1" configurationUnit="true">
+    <os:capability.windowsLocalUser name="WindowsLocalUser" linkType="dependency" userId="db2admin" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.windowsLocalUser>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:WindowsLocalGroupUnit" linkType="member">
+      <core:req_expr name="inCard" interpreter="InCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+  </os:unit.windowsLocalUser>
+  <os:unit.windowsLocalGroup displayName="DB2ADMNS" name="WindowsUserGroup1" configurationUnit="true">
+    <os:capability.windowsLocalGroup name="WindowsLocalGroup" linkType="dependency" groupName="DB2ADMNS"/>
+    <core:requirement displayName="UserGroup Membership" mutable="true" name="UserGroup Membership" dmoType="os:WindowsLocalUserUnit" linkType="member">
+      <core:req_expr name="OutCard" interpreter="OutCardinality" use="optional" value="0..*"/>
+    </core:requirement>
+    <core:requirement displayName="Windows Operating System" mutable="true" name="WindowsOperatingSystem" dmoType="os:WindowsOperatingSystem" linkType="hosting">
+      <core:req_expr displayName="osType" name="osType" attributeName="osType" interpreter="Equals" use="required" value="Windows"/>
+    </core:requirement>
+    <core:link.member name="MemberLink0" source="/WindowsUserGroup1" target="/WindowsUser1"/>
+  </os:unit.windowsLocalGroup>
+  <core:contract.explicit displayName="Make All Units Public By Default" name="ExplicitContract0" defaultConceptualPolicy="public" defaultPolicy="public"/>
+</core:topology>

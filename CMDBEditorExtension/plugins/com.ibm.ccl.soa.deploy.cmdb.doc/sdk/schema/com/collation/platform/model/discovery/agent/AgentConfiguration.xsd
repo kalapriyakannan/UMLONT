@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/Configuration.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/discovery/agent/ClassPathEntry.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.discovery.agent.AgentConfiguration">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.Configuration">
+        <xsd:sequence>
+          <xsd:element name="seedClassName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentClassName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="templateClassName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="classPath" type="coll:com.collation.platform.model.discovery.agent.ClassPathEntry" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="scopeSetName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="bidiConfigFlag" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="bidiConfigFormat" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="bidiProfile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="objectVersion" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="originalName" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.java/src" creationIcons="false" editDirectory="/com.ibm.ccl.soa.deploy.java/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.java" modelName="Java" nonNLSMarkers="true"
+    rootExtendsInterface="" rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.xsd.ecore.importer"
+    usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/javaDomain.xsd</foreignModel>
+  <genPackages prefix="Java" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="java.ecore#/">
+    <genEnums ecoreEnum="java.ecore#//ClassAccessMode">
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//ClassAccessMode/Allow"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//ClassAccessMode/Restrict"/>
+    </genEnums>
+    <genEnums ecoreEnum="java.ecore#//JdbcTypeType">
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JdbcTypeType/_1"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JdbcTypeType/_2"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JdbcTypeType/_3"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JdbcTypeType/_4"/>
+    </genEnums>
+    <genEnums ecoreEnum="java.ecore#//JREEdition">
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREEdition/standard"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREEdition/enterprise"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREEdition/micro"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREEdition/other"/>
+    </genEnums>
+    <genEnums ecoreEnum="java.ecore#//JREVersion">
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_12"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_13"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_131"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_14"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_141"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_142"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_15"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/_50"/>
+      <genEnumLiterals ecoreEnumLiteral="java.ecore#//JREVersion/other"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="java.ecore#//ClassAccessModeObject"/>
+    <genDataTypes ecoreDataType="java.ecore#//JdbcTypeTypeObject"/>
+    <genDataTypes ecoreDataType="java.ecore#//JREEditionObject"/>
+    <genDataTypes ecoreDataType="java.ecore#//JREVersionObject"/>
+    <genClasses ecoreClass="java.ecore#//JavaDeployRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute java.ecore#//JavaDeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/capabilityJdbcProvider"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/capabilityJdk"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/capabilityJre"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/capabilityJvmConfig"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/unitJdbcProviderUnit"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/unitJdk"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//JavaDeployRoot/unitJre"/>
+    </genClasses>
+    <genClasses ecoreClass="java.ecore#//JdbcProvider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JdbcProvider/classpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JdbcProvider/implementationClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JdbcProvider/nativepath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JdbcProvider/providerName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JdbcProvider/providerType"/>
+    </genClasses>
+    <genClasses ecoreClass="java.ecore#//JdbcProviderUnit"/>
+    <genClasses ecoreClass="java.ecore#//JDK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JDK/jdkVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JDK/otherValue"/>
+    </genClasses>
+    <genClasses ecoreClass="java.ecore#//JDKUnit"/>
+    <genClasses ecoreClass="java.ecore#//JRE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JRE/jreEdition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JRE/jreVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JRE/otherValue"/>
+    </genClasses>
+    <genClasses ecoreClass="java.ecore#//JREUnit"/>
+    <genClasses ecoreClass="java.ecore#//JVMConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/bootClasspath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/classpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/debugArgs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/disableJIT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/executableJarfileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/genericJvmArguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/initialHeapSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/internalClassAccessMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/maximumHeapSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/runHProf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/verboseModeClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/verboseModeGarbageCollection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//JVMConfig/verboseModeJNI"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

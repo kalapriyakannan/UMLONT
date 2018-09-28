@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2BufferPool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Database.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Container.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.db2.Db2TableSpace">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Database" nillable="true" minOccurs="0"/>
+          <xsd:element name="name" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="size" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="type" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="contentType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="manager" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="comments" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pageSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="spaceId" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="containers" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Container" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="bufferPool" type="coll:com.collation.platform.model.topology.app.db.db2.Db2BufferPool" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

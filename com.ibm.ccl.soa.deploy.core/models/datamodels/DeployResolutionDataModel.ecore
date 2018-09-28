@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ResolutionDataModels"
+    nsPrefix="">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.core.validator.resolution.datamodel"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.internal.core.validator.resolution.datamodel"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="ResolutionDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="DataModel sets up core arguments for part of a unit of work initated from a resolution"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="idenitifier"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolution" eType="#//IDeployParameterizedResolution">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="parent resolution adding children datamodels"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueSet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validValueListExclusive"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="type of data"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//Object"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDeployParameterizedResolution" instanceClassName="com.ibm.ccl.soa.deploy.core.validator.resolution.param.IDeployParameterizedResolution"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IDeployResolutionParameterValueDescriptor"
+      instanceClassName="com.ibm.ccl.soa.deploy.core.validator.resolution.param.IDeployResolutionParameterValueDescriptor"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class" instanceClassName="java.lang.Class"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResolutionAttributeDataModel">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="Nested datamodel used to handle attribute operations"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployModelObject" eType="#//DeployModelObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" eType="#//EAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolutionDataModel" eType="#//ResolutionDataModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployModelObject" instanceClassName="com.ibm.ccl.soa.deploy.core.DeployModelObject"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EAttribute" instanceClassName="org.eclipse.emf.ecore.EAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" instanceClassName="java.lang.Object"/>
+</ecore:EPackage>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/ComputerSystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleInstance.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/ConfigFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalContent.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/oracle/OracleListener.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/process/OrganizationalEntity.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.oracle.OracleServer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="host" type="coll:com.collation.platform.model.topology.sys.ComputerSystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="configFile" type="coll:com.collation.platform.model.topology.app.ConfigFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="listeners" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleListener" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="instances" type="coll:com.collation.platform.model.topology.app.db.oracle.OracleInstance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="configContents" type="coll:com.collation.platform.model.topology.core.LogicalContent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="configLastUpdate" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CICategory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastAuditTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastLifecycleStateTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="primaryOwner" type="coll:com.collation.platform.model.topology.process.OrganizationalEntity" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastAuditState" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="assetTag" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="lifecycleState" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="assetID" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

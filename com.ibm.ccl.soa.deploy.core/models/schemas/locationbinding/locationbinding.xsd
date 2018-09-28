@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/location/1.0.0/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:location="http://www.ibm.com/ccl/soa/deploy/location/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="LocationBindingRoot"
+	ecore:name="location"
+	ecore:package="com.ibm.ccl.soa.deploy.location"
+	ecore:nsPrefix="location">
+
+	<!--                  -->
+	<!-- Location Binding -->
+	<!--                  -->
+	<element name="locationBinding" type="location:LocationBinding"/>
+	<complexType name="LocationBinding">
+		<annotation>
+			<documentation>
+			   A container for location binding definitions that are defined outside
+			   of a topology.
+			   Context can be 'absolute' or 'relative'. If the context is set as 'absolute' then the resolution of the
+			  location will return the result as is. If the context is set as 'relative' then the resolution of the location 
+			  will prepend the namespace root.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="location:bindingEntry" minOccurs="0" maxOccurs="unbounded" ecore:name="bindingEntry"/>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="topology" type="string" use="required"/>
+		<attribute name="context" type="string" use="optional"/>
+	</complexType>
+
+  	<!--             		 -->
+  	<!--  Binding Definition -->
+  	<!--             		 -->
+	<element name="bindingEntry" type="location:BindingEntry" />
+	<complexType name="BindingEntry">
+		<annotation>
+			<documentation>
+				The specification of the location for a specific deployModelObject.
+			</documentation>
+		</annotation>
+		<attribute name="dmoPath" type="string" use="required"/>
+		<attribute name="location" type="string" use="required"/>
+	</complexType>
+	
+</schema>

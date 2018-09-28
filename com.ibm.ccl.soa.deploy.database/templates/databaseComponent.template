@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	name="Database Component Template">
+  <database:component.database name="DatabaseComponent" displayName="Database Component" initInstallState="not_installed" publishIntent="publish" conceptual="false">                                    
+  <!-- <database:capability.sqlUser name="SQLUser" linkType="dependency">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </database:capability.sqlUser>
+  -->
+    <core:requirement name="Required Database Hosting" dmoType="database:Database" linkType="hosting"/>                                           
+  </database:component.database>
+</core:topology>

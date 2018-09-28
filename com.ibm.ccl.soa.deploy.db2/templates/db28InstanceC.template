@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" 
+xmlns:db2="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+name="DB2 8 Template">
+  <core:annotation context="topology_root">
+    <core:detail key="root1" value="DB2Instance"/>   
+  </core:annotation>
+  <db2Deploy:unit.db2InstanceUnit name="DB2Instance" conceptual="true">
+    <db2Deploy:capability.db2Instance name="DB2 Instance" displayName="DB2 Instance" linkType="any"> 
+      <core:attributeMetaData attributeName="password" encrypted="true" />
+    </db2Deploy:capability.db2Instance>
+    <os:capability.portConsumer name="Port Consumer" displayName="Port Consumer" linkType="any"/>            
+    <core:requirement mutable="true" name="DB2 User" displayName="DB2 User" dmoType="os:User" linkType="dependency"/>
+    <core:requirement mutable="true" name="DB2 System" displayName="DB2 System" dmoType="db2Deploy:DB2System" linkType="hosting">
+      <constraint:constraint.version name="db2Version" displayName="db2Version" attributeName="db2Version" value="8.x"/>
+    </core:requirement>
+	<core:link.hosting name="DB2InstanceHostsportConfiguration" target="/portConfiguration"/>    
+  </db2Deploy:unit.db2InstanceUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true" conceptual="true">
+    <os:capability.port displayName="instanceConnectionPort" name="instanceConnectionPort" linkType="dependency" transportLayerProtocol="TCP" portName="instanceConnectionPort">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>      	
+    <!-- 
+    <os:capability.port displayName="instanceInterruptPort" name="instanceInterruptPort" linkType="dependency" transportLayerProtocol="TCP" portName="instanceInterruptPort"> 
+      <core:attributeMetaData attributeName="portName" mutable="false"/>      
+    </os:capability.port>     
+    -->
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>  
+</core:topology>

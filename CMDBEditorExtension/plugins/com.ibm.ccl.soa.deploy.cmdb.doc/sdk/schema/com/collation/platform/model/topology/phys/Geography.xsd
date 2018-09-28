@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/phys/PhysicalLocation.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/admin/SiteInfo.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.phys.Geography">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.phys.PhysicalLocation">
+        <xsd:sequence>
+          <xsd:element name="siteGeography" type="coll:com.collation.platform.model.topology.admin.SiteInfo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="regionNumber" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="country" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="regionName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="altitude" type="xsd:float" nillable="true" minOccurs="0"/>
+          <xsd:element name="row" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="YCoordinate" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="XCoordinate" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="rackPosition" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="aisle" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

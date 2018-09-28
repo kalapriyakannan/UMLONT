@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+description="Created Mon 2006.01.30 at 01:11:43 PM EST" displayName="WebSphere5 Server">
+   <core:annotation context="topology_root">
+      <core:detail key="root1" value="WebSphere51Server"/>   
+   </core:annotation>
+  <was:unit.wasAppServer name="WebSphere51Server">
+    <j2ee:capability.j2eeContainer name="J2EE Container" displayName="J2EE Container" linkType="any" containerVersion="1.3"/>
+    <j2ee:capability.servletContainer name="Servlet Container" displayName="Servlet Container" linkType="any" containerVersion="2.3"/>
+    <j2ee:capability.jspContainer name="JSP Container" displayName="JSP Container" linkType="any" containerVersion="1.2"/>
+    <j2ee:capability.ejbContainer name="EJB Container" displayName="EJB Container" linkType="any" containerVersion="2.0"/>
+    <j2ee:capability.jcaContainer name="JCA Container" displayName="JCA Container" linkType="any" containerVersion="1.0"/>
+    <was:capability.wasServer name="WebSphere Server" displayName="WebSphere Server" linkType="any" serverName="server1" wasVersion="5.1">
+          <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasConfigurationContainer name="Provide Configuration Container" displayName="Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer name="Provide shared library Container" displayName="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable name="Substitution Variable" displayName="Substitution variable"  linkType="any"/>
+    <was:capability.wasModuleClassLoaderPolicy name="Module Class Loader Policy" displayName="Module Class Loader Policy"  policy="MULTIPLE" order="PARENT_FIRST" mutable="false" linkType="any">
+    	<core:attributeMetaData attributeName="order" mutable="false"/>
+    	<core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>    
+    <was:capability.wasApplicationClassLoaderPolicy name="Application Class Loader Policy" displayName="Application Class Loader Policy"  policy="MULTIPLE" order="PARENT_FIRST" mutable="false" linkType="any">
+    	<core:attributeMetaData attributeName="order" mutable="false"/>
+    	<core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>    
+    <os:capability.portConsumer name="Port Consumer" displayName="Port Consumer" linkType="any"/>  
+    <java:capability.jre description="" displayName="java JRE" name="java.JRE" jreVersion="1.3" linkType="any"/>    
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    
+    <!--
+    <core:requirement mutable="true" name="Node" displayName="Contained by Node" dmoType="was:WasNodeUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+    -->
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="5.1"/>
+    </core:requirement>    
+
+    <core:requirement mutable="true" name="Cluster" displayName="Member of Cluster" dmoType="was:WasClusterUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="0" maxValue="1"/>
+    </core:requirement>  
+    <!--
+    <core:requirement mutable="true" name="Hosted on a OS" displayName="Hosted on a OS" dmoType="os:OperatingSystem" linkType="hosting"/>    
+    -->
+    <!-- MK 8/8/2006 replaced the following with a single hosting link
+    <core:link.hosting name="host httpport" target="/httpPort"/>
+	<core:link.hosting name="host adminPort" target="/adminPort"/>
+	<core:link.hosting name="host boot_strap_address" target="/boot_strap_address"/>
+	<core:link.hosting name="host soap_connector_address" target="/soap_connector_address"/>		
+	<core:link.hosting name="host sas_ssl_serverAuth_listener_address" target="/sas_ssl_serverAuth_listener_address"/>		
+	<core:link.hosting name="host csiv2_ssl_mutualauth_listener_address" target="/csiv2_ssl_mutualauth_listener_address"/>		
+	<core:link.hosting name="host csiv2_ssl_serverAuth_listener_address" target="/csiv2_ssl_serverAuth_listener_address"/>		
+	<core:link.hosting name="host wc_adminhost" target="/wc_adminhost"/>		
+	<core:link.hosting name="host wc_adminhost_secure" target="/wc_adminhost_secure"/>
+	<core:link.hosting name="host WC_defaulthost" target="/WC_defaulthost"/>
+	<core:link.hosting name="host WC_defaulthost_secure" target="/WC_defaulthost_secure"/>
+	<core:link.hosting name="host sib_endpoint_address" target="/sib_endpoint_address"/>
+	<core:link.hosting name="host sib_endpoint_secure_address" target="/sib_endpoint_secure_address"/>
+	<core:link.hosting name="host sib_mq_endpoint_address" target="/sib_mq_endpoint_address"/>
+	<core:link.hosting name="host sib_mq_endpoint_secure_address" target="/sib_mq_endpoint_secure_address"/>	
+	<core:link.hosting name="host orb_listener_address" target="/orb_listener_address"/>	
+    -->
+	<core:link.hosting name="ports" target="/portConfiguration"/>
+	<core:link.hosting name="ServerClassLoader" target="/ServerClassLoader"/>
+  </was:unit.wasAppServer>
+
+  <!-- Server Class Loader -->
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy" name="ServerClassLoader" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy name="Server Class Loader Policy" displayName="Server Class Loader Policy"  policy="MULTIPLE" order="PARENT_FIRST" mutable="false" linkType="any">
+    	<core:attributeMetaData attributeName="order" mutable="false"/>
+    	<core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>    
+    <core:requirement mutable="false" name="sharedLibrary" displayName="Optional Shared Library" dmoType="was:SharedLibraryEntry" use="optional" linkType="dependency" />
+    <core:requirement mutable="false" name="WebSphereServer" displayName="WebSphere Server" dmoType="was:WasServer" use="required" linkType="hosting" />
+  </was:unit.wasClassLoaderConfigurationUnit>
+  
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true">
+    <!--<os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP"/>-->
+    <os:capability.port displayName="bootstrap_address" name="boot_strap_address" linkType="dependency" port="2809" portName="boot_strap_address" transportLayerProtocol="TCP">
+        <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+
+  <!-- MK 8/8/2006 replaced all of the below PortConfigUnits with the single one above
+  <os:unit.portConfigUnit displayName="httpPort" name="httpPort" configurationUnit="true">
+    <os:capability.port displayName="httpPort" name="httpPort" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="adminPort" name="adminPort" configurationUnit="true">
+    <os:capability.port displayName="adminPort" name="adminPort" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="boot_strap_address" name="boot_strap_address" configurationUnit="true">
+    <os:capability.port displayName="boot_strap_address" name="boot_strap_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="soap_connector_address" name="soap_connector_address" configurationUnit="true">
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" configurationUnit="true">
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" configurationUnit="true">
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" configurationUnit="true">
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="wc_adminhost" name="wc_adminhost" configurationUnit="true">
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="wc_adminhost_secure" name="wc_adminhost_secure" configurationUnit="true">
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="sib_endpoint_address" name="sib_endpoint_address" configurationUnit="true">
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="WC_defaulthost" name="WC_defaulthost" configurationUnit="true">
+    <os:capability.port displayName="WC_defaulthost" name="WC_defaulthost" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="WC_defaulthost_secure" name="WC_defaulthost_secure" configurationUnit="true">
+    <os:capability.port displayName="WC_defaulthost_secure" name="WC_defaulthost_secure" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" configurationUnit="true">
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" configurationUnit="true">
+    <os:capability.port displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" configurationUnit="true">
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+  
+  <os:unit.portConfigUnit displayName="orb_listener_address" name="orb_listener_address" configurationUnit="true">
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" transportLayerProtocol="TCP"/>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+-->
+  
+</core:topology>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.13 2008/05/29 14:43:04 nmakin Exp $
+-->
+
+<plugin>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.ihs.provider.IhsItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.ihs.IhsPackage"
+			genModel="models/ecore/ihs.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="ihs"
+			class="com.ibm.ccl.soa.deploy.ihs.util.IhsResourceFactoryImpl" />
+	</extension>
+
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.ihs.domain"
+			name="%extension.ihsDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.ihs.validator.IhsDomainValidator" />
+			<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.ServerUnitTool.spec.infra"
+	            name="%ihsServerUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsServer.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsServerUnitTool.Desc"
+	            label="%ihsServerUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_server_pal20.gif"
+				smallIcon="icons/pal/ihs_server_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.ServerUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.ServerUnitTool.spec.conceptual"
+	            name="%ihsServerUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsServerC.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsServerUnitTool.Desc"
+	            label="%ihsServerUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_server_pal20.gif"
+				smallIcon="icons/pal/ihs_server_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.ServerUnitTool.spec.conceptual">
+			</resourceTypeUIBinding>
+      		
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.AdminServerUnitTool.spec.infra"
+				name="%ihsAdminServerUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsAdminServer.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsServerUnitTool.Desc"
+	            label="%ihsAdminServerUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_admin_server_pal20.gif"
+				smallIcon="icons/pal/ihs_admin_server_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.AdminServerUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.AdminServerUnitTool.spec.conceptual"
+				name="%ihsAdminServerUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsAdminServerC.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsServerUnitTool.Desc"
+	            label="%ihsAdminServerUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_admin_server_pal20.gif"
+				smallIcon="icons/pal/ihs_admin_server_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.AdminServerUnitTool.spec.conceptual">
+			</resourceTypeUIBinding>
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.SystemUnitTool.spec.infra"
+				name="%ihsSystemUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsSystem.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsSystemUnitTool.Desc"
+	            label="%ihsSystemUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_server_sys_pal20.gif"
+				smallIcon="icons/pal/ihs_server_sys_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.SystemUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.SystemUnitTool.spec.conceptual"
+				name="%ihsSystemUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsSystemC.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsSystemUnitTool.Desc"
+	            label="%ihsSystemUnitTool.Label"
+				path="/serverSoftwareDrawer/ihsStack"
+				largeIcon="icons/pal/ihs_server_sys_pal20.gif"
+				smallIcon="icons/pal/ihs_server_sys_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.SystemUnitTool.spec.conceptual">
+			</resourceTypeUIBinding>
+      		
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.WasModUnitTool.spec.infra"
+				name="%ihsWasModuleUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsWasModule.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsWasModuleUnitTool.Description"
+	            label="%ihsWasModuleUnitTool.Label"
+				path="/configurationDrawer/ihsConfigurationStack"
+				largeIcon="icons/pal/ihs_was_module_pal20.gif"
+				smallIcon="icons/pal/ihs_was_module_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.WasModUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+			
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.WasAdminModuleUnitTool.spec.infra"
+				name="%ihsWasAdminModuleUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsWasAdminModule.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsWasAdminModuleUnitTool.Description"
+	            label="%ihsWasAdminModuleUnitTool.Label"
+				path="/configurationDrawer/ihsConfigurationStack"
+				largeIcon="icons/pal/ihs_was_admin_mod_pal20.gif"
+				smallIcon="icons/pal/ihs_was_admin_mod_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.WasAdminModuleUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+
+      		<resourceType
+	        	id="com.ibm.ccl.soa.deploy.ihs.UserUnitTool.spec.infra"
+				name="%ihsUserUnitTool.Label"
+             	templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/templates/ihsUser.template">
+      		</resourceType>
+      		<resourceTypeUIBinding
+	            description="%ihsUserUnitTool.Description"
+	            label="%ihsUserUnitTool.Label"
+				path="/configurationDrawer/ihsConfigurationStack"
+				largeIcon="icons/pal/ihs_user_pal20.gif"
+				smallIcon="icons/pal/ihs_user_pal16.gif"
+             	resourceTypeId="com.ibm.ccl.soa.deploy.ihs.UserUnitTool.spec.infra">
+			</resourceTypeUIBinding>
+		</domain>
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitFilter
+			class="com.ibm.ccl.soa.deploy.ihs.internal.filter.IhsWasAdminModuleUnitFilter"
+			description="%IhsWasAdminModuleUnitFilter.description"
+			name="%IhsWasAdminModuleUnitFilter.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.ihs.IhsWasAdminModuleUnit" />
+			</inputEnablement>
+		</unitFilter>
+
+	</extension>
+ <extension
+       point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+    <adapterFactory
+          className="com.ibm.ccl.soa.deploy.ihs.provider.IhsItemProviderAdapterFactory"
+          functionGroupID="com.ibm.ccl.soa.deploy.ihs"
+          id="com.ibm.ccl.soa.deploy.ihs.provider.IhsItemProviderAdapterFactory"
+          packageURI="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/">
+    </adapterFactory>
+ </extension>
+
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.ihs">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.ihs/models/schemas/ihsDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>	
+</plugin>
+

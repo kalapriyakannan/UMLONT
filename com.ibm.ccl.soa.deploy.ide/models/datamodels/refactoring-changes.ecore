@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SOADeployIdeRefactoringChangesDataModels"
+    nsURI="http://www.ibm.com/soa/deploy/ide/refactoring/changes/1.0">
+  <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+    <details key="apiPackage" value="com.ibm.ccl.soa.deploy.ide.refactoring.change"/>
+    <details key="internalPackage" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="RefactoringChangeDescriptor" instanceClassName="org.eclipse.ltk.core.refactoring.RefactoringChangeDescriptor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RefactoringDataModelChange" abstract="true"
+      eSuperTypes="refactoring.ecore#//Change">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="Base type for all {@code Change}s contributed by the soa deploy ide plugin."/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.infrastructure.operations.AbstractEMFScribblerOperation"/>
+    </eAnnotations>
+    <eOperations name="initializeValidationData">
+      <eParameters name="monitor" eType="ecore:EClass refactoring.ecore#//IProgressMonitor"/>
+    </eOperations>
+    <eOperations name="isValid" eType="ecore:EClass refactoring.ecore#//RefactoringStatus"
+        eExceptions="ecore:EClass refactoring.ecore#//CoreException ecore:EClass refactoring.ecore#//OperationCanceledException">
+      <eParameters name="monitor" eType="ecore:EClass refactoring.ecore#//IProgressMonitor"/>
+    </eOperations>
+    <eOperations name="perform" eType="ecore:EClass refactoring.ecore#//Change" eExceptions="ecore:EClass refactoring.ecore#//CoreException">
+      <eParameters name="monitor" eType="ecore:EClass refactoring.ecore#//IProgressMonitor"/>
+    </eOperations>
+    <eOperations name="getModifiedElement"/>
+    <eOperations name="getAffectedObjects"/>
+    <eOperations name="getAdapter">
+      <eParameters name="adapter">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="createConfiguredOperation" eType="ecore:EClass refactoring.ecore#//IUndoableOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="Deploy Change">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="The name of the change"/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scribblerDefinition" eType="ecore:EClass ../../../com.ibm.ccl.soa.infrastructure.emf/models/operations.ecore#//ScribblerDefinitionDatamodel">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="Used by {@code RefactoringDataModelChange} classes that need to modify&#xD;&#xA;EMF models."/>
+        <details key="required" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateDiagramChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value="A {@code Change} object that can be used in the ltk refactoring toolkit&#xD;&#xA;that will create a new {@code Diagram} {@code Resource} representing&#xD;&#xA;the given {@code model}."/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagram" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="{@code IPath} representing the name and location where the new&#xD;&#xA;{@code Diagram} {@code Resource} will be created."/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value="{@code IPath} representing the location of the existing {@code Topology}&#xD;&#xA;model {@code Resource} that the new {@code Diagram} will represent."/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateImportChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imports" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imported" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteViewChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="view" eType="ecore:EDataType refactoring.ecore#//URI">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveDMOChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType refactoring.ecore#//URI">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType refactoring.ecore#//URI">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveUnitChange" eSuperTypes="#//MoveDMOChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.MoveDMOChangeOperation"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveLinkChange" eSuperTypes="#//MoveDMOChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.MoveDMOChangeOperation"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RenameResourceChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveResourceChange" eSuperTypes="#//RenameResourceChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RenameResourceChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RenameTopologyChange" eSuperTypes="#//RenameResourceChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateDiagramElementsChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagram" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateDiagramImportsChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagram" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateLinkChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" eType="ecore:EDataType refactoring.ecore#//URI">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateTopologyImportsChange" eSuperTypes="#//RefactoringDataModelChange">
+    <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+      <details key="documentation" value=""/>
+      <details key="operationBaseType" value="com.ibm.ccl.soa.deploy.ide.internal.refactoring.change.RefactoringDataModelChangeOperation"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType refactoring.ecore#//IPath">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/webtools/datamodels">
+        <details key="documentation" value=""/>
+        <details key="required" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

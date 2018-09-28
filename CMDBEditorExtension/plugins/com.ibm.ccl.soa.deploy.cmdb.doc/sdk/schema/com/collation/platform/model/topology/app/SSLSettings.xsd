@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/CertificateFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../com/collation/platform/model/topology/app/PrivateKeyFile.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.SSLSettings">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="sslEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="sslPort" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="privateKeyFile" type="coll:com.collation.platform.model.topology.app.PrivateKeyFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="certificateFile" type="coll:com.collation.platform.model.topology.app.CertificateFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="caCertificateFile" type="coll:com.collation.platform.model.topology.app.CertificateFile" nillable="true" minOccurs="0"/>
+          <xsd:element name="acceptCaCertificateFiles" type="coll:com.collation.platform.model.topology.app.CertificateFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="revokeCaCertificateFiles" type="coll:com.collation.platform.model.topology.app.CertificateFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="cipherSuite" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sessionCacheTimeout" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

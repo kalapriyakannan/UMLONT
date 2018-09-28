@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="package_files/filelist.xml">
+<link rel=Edit-Time-Data href="package_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Zephyr &quot;Saveables&quot; Package API Documentation</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Tim Pouyer</o:Author>
+  <o:LastAuthor>Tim Pouyer</o:LastAuthor>
+  <o:Revision>0</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2006-10-26T15:29:00Z</o:Created>
+  <o:LastSaved>2006-10-30T22:13:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>232</o:Words>
+  <o:Characters>1323</o:Characters>
+  <o:Company>IBM</o:Company>
+  <o:Lines>11</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1552</o:CharactersWithSpaces>
+  <o:Version>10.6735</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all
+href="http://dev.eclipse.org/default_style.css">
+<link rel=Stylesheet type="text/css" media=all href="styles/stp-core.css">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-believe-normal-left:yes;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:28.0pt;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	mso-fareast-font-family:"Times New Roman";}
+p.indextop, li.indextop, div.indextop
+	{mso-style-name:indextop;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.indexsub, li.indexsub, div.indexsub
+	{mso-style-name:indexsub;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><![if mso 9]>
+<style>
+p.MsoNormal
+	{margin-left:8.5pt;}
+</style>
+<![endif]>
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:.5in;margin-left:
+8.5pt;margin-top:14.2pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal><a name=top><span style='font-size:10.0pt;font-family:Arial'><!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+The Zephyr saveables framework allows for the management of Zephyr artifacts from multiple views within a workspace. <o:p></o:p></span></a></p>
+
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+
+<h1 align=center style='text-align:center'><span style='mso-bookmark:top'>Zephyr
+ &#8220;Saveables&#8221; Package API Documentation</span></h1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><span style='mso-bookmark:top'><b><span style='font-size:
+  10.0pt;font-family:Arial;color:white'>Abstract [</span></b></span><a
+  href="overview-summary.html"><span style='mso-bookmark:top'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:lightblue'>Index</span></b></span><span
+  style='mso-bookmark:top'></span></a><span style='mso-bookmark:top'><b><span
+  style='font-size:10.0pt;font-family:Arial;color:white'>]</span></b></span><span
+  style='mso-bookmark:top'><b><span style='font-size:10.0pt;font-family:Arial'>
+  <o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:top'></span>
+ </tr>
+</table>
+
+<span style='mso-bookmark:top'></span>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The Zephyr saveables framework allows for the management of Zephyr artifacts from multiple views within a workspace.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>Zephyr Saveables Classes [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:no'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The Saveables framework provides the ability to manage resources that can be modified by the
+  user from multiple parts within the workbench.  The basic idea is to coordinate the views of 
+  resources contributed by plugins between many different parts such that the user will always see
+  the same state of those resources no matter which part he/she is currently viewing.  The obvious
+  key to implementing this framework is the ability to share resource state information between
+  the different participating parts.  The class diagram to below describes the Zephyr implementation
+  of the saveables framework.</p>
+  </td>
+  </tr>
+  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:no'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><img
+  border=0 id="_x0000_i1025" src=TopologySaveablesModel.gif><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:no'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>The coordination of the Zephyr artifact states is handled by a singleton class called TopologyArtifactsMonitor.
+  The TopologyArtifactsMonitor is first instantiated within the startup() method of the DeployCoreUIPlugin class.  The
+  TopologyArtifactsMonitor attempts to normalize events eminating from multiple sources within the workbench and 
+  republish those events in a normalized way to it's listeners ( implementers of the ArtifactListener interface ). 
+  The TopologyArtifactsMonitor listens for Part changes, more specificaly to DeployCoreEditor part changes, Resource
+  changes, more specifically 'PRE_CLOSE' events from Projects resources, and EditModel events, more specifically edit
+  model events that affect Zephyr artifacts such as Zephyr model files ( *.topology ) and Zephyr diagram files ( *.topologyv ).
+  </p>
+  <p>There are two parts that the Zephyr saveables framework attempts to coordinate.  The DeployCoreEditor ( the default
+  editor for Zephyr models and diagrams ) and the Project Expolorer ( Zephyr contributes a custom content provider for
+  Zephyr models and diagrams ).  The Saveables framework obtains and compares the set of Saveables provided by the
+  different parts in the workbench and checks them for their equality using the Saveable's equals() and hashCode() methods.
+  The main point to take out of this is that it is the plugin provider's responsiblity to provide an implementation of
+  the Saveable class for their respective artifacts and to ensure that if the getName() and getToolTipText() methods on two
+  saveable instances match that their equals() and hashCode() methods also match.  The Zephyr implementation provides a
+  TopologySaveable class that implements the Saveable class from the saveables framework.
+  </p>
+  <p>There are only two ways in which a TopologySaveable will be instantiated.  The Saveables framework provides an Interface to be implemented by editor parts
+  to provide the set of saveables that it manages.  That interface is called ISaveableSource.  The Zephyr DeployCoreEditor
+  implements that interface and provides TopologySaveables for the set of saveables.  The saveables framework also provides
+  and abstract class to be implemented by common navigator content providers to provide the framework it's set of saveables
+  that are managed by the content provider.  That class is called the SaveablesProvider.  The Zephyr content provider
+  ( DeployCoreEMFProvider ) extends the class TopologySaveablesProvider which extends the Saveable framework class 
+  SaveablesProvider.  The TopologySaveablesProvider returns TopologySaveables for it's set of saveables.  These two Zephyr
+  classes ( TopologySaveablesProvider and DeployCoreEditor ) are the only Zephyr classes that instantiate new instances
+  of the TopologySaveable class.  The coordination of when these two classes create new instances of TopologySaveables is
+  handled by the TopolgoyArtifactsMonitor.  The loading of a Zephyr model and/or diagram in the DeployCoreEditor will cause
+  and EditModel event to be fired which is caught by the TopologyArtifactsMonitor, normalized, and rebroadcasted to it's 
+  set of ArtifactListeners ( or the TopologySaveablesProvider ).  The TopologySaveablesProvider, when notified of a Zephyr 
+  resource load event will attempt to locate a previously created TopologySaveable that represents that resource.  If a
+  previously create TopologySaveable can not be found a new one will be created and stored internaly within the TopologySaveablesProvider
+  class to be returned when the Saveables framework calls the getSaveables() method on the content provider.  The sequence
+  diagram below shows this sequence of events.
+  </p>
+  </td>
+  </tr>
+  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:no'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><img
+  border=0 id="_x0000_i1025" src=TopologyModelResourceLoadedSeqDiagram.gif><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This same sequence is essentially followed when a resource unloaded, resource closed, or resource changed event occurs.  The 
+  TopologySaveablesProvider will use these event notifications to not only manage the set of TopologySaveables it stores
+  but it will also force the refresh of the common navigator nodes it is responsible for managing when these events cause
+  changes, this allows for the update of the label provider on Zephyr model and diagram nodes in the ProjectExplorer when
+  that artifact has gone dirty, has been opened, or has been closed.
+  </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=500 style='width:375.0pt;
+ mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>This documentation is maintained by <b>Tim Pouyer</b> <i>(tpouyer{at}us.ibm.com)</i>.
+  </p>
+  <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial;display:
+none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+  <td style='background:#0080C0;padding:2.0pt 2.0pt 2.0pt 2.0pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;font-family:Arial;
+  color:white'>[<a href="overview-summary.html"><span style='color:lightblue'>Index</span></a>]
+  [<a href="#top"><span style='color:lightblue'>Top</span></a>]</span></b><b><span
+  style='font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:analysis="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/" xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" ecore:documentRoot="AnalysisDeployRoot" ecore:name="analysisDeploy" ecore:nsPrefix="analysisDeploy" ecore:package="com.ibm.ccl.soa.deploy.analysis" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ccl/soa/deploy/analysis/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+
+	<!-- Types Defintion -->
+	
+	<!--  Location -->
+	<element name="unit.location" substitutionGroup="base:unit" type="analysis:LocationUnit"/>
+	<complexType name="LocationUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<!--  Node Unit-->
+	<element name="unit.node" substitutionGroup="base:unit.ConceptualNode" type="analysis:NodeUnit"/>
+	<complexType name="NodeUnit">
+		<complexContent>
+			<extension base="base:ConceptualNode"/>
+		</complexContent>
+	</complexType>
+	
+	<!--  Deployment Unit -->
+	<element name="unit.deploymentUnit" substitutionGroup="base:unit" type="analysis:DeploymentUnit"/>
+	<complexType name="DeploymentUnit">
+		<complexContent>
+			<extension base="base:Unit">			
+					
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--  Deployment Unit Facet -->
+	<simpleType name="DeploymentUnitFacet">		
+		<annotation>
+			<documentation>
+				This represents the different facet of the deployment unit like Presentation, Execution and Data.
+			</documentation>
+		</annotation>   
+		<restriction base="string">
+			<enumeration value="undefined"/>
+			<enumeration value="presentation"/>
+			<enumeration value="execution"/>
+			<enumeration value="data"/>
+		</restriction>
+	</simpleType>
+	
+	<element name="capability.node" substitutionGroup="base:capability" type="analysis:Node"/>
+	<complexType name="Node">
+		<annotation>
+			<documentation>
+				The capability of the node.
+			</documentation>
+		</annotation>  
+		<complexContent>
+			<extension base="base:Capability">
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<element name="capability.deployment" substitutionGroup="base:capability" type="analysis:Deployment"/>
+	<complexType name="Deployment">
+		<annotation>
+			<documentation>
+				The capability of the deployment unit.
+			</documentation>
+		</annotation>  
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute default="undefined" name="facet" type="analysis:DeploymentUnitFacet"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="constraint.analysisConstraint" substitutionGroup="base:constraint" type="analysis:AnalysisConstraint"/>
+    <complexType name="AnalysisConstraint">
+        <annotation>
+        	<documentation>
+        		Super type for all Analysis specific analysis domain constraints.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="base:Constraint"/>
+    	</complexContent>
+    </complexType>
+    
+	<element name="analysisConstraint.availability" substitutionGroup="base:constraint" type="analysis:AvailabilityConstraint"/>
+    <complexType name="AvailabilityConstraint">
+        <annotation>
+        	<documentation>
+        		Unit availability constraint. As an example, the percentage amount of time per year that the data or service must be available (e.g. 99.999)
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="percentage" type="double" default="99.9999"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    
+    <element name="analysisConstraint.expectedLifespan" substitutionGroup="base:constraint" type="analysis:ExpectedLifespanConstraint"/>
+    <complexType name="ExpectedLifespanConstraint">
+        <annotation>
+        	<documentation>
+        		Unit expected lifespan constraint. As an example, a length of time that the data type must be persisted in an active, accessible state.  (e.g. 99.999)
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="state" type="analysis:LifespanState"/>
+    			<attribute name="duration" type="double" default="99.9999"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.expectedVolume" substitutionGroup="base:constraint" type="analysis:ExpectedVolumeConstraint"/>
+    <complexType name="ExpectedVolumeConstraint">
+        <annotation>
+        	<documentation>
+        		Unit expected volume constraint. As an example, the number of expected instances of this data type in a repository. 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="initialSize" type="integer" default="10"/>
+    			<attribute name="growthRatePercentage" type="double" default="10"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.sizePerSubmission" substitutionGroup="base:constraint" type="analysis:SizePerSubmissionConstraint"/>
+    <complexType name="SizePerSubmissionConstraint">
+        <annotation>
+        	<documentation>
+        		Size per Submission (bytes): The expected size of any submitted piece of information. 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="bytes" type="integer" default="100"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.responseTime" substitutionGroup="base:constraint" type="analysis:ResponseTimeConstraint"/>
+    <complexType name="ResponseTimeConstraint">
+        <annotation>
+        	<documentation>
+        		The maximum expected response time for 95% of all invocations of the service - % and time.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="percentage" type="double" default="95"/>
+    			<attribute name="duration" type="double" default="1"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    
+    <element name="analysisConstraint.peakLoad" substitutionGroup="base:constraint" type="analysis:PeakLoadConstraint"/>
+    <complexType name="PeakLoadConstraint">
+        <annotation>
+        	<documentation>
+        		Peak Load (integer): The maximum number of invocations expected per day (e.g. 10000).
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="peakLoad" type="integer" default="10000"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.dailyLoad" substitutionGroup="base:constraint" type="analysis:DailyLoadConstraint"/>
+    <complexType name="DailyLoadConstraint">
+        <annotation>
+        	<documentation>
+        		Daily Load (integer): The average number of invocations expected per day (e.g. 1000). 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="dailyLoad" type="integer" default="1000"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.usageWindowPerDay" substitutionGroup="base:constraint" type="analysis:UsageWindowPerDayConstraint"/>
+    <complexType name="UsageWindowPerDayConstraint">
+        <annotation>
+        	<documentation>
+        		Usage Window Per Day (number of hours): The length of time that the service should be anticipated for use per day. 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="duration" type="double" default="24"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="analysisConstraint.executionService" substitutionGroup="base:constraint" type="analysis:ExecutionServiceConstraint"/>
+    <complexType name="ExecutionServiceConstraint">
+        <annotation>
+        	<documentation>
+        		Execution Service (Enumeration. "Online Interactive, Offline Service, Real-time Service"). 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="type" type="analysis:ExecutionServiceType"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+     <element name="analysisConstraint.dataService" substitutionGroup="base:constraint" type="analysis:DataServiceConstraint"/>
+    <complexType name="DataServiceConstraint">
+        <annotation>
+        	<documentation>
+        		Data Service (Enumeration. Online Interactive, Offline Service, Archive, Replicated). 
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="analysis:AnalysisConstraint">
+    			<attribute name="type" type="analysis:DataServiceType"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <simpleType name="DataServiceType">		
+    	<annotation>
+			<documentation>
+				The types of data service.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="online interactive"/>
+		<enumeration value="offline"/>
+		<enumeration value="archive"/>
+		<enumeration value="replicated"/>
+	  </restriction>
+    </simpleType>
+    
+    <simpleType name="ExecutionServiceType">		
+    	<annotation>
+			<documentation>
+				The types of execution service.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="online interactive"/>
+		<enumeration value="offline"/>
+		<enumeration value="real time"/>
+	  </restriction>
+    </simpleType>
+    
+   <simpleType name="LifespanState">		
+    	<annotation>
+			<documentation>
+				The state of the lifespan of service.
+			</documentation>
+		</annotation>
+      <restriction base="string">
+		<enumeration value="active"/>
+        <enumeration value="accessible"/>
+	  </restriction>
+    </simpleType>
+    
+</schema>

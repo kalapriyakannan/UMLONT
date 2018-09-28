@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Title of API Package (&quot;SOA Deploy Database Component Support&quot;)</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+<P>This design captures the database component creation with services from pallete 
+  or from the existing schema or a table.</P>
+<a name="top"
+	href='&lt;A name="top"&gt;https://cs.opensource.ibm.com/scm/viewvc.php/*checkout*/development/designs/11501_package.html?root=soa-deploy-tool'></a>
+<h1 ALIGN="CENTER">SOA Deploy Database Component Support</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table>
+  <tr> 
+    <td width="687"> 
+      <p>This design captures the database component creation with services from 
+        pallete or from the existing schema or a table.</p>
+      <p>The scenaio's addressed as part of this item are as follows:</p>
+      <p><b>Scenario 1</b></p>
+      <p>Drag and drop a database schema definition from the Resource Explorer 
+        on to the <br>
+        conceptual data node in the business application topology.</p>
+      <p><img src="Figure107.jpg" width="180" height="128"> </p>
+      <ol>
+        <ol>
+          <li>A data component is created. </li>
+          <li>A Service is created on the component and set service interface 
+            type as 'ddlInterface' . The ddlInterface definition is derived from 
+            the database schema definition.</li>
+          <li>A file artifact URI is added for the ddl definition.</li>
+          <li>A host link is created between the database component and the data 
+            node.</li>
+          <li>The component is marked conceptual</li>
+        </ol>
+      </ol>
+      <p><b>Scenario 2</b></p>
+      <p>Drag a database component from pallette onto application topology canvas.</p>
+      <ol>
+        <li>A data component is created. </li>
+        <li>Add a service on to the database component and set the interface definition 
+          as DDL.</li>
+        <li>Provide the interface definition either through a text editor or RDA 
+          tools editor</li>
+        <li>Host the database component on a conceptual node.</li>
+      </ol>
+      <ol>
+      </ol>
+      <p><b>Scenario3</b></p>
+      <p>Drag a ddl file from pallette onto application topology canvas.</p>
+      <ol>
+        <li>A data component is created with conceptual as false.</li>
+        <li>A Service is created on the component and set service interface type 
+          as 'ddlInterface' . The ddlInterface definition is set as the DDL being 
+          dropped.</li>
+        <li>A file artifact URI is added for the ddl file thatis dropped.</li>
+        <li>Provide the interface definition either through a text editor or RDA 
+          tools editor</li>
+        <li>Host the database component on a conceptual node or a database.</li>
+      </ol>
+      <p>&nbsp;</p>
+      <p> The following requirements of scenario's are addressed by the means 
+        of this design:</p>
+      <ul>
+        <li>DDL Interface Support.</li>
+        <li>Conceptual Database Unit Provider</li>
+        <li>Database Schema Unit Provider</li>
+        <li>Database Component Template</li>
+      </ul>
+      <p><b>Note</b> that the database connection drop onto the topology will 
+        create a Conceptual Database Unit in a Business Application Topology Decorator 
+        Semantic.<BR>
+        <BR>
+      </p>
+      <B>Bugzilla item</B> for this review: <a href="https://cs.opensource.ibm.com/bugzilla/show_bug.cgi?id=11519">11519</a><BR>
+    </td>
+  </tr>
+  <tr>
+    <td width="687">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p><table width="100%">
+  <tr> 
+    <th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Core Model Changes[<a style="color: lightblue;"
+			href="#top">Top</a>]</font> 
+</table>
+<p><b>DDL Interface</b></p>
+<p>In order to support a <b>DDL interface</b> definition a new type is needed. 
+  The possible choices for this are :</p>
+<ul>
+  <li><b>Database plug-in <font color="#FF0000">(Choosen)</font></b> 
+    <ul>
+      <li>If we put this here then we will be making database domain dependent 
+        on business, and that may not be a good idea if we want to have a infrastructure 
+        tooling. As per our converations, we are ok with having a business domain 
+        dependency for the infrastructure tooling extensions like DP. </li>
+    </ul>
+  </li>
+  <li><i>Business plug-in (There is no such plug-in now and contents are burried 
+    with core) </i>
+    <ul>
+      <li><i>This will most likely be the place of choice for now to keep number 
+        of plug-ins down. If we decide for all such business components to be 
+        part of their specialized plug-in, then database will have it;s home in 
+        business.database. The code will be categorized into it;s own database 
+        package. </i></li>
+    </ul>
+  </li>
+  <li><i>Business.database plug-in. </i>
+    <ul>
+      <li><i>This will be the ideal case, but will explode the number of plug-ins 
+        and hence the performance.</i></li>
+    </ul>
+  </li>
+</ul>
+<p>The DDLInterface definition can be one of following: </p>
+<ul>
+  <li>Define the ddlInterface content to simply refer to a DDL definition URI. 
+    We will point to the URI for the DDL.<b><font color="#FF0000">(Choosen)</font></b>. 
+    <i> The DDL at this level needs to be abtract, just define the basic schema 
+    that is important for components and not yet tied to the technology.</i></li>
+</ul>
+<p>&nbsp;</p>
+<table width="75%" border="1">
+  <tr> 
+    <td bordercolor="#FFFFFF" bgcolor="#FFFFCC"><b>&lt;!-- DDL Interface Defintion 
+      --&gt;<br>
+      &lt;element name=&quot;interface.ddl&quot; substitutionGroup=&quot;business:interface&quot; 
+      type=&quot;database:DDLInterface&quot;/&gt;<br>
+      &lt;complexType name=&quot;DDLInterface&quot;&gt;<br>
+      &lt;complexContent&gt;<br>
+      &lt;extension base=&quot;business:Interface&quot;&gt;<br>
+      &lt;attribute name=&quot;schemaUri&quot; type=&quot;anyURI&quot; use=&quot;required&quot; 
+      /&gt;<br>
+      &lt;/extension&gt;<br>
+      &lt;/complexContent&gt;<br>
+      &lt;/complexType&gt;</b></td>
+  </tr>
+</table>
+<p><i><br>
+  </i></p>
+<table width="75%" border="1">
+  <tr>
+    <td><i><font color="#FF0000">Ruled Out</font>:</i><i>Define the table definition 
+      as the allowable types on this interface. This can be complex, but powerful.<br>
+      &lt;business:ddlInterface&gt;<br>
+      &lt;business:table displayName=&quot;&quot; name=&quot;&quot;/&gt; ......provide 
+      table definition etc in an abstract form.<br>
+      &lt;business:table displayName=&quot;&quot; name=&quot;&quot;/&gt;<br>
+      &lt;business:table displayName=&quot;&quot; name=&quot;&quot;/&gt;<br>
+      &lt;/business:ddlInterface&gt;</i><i></i></td>
+  </tr>
+</table>
+<p><i> </i></p>
+<p><b>Note</b> that the DDL definition will just have the create table defintions 
+  in M3, that will be extracted using the RDA tools.<br>
+</p>
+<p><b>Database Definition Service</b></p>
+<p>A service needs to be specialized for database component that will provide 
+  for the DDL Interface.</p>
+<p>&nbsp; </p>
+<table width="49%" border="1">
+  <tr> 
+    <td bgcolor="#FFFFCC"><b>&lt;!-- Database Definition Service --&gt;<br>
+      &lt;element name=&quot;service.databaseDefinition&quot; substitutionGroup=&quot;business:service&quot; 
+      type=&quot;database:DatabaseDefinition&quot; /&gt;<br>
+      &lt;complexType name=&quot;DatabaseDefinition&quot;&gt;<br>
+      &lt;complexContent&gt;<br>
+      &lt;extension base=&quot;business:Service&quot;/&gt;<br>
+      &lt;/complexContent&gt;<br>
+      &lt;/complexType&gt;</b></td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<p><b>Database Component</b></p>
+<p>We also need a <b>database component</b> definition. This again can be added 
+  in 3 of the above places and for the same above reasons we will define this 
+  in the <b>database plug-in</b>. </p>
+<p>&nbsp; </p>
+<table width="48%" border="1">
+  <tr> 
+    <td bgcolor="#FFFFCC"><b>&lt;!-- Database Component Defintion --&gt;<br>
+      &lt;element name=&quot;component.database&quot; substitutionGroup=&quot;business:component&quot; 
+      type=&quot;database:DatabaseComponent&quot;/&gt;<br>
+      &lt;complexType name=&quot;DatabaseComponent&quot;&gt;<br>
+      &lt;complexContent&gt;<br>
+      &lt;extension base=&quot;business:SoftwareComponent&quot;/&gt;<br>
+      &lt;/complexContent&gt;<br>
+      &lt;/complexType&gt;</b></td>
+  </tr>
+</table>
+<p><br>
+</p>
+<table width="100%">
+  <tr> 
+    <th bgcolor="#0080c0" align="left" style="padding: 2px;"><font color="#ffffff">Template</font><font
+			color="#ffffff"> Changes[<a style="color: lightblue;"
+			href="#top">Top</a>]</font> 
+  
+</table>
+<p>A databaseComponent template needs to be added. This template can be defined 
+  in any of the following plug-ins:</p>
+<ul>
+  <li> <b>Database plug-in <font color="#FF0000">(Choosen)</font></b> 
+    <ul>
+      <li>If we put this here then we will be making database domain dependent 
+        on business, and that may not be a good idea if we want to have a infrastructure 
+        tooling. As per our converations, we are ok with having a business domain 
+        dependency for the infrstructure tooling extensions like DP. </li>
+    </ul>
+  </li>
+  <li><i>Business plug-in </i>
+    <ul>
+      <li><i>If we are keeping all the module templates here, then we will keep 
+        this one too.</i></li>
+    </ul>
+  </li>
+  <li><i>Business.database plug-in. </i>
+    <ul>
+      <li><i>This will be the ideal case, but will explode the number of plug-ins 
+        and hence the performance.</i></li>
+    </ul>
+  </li>
+  <ul>
+    <li> 
+      <table width="44%" border="1">
+        <tr> 
+          <td bgcolor="#FFFFCC" height="255"> 
+            <p><b> &lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;<br>
+              &lt;core:topology <br>
+              xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>
+              xmlns:database=&quot;http://www.ibm.com/ccl/soa/deploy/database/1.0.0/&quot; 
+              <br>
+              xmlns:core=&quot;http://www.ibm.com/ccl/soa/deploy/core/1.0.0/&quot; 
+              <br>
+              name=&quot;Database Component Template&quot;&gt;<br>
+              &lt;database:component.database name=&quot;DatabaseComponent&quot; 
+              displayName=&quot;Database Component&quot; initInstallState=&quot;not_installed&quot; 
+              publishIntent=&quot;publish&quot; conceptual=&quot;false&quot;&gt; 
+              <br>
+              <br>
+              &lt;/database:component.database&gt;<br>
+              &lt;/core:topology&gt;<br>
+              </b></p>
+            </td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</ul>
+<blockquote> 
+  <p>&nbsp;</p>
+</blockquote>
+<table width="100%">
+  <tr> 
+    <th bgcolor="#0080c0" align="left" style="padding: 2px;"><font color="#ffffff">Additional</font><font color="#ffffff"> 
+      Changes[<a style="color: lightblue;"
+			href="#top">Top</a>]</font> 
+  
+</table>
+<p><b>Database Definition Provider</b></p>
+<p>Provider to support the drag and drop of the database definition onto the conceptual 
+  node to create a database component that provides a service with a DDL interface 
+  for the database definition. Additional code needs to be executed post provider 
+  that will create the host link between the data component and the conceptual 
+  node.</p>
+<p>On drop from the resource explorer,we will create the component as conceptual=false. 
+  This will signify that the implementation is already associated with the component. 
+  We can also capture, the additional connection information as an annotation 
+  on the component, but it will then make it a 'connection specific' topology. 
+  We will need to be smart to ignore such information or re-point to correct connection 
+  meta-data. If we use the drop from the pallette, then conceptual=true. The component 
+  will require to be implemented as a database module or point to the Database 
+  creation scripts, if needs deployment.</p>
+<p> Rules:</p>
+<ul>
+  <li>If we drag a connection on the canvas, we create a conceptual node in BatDS 
+    (Business Application Topology Decorator Semantic) </li>
+  <li>If we drag a database schema definition, then we create a database component 
+    with a datadefinition service with a DDLInterface providing all Tables definition. 
+  </li>
+  <li>If we drag a Table definition, we create a database component with a datadefinition 
+    service with a DDLInterface providing Table definition.</li>
+  <li>If we have a conceptual node of the diagram and drop a database definition 
+    on this node, then we create a database component and create a hosting link 
+    between the two. <font color="#FF0000">Optional for M3<b> -</b></font> <font color="#FF0000"> 
+    Available in M3</font></li>
+  <li>Drag and drop of table onto a Dbcomponent - <font color="#FF0000"><b>Optional 
+    for M3</b></font> -<font color="#FF0000"> Available in M3</font>. 
+    <ul>
+      <li>Adds new data definition service with the interface that contains just 
+        the table definition.</li>
+    </ul>
+  </li>
+  <li>Drag and drop of a ddl file on the canvas in Bat Ds will create a Database 
+    Component, adds a new data definition service with a ddl interface definition.<b><font color="#FF0000"> 
+    </font></b><font color="#FF0000"><b>Optional for M3 -</b></font> <font color="#FF0000"> 
+    Available in M3</font></li>
+  <li>Drag and drop of schema onto a DbComponent 
+    <ul>
+      <li>If the data definition service exits, adds a new data definition service 
+        with a ddl interface definition.<b><font color="#FF0000"> </font></b><font color="#FF0000"><b></b></font></li>
+      <li>If the data definition service does not exits, adds a new data definition 
+        service with a ddl interface definition.<b><font color="#FF0000"> </font></b><font color="#FF0000"><b>Optional 
+        for M3 -</b></font> <font color="#FF0000"> Available in M3</font><br>
+      </li>
+      <li><b>Schema Drag and Drop</b></li>
+      <li><img src="Figure-167.jpg" width="1595" height="1172"></li>
+      <li><b>Table Drag and Drop</b><br>
+      </li>
+      <li><img src="Figure-168.jpg" width="1590" height="938"><br>
+      </li>
+    </ul>
+  </li>
+</ul>
+<p><b>Extraction of DDL from the Database Definition</b></p>
+<p>We tie into the RDA tools, such as to extract the DDL definition from the database 
+  definition. This is used to define the DDL interface definition. The DDL interface 
+  definition is stored in the namespace folder <br>
+  of the topology.</p>
+<p><b>Editing of the DDL Interface</b></p>
+<p>The DDL interface that is associated with the datadefinition service can be 
+  opened from the properties tab. User is presented with the list of available 
+  DDL resource to either pick a new definition or open an existing one.</p>
+<p>All the above changes require RDA tools and are IDE specific tooling, that 
+  needs to be specified in the ide extension plug-in. We cannot do this in database 
+  plug-in, as this is a core functionality that will be shared by extension toolings 
+  like from Tivoli's Deployment Planner.</p>
+<p><img src="Figure-174.jpg" width="1260" height="650"></p>
+<p>&nbsp;</p>
+<p><img src="Figure-175.jpg" width="1383" height="701"></p>
+<p><b>Database Unit Provider for Business Application Topoloy Decorator Semantic 
+  (BATDS) </b></p>
+<p>When a database connection is dropped on a topology that has a BATDS, a conceptual 
+  node is created instead of a database unit.</p>
+<h3>&nbsp;</h3>
+<table width="100%">
+  <tr> 
+    <th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Database Component Realization</font> 
+  
+</table>
+<p>The following four cases need to be supported.</p>
+<h3><img src="Deploy-10.jpg" width="1178" height="566"></h3>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Testing Requrements [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		
+      <p>The database definition provider will be verified by junits that test 
+        the follow:</p>
+		
+      <ul>
+        <li>Load and verify all template additions</li>
+        <li>Verify the database component creation/update from the resource explorer</li>
+        <li>Verify the database component creation from the pallette</li>
+      </ul>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		
+      <p>This documentation is maintained by <b>Narinder Makin</b> <i>(nmakin@us.ibm.com)</i>. 
+      <p><i>Copyright (c) 2006 IBM Corporation. All rights reserved. </i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

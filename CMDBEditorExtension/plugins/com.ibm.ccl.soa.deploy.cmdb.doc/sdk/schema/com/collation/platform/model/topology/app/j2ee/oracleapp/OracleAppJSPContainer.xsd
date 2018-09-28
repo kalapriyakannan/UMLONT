@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/SoftwareContainer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.oracleapp.OracleAppJSPContainer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.SoftwareContainer">
+        <xsd:sequence>
+          <xsd:element name="emitDebugInfo" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="externalResource" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="staticTextInChars" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="forgiveDupDirAttr" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="reduceTagCode" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="xmlValidate" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="extraImportList" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="debug" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="checkPrecompile" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="runMode" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="tagReuseDefault" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="timeout" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="cacheTlds" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="taglibLocation" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

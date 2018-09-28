@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.31 2008/06/16 19:46:01 barnold Exp $
+-->
+
+<plugin>
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+       class = "com.ibm.ccl.soa.deploy.os.provider.OsItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+       class = "com.ibm.ccl.soa.deploy.os.OsPackage"
+       genModel = "models/ecore/os.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="os"
+       class="com.ibm.ccl.soa.deploy.os.util.OsResourceFactoryImpl" />
+  </extension>
+
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="com.ibm.ccl.soa.deploy.os.domain"
+       name="%extension.osDomain"
+       targetNamespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/">
+       <validator class="com.ibm.ccl.soa.deploy.os.internal.validator.OsDomainValidator"/>
+       <resourceType
+             id="os.OperatingSystemUnit.W2K.infra"
+             name="%os.OperatingSystemUnit.W2K.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/Windows2000.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolW2K.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/pal/win_2000_20.gif"
+             smallIcon="icons/pal/win_2000_16.gif"
+             label="%os.OperatingSystemUnit.W2K.Label"
+             resourceTypeId="os.OperatingSystemUnit.W2K.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.W2K.conceptual"
+             name="%os.OperatingSystemUnit.W2K.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/Windows2000C.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolW2K.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/pal/win_2000_20.gif"
+             smallIcon="icons/pal/win_2000_16.gif"
+             label="%os.OperatingSystemUnit.W2K.Label"
+             resourceTypeId="os.OperatingSystemUnit.W2K.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.WXP.infra"
+             name="%os.OperatingSystemUnit.WXP.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsXP.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolWXP.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/pal/win_xp_20.gif"
+             smallIcon="icons/pal/win_xp_16.gif"
+             label="%os.OperatingSystemUnit.WXP.Label"
+             resourceTypeId="os.OperatingSystemUnit.WXP.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.WXP.conceptual"
+             name="%os.OperatingSystemUnit.WXP.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsXPC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolWXP.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/pal/win_xp_20.gif"
+             smallIcon="icons/pal/win_xp_16.gif"
+             label="%os.OperatingSystemUnit.WXP.Label"
+             resourceTypeId="os.OperatingSystemUnit.WXP.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.WServer2003.infra"
+             name="%os.OperatingSystemUnit.WServer2003.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsServer2003.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolWServer2003.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/dgm/winsvr03_dgm.gif"
+             smallIcon="icons/dgm/winsvr03_dgm.gif"
+             label="%os.OperatingSystemUnit.WServer2003.Label"
+             resourceTypeId="os.OperatingSystemUnit.WServer2003.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.WServer2003.conceptual"
+             name="%os.OperatingSystemUnit.WServer2003.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsServer2003C.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolWServer2003.Description"
+             path="/operatingSystemDrawer/windowsOperatingSystemStack"
+             largeIcon="icons/dgm/winsvr03_dgm.gif"
+             smallIcon="icons/dgm/winsvr03_dgm.gif"
+             label="%os.OperatingSystemUnit.WServer2003.Label"
+             resourceTypeId="os.OperatingSystemUnit.WServer2003.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.conceptual"
+             name="%os.OperatingSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/ConceptualOSC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitTool.Description"
+             path="/operatingSystemDrawer/"
+             label="%os.OperatingSystemUnit.Label"
+	         smallIcon="icons/pal/os_16.gif"
+	         largeIcon="icons/pal/os_20.gif"
+             resourceTypeId="os.OperatingSystemUnit.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.localUserUnit.conceptual"
+             name="%os.UserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/OsUserC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%localUserUnitToolConceptual.Description"
+             path="/configurationDrawer/"
+             label="%os.UserUnit.Label"
+	         largeIcon="icons/pal/user_pal20.gif"
+	         smallIcon="icons/pal/user_pal16.gif"
+             resourceTypeId="os.localUserUnit.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.WindowsLocalUserUnit.infra"
+             name="%os.WindowsLocalUserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsUser.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%windowsLocalUserUnitTool.Description"
+             label="%os.WindowsLocalUserUnit.Label"
+	         largeIcon="icons/pal/win_user_20.gif"
+	         smallIcon="icons/pal/win_user_16.gif"
+             path="/configurationDrawer/windowsConfigurationStack/"
+             resourceTypeId="os.WindowsLocalUserUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.WindowsLocalGroupUnit.infra"
+             name="%os.WindowsLocalGroupUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsUserGroup.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%windowsLocalGroupUnitTool.Description"
+             label="%os.WindowsLocalGroupUnit.Label"
+	         largeIcon="icons/pal/grp_wind_user_24.gif"
+	         smallIcon="icons/pal/grp_wind_user_16.gif"
+             path="/configurationDrawer/windowsConfigurationStack/"
+             resourceTypeId="os.WindowsLocalGroupUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.PortConfigUnit.infra"
+             name="%os.PortConfigUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/PortConfig.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%portConfigUnitTool.Description"
+             label="%os.PortConfigUnit.Label"
+	         largeIcon="icons/pal/port_config_24.gif"
+	         smallIcon="icons/pal/port_config_16.gif"
+             path="/configurationDrawer/"
+             resourceTypeId="os.PortConfigUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.Linux.conceptual"
+             name="%os.OperatingSystemUnit.Linux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/LinuxC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolLinux.Description"
+             largeIcon="icons/pal/systemlinux_obj_20.gif"
+             smallIcon="icons/pal/systemlinux_obj_16.gif"
+             label="%os.OperatingSystemUnit.Linux.Label"
+             path="/operatingSystemDrawer/linuxOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.Linux.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.RedhatLinuxLocalUserUnit.infra"
+             name="%os.RedhatLinuxLocalUserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/RedhatLinuxUser.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%redhatLinuxLocalUserUnitTool.Description"
+             label="%os.RedhatLinuxLocalUserUnit.Label"
+	         largeIcon="icons/pal/user_pal20.gif"
+	         smallIcon="icons/pal/user_pal16.gif"
+             path="/configurationDrawer/linuxConfigurationStack/"
+             resourceTypeId="os.RedhatLinuxLocalUserUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.RedhatLinuxLocalGroupUnit.infra"
+             name="%os.RedhatLinuxLocalGroupUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/RedhatLinuxUserGroup.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%redhatLinuxLocalGroupUnitTool.Description"
+             label="%os.RedhatLinuxLocalGroupUnit.Label"
+	         largeIcon="icons/pal/user_group_pal20.gif"
+	         smallIcon="icons/pal/user_group_pal16.gif"
+             path="/configurationDrawer/linuxConfigurationStack/"
+             resourceTypeId="os.RedhatLinuxLocalGroupUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.SUSELinuxLocalUserUnit.infra"
+             name="%os.SUSELinuxLocalUserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SUSELinuxUser.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%suseLinuxLocalUserUnitTool.Description"
+             label="%os.SUSELinuxLocalUserUnit.Label"
+	         largeIcon="icons/pal/user_pal20.gif"
+	         smallIcon="icons/pal/user_pal16.gif"
+             path="/configurationDrawer/linuxConfigurationStack/"
+             resourceTypeId="os.SUSELinuxLocalUserUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.SUSELinuxLocalGroupUnit.infra"
+             name="%os.SUSELinuxLocalGroupUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SUSELinuxUserGroup.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%suseLinuxLocalGroupUnitTool.Description"
+             label="%os.SUSELinuxLocalGroupUnit.Label"
+	         largeIcon="icons/pal/user_group_pal20.gif"
+	         smallIcon="icons/pal/user_group_pal16.gif"
+             path="/configurationDrawer/linuxConfigurationStack/"
+             resourceTypeId="os.SUSELinuxLocalGroupUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.AIXLocalUserUnit.infra"
+             name="%os.AIXLocalUserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/AIXUser.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%aixLocalUserUnitTool.Description"
+             label="%os.AIXLocalUserUnit.Label"
+	         largeIcon="icons/pal/user_pal20.gif"
+	         smallIcon="icons/pal/user_pal16.gif"
+             path="/configurationDrawer/aixConfigurationStack/"
+             resourceTypeId="os.AIXLocalUserUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.AIXLocalGroupUnit.infra"
+             name="%os.AIXLocalGroupUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/AIXUserGroup.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%aixLocalGroupUnitTool.Description"
+             label="%os.AIXLocalGroupUnit.Label"
+	         largeIcon="icons/pal/user_group_pal20.gif"
+	         smallIcon="icons/pal/user_group_pal16.gif"
+             path="/configurationDrawer/aixConfigurationStack/"
+             resourceTypeId="os.AIXLocalGroupUnit.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.RedhatAS4Linux.infra"
+             name="%os.OperatingSystemUnit.RedhatAS4Linux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/RedhatAS4Linux.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolRedhatLinux.Description"
+             largeIcon="icons/pal/red_hat_server_pal20.gif"
+             label="%os.OperatingSystemUnit.RedhatAS4Linux.Label"
+             smallIcon="icons/pal/red_hat_server_pal16.gif"
+             path="/operatingSystemDrawer/linuxOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.RedhatAS4Linux.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.RedhatAS4Linux.conceptual"
+             name="%os.OperatingSystemUnit.RedhatAS4Linux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/RedhatAS4LinuxC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolRedhatLinux.Description"
+             largeIcon="icons/pal/red_hat_server_pal20.gif"
+             smallIcon="icons/pal/red_hat_server_pal16.gif"
+             label="%os.OperatingSystemUnit.RedhatAS4Linux.Label"
+             path="/operatingSystemDrawer/linuxOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.RedhatAS4Linux.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.SUSEServer9Linux.infra"
+             name="%os.OperatingSystemUnit.SUSEServer9Linux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SUSEServer9Linux.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolSUSELinux.Description"
+             largeIcon="icons/pal/suse_linux_server_pal20.gif"
+             smallIcon="icons/pal/suse_linux_server_pal16.gif"
+             label="%os.OperatingSystemUnit.SUSEServer9Linux.Label"
+             path="/operatingSystemDrawer/linuxOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.SUSEServer9Linux.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.SUSEServer9Linux.conceptual"
+             name="%os.OperatingSystemUnit.SUSEServer9Linux.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SUSEServer9LinuxC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolSUSELinux.Description"
+             largeIcon="icons/pal/suse_linux_server_pal20.gif"
+             smallIcon="icons/pal/suse_linux_server_pal16.gif"
+             label="%os.OperatingSystemUnit.SUSEServer9Linux.Label"
+             path="/operatingSystemDrawer/linuxOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.SUSEServer9Linux.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.AIX5L.infra"
+             name="%os.OperatingSystemUnit.AIX5L.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/AIX5L.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolAIX5L.Description"
+             largeIcon="icons/pal/aix_os_20_pal.gif"
+             smallIcon="icons/pal/aix_os_16_pal.gif"
+             label="%os.OperatingSystemUnit.AIX5L.Label"
+             path="/operatingSystemDrawer/aixOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.AIX5L.infra">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.OperatingSystemUnit.AIX5L.conceptual"
+             name="%os.OperatingSystemUnit.AIX5L.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/AIX5LC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%operatingSystemUnitToolAIX5L.Description"
+             largeIcon="icons/pal/aix_os_20_pal.gif"
+             smallIcon="icons/pal/aix_os_16_pal.gif"
+             label="%os.OperatingSystemUnit.AIX5L.Label"
+             path="/operatingSystemDrawer/aixOperatingSystemStack"
+             resourceTypeId="os.OperatingSystemUnit.AIX5L.conceptual">
+       </resourceTypeUIBinding>
+       <resourceType
+             id="os.UserUnit.infra"
+             name="%os.WindowsLocalUserUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsUser.template">
+       </resourceType>
+       <resourceType
+             id="os.UserGroupUnit.conceptual"
+             name="%os.UserGroupUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/OsUserGroupC.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%os.UserGroupUnit.Description"
+             label="%os.UserGroupUnit.Label"
+	         largeIcon="icons/pal/user_group_pal20.gif"
+	         smallIcon="icons/pal/user_group_pal16.gif"
+             path="/configurationDrawer/windowsConfigurationStack/"
+             resourceTypeId="os.UserGroupUnit.conceptual">
+       </resourceTypeUIBinding>
+       <!-- file system -->
+       <resourceType
+             id="os.FileSystemUnit.infra"
+             name="%os.FileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/FileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.FileSystemUnit.infra"
+             description="%os.FileSystemUnit.Description"
+             label="%os.FileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+         
+       <resourceType
+             id="os.LocalFileSystemUnit.infra"
+             name="%os.LocalFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/LocalFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.LocalFileSystemUnit.infra"
+             description="%os.LocalFileSystemUnit.Description"
+             label="%os.LocalFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+             
+       <resourceType
+             id="os.RemoteFileSystemUnit.infra"
+             name="%os.RemoteFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/RemoteFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.RemoteFileSystemUnit.infra"
+             description="%os.RemoteFileSystemUnit.Description"
+             label="%os.RemoteFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>       
+           
+       <resourceType
+             id="os.SMBFileSystemUnit.infra"
+             name="%os.SMBFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SMBFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.SMBFileSystemUnit.infra"
+             description="%os.SMBFileSystemUnit.Description"
+             label="%os.SMBFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+           
+       <resourceType
+             id="os.NFSFileSystemUnit.infra"
+             name="%os.NFSFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/NFSFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.NFSFileSystemUnit.infra"
+             description="%os.NFSFileSystemUnit.Description"
+             label="%os.NFSFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+          
+       <resourceType
+             id="os.UnixFileSystemUnit.infra"
+             name="%os.UnixFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/UnixFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.UnixFileSystemUnit.infra"
+             description="%os.UnixFileSystemUnit.Description"
+             label="%os.UnixFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+        
+       <resourceType
+             id="os.OpenVmsFileSystemUnit.infra"
+             name="%os.OpenVmsFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/OpenVmsFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.OpenVmsFileSystemUnit.infra"
+             description="%os.OpenVmsFileSystemUnit.Description"
+             label="%os.OpenVmsFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+        
+       <resourceType
+             id="os.WindowsFileSystemUnit.infra"
+             name="%os.WindowsFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/WindowsFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.WindowsFileSystemUnit.infra"
+             description="%os.WindowsFileSystemUnit.Description"
+             label="%os.WindowsFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+        
+       <resourceType
+             id="os.SolarisFileSystemUnit.infra"
+             name="%os.SolarisFileSystemUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/SolarisFileSystem.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.SolarisFileSystemUnit.infra"
+             description="%os.SolarisFileSystemUnit.Description"
+             label="%os.SolarisFileSystemUnit.Label"
+             smallIcon="icons/pal/file_sys_pal16.gif"
+             largeIcon="icons/pal/file_sys_pal20.gif"             
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>
+       
+       <!-- file system content --> 
+       <resourceType
+             id="os.DirectoryUnit.infra"
+             name="%os.DirectoryUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/Directory.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.DirectoryUnit.infra"
+             description="%os.DirectoryUnit.Description"
+             label="%os.DirectoryUnit.Label"
+             smallIcon="icons/pal/comp_dir_pal16.gif"
+             largeIcon="icons/pal/comp_dir_pal20.gif"
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>       
+       
+       <resourceType
+             id="os.DataFileUnit.infra"
+             name="%os.DataFileUnit.Label"
+             templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.os/templates/DataFile.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             resourceTypeId="os.DataFileUnit.infra"
+             description="%os.DataFileUnit.Description"
+             label="%os.DataFileUnit.Label"
+             smallIcon="icons/pal/data_file_pal16.gif"
+             largeIcon="icons/pal/data_file_pal20.gif"
+             path="/configurationDrawer/fileSystemStack"
+             enablePalette="true">
+       </resourceTypeUIBinding>      
+       
+    </domain>
+  </extension>
+  
+  <extension
+        point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.os.internal.filter.WindowsOperatingSystemUnitFilter"
+           description="%windowsosunitfilter.description"
+           name="%windowsosunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.os.WindowsOperatingSystemUnit"/>
+        </inputEnablement>
+     </unitFilter>
+     <!--TODO change messages (apparently unused in UI) when properties files are unlocked -->
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.os.internal.filter.AIXOperatingSystemUnitFilter"
+           description="%windowsosunitfilter.description"
+           name="%windowsosunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.os.AIXOperatingSystemUnit"/>
+        </inputEnablement>
+     </unitFilter>
+     <!--TODO change messages (apparently unused in UI) when properties files are unlocked -->
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.os.internal.filter.LinuxOperatingSystemUnitFilter"
+           description="%windowsosunitfilter.description"
+           name="%windowsosunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.os.LinuxOperatingSystemUnit"/>
+        </inputEnablement>
+     </unitFilter>
+     <!--unitFilter
+           class="com.ibm.ccl.soa.deploy.os.internal.filter.UserGroupUnitFilter"
+           description="%usergroupunitfilter.description"
+           name="%usergroupunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.os.UserGroupUnit"/>
+        </inputEnablement>
+     </unitFilter-->>   
+     
+     <unitFilter
+           class="com.ibm.ccl.soa.deploy.os.internal.filter.FileSystemUnitFilter"
+           description="%filesystemunitfilter.description"
+           name="%filesystemunitfilter.name">
+        <inputEnablement>
+           <instanceof value="com.ibm.ccl.soa.deploy.os.FileSystemUnit"/>
+        </inputEnablement>
+     </unitFilter>
+  </extension>  
+  
+  <!-- =================================================================================== -->
+  <!-- Extension: deploy status resolution generators                                      -->
+  <!-- =================================================================================== -->   
+  <extension point="com.ibm.ccl.soa.deploy.core.resolutionGenerators">   
+	 <resolutionGenerator
+	    id="SlashesToBackslashesInPathResolutionGenerator"
+	    name="%SlashesToBackslashesInPathResolutionGenerator"
+        class="com.ibm.ccl.soa.deploy.os.validator.resolution.SlashesToBackslashesInPathResolutionGenerator">
+      <enablement>
+         <instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus"/> 
+      </enablement>
+     </resolutionGenerator>
+     
+    <resolutionGenerator
+       id="MissingPortResolutionGenerator"
+       name="%resolutionGenerator.MissingPortResolutionGenerator"
+       class="com.ibm.ccl.soa.deploy.os.validator.resolution.MissingPortResolutionGenerator">
+       <enablement>
+         <instanceof value="com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus"/> 
+         <test property="com.ibm.ccl.soa.deploy.core.problemType"
+               value="com.ibm.ccl.soa.deploy.os.PortConfigMissing"/> 
+       </enablement>
+    </resolutionGenerator>
+
+   </extension>
+  <extension
+        point="org.eclipse.wst.common.emfworkbench.integration.adapterFactory">
+     <adapterFactory
+           className="com.ibm.ccl.soa.deploy.os.provider.OsItemProviderAdapterFactory"
+           functionGroupID="com.ibm.ccl.soa.deploy.os"
+           id="com.ibm.ccl.soa.deploy.os.provider.OsItemProviderAdapterFactory"
+           packageURI="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/">
+     </adapterFactory>
+  </extension>    
+   
+   
+	<!-- ====================================================================== -->
+	<!-- Extension: Constraints                                                 -->
+	<!-- ======================================================================= -->
+
+	<extension point="com.ibm.ccl.soa.deploy.core.constraints">
+   		<constraint  id="com.ibm.ccl.soa.deploy.os.constraint.OsApplicationCommunicationConstraint"
+	             	 displayName="%constraints.OsApplicationCommunication" 
+	             	 namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/"
+                 	 type="ApplicationCommunicationConstraint">
+			<validator class="com.ibm.ccl.soa.deploy.os.validation.constraints.OsApplicationCommunicationConstraintValidator"/>
+				<parentEnablement>
+				    <or>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.ConstraintLink"/>
+						<instanceof value="com.ibm.ccl.soa.deploy.core.DependencyLink"/>
+					</or>
+			   </parentEnablement>
+		</constraint>
+		
+	</extension>		
+   <extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.os">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.os/models/schemas/os.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>
+

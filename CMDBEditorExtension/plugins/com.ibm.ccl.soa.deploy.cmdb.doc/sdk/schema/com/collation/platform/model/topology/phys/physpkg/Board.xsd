@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/phys/physpkg/Card.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/CPU.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/DiskDrive.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/Memory.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.phys.physpkg.Board">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.phys.physpkg.Card">
+        <xsd:sequence>
+          <xsd:element name="diskdrives" type="coll:com.collation.platform.model.topology.dev.DiskDrive" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="attachementPointType" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="memory" type="coll:com.collation.platform.model.topology.sys.Memory" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="cpu" type="coll:com.collation.platform.model.topology.sys.CPU" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="boardType" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

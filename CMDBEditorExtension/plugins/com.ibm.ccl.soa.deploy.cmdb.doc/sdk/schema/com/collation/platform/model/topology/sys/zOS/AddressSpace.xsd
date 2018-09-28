@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/RuntimeProcess.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/zOS/ZReportFile.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/sys/zOS/ZOS.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/dev/StorageVolume.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/process/OrganizationalEntity.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.sys.zOS.AddressSpace">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.sys.RuntimeProcess">
+        <xsd:sequence>
+          <xsd:element name="ZReportFiles" type="coll:com.collation.platform.model.topology.sys.zOS.ZReportFile" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="jobName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="jobUserid" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="jobType" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="jobFunction" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="procStep" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="stepName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pgm" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="pgmParm" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="storagevolume" type="coll:com.collation.platform.model.topology.dev.StorageVolume" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="allocations" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="ZOS" type="coll:com.collation.platform.model.topology.sys.zOS.ZOS" nillable="true" minOccurs="0"/>
+          <xsd:element name="configLastUpdate" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="CICategory" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastAuditTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastLifecycleStateTime" type="xsd:long" nillable="true" minOccurs="0"/>
+          <xsd:element name="primaryOwner" type="coll:com.collation.platform.model.topology.process.OrganizationalEntity" nillable="true" minOccurs="0"/>
+          <xsd:element name="lastAuditState" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="assetTag" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="lifecycleState" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="assetID" type="xsd:string" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

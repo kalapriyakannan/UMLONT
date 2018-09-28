@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/SSLSettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicSSLSettings">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.SSLSettings">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="certAuthenticator" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="exportKeyLifespan" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="hostnameVerifier" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="loginTimeoutMillis" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverCertificateChainFileName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="clientCeritificateEnforced" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="handlerEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="hostnameVerificationIgnored" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="keyEncrypted" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="twoWaySslEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="useJava" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

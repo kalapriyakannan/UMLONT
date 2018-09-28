@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+name="VMware VirtualIDEDisk Template">
+  <virtualization:unit.vmwareVirtualDiskDefUnit name="VMwareVirtualIDEDiskDef" configurationUnit="true" conceptual="false">
+    <virtualization:capability.vmwareVirtualIDEDiskDef name="VMwareVirtualIDEDiskDef" linkType="any"/>
+    <core:requirement name="HostingReq" dmoType="virtualization:VMwareVirtualServerDef" linkType="hosting" use="required"/>  
+    <!-- <core:requirement name="DependencyReq" dmoType="server:Disk" linkType="dependency" use="optional"/> --> 
+  </virtualization:unit.vmwareVirtualDiskDefUnit>
+</core:topology>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.net/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.net/src" modelPluginID="com.ibm.ccl.soa.deploy.net"
+    modelName="Net" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/net.xsd</foreignModel>
+  <genPackages prefix="Net" basePackage="com.ibm.ccl.soa.deploy" resource="XML" disposableProviderFactory="true"
+      ecorePackage="net.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="net.ecore#//DuplexType">
+      <genEnumLiterals ecoreEnumLiteral="net.ecore#//DuplexType/HalfDuplex"/>
+      <genEnumLiterals ecoreEnumLiteral="net.ecore#//DuplexType/FullDuplex"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="net.ecore#//IPv6AddressNotationType">
+      <genEnumLiterals ecoreEnumLiteral="net.ecore#//IPv6AddressNotationType/IPv6ColonNotation"/>
+      <genEnumLiterals ecoreEnumLiteral="net.ecore#//IPv6AddressNotationType/IPv6MixedNotation"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="net.ecore#//DuplexTypeObject"/>
+    <genDataTypes ecoreDataType="net.ecore#//IPv6AddressNotationTypeObject"/>
+    <genClasses ecoreClass="net.ecore#//IpInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/gateway"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/ipV4Address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/ipV6Address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/ipv6NotationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/l2InterfaceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/netmask"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//IpInterface/subnetAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="net.ecore#//IpInterfaceUnit"/>
+    <genClasses ecoreClass="net.ecore#//L2Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/autoNegotiation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/broadcast"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/duplex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/encapsulation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/hwAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/l2InterfaceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/loopback"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/mtu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/private"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/promiscuous"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//L2Interface/speed"/>
+    </genClasses>
+    <genClasses ecoreClass="net.ecore#//L2InterfaceUnit"/>
+    <genClasses ecoreClass="net.ecore#//NetRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute net.ecore#//NetRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference net.ecore#//NetRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference net.ecore#//NetRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference net.ecore#//NetRoot/capabilityIpInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference net.ecore#//NetRoot/capabilityL2Interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference net.ecore#//NetRoot/unitIpInterfaceUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference net.ecore#//NetRoot/unitL2InterfaceUnit"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

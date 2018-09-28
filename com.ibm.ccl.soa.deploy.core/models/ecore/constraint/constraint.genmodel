@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2005, 2006 IBM Corporation. Licensed Material - Property of IBM. All rights reserved."
+    modelDirectory="/com.ibm.ccl.soa.deploy.core/src" editDirectory="/com.ibm.ccl.soa.deploy.core/src"
+    modelPluginID="com.ibm.ccl.soa.deploy.core" modelName="Constraint" nonNLSMarkers="true"
+    importerID="org.eclipse.xsd.ecore.importer" usedGenPackages="../core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../../schemas/constraint/constraint.xsd</foreignModel>
+  <genPackages prefix="Constraint" basePackage="com.ibm.ccl.soa.deploy.core" resource="XML"
+      disposableProviderFactory="true" ecorePackage="constraint.ecore#/">
+    <genEnums ecoreEnum="constraint.ecore#//CollocationConstraintTypes">
+      <genEnumLiterals ecoreEnumLiteral="constraint.ecore#//CollocationConstraintTypes/collocation"/>
+      <genEnumLiterals ecoreEnumLiteral="constraint.ecore#//CollocationConstraintTypes/anticollocation"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="constraint.ecore#//CommunicationTypeTypes">
+      <genEnumLiterals ecoreEnumLiteral="constraint.ecore#//CommunicationTypeTypes/LAN"/>
+      <genEnumLiterals ecoreEnumLiteral="constraint.ecore#//CommunicationTypeTypes/WAN"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="constraint.ecore#//CollocationConstraintTypesObject"/>
+    <genDataTypes ecoreDataType="constraint.ecore#//CommunicationTypeTypesObject"/>
+    <genClasses ecoreClass="constraint.ecore#//AndConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//ApplicationCommunicationConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//ApplicationCommunicationProtocolConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//ApplicationCommunicationProtocolConstraint/applicationLayerProtocol"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//AttributeCapacityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributeCapacityConstraint/exclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributeCapacityConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//AttributeDefinedConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//AttributePropagationConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributePropagationConstraint/respectLinkDirection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributePropagationConstraint/sourceAttributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributePropagationConstraint/sourceObjectURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributePropagationConstraint/targetAttributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributePropagationConstraint/targetObjectURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="constraint.ecore#//AttributeValueConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//AttributeValueConstraint/attributeName"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//BaseCommunicationConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//BaseCommunicationConstraint/respectLinkDirection"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="constraint.ecore#//BooleanOperator"/>
+    <genClasses ecoreClass="constraint.ecore#//CapacityConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//CollocationConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CollocationConstraint/capabilityType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CollocationConstraint/type"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//CommunicationBandwidthConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationBandwidthConstraint/bandwidth"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="constraint.ecore#//CommunicationChildConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//CommunicationCostConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationCostConstraint/cost"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//CommunicationPortConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationPortConstraint/isTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationPortConstraint/port"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//CommunicationRedundancyConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationRedundancyConstraint/redundancy"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//CommunicationTypeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//CommunicationTypeConstraint/type"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//ConstraintRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute constraint.ecore#//ConstraintRoot/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintAnd"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintApplicationcommunication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintApplicationprotocol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintAttrdef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintAttributePropagation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintBasecommunication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCapacity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCapacityRestriction"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCollocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCommunicationbandwidth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCommunicationcost"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCommunicationport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCommunicationredundancy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintCommunicationtype"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintDeferredHosting"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintEnumeration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintEquals"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintExclusion"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintGroupCardinality"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintMemberCardinality"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintNetworkcommunication"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintNot"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintOr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintPalette"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintProductIdentifier"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintRealization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintStereotype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintSynchronouscommunication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintTransmissiondelay"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintUpdate"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintVersion"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/constraintXor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ConstraintRoot/value"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//DeferredHostingConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//EnumerationConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//EnumerationConstraint/values"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//EqualsConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//EqualsConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//ExclusionConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference constraint.ecore#//ExclusionConstraint/values"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//GroupCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//GroupCardinalityConstraint/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//GroupCardinalityConstraint/minValue"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//MemberCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//MemberCardinalityConstraint/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//MemberCardinalityConstraint/minValue"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//NetworkCommunicationConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//NotConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//OrConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//PaletteConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//PaletteConstraint/resourceTypeId"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//ProductIdentifierConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//ProductIdentifierConstraint/productIdentifier"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//RangeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//RangeConstraint/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//RangeConstraint/maxValueInclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//RangeConstraint/minValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//RangeConstraint/minValueInclusive"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//RealizationConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//SingleValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//SingleValue/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//SingleValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//StereotypeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//StereotypeConstraint/includes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="constraint.ecore#//StructuralConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//SynchronousCommunicationConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//SynchronousCommunicationConstraint/synchronous"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//TransmissionDelayConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//TransmissionDelayConstraint/delay"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//TypeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//TypeConstraint/dmoType"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//UpdateConstraint"/>
+    <genClasses ecoreClass="constraint.ecore#//VersionConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute constraint.ecore#//VersionConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="constraint.ecore#//XorConstraint"/>
+  </genPackages>
+</genmodel:GenModel>

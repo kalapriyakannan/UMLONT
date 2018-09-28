@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ibm.ccl.soa.deploy.was.db2/src"
+    editDirectory="/com.ibm.ccl.soa.deploy.was.db2/src" modelPluginID="com.ibm.ccl.soa.deploy.was.db2"
+    modelName="Wasdb2" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../../com.ibm.ccl.soa.deploy.core/models/ecore/constraint/constraint.genmodel#//constraint ../../../com.ibm.ccl.soa.deploy.core/models/ecore/core.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../schemas/wasdb2.xsd</foreignModel>
+  <genPackages prefix="WasDb2" basePackage="com.ibm.ccl.soa.deploy.was" resource="XML"
+      disposableProviderFactory="true" ecorePackage="wasdb2.ecore#/">
+    <genClasses ecoreClass="wasdb2.ecore#//DatasourceSatisfactionConstraint"/>
+    <genClasses ecoreClass="wasdb2.ecore#//WasDb2DeployRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute wasdb2.ecore#//WasDb2DeployRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference wasdb2.ecore#//WasDb2DeployRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference wasdb2.ecore#//WasDb2DeployRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wasdb2.ecore#//WasDb2DeployRoot/constraintDatasourceSatisfaction"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

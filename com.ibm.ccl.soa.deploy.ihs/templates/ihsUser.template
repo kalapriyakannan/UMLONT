@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"	
+	name="Ihs User Template">
+	<ihs:unit.ihsUserUnit name="IhsUser" configurationUnit="true" >
+		<ihs:capability.ihsUser name="Ihs User" linkType="any">
+	      <core:attributeMetaData attributeName="userPassword" encrypted="true" />  			
+		</ihs:capability.ihsUser>
+		<core:requirement mutable="true"
+			name="IHS User Repository" displayName="IHS User Repository"
+			dmoType="ihs:IhsUserRepository" linkType="hosting" />
+	</ihs:unit.ihsUserUnit>
+</core:topology>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+	xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+	name="J2EE application Server Template">
+  <j2ee:unit.j2eeServerUnit name="J2EEServer" displayName="J2EE Application Server" conceptual="true">
+    <j2ee:capability.j2eeContainer name="J2EE Container" displayName="J2EE Container" linkType="any"/>
+    <j2ee:capability.servletContainer name="Servlet Container" displayName="Servlet Container" linkType="any"/>
+    <j2ee:capability.jspContainer name="JSP Container" displayName="JSP Container" linkType="any"/>
+    <j2ee:capability.ejbContainer name="EJB Container" displayName="EJB Container" linkType="any"/>
+    <j2ee:capability.jcaContainer name="JCA Container" displayName="JCA Container" linkType="any"/>
+    <j2ee:capability.j2eeServer name="J2EE Server" displayName="J2EE Server" linkType="any"/>
+    <java:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any"/>
+  </j2ee:unit.j2eeServerUnit>
+</core:topology>

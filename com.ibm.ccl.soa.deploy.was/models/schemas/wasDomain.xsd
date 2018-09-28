@@ -1,0 +1,2199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+        xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+        xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+        xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+        xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+        xmlns:jms="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/" 
+        xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+        xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+        ecore:documentRoot="WasDeployRoot" 
+        ecore:name="was" 
+        ecore:nsPrefix="was" 
+        ecore:package="com.ibm.ccl.soa.deploy.was" 
+        elementFormDefault="qualified" 
+        targetNamespace="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/constraint/constraint.xsd"/>
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.java/models/schemas/javaDomain.xsd"/>
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.j2ee/models/schemas/j2eeDomain.xsd"/>
+    <import namespace="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.j2ee.jms/models/schemas/jmsDomain.xsd"/>
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.os/models/schemas/os.xsd"/>
+	
+	<element name="unit.wasAppServer" substitutionGroup="base:unit" type="was:WebsphereAppServerUnit"/>
+	<complexType name="WebsphereAppServerUnit">
+		<complexContent>
+			<extension base="j2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasNodeWindowsServiceUnit" substitutionGroup="base:unit" type="was:WasNodeWindowsServiceUnit"/>
+	<complexType name="WasNodeWindowsServiceUnit">
+		<complexContent>
+			<extension base="os:WindowsLocalServiceUnit"/>
+		</complexContent>
+	</complexType>
+	  
+	<element name="unit.wasdatasource" substitutionGroup="base:unit" type="was:WasDatasourceUnit"/>
+	<complexType name="WasDatasourceUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+
+    <!-- This corresponds to WebSphere's DataSource MBean, see
+         http://publib.boulder.ibm.com/infocenter/eserver/v5r3/ic2924/info/rzatz/51/admin/apidocs/mbean/DataSource.html
+         http://publib.boulder.ibm.com/infocenter/wasinfo/v5r1//index.jsp?topic=/com.ibm.websphere.zseries.doc/info/zseries/javadoc/wccm/resources.jdbc/DataSource.html
+      -->
+	<element name="capability.wasDatasource" substitutionGroup="base:capability" type="was:WasDatasource"/>
+	<complexType name="WasDatasource">
+		<annotation>
+			<documentation>
+			    Representation of WebSphere's DataSource MBean
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="j2ee:J2EEDatasource">
+					<attribute name="category" type="string">
+						<annotation>
+							<documentation>
+							    Optional J2EEResourceFactory category, used as a grouping mechanism.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="statementCacheSize" type="string">
+						<annotation>
+							<documentation>
+							    Number of free prepared statements per connection.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="minConnections" type="string">	
+						<annotation>
+							<documentation>
+							    Minimum number of managed connection that should be maintained for all cases except if agedTimeout is set.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="maxConnections" type="string">
+						<annotation>
+							<documentation>
+								Maximum number of managed connections that can be created in this connection pool.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="connectionTimeout" type="string">	
+						<annotation>
+							<documentation>
+								Interval in seconds after which a connection request times out.
+							</documentation>
+						</annotation>
+					</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!--
+		This corresponds to WebSphere's DataSource MBean, see
+        http://publib.boulder.ibm.com/infocenter/eserver/v5r3/ic2924/info/rzatz/51/admin/apidocs/mbean/DataSource.html
+        http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/rdat_chgconwsadmin.html
+		http://publib.boulder.ibm.com/infocenter/wasinfo/v5r1//index.jsp?topic=/com.ibm.websphere.zseries.doc/info/zseries/javadoc/wccm/resources.jdbc/DataSource.html 
+	 -->
+	<element name="capability.wasv5datasource" substitutionGroup="base:capability" type="was:WasV5Datasource"/>
+	<complexType name="WasV5Datasource">
+		<complexContent>
+			<extension base="was:WasDatasource">
+			   <!--  TODO Limiting the class name to an enum seems wrong... -->
+					<attribute name="dataSourceHelperClassName" type="was:DataSourceHelperClassNames"/>
+					<attribute name="reapTime" type="string">
+						<annotation>
+							<documentation>
+							    Interval in seconds between runs of the connection pool maintenance thread.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="unusedTimeout" type="string">
+						<annotation>
+							<documentation>
+							    Interval in seconds after which an unused connection is discarded by the connection pool maintenance thread.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="agedTimeout" type="string">
+						<annotation>
+							<documentation>
+							    Interval in seconds after which an unused aged connection is discarded by the connection pool maintenance thread.
+							</documentation>
+						</annotation>
+					</attribute>
+					<attribute name="purgePolicy" type="was:Policies">	
+						<annotation>
+							<documentation>
+							    How to purge connections when a stale connection or fatal connection error is detected.
+							</documentation>
+						</annotation>
+					</attribute>
+					<!--  TODO What is this? -->	
+					<attribute name="j2cAuthAlias" type="string"/>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasv4datasource" substitutionGroup="base:capability" type="was:WasV4Datasource"/>
+	<complexType name="WasV4Datasource">
+		<complexContent>
+			<extension base="was:WasDatasource">		
+					<attribute name="idleTimeout" type="string"/>				
+					<attribute name="orphanTimeout" type="string"/>
+					<attribute name="disableAutoConnectionCleanup" type="boolean"/>				
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="Policies">
+		<restriction base="string">
+			<enumeration value="EntirePool"/>
+			<enumeration value="FailingConnectionOnly"/>			
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DataSourceHelperClassNames">
+		<restriction base="string">
+			<enumeration value="com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DB2DataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.CloudscapeNetworkServerDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.InformixDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.SybaseDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.OracleDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.ConnectJDBCDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.WSConnectJDBCDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.SequeLinkDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.MSSQLDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.ConnectJDBCDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DataDirectDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DB2390DataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.Sybase11DataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.CloudscapeDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DB2AS400DataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.Oracle10gDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DB2390LocalDataStoreHelper.class"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DerbyDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.DerbyNetworkServerDataStoreHelper"/>
+			<enumeration value="com.ibm.websphere.rsadapter.GenericDataStoreHelper"/>
+		</restriction>
+	</simpleType>
+
+	<!-- TODO Move to the DB2 domain. -->
+<!-- 
+	<element name="db2UDBJdbcProvider" type="was:Db2UDBJdbcProvider" substitutionGroup="j2ee:jdbcProvider" />
+
+	<complexType name="Db2UDBJdbcProvider">
+		<complexContent>
+			<extension base="j2ee:JdbcProvider">
+				<sequence>
+					<element ref="was:JdbcProviderType"></element>
+					<element ref="was:wasdatasource" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="jdbcProvider.cloudScape" type="was:CloudscapeJdbcProvider" substitutionGroup="j2ee:jdbcProvider" />
+	<complexType name="CloudscapeJdbcProvider">
+		<complexContent>
+			<extension base="j2ee:JdbcProvider">
+				<sequence>
+					<element ref="was:JdbcProviderType"></element>
+					<element ref="was:wasdatasource" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+-->
+
+	<!-- Should we create a unit that can be provisioned as part of the composite app? -->
+	<element name="capability.wasSharedLibrary" substitutionGroup="base:capability" type="was:SharedLibraryEntry"/>
+	<complexType name="SharedLibraryEntry">
+		<annotation>
+			<documentation>
+				This describes a library that can be shared among applications.
+				The inherited name is required.  When used as a consumed service
+				only the name should be set.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<sequence>
+					<element maxOccurs="unbounded" minOccurs="0" name="classPath" type="string"/>
+					<element maxOccurs="unbounded" minOccurs="0" name="nativePath" type="string"/>
+				</sequence>
+			    <attribute name="sharedLibraryEntryName" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<!-- J2EE Module type annotations. -->
+	<!-- automatic set this configuration in ASC scripts-->
+	<element name="classloader" type="was:Classloader"/>
+	<complexType name="Classloader">
+		<attribute name="mode" type="was:ClassloaderMode"/>
+		<attribute name="warClassLoaderPolicy" type="was:WARClassloaderPolicy"/>
+		<attribute name="startWeight" type="int"/>		
+	</complexType>
+	
+	<simpleType name="ClassloaderMode">
+		<annotation>
+			<documentation>
+			Identifies the order in which a class loader attempts to load the classes it manages.
+			A value of "PARENT_FIRST" (default) means that the parent class loader is asked to attempt loading the class first.
+			A value of "PARENT_LAST" means that the class loader attempts to load the class before the parent class loader.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="PARENT_FIRST"/>
+			<enumeration value="PARENT_LAST"/>	
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="WARClassloaderPolicy">
+		<restriction base="string">
+			<enumeration value="MODULE"/>
+			<enumeration value="APPLICATION"/>	
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ClassloaderPolicyType">
+		<annotation>
+			<documentation>
+			Identifies the number of class loaders to be used: either one (SINGLE) or several (MULTIPLE).  Implication of the value depends
+			on the scope of the class loader.  If the class loader is an application server class loader SINGLE means that all 
+			applications will share a single class loader; MULTIPLE means there is a class loader for each application.  For an 
+			application class loader SINGLE means that all Web modules share the same class loader as for the Ejb modules and Jar 
+			modules; MULTIPLE means that each Web module has its own class loader.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="SINGLE"/>
+			<enumeration value="MULTIPLE"/>	
+		</restriction>
+	</simpleType>
+
+	<element name="capability.wasClassLoaderPolicy" substitutionGroup="base:capability" type="was:WasClassLoaderPolicy"/>
+	<complexType name="WasClassLoaderPolicy">
+		<complexContent>
+			<extension base="base:Capability">
+   		        <attribute name="policy" type="was:ClassloaderPolicyType"/>
+				<attribute name="order" type="was:ClassloaderMode"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasModuleClassLoaderPolicy" substitutionGroup="base:capability" type="was:WasModuleClassLoaderPolicy"/>
+	<complexType name="WasModuleClassLoaderPolicy">
+		<complexContent>
+			<extension base="was:WasClassLoaderPolicy">
+   		        <attribute name="startWeight" type="int"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasApplicationClassLoaderPolicy" substitutionGroup="base:capability" type="was:WasApplicationClassLoaderPolicy"/>
+	<complexType name="WasApplicationClassLoaderPolicy">
+		<complexContent>
+			<extension base="was:WasClassLoaderPolicy">
+   		        <attribute name="reloadClasses" type="boolean"/>
+   		        <attribute name="reloadInterval" type="int"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasApplicationServerClassLoaderPolicy" substitutionGroup="base:capability" type="was:WasApplicationServerClassLoaderPolicy"/>
+	<complexType name="WasApplicationServerClassLoaderPolicy">
+		<complexContent>
+			<extension base="was:WasClassLoaderPolicy"/>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasClassLoaderConfigurationUnit" substitutionGroup="base:unit" type="was:WasClassLoaderConfigurationUnit"/>
+	<complexType name="WasClassLoaderConfigurationUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasSubstitutionVariable" substitutionGroup="base:capability" type="was:WasSubstitutionVariable"/>
+	<complexType name="WasSubstitutionVariable">
+		<complexContent>
+			<extension base="base:Capability">
+   		<!--    <attribute name="variableName" type="string"/>
+				<attribute name="value" type="string"/>-->
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasVirtualHost" substitutionGroup="base:capability" type="was:VirtualHostType"/>
+	<complexType name="VirtualHostType">
+		<complexContent>
+			<extension base="base:Capability">
+				<sequence>
+					<element ref="was:hostNameAlias"/>
+				</sequence>
+				<attribute name="hostName" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="hostNameAlias" type="was:HostNameAliasType"/>
+	<complexType name="HostNameAliasType">
+		<attribute name="hostname" type="string"/>
+		<attribute name="hostnameAlias" type="string"/>
+	</complexType>
+
+	<element name="capability.wasJ2EEServer" substitutionGroup="base:capability" type="was:WasJ2EEServer"/>
+	<complexType name="WasJ2EEServer">
+		<complexContent>
+			<extension base="j2ee:J2EEServer">
+	        </extension>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.wasServer" substitutionGroup="base:capability" type="was:WasServer"/>
+	<complexType name="WasServer">
+		<complexContent>
+			<extension base="was:WasJ2EEServer">
+				<attribute name="wasVersion" type="base:VersionString"/>
+				<!-- <attribute name="profileDirectory" type="string"/> -->
+			    <attribute name="serverName" type="string"/>
+				<!-- <attribute name="httpPort" type="os:TCPPortType" default="9080"/>	-->
+				<!-- <attribute name="adminPort" type="os:TCPPortType" default="9060"/> -->	
+				<!--from previous node ports -->							
+				<!-- <attribute name="startingPort" type="os:TCPPortType"/> 
+				<attribute name="boot_strap_address" type="os:TCPPortType"></attribute>
+				<attribute name="soap_connector_address" type="os:TCPPortType"></attribute> 
+				<attribute name="sas_ssl_serverAuth_listener_address" type="os:TCPPortType"></attribute>
+				<attribute name="csiv2_ssl_mutualauth_listener_address" type="os:TCPPortType"></attribute>
+				<attribute name="csiv2_ssl_serverAuth_listener_address" type="os:TCPPortType"></attribute> 
+				<attribute name="wc_adminhost" type="os:TCPPortType"></attribute>
+				<attribute name="wc_adminhost_secure" type="os:TCPPortType"></attribute>
+				<attribute name="WC_defaulthost" type="os:TCPPortType"></attribute>
+				<attribute name="WC_defaulthost_secure" type="os:TCPPortType"></attribute>
+				<attribute name="sib_endpoint_address" type="os:TCPPortType"></attribute>
+				<attribute name="sib_endpoint_secure_address" type="os:TCPPortType"></attribute> 
+				<attribute name="sib_mq_endpoint_address" type="os:TCPPortType"></attribute> 
+				<attribute name="sib_mq_endpoint_secure_address" type="os:TCPPortType"></attribute>
+				<attribute name="orb_listener_address" type="os:TCPPortType"></attribute> -->
+	        </extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasAdvancedLdapConfiguration" substitutionGroup="base:capability" type="was:WasAdvancedLdapConfiguration"/>
+	<complexType name="WasAdvancedLdapConfiguration">
+		<complexContent>
+			<extension base="base:Capability">	
+				<attribute name="userFilter" type="string"/>
+				<attribute name="groupFilter" type="string"/>
+				<attribute name="userIdMap" type="string"/>
+				<attribute name="groupIdMap" type="string"/>
+				<attribute name="groupMemberIdMap" type="string"/>	
+				<attribute name="certificateFilter" type="string"/>	
+				<attribute name="certificateMapMode" type="was:CertificateMapMode"/>			
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="CertificateMapMode">
+		<restriction base="string">
+			<enumeration value="EXACT_DN"/>
+			<enumeration value="CERTIFICATE_FILTER"/>
+			<enumeration value="other"/>
+		</restriction>
+	</simpleType>
+	
+	<element name="capability.wasLdapConfiguration" substitutionGroup="base:capability" type="was:WasLdapConfiguration"/>
+	<complexType name="WasLdapConfiguration">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="serverId" type="string"/>	
+				<attribute name="serverPassword" type="string"/>	
+				<attribute name="type" type="was:LDAPDirectoryType"/>	
+				<attribute name="ldapHostname" type="string"/>	
+				<attribute name="ldapPort" type="integer"/>	
+				<attribute name="baseDN" type="string"/>	
+				<attribute name="bindDN" type="string"/>	
+				<attribute name="bindPassword" type="string"/>	
+				<attribute name="ignoreCase" type="boolean"/>
+				<attribute name="realm" type="string"/>	
+				<attribute name="sslConfig" type="string"/>
+				<attribute name="sslEnabled" type="boolean"/>
+				<attribute name="searchTimeout" type="string"/>
+				<attribute name="monitorInterval" type="string"/>
+				<attribute name="reuseConnection" type="boolean"/>
+				<attribute name="limit" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="LDAPDirectoryType">
+		<restriction base="string">
+			<enumeration value="IBM_DIRECTORY_SERVER"/>
+			<enumeration value="SECUREWAY"/>
+			<enumeration value="IPLANET"/>
+			<enumeration value="NETSCAPE"/>
+			<enumeration value="DOMINO502"/>
+			<enumeration value="NDS"/>
+			<enumeration value="ACTIVE_DIRECTORY"/>
+			<enumeration value="CUSTOM"/>
+		</restriction>
+	</simpleType>
+	
+	<element name="capability.wasSecurity" substitutionGroup="base:capability" type="was:WasSecurity"/>
+	<complexType name="WasSecurity">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="globalSecurityEnabled" type="boolean"/>	
+				<attribute name="enforceJava2Security" type="boolean"/>	
+				<attribute name="enforceJava2SecRuntimeFiletering" type="boolean"/>	
+				<attribute name="enforceFineGrainedJCASecurity" type="boolean"/>	
+				<attribute name="allowAllPermissionForApplication" type="boolean"/>	
+				<attribute name="useDomainQualifiedNames" type="boolean"/>	
+				<attribute name="issuePermissionWarning" type="boolean"/>	
+				<attribute name="activeAuthMechanism" type="string"/>	
+				<attribute name="activeUserRegistry" type="was:WasUserRegistryTypes"/>	
+				<attribute name="cacheTimeout" type="string"/>	
+				<attribute name="activeProtocol" type="was:IIOPSecurityProtocols"/>	
+                <!--begin Additive was security attributes-->
+				<!--<attribute name="inboundPropagationEnabled" type="boolean"/>					
+				<attribute name="outboundPropagationEnabled" type="boolean"/>									
+				<attribute name="outboundCustomMappingEnabled" type="boolean"/>-->	
+                <!--end Additive was security attributes-->								
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="WasUserRegistryTypes">
+		<restriction base="string">
+			<enumeration value="OS"/>
+			<enumeration value="LDAP"/>
+			<enumeration value="CUSTOM"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="WasDefaultSecuritySubjectEnum">
+		<restriction base="string">
+			<enumeration value="AllAuthenticated"/>
+			<enumeration value="Everyone"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="IIOPSecurityProtocols">
+		<restriction base="string">
+			<enumeration value="IBM"/>
+			<enumeration value="CSI"/>
+			<enumeration value="BOTH"/>
+			<enumeration value="other"/>
+		</restriction>
+	</simpleType>
+	
+	<element name="unit.wasLdapConfigurationUnit" substitutionGroup="base:unit" type="was:WasLdapConfigurationUnit"/>
+	<complexType name="WasLdapConfigurationUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<!-- J2C Authentication -->
+	<element name="unit.wasJ2CAuth" substitutionGroup="base:unit" type="was:WASJ2CAuthenticationUnit"/>
+	<complexType name="WASJ2CAuthenticationUnit">
+		<complexContent>
+			<extension base="j2ee:J2CAuthenticationUnit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasJ2CAuth" substitutionGroup="base:capability" type="was:WASJ2CAuthenticationDataEntry"/>
+	<complexType name="WASJ2CAuthenticationDataEntry">
+		<complexContent>
+			<extension base="j2ee:J2CAuthenticationDataEntry"/>
+		</complexContent>
+	</complexType>	
+	
+	
+	<!-- DB2 JDBC Provider -->
+	<element name="unit.extendedJdbcProviderUnit" substitutionGroup="base:unit" type="was:ExtendedJdbcProviderUnit"/>
+	<complexType name="ExtendedJdbcProviderUnit">
+		<complexContent>
+			<extension base="java:JdbcProviderUnit">
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	 <element name="capability.extendedJdbcProvider" substitutionGroup="base:capability" type="was:ExtendedJdbcProvider"/>
+	<complexType name="ExtendedJdbcProvider">
+		<complexContent>
+			 <extension base="java:JdbcProvider">
+			 	<!--  
+			 	<attribute name="implementationType" type="was:JdbcImplementationTypeType" />
+			 	-->
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<!-- DB2 JDBC Provider -->
+	<element name="unit.db2JdbcProviderUnit" substitutionGroup="base:unit" type="was:DB2JdbcProviderUnit"/>
+	<complexType name="DB2JdbcProviderUnit">
+		<complexContent>
+			<extension base="was:ExtendedJdbcProviderUnit">
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	 <element name="capability.db2JdbcProvider" substitutionGroup="base:capability" type="was:DB2JdbcProvider"/>
+	<complexType name="DB2JdbcProvider">
+		<complexContent>
+			 <extension base="was:ExtendedJdbcProvider">
+				<attribute name="jdbcType" type="java:JdbcTypeType"/>
+				<attribute name="template" type="was:DB2JdbcProviderType"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Derby JDBC Provider -->
+	<element name="unit.derbyJdbcProviderUnit" substitutionGroup="base:unit" type="was:DerbyJdbcProviderUnit"/>
+	<complexType name="DerbyJdbcProviderUnit">
+		<complexContent>
+			<extension base="was:ExtendedJdbcProviderUnit">
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	 <element name="capability.derbyJdbcProvider" substitutionGroup="base:capability" type="was:DerbyJdbcProvider"/>
+	<complexType name="DerbyJdbcProvider">
+		<complexContent>
+			 <extension base="was:ExtendedJdbcProvider">
+				<attribute name="template" type="was:DerbyJdbcProviderTypeType"/>
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<!-- WASV5DB2 DataSource, add DB2-specific properties 
+		See: "Properties for the IBM DB2 Driver for JDBC and SQLJ"
+		http://publib.boulder.ibm.com/infocenter/db2luw/v9/index.jsp?topic=/com.ibm.db2.udb.apdv.java.doc/doc/rjvdsprp.htm
+	-->
+	<element name="capability.wasv5DB2Datasource" substitutionGroup="base:capability" type="was:WasV5DB2Datasource"/>
+	<complexType name="WasV5DB2Datasource">
+		<complexContent>
+			<extension base="was:WasV5Datasource">
+				<!-- Just adding a few here, many more may be possible -->
+				<attribute name="traceLevel" type="int">
+					<annotation>
+						<documentation>
+						    bit flags, for example com.ibm.db2.jcc.DB2BaseDataSource.TRACE_ALL.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="traceFile" type="string">
+					<annotation>
+						<documentation>
+						    the name of a file into which the IBM DB2 Driver for JDBC and SQLJ writes trace information.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="fullyMaterializeLobData" type="boolean">
+					<annotation>
+						<documentation>
+						    shall the driver retrieve LOB locators for FETCH operations?
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="resultSetHoldability" type="int">
+					<annotation>
+						<documentation>
+						    Specifies whether cursors remain open after a commit operation.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="currentPackageSet" type="string">
+					<annotation>
+						<documentation>
+						    The collection ID to search for JDBC and SQLJ packages.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="deferPrepares" type="boolean">
+					<annotation>
+						<documentation>
+						    Specifies whether to defer prepare operations until statement execution.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="currentSchema" type="string">
+					<annotation>
+						<documentation>
+						    The default schema name that is used to qualify unqualified database objects in dynamically prepared SQL statements.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cliSchema" type="string">
+					<annotation>
+						<documentation>
+						    AKA sysSchema, the schema of the DB2 shadow catalog tables or views that are searched when an application invokes a DatabaseMetaData method.
+						</documentation>
+					</annotation>
+				</attribute>
+				
+				<!--  TODO All the above attributes are properties of the IBM DB2 driver.  'useTemplate'
+					is different.  I suspect it means that the datasource (was created/should be created)
+					using AdminConfig.createUsingTemplate() instead of AdminConfig.create().  If that's
+					true then we have a problem, because we don't model a 'templateName' or ID.
+					Using a template seems to change the meaning of other fields, for example if a 
+					template is used the 'dataSourceHelperClassName' field can be blank, for we will
+					inherit it, but it probably should be a validation error if the field is blank and we
+					aren't using a template! -->
+				<attribute name="useTemplate" type="boolean"/>				
+			</extension>
+		</complexContent>
+	</complexType>
+		<element name="capability.wasv5DB2ZosDatasource" substitutionGroup="base:capability" type="was:WasV5DB2ZosDatasource"/>
+	<complexType name="WasV5DB2ZosDatasource">
+		<complexContent>
+			<extension base="was:WasV5Datasource">
+				<!-- Add z/os specific properties here -->
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="DB2JdbcProviderType">
+		<restriction base="string">
+		    <enumeration value="none"/>			
+			<enumeration value="DB2 Universal JDBC Driver Provider"/>			
+			<enumeration value="DB2 Universal JDBC Driver Provider (XA)"/>			    
+			<enumeration value="DB2 Legacy CLI-based Type 2 JDBC Driver"/>
+			<enumeration value="DB2 Legacy CLI-based Type 2 JDBC Driver (XA)"/>
+			<enumeration value="DB2 UDB for iSeries (Native)"/>
+			<enumeration value="DB2 UDB for iSeries (Native XA)"/>
+			<enumeration value="DB2 UDB for iSeries (Toolbox)"/>
+			<enumeration value="DB2 UDB for iSeries (Toolbox XA)"/>
+			<enumeration value="DB2 for zOS Local JDBC Provider (RRS)"/>
+ 			<!-- The following do not appear in the menu, but they are in the template xml			
+			<enumeration value="DB2 UDB for iSeries (Native - V5R2 and later)" />
+			<enumeration value="DB2 UDB for iSeries (Native XA - V5R2 and later)" />
+			<enumeration value="DB2 UDB for iSeries (Native - V5R1 and earlier)" />
+			<enumeration value="DB2 UDB for iSeries (Native XA - V5R1 and earlier)" />		    	
+			-->
+		</restriction>
+	</simpleType>	
+	
+	<simpleType name="DerbyJdbcProviderTypeType">
+		<restriction base="string">
+			<enumeration value="Cloudscape JDBC Provider"/>
+			<enumeration value="Cloudscape JDBC Provider (XA)"/>
+			<enumeration value="Cloudscape Network Server Using Universal JDBC Driver"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="JdbcImplementationTypeType">
+		<restriction base="string">
+			<enumeration value="ConnectionPool"/>
+			<enumeration value="XA"/>
+		</restriction>
+	</simpleType>	
+	
+	<simpleType name="DB2DataSourceTemplateEnum">
+		<restriction base="string">
+		<enumeration value="DB2 Universal JDBC Driver - 4.0 DataSource"/>
+		<enumeration value="DB2 Universal JDBC Driver DataSource"/>
+
+		<enumeration value="DB2 Universal JDBC Driver - 4.0 XA DataSource"/>
+		<enumeration value="DB2 Universal JDBC Driver XA DataSource"/>
+
+		<enumeration value="DB2 Legacy CLI-based JDBC Driver - 4.0 DataSource"/>
+		<enumeration value="DB2 Legacy CLI-based JDBC Driver DataSource"/>
+
+		<enumeration value="DB2 Legacy CLI-based JDBC Driver -  4.0 XA DataSource"/>
+		<enumeration value="DB2 Legacy CLI-based JDBC Driver XA DataSource"/>
+
+		<enumeration value="DB2 UDB for iSeries (Native) - 4.0 DataSource"/>
+		<enumeration value="DB2 UDB for iSeries (Native) DataSource"/>
+
+        <enumeration value="DB2 UDB for iSeries (Native XA) - 4.0 DataSource"/>
+        <enumeration value="DB2 UDB for iSeries (Native XA) DataSource"/>
+
+        <enumeration value="DB2 UDB for iSeries (Toolbox) - 4.0 DataSource"/>
+        <enumeration value="DB2 UDB for iSeries (Toolbox) DataSource"/>
+
+        <enumeration value="DB2 UDB for iSeries (Toolbox XA) - 4.0 DataSource"/>
+        <enumeration value="DB2 UDB for iSeries (Toolbox XA) DataSource"/>
+
+        <enumeration value="DB2 for zOS Local JDBC Driver - 4.0 DataSource (RRS)"/>
+        <enumeration value="DB2 for zOS Local JDBC Driver DataSource (RRS)"/>	
+		</restriction>
+	</simpleType>	
+		
+	
+   <!--come from Was nd domain-->
+	<element name="capability.wasNode" substitutionGroup="base:capability" type="was:WasNode"/>
+	<complexType name="WasNode">
+		<complexContent>
+			<extension base="base:Capability">
+			    <attribute name="nodeName" type="string"/> 
+				<attribute name="profileName" type="string"/>
+				<attribute name="profileType" type="was:WasProfileTypeEnum"/>
+				<attribute name="profileLocation" type="string"/>
+				<attribute name="isManaged" type="boolean"/>
+				<attribute name="isDefaultProfile" type="boolean"/>
+				<attribute name="wasVersion" type="base:VersionString"/>
+				<!--<attribute name="runAsWindowService" type="boolean"></attribute>  -->	
+				<!--<attribute name="accountType" type="was:WasAccountTypeEnum"></attribute>-->
+				<!-- Ports for Nodeagent -->	
+				<!-- 
+   			    <attribute name="BOOTSTRAP_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="DCS_UNICAST_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="DRS_CLIENT_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="NODE_DISCOVERY_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="NODE_MULTICAST_DISCOVERY_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="ORB_LISTENER_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" type="os:TCPPortType"/>
+                <attribute name="SOAP_CONNECTOR_ADDRESS" type="os:TCPPortType"/>   
+                 -->         			
+           </extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasCell" substitutionGroup="base:capability" type="was:WasCell"/>
+	<complexType name="WasCell">
+		<complexContent>
+			<extension base="base:Capability">
+			    <attribute name="cellName" type="string"/>
+       			<attribute name="wasVersion" type="base:VersionString"/>
+				<attribute name="isDistributed" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasNodeGroup" substitutionGroup="base:capability" type="was:WasNodeGroup"/>
+	<complexType name="WasNodeGroup">
+		<complexContent>
+			<extension base="base:Capability">
+   			    <attribute name="nodeGroupName" type="string"/>
+				<attribute name="isDefaultType" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+
+  <element name="capability.wasSystem" substitutionGroup="base:capability" type="was:WasSystem"/>
+  <complexType name="WasSystem">
+  	<complexContent>
+  		<extension base="base:Capability">
+  			<attribute name="installerDir" type="string"/>
+  			<attribute name="wasHome" type="string"/>
+  			<attribute name="wasVersion" type="base:VersionString"/>
+  			<attribute name="wasEdition" type="was:WasEditionEnum"/>
+  		</extension>
+  	</complexContent>
+  </complexType>
+
+
+<element name="capability.wasConfigurationContainer" substitutionGroup="base:capability" type="was:WasConfigurationContainer"/>
+<!-- Capability to host Was configurationunits -->
+	<complexType name="WasConfigurationContainer">
+		<complexContent>
+			<extension base="base:Capability">
+			<!-- <attribute name="scope" type="was:WasScopeEnum"></attribute>-->
+			</extension>
+			
+		</complexContent>
+	</complexType>
+	
+<element name="capability.wasSharedLibContainer" substitutionGroup="base:capability" type="was:WasSharedLibContainer"/>
+<!-- Capability to host shared library -->
+	<complexType name="WasSharedLibContainer">
+		<complexContent>
+			<extension base="base:Capability"/>			
+		</complexContent>
+	</complexType>
+	
+    
+  <!-- TO DO Move it to J2ee domain
+  <element name="capability.webService"  substitutionGroup="base:capability" type="was:WebService"></element>
+    <complexType name="WebService">
+    <complexContent>
+			<extension base="base:Capability">
+			<attribute name="wsdlFile" type="anyURI"></attribute>
+			</extension>
+		</complexContent>
+    </complexType>
+ --> 
+ 
+ <!-- SIBus  Part-->
+ 
+   <element name="capability.wasSIBus" substitutionGroup="base:capability" type="was:WasSIBus"/>
+    <complexType name="WasSIBus">
+    	<complexContent>
+    		<extension base="base:Capability">
+    		    <attribute name="busName" type="string"/>
+    			<attribute name="DiscardMessages" type="boolean"/>
+    			<attribute name="InterEngineTransportChain" type="string"/>
+    			<attribute name="configurationReload" type="boolean"/>
+    			<attribute default="50000" name="highMessageThreshold" type="int"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+ 
+
+  <element name="capability.wasSibOutboundService" substitutionGroup="base:capability" type="was:WasSibOutboundService"/>
+    <complexType name="WasSibOutboundService">
+    	<complexContent>
+    		<extension base="base:Capability">
+    			<attribute name="serviceName" type="string"/>
+    			<attribute name="wsdlLocation" type="anyURI"/>
+    			<attribute name="wsdlServiceNamespace" type="string"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+ <element name="capability.wasSibInboundService" substitutionGroup="base:capability" type="was:WasSibInboundService"/>
+    <complexType name="WasSibInboundService">
+    <complexContent>
+			<extension base="base:Capability">
+			    <attribute name="serviceName" type="string"/>
+    			<attribute name="wsdlLocation" type="anyURI"/>
+    			<attribute name="wsdlServiceNamespace" type="string"/>
+			</extension>
+		</complexContent>
+    </complexType>
+
+ 
+    <element name="capability.wasSibDestination" substitutionGroup="base:capability" type="was:WasSibDestination"/>
+    <complexType name="WasSibDestination">
+    	<complexContent>
+    		<extension base="base:Capability">
+    			<attribute name="type" type="was:WasSibDestinationTypeEnum"/>
+    			<attribute name="destinationName" type="string"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+ <element name="capability.wasSibMediation" substitutionGroup="base:capability" type="was:WasSibMediation"/>
+    <complexType name="WasSibMediation">
+    	<complexContent>
+    		<extension base="base:Capability">
+    		<attribute name="mediationName" type="string"/>    	
+    		<attribute name="handlerListName" type="string"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="capability.wasEndpointListenerConfiguration" substitutionGroup="base:capability" type="was:WasEndpointListenerConfiguration"/>
+    <complexType name="WasEndpointListenerConfiguration">
+    	<complexContent>
+    		<extension base="base:Capability">
+    		    <attribute name="endpointListenerName" type="was:EndPointListenerNameEnum"/>
+    			<!--  <attribute name="Protocoltype" type="was:WasEndpointListenerType"></attribute>-->
+    			<attribute name="urlRoot" type="string"/>
+    			<attribute name="wsdlUrlRoot" type="string"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <element name="capability.wasSibInboundPort" substitutionGroup="base:capability" type="was:WasSibInboundPort"/>
+  <complexType name="WasSibInboundPort">
+  	<complexContent>
+  		<extension base="base:Capability">
+  		<attribute name="portName" type="string"/>
+  		</extension>
+  	</complexContent>
+  </complexType>
+ 
+<element name="capability.wasSibOutboundPort" substitutionGroup="base:capability" type="was:WasSibOutboundPort"/>
+  <complexType name="WasSibOutboundPort">
+  	<complexContent>
+  		<extension base="base:Capability">
+  		  <attribute name="portName" type="string"/>
+  		</extension>
+  	</complexContent>
+  </complexType>
+
+<element name="capability.WasSibForeignBus" substitutionGroup="base:capability" type="was:WasSibForeignBus"/>
+  <complexType name="WasSibForeignBus">
+  	<complexContent>
+  		<extension base="base:Capability">
+  		  <attribute name="foreignBusName" type="string"/>
+          <attribute name="routingDefinitionType" type="was:WasRoutingDefinitionTypeEnum"/>
+          <attribute name="inBoundUserID" type="string"/>
+          <attribute name="outBoundUserID" type="string"/>
+  		</extension>
+  	</complexContent>
+  </complexType>   
+  
+<element name="capability.wasSibServiceIntegrationBusLink" substitutionGroup="base:capability" type="was:WasSibServiceIntegrationBusLink"/>
+  <complexType name="WasSibServiceIntegrationBusLink">
+  	<complexContent>
+  		<extension base="base:Capability">
+  		  <attribute name="linkName" type="string"/>
+          <attribute name="foreignBusName" type="string"/>
+          <attribute name="remoteMessagingEngineName" type="string"/>
+          <attribute name="bootTrapEndpoints" type="string"/>
+  		</extension>
+  	</complexContent>
+  </complexType>     
+  
+  
+
+ <element name="capability.wasHandlerList" substitutionGroup="base:capability" type="was:WasHandlerList"/>
+    <complexType name="WasHandlerList">
+    	<complexContent>
+    		<extension base="base:Capability">
+    		<attribute name="handlerlistName" type="string"/>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+
+
+
+
+  <!-- Add Default JMS Provider for Was-->  
+
+  <element name="unit.wasMessagingEngine" substitutionGroup="base:unit" type="was:WasMessagingEngineUnit"/>
+  <complexType name="WasMessagingEngineUnit">
+  	<complexContent>
+  		<extension base="base:Unit">   		
+	</extension>
+  	</complexContent>
+  </complexType>
+  
+  <element name="capability.wasMessagingEngine" substitutionGroup="base:capability" type="was:WasMessagingEngine"/>
+  <complexType name="WasMessagingEngine">
+  	<complexContent>
+  		<extension base="base:Capability"> 
+  		<attribute name="engineName" type="string">
+  			<annotation>
+  				<documentation>Name of the messaging engine</documentation>
+ 			</annotation>
+ 		</attribute>
+	</extension>
+  	</complexContent>
+  </complexType>
+
+  <element name="capability.wasDefaultMessagingConnectionFactoryConfiguration" substitutionGroup="base:capability" type="was:WasDefaultMessagingConnectionFactoryConfiguration"/>
+  <complexType name="WasDefaultMessagingConnectionFactoryConfiguration">
+  	<complexContent>
+  		<extension base="jms:JMSConnectionFactory"> 
+  		<attribute name="category" type="string"/>
+  		<attribute name="clientIdentifier" type="string"/>
+  		<attribute name="durableSubscriptionHome" type="string"/>
+  		<attribute name="target" type="string"/>
+  		<attribute name="targetType" type="was:ConnectionFactoryTargetTypeEnum"> <annotation>
+            <documentation>or enum</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetSignificance" type="was:CFTargetSignificanceEnum">
+          <annotation>
+            <documentation>The priority of significance for the target specified</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetInboundTransportChain" type="string"/>
+        <attribute name="providerEndpoints" type="string">
+          <annotation>
+            <documentation>comma</documentation>
+          </annotation>
+        </attribute> 
+        <attribute name="connectionProximity" type="was:ConnectionProximityEnum"/>
+        <attribute name="nonpersistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="persistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="readAhead" type="was:ReadAheadOptimizationEnum"/>
+        <attribute name="tempQnamePrefix" type="string">
+          <annotation>
+            <documentation>length less than 12</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="tempTopicNamePrefix" type="string">
+          <annotation>
+            <documentation>length less than 12</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="ShareDurableSubscriptions" type="was:ShareDurableSubscriptionsEnum"/>
+	</extension>
+  	</complexContent>
+  </complexType>
+ 
+  <element name="capability.wasDefaultMessagingQueueConnectionFactoryConfiguration" substitutionGroup="base:capability" type="was:WasDefaultMessagingQueueConnectionFactoryConfiguration"/>
+  <complexType name="WasDefaultMessagingQueueConnectionFactoryConfiguration">
+  	<complexContent>
+  		<extension base="jms:JMSQueueConnectionFactory"> 
+  		<attribute name="category" type="string"/>
+  		<attribute name="clientIdentifier" type="string"/>
+  		<attribute name="target" type="string"/>
+  		<attribute name="targetType" type="was:ConnectionFactoryTargetTypeEnum"> <annotation>
+            <documentation>or enum</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetSignificance" type="was:CFTargetSignificanceEnum">
+          <annotation>
+            <documentation>The priority of significance for the target specified</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetInboundTransportChain" type="string"/>
+        <attribute name="providerEndpoints" type="string">
+          <annotation>
+            <documentation>comma</documentation>
+          </annotation>
+        </attribute> 
+        <attribute name="connectionProximity" type="was:ConnectionProximityEnum"/>
+        <attribute name="nonpersistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="persistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="readAhead" type="was:ReadAheadOptimizationEnum"/>
+        <attribute name="tempQNamePrefix" type="string">
+          <annotation>
+            <documentation>length less than 12</documentation>
+          </annotation>
+        </attribute>
+	</extension>
+  	</complexContent>
+  </complexType>
+ 
+  <element name="capability.wasDefaultMessagingTopicConnectionFactoryConfiguration" substitutionGroup="base:capability" type="was:WasDefaultMessagingTopicConnectionFactoryConfiguration"/>
+  <complexType name="WasDefaultMessagingTopicConnectionFactoryConfiguration">
+  	<complexContent>
+  		<extension base="jms:JMSTopicConnectionFactory"> 
+  		<attribute name="category" type="string"/>
+  		<attribute name="clientIdentifier" type="string"/>
+  		<attribute name="durableSubscriptionHome" type="string"/>
+  		<attribute name="target" type="string"/>
+  		<attribute name="targetType" type="was:ConnectionFactoryTargetTypeEnum"> <annotation>
+            <documentation>or enum</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetSignificance" type="was:CFTargetSignificanceEnum">
+          <annotation>
+            <documentation>The priority of significance for the target specified</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="targetInboundTransportChain" type="string"/>
+        <attribute name="providerEndpoints" type="string">
+          <annotation>
+            <documentation>comma</documentation>
+          </annotation>
+        </attribute> 
+        <attribute name="connectionProximity" type="was:ConnectionProximityEnum"/>
+        <attribute name="nonpersistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="persistentMessageReliability" type="was:MessageReliabilityEnum"/>
+        <attribute name="readAhead" type="was:ReadAheadOptimizationEnum"/>
+        <attribute name="tempTopicNamePrefix" type="string">
+          <annotation>
+            <documentation>length less than 12</documentation>
+          </annotation>
+        </attribute>
+        <attribute name="ShareDurableSubscriptions" type="was:ShareDurableSubscriptionsEnum"/>
+	</extension>
+  	</complexContent>
+  </complexType>
+ 
+  <element name="capability.wasDefaultMessagingQueueDestination" substitutionGroup="base:capability" type="was:WasDefaultMessagingQueueDestination"/>
+  <complexType name="WasDefaultMessagingQueueDestination">
+  	<complexContent>
+  		<extension base="jms:JMSQueueDestination">
+  		<attribute name="connectionDeliveryMode" type="was:ConnectionDeliveryModeEnum"/>
+  		<attribute name="messageLiveTime" type="long"/>
+  		<attribute name="messagePriority" type="int">
+  		    <annotation>
+            <documentation>range from 0~9</documentation>
+          </annotation>
+        </attribute>
+  		</extension>
+  	</complexContent>
+  </complexType>
+  
+  <element name="capability.wasDefaultMessagingTopicDestination" substitutionGroup="base:capability" type="was:WasDefaultMessagingTopicDestination"/>
+  <complexType name="WasDefaultMessagingTopicDestination">
+  	<complexContent>
+  		<extension base="jms:JMSTopicDestination">
+  		<attribute name="connectionDeliveryMode" type="was:ConnectionDeliveryModeEnum"/>
+  		<attribute name="topicName" type="string"/>
+  		<attribute name="messageLiveTime" type="long"/>
+  		<attribute name="messagePriority" type="int">
+  		    <annotation>
+            <documentation>range from 0~9</documentation>
+          </annotation>
+        </attribute>
+  		</extension>
+  	</complexContent>
+  </complexType>  
+  
+  
+  <element name="capability.wasJMSActivationSpecification" substitutionGroup="base:capability" type="was:WasJMSActivationSpecification"/>
+  <complexType name="WasJMSActivationSpecification">
+  	<complexContent>
+  		<extension base="jms:JMSActivationSpecification">
+        <attribute name="MaxBatchSize" type="int"/>
+        <attribute name="maxConcurrentEndpoints" type="int"/>
+        <attribute name="durableScriptionHome" type="string"/>
+        <attribute name="shareDurableSubscription" type="was:ShareDurableSubscriptionsEnum"/>
+  		</extension>
+  	</complexContent>
+  </complexType>  
+  
+  <!-- end sibus related part -->
+
+<!-- Units ************************************************************************************* -->
+	
+	<element name="unit.wasNodeUnit" substitutionGroup="base:unit" type="was:WasNodeUnit"/>
+	<complexType name="WasNodeUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasCellUnit" substitutionGroup="base:unit" type="was:WasCellUnit"/>
+	<complexType name="WasCellUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasNodeGroupUnit" substitutionGroup="base:unit" type="was:WasNodeGroupUnit"/>
+	<complexType name="WasNodeGroupUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+    <element name="unit.wasSystemUnit" substitutionGroup="base:unit" type="was:WasSystemUnit"/>
+    <complexType name="WasSystemUnit">
+    <complexContent>
+			<extension base="base:Unit"/>
+	</complexContent>
+    </complexType>
+    
+	<element name="unit.wasSharedLibraryEntryUnit" substitutionGroup="base:unit" type="was:WasSharedLibraryEntryUnit"/>
+	<complexType name="WasSharedLibraryEntryUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+<!--
+	<element name="unit.wasSubstitutionVariableUnit" type="was:WasSubstitutionVariableUnit"
+		substitutionGroup="base:unit" />
+	<complexType name="WasSubstitutionVariableUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+ -->   
+
+    <!-- sibus unit part -->
+    
+    <element name="unit.wasSIBusUnit" substitutionGroup="base:unit" type="was:WasSIBusUnit"/>
+    <complexType name="WasSIBusUnit">
+    <complexContent>
+		<extension base="base:Unit">               
+		</extension>
+	</complexContent>
+  </complexType>
+    
+    <element name="unit.wasEndpointListenerUnit" substitutionGroup="base:unit" type="was:WasEndpointListenerUnit"/>
+    <complexType name="WasEndpointListenerUnit">
+    <complexContent>
+			<extension base="base:Unit">               
+			</extension>
+		</complexContent>
+  </complexType>
+
+    <element name="unit.wasSibOutboundServiceUnit" substitutionGroup="base:unit" type="was:WasSibOutboundServiceUnit"/>
+     <complexType name="WasSibOutboundServiceUnit">
+    <complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+    </complexType>
+
+    <element name="unit.wasSibInboundServiceUnit" substitutionGroup="base:unit" type="was:WasSibInboundServiceUnit"/>
+    <complexType name="WasSibInboundServiceUnit">
+    <complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+    </complexType>
+    
+    <element name="unit.wasSibDestinationUnit" substitutionGroup="base:unit" type="was:WasSibDestinationUnit"/>
+     <complexType name="WasSibDestinationUnit">
+       <complexContent>
+			<extension base="base:Unit">               
+			</extension>
+		</complexContent>
+    </complexType>
+
+     <element name="unit.wasSibMediationUnit" substitutionGroup="base:unit" type="was:WasSibMediationUnit"/>
+	<complexType name="WasSibMediationUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+	
+    <element name="unit.wasSibInboundPortUnit" substitutionGroup="base:unit" type="was:WasSibInboundPortUnit"/>
+	<complexType name="WasSibInboundPortUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.wasSibOutboundPortUnit" substitutionGroup="base:unit" type="was:WasSibOutboundPortUnit"/>
+	<complexType name="WasSibOutboundPortUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+  <element name="unit.wasDefaultMessagingConnectionFactoryUnit" substitutionGroup="base:unit" type="was:WasDefaultMessagingConnectionFactoryUnit"/>
+  <complexType name="WasDefaultMessagingConnectionFactoryUnit">
+  	<complexContent>
+  		<extension base="jms:JMSConnectionFactoryUnit">   		
+	</extension>
+  	</complexContent>
+  </complexType>
+
+  <element name="unit.wasDefaultMessagingQueueConnectionFactoryUnit" substitutionGroup="base:unit" type="was:WasDefaultMessagingQueueConnectionFactoryUnit"/>
+  <complexType name="WasDefaultMessagingQueueConnectionFactoryUnit">
+  	<complexContent>
+  		<extension base="jms:JMSQueueConnectionFactoryUnit">   		
+	</extension>
+  	</complexContent>
+  </complexType>
+
+  <element name="unit.wasDefaultMessagingTopicConnectionFactoryUnit" substitutionGroup="base:unit" type="was:WasDefaultMessagingTopicConnectionFactoryUnit"/>
+  <complexType name="WasDefaultMessagingTopicConnectionFactoryUnit">
+  	<complexContent>
+  		<extension base="jms:JMSTopicConnectionFactoryUnit">   		
+	</extension>
+  	</complexContent>
+  </complexType>
+  
+  <element name="unit.wasDefaultMessagingQueueDestinationUnit" substitutionGroup="base:unit" type="was:WasDefaultMessagingQueueDestinationUnit"/>
+  <complexType name="WasDefaultMessagingQueueDestinationUnit">
+  	<complexContent>
+  		<extension base="jms:JMSQueueDestinationUnit"/>        
+  	</complexContent>
+  </complexType>
+  
+  <element name="unit.wasDefaultMessagingTopicDestinationUnit" substitutionGroup="base:unit" type="was:WasDefaultMessagingTopicDestinationUnit"/>
+  <complexType name="WasDefaultMessagingTopicDestinationUnit">
+  	<complexContent>
+  		<extension base="jms:JMSTopicDestinationUnit"/>        
+  	</complexContent>
+  </complexType>  
+  
+  <element name="unit.wasJMSActivationSpecificationUnit" substitutionGroup="base:unit" type="was:WasJMSActivationSpecificationUnit"/>
+  <complexType name="WasJMSActivationSpecificationUnit">
+  	<complexContent>
+  		<extension base="jms:JMSActivationSpecificationUnit"/>
+  	</complexContent>
+  </complexType>
+      
+    
+<!-- Simple Types, enumerations -->
+
+    <simpleType name="WasEditionEnum">
+    	<restriction base="string">
+    	    <enumeration value="Base"/>
+    		<enumeration value="Express"/>
+    		<enumeration value="Network Deployment"/>
+    	</restriction>
+    </simpleType>
+    <!-- 
+    <simpleType name="WasScopeEnum">
+    	<restriction base="string">
+    	    <enumeration value="cell"></enumeration>
+    		<enumeration value="node"></enumeration>
+    		<enumeration value="server"></enumeration>
+    		<enumeration value="cluster"></enumeration>
+    	</restriction>
+    </simpleType>
+    -->
+    <simpleType name="WasNodeGroupTypeEnum">
+    	<restriction base="string">
+    		<enumeration value="default"/>
+    		<enumeration value="user"/>
+    	</restriction>
+    </simpleType>
+        
+    <simpleType name="WasAccountTypeEnum">
+    	<restriction base="string">
+    		<enumeration value="localsystem"/>
+    		<enumeration value="specifieduser"/>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="WasProfileTypeEnum">
+    	<restriction base="string">
+    		<enumeration value="dmgr"/>
+    		<enumeration value="managed"/>
+    		<enumeration value="default"/>
+    		<enumeration value="none"/>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="WasSibDestinationTypeEnum">
+    	<restriction base="string">
+    		<enumeration value="WebService"/>
+    		<enumeration value="Port"/>
+    		<enumeration value="Queue"/>
+    		<enumeration value="TopicSpace"/>
+    		<enumeration value="Alias"/>
+    		<enumeration value="Foreign"/>
+    	</restriction>
+    </simpleType>
+
+    
+    <simpleType name="WasEndpointListenerType">
+    	<restriction base="string">
+    		<enumeration value="SOAPOverHttp"/>
+    		<enumeration value="SOAPOverJms"/>
+    	</restriction>
+    </simpleType>
+	
+    
+    <simpleType name="ConnectionFactoryTargetTypeEnum">
+    	<restriction base="string">
+    	    <enumeration value="BusMember"/>
+    		<enumeration value="Custom"/>
+    		<enumeration value="ME"/>
+    	</restriction>
+    </simpleType>
+    
+  
+    <simpleType name="JMSDestinationTypeEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Queue"/>
+    		<enumeration value="Topic"/>
+    	</restriction>
+    </simpleType>
+    
+     <simpleType name="CFTargetSignificanceEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Preferred"/>
+    		<enumeration value="Required"/>
+    	</restriction>
+    </simpleType>
+    
+      <simpleType name="ConnectionProximityEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Bus"/>
+    		<enumeration value="Host"/>
+    		<enumeration value="Cluster"/>
+    		<enumeration value="Server"/>    		    		
+    	</restriction>
+    </simpleType>
+    
+    <simpleType name="MessageReliabilityEnum">
+    	<restriction base="string"> 
+    	
+    	<enumeration value="None">
+        <annotation>
+          <documentation>
+                There is no message reliability for nonpersistent messages. If a nonpersistent message cannot be delivered, it is discarded.
+			</documentation>
+        </annotation>
+      </enumeration>    	
+        <enumeration value="Best effort nonpersistent">
+        <annotation>
+          <documentation>
+                Messages are never written to disk, and are thrown away if memory cache overruns. 
+			</documentation>
+        </annotation>
+      </enumeration>       
+       <enumeration value="Express nonpersistent">
+        <annotation>
+          <documentation>
+                Messages are written asynchronously to persistent storage if memory cache overruns, but are not kept over server restarts. 
+			</documentation>
+        </annotation>
+      </enumeration>    
+       <enumeration value="Reliable nonpersistent">
+        <annotation>
+          <documentation>
+                Messages can be lost if a messaging engine fails, and can be lost under normal operating conditions. 
+			</documentation>
+        </annotation>
+      </enumeration>
+       <enumeration value="Reliable persistent">
+        <annotation>
+          <documentation>
+                Messages can be lost if a messaging engine fails, but are not lost under normal operating conditions.
+			</documentation>
+        </annotation>
+      </enumeration>
+       <enumeration value="Assured persistent">
+        <annotation>
+          <documentation>
+                Highest degree of reliability where assured message delivery is supported.
+			</documentation>
+        </annotation>
+      </enumeration>       
+       <enumeration value="As Bus destination">
+        <annotation>
+          <documentation>
+                Use the delivery option configured for the bus destination. 
+			</documentation>
+        </annotation>
+       </enumeration>     		    		
+    </restriction>
+    </simpleType>
+    
+    <simpleType name="ReadAheadOptimizationEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Default"/>
+    		<enumeration value="AlwaysOn"/>
+    		<enumeration value="AlwaysOff"/>	    		
+    	</restriction>
+    </simpleType> 
+            
+    <simpleType name="ShareDurableSubscriptionsEnum">
+    	<restriction base="string">   
+    		<enumeration value="In cluster">
+        <annotation>
+          <documentation>
+                Allows sharing of durable subscriptions when connections are made from within a server cluster.
+			</documentation>
+        </annotation>
+      </enumeration>
+    		<enumeration value="Always shared">
+        <annotation>
+          <documentation>
+                Durable subscriptions can be shared across connections.
+			</documentation>
+        </annotation>
+      </enumeration>
+    		<enumeration value="Never shared">
+        <annotation>
+          <documentation>
+                Durable subscriptions are never shared across connections.
+			</documentation>
+        </annotation>
+      </enumeration>	    		
+    	</restriction>
+    </simpleType>
+    
+    <simpleType name="ConnectionDeliveryModeEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Application"/>
+    		<enumeration value="Persistent"/>
+    		<enumeration value="NonPersistent"/>	    		
+    	</restriction>
+    </simpleType>
+    
+    <simpleType name="AcknowledgeModeEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Auto-acknowledge">
+    		<annotation>
+          <documentation>
+				The session automatically acknowledges the delivery of a message
+			</documentation>
+        </annotation>
+      </enumeration>
+    		<enumeration value="Duplicates-ok auto-acknowledge">
+        <annotation>
+          <documentation>
+				The session lazily acknowledges the delivery of messages, which can improve performance, but can lead to a message-driven bean receiving a message more than once.
+			</documentation>
+        </annotation>
+      </enumeration>
+    		<enumeration value="NonPersistent"/>	    		
+    	</restriction>
+    </simpleType>
+
+
+    
+    <!--Move from original wasnd domain-->
+    	<element name="capability.wasCluster" substitutionGroup="base:capability" type="was:WasCluster"/>
+	<complexType name="WasCluster">
+		<complexContent>
+			<extension base="was:WasJ2EEServer">
+			    <attribute name="clusterName" type="string"/>
+			    <attribute name="wasVersion" type="base:VersionString"/>
+				<attribute name="createReplicationDomain" type="boolean"/>
+				<attribute name="preferLocal" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasDeploymentManager" substitutionGroup="base:capability" type="was:WasDeploymentManager"/>
+	 <complexType name="WasDeploymentManager">
+    <complexContent>
+			<extension base="base:Capability">
+        	<!--         	
+        	<attribute name="BOOTSTRAP_ADDRESS" type="os:TCPPortType" default="9809"></attribute>
+        	<attribute name="CELL_DISCOVERY_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="DCS_UNICAST_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="ORB_LISTENER_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="SAS_SSL_SERVERAUTH_LISTENER_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="SOAP_CONNECTOR_ADDRESS" type="os:TCPPortType" ></attribute>
+        	<attribute name="WC_adminhost" type="os:TCPPortType" ></attribute>
+        	<attribute name="WC_adminhost_secure" type="os:TCPPortType" ></attribute> 
+        	-->
+			</extension>
+		</complexContent>
+    </complexType>
+
+	<!-- In Windows, there is also a choice to install the 
+		WebSphere Network Deployment service, which if taken also requires
+		a userid/password -->
+	<!-- Units -->
+	<element name="unit.wasClusterUnit" substitutionGroup="base:unit" type="was:WasClusterUnit"/>
+	<complexType name="WasClusterUnit">
+		<complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.wasDeploymentManagerUnit" substitutionGroup="base:unit" type="was:WasDeploymentManagerUnit"/>
+    <complexType name="WasDeploymentManagerUnit">
+    <complexContent>
+			<extension base="base:Unit"/>
+		</complexContent>
+    </complexType>
+
+    <!-- WASDeploymentManager Ports Name Enumerations -->
+    	<simpleType name="WasDeploymentManagerPortNames">
+		<restriction base="string">
+			<enumeration value="bootstrap_address"/>
+			<enumeration value="cell_discovery_address"/>	
+			<enumeration value="csiv2_ssl_mutualauth_listener_address"/>
+			<enumeration value="csiv2_ssl_serverauth_listener_address"/>	
+			<enumeration value="dcs_unicast_address"/>
+			<enumeration value="orb_listener_address"/>
+			<enumeration value="sas_ssl_serverauth_listener_address"/>
+			<enumeration value="soap_connector_address"/>
+			<enumeration value="wc_adminhost"/>	
+			<enumeration value="wc_adminhost_secure"/>
+			
+		</restriction>
+		</simpleType>
+
+    <!-- WASServer Ports Name Enumerations -->
+    	<simpleType name="WebsphereAppServerPortNames">
+		<restriction base="string">
+			<enumeration value="dcs_unicast_address"/>
+			<!-- <enumeration value="adminPort"/>	
+			<enumeration value="startingPort"/> -->
+			<enumeration value="bootstrap_address"/>	
+			<enumeration value="soap_connector_address"/>
+			<enumeration value="sas_ssl_serverAuth_listener_address"/>	
+			<enumeration value="csiv2_ssl_mutualauth_listener_address"/>
+			<enumeration value="csiv2_ssl_serverAuth_listener_address"/>	
+			<enumeration value="wc_adminhost"/>
+			<enumeration value="wc_adminhost_secure"/>	
+			<enumeration value="wc_defaulthost"/>
+			<enumeration value="wc_defaulthost_secure"/>	
+			<enumeration value="sib_endpoint_address"/>
+			<enumeration value="sib_endpoint_secure_address"/>
+			<enumeration value="sib_mq_endpoint_address"/>	
+			<enumeration value="sib_mq_endpoint_secure_address"/>
+			<enumeration value="orb_listener_address"/>			
+		</restriction>
+		</simpleType>
+
+    <!-- WASNode Ports Name Enumerations -->
+    	<simpleType name="WasNodePortNames">
+		<restriction base="string">
+			<enumeration value="bootstrap_address"/>
+			<enumeration value="csiv2_ssl_mutualauth_listener_address"/>
+			<enumeration value="csiv2_ssl_serverauth_listener_address"/>	
+			<enumeration value="dcs_unicast_address"/>
+			<enumeration value="drs_cleint_address"/>
+			<enumeration value="node_discovery_address"/>	
+			<enumeration value="node_ipv6_mulitcast_discovery_address"/>
+			<enumeration value="node_multicast_discovery_address"/>	
+			<enumeration value="orb_listener_address"/>
+			<enumeration value="sas_ssl_serverauth_listener_address"/>
+			<enumeration value="soap_connector_address"/>
+		</restriction>
+		</simpleType>
+    
+    <!-- Ports Name Enumerations -->
+    
+<!--  Do not support MQ related configurations in this version
+ <element name="capability.wasMQQueueConnectionFactory"  substitutionGroup="base:capability" type="was:WasMQQueueConnectionFactoryConfiguration"></element>
+    <complexType name="WasMQQueueConnectionFactoryConfiguration">
+    	<complexContent>
+    		<extension base="base:Capability">
+    			<attribute name="authDataAlias" type="string"></attribute>
+    			<attribute name="isXAEnabled" type="boolean"></attribute>
+    			<attribute name="jndiName" type="string"></attribute>
+    			<attribute name="qmName" type="string"></attribute>
+    			<attribute name="channel" type="string"></attribute>
+    			<attribute name="host" type="string"></attribute>
+    			<attribute name="port" type="int"></attribute>
+    			<attribute name="type" type="was:WasMQQcfTypeEnum"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+       <element name="capability.wasMQQueueDestinationConfiguration" substitutionGroup="base:capability"  type="was:WasMQQueueDestinationConfiguration"></element>
+      <complexType name="WasMQQueueDestinationConfiguration">
+      	<complexContent>
+      		<extension base="base:Capability">
+      			<attribute name="channel" type="string"></attribute>
+      			<attribute name="jndiName" type="string"></attribute>
+      			<attribute name="qmName" type="string"></attribute>
+      			<attribute name="qmPassword" type="string"></attribute>
+      			<attribute name="qmUserID" type="string"></attribute>
+      			<attribute name="qName" type="string"></attribute>
+      		</extension>
+      	</complexContent>
+      </complexType>
+   
+    <element name="capability.wasMQQcfBindingConfiguration"  substitutionGroup="base:capability" type="was:WasMQQcfBindingConfiguration"></element>
+     <complexType name="WasMQQcfBindingConfiguration">
+    <complexContent>
+			<extension base="base:Capability">  
+			<attribute name="authDataAlias" type="string"></attribute>
+    			<attribute name="isXAEnabled" type="boolean"></attribute>
+    			<attribute name="jndiName" type="string"></attribute>
+    			<attribute name="qmName" type="string"></attribute>    			             
+			</extension>
+		</complexContent>
+    </complexType>
+ -->
+	<!-- 	 <element name="unit.wasMQQcfClientUnit" type="was:WasMQQcfClientUnit" substitutionGroup="base:unit"></element>
+		 <complexType name="WasMQQcfClientUnit">
+    <complexContent>
+			<extension base="base:Unit">               
+			</extension>
+		</complexContent>
+    </complexType>  -->
+    
+<!-- Do not support MQ related configurations in this version
+  <element name="unit.wasMQQueueConnectionFactoryUnit" type="was:WasMQQueueConnectionFactoryUnit" substitutionGroup="base:unit"></element>
+    <complexType name="WasMQQueueConnectionFactoryUnit">
+    <complexContent>
+			<extension base="base:Unit">               
+			</extension>
+		</complexContent>
+    </complexType>
+    
+        <element name="unit.wasMQQueueDestinationUnit" type="was:WasMQQueueDestinationUnit" substitutionGroup="base:unit"></element>
+     <complexType name="WasMQQueueDestinationUnit">
+    <complexContent>
+			<extension base="base:Unit">               
+			</extension>
+		</complexContent>
+    </complexType>
+    
+        <simpleType name="WasMQQcfTypeEnum">
+    	<restriction base="string">
+    	    <enumeration value="Binding"></enumeration>
+    		<enumeration value="Client"></enumeration>
+    	</restriction>
+    </simpleType>
+ -->    
+ 
+ 	<!-- ============================================================== -->
+	<!-- Section for definition of WasWebServer types 					-->
+	<!-- ============================================================== -->	
+	<!-- Unit types -->	
+	<element name="unit.wasWebServerUnit" substitutionGroup="base:unit" type="was:WasWebServerUnit"/>
+	<complexType name="WasWebServerUnit">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="j2ee:J2EEServerUnit"/>
+		</complexContent>
+	</complexType>	
+	
+	<!-- Capability types -->	
+	<element name="capability.wasWebServer" substitutionGroup="base:capability" type="was:WasWebServer"/>
+	<complexType name="WasWebServer">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="serverName" type="string">
+					<annotation>
+						<documentation>
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="type" type="was:WasWebServerType"/>
+				<attribute name="port" type="integer"/>
+				<attribute name="host" type="string"/>
+				<attribute name="useSecureProtocol" type="boolean"/>
+				<attribute name="installLocation" type="string"/>
+				<attribute name="configFile" type="string"/>
+				<attribute name="logFileError" type="string"/>
+				<attribute name="logFileAccess" type="string"/>
+				<attribute name="serviceName" type="string"/>
+				<attribute name="operatingSystem" type="was:WasWebServerOS"/>
+				<attribute name="mapApplications" type="was:WasApplicationMap"/>
+							
+			</extension>
+		</complexContent>
+	</complexType>			
+			
+	<element name="capability.wasWebServerManagement" substitutionGroup="base:capability" type="was:WasWebServerManagement"/>
+	<complexType name="WasWebServerManagement">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="port" type="integer"/>
+				<attribute name="host" type="string"/>
+				<attribute name="useSecureProtocol" type="boolean"/>
+				<attribute name="userId" type="string"/>
+				<attribute name="password" type="string"/>
+				<attribute name="autoConfigPropagation" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>		
+	
+			
+	<element name="capability.wasWebServerPlugin" substitutionGroup="base:capability" type="was:WasWebServerPlugin"/>
+	<complexType name="WasWebServerPlugin">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="installLocation" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<element name="capability.wasPluginRedirection" substitutionGroup="base:capability" type="was:WasPluginRedirection"/>
+	<complexType name="WasPluginRedirection">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="wasPluginVersion" type="base:VersionString"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.wasPluginAdmin" substitutionGroup="base:capability" type="was:WasPluginAdmin"/>
+	<complexType name="WasPluginAdmin">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="wasPluginVersion" type="base:VersionString"/>
+			</extension>
+		</complexContent>
+	</complexType>		
+	
+<!-- No clustering support at present -->			
+<!-- 
+	<element name="capability.wasWebServerCluster"
+		substitutionGroup="base:capability" type="was:WasWebServerCluster" />
+	<complexType name="WasWebServerCluster">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability" >
+				<attribute name="algorithm" type="was:LoadBalanceAlgorithmType"/>
+				<attribute name="retryInterval" type="integer"/>
+				<attribute name="removeSpecialHeaders" type="boolean"/>
+				<attribute name="cloneSeparatorChange" type="boolean"/>
+				<attribute name="postSizeLimit" type="integer"/>
+			</extension>
+		</complexContent>
+	</complexType>			
+ -->		
+	<!-- Enumerations -->	
+
+
+    <simpleType name="WasWebServerType">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<!-- IHS should be default value in element definitions -->		
+			<enumeration value="IHS"/>  			
+			<enumeration value="APACHE"/>
+			<enumeration value="IIS"/>
+			<enumeration value="DOMINO"/>
+			<enumeration value="SUNJAVASYSTEM"/>
+			<enumeration value="UNKNOWN"/>			
+		</restriction>
+	</simpleType>	
+	
+    <simpleType name="WasApplicationMap">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="MAP_NONE"/>
+			<enumeration value="MAP_DEFAULT"/>
+			<enumeration value="MAP_ALL"/>
+			<enumeration value="UNKNOWN"/>
+		</restriction>
+	</simpleType>		
+
+<!-- 
+    <simpleType name="WasPluginLogLevel">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="TRACE"/>
+			<enumeration value="STATS"/>
+			<enumeration value="WARN"/>
+			<enumeration value="ERROR"/>
+		</restriction>
+	</simpleType>
+ -->	
+	
+    <simpleType name="WasWebServerOS">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="WINDOWS"/>
+			<enumeration value="SOLARIS"/>
+			<enumeration value="AIX"/>
+			<enumeration value="HPUX"/>
+			<enumeration value="LINUX"/>
+			<enumeration value="OS400"/>
+			<enumeration value="OS390"/>
+			<enumeration value="Unknown"/>			
+		</restriction>
+	</simpleType>	
+	
+    <simpleType name="WasWebServerNodeType">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="MANAGED"/>
+			<enumeration value="UNMANAGED"/>
+		</restriction>
+	</simpleType>	
+
+    <simpleType name="WasRoutingDefinitionTypeEnum">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Direct,Service Integration Bus link"/>
+			<enumeration value="Direct,Websphere MQ link"/>
+			<!-- <enumeration value="InDirect" />-->			
+		</restriction>
+	</simpleType>		
+	
+    <simpleType name="EndPointListenerNameEnum">
+		<restriction base="string">
+			<enumeration value="SOAPHTTPChannel1"/>
+			<enumeration value="SOAPHTTPChannel2"/>
+			<enumeration value="SOAPJMSChannel1"/>
+			<enumeration value="SOAPJMSChannel2"/>
+		</restriction>
+	</simpleType>
+	
+<!-- 
+    <simpleType name="LoadBalanceAlgorithmType">
+   		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="RoundRobin"/>
+			<enumeration value="Random"/>
+		</restriction>
+	</simpleType>				
+ -->		
+		
+ 	<!-- ============================================================== -->
+	<!-- End of section for definition of WasWebServer types 			-->
+	<!-- ============================================================== -->	
+    
+    
+    <!-- ============================================================== -->
+	<!-- Begin of section for definition of WasSecurity types 			-->
+	<!-- ============================================================== -->	
+    
+<!--
+	<element name="unit.wasUserRegistryConfigurationUnit" type="was:WasUserRegistryConfigurationUnit"
+		substitutionGroup="base:unit" />
+	<complexType name="WasUserRegistryConfigurationUnit">
+		<complexContent>
+			<extension base="base:Unit">
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.wasLocalOSUserRegistryConfigurationUnit" type="was:WasLocalOSUserRegistryConfigurationUnit"
+		substitutionGroup="base:unit" />
+	<complexType name="WasLocalOSUserRegistryConfigurationUnit">
+		<complexContent>
+			<extension base="was:WasUserRegistryConfigurationUnit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasCustomerUserRegistryConfigurationUnit" type="was:WasCustomerUserRegistryConfigurationUnit"
+		substitutionGroup="base:unit" />
+	<complexType name="WasCustomerUserRegistryConfigurationUnit">
+		<complexContent>
+			<extension base="was:WasUserRegistryConfigurationUnit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.wasLDAPUserRegistryConfigurationUnit" type="was:WasLDAPUserRegistryConfigurationUnit"
+		substitutionGroup="base:unit" />
+	<complexType name="WasLDAPUserRegistryConfigurationUnit">
+		<complexContent>
+			<extension base="was:WasUserRegistryConfigurationUnit">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.wasUserRegistryConfiguration"
+		substitutionGroup="base:capability" type="was:WasUserRegistryConfiguration" />
+	<complexType name="WasUserRegistryConfiguration">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Capability" >
+				<attribute name="serverUserID" type="string"/>
+				<attribute name="serverUserPassword" type="string"/>				
+			</extension>
+		</complexContent>
+	</complexType>	
+
+	<element name="capability.wasLDAPUserRegistryConfiguration"
+		substitutionGroup="base:capability" type="was:WasLDAPUserRegistryConfiguration" />
+	<complexType name="WasLDAPUserRegistryConfiguration">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="was:WasUserRegistryConfiguration" >
+				<attribute name="type" type="string"/>
+				<attribute name="host" type="string"/>
+				<attribute name="port" type="string"/>				
+			</extension>
+		</complexContent>
+	</complexType>	
+
+	<element name="capability.wasCustomUserRegistryConfiguration"
+		substitutionGroup="base:capability" type="was:WasCustomUserRegistryConfiguration" />
+	<complexType name="WasCustomUserRegistryConfiguration">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="was:WasUserRegistryConfiguration" >
+				<attribute name="className" type="string"/>				
+			</extension>
+		</complexContent>
+	</complexType>	
+
+	<element name="capability.wasLocalOSUserRegistryConfiguration"
+		substitutionGroup="base:capability" type="was:WasLocalOSUserRegistryConfiguration" />
+	<complexType name="WasLocalOSUserRegistryConfiguration">
+		<annotation>
+			<documentation>
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="was:WasUserRegistryConfiguration" >
+			</extension>
+		</complexContent>
+	</complexType>		    
+   --> 
+    
+    <!-- ============================================================== -->
+	<!-- End of section for definition of WasSecurity types 			-->
+	<!-- ============================================================== -->	
+
+
+	<complexType name="WasSecuritySubject">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="subjectName" type="string"/>
+				<attribute name="accessId" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+    <element name="capability.wasSecuritySubject" type="was:WasSecuritySubject"/>
+
+    <complexType name="WasApplicationExt">
+    	<complexContent>
+    		<extension base="base:Capability">
+    			<attribute name="reloadInterval" type="long"
+    				use="optional">
+    			</attribute>
+    			<attribute name="shareSessionContext" type="boolean" use="optional"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="capability.wasApplicationExt" type="was:WasApplicationExt"></element>
+
+    <complexType name="WasWebAppExt">
+    	<complexContent>
+    		<extension base="base:Capability">
+    			<attribute name="reloadInterval" type="int"
+    				use="optional">
+    			</attribute>
+    			<attribute name="reloadingEnabled" type="boolean" use="optional"></attribute>
+    			<attribute name="defaultErrorPage" type="string" use="optional"></attribute>
+    			<attribute name="additionalClassPath" type="string" use="optional"></attribute>
+    			<attribute name="fileServingEnabled" type="boolean" use="optional"></attribute>
+    			<attribute name="directoryBrowsingEnabled"
+    				type="boolean" use="optional">
+    			</attribute>
+    			<attribute name="serveServletsByClassnameEnabled"
+    				type="boolean" use="optional">
+    			</attribute>
+    			<attribute name="preCompileJSPs" type="boolean" use="optional"></attribute>
+    			<attribute name="autoRequestEncoding" type="boolean" use="optional"></attribute>
+    			<attribute name="autoResponseEncoding" type="boolean" use="optional"></attribute>
+    			<attribute name="autoLoadFilters" type="boolean" use="optional"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="capability.wasWebAppExt" type="was:WasWebAppExt"></element>
+    
+    <element name="constraint.wasSecuritySubjectConstraint" substitutionGroup="base:constraint" type="was:WasSecuritySubjectConstraint"></element>
+    <complexType name="WasSecuritySubjectConstraint">
+    	<annotation>
+    		<documentation xml:lang="en">
+    			A security role mapping from a J2EE security role to a
+    			Was security subject.
+    		</documentation>
+    	</annotation>
+    	<complexContent>
+    		<extension base="was:WasJ2EEConstraint">
+
+    			<attribute name="wasSecuritySubject" type="string"
+    				use="required" />
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="constraint.wasJ2EEConstraint" substitutionGroup="base:constraint" type="was:WasJ2EEConstraint"></element>
+    <complexType name="WasJ2EEConstraint">
+        <annotation>
+        	<documentation>
+        		Super type for all J2EE specific was domain constraints.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="base:Constraint"></extension>
+    	</complexContent>
+    </complexType>
+
+	<element name="constraint.wasModuleClassloaderPolicyConstraint" substitutionGroup="base:constraint" type="was:WasModuleClassloaderPolicyConstraint"></element>
+    <complexType name="WasModuleClassloaderPolicyConstraint">
+        <annotation>
+        	<documentation>
+        		Super type for all classloader policy was constraints.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="was:WasJ2EEConstraint"></extension>
+    	</complexContent>
+    </complexType>
+
+	<element name="constraint.wasWarClassloaderPolicyConstraint" substitutionGroup="base:constraint" type="was:WasWarClassloaderPolicyConstraint"></element>
+    <complexType name="WasWarClassloaderPolicyConstraint">
+        <annotation>
+        	<documentation>
+        		Was classloader policy constraint for war modules.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension
+    			base="was:WasModuleClassloaderPolicyConstraint">
+    			<attribute name="order" type="was:ClassloaderMode"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+	<element name="constraint.wasEarClassloaderPolicyConstraint" substitutionGroup="base:constraint" type="was:WasEarClassloaderPolicyConstraint"></element>
+    <complexType name="WasEarClassloaderPolicyConstraint">
+        <annotation>
+        	<documentation>
+        		Was classloader policy constraint for ear modules.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="was:WasWarClassloaderPolicyConstraint">
+    			<attribute name="reloadInterval" type="int"></attribute>
+    			<attribute name="reloadClasses" type="boolean"></attribute>
+    			<attribute name="policy" type="was:ClassloaderPolicyType"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+	<element name="constraint.wasModuleStartWeightConstraint" type="was:WasModuleStartWeightConstraint" substitutionGroup="base:constraint"></element>
+    <complexType name="WasModuleStartWeightConstraint">
+        <annotation>
+        	<documentation>
+        		Was module starting weight constraint.
+        	</documentation>
+        </annotation>
+        <complexContent>
+    		<extension base="was:WasJ2EEConstraint">
+    			<attribute name="startingWeight" type="int"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+	<element name="constraint.wasJNDIBindingConstraint" type="was:WasJNDIBindingConstraint" substitutionGroup="base:constraint">
+		<annotation>
+			<documentation>
+				Was JNDI binding constraint, used for binding J2EE
+				capabilities to specific JNDI names on a was server,
+				cluster, cell, or node.
+			</documentation>
+		</annotation></element>
+    <complexType name="WasJNDIBindingConstraint">
+    	<complexContent>
+    		<extension base="was:WasJ2EEConstraint">
+    			<attribute name="jndiName" type="string"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+</schema>

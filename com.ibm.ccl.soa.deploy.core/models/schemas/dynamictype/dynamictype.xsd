@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/dynamictype/1.0.0/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:dynamictype="http://www.ibm.com/ccl/soa/deploy/dynamictype/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="DynamicTypeRoot"
+	ecore:name="dynamictype"
+	ecore:package="com.ibm.ccl.soa.deploy.dynamictype"
+	ecore:nsPrefix="dynamictype">
+
+	<!--                  -->
+	<!-- Location Binding -->
+	<!--                  -->
+	<element name="dynamicTypes" type="dynamictype:DynamicTypes"/>
+	<complexType name="DynamicTypes">
+		<annotation>
+			<documentation>
+			   A container for dynamic type definitions
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="dynamictype:dynamicPaletteEntry" minOccurs="0" maxOccurs="unbounded" ecore:name="paletteEntries"/>
+		</sequence>
+	</complexType>
+
+  	<!--             		 -->
+  	<!--  Palette Entry Definition -->
+  	<!--             		 -->
+	<element name="dynamicPaletteEntry" type="dynamictype:DynamicPaletteEntry" />
+	<complexType name="DynamicPaletteEntry">
+		<annotation>
+			<documentation>
+				The specification of a dynamic palette entry
+			</documentation>
+		</annotation>
+		<attribute name="id" type="string" use="required"/>
+		<attribute name="label" type="string" use="required"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="smallIcon" type="string" use="required"/>
+		<attribute name="largeIcon" type="string" use="optional"/>
+		<attribute name="templateURI" type="string" use="optional"/>
+		<attribute name="path" type="string" use="required"/>
+		<attribute name="diagramPath" type="string" use="optional"/>
+		<attribute name="kind" type="string" use="optional"/>
+	</complexType>
+	
+	<!--             		 -->
+  	<!--  Palette Stack Definition -->
+  	<!--             		 -->
+	<element name="dynamicPaletteStack" type="dynamictype:DynamicPaletteStack" />
+	<complexType name="DynamicPaletteStack">
+		<annotation>
+			<documentation>
+				The specification of a dynamic palette stack
+			</documentation>
+		</annotation>
+		<attribute name="id" type="string" use="required"/>
+		<attribute name="label" type="string" use="required"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="icon" type="string" use="required"/>
+	</complexType>
+	
+</schema>

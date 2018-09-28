@@ -1,0 +1,71 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="NonUIPluginXMLTemplate2" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String lcModelPackagePrefix=(String)args.get(2); %>
+<% String uri=(String)args.get(3); %>
+<% String modelDirectory=(String)args.get(4); %>
+<% String domainValidatorPackage=(String)args.get(5); %>
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: NonUIplugin.xmljet,v 1.1 2008/03/01 18:20:56 barnold Exp $
+-->
+
+<plugin>
+    
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "<%=uri%>" 
+       class = "<%=modelPackage%>.provider.<%=ucModelPackagePrefix%>ItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri = "<%=uri%>"
+       class = "<%=modelPackage%>.<%=ucModelPackagePrefix%>Package" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser
+       type="<%=lcModelPackagePrefix%>"
+       class="<%=modelPackage%>.util.<%=ucModelPackagePrefix%>ResourceFactoryImpl" />
+  </extension>
+  
+  <extension point="com.ibm.ccl.soa.deploy.core.domains">
+    <domain
+       id="<%=modelPackage%>.domain"
+       name="%extension.<%=lcModelPackagePrefix%>Domain"
+       targetNamespace="<%=uri%>">
+       <validator class="<%=domainValidatorPackage%>.<%=ucModelPackagePrefix%>DomainValidator"/>
+<% for (int i=6; i<args.size(); ++i) { %>
+<% String capClassName=(String)args.get(i); %>
+       <resourceType
+             id="<%=lcModelPackagePrefix%>.<%=capClassName%>.conceptual"
+             name="<%=capClassName%>"
+             templateURI="platform:/plugin<%=modelDirectory%>/templates/<%=capClassName%>C.template">
+       </resourceType>
+       <resourceTypeUIBinding
+             description="%<%=lcModelPackagePrefix%><%=capClassName%>Tool.Description"
+             label="%<%=lcModelPackagePrefix%><%=capClassName%>Tool.Label"
+             path="/serverSoftwareDrawer/<%=lcModelPackagePrefix%>Stack"
+             smallIcon="icons/pal/placeholder_16.gif"
+             largeIcon="icons/pal/placeholder_20.gif"
+             resourceTypeId="<%=lcModelPackagePrefix%>.<%=capClassName%>.conceptual">
+       </resourceTypeUIBinding>
+<% } %>       
+    </domain>
+  </extension>
+    
+
+</plugin>

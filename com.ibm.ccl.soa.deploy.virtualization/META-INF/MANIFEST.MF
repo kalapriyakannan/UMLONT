@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.ibm.ccl.soa.deploy.virtualization; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.ibm.ccl.soa.deploy.virtualization.VirtualizationPlugin
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: com.ibm.ccl.soa.deploy.virtualization,
+ com.ibm.ccl.soa.deploy.virtualization.impl,
+ com.ibm.ccl.soa.deploy.virtualization.provider,
+ com.ibm.ccl.soa.deploy.virtualization.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ com.ibm.ccl.soa.deploy.core,
+ com.ibm.ccl.soa.deploy.net,
+ com.ibm.ccl.soa.deploy.server,
+ com.ibm.ccl.soa.deploy.os,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.ecore.edit,
+ org.eclipse.core.resources
+Eclipse-LazyStart: true

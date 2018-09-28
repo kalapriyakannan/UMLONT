@@ -1,0 +1,40 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="IDomainValidatorsTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String iDomainValidatorsPackage=(String)args.get(2); %>
+/*******************************************************************************
+ * Copyright (c) 2003, 2007 IBM Corporation Licensed Material - Property of IBM. All rights reserved.
+ *  
+ * US Government Users Restricted Rights - Use, duplication or disclosure v1.0 restricted by GSA ADP
+ * Schedule Contract with IBM Corp.
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
+ *******************************************************************************/
+
+package <%=modelPackage%>.validator;
+
+//import com.ibm.ccl.soa.deploy.core.validator.status.ICoreProblemType;
+//import com.ibm.ccl.soa.deploy.core.validator.status.IDeployAttributeStatus;
+//import com.ibm.ccl.soa.deploy.core.validator.status.IDeployStatus;
+//import <%=modelPackage%>.Activator;
+//import <%=modelPackage%>.<%=ucModelPackagePrefix%>Package;
+
+/**
+ * {@link IDeployStatus#getValidatorID()} declarations for the {@link <%=ucModelPackagePrefix%>Package}
+ * deploy domain.
+ */
+public interface I<%=ucModelPackagePrefix%>DomainValidators {
+
+// /**
+// * <ul>
+// * <li>ID ={@value}
+// * <li>Status = {@link IDeployAttributeStatus}
+// * <li>Problem = {@link ICoreProblemType#OBJECT_ATTRIBUTE_UNDEFINED}
+// * <li>Description = The {@link AttributeName} path must be set
+// * </ul>
+// */
+// public final static String SAMPLE_ID_001 = <%=ucModelPackagePrefix%>DeployPlugin.PLUGIN_ID
+// + ".SAMPLE_ID_001"; //$NON-NLS-1$;
+
+}

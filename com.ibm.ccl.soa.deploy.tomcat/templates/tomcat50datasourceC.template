@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:appdeploy="http://www.ibm.com/ccl/soa/deploy/appdeploy/1.0.0/" 
+               xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+               xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+               xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" 
+              
+               xmlns:tomcat="http://www.ibm.com/ccl/soa/deploy/tomcat/1.0.0/" name="Tomcat 50 DataSource Template">
+  <tomcat:unit.tomcatdatasource name="Tomcat50DataSource" displayName="Tomcat 5.0 DataSource" configurationUnit="true" conceptual="true">
+    <tomcat:capability.tomcat50datasource name="tomcat50DataSourceCapability" linkType="dependency"/>
+    <core:requirement mutable="true" name="consumedTomcatServerCapability" displayName="Tomcat Datasource 5.0" dmoType="tomcat:TomcatServer" linkType="hosting"> 
+      <core:req_expr name="tomcatVersion" displayName="tomcatVersion" attributeName="tomcatVersion" interpreter="Equals" use="required" value="5.0"/>    
+    </core:requirement>   
+    <core:requirement mutable="true" use="optional" name="Database" displayName="Database" dmoType="database:Database" linkType="dependency"/>
+  </tomcat:unit.tomcatdatasource>
+</core:topology>

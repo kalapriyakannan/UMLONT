@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/SoftwareResource.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/j2ee/J2EEDomain.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.J2EEResource">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.SoftwareResource">
+        <xsd:sequence>
+          <xsd:element name="domain" type="coll:com.collation.platform.model.topology.app.j2ee.J2EEDomain" nillable="true" minOccurs="0"/>
+          <xsd:element name="server" type="coll:com.collation.platform.model.topology.app.j2ee.J2EEServer" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+		<paletteProvider
+			class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+			<Priority name="Medium"></Priority>
+			<editor id="DeployCoreEditor"></editor>
+			<contribution
+				factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">
+				<entry label="%tdsStack.Label" kind="stack"
+					description="%tdsStack.Description" path="/serverSoftwareDrawer/"
+					id="tdsStack">
+				</entry>
+				<entry label="%tdsConfigurationStack.Label" kind="stack"
+					description="%tdsConfigurationStack.Description"
+					path="/configurationDrawer/" id="tdsConfigurationStack">
+				</entry>
+			</contribution>
+		</paletteProvider>
+	</extension>
+
+	<!-- Core Element Types and custom Factory -->
+	<extension
+		point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel
+			nsURI="http://www.ibm.com/Zephyr/tds/1.0.0/">
+
+			<metamodelType id="tds.TdsBaseSystemUnit"
+				icon="icons/pal/tds_base_system_pal16.gif"
+				name="%tdsServerUnit.Label" eclass="TdsBaseSystemUnit">
+			</metamodelType>
+		</metamodel>
+	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider
+			class="com.ibm.ccl.soa.deploy.tds.ui.providers.TdsEditPartProvider">
+			<Priority name="Medium"></Priority>
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+
+				<!-- The values are epackage dot eclass -->
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="tds.TdsBaseServerUnit">
+				</staticMethod>
+			</object>
+
+			<!-- the values are (usually? always?) semantic hints -->
+			<object class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method name="getType()"
+					value="baseSystemUnit.tds" />
+			</object>
+			<context views="NodesByType, Nodes"></context>
+		</editpartProvider>
+	</extension>
+
+	<extension
+		point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider
+			class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+
+			<!-- GMF wraps the real semantic objects in EObjectAdapters.  These adapters implement
+				IProxyEObject.getProxyClassID() to return the EMF package dot EMF class of the real
+				object.  The correct value below lets GMF know to load the correct plugins for your
+				views the first time they are created w/o using the palette tools. -->
+
+			<!-- These class ids are local-package DOT classname -->
+
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)"
+				id="Nodes">
+				<method name="getProxyClassID()"
+					value="tds.TdsBaseSystemUnit">
+				</method>
+			</object>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="baseSystemUnit.tds">
+			</context>
+			<context viewClass="org.eclipse.gmf.runtime.notation.Node"
+				semanticHints="" elements="Nodes">
+			</context>
+		</viewProvider>
+	</extension>
+
+</plugin>

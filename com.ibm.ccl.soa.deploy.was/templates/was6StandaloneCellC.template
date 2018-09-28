@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" 
+xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"  
+displayName="WebSphereCellUnit Template">
+  <was:unit.wasCellUnit name="WebSphere6StandaloneCell" configurationUnit="true" conceptual="true">
+    <was:capability.wasCell name="WebSphere6StandAloneCell" displayName="WebSphere 6.0 StandAlone Cell" isDistributed="false" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+      <core:attributeMetaData attributeName="isDistributed" mutable="false"/>
+    </was:capability.wasCell>    
+    <was:capability.wasConfigurationContainer name="WebSphereCellConfigurationContainer" displayName="WebSphere Cell Configuration Container" linkType="any"/>    
+    <was:capability.wasSharedLibContainer name="WebSphereCellSharedLibraryContainer" displayName="WebSphere Cell Shared Library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable name="Substitution Variable" displayName="Substitution variable"  linkType="any"/>
+     <core:requirement mutable="true" name="NodeMember" displayName="Nodes in the Cell" dmoType="was:WasNodeUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="1" maxValue="2"/>
+     </core:requirement>
+     
+	<!-- MK 4/9/2007 changed nodegroup to be config unit hosted on cell -->
+    <core:requirement mutable="true" name="DefaultNodeGroup" displayName="Node Groups in the Cell" dmoType="was:WasNodeGroupUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>    
+	<!-- -->
+    <core:requirement mutable="true" name="Host on WasNode" displayName="Host on WAS Node" dmoType="was:WasNode" linkType="hosting"/>
+
+    <core:requirement mutable="true" name="SIBus" displayName="SIBuses in the Cell" dmoType="was:WasSIBusUnit" linkType="member">
+		<constraint:constraint.memberCardinality name="memberCardinality" minValue="0" maxValue="unbounded"/>
+    </core:requirement>
+
+  </was:unit.wasCellUnit>
+</core:topology>

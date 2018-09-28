@@ -1,0 +1,286 @@
+<schema targetNamespace="http://www.ibm.com/Zephyr/db2high/1.0.0/" 
+elementFormDefault="qualified" 
+    ecore:documentRoot="DB2HighRoot"
+	ecore:name="db2high"
+	ecore:package="com.ibm.ccl.soa.deploy.db2high"
+	ecore:nsPrefix="db2high" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:db2high="http://www.ibm.com/Zephyr/db2high/1.0.0/" 
+	xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+
+<element name="unit.DB2ManagerUnit" substitutionGroup="base:unit" type="db2high:DB2ManagerUnit"/>
+    <complexType name="DB2ManagerUnit">
+    <complexContent>
+    <extension base="base:Unit"/>
+    </complexContent>
+    </complexType>
+    
+    <element name="capaility.DB2Manager" substitutionGroup="base:capability" type="db2high:DB2Manager"/>
+    <complexType name="DB2Manager">
+    <complexContent>
+    <extension base="base:Capability">
+    <attribute name="AgentStackSize " type="string"/>
+    <attribute name="AgentPriority" type="string"/>
+    <attribute name="ApplicationSupportLayerHeapSize " type="string"/>
+    <attribute name="AuditBufferSize" type="string"/>
+    <attribute name="AuthenticationType" type="string"/>
+    <attribute name="CatalogingAllowedWithoutAuthority" type="string"/>
+    <attribute name="ClientKerberosPlugin" type="string"/>
+    <attribute name="ClientUseridPasswordPlugin" type="string"/>
+    <attribute name="CommunicationsBandwidth" type="string"/>
+    <attribute name="ConnectionElapseTime" type="string"/>
+    <attribute name="CPUSpeed" type="string"/>
+    <attribute name="DefaultChargeBackAccount" type="string"/>
+    <attribute name="DefaultDatabaseSystemMonitorSwitches" type="string"/>
+    <attribute name="DefaultDatabasePath" type="string"/>
+    <attribute name="DiagnosticErrorCaptureLevel" type="string"/>
+    <attribute name="DiagnosticDataDirectoryPath" type="string"/>
+    <attribute name="DirectoryCacheSupport" type="string"/>
+    <attribute name="DiscoveryMode" type="string"/>
+    <attribute name="DiscoverServerInstance" type="string"/>
+    <attribute name="NumberOfFCMBuffers" type="string"/>
+    <attribute name="NumberOfFCMChannels" type="string"/>
+    <attribute name="BypassFederatedAuthentication" type="string"/>
+    <attribute name="FederatedDatabaseSystemSupport" type="string"/>
+    <attribute name="MaximumAsynchronousTQsPerQuery" type="string"/>
+    <attribute name="MaximumNumberOfFencedProcesses" type="string"/>
+    <attribute name="GroupPlugin" type="string"/>
+    <attribute name="HealthMonitoring" type="string"/>
+    <attribute name="IndexRecreationTime" type="string"/>
+    <attribute name="InstanceMemory" type="string"/>
+    <attribute name="EnablePntrapartitionParallelism" type="string"/>
+    <attribute name="MaximumJavaInterpreterHeapSize" type="string"/>
+    <attribute name="SoftwareDevelopersKitForJavaInstallationPath" type="string"/>
+    <attribute name="KeepFencedProcess" type="string"/>
+    <attribute name="LocalGSSAPIPlugin" type="string"/>
+    <attribute name="MaximumNumberOfClientConnections" type="string"/>
+    <attribute name="NodeConnectionRetries" type="string"/>
+    <attribute name="MaximumNumberOfCoordinatingAgents" type="string"/>
+    <attribute name="MaximumQueryDegreeOfParallelism" type="string"/>
+    <attribute name="MaximumTimeDifferenceAmongNodes" type="string"/>
+    <attribute name="MaximumNumberOfAgents" type="string"/>
+    <attribute name="MaximumNumberOfConcurrentAgents" type="string"/>
+    <attribute name="DatabaseSystemMonitorHeapSize" type="string"/>
+    <attribute name="MachineNodeType" type="string"/>
+    <attribute name="NotifyLevel" type="string"/>
+    <attribute name="InitialNumberOfAgentsInPool" type="string"/>
+    <attribute name="InitialNumberOfFencedProcesses" type="string"/>
+    <attribute name="AgentPoolSize" type="string"/>
+    <attribute name="MaximumNumberOfConcurrentlyActiveDatabases" type="string"/>
+    <attribute name="QueryHeapSize" type="string"/>
+    <attribute name="ConfigurationFileReleaseLevel" type="string"/>
+    <attribute name="TransactionResyncInterval" type="string"/>
+    <attribute name="ClientIOBlockSize" type="string"/>
+    <attribute name="SortHeapThreshold" type="string"/>
+    <attribute name="SyncPointManagerLogFileSize" type="string"/>
+    <attribute name="SyncPointManagerLogFilePath" type="string"/>
+    <attribute name="SyncPointManagerResyncAgentLimit" type="string"/>
+    <attribute name="SyncPointManagerName" type="string"/>
+    <attribute name="AuthenticationTypeForIncomingConnections" type="string"/>
+    <attribute name="ListOfGSSAPIPluginsForIncomingConnections" type="string"/>
+    <attribute name="UseridPasswordPlugIn" type="string"/>   
+    <attribute name="ServerPluginMode" type="string"/>
+    <attribute name="StartAndStopTimeout" type="string"/>
+    <attribute name="TCPIPServiceName" type="string"/>
+    <attribute name="SystemAdministrationAuthorityGroupName" type="string"/>
+    <attribute name="SystemControlAuthorityGroupName" type="string"/>
+    <attribute name="SystemMaintenanceAuthorityGroupName" type="string"/>
+    <attribute name="SystemMonitorAuthorityGroupName" type="string"/>
+    <attribute name="TransactionManagerDatabaseName" type="string"/>
+    <attribute name="TransactionProcessorMonitorName" type="string"/>
+    <attribute name="TrustAllClients" type="string"/>
+    <attribute name="TrustedClientsAuthentication" type="string"/>
+    <attribute name="InstanceImpactPolicy" type="string"/>                    
+    </extension>
+    </complexContent>    
+    </complexType>
+    
+    <element name="unit.DB2PartitionGroupUnit" substitutionGroup="base:unit" type="db2high:DB2PartitionGroupUnit"/>
+    <complexType name="DB2PartitionGroupUnit">
+    <complexContent>
+    <extension base="base:Unit"/>
+    </complexContent>
+    </complexType>
+    
+<element name="capability.DB2PartitionGroup" substitutionGroup="base:capability" type="db2high:DB2PartitionGroup"/>
+<complexType name="DB2PartitionGroup">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2BufferPoolUnit" substitutionGroup="base:unit" type="db2high:DB2BufferPoolUnit"/>
+<complexType  name="DB2BufferPoolUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+<element name="capability.DB2BufferPool" substitutionGroup="base:capability" type="db2high:DB2BufferPool"/>
+<complexType  name="DB2BufferPool">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="ImmediateOrDeferred" type="string"/>
+<attribute name="Size" type="string"/>
+<attribute name="PageSize" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+<element name="unit.DB2TableSpaceUnit" substitutionGroup="base:unit" type="db2high:DB2TableSpaceUnit"/>
+<complexType  name="DB2TableSpaceUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="capability.DB2TableSpace" substitutionGroup="base:capability" type="db2high:DB2TableSpace"/>
+<complexType  name="DB2TableSpace">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="File" type="string"/>
+<attribute name="Type" type="string"/>
+<attribute name="ManagedBy" type="string"/>
+<attribute name="PageSize" type="string"/>
+<attribute name="EventSize" type="string"/>
+<attribute name="Overhead" type="string"/>
+<attribute name="PrefetchSize" type="string"/>
+<attribute name="TransferRate" type="string"/>
+<attribute name="AutoResize" type="string"/>
+<attribute name="IncreaseSize" type="string"/>
+<attribute name="MaxSize" type="string"/>
+<attribute name="DroppedTableRecovery" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+<element name="unit.DB2TableUnit" substitutionGroup="base:unit" type="db2high:DB2TableUnit"/>
+<complexType  name="DB2TableUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2Table" substitutionGroup="base:capability" type="db2high:DB2Table"/>
+<complexType name="DB2Table">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="IndexTableSpace" type="string"/>
+<attribute name="PartioningKey" type="string"/>
+<attribute name="PartioningMethod" type="string"/>
+<attribute name="Alias" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2FieldUnit" substitutionGroup="base:unit" type="db2high:DB2FieldUnit"/>
+<complexType  name="DB2FieldUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2Field" substitutionGroup="base:capability" type="db2high:DB2Field"/>
+<complexType name="DB2Field">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="Type" type="string"/>
+<attribute name="NullAllowed" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+<element name="unit.DB2ConstraintUnit" substitutionGroup="base:unit" type="db2high:DB2ConstraintUnit"/>
+<complexType  name="DB2ConstraintUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2Constraint" substitutionGroup="base:capability" type="db2high:DB2Constraint"/>
+<complexType name="DB2Constraint">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="Value" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2IndexUnit" substitutionGroup="base:unit" type="db2high:DB2IndexUnit"/>
+<complexType  name="DB2IndexUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2Index" substitutionGroup="base:capability" type="db2high:DB2Index"/>
+<complexType name="DB2Index">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="Field" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2UserUnit" substitutionGroup="base:unit" type="db2high:DB2UserUnit"/>
+<complexType  name="DB2UserUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2User" substitutionGroup="base:capability" type="db2high:DB2User"/>
+<complexType name="DB2User">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Name" type="string"/>
+<attribute name="password" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+<element name="unit.DB2PermissionUnit" substitutionGroup="base:unit" type="db2high:DB2PermissionUnit"/>
+<complexType  name="DB2PermissionUnit">
+<complexContent>
+<extension base="base:Unit"></extension>
+</complexContent>
+</complexType>
+
+
+<element name="unit.DB2Permission" substitutionGroup="base:capability" type="db2high:DB2Permission"/>
+<complexType name="DB2Permission">
+<complexContent>
+<extension base="base:Capability">
+<attribute name="Type" type="string"/>
+<attribute name="Object" type="string"/>
+</extension>
+</complexContent>
+</complexType>
+
+
+
+
+</schema>

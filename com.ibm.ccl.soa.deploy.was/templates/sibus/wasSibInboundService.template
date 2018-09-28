@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="WebSphereInboundService template">
+  <was:unit.wasSibInboundServiceUnit displayName="InboundService" name="InboundService" configurationUnit="true">
+    <was:capability.wasSibInboundService name="Provide a Inbound Service" displayName="Provide a Inbound Service" linkType="any"/>
+    <core:requirement mutable="true" name="Hosted on a sibus" displayName="Hosted on a sibus" dmoType="was:WasSIBus" linkType="hosting"/>
+    <core:requirement mutable="true" name="Depend on a WasOutboundService" displayName="Depend on a WasOutboundService" dmoType="was:WasSibOutboundService" linkType="dependency"/>
+  </was:unit.wasSibInboundServiceUnit>
+</core:topology>

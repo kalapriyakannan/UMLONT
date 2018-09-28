@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/core/LogicalElement.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoServer.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.InternetClusterManager">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.core.LogicalElement">
+        <xsd:sequence>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.lotus.DominoServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="clusterName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="ICMNotesPort" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="ICMSSLKeyFile" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="allowUsersToBrowseDatabasesOverHTTP" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="getConfigurationFrom" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="TCPPort" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="TCPPortStatus" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLPortNumber" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLPortStatus" type="xsd:int" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

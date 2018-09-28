@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:topology
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"
+	xmlns:base="http://www.ibm.com/ccl/soa/deploy/base/1.0.0/"
+	xmlns:appdeploy="http://www.ibm.com/ccl/soa/deploy/appdeploy/1.0.0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+	xsi:schemaLocation="http://www.ibm.com/ccl/soa/deploy/base/1.0.0/ platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base/base.xsd
+						http://www.ibm.com/ccl/soa/deploy/soadeploy/1.0.0/  platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/app-deploy/appdeploy.xsd
+						http://www.ibm.com/ccl/soa/deploy/was/1.0.0/ ../schemas/wasExtension/wasDomain.xsd 
+						http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/ platform:/resource/com.ibm.ccl.soa.deploy.j2ee/models/schemas/j2eeExtension/j2eeDomain.xsd">
+	
+     <was:websphereAppServer name="Wps60" description="Websphere process server template"
+        manufacturer="IBM" displayName="Wesbphere Process Server" id="wps60"
+		version="6.0" typeId="IBMWebsphereApplicationServer">
+
+		<!-- How to model version ranges?  Does the version string support this? -->
+		<!-- This still has validation issues -->
+		<!-- Eventually, configuration services would also be part of this template -->
+		<!-- Could ID from <unit> be used in place of a separate commonResourceType string? -->
+		<!-- Move all the service definitions somewhere common where they can be re-used - j2eeDomain? another generic j2ee template-->
+
+		<base:provides>jspService11</base:provides>
+		<base:provides>jspService12</base:provides>
+		<base:provides>jspService20</base:provides>
+		<base:provides>servletService22</base:provides>
+		<base:provides>servletService23</base:provides>
+		<base:provides>servletService24</base:provides>
+		<base:provides>ejbService11</base:provides>
+		<base:provides>ejbService20</base:provides>
+		<base:provides>ejbService21</base:provides>
+		<base:provides>j2eeService12</base:provides>
+		<base:provides>j2eeService13</base:provides>
+		<base:provides>j2eeService14</base:provides>
+		<base:provides>jcaService10</base:provides>
+		<base:provides>jcaService15</base:provides>
+		<base:provides>mdbService21</base:provides>
+		<base:provides>mdbService22</base:provides>
+		<base:provides>protocolServiceRMI</base:provides>
+		<base:provides>protocolServiceHTTP</base:provides>
+		<base:provides>jvmService</base:provides>
+	</was:websphereAppServer>
+	<j2ee:jspService version="1.1" id="jspService11" />
+	<j2ee:jspService version="1.2" id="jspService12" />
+	<j2ee:jspService version="2.0" id="jspService20" />
+	<j2ee:servletService version="2.2" id="servletService22" />
+	<j2ee:servletService version="2.3" id="servletService23" />
+	<j2ee:servletService version="2.4" id="servletService24" />
+	<j2ee:ejbService version="1.1" id="ejbService11" />
+	<j2ee:ejbService version="2.0" id="ejbService20" />
+	<j2ee:ejbService version="2.1" id="ejbService21" />
+	<j2ee:j2eeService version="1.2" id="j2eeService12" />
+	<j2ee:j2eeService version="1.3" id="j2eeService13" />
+	<j2ee:j2eeService version="1.4" id="j2eeService14" />
+	<j2ee:jcaService version="1.0" id="jcaService10" />
+	<j2ee:jcaService version="1.5" id="jcaService15" />
+	<j2ee:mdbService version="2.1" id="mdbService21" />
+	<j2ee:mdbService version="2.2" id="mdbService22" />
+	<appdeploy:protocolService type="rmi" id="protocolServiceRMI" />
+	<appdeploy:protocolService type="http" id="protocolServiceHTTP" />
+	<j2ee:jvmService version="1.4.2" manufacturer="IBM" id="jvmService" />
+
+
+	<!-- Configuration services -->
+	<was:was51Config id="was51Config" />
+
+</base:topology>

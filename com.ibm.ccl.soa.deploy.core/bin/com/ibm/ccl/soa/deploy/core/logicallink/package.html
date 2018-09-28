@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css"
+	type="text/css">
+<link rel="stylesheet" href="styles/stp-core.css" type="text/css">
+<TITLE>Registered Logical Link Framework</TITLE>
+</HEAD>
+<BODY>
+<!--  BEGIN Abstract for Javadoc Package Overview (one "p" tag) -->
+Registered Logical Link Extension Point Documentation<p>
+<!--  END Abstract for Javadoc Package Overview (one "p" tag) -->
+<a name="top"> 
+<h1 ALIGN="CENTER">Registered Logical Link Extension Point Documentation</h1>
+
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">Abstract [<a style="color: lightblue;"		
+			href="overview-summary.html">Index</a>]</font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+<p>
+This package supports the extension point 
+<code>com.ibm.ccl.soa.deploy.core.logicalLink</code>. It provides the
+framework by which logical links defined using the extension point are
+implemented in the model.  In this sense a logical link describes a 
+high level relationship between two 
+<a href="../DeployModelObject.html">DeployModelObjects</a>. That is, it
+defines a constraint.  Given a logical link, the framework uses a 
+<a href="ILogicalLinkTester.html">link tester</a> to determine which
+validator to use to determine if the intent of the logical link has 
+been implemented in the topology.  If the intent has not been implemented,
+a number of <a href="LogicalLinkImplementation.html">implementations</a>
+may be available to implement it.
+Registered logical link support includes:
+</p>
+<ul>
+	<li>A <a href="LogicalLinkRegistry.html">registry</a> of logical links
+		defined using the extension point.</li>
+	<li>A <a href="LogicalLinkMatcher.html">matcher</a> for determining whether
+		or not one of the registered logical links can be created between any
+		two <a href="../DeployModelObject.html">DeployModelObjects</a>.</li>
+	<li>A <a href="RegisteredLogicalLinkValidator.html">validator</a> 
+		used to determine whether or not the intent of a logical link 
+		is implemented in the topology model.</li>
+	<li>A <a href="RegisteredLogicalLinkResolutionGenerator.html">
+		resolution generator</a> used to determine whether or not a predefined
+		<a href="LogicalLinkImplementation.html">implementation</a> of an 
+		unimplemented link exists.</li>
+</ul>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff"></font>
+</table>
+<table width="500">
+	<tr>
+		<td>
+		<p>This documentation is maintained by <b>Michael H Kalantar</b> <i>(kalantar{at}us.ibm.com)</i>.
+		<p><i>Copyright (c) 2006 IBM Corporation. All rights reserved.
+		</i></p>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<th bgcolor="#0080c0" align="left" style="padding: 2px;"><font
+			color="#ffffff">[<a style="color: lightblue;"
+			href="overview-summary.html">Index</a>] [<a style="color: lightblue;"
+			href="#top">Top</a>]</font>
+</table>
+</BODY>
+</HTML>

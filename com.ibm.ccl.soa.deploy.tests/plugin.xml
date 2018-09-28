@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+       <unitProvider
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestUnitProvider"
+            description="A test topology unit provider."
+            name="Test Topology Unit Provider">
+         <inputEnablement>
+            <instanceof value="java.io.File"/>
+         </inputEnablement>
+      </unitProvider>
+     <unitProvider
+            class="bobdoleProvider"
+            name="Invalid Class Test Provider">
+         <inputEnablement>
+            <instanceof value="java.lang.Runnable"/>
+         </inputEnablement>
+      </unitProvider>
+      
+    <unitProvider
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestUnitProvider"
+             name="Test Input Output Provider">
+         <inputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </inputEnablement>
+         <outputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </outputEnablement>         
+      </unitProvider>      
+      <unitFilter
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestUnitFilter"
+            description="A test topology unit filter."
+            name="Test Topology Unit Filter">
+         <inputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </inputEnablement>
+         <outputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </outputEnablement>    
+      </unitFilter>
+      <unitFilter
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestUnitFilter"
+            description="A test topology unit filter."
+            name="Test Topology Unit Filter">
+         <inputEnablement>
+            <instanceof value="java.io.File"/>
+         </inputEnablement>
+      </unitFilter>
+      <unitFilter
+            class="bobdoleFilter"
+            name="Invalid Class Test Filter">
+         <inputEnablement>
+            <instanceof value="java.lang.Runnable"/>
+         </inputEnablement>
+      </unitFilter>   
+             <unitDiscoverer
+            class="com.ibm.ccl.soa.deploy.tests.extension.discoverer.TestUnitDiscoverer"
+            description="A test unit discoverer."
+            name="Test Unit Discoverer">
+         <inputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </inputEnablement>
+         <outputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </outputEnablement>
+      </unitDiscoverer>
+       <unitDiscoverer
+            class="com.ibm.ccl.soa.deploy.tests.extension.discoverer.TestUnitDiscoverer"
+            description="A test unit discoverer."
+            name="Test Unit Discoverer">
+         <inputEnablement>
+            <instanceof value="java.io.File"/>
+         </inputEnablement>
+      </unitDiscoverer>
+      <unitDiscoverer
+            class="bobdoleDiscoverer"
+            name="Invalid Class Test Discoverer">
+         <inputEnablement>
+            <instanceof value="java.lang.Runnable"/>
+         </inputEnablement>
+      </unitDiscoverer>      
+   </extension>
+   <extension
+         point="com.ibm.ccl.soa.deploy.core.topology">
+      <publisher
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestTopologyPublisher"
+            description="A test topology publisher."
+            name="Test Topology Publisher"/>
+      <exporter
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestTopologyExporter"
+            description="A test topology exporter."
+            name="Test Topology Exporter"/>
+      <decoratorSemantic
+            description="A Test Decorator Semantic"
+            id="test.testDecoratorSemantic"
+            icon="images/someicon.gif"
+            name="Test Decorator Semantic"/>
+ <!--  Commenting this out as it causes the validation error multiple times during development
+    <decoratorSemanticPatternBinding 
+      	decoratorSemanticId="test.testDecoratorSemantic">
+         <typeContent>
+            <include pattern="com.ibm.ccl.soa.deploy.j2ee.*"/>
+            <include pattern="com.*.core.*">
+               <enablement>
+                  <or>
+                  	<instanceof value="com.ibm.ccl.soa.deploy.core.SoftwareComponent"/>
+                  	<and>
+                  		<instanceof value="com.ibm.ccl.soa.deploy.core.Unit"/>
+       	  		  		<test property="com.ibm.ccl.soa.deploy.core.isConceptualUnit" value="true" forcePluginActivation="true"/>
+       	  		  	</and>
+       	  		  </or>
+               </enablement>
+            </include>
+         </typeContent>
+      </decoratorSemanticPatternBinding>
+-->     
+      <decoratorSemantic
+            description="A Republican semantic."
+            id="bobdole.decoratorSemantic"
+            name="Bob Dole Decorator Semantic"/>
+      <decoratorSemanticPatternBinding decoratorSemanticId="bobdole.decoratorSemantic">
+         <typeContent>
+            <include pattern="bob.dole.namespace.*"/>
+         </typeContent>
+      </decoratorSemanticPatternBinding>
+      <decoratorSemanticPatternBinding decoratorSemanticId="test.testDecoratorSemantic">
+         <typeContent>
+            <include pattern="some.other.content"/>
+         </typeContent>
+         <menuContent>
+            <include pattern=".*"/>
+            <exclude pattern="not.these.menus.*"/>
+         </menuContent>
+         <validatorContent>
+            <include pattern="com.*"/>
+            <exclude pattern="not.this.Validator"/>
+         </validatorContent>
+         <viewContent>
+            <include pattern="com.include.view"/>
+            <exclude pattern="com.not.these.view.*"/>
+         </viewContent>
+         <unitProviderContent>
+            <include pattern=".*"/>
+            <exclude pattern="com.not.these.providers.*"/>
+            <include pattern="com.ibm.explicit.unit.provider"/>
+         </unitProviderContent>
+         <paletteEntryContent>
+            <include pattern="MyPaletteEntry1"/>
+            <exclude pattern="FooNotBar"/>
+            <include pattern="Foo.*"/>
+         </paletteEntryContent>
+         <propertySheetContent>
+            <include pattern="com.include.this.propertySheet"/>
+         </propertySheetContent>
+         <userDefinedContent name="fooCategory">
+            <include pattern="foo.*"/>
+         </userDefinedContent>
+         <userDefinedContent name="barCategory">
+            <include pattern=".*"/>
+            <exclude pattern="notBar.*"/>
+         </userDefinedContent>
+         <contentProviderContent>
+            <include pattern="TestContentProvider"/>
+            <include pattern="prov.*"/>
+            <exclude pattern="provNotThisOne"/>
+         </contentProviderContent>
+      </decoratorSemanticPatternBinding>
+            <!--
+      <discoverer
+            class="com.ibm.ccl.soa.deploy.tests.extension.discoverer.TestTopologyDiscoverer"
+            description="A test topology discoverer."
+            name="Test Topology Discoverer"/>            
+            -->
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.popupMenus">  
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.topology"
+            id="com.ibm.ccl.soa.deploy.core.ui.file.topology">
+         <action
+               label="Test: run validation"
+               class="com.ibm.ccl.soa.deploy.tests.core.ui.validator.ValidateTopologyAction"
+               enablesFor="1"
+               id="com.ibm.ccl.soa.deploy.tests.core.ui.validator.ValidateTopologyAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.topology"
+            id="com.ibm.ccl.soa.deploy.core.ui.file.topology">
+         <action
+               label="Test: show markers"
+               class="com.ibm.ccl.soa.deploy.tests.core.ui.validator.DumpMarkersAction"
+               enablesFor="1"
+               id="com.ibm.ccl.soa.deploy.tests.core.ui.validator.DumpMarkersAction">
+         </action>
+      </objectContribution>
+            <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.topology"
+            id="com.ibm.ccl.soa.deploy.core.ui.file.topology">
+         <action
+               label="Test: show markers and resolutions"
+               class="com.ibm.ccl.soa.deploy.tests.core.ui.validator.DumpMarkerResolutionsAction"
+               enablesFor="1"
+               id="com.ibm.ccl.soa.deploy.tests.core.ui.validator.DumpMarkerResolutionsAction">
+         </action>
+      </objectContribution>         
+   </extension>
+   <extension
+         point="com.ibm.ccl.soa.deploy.core.domains">
+      <!-- Test fake domain  -->
+      <domain
+            description="A Test Domain"
+            id="com.ibm.ccl.soa.deploy.tests.domain1"
+            name="Test Domain"
+            targetNamespace="com.ibm.ccl.soa.deploy.tests.domain1">
+            <validator class="com.ibm.ccl.soa.deploy.tests.core.validator.SyntheticStubDomainValidator"/>
+         <capabilityProvider
+               class="com.ibm.ccl.soa.deploy.tests.extension.TestCapabilityProvider"
+               description="A test capability provider"
+               name="Test Capability Provider">
+            <inputEnablement>
+               <instanceof value="java.io.File"/>
+            </inputEnablement>
+         </capabilityProvider>
+         <capabilityProvider
+               class="bobdoleCapabilityProvider"
+               name="Invalid Class Test Capability Provider">
+            <inputEnablement>
+               <instanceof value="java.lang.Runnable"/>
+            </inputEnablement>
+         </capabilityProvider>
+         <capabilityProvider
+            class="com.ibm.ccl.soa.deploy.tests.extension.TestCapabilityProvider"
+             name="Test Input Output Capability Provider">
+         <inputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </inputEnablement>
+         <outputEnablement>
+            <instanceof value="java.lang.StringBuffer"/>
+         </outputEnablement>         
+      </capabilityProvider>
+         <decoratorSemanticBindingRule>
+            <unitProviderContent>
+               <explicit-entry content="bogusEntry1"/>
+               <explicit-entry content="com.ibm.explicit.unit.provider"/>
+               <explicit-entry content="com.ibm.ccl.soa.deploy.tests.extension.TestUnitProvider"/>
+          <!--     <explicit-entry content="com.ibm.ccl.soa.deploy.ide.internal.unitprovider.IDEJ2EEModuleUnitProvider"/> -->
+            </unitProviderContent>
+            <validatorContent>
+               <explicit-entry content="com.ibm.ccl.soa.deploy.tests.core.validator.SyntheticStubDomainValidator"/>
+               <!-- This test for invalid needs to move to it;s own test plug-in 
+               <explicit-entry content="com.ibm.ccl.soa.deploy.os.internal.validator.OsDomainValidator"/>
+               -->
+            </validatorContent>
+         </decoratorSemanticBindingRule>
+      </domain>
+      
+      <!-- Test domain for global validator -->
+      <domain
+        description="A Test Domain"
+        id="com.ibm.ccl.soa.deploy.tests.domain.global"
+        name="Redefinition of Core to define a test global validator (always invoked)"
+        targetNamespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/">
+          <validator class="com.ibm.ccl.soa.deploy.tests.core.validator.SyntheticGlobalDomainValidator"/>
+      </domain>
+   </extension>
+   
+   <extension
+         id="realization_command_line"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.ibm.ccl.soa.deploy.tests.apps.TopologyDeploymentCommandLineApp">
+         </run>
+      </application>
+   </extension>
+</plugin>

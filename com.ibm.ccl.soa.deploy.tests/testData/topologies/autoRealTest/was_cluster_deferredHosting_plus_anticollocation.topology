@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:ihs="http://www.ibm.com/ccl/soa/deploy/ihs/1.0.0/" xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" displayName="was_cluster_deferredHosting_plus_anticollocation" name="was_cluster_deferredHosting_plus_anticollocation" decoratorSemantic="com.ibm.ccl.soa.deploy.core.dds" namespace="">
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS4" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="DmgrHost0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS4" target="/root"/>
+    <core:link.hosting name="RedhatLinuxAS4HostsWasSystemUnit" source="/RedhatLinuxAS4" target="/WasSystemUnit"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS40" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="ASHost0cell0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS40" target="/root0"/>
+    <core:link.hosting name="RedhatLinuxAS40HostsWasSystemUnitND" source="/RedhatLinuxAS40" target="/WasSystemUnitND"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS41" goalInstallState="installed" initInstallState="installed">
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="ASHost1cell0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxAS41HostsWasSystemUnitND0" source="/RedhatLinuxAS41" target="/WasSystemUnitND0"/>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS41" target="/root1"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS42" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="ASHost2cell0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxAS42HostsWasSystemUnitND1" source="/RedhatLinuxAS42" target="/WasSystemUnitND1"/>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS42" target="/root2"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS43" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="ASHost3cell0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxAS43HostsWasSystemUnitND2" source="/RedhatLinuxAS43" target="/WasSystemUnitND2"/>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS43" target="/root3"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <os:unit.linuxOperatingSystemUnit mutable="false" name="RedhatLinuxAS44" goalInstallState="installed" initInstallState="installed">
+    <os:capability.unixDirectory displayName="directory" name="directory" linkType="any" FixedPath="/tmp">
+      <core:attributeMetaData attributeName="FixedPath" mutable="false"/>
+    </os:capability.unixDirectory>
+    <os:capability.redhatLinuxOperatingSystem displayName="Redhat AS4 Linux" name="RedhatLinux" linkType="any" hostname="ASHost4cell0" os.distribution="Red Hat" os.type="Linux" os.version="4.0"/>
+    <core:requirement displayName="Server" mutable="true" name="Server" dmoType="server:Server" linkType="hosting">
+      <constraint:constraint.equals displayName="cpuArchitecture" name="cpuArchitecture" attributeName="cpuArchitecture" value="intel"/>
+    </core:requirement>
+    <core:link.hosting name="RedhatLinuxHostsRoot" source="/RedhatLinuxAS44" target="/root4"/>
+    <core:link.hosting name="RedhatLinuxAS44HostsWasSystemUnitND3" source="/RedhatLinuxAS44" target="/WasSystemUnitND3"/>
+  </os:unit.linuxOperatingSystemUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy" mutable="false" name="ServerClassLoader" configurationUnit="true">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy2" mutable="false" name="ServerClassLoader0" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy22" mutable="false" name="ServerClassLoader00" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy23" mutable="false" name="ServerClassLoader01" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy24" mutable="false" name="ServerClassLoader02" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasClassLoaderConfigurationUnit displayName="Server Class Loader Policy25" mutable="false" name="ServerClassLoader03" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasApplicationServerClassLoaderPolicy displayName="Server Class Loader Policy" mutable="false" name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationServerClassLoaderPolicy>
+    <core:requirement displayName="WebSphere Server" mutable="false" name="WebSphereServer" dmoType="was:WasServer" linkType="hosting" use="required"/>
+    <core:requirement displayName="Optional Shared Library" mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry" linkType="dependency" use="optional"/>
+  </was:unit.wasClassLoaderConfigurationUnit>
+  <was:unit.wasNodeUnit mutable="false" name="Was6DmgrNode" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasNode name="WAS6DmgrNode" linkType="any" isDefaultProfile="true" isManaged="false" nodeName="Node01" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="dmgr" wasVersion="6.0">
+      <core:attributeMetaData attributeName="isManaged" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer displayName="ConfigurationContainer" name="Provide_ConfigurationContainerCapability" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="SharedLibraryContainer" name="Provide_SharedlibraryContainerCapablity" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:link.hosting name="WasNodeHostsCell" source="/Was6DmgrNode" target="/was6DistributedCell"/>
+    <core:link.hosting name="WasNodeHostsWAS6dmgr" source="/Was6DmgrNode" target="/WasDeploymentManagerUnit"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasDeploymentManagerUnit displayName="WAS 6.0 Deployment Manager" mutable="false" name="WasDeploymentManagerUnit" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasDeploymentManager displayName="WAS Deployment Manager" name="Was deployment Manager" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <core:requirement displayName="Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.equals name="profileType" attributeName="profileType" value="dmgr"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WasDeploymentManagerUnit" target="/portConfiguration"/>
+  </was:unit.wasDeploymentManagerUnit>
+  <was:unit.wasNodeUnit displayName="WAS Node" mutable="false" name="WasNode" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" isManaged="true" nodeName="node0" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="WasNodeHostsWebSphere6Server" source="/WasNode" target="/WebSphere6Server"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeUnit displayName="WAS Node2" mutable="false" name="WasNode0" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" isManaged="true" nodeName="node1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:link.hosting name="WasNodeHostsWebSphere6Server" source="/WasNode0" target="/WebSphere6Server0"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeUnit displayName="WAS Node3" mutable="false" name="WasNode1" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" isManaged="true" nodeName="node2" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:link.hosting name="WasNodeHostsWebSphere6Server" source="/WasNode1" target="/WebSphere6Server1"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeUnit displayName="WAS Node4" mutable="false" name="WasNode2" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" isManaged="true" nodeName="node3" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="WasNodeHostsWebSphere6Server" source="/WasNode2" target="/WebSphere6Server2"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeUnit displayName="WAS Node5" mutable="false" name="WasNode3" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasNode displayName="WasUnmanagedNode" name="WASNode" linkType="any" isDefaultProfile="true" isManaged="true" nodeName="node4" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01" profileName="AppSrv01" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:link.hosting name="WasNodeHostsWebSphere6Server" source="/WasNode3" target="/WebSphere6Server3"/>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeGroupUnit mutable="false" name="WasNodeGroup" conceptual="false" configurationUnit="true">
+    <was:capability.wasNodeGroup name="Provide WAS Node Group" linkType="any" isDefaultType="true" nodeGroupName="NodeGroup01"/>
+    <core:requirement displayName="Contained by cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="InCard" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Group Nodes" mutable="true" name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:link.member name="MemberLink3" source="/WasNodeGroup" target="/WasNode2"/>
+    <core:link.member name="MemberLink0" source="/WasNodeGroup" target="/WasNode"/>
+    <core:link.member name="MemberLink2" source="/WasNodeGroup" target="/WasNode1"/>
+    <core:link.member name="WasNodeGroupContainsWasNode" source="/WasNodeGroup" target="/Was6DmgrNode"/>
+    <core:link.member name="MemberLink1" source="/WasNodeGroup" target="/WasNode0"/>
+    <core:link.member name="MemberLink4" source="/WasNodeGroup" target="/WasNode3"/>
+  </was:unit.wasNodeGroupUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System" mutable="false" name="WasSystemUnit" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS System" name="WASSystem" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0"/>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitHostsWasDmgrNode" source="/WasSystemUnit" target="/Was6DmgrNode"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System2" mutable="false" name="WasSystemUnitND" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS 6.0 ND System" name="WASSystemND" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitNDHostsWasNode" source="/WasSystemUnitND" target="/WasNode"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System3" mutable="false" name="WasSystemUnitND0" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS 6.0 ND System" name="WASSystemND" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitNDHostsWasNode" source="/WasSystemUnitND0" target="/WasNode0"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System4" mutable="false" name="WasSystemUnitND1" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS 6.0 ND System" name="WASSystemND" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitNDHostsWasNode" source="/WasSystemUnitND1" target="/WasNode1"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System5" mutable="false" name="WasSystemUnitND2" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS 6.0 ND System" name="WASSystemND" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitNDHostsWasNode" source="/WasSystemUnitND2" target="/WasNode2"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasSystemUnit displayName="WAS 6.0 ND System6" mutable="false" name="WasSystemUnitND3" conceptual="false" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasSystem displayName="WAS 6.0 ND System" name="WASSystemND" linkType="any" wasEdition="Network Deployment" wasHome="C:\Program Files\IBM\WebSphere\AppServer" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasSystem>
+    <core:requirement displayName="Hosting on an OS" mutable="true" name="HostingOnOS" dmoType="os:OperatingSystem" linkType="hosting"/>
+    <core:link.hosting name="WasSystemUnitNDHostsWasNode" source="/WasSystemUnitND3" target="/WasNode3"/>
+  </was:unit.wasSystemUnit>
+  <was:unit.wasClusterUnit mutable="false" name="WebSphere6Cluster">
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasCluster displayName="Provide a cluster" name="Provide a Cluster" linkType="any" clusterName="cluster0" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <core:requirement displayName="WebSphereCell" mutable="true" name="WebSphereCell" dmoType="was:WasCell" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.x"/>
+      <constraint:constraint.equals name="isDistributed" attributeName="isDistributed" value="true"/>
+    </core:requirement>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WebSphere NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency">
+      <core:link.dependency name="WebSphere NodeGroupToProvide WAS Node Group" source="/WebSphere6Cluster/WebSphere NodeGroup" target="/WasNodeGroup/Provide WAS Node Group"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinality" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:link.member name="WebSphere6ClusterContainsWebSphere6Server3" source="/WebSphere6Cluster" target="/WebSphere6Server3"/>
+    <core:link.member name="WebSphere6ClusterContainsWebSphere6Server" source="/WebSphere6Cluster" target="/WebSphere6Server"/>
+    <core:link.member name="WebSphere6ClusterContainsWebSphere6Server0" source="/WebSphere6Cluster" target="/WebSphere6Server0"/>
+  </was:unit.wasClusterUnit>
+  <was:unit.wasClusterUnit mutable="false" name="WebSphere6Cluster0">
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasCluster displayName="Provide a cluster" name="Provide a Cluster" linkType="any" clusterName="cluster1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WebSphere NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency">
+      <core:link.dependency name="WebSphere NodeGroupToProvide WAS Node Group" source="/WebSphere6Cluster0/WebSphere NodeGroup" target="/WasNodeGroup/Provide WAS Node Group"/>
+    </core:requirement>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinality" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="WebSphereCell" mutable="true" name="WebSphereCell" dmoType="was:WasCell" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.x"/>
+      <constraint:constraint.equals name="isDistributed" attributeName="isDistributed" value="true"/>
+    </core:requirement>
+    <core:link.member name="WebSphere6Cluster0ContainsWebSphere6Server1" source="/WebSphere6Cluster0" target="/WebSphere6Server1"/>
+  </was:unit.wasClusterUnit>
+  <was:unit.wasClusterUnit name="WebSphere6Cluster00" conceptual="true">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasCluster displayName="Provide a WebSphere 6.0 cluster" name="Provide a WebSphere 6.0 Cluster" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WebSphere NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency"/>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinality" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="WebSphereCell" mutable="true" name="WebSphereCell" dmoType="was:WasCell" linkType="hosting"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.member name="ml0" source="/WebSphere6Cluster00" target="/WebSphere6Server7"/>
+    <core:link.member name="ml1" source="/WebSphere6Cluster00" target="/WebSphere6Server01"/>
+  </was:unit.wasClusterUnit>
+  <was:unit.wasClusterUnit mutable="false" name="WebSphere6Cluster1">
+    <was:capability.wasCluster displayName="Provide a cluster" name="Provide a Cluster" linkType="any" clusterName="cluster2" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasCluster>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <core:requirement displayName="Depends on a NodeGroup" mutable="true" name="WebSphere NodeGroup" dmoType="was:WasNodeGroup" linkType="dependency">
+      <core:link.dependency name="WebSphere NodeGroupToProvide WAS Node Group" source="/WebSphere6Cluster1/WebSphere NodeGroup" target="/WasNodeGroup/Provide WAS Node Group"/>
+    </core:requirement>
+    <core:requirement displayName="WebSphereCell" mutable="true" name="WebSphereCell" dmoType="was:WasCell" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.x"/>
+      <constraint:constraint.equals name="isDistributed" attributeName="isDistributed" value="true"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Application Server" mutable="true" name="Application Server" dmoType="was:WebsphereAppServerUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="memberCardinality" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:link.member name="WebSphere6Cluster1ContainsWebSphere6Server00" source="/WebSphere6Cluster1" target="/WebSphere6Server00"/>
+    <core:link.member name="WebSphere6Cluster1ContainsWebSphere6Server2" source="/WebSphere6Cluster1" target="/WebSphere6Server2"/>
+  </was:unit.wasClusterUnit>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="WebSphere Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server" target="/ServerClassLoader0"/>
+    <core:link.hosting name="ports" source="/WebSphere6Server" target="/portConfiguration0"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server0" goalInstallState="installed" initInstallState="installed">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="WebSphere Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server0" target="/ServerClassLoader00"/>
+    <core:link.hosting name="ports" source="/WebSphere6Server0" target="/portConfiguration00"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server00">
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="WebSphere Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server00" target="/ServerClassLoader"/>
+    <core:link.hosting name="ports" source="/WebSphere6Server00" target="/portConfiguration1"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer name="WebSphere6Server01" conceptual="true">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="WebSphere 6.0 Server" name="WebSphere Server" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any"/>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.constraint name="cl0" source="/WebSphere6Server01" target="/WebSphereNode00">
+      <constraint:constraint.deferredHosting name="c0"/>
+    </core:link.constraint>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server1" goalInstallState="installed" initInstallState="installed">
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="WebSphere Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WebSphere6Server1" target="/portConfiguration01"/>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server1" target="/ServerClassLoader01"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server2" goalInstallState="installed" initInstallState="installed">
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="server2" linkType="any" serverName="server2" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WebSphere6Server2" target="/portConfiguration02"/>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server2" target="/ServerClassLoader02"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer mutable="false" name="WebSphere6Server3" goalInstallState="installed" initInstallState="installed">
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any" globalSecurityEnabled="false"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <was:capability.wasServer displayName="WebSphere Server" name="WebSphere Server" linkType="any" serverName="server1" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:link.hosting name="ports" source="/WebSphere6Server3" target="/portConfiguration03"/>
+    <core:link.hosting name="ServerClassLoader" source="/WebSphere6Server3" target="/ServerClassLoader03"/>
+  </was:unit.wasAppServer>
+  <was:unit.wasAppServer name="WebSphere6Server7" conceptual="true">
+    <j2eeDeploy:capability.j2eeContainer displayName="J2EE Container" name="J2EE Container" linkType="any" containerVersion="1.4"/>
+    <j2eeDeploy:capability.servletContainer displayName="Servlet Container" name="Servlet Container" linkType="any" containerVersion="2.4"/>
+    <j2eeDeploy:capability.jspContainer displayName="JSP Container" name="JSP Container" linkType="any" containerVersion="2.0"/>
+    <j2eeDeploy:capability.ejbContainer displayName="EJB Container" name="EJB Container" linkType="any" containerVersion="2.1"/>
+    <j2eeDeploy:capability.jcaContainer displayName="JCA Container" name="JCA Container" linkType="any" containerVersion="1.5"/>
+    <was:capability.wasServer displayName="WebSphere 6.0 Server" name="WebSphere Server" linkType="any" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasServer>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="Provide shared library Container" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <os:capability.portConsumer displayName="Port Consumer" name="Port Consumer" linkType="any"/>
+    <javaDeploy:capability.jre description="" displayName="java JRE" name="java.JRE" linkType="any" jreVersion="1.4.2"/>
+    <was:capability.wasModuleClassLoaderPolicy displayName="Module Class Loader Policy" mutable="false" name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasModuleClassLoaderPolicy>
+    <was:capability.wasApplicationClassLoaderPolicy displayName="Application Class Loader Policy" mutable="false" name="Application Class Loader Policy" linkType="any" order="PARENT_FIRST" policy="MULTIPLE">
+      <core:attributeMetaData attributeName="order" mutable="false"/>
+      <core:attributeMetaData attributeName="policy" mutable="false"/>
+    </was:capability.wasApplicationClassLoaderPolicy>
+    <was:capability.wasSecurity name="WasSecurity" linkType="any"/>
+    <core:requirement displayName="Hosted by Node" mutable="true" name="Node" dmoType="was:WasNode" linkType="hosting">
+      <constraint:constraint.version name="VersionConstraint" attributeName="wasVersion" value="6.0"/>
+    </core:requirement>
+    <core:requirement displayName="Member of Cluster" mutable="true" name="ClusterMember" dmoType="was:WasClusterUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="When appserver used as member of SIBus, appserver may need a datasource" mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource" linkType="dependency" use="optional"/>
+    <core:link.constraint name="cl0" source="/WebSphere6Server7" target="/WebSphereNode2">
+      <constraint:constraint.deferredHosting name="c0"/>
+    </core:link.constraint>
+  </was:unit.wasAppServer>
+  <was:unit.wasNodeUnit name="WebSphereNode00" conceptual="true">
+    <was:capability.wasNode displayName="WebSphere 6.0 Node" name="WebSphereNode" linkType="any" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="1"/>
+    </core:requirement>
+    <core:link.constraint name="cl0" source="/WebSphereNode00" target="/WebSphereNode2">
+      <constraint:constraint.collocation name="c0" capabilityType="os:OperatingSystem" type="anticollocation"/>
+    </core:link.constraint>
+  </was:unit.wasNodeUnit>
+  <was:unit.wasNodeUnit name="WebSphereNode2" conceptual="true">
+    <was:capability.wasNode displayName="WebSphere 6.0 Node" name="WebSphereNode" linkType="any" profileType="default" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Member of NodeGroup" mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinality" maxValue="1" minValue="1"/>
+    </core:requirement>
+  </was:unit.wasNodeUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration" mutable="false" name="portConfiguration" conceptual="false" configurationUnit="true">
+    <os:capability.port displayName="cell_discovery_address" name="cell_discovery_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="cell_discovery_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration2" mutable="false" name="portConfiguration0" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration22" mutable="false" name="portConfiguration00" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration23" mutable="false" name="portConfiguration01" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration24" mutable="false" name="portConfiguration02" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration25" mutable="false" name="portConfiguration03" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.portConfigUnit displayName="Port Configuration3" mutable="false" name="portConfiguration1" configurationUnit="true">
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5578" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" port="9100" portName="orb_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" port="9403" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="dcs_unicast_address" name="dcs_unicast_address" linkType="dependency" applicationLayerProtocol="HTTP" port="9353" portName="dcs_unicast_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7276" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" port="7286" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port description="sib_mq_endpoint_address" displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" port="5558" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" port="9402" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="bootstrap_address" name="bootstrap_address" linkType="dependency" port="2809" portName="bootstrap_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9443" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" port="9401" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" port="9043" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" port="8880" portName="soap_connector_address" transportLayerProtocol="TCP">
+      <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" dmoType="os:PortConsumer" linkType="hosting"/>
+  </os:unit.portConfigUnit>
+  <os:unit.linuxLocalUser displayName="root" mutable="false" name="root" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <os:unit.linuxLocalUser displayName="root2" mutable="false" name="root0" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <os:unit.linuxLocalUser displayName="root3" mutable="false" name="root1" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <os:unit.linuxLocalUser displayName="root4" mutable="false" name="root2" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <os:unit.linuxLocalUser displayName="root5" mutable="false" name="root3" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <os:unit.linuxLocalUser displayName="root6" mutable="false" name="root4" configurationUnit="true" goalInstallState="installed" initInstallState="installed">
+    <os:capability.redhatLinuxLocalUser displayName="root" name="RedhatLinuxLocalUser" linkType="dependency" userId="root" userPassword="zPgAJCHOh6Na">
+      <core:attributeMetaData attributeName="userPassword" encrypted="true"/>
+    </os:capability.redhatLinuxLocalUser>
+    <core:requirement displayName="UserGroupMembership" mutable="true" name="UserGroupMembership" dmoType="os:LinuxLocalGroupUnit" linkType="member">
+      <constraint:constraint.groupCardinality name="groupCardinalityConstraint"/>
+    </core:requirement>
+    <core:requirement displayName="RedhatLinux Operating System" mutable="true" name="RedhatLinuxOperatingSystem" dmoType="os:RedhatLinuxOperatingSystem" linkType="hosting">
+      <constraint:constraint.equals displayName="osType" name="osType" attributeName="osType" value="Linux"/>
+    </core:requirement>
+  </os:unit.linuxLocalUser>
+  <was:unit.wasCellUnit mutable="false" name="was6DistributedCell" conceptual="false" configurationUnit="true">
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <was:capability.wasConfigurationContainer displayName="WAS Cell Configuration Container" name="WASCellConfigurationContainer" linkType="any"/>
+    <was:capability.wasCell name="was6 Distributed Cell" linkType="any" cellName="Cell01" isDistributed="true" wasVersion="6.0"/>
+    <was:capability.wasSharedLibContainer displayName="WAS Cell Shared Library Container" name="WASCellSharedLibraryContainer" linkType="any"/>
+    <core:requirement displayName="Contain SIBus member" mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="0"/>
+    </core:requirement>
+    <core:requirement displayName="Host on node" name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting" use="required"/>
+    <core:requirement displayName="At least one node group in cell" mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:requirement displayName="At least one node in cell" mutable="true" name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+      <constraint:constraint.memberCardinality name="OutCard" maxValue="unbounded" minValue="1"/>
+    </core:requirement>
+    <core:link.hosting name="was6DistributedCellHostsWebSphere6Cluster0" source="/was6DistributedCell" target="/WebSphere6Cluster0"/>
+    <core:link.hosting name="was6DistributedCellHostsWebSphere6Cluster" source="/was6DistributedCell" target="/WebSphere6Cluster"/>
+    <core:link.hosting name="was6DistributedCellHostsWebSphere6Cluster1" source="/was6DistributedCell" target="/WebSphere6Cluster1"/>
+    <core:link.member name="was6StandaloneCellContainsWasNodeGroup" source="/was6DistributedCell" target="/WasNodeGroup"/>
+    <core:link.member name="MemberLink1" source="/was6DistributedCell" target="/WasNode0"/>
+    <core:link.member name="MemberLink3" source="/was6DistributedCell" target="/WasNode2"/>
+    <core:link.member name="MemberLink4" source="/was6DistributedCell" target="/WasNode3"/>
+    <core:link.member name="was6StandaloneCellContainsWasNode" source="/was6DistributedCell" target="/Was6DmgrNode"/>
+    <core:link.member name="MemberLink2" source="/was6DistributedCell" target="/WasNode1"/>
+    <core:link.member name="MemberLink0" source="/was6DistributedCell" target="/WasNode"/>
+  </was:unit.wasCellUnit>
+  <server:unit.serverUnit displayName="x86 Server" mutable="false" name="x86 Server" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server" target="/RedhatLinuxAS4"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server2" mutable="false" name="x86 Server0" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server0" target="/RedhatLinuxAS40"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server3" mutable="false" name="x86 Server1" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server1" target="/RedhatLinuxAS41"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server4" mutable="false" name="x86 Server2" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server2" target="/RedhatLinuxAS42"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server5" mutable="false" name="x86 Server3" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server3" target="/RedhatLinuxAS43"/>
+  </server:unit.serverUnit>
+  <server:unit.serverUnit displayName="x86 Server6" mutable="false" name="x86 Server4" goalInstallState="installed" initInstallState="installed">
+    <server:capability.server displayName="x86 Server" name="x86 Server" linkType="any" cpu.architecture="intel" cpu.count="1" memory.size="2000000">
+      <core:attributeMetaData attributeName="cpu.architecture" mutable="false"/>
+    </server:capability.server>
+    <core:link.hosting name="x86 ServerHostsRedhatLinuxAS4" source="/x86 Server4" target="/RedhatLinuxAS44"/>
+  </server:unit.serverUnit>
+  <core:contract.explicit description="ExplicitContractPrivateDefault" name="ExplicitContract" defaultConceptualPolicy="private" defaultPolicy="private"/>
+</core:topology>

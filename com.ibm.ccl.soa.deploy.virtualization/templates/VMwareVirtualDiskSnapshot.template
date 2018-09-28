@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:virtualization="http://www.ibm.com/ccl/soa/deploy/virtualization/1.0.0/"
+xmlns:net="http://www.ibm.com/ccl/soa/deploy/net/1.0.0/"
+name="VMware Virtual Disk Snapshot Template">
+  <virtualization:unit.vmwareVirtualDiskSnapshotUnit name="VMwareVirtualDiskSnapshot" configurationUnit="true" conceptual="false">
+    <virtualization:capability.vmwareVirtualDiskSnapshot name="VMwareVirtualDiskSnapshot" linkType="any"/>
+    <core:requirement name="HostingReq" dmoType="virtualization:VMwareVirtualServerSnapshot" linkType="hosting" use="required"/>  
+    <core:requirement name="DependencyReq" linkType="dependency"> 
+      <constraint:constraint.or displayName="or" name="c0">
+        <constraint:constraint.type displayName="VMwareVirtualDiskSnapshot" name="c0" dmoType="virtualization:VMwareVirtualDiskSnapshot"/>
+        <constraint:constraint.type displayName="VMwareVirtualDiskDef" name="c1" dmoType="virtualization:VMwareVirtualDiskDef"/>
+      </constraint:constraint.or>     
+    </core:requirement>
+  </virtualization:unit.vmwareVirtualDiskSnapshotUnit>
+</core:topology>

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+		<viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+			<Priority name="Medium"></Priority>
+			<context
+				elements="Nodes"
+				viewClass="org.eclipse.gmf.runtime.notation.Node">
+			</context>
+			<object
+				class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)”"
+				id="Nodes">
+				<method
+					name="getProxyClassID()"
+					value="core.SoftwareComponent, uml.UMLActorUnit">
+				</method>
+			</object>
+		</viewProvider>
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+		<editpartProvider class="com.ibm.ccl.soa.deploy.uml.ui.providers.UMLEditPartProvider">
+			<Priority name="Medium"></Priority>
+			<context views="Nodes, NodesByType"></context>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Node"
+				id="Nodes">
+				<staticMethod
+					name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
+					value="core.SoftwareComponent, uml.UMLActorUnit">
+				</staticMethod>
+			</object>
+			<object
+				class="org.eclipse.gmf.runtime.notation.Node"
+				id="NodesByType">
+				<method
+					name="getType()"
+					value="core.SoftwareComponent, uml.UMLActorUnit" />
+			</object>
+		</editpartProvider>
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel nsURI="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/">
+			<metamodelType
+				id="uml.umlComponentUnit"
+				name="%UMLComponent.label"
+				icon="icons/pal/uml_cmpnt_pal16.gif"
+				eclass="core.SoftwareComponent">
+			</metamodelType>
+		</metamodel>
+	</extension>
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel nsURI="http://www.ibm.com/ccl/soa/deploy/uml/1.0.0/">
+			<metamodelType
+				id="uml.umlActor"
+				name="%UMLActor.label"
+				icon="icons/dgm/actor_dgm.gif"
+				eclass="UMLActorUnit">
+			</metamodelType>
+		</metamodel>
+	</extension>
+	<!-- ___________________________________________________________-->
+	<!--         MMI UML-Zephyr Integration                         -->
+	<!-- ___________________________________________________________-->
+	<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+		<metamodel nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+			<!-- Usage type specializing the UML Usage -->
+			<specializationType
+				id="com.ibm.ccl.soa.deploy.uml.ui.internal"
+				name="com.ibm.ccl.soa.deploy.uml.DeployUsage"
+				edithelperadvice="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.providers.DeployUsageEditHelperAdvice">
+				<specializes id="com.ibm.xtools.uml.usage" />
+				<eContainer>
+					<enablement>
+						<instanceof value="com.ibm.xtools.mmi.core.ITarget" />
+					</enablement>
+				</eContainer>
+			</specializationType>
+			<!-- Advice bound to viz packages to decorate the deletion command for a UML Usage -->
+			<adviceBinding
+				id="com.ibm.ccl.soa.deploy.uml.ui.internal"
+				typeId="com.ibm.ccl.soa.deploy.core.Unit"
+				class="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.providers.DeployUsageEditHelperAdvice"
+				inheritance="all">
+				<enablement>
+					<instanceof value="com.ibm.xtools.mmi.core.ITarget" />
+				</enablement>
+			</adviceBinding>
+		</metamodel>
+	</extension>
+	<extension
+		id="ZephyrUmldragdropProvider"
+		name="Drag and drop provider for zephyr visualization"
+		point="org.eclipse.gmf.runtime.common.ui.services.dnd.dragDropListenerProviders">
+		<DragDropListenerProvider
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.listener.DeployUMLDragDropListenerProvider"
+			id="com.ibm.ccl.soa.deploy.uml.ui.internal.listener">
+			<Priority name="Low" />
+			<!-- supporting drop on visualizer editor -->
+			<ViewId id="UMLVisualizerEditor">
+				<ElementType class="com.ibm.xtools.uml.ui.diagrams.sequence.internal.editparts.InteractionCompartmentEditPart">
+					<OperationType operation="drop">
+						<TransferId transferId="navigatorSelectionTransfer" />
+						<TransferId transferId="JDTLocalSelectionTransfer"></TransferId>
+						<TransferId transferId="CdtLocalSelectionTransfer"></TransferId>
+					</OperationType>
+				</ElementType>
+				<ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+					<OperationType operation="drop">
+						<TransferId transferId="navigatorSelectionTransfer"></TransferId>
+						<TransferId transferId="JDTLocalSelectionTransfer"></TransferId>
+						<TransferId transferId="CdtLocalSelectionTransfer"></TransferId>
+					</OperationType>
+				</ElementType>
+			</ViewId>
+			<!-- supporting drop on modeling editor -->
+			<ViewId id="ModelerDiagramEditor">
+				<ElementType class="com.ibm.xtools.uml.ui.diagrams.sequence.internal.editparts.InteractionCompartmentEditPart">
+					<OperationType operation="drop">
+						<TransferId transferId="navigatorSelectionTransfer" />
+						<TransferId transferId="CdtLocalSelectionTransfer"></TransferId>
+						<TransferId transferId="JDTLocalSelectionTransfer"></TransferId>
+					</OperationType>
+				</ElementType>
+				<ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+					<OperationType operation="drop">
+						<TransferId transferId="navigatorSelectionTransfer"></TransferId>
+						<TransferId transferId="JDTLocalSelectionTransfer"></TransferId>
+						<TransferId transferId="CdtLocalSelectionTransfer"></TransferId>
+					</OperationType>
+				</ElementType>
+			</ViewId>
+			<ViewId id="com.ibm.ccl.soa.deploy.uml.ui.ViewId1">
+				<ElementType class="com.ibm.ccl.soa.deploy.uml.ui.ElementType1">
+					<OperationType operation="drag">
+						<TransferId transferId="com.ibm.ccl.soa.deploy.uml.ui.TransferId3"></TransferId>
+					</OperationType>
+				</ElementType>
+			</ViewId>
+		</DragDropListenerProvider>
+	</extension>
+	<extension
+		id="zephyr_mm_provider"
+		name="UML Model Mapping Provider for Zephyr constructs"
+		point="com.ibm.xtools.mmi.core.ModelMappingProviders">
+		<ModelMappingProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.DeployModelMappingProvider">
+			<Priority name="Medium" />
+			<AdaptRequest
+				DomainElementType="com.ibm.ccl.soa.deploy.uml.UMLActorUnit"
+				TargetKind="uml.Actor" />
+			<ResolveRequest
+				TargetKind="uml.Actor"
+				StructuredReferenceProviderId="deploy.Unit" />
+			<AdaptRequest
+				DomainElementType="com.ibm.ccl.soa.deploy.core.Unit"
+				TargetKind="uml.Component" />
+			<ResolveRequest
+				TargetKind="uml.Component"
+				StructuredReferenceProviderId="deploy.Unit" />
+			<AdaptRequest
+				DomainElementType=" org.eclipse.uml2.uml.Message"
+				TargetKind="uml.Message" />
+			<ResolveRequest
+				TargetKind="uml.Message"
+				StructuredReferenceProviderId="deploy.Unit" />
+			<AdaptRequest
+				DomainElementType="org.eclipse.uml2.uml.Operation"
+				TargetKind="uml.Operation" />
+			<ResolveRequest
+				TargetKind="uml.Operation"
+				StructuredReferenceProviderId="deploy.Operation" />
+		    <AdaptRequest
+               DomainElementType="com.ibm.ccl.soa.deploy.core.ConceptualNode"
+               TargetKind="uml.Node"/>
+            <ResolveRequest
+               TargetKind="uml.Node"
+               StructuredReferenceProviderId="deploy.Unit"/>
+            <AdaptRequest
+               DomainElementType="org.eclipse.uml2.uml.Dependency"
+               TargetKind="uml.Dependency"/>
+         <ResolveRequest
+               TargetKind="uml.Dependency"
+               StructuredReferenceProviderId="deploy.Dependency"/>
+         <AdaptRequest
+               DomainElementType="org.eclipse.uml2.uml.Model"
+               TargetKind="uml.Model"/>
+         <ResolveRequest
+         		TargetKind="uml.Model"
+         		StructuredReferenceProviderId="deploy.Model"/>
+		</ModelMappingProvider>
+	</extension>
+	<extension
+   		id="model_vizref_handler"
+   		name="Model Viz Ref Handler"
+   		point="com.ibm.xtools.mmi.core.StructuredReferenceProviders">
+   		<StructuredReferenceProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.ModelStructuredReferenceHandler">
+   			<StructuredReferenceProviderId id="deploy.Model"/>
+   			<DomainElementType class="java.lang.String"/>
+   		</StructuredReferenceProvider>
+   	</extension>	
+       <extension
+         id="dependency.id"
+         name="Dependency Viz Ref Handler"
+         point="com.ibm.xtools.mmi.core.StructuredReferenceProviders">
+      <StructuredReferenceProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.DependencyStructuredReferenceHandler">
+         <StructuredReferenceProviderId id="deploy.Dependency"/>
+         <DomainElementType class="java.lang.String"/>
+      </StructuredReferenceProvider>
+   </extension>
+	<extension
+		id="unit_vizref_handler"
+		name="Unit Viz Ref Handler"
+		point="com.ibm.xtools.mmi.core.StructuredReferenceProviders">
+		<StructuredReferenceProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.UnitStructuredReferenceHandler">
+			<StructuredReferenceProviderId id="deploy.Unit" />
+			<DomainElementType class="com.ibm.ccl.soa.deploy.core.Unit" />
+		</StructuredReferenceProvider>
+	</extension>
+	<extension
+		id="operation.id"
+		name="Operation Viz Ref Handler"
+		point="com.ibm.xtools.mmi.core.StructuredReferenceProviders">
+		<StructuredReferenceProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.OperationStructuredReferenceHandler">
+			<StructuredReferenceProviderId id="deploy.Operation" />
+			<DomainElementType class="java.lang.String" />
+		</StructuredReferenceProvider>
+	</extension>
+	<extension
+		id="topology_vizref_handler"
+		name="Topology VizRef Handler"
+		point="com.ibm.xtools.mmi.core.StructuredReferenceProviders">
+		<StructuredReferenceProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.TopologyStructuredReferenceHandler">
+			<StructuredReferenceProviderId id="deploy.Topology"></StructuredReferenceProviderId>
+			<DomainElementType class="com.ibm.ccl.soa.deploy.core.Topology"></DomainElementType>
+		</StructuredReferenceProvider>
+	</extension>
+	<extension
+		id="deploy_mmui_provider_handler"
+		name="MMI UI Provider for Zephyr"
+		point="com.ibm.xtools.mmi.ui.MMIUIProviders">
+		<MMIUIProvider class="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.providers.DeployUmlVizProvider">
+			<Priority name="Medium" />
+			<MMIUIHandler
+				name="DeployVizUIHandler"
+				uiObjectClass="com.ibm.ccl.soa.deploy.core.Unit">
+				<enablement>
+					<or>
+						<test
+							property="com.ibm.xtools.mmi.ui.DiagramTypePropertyTester"
+							value="Freeform" />
+						<test
+							property="com.ibm.xtools.mmi.ui.DiagramTypePropertyTester"
+							value="Class" />
+						<test
+							property="com.ibm.xtools.mmi.ui.DiagramTypePropertyTester"
+							value="Sequence" />
+					</or>
+				</enablement>
+			</MMIUIHandler>
+			<OpenStructuredReferenceHandler name="DeployVizOpenHandler">
+				<StructuredReferenceProviderId id="deploy.Unit" />
+			</OpenStructuredReferenceHandler>
+		</MMIUIProvider>
+	</extension>   
+	<!-- Source synchronization provider registration to provide code commands on changes done to 
+		Zephyr concepts -->
+	<extension
+		id="Zephyr sourcesynchronization provider"
+		name="Source Synchronization Provider for UML Viz Artifacts"
+		point="com.ibm.xtools.mmi.core.SourceSynchronizationProviders">
+		<SourceSynchronizationProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.DeployModelSourceSynchronizationProvider">
+			<Priority name="Medium" />
+			<StructuredReferenceProviderId id="deploy.Unit" />
+		</SourceSynchronizationProvider>
+	</extension>
+	<extension
+         id="Zephyr sourcesynchronization provider for dependencies"
+         name="Source Synchronization Provider for UML Dependencies"
+         point="com.ibm.xtools.mmi.core.SourceSynchronizationProviders">
+      <SourceSynchronizationProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.DeployModelSourceSynchronizationProvider">
+         <Priority name="Medium"/>
+         <StructuredReferenceProviderId id="deploy.Dependency"/>
+      </SourceSynchronizationProvider>
+   </extension>
+   <extension
+         id="Zephyr sourcesynchronization provider for dependencies"
+         name="Source Synchronization Provider for UML Models"
+         point="com.ibm.xtools.mmi.core.SourceSynchronizationProviders">
+      <SourceSynchronizationProvider class="com.ibm.ccl.soa.deploy.uml.internal.mmi.providers.DeployModelSourceSynchronizationProvider">
+         <Priority name="Medium"/>
+         <StructuredReferenceProviderId id="deploy.Model"/>
+      </SourceSynchronizationProvider>
+   </extension>
+	<!-- Decorator Semantic Pattern Binding-->
+	<extension
+		id="com.ibm.ccl.soa.deploy.core.topology"
+		name="%coreTopoloyExtensionName"
+		point="com.ibm.ccl.soa.deploy.core.topology">
+		<decoratorSemanticPatternBinding decoratorSemanticId="com.ibm.ccl.soa.deploy.core.bads">
+			<paletteEntryContent>
+				<include pattern="uml.umlComponent" />
+			</paletteEntryContent>
+		</decoratorSemanticPatternBinding>
+	</extension>
+	<extension point="org.eclipse.ui.navigator.viewer">
+		<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<actionExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.umldeployActionProvider" />
+			</includes>
+		</viewerActionBinding>
+	</extension>
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<actionProvider
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.actions.UMLDeployActionProvider"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.umldeployActionProvider">
+			<enablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IFile">
+						<test
+							property="org.eclipse.core.resources.extension"
+							value="topology" />
+					</adapt>
+					<instanceof value="com.ibm.ccl.soa.deploy.core.DeployModelObject" />
+					<instanceof value="org.eclipse.emf.edit.provider.IWrapperItemProvider" />
+					<instanceof value="com.ibm.ccl.soa.deploy.core.ui.navigator.deploy.TopologyDiagramNode"></instanceof>
+				</or>
+			</enablement>
+		</actionProvider>
+	</extension>
+	<extension point="org.eclipse.ui.navigator.viewer">
+			<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<actionExtension pattern="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.addDeployActionProvider" />
+			</includes>
+		</viewerActionBinding>
+    </extension>
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<actionProvider
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.mmi.actions.AddDeployActionProvider"
+			id="com.ibm.ccl.soa.deploy.core.ui.navigator.actions.addDeployActionProvider">
+			<enablement>
+				 <adapt type="org.eclipse.core.resources.IFile">
+						<test
+							property="org.eclipse.core.resources.extension"
+							value="topology" />
+					</adapt>
+			</enablement>
+		</actionProvider>
+	</extension>
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory
+			adaptableType="org.eclipse.gef.EditPart"
+			class="com.ibm.ccl.soa.deploy.uml.ui.editparts.adapter.MMIAdapterFactory">
+			<adapter type="org.eclipse.gmf.runtime.notation.View"></adapter>
+			<adapter type="com.ibm.ccl.soa.deploy.core.DeployModelObject"></adapter>
+			<adapter type="com.ibm.ccl.soa.deploy.core.Unit"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ITarget"></adapter>
+			<adapter type="com.ibm.xtools.mmi.core.ref.StructuredReference"></adapter>
+		</factory>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLReferencesInWorkspaceHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.workspace">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLReferencesInEnclosingProjectHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingProject">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLReferencesInEnclosingModelHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingModel">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLReferencesInEnclosingDiagramHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.enclosingDiagram">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLReferencesInWorkingSetHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.workingSet">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="com.ibm.ccl.soa.deploy.uml.ui.internal.search.handlers.UMLSelectInModelExplorerHandler"
+			commandId="com.ibm.ccl.soa.deploy.core.ui.search.selectInView">
+			<enabledWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isUMLMatch" />
+			</enabledWhen>
+			<activeWhen>
+				<reference definitionId="com.ibm.ccl.soa.deploy.uml.ui.isUMLMatch" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="com.ibm.ccl.soa.deploy.uml.ui.isAdaptableUMLUnitSelection">
+			<with variable="activeMenuSelection">
+				<and>
+					<iterate>
+						<adapt type="com.ibm.ccl.soa.deploy.core.Unit">
+							<test
+								forcePluginActivation="true"
+								property="com.ibm.ccl.soa.deploy.uml.containsUMLArtifact"
+								value="true">
+							</test>
+						</adapt>
+					</iterate>
+					<reference definitionId="com.ibm.ccl.soa.deploy.core.ui.isSingleSelection" />
+				</and>
+			</with>
+		</definition>
+		<definition id="com.ibm.ccl.soa.deploy.uml.ui.isUMLMatch">
+			<with variable="selection">
+				<and>
+					<count value="1" />
+					<or>
+						<iterate>
+							<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match">
+								<test
+									forcePluginActivation="true"
+									property="com.ibm.ccl.soa.deploy.core.ui.search.referencerContentType"
+									value="com.ibm.xtools.uml.msl.umlModelContentType">
+								</test>
+							</adapt>
+						</iterate>
+						<iterate>
+							<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match">
+								<test
+									forcePluginActivation="true"
+									property="com.ibm.ccl.soa.deploy.core.ui.search.referencerContentType"
+									value="com.ibm.xtools.uml.msl.umlProfileContentType">
+								</test>
+							</adapt>
+						</iterate>
+						<iterate>
+							<adapt type="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match">
+								<test
+									forcePluginActivation="true"
+									property="com.ibm.ccl.soa.deploy.core.ui.search.referencerContentType"
+									value="com.ibm.xtools.uml.msl.umlFragmentContentType">
+								</test>
+							</adapt>
+						</iterate>
+					</or>
+				</and>
+			</with>
+		</definition>
+	</extension>
+	<extension point="org.eclipse.ui.decorators">
+		<decorator
+			adaptable="true"
+			class="com.ibm.ccl.soa.deploy.uml.ui.decorator.NamedElementDecorator"
+			id="com.ibm.ccl.soa.deploy.uml.ui.decorator.UMLNamedElementDecorator"
+			label="%com.ibm.ccl.soa.deploy.uml.ui.decorator.namedElementDecorator.label"
+			lightweight="false"
+			state="true">
+			<enablement>
+				<objectClass name="com.ibm.ccl.soa.deploy.core.ui.internal.search.query.Match"></objectClass>
+			</enablement>
+		</decorator>
+	</extension>
+	
+  	<!--Activity Bindings-->
+	<extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"
+            name="%umlActivity.label"/>
+     <!--Necessary to get core acivities enabled when selected from Analysis & Design viewpoint-->
+     <activityRequirementBinding
+     		requiredActivityId="com.ibm.ccl.soa.deploy.core.ui.activity.core"
+     		activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"/>
+     <activityRequirementBinding
+     		requiredActivityId="com.ibm.ccl.soa.deploy.core.ui.activity.generic"
+     		activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"/>
+     <activityPatternBinding
+            activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"
+            pattern="(?&lt;!.)com\.ibm\.rational\.deployment\.uml\.">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"
+            categoryId="com.ibm.ccl.soa.deploy.core.ui.category.logical"/>
+   </extension>
+    <extension
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity ref="com.ibm.xtools.activities.analysisAndDesign.zephyrUML"/>  
+    </extension>
+</plugin>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" 
+xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" 
+description="Created Wed 2006.12.20 at 02:59:11 PM EST" displayName="WebSphere 6.0 Unmanaged Node for a WebServer" name="WebSphere6UnmanagedNodeForWebServer">
+  <was:unit.wasNodeUnit name="WebSphereUnmanagedNode">
+    <was:capability.wasNode name="WebSphereWebNode" linkType="any" nodeName="UnmanagedNode1" profileLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\default" profileName="default" profileType="none" wasVersion="6.0">
+      <core:attributeMetaData attributeName="wasVersion" mutable="false"/>
+    </was:capability.wasNode>
+    <was:capability.wasConfigurationContainer displayName="Configuration Container" name="Provide Configuration Container" linkType="any"/>
+    <was:capability.wasSharedLibContainer displayName="Provide shared library Container" name="SharedlibraryContainer" linkType="any"/>
+    <was:capability.wasSubstitutionVariable displayName="Substitution variable" name="Substitution Variable" linkType="any"/>
+    <core:requirement displayName="Host on WAS system" mutable="true" name="A hosting WAS system" dmoType="was:WasSystem" linkType="hosting"/>
+    <core:requirement displayName="Must contained by Cell" mutable="true" name="Cell" dmoType="was:WasCellUnit" linkType="member">
+		<constraint:constraint.groupCardinality name="groupCardinality" minValue="1" maxValue="1"/>
+    </core:requirement>
+  </was:unit.wasNodeUnit>
+</core:topology>

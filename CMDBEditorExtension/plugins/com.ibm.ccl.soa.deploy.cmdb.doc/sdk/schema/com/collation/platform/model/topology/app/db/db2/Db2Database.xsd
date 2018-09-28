@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/Database.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/zOS/DB2DataSharingGroup.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/sys/zOS/DB2Subsystem.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2BufferPool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Instance.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/core/LogicalContent.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2Schema.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2DatabaseConfigValue.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/db/db2/Db2TableSpace.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.db.db2.Db2Database">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.db.Database">
+        <xsd:sequence>
+          <xsd:element name="subsystem" type="coll:com.collation.platform.model.topology.sys.zOS.DB2Subsystem" nillable="true" minOccurs="0"/>
+          <xsd:element name="dataSharingGroup" type="coll:com.collation.platform.model.topology.sys.zOS.DB2DataSharingGroup" nillable="true" minOccurs="0"/>
+          <xsd:element name="parent" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Instance" nillable="true" minOccurs="0"/>
+          <xsd:element name="schemasRawData" type="coll:com.collation.platform.model.topology.core.LogicalContent" nillable="true" minOccurs="0"/>
+          <xsd:element name="tableSpaces" type="coll:com.collation.platform.model.topology.app.db.db2.Db2TableSpace" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="configValues" type="coll:com.collation.platform.model.topology.app.db.db2.Db2DatabaseConfigValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="bufferPools" type="coll:com.collation.platform.model.topology.app.db.db2.Db2BufferPool" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="alias" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="path" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="schemas" type="coll:com.collation.platform.model.topology.app.db.db2.Db2Schema" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

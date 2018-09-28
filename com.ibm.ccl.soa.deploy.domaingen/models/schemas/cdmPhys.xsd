@@ -1,0 +1,377 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/cdmphys/1.0.0/"
+	xmlns:cdmPhys="http://www.ibm.com/ccl/soa/deploy/cdmphys/1.0.0/"
+	xmlns:cdmBase="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="CdmPhysRoot"
+	ecore:name="cdmPhys"
+	ecore:package="com.ibm.ccl.soa.deploy.cdmphys"
+	ecore:nsPrefix="cdmPhys">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/core.xsd" />
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/cdmbase/1.0.0/"
+		schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.domaingen/models/schemas/cdmBase.xsd" />
+	<element name="capability.physicalLink" substitutionGroup="core:capability" type="cdmPhys:PhysicalLink"/>
+	<complexType name="PhysicalLink">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="Type" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalLinkUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalLinkUnit"/>
+	<complexType name="PhysicalLinkUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+
+	<element name="capability.chassis" substitutionGroup="core:capability" type="cdmPhys:Chassis"/>
+	<complexType name="Chassis">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrame">
+				<attribute name="ChassisUUID" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.chassisUnit" substitutionGroup="core:unit" type="cdmPhys:ChassisUnit"/>
+	<complexType name="ChassisUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrameUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.board" substitutionGroup="core:capability" type="cdmPhys:Board"/>
+	<complexType name="Board">
+		<complexContent>
+			<extension base="cdmPhys:Card">
+				<attribute name="AttachementPointType" type="string" />
+				<attribute name="BoardType" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.boardUnit" substitutionGroup="core:unit" type="cdmPhys:BoardUnit"/>
+	<complexType name="BoardUnit">
+		<complexContent>
+			<extension base="cdmPhys:CardUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.fan" substitutionGroup="core:capability" type="cdmPhys:Fan"/>
+	<complexType name="Fan">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.fanUnit" substitutionGroup="core:unit" type="cdmPhys:FanUnit"/>
+	<complexType name="FanUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalPackage" substitutionGroup="core:capability" type="cdmPhys:PhysicalPackage"/>
+	<complexType name="PhysicalPackage">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="UserTracking" type="string" />
+				<attribute name="SystemBoardUUID" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalPackageUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalPackageUnit"/>
+	<complexType name="PhysicalPackageUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.chip" substitutionGroup="core:capability" type="cdmPhys:Chip"/>
+	<complexType name="Chip">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalComponent">
+				<attribute name="Capacity" type="long" />
+				<attribute name="BankLabel" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.chipUnit" substitutionGroup="core:unit" type="cdmPhys:ChipUnit"/>
+	<complexType name="ChipUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.room" substitutionGroup="core:capability" type="cdmPhys:Room"/>
+	<complexType name="Room">
+		<complexContent>
+			<extension base="cdmBase:SiteInfo">
+				<attribute name="RoomName" type="string" />
+				<attribute name="RoomNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.roomUnit" substitutionGroup="core:unit" type="cdmPhys:RoomUnit"/>
+	<complexType name="RoomUnit">
+		<complexContent>
+			<extension base="cdmBase:SiteInfoUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.otherPhysicalPackage" substitutionGroup="core:capability" type="cdmPhys:OtherPhysicalPackage"/>
+	<complexType name="OtherPhysicalPackage">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.otherPhysicalPackageUnit" substitutionGroup="core:unit" type="cdmPhys:OtherPhysicalPackageUnit"/>
+	<complexType name="OtherPhysicalPackageUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.rack" substitutionGroup="core:capability" type="cdmPhys:Rack"/>
+	<complexType name="Rack">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrame">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.rackUnit" substitutionGroup="core:unit" type="cdmPhys:RackUnit"/>
+	<complexType name="RackUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrameUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalComponent" substitutionGroup="core:capability" type="cdmPhys:PhysicalComponent"/>
+	<complexType name="PhysicalComponent">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="Type" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalComponentUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalComponentUnit"/>
+	<complexType name="PhysicalComponentUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.slot" substitutionGroup="core:capability" type="cdmPhys:Slot"/>
+	<complexType name="Slot">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalConnector">
+				<attribute name="Number" type="int" />
+				<attribute name="SlotState" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.slotUnit" substitutionGroup="core:unit" type="cdmPhys:SlotUnit"/>
+	<complexType name="SlotUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalConnectorUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.zone" substitutionGroup="core:capability" type="cdmPhys:Zone"/>
+	<complexType name="Zone">
+		<complexContent>
+			<extension base="cdmBase:SiteInfo">
+				<attribute name="ZoneNumber" type="string" />
+				<attribute name="ZoneName" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.zoneUnit" substitutionGroup="core:unit" type="cdmPhys:ZoneUnit"/>
+	<complexType name="ZoneUnit">
+		<complexContent>
+			<extension base="cdmBase:SiteInfoUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalTape" substitutionGroup="core:capability" type="cdmPhys:PhysicalTape"/>
+	<complexType name="PhysicalTape">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalMedia">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalTapeUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalTapeUnit"/>
+	<complexType name="PhysicalTapeUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalMediaUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.systemBusCard" substitutionGroup="core:capability" type="cdmPhys:SystemBusCard"/>
+	<complexType name="SystemBusCard">
+		<complexContent>
+			<extension base="cdmPhys:Card">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.systemBusCardUnit" substitutionGroup="core:unit" type="cdmPhys:SystemBusCardUnit"/>
+	<complexType name="SystemBusCardUnit">
+		<complexContent>
+			<extension base="cdmPhys:CardUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalConnector" substitutionGroup="core:capability" type="cdmPhys:PhysicalConnector"/>
+	<complexType name="PhysicalConnector">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalConnectorUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalConnectorUnit"/>
+	<complexType name="PhysicalConnectorUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.powerSupply" substitutionGroup="core:capability" type="cdmPhys:PowerSupply"/>
+	<complexType name="PowerSupply">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.powerSupplyUnit" substitutionGroup="core:unit" type="cdmPhys:PowerSupplyUnit"/>
+	<complexType name="PowerSupplyUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.systemMediaLocation" substitutionGroup="core:capability" type="cdmPhys:SystemMediaLocation"/>
+	<complexType name="SystemMediaLocation">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrame">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.systemMediaLocationUnit" substitutionGroup="core:unit" type="cdmPhys:SystemMediaLocationUnit"/>
+	<complexType name="SystemMediaLocationUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrameUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.card" substitutionGroup="core:capability" type="cdmPhys:Card"/>
+	<complexType name="Card">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrame">
+				<attribute name="CardConfigurationState" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.cardUnit" substitutionGroup="core:unit" type="cdmPhys:CardUnit"/>
+	<complexType name="CardUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalFrameUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalMedia" substitutionGroup="core:capability" type="cdmPhys:PhysicalMedia"/>
+	<complexType name="PhysicalMedia">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalComponent">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalMediaUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalMediaUnit"/>
+	<complexType name="PhysicalMediaUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalComponentUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.sensor" substitutionGroup="core:capability" type="cdmPhys:Sensor"/>
+	<complexType name="Sensor">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElement">
+				<attribute name="RelativePosition" type="int" />
+				<attribute name="HWRevision" type="string" />
+				<attribute name="FWRevision" type="string" />
+				<attribute name="SWRevision" type="string" />
+				<attribute name="Type" type="int" />
+				<attribute name="Model" type="string" />
+				<attribute name="Manufacturer" type="string" />
+				<attribute name="SerialNumber" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.sensorUnit" substitutionGroup="core:unit" type="cdmPhys:SensorUnit"/>
+	<complexType name="SensorUnit">
+		<complexContent>
+			<extension base="cdmBase:PhysicalElementUnit"/>
+		</complexContent>
+	</complexType>
+
+	<element name="capability.physicalFrame" substitutionGroup="core:capability" type="cdmPhys:PhysicalFrame"/>
+	<complexType name="PhysicalFrame">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalPackage">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="unit.physicalFrameUnit" substitutionGroup="core:unit" type="cdmPhys:PhysicalFrameUnit"/>
+	<complexType name="PhysicalFrameUnit">
+		<complexContent>
+			<extension base="cdmPhys:PhysicalPackageUnit"/>
+		</complexContent>
+	</complexType>
+
+</schema>

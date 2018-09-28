@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="com.ibm.ccl.soa.deploy.core.topology">
+		<exporter
+			class="com.ibm.ccl.soa.deploy.asc.exporter.AscTopologyExporter"
+			description="%extension.ascTopologyExporter.description"
+			name="%extension.ascTopologyExporter" />
+	</extension>
+	<extension point="com.ibm.ccl.soa.deploy.core.unitLifecycle">
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.WasDatasourceUnitASCProvider"
+			description="%WasDataSourceUnitASCProvider.description"
+			name="%WasDataSourceUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDatasourceUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasNodeUnitASCProvider"
+			description="%WasNodeUnitASCProvider.description"
+			name="%WasNodeUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasNodeUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.EarModuleUnitProvider"
+			name="%earModuleUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.EarModule" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.EjbModuleUnitProvider"
+			name="%ejbModuleUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.EjbModule" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.JCAModuleUnitProvider"
+			name="%jcaModuleUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.JCAModule" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.WebModuleUnitProvider"
+			name="%webModuleUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.j2ee.WebModule" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.j2ee.DB2JdbcProviderUnitASCProvider"
+			name="%DB2JdbcProviderUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.DB2JdbcProviderUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WASJ2CAuthenticationUnitASCProvider"
+			name="%WASJ2CAuthenticationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WASJ2CAuthenticationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasSharedLibraryEntryUnitASCProvider"
+			name="%WasShareLibEntryUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSharedLibraryEntryUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasSystemUnitASCProvider"
+			name="%WasSystemUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSystemUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WebsphereAppServerUnitASCProvider"
+			name="%WebsphereAppServerUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WebsphereAppServerUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasCellUnitProvider"
+			name="%WasCellUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasCellUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasClusterUnitProvider"
+			name="%WasClusterUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasClusterUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.WasNodeGroupUnitProvider"
+			name="%WasNodeGroupUnitProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasNodeGroupUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasDefaultMessagingConnectionFactoryUnitASCProvider"
+			name="%WasDefaultMessagingConnectionFactoryUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDefaultMessagingConnectionFactoryUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasDefaultMessagingQueueConnectionFactoryUnitASCProvider"
+			name="%WasDefaultMessagingQueueConnectionfactoryUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDefaultMessagingQueueConnectionFactoryUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasDefaultMessagingQueueDestinationUnitASCProvider"
+			name="%WasDefaultMessagingQueueDestinationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDefaultMessagingQueueDestinationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasDefaultMessagingTopicConnectionFactoryUnitASCProvider"
+			name="%WasDefaultMessagingTopicConnectionfactoryUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDefaultMessagingTopicConnectionFactoryUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasDefaultMessagingTopicDestinationUnitASCProvider"
+			name="%WasDefaultMessagingTopicDestinationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasDefaultMessagingTopicDestinationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.jms.WasJMSActivationSpecificationUnitASCProvider"
+			name="%WasJMSActivationSpecificationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasJMSActivationSpecificationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasEndPointListenerUnitASCProvider"
+			name="%WasEndPointListenerUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasEndpointListenerUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibDestinationUnitASCProvider"
+			name="%WASSibDestinationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibDestinationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibInboundPortUnitASCProvider"
+			name="%WasSibInboundPortUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibInboundPortUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibInboundServiceUnitASCProvider"
+			name="%WasSibInboundServiceUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibInboundServiceUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibMediationUnitASCProvider"
+			name="%WasSibMediationUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibMediationUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibOutboundPortUnitASCProvider"
+			name="%WasSibOutboundPortUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibOutboundPortUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSibOutboundServiceUnitASCProvider"
+			name="%WasSibOutboundServiceUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSibOutboundServiceUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+
+		<unitProvider
+			class="com.ibm.ccl.soa.deploy.asc.was.sib.WasSIBusUnitASCProvider"
+			name="%WASSiBusUnitASCProvider.name">
+			<inputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.was.WasSIBusUnit" />
+			</inputEnablement>
+			<outputEnablement>
+				<instanceof
+					value="com.ibm.ccl.soa.deploy.asc.exporter.AscScriptDescriptor" />
+			</outputEnablement>
+		</unitProvider>
+	</extension>
+
+
+</plugin>

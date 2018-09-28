@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+	<copyright>
+	</copyright>
+	
+	$Id: plugin.xml,v 1.15 2008/05/29 14:42:24 nmakin Exp $
+-->
+
+<plugin>
+
+	<extension
+		point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+		<factory uri="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.generic.provider.GenericItemProviderAdapterFactory"
+			supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package uri="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/"
+			class="com.ibm.ccl.soa.deploy.generic.GenericPackage"
+			genModel="models/ecore/generic.genmodel" />
+	</extension>
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser type="generic"
+			class="com.ibm.ccl.soa.deploy.generic.util.GenericResourceFactoryImpl" />
+	</extension>
+
+	<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain id="com.ibm.ccl.soa.deploy.generic.domain"
+			name="%extension.genericDomain"
+			targetNamespace="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/">
+			<validator
+				class="com.ibm.ccl.soa.deploy.generic.validator.GenericDomainValidator" />
+			<resourceType id="com.ibm.ccl.soa.deploy.generic.unit"
+				name="%generic.GenericUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.generic/templates/Generic.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%generic.GenericUnit.Description"
+				label="%generic.GenericUnit.Label" path="/commontoolDrawer/genericStack"
+				largeIcon="icons/pal/unit_24.gif"
+				smallIcon="icons/pal/unit_16.gif"
+				resourceTypeId="com.ibm.ccl.soa.deploy.generic.unit">
+			</resourceTypeUIBinding>
+			<resourceType id="com.ibm.ccl.soa.deploy.generic.configUnit"
+				name="%generic.GenericConfigUnit.Label"
+				templateURI="platform:/plugin/com.ibm.ccl.soa.deploy.generic/templates/GenericConfig.template">
+			</resourceType>
+			<resourceTypeUIBinding
+				description="%generic.GenericConfigUnit.Description"
+				label="%generic.GenericConfigUnit.Label"
+				largeIcon="icons/pal/gen_config_20.gif"
+				smallIcon="icons/pal/gen_config_16.gif"
+				path="/commontoolDrawer/genericStack"				
+				resourceTypeId="com.ibm.ccl.soa.deploy.generic.configUnit">
+			</resourceTypeUIBinding>
+		</domain>
+	</extension>
+
+	<!-- The following is needed so the LogicalLink extensions in *.generic.ui appear -->
+	<!-- MK 10/20/2006 no longer needed
+		<extension point="com.ibm.ccl.soa.deploy.core.domains">
+		<domain
+		id="com.ibm.ccl.soa.deploy.generic.domain2"
+		name="%extension.genericDomain2"
+		targetNamespace="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/">
+		<validator class="com.ibm.ccl.soa.deploy.core.logicallink.RegisteredLogicalLinkValidator"/>
+		</domain>
+		</extension>  
+	-->
+<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="com.ibm.ccl.soa.deploy.generic">			
+			<uri
+				name="http://www.ibm.com/ccl/soa/deploy/generic/1.0.0/"
+				uri="platform:/plugin/com.ibm.ccl.soa.deploy.generic/models/schemas/genericDomain.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+
+</plugin>
+

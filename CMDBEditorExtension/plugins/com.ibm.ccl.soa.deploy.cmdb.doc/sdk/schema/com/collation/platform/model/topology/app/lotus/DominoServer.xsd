@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/AppServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/WebConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/IMAPConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoSecurity.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/AgentManager.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoCluster.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/HTTPFilterSpecialtyServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/SMTPConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/InternetClusterManager.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/LDAPConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/IIOPConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/SSLSettings.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DirectoryCataloger.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/OtherConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/AdminProcess.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoTransactionLogging.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DomainCatalog.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/POPConfig.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/SpecialityServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/SametimeServer.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/WebRetriever.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoDomain.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DirectoryAssistance.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/DominoDatabase.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../com/collation/platform/model/topology/app/lotus/RemoteDebugManager.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.lotus.DominoServer">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.AppServer">
+        <xsd:sequence>
+          <xsd:element name="path" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="dataPath" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverTitle" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="domain" type="coll:com.collation.platform.model.topology.app.lotus.DominoDomain" nillable="true" minOccurs="0"/>
+          <xsd:element name="cluster" type="coll:com.collation.platform.model.topology.app.lotus.DominoCluster" nillable="true" minOccurs="0"/>
+          <xsd:element name="loadInternetConfigurationFromServer" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="maximumFormulaExecutionTime" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverBuildNumber" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="routingTasks" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMTPListenerTask" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="sametimeServer" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryAssistanceDirectories" type="coll:com.collation.platform.model.topology.app.lotus.DirectoryAssistance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="webConfig" type="coll:com.collation.platform.model.topology.app.lotus.WebConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLSettings" type="coll:com.collation.platform.model.topology.app.lotus.SSLSettings" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryConfig" type="coll:com.collation.platform.model.topology.app.lotus.LDAPConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="IMAPConfig" type="coll:com.collation.platform.model.topology.app.lotus.IMAPConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="POPConfig" type="coll:com.collation.platform.model.topology.app.lotus.POPConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="SMTPConfig" type="coll:com.collation.platform.model.topology.app.lotus.SMTPConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="otherConfig" type="coll:com.collation.platform.model.topology.app.lotus.OtherConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="IIOPConfig" type="coll:com.collation.platform.model.topology.app.lotus.IIOPConfig" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTTPProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="FTPProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="gopherProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SSLSecurityProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="HTTPTunnelProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="SOCKSProxy" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="noProxyForTheseDomains" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="serverName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="databases" type="coll:com.collation.platform.model.topology.app.lotus.DominoDatabase" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="specialityServers" type="coll:com.collation.platform.model.topology.app.lotus.SpecialityServer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="httpFilters" type="coll:com.collation.platform.model.topology.app.lotus.HTTPFilterSpecialtyServer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="adminProcess" type="coll:com.collation.platform.model.topology.app.lotus.AdminProcess" nillable="true" minOccurs="0"/>
+          <xsd:element name="agentManager" type="coll:com.collation.platform.model.topology.app.lotus.AgentManager" nillable="true" minOccurs="0"/>
+          <xsd:element name="domainCatalog" type="coll:com.collation.platform.model.topology.app.lotus.DomainCatalog" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryCataloger" type="coll:com.collation.platform.model.topology.app.lotus.DirectoryCataloger" nillable="true" minOccurs="0"/>
+          <xsd:element name="internetClusterManager" type="coll:com.collation.platform.model.topology.app.lotus.InternetClusterManager" nillable="true" minOccurs="0"/>
+          <xsd:element name="webRetriever" type="coll:com.collation.platform.model.topology.app.lotus.WebRetriever" nillable="true" minOccurs="0"/>
+          <xsd:element name="remoteDebugManager" type="coll:com.collation.platform.model.topology.app.lotus.RemoteDebugManager" nillable="true" minOccurs="0"/>
+          <xsd:element name="sametimeServerObject" type="coll:com.collation.platform.model.topology.app.lotus.SametimeServer" nillable="true" minOccurs="0"/>
+          <xsd:element name="dominoSecurity" type="coll:com.collation.platform.model.topology.app.lotus.DominoSecurity" nillable="true" minOccurs="0"/>
+          <xsd:element name="directoryAssistanceDatabaseName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="typeAhead" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="IMAPServerReturnsExactSizeOfMessage" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="POP3ServerReturnsExactSizeOfMessage" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="transactionLogging" type="coll:com.collation.platform.model.topology.app.lotus.DominoTransactionLogging" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

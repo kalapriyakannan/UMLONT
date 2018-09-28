@@ -1,0 +1,86 @@
+<%@ jet package="templateclasses" imports="java.util.*" class="UIPluginXMLTemplate" %>
+<% List args=(List) argument; %>
+<% String modelPackage=(String)args.get(0); %>
+<% String ucModelPackagePrefix=(String)args.get(1); %>
+<% String lcModelPackagePrefix=(String)args.get(2); %>
+<% String uri=(String)args.get(3); %>
+<% String providersPackage=(String)args.get(4); %>
+<% String values=""; %>
+<% for (int i=5; i<args.size(); ++i) { %>
+<% if (values.length() > 0) { values += ", "; } %>
+<% values += lcModelPackagePrefix + "." + (String)args.get(i) + "Unit"; %>
+<% } %>
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!-- Palette Provider -->
+   	<extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    	<paletteProvider
+        	class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         	<Priority
+         		name="Medium">
+         	</Priority>
+         	<editor
+            	id="DeployCoreEditor">
+         	</editor>
+         	<contribution
+            	factoryClass="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCorePaletteFactory">            	        		        <entry 
+            		label="%<%=lcModelPackagePrefix%>Stack.Label" 
+            		kind="stack" 
+            		description="%<%=lcModelPackagePrefix%>Stack.Description" 
+            		small_icon="icons/pal/placeholder_16.gif" 
+            		path="/serverSoftwareDrawer/" 
+            		id="<%=lcModelPackagePrefix%>Stack">
+            	</entry>           	
+	        </contribution>
+      	</paletteProvider>
+   	</extension>
+
+	<!-- Deploy Core Editpart Provider -->
+  	<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="<%=providersPackage%>.<%=ucModelPackagePrefix%>EditPartProvider">
+         <Priority name="Medium">
+         </Priority> 
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="Nodes">
+            <staticMethod 
+                name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"            	 
+            	value="<%=values%>">
+            </staticMethod>
+         </object>        
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="NodesByType">
+        	 <method name="getType()" value="module.<%=lcModelPackagePrefix%>, configurationUnit.<%=lcModelPackagePrefix%>"/>
+	     </object>
+        <context
+               views="NodesByType, Nodes">
+         </context>
+      </editpartProvider>
+   	</extension>
+   	
+   	<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.ibm.ccl.soa.deploy.core.ui.providers.DeployCoreViewProvider">
+         <Priority name="Medium">
+         </Priority>
+         <object class="org.eclipse.gmf.runtime.emf.core.util.IProxyEObject(org.eclipse.gmf.runtime.emf.core)" id="Nodes">
+            <method name="getProxyClassID()" value="<%=values%>">
+            </method>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="module.<%=lcModelPackagePrefix%>, configurationUnit.<%=lcModelPackagePrefix%>">
+         </context>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="" elements="Nodes">
+         </context>         
+      </viewProvider>
+   </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    	
+    	<metamodel
+                nsURI="<%=uri%>">
+	    	<metamodelType
+	        	id="<%=lcModelPackagePrefix%>.ModelObjectUnit"            
+	            name="%ModelObjectUnit.label"
+	            icon="icons/pal/placeholder_16.gif"
+	            eclass="ModelObjectUnit"/>        
+        </metamodel> 
+	</extension>
+   
+
+</plugin>

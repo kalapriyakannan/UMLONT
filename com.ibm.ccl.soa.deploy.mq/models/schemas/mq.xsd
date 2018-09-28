@@ -1,0 +1,618 @@
+<schema targetNamespace="http://www.ibm.com/Zephyr/mq/1.0.0/" 
+elementFormDefault="qualified" 
+    ecore:documentRoot="MQRoot"
+	ecore:name="mq"
+	ecore:package="com.ibm.ccl.soa.deploy.mq"
+	ecore:nsPrefix="mq" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:mq="http://www.ibm.com/Zephyr/mq/1.0.0/" 
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+	
+	
+<import 
+	namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	schemaLocation="platform:/resource/com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd">
+</import>
+
+<element name="unit.MQBaseSystemUnit" substitutionGroup="core:unit" type="mq:MQBaseSystemUnit"/>
+	<complexType name="MQBaseSystemUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.MQBaseSystem" substitutionGroup="core:capability" type="mq:MQBaseSystem"/>
+	<complexType name="MQBaseSystem">
+		<complexContent>
+			<extension base="core:Capability">						
+				<attribute name="providerName" type="string"/>
+				<attribute name="providerVersion" type="core:VersionString"/>
+				<attribute name="initialContextFactory" type="string"/>
+				<attribute name="providerURL" type="anyURI"/>	<!-- ldap://hostname.company.com/contextName -->
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+	<element name="unit.MQQueueManagerUnit" substitutionGroup="core:unit" type="mq:MQQueueManagerUnit"/>
+	<complexType name ="MQQueueManagerUnit">
+		<complexContent>
+		<extension base="core:Unit">
+		</extension>
+	</complexContent>
+	</complexType>
+	
+	<element name="capability.MQQueueManager" substitutionGroup="core:capability" type="mq:MQQueueManager"/>
+	<complexType name ="MQQueueManager">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="QueueManagerName" type="string"/>
+	<attribute name="Platform" type="string"/>
+	<attribute name="QueueManagerStatus" type="string"/>
+	<attribute name="CommandLevel" type="string"/>
+	<attribute name="Automatic" type="string"/>
+	<attribute name="DefaultBindType" type="string"/>
+	<attribute name="ErrorLogSize" type="string"/>
+	<attribute name="ExcludedMessages" type="string"/>
+	<attribute name="SuppresedMessages" type="string"/>
+	<attribute name="SuppressedMessageInterval" type="string"/>
+	<attribute name="ExitsDefaultPath" type="string"/>
+	<attribute name="LogType" type="string"/>
+	<attribute name="LogPath" type="string"/>
+	<attribute name="LogFilePages" type="string"/>
+	<attribute name="LogPrimaryFiles" type="string"/>
+	<attribute name="LogSecondaryFiles" type="string"/>
+	<attribute name="LogBufferPages" type="string"/>
+	<attribute name="LogWriteIntegrity" type="string"/>
+	<attribute name="InstallableServiceName" type="string"/>
+	<attribute name="ServiceEntryPoints" type="string"/>
+	<attribute name="SecurityPolicy" type="string"/>
+	<attribute name="MaxChannels" type="string"/>
+	<attribute name="MaxActiveChannels" type="string"/>
+	<attribute name="MaxInitiators" type="string"/>
+	<attribute name="MQIBindType" type="string"/>
+	<attribute name="AdoptNewMCA" type="string"/>
+	<attribute name="AdoptNewMCACheck" type="string"/>
+	<attribute name="PipeLineLength" type="string"/>
+	<attribute name="TCPPort" type="string"/>
+	<attribute name="TCPLibrary1" type="string"/>
+	<attribute name="TCPLibrary2" type="string"/>
+	<attribute name="TCPKeepAlive" type="string"/>
+	<attribute name="TCPListenerBacklog" type="string"/>
+	<attribute name="LUTPName" type="string"/>
+	<attribute name="LULibrary1" type="string"/>
+	<attribute name="LULibrary2" type="string"/>
+	<attribute name="LULocalLU" type="string"/>
+	<attribute name="NetBiosLocalName" type="string"/>
+	<attribute name="NetBiosNumberOfSessions" type="string"/>
+	<attribute name="NetBiosNumberOfNames" type="string"/>
+	<attribute name="NetBiosAdaptorNumber" type="string"/>
+	<attribute name="NetBiosNumberOfCommands" type="string"/>
+	<attribute name="NetBiosLibrary1" type="string"/>
+	<attribute name="SPXSocket" type="string"/>
+	<attribute name="SPXLibrary1" type="string"/>
+	<attribute name="SPXLibrary2" type="string"/>
+	<attribute name="SPXKeepAlive" type="string"/>
+	<attribute name="SPXBoardNumber" type="string"/>
+	<attribute name="BrokerMessageRetryCount" type="string"/>
+	<attribute name="BrokerStreamsPerProcess" type="string"/>
+	<attribute name="BrokerOpenCacheSize" type="string"/>
+	<attribute name="BrokerOpenCacheExpiry" type="string"/>
+	<attribute name="BrokerPublishBatchSize" type="string"/>
+	<attribute name="BrokerPublicBatchInterval" type="string"/>
+	<attribute name="CheckpointMessageSize" type="string"/>
+	<attribute name="CheckpointActiveCount" type="string"/>
+	<attribute name="CheckpointRestartCount" type="string"/>
+	<attribute name="RoutingExitPath" type="string"/>
+	<attribute name="RoutingExitConnectType" type="string"/>
+	<attribute name="AccountingInterval" type="string"/>
+	<attribute name="ActivityRecording" type="string"/>	
+	<attribute name="AdoptNewMCAType" type="string"/>
+	<attribute name="AuthorityEvent" type="string"/>
+	<attribute name="BridgeEvent" type="string"/>
+	<attribute name ="ChannelAutoDefinition" type="string"/>
+	<attribute name="ChannelAutoDefinitionEvent" type="string"/>
+	<attribute name="ChannelEvent" type="string"/>
+	<attribute name="ChannelInitiatorControl" type="string"/>
+	<attribute name="ChannelMonitoring" type="string"/>
+	<attribute name="ChannelStatistics" type="string"/>
+	<attribute name="ChannelInitiatorAdapters" type="string"/>
+	<attribute name="ChannelInitiatorDispatchers" type="string"/>
+	<attribute name="ChannelInitiatorTraceAutoStart" type="string"/>
+	<attribute name="ChannelInitiatorTraceTableSize" type="string"/>
+	<attribute name="ClusterSenderMonitoring" type="string"/>
+	<attribute name="ClusterSenderStatistics" type="string"/>
+	<attribute name="ClusterWorkLoadData" type="string"/>
+	<attribute name="ClusterWorkLoadExit" type="string"/>
+	<attribute name="ClusterWorkLoadLength" type="string"/>
+	<attribute name="ClusterWorkloadUseQ" type="string"/>
+	<attribute name="CodedCharSetId" type="string"/>
+	<attribute name="CommandEvent" type="string"/>
+	<attribute name="CommandScope" type="string"/>
+	<attribute name="CommandServerControl" type="string"/>
+	<attribute name="ConfigurationEvent" type="string"/>
+	<attribute name="DeadLetterQueue" type="string"/>
+	<attribute name="DefaultTransmissionQueue" type="string"/>
+	<attribute name="DNSGroup" type="string"/>
+	<attribute name="DNSWLM" type="string"/>
+	<attribute name="ExpiryInterval" type="string"/>
+	<attribute name="IGQPutAuthority" type="string"/>
+	<attribute name="IGQUserId" type="string"/>
+	<attribute name="InhibitEvent" type="string"/>
+	<attribute name="IntraGroupQueuing" type="string"/>
+	<attribute name="IPAddressVersion" type="string"/>
+	<attribute name="ListenerTimer" type="string"/>
+	<attribute name="LocalEvent" type="string"/>
+	<attribute name="LUGroupName" type="string"/>
+	<attribute name="LUName" type="string"/>
+	<attribute name="LU62ARMSuffix" type="string"/>
+	<attribute name="LU62Channels" type="string"/>
+	<attribute name="MaximumCurrentChannels" type="string"/>
+	<attribute name="MaximumHandles" type="string"/>
+	<attribute name="MaximumMessageLength" type="string"/>
+	<attribute name="MaximumUncommittedMessages" type="string"/>
+	<attribute name="MQIAccounting" type="string"/>
+	<attribute name="MQIStatistics" type="string"/>
+	<attribute name="OutboundPortMax" type="string"/>
+	<attribute name="OutboundPortMin" type="string"/>
+	<attribute name="PerformanceEvent" type="string"/>
+	<attribute name="Description" type="string"/>
+	<attribute name="QueueAccounting" type="string"/>
+	<attribute name="QueueMonitoring" type="string"/>
+	<attribute name="QueueStatistics" type="string"/>
+	<attribute name="ReceiveTimeout" type="string"/>
+	<attribute name="ReceiveTimeoutMin" type="string"/>
+	<attribute name="ReceiveTimeoutType" type="string"/>
+	<attribute name="RemoteEvent" type="string"/>
+	<attribute name="RepositoryName" type="string"/>
+	<attribute name="RepositoryNameList" type="string"/>
+	<attribute name="sharedQQmgrName" type="string"/>
+	<attribute name="SSLCRLNameList" type="string"/>
+	<attribute name="SSLCrytoHardware" type="string"/>
+	<attribute name="SSLEvent" type="string"/>
+	<attribute name="SSLFips" type="string"/>
+	<attribute name="SSLKeyRepository" type="string"/>
+	<attribute name="SSLKeyResetCount" type="string"/>
+	<attribute name="SSLTasks" type="string"/>
+	<attribute name="StartStopEvent" type="string"/>
+	<attribute name="StatisticsInterval" type="string"/>
+	<attribute name="MaximumTCPChannels" type="string"/>	
+	<attribute name="TCPName" type="string"/>
+	<attribute name="TCPStackType" type="string"/>
+	<attribute name="TraceRouteRecording" type="string"/>
+	<attribute name="TriggerInterval" type="string"/>
+	<attribute name="WhatIf" type="string"/>
+	<attribute name="Confirm" type="string"/>			
+	<attribute name ="AccountingConnectionOverride" type="string"/>
+	 	
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	<element name="unit.MQQueueChannelUnit" substitutionGroup="core:unit" type="mq:MQQueueChannelUnit"/>
+	<complexType name ="MQQueueChannelUnit">
+	<complexContent>
+	<extension base="core:Unit">
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	
+	<element name="capability.MQQueueChannel" substitutionGroup="core:capability" type="mq:MQQueueChannel"/>
+	<complexType name="MQQueueChannel">
+	<complexContent> 
+	<extension base="core:Capability">
+	<attribute name="channelName" type="string">
+	</attribute>
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	<element name="unit.MQQueueUnit" substitutionGroup="core:unit" type="mq:MQQueueUnit"/>
+	<complexType name="MQQueueUnit">
+	<complexContent>
+	<extension base="core:Unit"/>
+	</complexContent>
+	</complexType>
+
+
+	<element name="capability.MQQueue" substitutionGroup="core:capability" type="mq:MQQueue"/>
+	<complexType name="MQQueue">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="QueueName" type="string"/>
+	<attribute name="QueueType" type="string"/>
+	<attribute name="QSGDisposition" type="string"/>
+	<attribute name="Description" type="string"/>	
+	<attribute name="GetMessages" type="string"/>
+	<attribute name="DefaultPriority" type="string"/>	
+	<attribute name="DistributionList" type="string"/>		
+	<attribute name="QueueMonitoring" type="string"/>
+	<attribute name="CurrentQueueDepth" type="string"/>
+	<attribute name="OpenInputCount" type="string"/>
+	<attribute name="DefaultInputOpenOption" type="string"/>
+	<attribute name="CurrentQueueDepth" type="string"/>
+	<attribute name="Persistence" type="string"/>
+	<attribute name="Scope" type="string"/>
+	<attribute name="Usage" type="string"/>
+	<attribute name="BaseQueue" type="string"/>
+	<attribute name="RemoteQueue" type="string"/>
+	<attribute name="RemoteQueueManager" type="string"/>
+	<attribute name="TransmissionQueue" type="string"/>
+	<attribute name="BaseQueueName" type="string"/>
+	<attribute name="MaxQueueDepth" type ="string"/>
+	<attribute name="MaxMessageLength" type="string"/>
+	<attribute name="Shareability" type="string"/>	
+	<attribute name="MessageDeliverySequence" type="string"/>
+	<attribute name="RetentionInterval " type="string"/>
+	<attribute name="DefinitionType" type="string"/>
+	<attribute name="DistributionLists" type="string"/>	
+	<attribute name="NotSharedInCluster" type="string"/>
+	<attribute name="SharedInCluster" type="string"/>
+	<attribute name="SharedInAListOfClusters" type="string"/>
+	<attribute name="DefaultBindType" type="string"/>
+	<attribute name="CLWLQueueRank " type="string"/>
+	<attribute name="CLWLQueuePriority" type="string"/>
+	<attribute name="CLWLUQueue" type="string"/>
+	<attribute name="TriggerControl" type="string"/>
+	<attribute name="TriggerDepth " type="string"/>
+	<attribute name="TriggerType" type="string"/>
+	<attribute name="TriggerMessagePriority" type="string"/>
+	<attribute name="TriggerData" type="string"/>
+	<attribute name="InitiationQueue" type="string"/>
+	<attribute name="ProcessName" type="string"/>
+	<attribute name="PutMessage" type="string"/>	
+	<attribute name="QueueDepthMaxEvents" type="string"/>
+	<attribute name="QueueDepthHighEvents" type="string"/>
+	<attribute name="QueueDepthHighLimit" type="string"/>
+	<attribute name="QueueDepthLowEvents" type="string"/>
+	<attribute name="QueueDepthLowLimit" type="string"/>
+	<attribute name="QueueServiceIntervalEvents" type="string"/>
+	<attribute name="QueueServiceInterval" type="string"/>
+	<attribute name="BackoutRequeueQueue" type="string"/>
+	<attribute name="BackoutThreshold" type="string"/>
+	<attribute name="HardenGetBackout" type="string"/>
+	<attribute name="NPMClass" type="string"/>
+	<attribute name="StorageClassName" type="string"/>
+	<attribute name="CouplingFacilityName" type="string"/>
+	<attribute name="StatCreationDate" type="string"/>
+	<attribute name="StatCreationTime" type="string"/>
+	<attribute name="StatOpenInputCount" type="string"/>
+	<attribute name="StatOpenOutputCount" type="string"/>
+	<attribute name="StatCurrentQueueDepth" type="string"/>
+	<attribute name="StatAlterationDate" type="string"/>
+	<attribute name="StatAlterationTime" type="string"/>
+	<attribute name="StatQueueMonitoring" type="string"/>
+	<attribute name="StatQueueStatistics" type="string"/>
+	<attribute name="QueueAccounting" type="string"/>	
+	<attribute name="DefaultInputOpenOption" type="string"/>	
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	<element name="unit.MQMessagingProviderUnit" substitutionGroup="core:unit" type="mq:MQMessagingProviderUnit"/>
+	<complexType name="MQMessagingProviderUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>	
+	</complexType>
+	
+	<element  name="capability.MQMessagingProvider" substitutionGroup="core:capability" type="mq:MQMessagingProvider"/>
+		<complexType name="MQMessagingProvider">
+			<complexContent>
+				<extension base="core:Capability">
+				<attribute name="Name" type="string"/>
+				<attribute name="Description" type="string"/>
+				<attribute name="classPath" type="string"/>
+				<attribute name="nativePath" type="string"/>
+				
+				</extension>
+			</complexContent>
+		</complexType>
+		
+	<element name="unit.MQListenerUnit" substitutionGroup="core:unit" type="mq:MQListenerUnit"/>
+	<complexType name="MQListenerUnit">
+		<complexContent>
+			<extension base="core:Unit"></extension>
+		</complexContent>	
+	</complexType>
+	
+	<element  name="capability.MQListener" substitutionGroup="core:capability" type="mq:MQListener"/>
+		<complexType name="MQListener">
+			<complexContent>
+				<extension base="core:Capability">
+				<attribute name="Port" type ="string"></attribute>
+			</extension>
+			</complexContent>
+		</complexType>
+		
+		
+	<element name="unit.MQQueueConnectionFactoryUnit" substitutionGroup="core:unit" type="mq:MQQueueConnectionFactoryUnit"/>
+	<complexType name="MQQueueConnectionFactoryUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.MQQueueConnectionFactory" substitutionGroup="core:capability" type="mq:MQQueueConnectionFactory"/>
+	<complexType name="MQQueueConnectionFactory">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="factoryName" type="string"/>
+				<attribute name="jndiName" type="string"/>		
+				<attribute name="Description" type="string"/>
+				<attribute name="Category" type = "string"/>
+				<attribute name="ComponentManagedAuthenticationAlias" type = "string"/>					
+				<attribute name="ContainerManagedAuthenticationAlias" type = "string"/>
+				<attribute name="MappingconfigurationAlias" type = "string"/>
+				<attribute name="Queuemanager" type = "string"/>
+				<attribute name="EnableConnectionPoling" type="string"/>
+				<attribute name="EnableReturnMethodDuringShutdown" type="string"/>
+				<attribute name="Host" type = "string"/>
+				<attribute name="Port" type = "string"/>
+				<attribute name="Channel" type = "string"/>
+				<attribute name="TransportType" type = "string"/>
+				<attribute name="ModelQueueDefinition" type = "string"/>
+				<attribute name="ClientId" type = "string"/>
+				<attribute name="CCSID" type = "string"/>
+				<attribute name="EnableMessageRetention" type = "string"/>
+				<attribute name="XAEnabled" type = "string"/>
+				<attribute name="LocalServerAddress" type = "string"/>
+				<attribute name="PollingInterval" type = "string"/>
+				<attribute name="RescanInterval" type = "string"/>
+				<attribute name="SSLCipherSuit" type = "string"/>
+				<attribute name="SSLCRL" type = "string"/>
+				<attribute name="SSLPeerName" type = "string"/>
+				<attribute name="TemporaryQueuePrefix" type = "string"/>
+				<attribute name="MinConnections" type = "string"/>
+				<attribute name="MaxConnections" type = "string"/>
+				<attribute name="MinSessions" type = "string"/>
+				<attribute name="MaxSessions" type ="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+	<element name="unit.MQTopicConnectionFactoryUnit" substitutionGroup="core:unit" type="mq:MQTopicConnectionFactoryUnit"/>
+	<complexType name="MQTopicConnectionFactoryUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.MQTopicConnectionFactory" substitutionGroup="core:capability" type="mq:MQTopicConnectionFactory"/>
+	<complexType name="MQTopicConnectionFactory">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="factoryName" type="string"/>
+				<attribute name="jndiName" type="string"/>					
+				<attribute name="Description" type="string"/>
+				<attribute name="Category" type = "string"/>
+				<attribute name="ComponentManagedAuthenticationAlias" type = "string"/>					
+				<attribute name="ContainerManagedAuthenticationAlias" type = "string"/>
+				<attribute name="MappingConfigurationAlias" type = "string"/>
+				<attribute name="QueueManager" type = "string"/>
+				<attribute name="Host" type = "string"/>
+				<attribute name="Port" type = "string"/>
+				<attribute name="Channel" type = "string"/>
+				<attribute name="TransportType" type = "string"/>				
+				<attribute name="BrokerControlQueue" type="string"/>
+				<attribute name="BrokerQueueManager" type="string"/>
+				<attribute name="BrokerPublicationQueue" type="string"/>
+				<attribute name="BrokerSubscriptionQueue" type="string"/>
+				<attribute name="BrokerCCSubscriptionQueue" type="string"/>
+				<attribute name="BrokerVersion" type="string"/>
+				<attribute name="ModelQueueDefinition" type="string"/>
+				<attribute name="EnableCloneSupport" type="string"/>
+				<attribute name="ClientId" type="string"/>
+				<attribute name="CCSIDId" type="string"/>
+				<attribute name="XAEnabled" type="string"/>
+				<attribute name="PublishAndSubscribeCleanupLevel" type="string"/>
+				<attribute name="PublishAndSubscribeCleanupInterval" type="string"/>
+				<attribute name="BrokerMessageSelection" type="string"/>
+				<attribute name="PublishAndAcknowledgeLevel" type="string"/>
+				<attribute name="PublishAndSubscribeStatusInterval" type="string"/>
+				<attribute name="PersistentSubscriptionStore" type="string"/>
+				<attribute name="EnableMulticastTransport" type="string"/>
+				<attribute name="DirectBrokerAuthorization" type="string"/>
+				<attribute name="ProxyHostName" type="string"/>
+				<attribute name="ProxyPort" type="string"/>
+				<attribute name="EnableReturnMethodsDuringShutdown" type="string"/>
+				<attribute name="LocalServerAddress" type="string"/>
+				<attribute name="PollingInterval" type="string"/>
+				<attribute name="RescanInterval" type="string"/>
+				<attribute name="SSLCipherSuite" type="string"/>
+				<attribute name="SSLCRL" type="string"/>
+				<attribute name="SSLPeerName" type="string"/>
+				<attribute name="EnableMQConnectionPooling" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.MQDestination" substitutionGroup="core:capability" type="mq:MQDestination"/>
+	<complexType name="MQDestination">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="destinationName" type="string"/>
+				<attribute name="jndiName" type="string"/>	
+				<attribute name="Description" type="string"/>
+				<attribute name="Category" type="string"/>
+				<attribute name="Persitence" type="string"/>
+				<attribute name="Priority" type="string"/>
+				<attribute name="SpecifiedPriority" type="string"/>
+				<attribute name="Expiry" type="string"/>
+				<attribute name="SpecifiedExpiry" type="string"/>
+				<attribute name="BaseQueueName" type="string"/>
+				<attribute name="BaseQueueManagerName" type="string"/>
+				<attribute name="CCSID" type="string"/>
+				<attribute  name="UseNativeEncoding" type="string"/>
+				<attribute name="IntegerEncoding" type ="string"/>
+				<attribute name="DecimalEncoding" type ="string"/>
+				<attribute name="FloatingPointEncoding" type="string"/>
+				<attribute name="TargetClient" type="string"/>
+				<attribute name="QueueManagerHost" type="string"/>
+				<attribute name="QueueManagerPort" type="string"/>
+				<attribute name="ServerConnectionChannelName" type="string"/>
+				<attribute name="UserID" type="string"/>
+				<attribute name="Password" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType> 
+	
+	<element name="unit.MQQueueDestinationUnit" substitutionGroup="core:unit" type="mq:MQQueueDestinationUnit"/>
+	<complexType name="MQQueueDestinationUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.MQQueueDestination" substitutionGroup="core:capability" type="mq:MQQueueDestination"/>
+	<complexType name="MQQueueDestination">
+		<complexContent>
+			<extension base="mq:MQDestination">
+			</extension>
+		</complexContent>
+	</complexType>  
+	
+	<element name="unit.MQTopicDestinationUnit" substitutionGroup="core:unit" type="mq:MQTopicDestinationUnit"/>
+	<complexType name="MQTopicDestinationUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.MQTopicDestination" substitutionGroup="core:capability" type="mq:MQTopicDestination"/>
+	<complexType name="MQTopicDestination">
+		<complexContent>
+			<extension base="core:Capability">
+			<attribute name="destinationName" type="string"/>
+				<attribute name="jndiName" type="string"/>	
+				<attribute name="Description" type="string"/>
+				<attribute name="Category" type="string"/>
+				<attribute name="Persitence" type="string"/>
+				<attribute name="Priority" type="string"/>
+				<attribute name="SpecifiedPriority" type="string"/>
+				<attribute name="Expiry" type="string"/>
+				<attribute name="SpecifiedExpiry" type="string"/>
+				<attribute  name="UseNativeEncoding" type="string"/>
+				<attribute name="IntegerEncoding" type ="string"/>
+				<attribute name="DecimalEncoding" type ="string"/>
+				<attribute name="FloatingPointEncoding" type="string"/>
+				<attribute name="TargetClient" type="string"/>
+				<attribute name="BaseTopicName" type="string"/>
+				<attribute name="BrokerDurableSubscriptionQueue" type="string"/>				
+				<attribute name="BrokerCCDurableSubscriptionQueue" type="string"/>
+				<attribute name="EnableMulticastTransport" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+	<element name="unit.MQConnectionFactoriesUnit" substitutionGroup="core:unit" type="mq:MQConnectionFactoriesUnit"/>
+	<complexType name="MQConnectionFactoriesUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.MQConnectionFactories" substitutionGroup="core:capability" type="mq:MQConnectionFactories"/>
+	<complexType name="MQConnectionFactories">
+		<complexContent>
+			<extension base="core:Capability">			
+			<attribute name="Name" type="string"/>
+			<attribute name="jndiName" type="string"/>
+			<attribute name="Category" type="string"/>
+			<attribute name="ComponentManagedAuthenticationAlias" type="string"/>
+			<attribute name="ContainerManagedAuthenticationAlias" type="string"/>
+			<attribute name="MappingConfigurationAlias" type="string"/>
+			<attribute name="QueueManager" type="string"/>
+			<attribute name="Host" type="string"/>
+			<attribute name="Port" type="string"/>
+			<attribute name="Channel" type="string"/>
+			<attribute name="TransportType" type="string"/>
+			<attribute name="ModelQueueDefinition" type="string"/>
+			<attribute name="ClientId" type="string"/>
+			<attribute name="CCSID" type="string"/>
+			<attribute name="EnableMessageRetention" type="string"/>
+			<attribute name="XAEnabled" type="string"/>
+			<attribute name="EnableReturnMethodsDuringShutdown" type="string"/>
+			<attribute name="LocalServerAddress" type="string"/>
+			<attribute name="PollingInterval" type="string"/>
+			<attribute name="RescanInterval" type="string"/>
+			<attribute name="SSLCipherSuite" type="string"/>
+			<attribute name="SSLCRL" type="string"/>
+			<attribute name="SSLPeerName" type="string"/>
+			<attribute name="TemporaryQueuePrefix" type="string"/>
+			<attribute name="EnableMQConnectionPooling" type="string"/>
+			<attribute name="BrokerControlQueue" type="string"/>
+			<attribute name="BrokerQueueManager" type="string"/>
+			<attribute name="BrokerPublicationQueue" type="string"/>
+			<attribute name="BrokerSubscriptionQueue" type="string"/>
+			<attribute name="BrokerCCSubscriptionQueue" type="string"/>
+			<attribute name="BrokerVersion" type="string"/>
+			<attribute name="PublishAndSubscribeCleanupLevel" type="string"/>			
+			<attribute name="PublishAndSubscribeCleanupInterval" type="string"/>
+			<attribute name="BrokerMessageSelection" type="string"/>
+			<attribute name="PublishAndAcknowledgementInterval" type="string"/>
+			<attribute name="EnableSparseBrokerSubscriptions" type="string"/>
+			<attribute name="PublishAndSubscribeStatusInterval" type="string"/>
+			<attribute name="PersistentSubscriptionsStore" type="string"/>
+			<attribute name="EnableMulticastTransport" type="string"/>
+			<attribute name="EnableCloneSupport" type="string"/>
+			<attribute name="DirectBrokerAuthorizationType " type="string"/>
+			<attribute name="ProxyHostName " type="string"/>
+			<attribute name="ProxyPort " type="string"/>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.MQActivationSpecificationUnit" substitutionGroup="core:unit" type="mq:MQActivationSpecificationUnit"/>
+	<complexType name="MQActivationSpecificationUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	
+   <element name="capability.MQActivationSpecification"  substitutionGroup="core:capability" type="mq:MQActivationSpecification"></element>
+   <complexType name="MQActivationSpecification">
+  	<complexContent>
+  		<extension base="core:Capability">
+<!--    <attribute name="destinationName" type="string" />
+        <attribute name="destinationType" type="jms:DestinationTypeEnum" /> -->
+        <attribute name="specificationName" type="string" />
+		<attribute name="jndiName" type="string"/>				        
+        <attribute name="mesasageSelector" type="string" /> <!-- (SQL 92 condition expression,for example: <age BETWEEN 15 AND 19>â€) -->        
+        <attribute name="subscriptionDurable" type="boolean" />
+        <attribute name="subscriptionName" type="string" />
+        <attribute name="clientIdentifier" type="string" />
+  		</extension>
+  	</complexContent>
+  </complexType>
+	
+	<element name="unit.MQMessageListnerServicePortUnit" substitutionGroup="core:unit" type="mq:MQMessageListnerServicePortUnit"/>
+	<complexType name="MQMessageListnerServicePortUnit">
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+	
+	<element name="capability.MQMesseageListernerServicePort" substitutionGroup="core:capability" type="mq:MesseageListernerServicePort"/>
+	<complexType name="MesseageListernerServicePort">
+	<complexContent>
+	<extension base="core:Capability">
+	<attribute name="Name" type="string" />
+	<attribute name="CFJNDIName" type="string"/>
+	<attribute name="DestinationJNDIName" type="string"/>
+	<attribute name="MaxSessions" type="string"/>
+	<attribute name="MaxRetries" type="string"/>
+	</extension>
+	</complexContent>
+	</complexType>
+	
+	
+	
+	
+	
+  </schema>

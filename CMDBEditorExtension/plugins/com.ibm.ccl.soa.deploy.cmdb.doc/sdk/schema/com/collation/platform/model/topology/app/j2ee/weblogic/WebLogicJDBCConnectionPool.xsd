@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:www-collation-com:1.0"
+        xmlns="urn:www-collation-com:1.0"
+        xmlns:coll="urn:www-collation-com:1.0"
+        elementFormDefault="qualified" version="1.0">
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/JDBCConnectionPool.xsd"/>
+  <xsd:include schemaLocation="../../../../../../../../com/collation/platform/model/topology/app/j2ee/weblogic/WebLogicJDBCDriver.xsd"/>
+  <xsd:complexType name="com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicJDBCConnectionPool">
+    <xsd:complexContent>
+      <xsd:extension base="coll:com.collation.platform.model.topology.app.j2ee.JDBCConnectionPool">
+        <xsd:sequence>
+          <xsd:element name="JNDIName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="capacityIncrement" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="driver" type="coll:com.collation.platform.model.topology.app.j2ee.weblogic.WebLogicJDBCDriver" nillable="true" minOccurs="0"/>
+          <xsd:element name="initialCapacity" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="loginDelaySeconds" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="maxCapacity" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="preparedStatementCacheSize" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="refreshMinutes" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="shrinkPeriodMinutes" type="xsd:int" nillable="true" minOccurs="0"/>
+          <xsd:element name="supportsLocalTransaction" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="testConnectionsOnRelease" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="testConnectionsOnReserve" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="testTableName" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="URL" type="xsd:string" nillable="true" minOccurs="0"/>
+          <xsd:element name="connLeakProfilingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+          <xsd:element name="shrinkingEnabled" type="xsd:boolean" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

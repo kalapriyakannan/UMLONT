@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/" xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/" xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/" xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:java="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/" xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" description="Was5DataSource template" displayName="topology1">
+  <was:unit.wasdatasource name="WebSphere5DB2V5DataSource" configurationUnit="true">
+    <was:capability.wasv5DB2Datasource name="WebSphere5 Data Source" displayName="WebSphere V5 Data Source" linkType="dependency">
+      <core:attributeMetaData attributeName="password" encrypted="true" />      
+    </was:capability.wasv5DB2Datasource>
+    <core:requirement mutable="true" name="DB2JdbcProvider" displayName="DB2 JDBC Provider" dmoType="was:DB2JdbcProvider" linkType="hosting"/>
+    <core:requirement mutable = "true" use="optional" name = "DB2Database" displayName = "DB2 Database" dmoType = "db2Deploy:DB2Database" linkType ="dependency"/>
+    <core:requirement mutable = "true" use="optional" name = "J2CAuthenticationEntry" displayName = "Authentication" dmoType = "was:WASJ2CAuthenticationDataEntry" linkType ="dependency"/>
+  </was:unit.wasdatasource>
+</core:topology>

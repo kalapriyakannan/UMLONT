@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/" name="WebSphere 5 Port Configuration Template">
+  <os:unit.portConfigUnit displayName="Port Configuration" name="portConfiguration" configurationUnit="true" conceptual="true">
+    <os:capability.port displayName="bootstrap_address" name="boot_strap_address" linkType="dependency" portName="boot_strap_address" transportLayerProtocol="TCP">
+        <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="orb_listener_address" name="orb_listener_address" linkType="dependency" portName="orb_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_secure_address" name="sib_mq_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_secure_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address" linkType="dependency" applicationLayerProtocol="MQFAP" portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_secure_address" name="sib_endpoint_secure_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_secure_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost_secure" name="wc_defaulthost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_defaulthost" name="wc_defaulthost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_defaulthost" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sib_endpoint_address" name="sib_endpoint_address" linkType="dependency" applicationLayerProtocol="JFAP" portName="sib_endpoint_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost_secure" name="wc_adminhost_secure" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="wc_adminhost" name="wc_adminhost" linkType="dependency" applicationLayerProtocol="HTTP" portName="wc_adminhost" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_serverAuth_listener_address" name="csiv2_ssl_serverAuth_listener_address" linkType="dependency" portName="csiv2_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="csiv2_ssl_mutualauth_listener_address" name="csiv2_ssl_mutualauth_listener_address" linkType="dependency" portName="csiv2_ssl_mutualauth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="sas_ssl_serverAuth_listener_address" name="sas_ssl_serverAuth_listener_address" linkType="dependency" portName="sas_ssl_serverAuth_listener_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <os:capability.port displayName="soap_connector_address" name="soap_connector_address" linkType="dependency" applicationLayerProtocol="HTTP" portName="soap_connector_address" transportLayerProtocol="TCP">
+              <core:attributeMetaData attributeName="portName" mutable="false"/>
+    </os:capability.port>
+    <core:requirement displayName="PortConsumer" name="PortConsumer" linkType="hosting" dmoType="os:PortConsumer"/>    
+  </os:unit.portConfigUnit>
+</core:topology>

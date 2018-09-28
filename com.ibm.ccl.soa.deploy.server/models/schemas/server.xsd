@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+	xmlns:server="http://www.ibm.com/ccl/soa/deploy/server/1.0.0/"
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	elementFormDefault="qualified" ecore:documentRoot="ServerRoot" ecore:name="server"
+	ecore:package="com.ibm.ccl.soa.deploy.server" ecore:nsPrefix="server">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd" />
+	<!--  Capabilities -->
+	<element name="capability.server" substitutionGroup="core:capability" type="server:Server" />
+	<complexType name="Server">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="memory.size" type="unsignedLong">
+					<annotation>
+						<documentation>
+							Memory size, in 1024 byte units.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuArchitectureWidth" type="server:ArchitectureWidthType">
+					<annotation>
+						<documentation>Enumeration - "32-bit" or "61-bit"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="primaryMACAddress" type="string">
+					<annotation>
+						<documentation>
+							The primary MAC address may be used to compose a unique machine identifier
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="processingCapacityUnits" type="server:ProcessingCapacityUnitsType">
+					<annotation>
+						<documentation>
+							The units in which the ProcessingCapacity attribute's value are expressed. For ZSeries this
+							should be MSU (Millions of service units/hour)
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="autoStart" type="boolean">
+					<annotation>
+						<documentation>
+							In the circumstances where the Computer System environment supports this function (such as
+							in Virtualization), AutoStart represents whether or not the instance is automatically
+							started under particular circumstances. These circumstances could include when the
+							ComputerSystem is powered off, it will automatically restart when power is restored to the
+							machine. Another circumstance includes when virtual computer system instances are
+							automatically started when the physcial computer system instance is started.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="isVMIDanLPAR" type="boolean">
+					<annotation>
+						<documentation>Is the VMID an LPAR?</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="systemBoardUUID" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="processingCapacity" type="float">
+					<annotation>
+						<documentation>
+							A specification of the processing capacity of this computer system, including all of the
+							CPUs assigned to it. The units in which this capacity are expressed should be stated in the
+							ProcessCapacityUnits attribute.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="systemId" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="vmid" type="string">
+					<annotation>
+						<documentation>
+							The VMID is a unique identifier for the virtual machine. For pSeries this is the LPARID.
+							pSeries boxex can have multiple LPARS running different operating systems. The pSeries
+							implementation will return the same manufacturer, model, and serial number all the LPARs. So
+							all ComputerSystems running in different LPARs end up getting incorrectly merged down to a
+							single object. In order to avoid this merging in a pSeries environment, the LPARID shoiuld
+							be saved in the VMID attribute.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="romVersion" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="manufacturer" type="string">
+					<annotation>
+						<documentation>
+							The string for the manufacturer should match the strings defined in the following URL:
+							http://www.iana.org/assignments/enterprise-numbers In addition to the names on the list,
+							there are a few corrections and extensions due to mergers, acquisitions, etc. The following
+							is a list of currently defined changes to the URL above. "42", "Sun Microsystems" "1872",
+							"Nortel Networks (Alteon)" "1916", "Extreme" "Other" "Other" is a valid string that
+							applications can use if the application manufacturer string has not been defined in the URL
+							above. Manufacturers that are not on the list should contact the Internet Assigned Numbers
+							Authority (IANA) to get an assigned number. Applications placing data in the Common Data
+							Model are responsible for mapping application manufacturer strings to strings defined in the
+							URL above. For example, applications need to use "IBM" as a manufacturer string and not
+							"International Business Machines", "IBM Corp", "IBM Corporation", "International Business
+							Machines Corporation", etc.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="virtual" type="boolean">
+					<annotation>
+						<documentation>
+							Boolean. Set to true if this is a virtual computer system. This flag should be set
+							regardless of how the virtualization is implemented (Hardware - pSeries and ZSeries,
+							OperatingSystem - VMWareESX, Application - VMWare). If the value is not known, leave it 
+							unset.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="serialNumber" type="string">
+					<annotation>
+						<documentation>e.g. "KPAMNL2"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="model" type="string">
+					<annotation>
+						<documentation>e.g. eserver xSeries 336 -[883701U]-</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpu.architecture" type="string">
+					<annotation>
+						<documentation>e.g. "Intel" or "i686"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpu.count" type="positiveInteger">
+					<annotation>
+						<documentation>The number of CPUs as seen by a hosted operating system.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuDiesInstalled" type="int">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuCoresInstalled" type="int">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuManufacturer" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuSpeed" type="long">
+					<annotation>
+						<documentation>Units are Hertz</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuType" type="string">
+					<annotation>
+						<documentation>e.g. "Dual Core AMD Opteron(tm) Processor 280"</documentation>
+					</annotation>
+				</attribute>				
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!-- 
+	<element name="capability.cpu" substitutionGroup="core:capability" type="server:CPU" />
+	<complexType name="CPU">
+		<complexContent>
+			<extension base="core:Capability">
+				<attribute name="cpuArchitecture" type="string">
+					<annotation>
+						<documentation>e.g. "Intel" or "i686"</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuCount" type="positiveInteger">
+					<annotation>
+						<documentation>The number of CPUs as seen by a hosted operating system.</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuDiesInstalled" type="int">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuCoresInstalled" type="int">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuManufacturer" type="string">
+					<annotation>
+						<documentation>TODO</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuSpeed" type="long">
+					<annotation>
+						<documentation>Units are Hertz</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="cpuType" type="string">
+					<annotation>
+						<documentation>e.g. "Dual Core AMD Opteron(tm) Processor 280"</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+ -->
+
+	<!--  Units -->
+	<element name="unit.serverUnit" substitutionGroup="core:unit" type="server:ServerUnit" />
+	<complexType name="ServerUnit">
+		<annotation>
+			<documentation xml:lang="en">ServerUnit also has a hosted CPU configuration unit</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="core:Unit" />
+		</complexContent>
+	</complexType>
+
+	<simpleType name="ArchitectureWidthType">
+		<restriction base="string">
+			<enumeration value="32-bit" />
+			<enumeration value="64-bit" />
+		</restriction>
+	</simpleType>
+	
+	<!-- 
+	<simpleType name="SizeUnitsType">
+		<restriction base="string">
+			<enumeration value="KB" />
+			<enumeration value="MB" />
+			<enumeration value="GB" />
+			<enumeration value="TB" />
+		</restriction>
+	</simpleType>
+	 -->
+
+	<simpleType name="ProcessingCapacityUnitsType">
+		<restriction base="string">
+			<enumeration value="Unknown" />
+			<enumeration value="Other" />
+			<enumeration value="SPECInt" />
+			<enumeration value="MSU" />
+		</restriction>
+	</simpleType>
+
+
+
+</schema>

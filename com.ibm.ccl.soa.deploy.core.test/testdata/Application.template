@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology
+	xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"
+	xmlns:database="http://www.ibm.com/ccl/soa/deploy/database/1.0.0/"
+	xmlns:db2Deploy="http://www.ibm.com/ccl/soa/deploy/db2/1.0.0/"
+	xmlns:j2eeDeploy="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+	xmlns:javaDeploy="http://www.ibm.com/ccl/soa/deploy/java/1.0.0/"
+	xmlns:os="http://www.ibm.com/ccl/soa/deploy/os/1.0.0/"
+	xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/"
+	description="Created on Fri 2007.06.29 at 10:34:46 AM EDT"
+	displayName="Application" name="Application">
+	<j2eeDeploy:component.ear displayName="TPCWApplication"
+		mutable="true" name="EarModule0" conceptual="false"
+		initInstallState="not_installed" publishIntent="publish">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_id" value="IBM WebSphere v6.0" />
+			<core:detail key="runtime_type"
+				value="org.eclipse.jst.server.generic.runtime.websphere.6" />
+			<core:detail key="project_name" value="TPCWApplication" />
+			<core:detail key="module_type" value="jst.ear" />
+		</core:annotation>
+		<core:artifact.file name="TPCWApplication">
+			<core:fileURI>
+				platform:/resource/TPCWApplication
+			</core:fileURI>
+		</core:artifact.file>
+		<was:constraint.wasEarClassloaderPolicyConstraint
+			displayName="WebSphereEarClassloaderPolicyConstraint(TPCWApplication)"
+			name="com.ibm.ccl.soa.deploy.was.WasEarClassloaderPolicyConstraint0"
+			order="PARENT_FIRST" policy="MULTIPLE" reloadClasses="true"
+			reloadInterval="15" />
+		<j2eeDeploy:capability.earModule displayName="TPCWApplication"
+			mutable="true" name="TPCWApplication0" linkType="dependency"
+			id="TPCWApplication" version="1.0.0" />
+		<core:requirement name="WebSphereServer_6_0" dmoType="was:WasServer"
+			linkType="hosting">
+			<core:req_expr name="Equals wasVersion"
+				attributeName="wasVersion" interpreter="Equals" use="required"
+				value="6.0" />
+		</core:requirement>
+		<core:requirement displayName="EJB Components"
+			name="ContainedEjbComponents" dmoType="j2eeDeploy:EjbModule"
+			linkType="member" use="required">
+			<core:req_expr name="OutCardinality"
+				interpreter="OutCardinality" use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="j2eeService_14"
+			name="j2eeService_14" dmoType="j2eeDeploy:J2EEContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="1.4" />
+		</core:requirement>
+		<core:requirement displayName="Utility Jar Components"
+			name="ContainedUtilityJarComponents" dmoType="j2eeDeploy:JarModule"
+			linkType="member" use="required">
+			<core:req_expr name="OutCardinality"
+				interpreter="OutCardinality" use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="Application Client Components"
+			name="ContainedAppClientComponents" dmoType="j2eeDeploy:AppClient"
+			linkType="member" use="required">
+			<core:req_expr name="OutCardinality"
+				interpreter="OutCardinality" use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="Web Components"
+			name="ContainedWebComponents" dmoType="j2eeDeploy:WebModule"
+			linkType="member" use="required">
+			<core:req_expr name="OutCardinality"
+				interpreter="OutCardinality" use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="JCA Connector Components"
+			name="ContainedJCAComponents" dmoType="j2eeDeploy:JCAModule"
+			linkType="member" use="required">
+			<core:req_expr name="OutCardinality"
+				interpreter="OutCardinality" use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="TPCWWeb" mutable="true"
+			name="TPCWWeb" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWWeb" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/WebModule0/TPCWWeb0" />
+		</core:requirement>
+		<core:requirement displayName="TPCWUtility" mutable="true"
+			name="TPCWUtility" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWUtility" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/JarModule0/TPCWUtility0" />
+		</core:requirement>
+		<core:requirement displayName="TPCWEJB1" mutable="true"
+			name="TPCWEJB1" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWEJB1" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/TPCWEJB10" />
+		</core:requirement>
+		<core:requirement displayName="TPCWEJB2" mutable="true"
+			name="TPCWEJB2" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWEJB2" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/TPCWEJB20" />
+		</core:requirement>
+		<core:requirement displayName="Shared Library Entry"
+			name="SharedLibraryEntry" dmoType="was:SharedLibraryEntry"
+			linkType="dependency" use="optional" />
+		<core:link.member name="MemberLink0" source="/EarModule0"
+			target="/WebModule0" />
+		<core:link.member name="MemberLink1" source="/EarModule0"
+			target="/JarModule0" />
+		<core:link.member name="MemberLink2" source="/EarModule0"
+			target="/EjbModule0" />
+		<core:link.member name="MemberLink3" source="/EarModule0"
+			target="/EjbModule1" />
+	</j2eeDeploy:component.ear>
+	<j2eeDeploy:component.web displayName="TPCWWeb" name="WebModule0"
+		initInstallState="not_installed">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_id" value="IBM WebSphere v6.0" />
+			<core:detail key="runtime_type"
+				value="org.eclipse.jst.server.generic.runtime.websphere.6" />
+			<core:detail key="project_name" value="TPCWWeb" />
+			<core:detail key="module_type" value="jst.web" />
+		</core:annotation>
+		<core:artifact.file name="TPCWWeb">
+			<core:fileURI>platform:/resource/TPCWWeb</core:fileURI>
+		</core:artifact.file>
+		<was:constraint.wasModuleStartWeightConstraint
+			displayName="WebSphereModuleStartWeightConstraint(TPCWWeb)"
+			name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0"
+			startingWeight="0" />
+		<was:constraint.wasWarClassloaderPolicyConstraint
+			displayName="WebSphereWarClassloaderPolicyConstraint(TPCWWeb)"
+			name="com.ibm.ccl.soa.deploy.was.WasWarClassloaderPolicyConstraint0"
+			order="PARENT_FIRST" />
+		<j2eeDeploy:service.servlet name="HomeServlet" protocol="http"
+			version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/home</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="SearchRequestServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/search</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="ExecuteSearchServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>
+				/execute_search
+			</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="NewProductsServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/new_products</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="BestSellersServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/best_sellers</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="ItemDetailServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/item</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="AdminRequestServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/admin</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="AdminProcessServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>
+				/admin_process
+			</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="ShoppingCartServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/cart</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="RegisterServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/register</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="BuyServlet" protocol="http"
+			version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/buy</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="BuyConfirmServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/buy_confirm</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="OrderInquiryServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>/order_status</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:service.servlet name="OrderDisplayServlet"
+			protocol="http" version="1.0.0">
+			<j2eeDeploy:interface.url />
+			<j2eeDeploy:urlPattern>
+				/order_display
+			</j2eeDeploy:urlPattern>
+		</j2eeDeploy:service.servlet>
+		<j2eeDeploy:capability.webModule displayName="TPCWWeb"
+			mutable="true" name="TPCWWeb0" linkType="dependency" id="TPCWWeb"
+			version="1.0.0" contextRoot="tpcw" />
+		<core:requirement name="WebSphereServer_6_0" dmoType="was:WasServer"
+			linkType="hosting">
+			<core:req_expr name="Equals wasVersion"
+				attributeName="wasVersion" interpreter="Equals" use="required"
+				value="6.0" />
+		</core:requirement>
+		<core:requirement displayName="servletService_22"
+			name="servletService_22" dmoType="j2eeDeploy:ServletContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="2.2" />
+		</core:requirement>
+		<core:requirement displayName="jspService_11"
+			name="jspService_11" dmoType="j2eeDeploy:JSPContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="1.1" />
+		</core:requirement>
+		<core:reference displayName="ejb_ShoppingCart"
+			name="ejb_ShoppingCart" dmoType="j2eeDeploy:SessionService"
+			linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="remote" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_ShoppingCart)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/ShoppingCart" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/ShoppingCart" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.cart.ShoppingCart" />
+		</core:reference>
+		<core:reference displayName="ejb_AdminPortal"
+			name="ejb_AdminPortal" dmoType="j2eeDeploy:SessionService"
+			linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="remote" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_AdminPortal)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/AdminPortal" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/AdminPortal" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.adminportal.AdminPortal" />
+		</core:reference>
+		<core:reference displayName="ejb_Catalog" name="ejb_Catalog"
+			dmoType="j2eeDeploy:SessionService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="remote" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Catalog)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Catalog" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/Catalog" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.catalog.Catalog" />
+		</core:reference>
+		<core:requirement displayName="TPCWEJB1" mutable="true"
+			name="TPCWEJB1" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWEJB1" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/TPCWEJB10" />
+		</core:requirement>
+		<core:requirement displayName="TPCWEJB2" mutable="true"
+			name="TPCWEJB2" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWEJB2" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/TPCWEJB20" />
+		</core:requirement>
+		<core:requirement displayName="TPCWUtility" mutable="true"
+			name="TPCWUtility" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWUtility" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/JarModule0/TPCWUtility0" />
+		</core:requirement>
+		<core:requirement displayName="Shared Library Entry"
+			name="SharedLibraryEntry" dmoType="was:SharedLibraryEntry"
+			linkType="dependency" use="optional" />
+	</j2eeDeploy:component.web>
+	<j2eeDeploy:component.jar displayName="TPCWUtility" mutable="true"
+		name="JarModule0" initInstallState="not_installed">
+		<core:annotation context="environment_wtp">
+			<core:detail key="project_name" value="TPCWUtility" />
+			<core:detail key="module_type" value="jst.java" />
+		</core:annotation>
+		<core:artifact.file name="TPCWUtility">
+			<core:fileURI>platform:/resource/TPCWUtility</core:fileURI>
+		</core:artifact.file>
+		<j2eeDeploy:capability.jarModule displayName="TPCWUtility"
+			mutable="true" name="TPCWUtility0" linkType="dependency"
+			id="TPCWUtility" version="1.0.0" />
+		<core:requirement displayName="JRE_1_3" mutable="true"
+			name="JRE_1_3" dmoType="javaDeploy:JRE" linkType="dependency"
+			use="optional">
+			<core:req_expr name="GreaterThanEquals jreVersion"
+				attributeName="jreVersion" interpreter="GreaterThanEquals"
+				use="required" value="1.3" />
+			<core:link.dependency name="DependencyLink0"
+				target="/WebsphereAppServerUnit0/java.JRE" />
+		</core:requirement>
+	</j2eeDeploy:component.jar>
+	<j2eeDeploy:component.ejb displayName="TPCWEJB1" mutable="true"
+		name="EjbModule0" initInstallState="not_installed">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_id" value="IBM WebSphere v6.0" />
+			<core:detail key="runtime_type"
+				value="org.eclipse.jst.server.generic.runtime.websphere.6" />
+			<core:detail key="project_name" value="TPCWEJB1" />
+			<core:detail key="module_type" value="jst.ejb" />
+		</core:annotation>
+		<core:artifact.file name="TPCWEJB1">
+			<core:fileURI>platform:/resource/TPCWEJB1</core:fileURI>
+		</core:artifact.file>
+		<was:constraint.wasModuleStartWeightConstraint
+			displayName="WebSphereModuleStartWeightConstraint(TPCWEJB1)"
+			name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0"
+			startingWeight="0" />
+		<j2eeDeploy:service.session displayName="Catalog" name="Catalog"
+			protocol="RMI" version="2.0" ejbName="Catalog" jndiName="ejb/Catalog"
+			vicinity="remote">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Catalog)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Catalog" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.catalog.Catalog" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.catalog.CatalogHome" />
+		</j2eeDeploy:service.session>
+		<j2eeDeploy:service.session displayName="ShoppingCart"
+			name="ShoppingCart" protocol="RMI" version="2.0"
+			ejbName="ShoppingCart" jndiName="ejb/ShoppingCart"
+			vicinity="remote">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ShoppingCart)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/ShoppingCart" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.cart.ShoppingCart" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.cart.ShoppingCartHome" />
+		</j2eeDeploy:service.session>
+		<j2eeDeploy:service.session displayName="AdminPortal"
+			name="AdminPortal" protocol="RMI" version="2.0" ejbName="AdminPortal"
+			jndiName="ejb/AdminPortal" vicinity="remote">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(AdminPortal)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/AdminPortal" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.adminportal.AdminPortal" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.adminportal.AdminPortalHome" />
+		</j2eeDeploy:service.session>
+		<j2eeDeploy:capability.ejbModule displayName="TPCWEJB1"
+			mutable="true" name="TPCWEJB10" linkType="dependency" id="TPCWEJB1"
+			version="1.0.0" />
+		<core:requirement name="WebSphereServer_6_0" dmoType="was:WasServer"
+			linkType="hosting">
+			<core:req_expr name="Equals wasVersion"
+				attributeName="wasVersion" interpreter="Equals" use="required"
+				value="6.0" />
+		</core:requirement>
+		<core:requirement displayName="ejbService_20"
+			name="ejbService_20" dmoType="j2eeDeploy:EJBContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="2.0" />
+		</core:requirement>
+		<core:requirement displayName="j2eeService_13"
+			name="j2eeService_13" dmoType="j2eeDeploy:J2EEContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="1.3" />
+		</core:requirement>
+		<core:reference displayName="ejb_Author" name="ejb_Author"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Author)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Author" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Author" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.author.Author" />
+		</core:reference>
+		<core:reference displayName="ejb_Order" name="ejb_Order"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Order)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Orders" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Orders" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.order.Order" />
+		</core:reference>
+		<core:reference displayName="ejb_Cc_xact" name="ejb_Cc_xact"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Cc_xact)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Cc_xact" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Cc_xact" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.xact.Cc_xact" />
+		</core:reference>
+		<core:reference displayName="ejb_Item" name="ejb_Item"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Item)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Item" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Item" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.item.Item" />
+		</core:reference>
+		<core:reference displayName="ejb_Country" name="ejb_Country"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Country)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Country" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Country" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.country.Country" />
+		</core:reference>
+		<core:reference displayName="ejb_Address" name="ejb_Address"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Address)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Address" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Address" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.address.Address" />
+		</core:reference>
+		<core:reference displayName="ejb_OrderLine" name="ejb_OrderLine"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_OrderLine)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/OrderLine" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/OrderLine" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.order.OrderLine" />
+		</core:reference>
+		<core:reference displayName="ejb_Customer" name="ejb_Customer"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Customer)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Customer" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/Customer" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.customer.Customer" />
+		</core:reference>
+		<core:reference displayName="ejb_AdminPortal"
+			name="ejb_AdminPortal" dmoType="j2eeDeploy:SessionService"
+			linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="remote" />
+			<core:req_expr name="Equals ejbName" attributeName="ejbName"
+				interpreter="Equals" use="required" value="AdminPortal" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_AdminPortal)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/AdminPortal" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/AdminPortal" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.adminportal.AdminPortal" />
+		</core:reference>
+		<core:reference displayName="ejb_Catalog" name="ejb_Catalog"
+			dmoType="j2eeDeploy:SessionService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="remote" />
+			<core:req_expr name="Equals ejbName" attributeName="ejbName"
+				interpreter="Equals" use="required" value="Catalog" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_Catalog)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Catalog" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule0/Catalog" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.catalog.Catalog" />
+		</core:reference>
+		<core:requirement displayName="jdbc_TPCWDS" name="jdbc_TPCWDS"
+			dmoType="j2eeDeploy:J2EEDatasource" linkType="dependency">
+			<core:req_expr name="Equals jndiName"
+				attributeName="jndiName" interpreter="Equals" use="required"
+				value="jdbc/TPCWDS" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(jdbc_TPCWDS)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="jdbc/TPCWDS" />
+			<core:link.dependency name="DependencyLink0"
+				target="/WebSphere v5 Datasource 2/WAS5 Data Source" />
+		</core:requirement>
+		<core:reference displayName="jdbc/TPCWDS_dbref"
+			name="Requirement" dmoType="database:DatabaseDefinition"
+			use="optional" />
+		<core:requirement displayName="TPCWUtility" mutable="true"
+			name="TPCWUtility" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWUtility" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/JarModule0/TPCWUtility0" />
+		</core:requirement>
+		<core:requirement displayName="TPCWEJB2" mutable="true"
+			name="TPCWEJB2" dmoType="core:BundleCapability"
+			linkType="dependency">
+			<core:req_expr name="Equals id" attributeName="id"
+				interpreter="Equals" use="required" value="TPCWEJB2" />
+			<core:req_expr name="GreaterThanEquals version"
+				attributeName="version" interpreter="GreaterThanEquals"
+				use="required" value="1.0" />
+			<core:req_expr name="LessThan version"
+				attributeName="version" interpreter="LessThan" use="required"
+				value="2.0" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/TPCWEJB20" />
+		</core:requirement>
+		<core:link.constraint name="ConstraintLink0"
+			source="/EjbModule0/jdbc_TPCWDS"
+			target="/DB2DatabaseUnit0/DB2 Database">
+			<core:annotation
+				context="com.ibm.ccl.soa.deploy.logicallink.EarOnClusterToDBImplementation" />
+		</core:link.constraint>
+	</j2eeDeploy:component.ejb>
+	<j2eeDeploy:component.ejb displayName="TPCWEJB2" mutable="true"
+		name="EjbModule1" initInstallState="not_installed">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_id" value="IBM WebSphere v6.0" />
+			<core:detail key="runtime_type"
+				value="org.eclipse.jst.server.generic.runtime.websphere.6" />
+			<core:detail key="project_name" value="TPCWEJB2" />
+			<core:detail key="module_type" value="jst.ejb" />
+		</core:annotation>
+		<core:artifact.file name="TPCWEJB2">
+			<core:fileURI>platform:/resource/TPCWEJB2</core:fileURI>
+		</core:artifact.file>
+		<was:constraint.wasModuleStartWeightConstraint
+			displayName="WebSphereModuleStartWeightConstraint(TPCWEJB2)"
+			name="com.ibm.ccl.soa.deploy.was.WasModuleStartWeightConstraint0"
+			startingWeight="0" />
+		<j2eeDeploy:service.entity displayName="IdManager"
+			name="IdManager" protocol="RMI" version="2.0" ejbName="IdManager"
+			jndiName="ejb/IdManager" vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(IdManager)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/IdManager" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.idmanager.IdManager" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.idmanager.IdManagerHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Address" name="Address"
+			protocol="RMI" version="2.0" ejbName="Address" jndiName="ejb/Address"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Address)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Address" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.address.Address" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.address.AddressHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Country" name="Country"
+			protocol="RMI" version="2.0" ejbName="Country" jndiName="ejb/Country"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Country)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Country" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.country.Country" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.country.CountryHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Author" name="Author"
+			protocol="RMI" version="2.0" ejbName="Author" jndiName="ejb/Author"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Author)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Author" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.author.Author" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.author.AuthorHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Item" name="Item"
+			protocol="RMI" version="2.0" ejbName="Item" jndiName="ejb/Item"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Item)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Item" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.item.Item" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.item.ItemHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Customer"
+			name="Customer" protocol="RMI" version="2.0" ejbName="Customer"
+			jndiName="ejb/Customer" vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Customer)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Customer" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.customer.Customer" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.customer.CustomerHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Cc_xact" name="Cc_xact"
+			protocol="RMI" version="2.0" ejbName="Cc_xact" jndiName="ejb/Cc_xact"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Cc_xact)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Cc_xact" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.xact.Cc_xact" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.xact.Cc_xactHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="Orders" name="Orders"
+			protocol="RMI" version="2.0" ejbName="Orders" jndiName="ejb/Orders"
+			vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(Orders)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/Orders" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.order.Order" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.order.OrderHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:service.entity displayName="OrderLine"
+			name="OrderLine" protocol="RMI" version="2.0" ejbName="OrderLine"
+			jndiName="ejb/OrderLine" vicinity="local" managed="true">
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(OrderLine)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/OrderLine" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.order.OrderLine" />
+			<j2eeDeploy:homeInterface
+				interface="edu.nyu.pdsg.tpcw.ejb.order.OrderLineHome" />
+		</j2eeDeploy:service.entity>
+		<j2eeDeploy:capability.j2eeSecurityRole name="administrator"
+			role="administrator">
+			<was:constraint.wasSecuritySubjectConstraint
+				displayName="WebSphereSecuritySubjectConstraint(administrator)"
+				name="administrator_com.ibm.ccl.soa.deploy.was.WasSecuritySubjectConstraint0"
+				wasSecuritySubject="administrator" />
+		</j2eeDeploy:capability.j2eeSecurityRole>
+		<j2eeDeploy:capability.ejbModule displayName="TPCWEJB2"
+			mutable="true" name="TPCWEJB20" linkType="dependency" id="TPCWEJB2"
+			version="1.0.0" />
+		<core:requirement name="WebSphereServer_6_0" dmoType="was:WasServer"
+			linkType="hosting">
+			<core:req_expr name="Equals wasVersion"
+				attributeName="wasVersion" interpreter="Equals" use="required"
+				value="6.0" />
+		</core:requirement>
+		<core:requirement displayName="ejbService_20"
+			name="ejbService_20" dmoType="j2eeDeploy:EJBContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="2.0" />
+		</core:requirement>
+		<core:requirement displayName="j2eeService_13"
+			name="j2eeService_13" dmoType="j2eeDeploy:J2EEContainer"
+			linkType="hosting">
+			<core:req_expr name="GreaterThanEquals containerVersion"
+				attributeName="containerVersion" interpreter="GreaterThanEquals"
+				use="required" value="1.3" />
+		</core:requirement>
+		<core:reference displayName="ejb_IdManager" name="ejb_IdManager"
+			dmoType="j2eeDeploy:EntityService" linkType="dependency">
+			<core:req_expr name="Equals vicinity"
+				attributeName="vicinity" interpreter="Equals" use="required"
+				value="local" />
+			<core:req_expr name="Equals ejbName" attributeName="ejbName"
+				interpreter="Equals" use="required" value="IdManager" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(ejb_IdManager)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="ejb/IdManager" />
+			<core:link.dependency name="DependencyLink0"
+				target="/EjbModule1/IdManager" />
+			<j2eeDeploy:interface.java
+				interface="edu.nyu.pdsg.tpcw.ejb.idmanager.IdManager" />
+		</core:reference>
+		<core:requirement displayName="jdbc_TPCWEJB2"
+			name="jdbc_TPCWEJB2" dmoType="j2eeDeploy:J2EEDatasource"
+			linkType="dependency">
+			<core:req_expr name="Equals jndiName"
+				attributeName="jndiName" interpreter="Equals" use="required"
+				value="jdbc/TPCWEJB2" />
+			<core:req_expr name="Equals usedForCmp"
+				attributeName="usedForCmp" interpreter="Equals" use="required"
+				value="true" />
+			<was:constraint.wasJNDIBindingConstraint
+				displayName="WebSphereJNDIBindingConstraint(jdbc_TPCWEJB2)"
+				name="WebSphereJNDIBindingConstraint0" jndiName="jdbc/TPCWEJB2" />
+			<core:link.dependency name="DependencyLink0"
+				target="/WebSphere v5 Datasource 0/WAS5 Data Source" />
+		</core:requirement>
+		<core:reference displayName="jdbc/TPCWEJB2_dbref"
+			name="Requirement" dmoType="database:DatabaseDefinition"
+			use="optional" />
+		<core:link.constraint name="ConstraintLink0"
+			source="/EjbModule1/jdbc_TPCWEJB2"
+			target="/DB2DatabaseUnit0/DB2 Database">
+			<core:annotation
+				context="com.ibm.ccl.soa.deploy.logicallink.EarOnClusterToDBImplementation" />
+		</core:link.constraint>
+	</j2eeDeploy:component.ejb>
+	<was:unit.wasNodeUnit displayName="mdelder-t60Node01"
+		name="WebSphereNodeUnit0" initInstallState="installed">
+		<was:capability.wasNode displayName="WebSphereUnmanagedNode"
+			name="WebSphereNode" linkType="any" isDefaultProfile="false"
+			nodeName="mdelder-t60Node01"
+			profileLocation="D:/Development/targets/WebSphere_6.0.2.9/AppServer/profiles/default"
+			profileName="default" profileType="default" wasVersion="6.0">
+			<core:attributeMetaData attributeName="wasVersion"
+				mutable="false" />
+		</was:capability.wasNode>
+		<was:capability.wasSubstitutionVariable
+			displayName="Substitution variable" name="Substitution Variable"
+			linkType="any" />
+		<was:capability.wasConfigurationContainer
+			displayName="Configuration Container"
+			name="Provide Configuration Container" linkType="any" />
+		<was:capability.wasSharedLibContainer
+			displayName="Provide shared library Container"
+			name="SharedlibraryContainer" linkType="any" />
+		<core:requirement displayName="Host on WAS system"
+			mutable="true" name="A hosting WAS system" dmoType="was:WasSystem"
+			linkType="hosting" />
+		<core:requirement displayName="Member of NodeGroup"
+			mutable="true" name="NodeGroup" dmoType="was:WasNodeGroupUnit"
+			linkType="member">
+			<core:req_expr name="InCard" interpreter="InCardinality"
+				use="required" value="1..*" />
+		</core:requirement>
+		<core:requirement displayName="Must contained by Cell"
+			mutable="true" name="Cell" dmoType="was:WasCellUnit"
+			linkType="member">
+			<core:req_expr name="InCard" interpreter="InCardinality"
+				use="required" value="1..1" />
+		</core:requirement>
+		<core:link.hosting name="hostedCell" source="/WebSphereNodeUnit0"
+			target="/WebSphereCellUnit0" />
+		<core:link.hosting name="hostedServer" source="/WebSphereNodeUnit0"
+			target="/WebsphereAppServerUnit0" />
+	</was:unit.wasNodeUnit>
+	<was:unit.wasCellUnit displayName="mdelder-t60Node01Cell"
+		name="WebSphereCellUnit0" configurationUnit="true">
+		<was:capability.wasCell displayName="mdelder-t60Node01Cell"
+			name="WebSphere6StandAloneCell" linkType="any"
+			cellName="mdelder-t60Node01Cell" isDistributed="false"
+			wasVersion="6.0">
+			<core:attributeMetaData attributeName="wasVersion"
+				mutable="false" />
+		</was:capability.wasCell>
+		<was:capability.wasSubstitutionVariable
+			displayName="Substitution variable" name="Substitution Variable"
+			linkType="any" />
+		<was:capability.wasConfigurationContainer
+			displayName="WebSphere Cell Configuration Container"
+			name="WebSphereCellConfigurationContainer" linkType="any" />
+		<was:capability.wasSharedLibContainer
+			displayName="WebSphere Cell Shared Library Container"
+			name="WebSphereCellSharedLibraryContainer" linkType="any" />
+		<core:requirement displayName="Nodes in the Cell" mutable="true"
+			name="NodeMember" dmoType="was:WasNodeUnit" linkType="member">
+			<core:req_expr name="OutCard" interpreter="OutCardinality"
+				use="required" value="1..2" />
+		</core:requirement>
+		<core:requirement displayName="Node Groups in the Cell"
+			mutable="true" name="DefaultNodeGroup" dmoType="was:WasNodeGroupUnit"
+			linkType="member">
+			<core:req_expr name="OutCard" interpreter="OutCardinality"
+				use="required" value="1..1" />
+		</core:requirement>
+		<core:requirement displayName="Contain SIBus member"
+			mutable="true" name="Container of SIBus" dmoType="was:WasSIBusUnit"
+			linkType="member">
+			<core:req_expr name="OutCard" interpreter="OutCardinality"
+				use="optional" value="0..*" />
+		</core:requirement>
+		<core:requirement displayName="Host on node"
+			name="hostOnDefaultNode" dmoType="was:WasNode" linkType="hosting"
+			use="required" />
+		<core:link.member name="WebSphere6StandaloneCellContainsWasNodeGroup"
+			source="/WebSphereCellUnit0" target="/WebSphereNodeGroupUnit0" />
+		<core:link.member name="WebSphere6StandaloneCellContainsWasNode"
+			source="/WebSphereCellUnit0" target="/WebSphereNodeUnit0" />
+		<core:link.hosting name="HostingLink1"
+			target="/WebSphere v5 Datasource 1" />
+	</was:unit.wasCellUnit>
+	<was:unit.wasNodeGroupUnit name="WebSphereNodeGroupUnit0"
+		configurationUnit="true">
+		<was:capability.wasNodeGroup
+			displayName="Provide WAS Node Group" name="Provide WAS Node Group"
+			linkType="any" isDefaultType="true" nodeGroupName="nodeGroup1" />
+		<core:requirement displayName="Contained by cell" mutable="true"
+			name="Cell" dmoType="was:WasCellUnit" linkType="member">
+			<core:req_expr name="InCard" interpreter="InCardinality"
+				use="required" value="1..1" />
+		</core:requirement>
+		<core:requirement displayName="Group Nodes" mutable="true"
+			name="Group Nodes" dmoType="was:WasNodeUnit" linkType="member">
+			<core:req_expr name="OutCard" interpreter="OutCardinality"
+				use="optional" value="0..*" />
+		</core:requirement>
+		<core:link.member name="WebSphereNodeGroupContainsWasNode"
+			source="/WebSphereNodeGroupUnit0" target="/WebSphereNodeUnit0" />
+	</was:unit.wasNodeGroupUnit>
+	<was:unit.wasAppServer displayName="IBM WebSphere v6.0"
+		name="WebsphereAppServerUnit0" initInstallState="installed"
+		publishIntent="do_not_publish">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_type"
+				value="org.eclipse.jst.server.generic.runtime.websphere.6" />
+			<core:detail key="runtime_id" value="IBM WebSphere v6.0" />
+		</core:annotation>
+		<j2eeDeploy:capability.j2eeContainer
+			displayName="J2EE Container" name="J2EE Container" linkType="any"
+			containerVersion="1.4" />
+		<j2eeDeploy:capability.servletContainer
+			displayName="Servlet Container" name="Servlet Container"
+			linkType="any" containerVersion="2.4" />
+		<j2eeDeploy:capability.jspContainer displayName="JSP Container"
+			name="JSP Container" linkType="any" containerVersion="2.0" />
+		<j2eeDeploy:capability.ejbContainer displayName="EJB Container"
+			name="EJB Container" linkType="any" containerVersion="2.1" />
+		<j2eeDeploy:capability.jcaContainer displayName="JCA Container"
+			name="JCA Container" linkType="any" containerVersion="1.5" />
+		<was:capability.wasServer displayName="WebSphere Server"
+			name="WebSphere Server" linkType="any" serverName="server1"
+			wasVersion="6.0">
+			<core:attributeMetaData attributeName="wasVersion"
+				mutable="false" />
+		</was:capability.wasServer>
+		<was:capability.wasSubstitutionVariable
+			displayName="Substitution variable" name="Substitution Variable"
+			linkType="any" />
+		<was:capability.wasConfigurationContainer
+			displayName="Configuration Container"
+			name="Provide Configuration Container" linkType="any" />
+		<was:capability.wasSharedLibContainer
+			displayName="Provide shared library Container"
+			name="Provide shared library Container" linkType="any" />
+		<os:capability.portConsumer displayName="Port Consumer"
+			name="Port Consumer" linkType="any" />
+		<javaDeploy:capability.jre description="" displayName="java JRE"
+			name="java.JRE" linkType="any" jreVersion="1.4.2" />
+		<was:capability.wasModuleClassLoaderPolicy
+			displayName="Module Class Loader Policy" mutable="false"
+			name="Module Class Loader Policy" linkType="any" order="PARENT_FIRST"
+			policy="MULTIPLE">
+			<core:attributeMetaData attributeName="order"
+				mutable="false" />
+			<core:attributeMetaData attributeName="policy"
+				mutable="false" />
+		</was:capability.wasModuleClassLoaderPolicy>
+		<was:capability.wasApplicationClassLoaderPolicy
+			displayName="Application Class Loader Policy" mutable="false"
+			name="Application Class Loader Policy" linkType="any"
+			order="PARENT_FIRST" policy="MULTIPLE">
+			<core:attributeMetaData attributeName="order"
+				mutable="false" />
+			<core:attributeMetaData attributeName="policy"
+				mutable="false" />
+		</was:capability.wasApplicationClassLoaderPolicy>
+		<core:requirement displayName="Hosted by Node" mutable="true"
+			name="Node" dmoType="was:WasNode" linkType="hosting">
+			<core:req_expr name="WebSphereVersion" attributeName="wasVersion"
+				interpreter="Version" use="required" value="6.0" />
+		</core:requirement>
+		<core:requirement displayName="Member of Cluster" mutable="true"
+			name="ClusterMember" dmoType="was:WasClusterUnit"
+			linkType="member">
+			<core:req_expr name="InCard" interpreter="InCardinality"
+				use="optional" value="0..1" />
+		</core:requirement>
+		<core:requirement
+			displayName="When appserver used as member of SIBus, appserver may need a datasource"
+			mutable="true" name="messageEngineDB" dmoType="was:WasV5Datasource"
+			linkType="dependency" use="optional" />
+		<core:link.hosting name="ports"
+			source="/WebsphereAppServerUnit0" target="/PortConfigUnit0" />
+		<core:link.hosting name="ServerClassLoader"
+			source="/WebsphereAppServerUnit0"
+			target="/WebSphereClassLoaderConfigurationUnit0" />
+		<core:link.hosting name="HostingLink0" target="/EarModule0" />
+		<core:link.hosting name="HostingLink2"
+			target="/WebSphere v5 Datasource" />
+	</was:unit.wasAppServer>
+	<os:unit.portConfigUnit displayName="Port Configuration"
+		name="PortConfigUnit0" configurationUnit="true">
+		<os:capability.port displayName="dcs_unicast_address"
+			name="dcs_unicast_address" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="9353"
+			portName="dcs_unicast_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="bootstrap_address"
+			name="bootstrap_address" linkType="dependency" port="2809"
+			portName="bootstrap_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="orb_listener_address"
+			name="orb_listener_address" linkType="dependency" port="9100"
+			portName="orb_listener_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="sib_mq_endpoint_secure_address"
+			name="sib_mq_endpoint_secure_address" linkType="dependency"
+			applicationLayerProtocol="MQFAP" port="5578"
+			portName="sib_mq_endpoint_secure_address"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port description=""
+			displayName="sib_mq_endpoint_address" name="sib_mq_endpoint_address"
+			linkType="dependency" applicationLayerProtocol="MQFAP" port="5558"
+			portName="sib_mq_endpoint_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="sib_endpoint_secure_address"
+			name="sib_endpoint_secure_address" linkType="dependency"
+			applicationLayerProtocol="JFAP" port="7286"
+			portName="sib_endpoint_secure_address"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="wc_defaulthost_secure"
+			name="wc_defaulthost_secure" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="9443"
+			portName="wc_defaulthost_secure" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="wc_defaulthost"
+			name="wc_defaulthost" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="9080" portName="wc_defaulthost"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="sib_endpoint_address"
+			name="sib_endpoint_address" linkType="dependency"
+			applicationLayerProtocol="JFAP" port="7276"
+			portName="sib_endpoint_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="wc_adminhost_secure"
+			name="wc_adminhost_secure" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="9043"
+			portName="wc_adminhost_secure" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="wc_adminhost"
+			name="wc_adminhost" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="9060" portName="wc_adminhost"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port
+			displayName="csiv2_ssl_serverAuth_listener_address"
+			name="csiv2_ssl_serverAuth_listener_address" linkType="dependency"
+			port="9403" portName="csiv2_ssl_serverAuth_listener_address"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port
+			displayName="csiv2_ssl_mutualauth_listener_address"
+			name="csiv2_ssl_mutualauth_listener_address" linkType="dependency"
+			port="9402" portName="csiv2_ssl_mutualauth_listener_address"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port
+			displayName="sas_ssl_serverAuth_listener_address"
+			name="sas_ssl_serverAuth_listener_address" linkType="dependency"
+			port="9401" portName="sas_ssl_serverAuth_listener_address"
+			transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<os:capability.port displayName="soap_connector_address"
+			name="soap_connector_address" linkType="dependency"
+			applicationLayerProtocol="HTTP" port="8880"
+			portName="soap_connector_address" transportLayerProtocol="TCP">
+			<core:attributeMetaData attributeName="portName"
+				mutable="false" />
+		</os:capability.port>
+		<core:requirement displayName="PortConsumer" name="PortConsumer"
+			dmoType="os:PortConsumer" linkType="hosting" />
+	</os:unit.portConfigUnit>
+	<was:unit.wasClassLoaderConfigurationUnit
+		displayName="Server Class Loader Policy"
+		name="WebSphereClassLoaderConfigurationUnit0" configurationUnit="true">
+		<was:capability.wasApplicationServerClassLoaderPolicy
+			displayName="Server Class Loader Policy" mutable="false"
+			name="Server Class Loader Policy" linkType="any" order="PARENT_FIRST"
+			policy="MULTIPLE">
+			<core:attributeMetaData attributeName="order"
+				mutable="false" />
+			<core:attributeMetaData attributeName="policy"
+				mutable="false" />
+		</was:capability.wasApplicationServerClassLoaderPolicy>
+		<core:requirement displayName="Optional Shared Library"
+			mutable="false" name="sharedLibrary" dmoType="was:SharedLibraryEntry"
+			linkType="dependency" use="optional" />
+		<core:requirement displayName="WebSphere Server" mutable="false"
+			name="WebSphereServer" dmoType="was:WasServer" linkType="hosting"
+			use="required" />
+	</was:unit.wasClassLoaderConfigurationUnit>
+	<database:component.database displayName="tpcw"
+		name="DatabaseComponent0" conceptual="false"
+		initInstallState="not_installed" publishIntent="publish">
+		<core:annotation context="environment_wtp">
+			<core:detail key="module_type" value="ddl" />
+			<core:detail key="runtime_id" value="/TPCWDDL/tpcw.ddl" />
+		</core:annotation>
+		<database:artifact.ddl displayName="tpcw" name="tpcw">
+			<core:fileURI>/TPCWDDL/tpcw.ddl</core:fileURI>
+		</database:artifact.ddl>
+		<core:artifact.file displayName="populate.sql"
+			name="artifact0">
+			<core:fileURI>/TPCWDDL/populate.sql</core:fileURI>
+		</core:artifact.file>
+		<database:service.databaseDefinition displayName="tpcw.ddl"
+			name="tpcw.ddl">
+			<database:interface.ddl schemaUri="/TPCWDDL/tpcw.ddl" />
+		</database:service.databaseDefinition>
+		<core:requirement name="Required Database Hosting"
+			dmoType="database:Database" linkType="hosting" />
+	</database:component.database>
+	<core:unit.ConceptualNode displayName="SAMPLE"
+		name="ConceptualNode0" conceptual="true">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_type" value="DB2 UDBV9.1" />
+			<core:detail key="runtime_id" value="SAMPLE" />
+		</core:annotation>
+		<core:link.hosting name="HostingLink0"
+			target="/DatabaseComponent0" />
+	</core:unit.ConceptualNode>
+	<db2Deploy:unit.db2DatabaseUnit displayName="SAMPLE"
+		name="DB2DatabaseUnit0" initInstallState="installed"
+		publishIntent="do_not_publish">
+		<core:annotation context="environment_wtp">
+			<core:detail key="runtime_type" value="DB2 UDBV9.1" />
+			<core:detail key="runtime_id" value="SAMPLE" />
+		</core:annotation>
+		<db2Deploy:capability.db2Database displayName="DB2 Database"
+			name="DB2 Database" linkType="any" db2Version="8" dbName="SAMPLE" />
+		<core:requirement displayName="DB2 Instance" mutable="true"
+			name="DB2 Instance" dmoType="db2Deploy:DB2Instance"
+			linkType="hosting">
+			<core:req_expr displayName="db2Version" name="db2Version"
+				attributeName="db2Version" interpreter="Version" use="required"
+				value="8.x" />
+		</core:requirement>
+	</db2Deploy:unit.db2DatabaseUnit>
+	<was:unit.db2JdbcProviderUnit name="WebSphere v5 Datasource"
+		configurationUnit="true">
+		<was:capability.db2JdbcProvider displayName="DB2 JDBC Provider"
+			name="DB2 JDBC Provider" linkType="any"
+			classpath="D:\Development\targets\RAD8.0-win32-M6-I20070624\eclipse\plugins\com.ibm.datatools.db2_1.0.0.v200701291829\driver\db2jcc.jar;D:\Development\targets\RAD8.0-win32-M6-I20070624\eclipse\plugins\com.ibm.datatools.db2_1.0.0.v200701291829\driver\db2jcc_license_cisuz.jar"
+			implementationClassName="com.ibm.db2.jcc.DB2Driver"
+			providerName="DB2 Universal JDBC Driver Provider"
+			providerType="DB2 Universal JDBC Driver Provider" jdbcType="4" />
+		<core:requirement displayName="DB2 JDBC Driver" mutable="true"
+			name="DB2 JDBC Driver" dmoType="db2Deploy:DB2JdbcDriver"
+			linkType="dependency" use="optional" />
+		<core:requirement displayName="WebSphereConfigurationContainer"
+			mutable="true" name="WebSphereConfigurationContainer"
+			dmoType="was:WasConfigurationContainer" linkType="hosting" />
+		<core:link.hosting name="HostingLink0"
+			target="/WebSphere v5 Datasource 0" />
+		<core:link.hosting name="HostingLink1"
+			target="/WebSphere v5 Datasource 2" />
+	</was:unit.db2JdbcProviderUnit>
+	<was:unit.wasdatasource
+		displayName="WebSphere V5 Data Source - jdbc/TPCWEJB2"
+		name="WebSphere v5 Datasource 0" configurationUnit="true">
+		<was:capability.wasv5DB2Datasource
+			displayName="WebSphere V5 Data Source" name="WebSphere5 Data Source"
+			linkType="dependency" datasourcename="WebSphere v5 Datasource 0"
+			dbName="SAMPLE" hostname="localhost" jndiName="jdbc/TPCWEJB2"
+			password="BUW3moWdxQMF3HXQHF7HCtE=" port="50000" usedForCmp="true"
+			username="mdelder" j2cAuthAlias="mdelderAlias">
+			<core:attributeMetaData attributeName="password"
+				encrypted="true" />
+		</was:capability.wasv5DB2Datasource>
+		<core:requirement displayName="DB2 JDBC Provider" mutable="true"
+			name="DB2JdbcProvider" dmoType="was:DB2JdbcProvider"
+			linkType="hosting" />
+		<core:requirement displayName="DB2 Database" mutable="true"
+			name="DB2Database" dmoType="db2Deploy:DB2Database"
+			linkType="dependency" use="optional">
+			<core:link.dependency name="DependencyLink0"
+				target="/DB2DatabaseUnit0/DB2 Database" />
+		</core:requirement>
+		<core:requirement displayName="Authentication" mutable="true"
+			name="J2CAuthenticationEntry"
+			dmoType="was:WASJ2CAuthenticationDataEntry" linkType="dependency"
+			use="optional">
+			<core:link.dependency name="DependencyLink0"
+				target="/WebSphere v5 Datasource 1/WAS J2ee Authentication Data Entry" />
+		</core:requirement>
+	</was:unit.wasdatasource>
+	<was:unit.wasJ2CAuth name="WebSphere v5 Datasource 1"
+		configurationUnit="true">
+		<was:capability.wasJ2CAuth
+			displayName="WebSphere J2ee Authentication Data Entry"
+			name="WebSphere J2ee Authentication Data Entry" linkType="dependency"
+			alias="mdelderAlias" password="BUW3moWdxQMF3HXQHF7HCtE="
+			userId="mdelder">
+			<core:attributeMetaData attributeName="password"
+				encrypted="true" />
+		</was:capability.wasJ2CAuth>
+		<core:requirement displayName="OS User" mutable="true"
+			name="OS User" dmoType="os:User" linkType="dependency"
+			use="optional" />
+		<core:requirement displayName="WebSphere Cell" mutable="true"
+			name="WebSphereCell" dmoType="was:WasCell" linkType="hosting" />
+	</was:unit.wasJ2CAuth>
+	<was:unit.wasdatasource
+		displayName="WebSphere V5 Data Source - jdbc/TPCWDS"
+		name="WebSphere v5 Datasource 2" configurationUnit="true">
+		<was:capability.wasv5DB2Datasource
+			displayName="WebSphere V5 Data Source" name="WebSphere5 Data Source"
+			linkType="dependency" datasourcename="WebSphere v5 Datasource 2"
+			dbName="SAMPLE" hostname="localhost" jndiName="jdbc/TPCWDS"
+			password="BUW3moWdxQMF3HXQHF7HCtE=" port="50000" usedForCmp="false"
+			username="mdelder" j2cAuthAlias="mdelderAlias">
+			<core:attributeMetaData attributeName="password"
+				encrypted="true" />
+		</was:capability.wasv5DB2Datasource>
+		<core:requirement displayName="DB2 JDBC Provider" mutable="true"
+			name="DB2JdbcProvider" dmoType="was:DB2JdbcProvider"
+			linkType="hosting" />
+		<core:requirement displayName="DB2 Database" mutable="true"
+			name="DB2Database" dmoType="db2Deploy:DB2Database"
+			linkType="dependency" use="optional">
+			<core:link.dependency name="DependencyLink0"
+				target="/DB2DatabaseUnit0/DB2 Database" />
+		</core:requirement>
+		<core:requirement displayName="Authentication" mutable="true"
+			name="J2CAuthenticationEntry"
+			dmoType="was:WASJ2CAuthenticationDataEntry" linkType="dependency"
+			use="optional">
+			<core:link.dependency name="DependencyLink0"
+				target="/WebSphere v5 Datasource 1/WAS J2ee Authentication Data Entry" />
+		</core:requirement>
+	</was:unit.wasdatasource>
+	<core:link.realization name="RealizationLink0"
+		source="/ConceptualNode0" target="/DB2DatabaseUnit0" />
+	<core:contract.explicit
+		displayName="Make All Units Public By Default"
+		name="ExplicitContract0" defaultConceptualPolicy="public"
+		defaultPolicy="public">
+	</core:contract.explicit>
+</core:topology>

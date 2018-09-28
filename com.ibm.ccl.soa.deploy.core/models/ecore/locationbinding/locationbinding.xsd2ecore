@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../../schemas/locationbinding/locationbinding.xsd#/"
+    outputs="location.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://41/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//BindingEntry;XSDComplexTypeDefinition=1"
+      outputs="location.ecore#//BindingEntry">
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//BindingEntry;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="location.ecore#//BindingEntry/dmoPath"/>
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//BindingEntry;XSDComplexTypeDefinition=1/XSDAttributeUse=1"
+        outputs="location.ecore#//BindingEntry/location"/>
+  </nested>
+  <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//bindingEntry;XSDElementDeclaration=1"
+      outputs="location.ecore#//LocationBindingRoot/bindingEntry"/>
+  <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//LocationBinding;XSDComplexTypeDefinition"
+      outputs="location.ecore#//LocationBinding">
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//LocationBinding;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="location.ecore#//LocationBinding/bindingEntry"/>
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//LocationBinding;XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="location.ecore#//LocationBinding/context"/>
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//LocationBinding;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="location.ecore#//LocationBinding/name"/>
+    <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//LocationBinding;XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="location.ecore#//LocationBinding/topology"/>
+  </nested>
+  <nested inputs="../../schemas/locationbinding/locationbinding.xsd#//locationBinding;XSDElementDeclaration"
+      outputs="location.ecore#//LocationBindingRoot/locationBinding"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

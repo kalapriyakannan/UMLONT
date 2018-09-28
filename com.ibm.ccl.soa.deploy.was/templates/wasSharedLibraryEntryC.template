@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:topology xmlns:core="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/"  xmlns:was="http://www.ibm.com/ccl/soa/deploy/was/1.0.0/" name="SharedLibraryEntryUnit template">
+  <was:unit.wasSharedLibraryEntryUnit displayName="Shared library Entry" name="Shared library Entry" configurationUnit="true" conceptual="true">
+    <was:capability.wasSharedLibrary name="SharedLibraryEntry" displayName="SharedLibraryEntry"  linkType="any"/>
+  <core:requirement mutable="true" name="WebSphereSharedlibraryContainer" displayName="WebSphere shared library container" dmoType="was:WasSharedLibContainer" linkType="hosting"/>
+  <core:requirement mutable="true" name="utilityJAR0" displayName="Utility JAR" dmoType="core:BundleCapability" use="optional" linkType="dependency"/>
+  </was:unit.wasSharedLibraryEntryUnit>
+</core:topology>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+        xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+        xmlns:constraint="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" 
+        xmlns:wasdb2="http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/" 
+        ecore:documentRoot="WasDb2DeployRoot" 
+        ecore:name="wasdb2" 
+        ecore:nsPrefix="wasdb2" 
+        ecore:package="com.ibm.ccl.soa.deploy.was.db2" 
+        elementFormDefault="qualified" 
+        targetNamespace="http://www.ibm.com/ccl/soa/deploy/wasdb2/1.0.0/">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/constraint/1.0.0/" schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/constraint/constraint.xsd"/>
+	
+	<element name="constraint.datasourceSatisfaction" substitutionGroup="base:constraint" type="wasdb2:DatasourceSatisfactionConstraint"/>
+	<complexType name="DatasourceSatisfactionConstraint">
+		<annotation>
+			<documentation>
+			    Constraint representing that all datasource requirements of the source should be satisfied by the target database.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="constraint:ApplicationCommunicationConstraint"/>
+		</complexContent>
+	</complexType>
+
+<!-- 
+	<element name="constraint.J2EEDatasourceToDBConstraintLink" substitutionGroup="base:constraint" type="wasdb2:J2EEDatasourceToDBConstraintLink"/>
+	<complexType name="J2EEDatasourceToDBConstraintLink">
+		<annotation>
+			<documentation>
+			    Constraint that associates a particular datasource with a particular database.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="base:Constraint">
+			</extension>
+		</complexContent>
+	</complexType>
+-->
+</schema>

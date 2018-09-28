@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:base="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:j2ee="http://www.ibm.com/ccl/soa/deploy/j2ee/1.0.0/"
+	xmlns:jms="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/" 	
+	targetNamespace="http://www.ibm.com/ccl/soa/deploy/j2ee/jms/1.0.0/"
+	elementFormDefault="qualified" ecore:documentRoot="JMSDeployRoot"
+	ecore:name="jms" ecore:package="com.ibm.ccl.soa.deploy.j2ee.jms"
+	ecore:nsPrefix="jms">
+
+	<import namespace="http://www.ibm.com/ccl/soa/deploy/core/1.0.0/" 
+		schemaLocation="../../../com.ibm.ccl.soa.deploy.core/models/schemas/base.xsd"/>
+
+	<element name="unit.JMSProviderUnit" substitutionGroup="base:unit" type="jms:JMSProviderUnit"/>
+	<complexType name="JMSProviderUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSProvider" substitutionGroup="base:capability" type="jms:JMSProvider"/>
+	<complexType name="JMSProvider">
+		<complexContent>
+			<extension base="base:Capability">
+				<sequence>
+					<element name="classPath" type="string" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="nativePath" type="string" maxOccurs="unbounded" minOccurs="0"/>
+				</sequence>			
+				<attribute name="providerName" type="string"/>
+				<attribute name="providerVersion" type="base:VersionString"/>
+				<attribute name="initialContextFactory" type="string"/>
+				<attribute name="providerURL" type="anyURI"/>	<!-- ldap://hostname.company.com/contextName -->
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+	<element name="unit.JMSConnectionFactoryUnit" substitutionGroup="base:unit" type="jms:JMSConnectionFactoryUnit"/>
+	<complexType name="JMSConnectionFactoryUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSConnectionFactory" substitutionGroup="base:capability" type="jms:JMSConnectionFactory"/>
+	<complexType name="JMSConnectionFactory">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="factoryName" type="string"/>
+				<attribute name="jndiName" type="string"/>							
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.JMSQueueConnectionFactoryUnit" substitutionGroup="base:unit" type="jms:JMSQueueConnectionFactoryUnit"/>
+	<complexType name="JMSQueueConnectionFactoryUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSQueueConnectionFactory" substitutionGroup="base:capability" type="jms:JMSQueueConnectionFactory"/>
+	<complexType name="JMSQueueConnectionFactory">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="factoryName" type="string"/>
+				<attribute name="jndiName" type="string"/>							
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<element name="unit.JMSTopicConnectionFactoryUnit" substitutionGroup="base:unit" type="jms:JMSTopicConnectionFactoryUnit"/>
+	<complexType name="JMSTopicConnectionFactoryUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSTopicConnectionFactory" substitutionGroup="base:capability" type="jms:JMSTopicConnectionFactory"/>
+	<complexType name="JMSTopicConnectionFactory">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="factoryName" type="string"/>
+				<attribute name="jndiName" type="string"/>							
+			</extension>
+		</complexContent>
+	</complexType>	
+
+	<element name="capability.JMSDestination" substitutionGroup="base:capability" type="jms:JMSDestination"/>
+	<complexType name="JMSDestination">
+		<complexContent>
+			<extension base="base:Capability">
+				<attribute name="destinationName" type="string"/>
+				<attribute name="jndiName" type="string"/>							
+			</extension>
+		</complexContent>
+	</complexType>    
+
+	<element name="unit.JMSQueueDestinationUnit" substitutionGroup="base:unit" type="jms:JMSQueueDestinationUnit"/>
+	<complexType name="JMSQueueDestinationUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSQueueDestination" substitutionGroup="base:capability" type="jms:JMSQueueDestination"/>
+	<complexType name="JMSQueueDestination">
+		<complexContent>
+			<extension base="jms:JMSDestination">
+			</extension>
+		</complexContent>
+	</complexType>    
+	
+	<element name="unit.JMSTopicDestinationUnit" substitutionGroup="base:unit" type="jms:JMSTopicDestinationUnit"/>
+	<complexType name="JMSTopicDestinationUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	<element name="capability.JMSTopicDestination" substitutionGroup="base:capability" type="jms:JMSTopicDestination"/>
+	<complexType name="JMSTopicDestination">
+		<complexContent>
+			<extension base="jms:JMSDestination">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="unit.JMSActivationSpecificationUnit" substitutionGroup="base:unit" type="jms:JMSActivationSpecificationUnit"/>
+	<complexType name="JMSActivationSpecificationUnit">
+		<complexContent>
+			<extension base="base:Unit" />
+		</complexContent>
+	</complexType>
+
+	
+   <element name="capability.JMSActivationSpecification"  substitutionGroup="base:capability" type="jms:JMSActivationSpecification"></element>
+   <complexType name="JMSActivationSpecification">
+  	<complexContent>
+  		<extension base="base:Capability">
+<!--    <attribute name="destinationName" type="string" />
+        <attribute name="destinationType" type="jms:DestinationTypeEnum" /> -->
+        <attribute name="specificationName" type="string" />
+		<attribute name="jndiName" type="string"/>				        
+        <attribute name="mesasageSelector" type="string" /> <!-- (SQL 92 condition expression,for example: <age BETWEEN 15 AND 19>”) -->
+        <attribute name="acknowledgeMode" type="jms:AcknowledgeModeEnum" />
+        <attribute name="subscriptionDurable" type="boolean" />
+        <attribute name="subscriptionName" type="string" />
+        <attribute name="clientIdentifier" type="string" />
+  		</extension>
+  	</complexContent>
+  </complexType>	 
+	
+    <simpleType name="AcknowledgeModeEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="Auto-acknowledge">
+    		<annotation><documentation>
+				The session automatically acknowledges the delivery of a message
+			</documentation></annotation>
+    		<!-- The session automatically acknowledges the delivery of a message --></enumeration>
+    		<enumeration value="Duplicates-ok auto-acknowledge">
+    		<!-- The session lazily acknowledges the delivery of messages, which can improve performance, but can lead to a message-driven bean receiving a message more than once. -->
+    		</enumeration>
+    		<enumeration value="NonPersistent"></enumeration>	    		
+    	</restriction>
+    </simpleType>
+    
+    <simpleType name="DestinationTypeEnum">
+    	<restriction base="string">    	  
+    		<enumeration value="javax.jms.Queue" />
+    		<enumeration value="javax.jms.Topic" />
+    	</restriction>
+    </simpleType>
+	
+</schema>
